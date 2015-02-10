@@ -17,9 +17,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # A copy of the GNU General Public License is in the file COPYING.
 
-'''
-This module defines the regex rules for fountain scripts.
-'''
+# This module defines the regex rules for fountain scripts.
 
 import re
 
