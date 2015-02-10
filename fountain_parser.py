@@ -49,6 +49,26 @@ class Parser(object):
         ret = FountainRegex.DOUBLE_NEWLINES_PATTERN + body + FountainRegex.DOUBLE_NEWLINES_PATTERN
         return ret
     
+    def titlePageOfString(self, string):
+        body = re.sub(FountainRegex.SLASH_N_PATTERN, FountainRegex.EMPTY_REPLACEMENT, string)
+        
+        # Find title page by looking for the first blank line, then checking the
+        # text above it. If a title page is found we remove it, leaving only the
+        # body content.
+        
+        firstBlankLine = body.find(FountainRegex.DOUBLE_NEWLINES_PATTERN)
+        if firstBlankLine > 0:
+            # TODO: check if the index is correct
+            documentTop = body[:(firstBlankLine + 1)]
+            documentTop += FountainRegex.NEWLINE_DEFAULT
+            
+            # check if this is a title page
+            if re.search(FountainRegex.TITLE_PAGE_PATTERN, documentTop):
+                documentTop = re.sub(FountainRegex.TITLE_NEWLINE_ENDING_PATTERN, FountainRegex.EMPTY_REPLACEMENT, documentTop)
+                documentTop = re.sub(FountainRegex.TITLE_NOT_NEWLINE_PATTERN, FountainRegex.EMPTY_REPLACEMENT, documentTop)
+                return documentTop
+        return
+            
     def parseBodyOfString(self, string):
         # Three-pass parsing method. 
         # 1st we check for block comments, and manipulate them for regexes
@@ -207,6 +227,50 @@ class Parser(object):
             data = inputFile.read()
             return self.parseBodyOfString(data)
         
-    # def parseTitlePageOfFile(self, path):
-    
-    # def parseTitlePageOfString(self, string):
+    def parseTitlePageOfString(self, string):
+        pageTitle = self.titlePageOfString(string)
+        contents = {}
+        openDirective = ''
+        directiveData = []
+        
+        # Line by line parsing, split the title page with new lines
+        lines = pageTitle.split('\n')
+        for line in lines:
+            # TODO: may want to use match instead of search here
+            if re.match(FountainRegex.INLINE_DIRECTIVE_PATTERN, line):
+                # if there's an open directive with data, save it
+                if (openDirective != '' and len(directiveData) > 0):
+                    contents[openDirective] = directiveData
+                    directiveData = []
+                openDirective = ''
+                
+                key = re.search(FountainRegex.INLINE_DIRECTIVE_PATTERN, line).group(1).lower()
+                val = re.search(FountainRegex.INLINE_DIRECTIVE_PATTERN, line).group(2)
+                
+                if (key == 'author' or key == 'author(s)'):
+                    key = 'authors'
+                
+                # TODO: check if this append is working correctly: here val is string directly converted to array, potentially wrong.
+                contents[key] = [val]
+            elif re.match(FountainRegex.MULTI_LINE_DIRECTIVE_PATTERN, line):
+                # if there's an open directive with data, save it
+                if (openDirective != '' and len(directiveData) > 0):
+                    contents[openDirective] = directiveData
+                    
+                openDirective = re.match(FountainRegex.MULTI_LINE_DIRECTIVE_PATTERN, line).group(1).lower()
+                directiveData = []
+                
+                if (openDirective == 'author' or openDirective == 'author(s)'):
+                    openDirective = 'authors'
+            elif re.match(FountainRegex.MULTI_LINE_DATA_PATTERN, line):
+                directiveData.append(re.match(FountainRegex.MULTI_LINE_DATA_PATTERN, line).group(2))
+        
+        if (openDirective != '' and len(directiveData) > 0):
+            contents[openDirective] = directiveData
+            
+        return contents
+        
+    def parseTitlePageOfFile(self, path):
+        with open(path) as inputFile:
+            data = inputFile.read()
+            return self.parseTitlePageOfString(data)

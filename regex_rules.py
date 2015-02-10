@@ -82,9 +82,9 @@ class FountainRegex(object):
     # Title Page
 
     TITLE_PAGE_PATTERN             = '^([^\\n]+:(([ \\t]*|\\n)[^\\n]+\\n)+)+\\n'
-    # TODO: The original line contains \xc2, check correctness
-    # Changed to following for Python unexpected encoding
-    INLINE_DIRECTIVE_PATTERN       = '^([\\w\\s&]+):\\s*([^\\s][\\w&,\\.\\?!:\\(\\)\\/\\s-\\*\\_]+)$'
+    # TODO: The original line contains \xc2 (/\\s-{circle C}\\*), 
+    # not sure how to make python recognize take circle-C(Copyright mark) yet
+    INLINE_DIRECTIVE_PATTERN       = '^([\\w\\s&]+):\\s*([^\\s][\\w&,\\.\\?!:\\(\\)\\/\\s\\*\\_]+)$'
     MULTI_LINE_DIRECTIVE_PATTERN   = '^([\\w\\s&]+):\\s*$'
     MULTI_LINE_DATA_PATTERN        = '^([ ]{2,8}|\\t)([^<>]+)$'
 
@@ -126,6 +126,11 @@ class FountainRegex(object):
     PARENTHETICAL_TAG_PATTERN      = 'Parenthetical'
     DUAL_DIALOGUE_ANGLE_MARK_PATTERN = '^'
         
+    # Title parsing replace pattern
+    
+    TITLE_NOT_NEWLINE_PATTERN     = '^\n+'
+    TITLE_NEWLINE_ENDING_PATTERN  = '\n+$'
+    
     #------------------------------------------------------------------------------
     # The following regexes aren't used by the code here, but may be useful
 

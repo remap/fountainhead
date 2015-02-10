@@ -17,13 +17,22 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # A copy of the GNU General Public License is in the file COPYING.
 
-# main script for debugging
+# This module defines the script class, which takes a file name, and constructs
+# elements structure by calling the parser.
+# Ported to Python from objc in nyousefi/Fountain repository
 
-from fountain_script import FountainScript
+from fountain_parser import Parser
 
-def main():
-    fountainScript = FountainScript('../Big-Fish.fountain.txt')
-    print(fountainScript._titlePageContents)
-
-if __name__ == "__main__":
-    main()
+class FountainScript(object):
+    def __init__(self, fileName = ''):
+        if (fileName == ''):
+            return
+        self._fileName = fileName
+        
+        # This parser is not optimized
+        parser = Parser()
+        self._elements = parser.parseBodyOfFile(self._fileName)
+        self._titlePageContents = parser.parseTitlePageOfFile(self._fileName)
+        
+        return
+        
