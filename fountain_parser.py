@@ -26,9 +26,11 @@ from fountain_element import FountainElement
 from regex_rules import *
 
 class ParserVersion(object):
-    DEFAULT = ''
+    DEFAULT = 'remap'
     BASE = 'base'
-    REMAP = 'REMAP'
+    REMAP = 'remap'
+    
+    Versions = [DEFAULT, BASE, REMAP]
 
 # TODO: Parser should be versioned as well as Regex
 #       As of right now, the remap update will make it unable to work with FountainRegexBase

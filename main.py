@@ -48,14 +48,19 @@ def main(argv):
         elif opt in ('-o', '--ofile'):
             outputFile = arg
         elif opt in ('-v', '--version'):
-            parserVersion = arg
+            parserVersion = arg.lower()
         elif opt in ('-c', '--cfile'):
             cssFile = arg
     
-    print('PARSER: Input file is ' + inputFile)
-    print('PARSER: Output file is ' + outputFile)
-    print('PARSER: CSS file is ' + cssFile + ' (relevant to output file path)')
-    
+    print('fountainhead: Input file is \'' + inputFile + '\'')
+    print('fountainhead: Output file is \'' + outputFile + '\'')
+    print('fountainhead: CSS file is \'' + cssFile + '\' (relevant to output file path)')
+    if parserVersion in ParserVersion.Versions:
+        print('fountainhead: Parser version tag is \'' + parserVersion + '\'')
+    else:
+        print('WARNING: Unknown version tag \'' + parserVersion + '\'; using default version \'' + ParserVersion.DEFAULT + '\' instead')
+        parserVersion = ParserVersion.DEFAULT
+        
     fountainScript = FountainScript(inputFile, parserVersion)
     
     fountainHTML = FountainHTMLGenerator(fountainScript, cssFile, parserVersion)
