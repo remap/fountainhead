@@ -23,16 +23,16 @@
 
 # Ported to Python from objc in nyousefi/Fountain repository
 
-from fountain_parser import Parser
+from fountain_parser import Parser, ParserVersion
 
 class FountainScript(object):
-    def __init__(self, fileName = ''):
+    def __init__(self, fileName = '', parserVersion = ParserVersion.DEFAULT):
         if (fileName == ''):
             return
         self._fileName = fileName
         
         # This parser is not optimized
-        parser = Parser()
+        parser = Parser(parserVersion)
         self._elements = parser.parseBodyOfFile(self._fileName)
         self._titlePageContents = parser.parseTitlePageOfFile(self._fileName)
         
