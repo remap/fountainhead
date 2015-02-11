@@ -115,21 +115,60 @@ class FountainRegex(object):
     DOUBLE_NEWLINES_PATTERN        = '\n\n'
     ELEMENT_TEXT_PATTERN           = '(>?)\\s*([^<>\\n]*)\\s*(<?)'
     
-    SCENE_HEADING_PATTERN          = 'Scene Heading'
     ELEMENT_TEXT_WITH_SCENE_HEADING_PATTERN = '^\\.?(.+)'
-        
-    SECTION_HEADING_PATTERN        = 'Section Heading'
     
-    CHARACTER_TAG_PATTERN          = 'Character'
-    CHARACTER_DUAL_DIALOGUE_PATTERN = '\\s*\\^$'
-    DIALOGUE_TAG_PATTERN           = 'Dialogue'
-    PARENTHETICAL_TAG_PATTERN      = 'Parenthetical'
+    CHARACTER_DUAL_DIALOGUE_PATTERN  = '\\s*\\^$'
     DUAL_DIALOGUE_ANGLE_MARK_PATTERN = '^'
         
     # Title parsing replace pattern
     
     TITLE_NOT_NEWLINE_PATTERN     = '^\n+'
     TITLE_NEWLINE_ENDING_PATTERN  = '\n+$'
+    
+    # Should consider moving this to another class, something like 'fountain elements'
+    # Title element names consts
+    
+    TITLE_TITLE_STRING            = 'title'
+    TITLE_AUTHOR_STRING           = 'authors'
+    TITLE_SOURCE_STRING           = 'source'
+    TITLE_CREDIT_STRING           = 'credit'
+    TITLE_DRAFT_DATE_STRING       = 'draft date'
+    TITLE_CONTACT_STRING          = 'contact'
+    
+    # Corresponding div/class ids; 
+    # Class IDs are the same as the strings defined above
+    
+    TITLE_DIV                     = 'script-title'
+    TITLE_TITLE_CLASS             = 'title'
+    TITLE_AUTHOR_CLASS            = 'authors'
+    TITLE_SOURCE_CLASS            = 'source'
+    TITLE_CREDIT_CLASS            = 'credit'
+    TITLE_DRAFT_DATE_CLASS        = 'draft-date'
+    TITLE_CONTACT_CLASS           = 'contact'
+    
+    # Fountain element names
+    
+    SCENE_HEADING_PATTERN          = 'Scene Heading'
+    # Rendered in html by default
+    CHARACTER_TAG_PATTERN          = 'Character'
+    DIALOGUE_TAG_PATTERN           = 'Dialogue'
+    PARENTHETICAL_TAG_PATTERN      = 'Parenthetical'
+    PAGE_BREAK_PATTERN             = 'Page Break'
+    # Ignored in html by default
+    BONEYARD_TAG_PATTERN           = 'Boneyard'
+    COMMENT_TAG_PATTERN            = 'Comment'
+    SYNOPSIS_TAG_PATTERN           = 'Synopsis'
+    SECTION_HEADING_PATTERN        = 'Section Heading'
+    
+    # Fountain element classes
+    
+    DUAL_DIALOGUE_CLASS            = 'dual-dialogue'
+    DUAL_DIALOGUE_LEFT_CLASS       = 'dual-dialogue-left'
+    DUAL_DIALOGUE_RIGHT_CLASS      = 'dual-dialogue-right'
+    
+    SCENE_NUMBER_CLASS             = 'scene-number'
+    SCENE_NUMBER_LEFT_CLASS        = 'scene-number-left'
+    SCENE_NUMBER_RIGHT_CLASS       = 'scene-number-right'
     
     #------------------------------------------------------------------------------
     # The following regexes aren't used by the code here, but may be useful
@@ -153,4 +192,18 @@ class FountainRegex(object):
     BOLD_TEMPLATE                  = 'Bold'
     ITALIC_TEMPLATE                = 'Italic'
     UNDERLINE_TEMPLATE             = 'Underline'
+    
+    # Corresponding HTML styling replacements
+    
+    BOLD_ITALIC_UNDERLINE_TAG_STRING   = r'<strong><em><u>\2</strong></em></u>'
+    BOLD_ITALIC_TAG                    = r'<strong><em>\2</strong></em>'
+    BOLD_UNDERLINE_TAG                 = r'<strong><u>\2</u></strong>'
+    ITALIC_UNDERLINE_TAG               = r'<em><u>\2</em></u>'
+    BOLD_TAG                           = r'<strong>\2</strong>'
+    ITALIC_TAG                         = r'<em>\2</em>'
+    UNDERLINE_TAG                      = r'<u>\2</u>'
+    CENTER_CLASS                       = ' center'
+    
+    # TODO: don't know what this is yet
+    FONT_EMPH_IGNORE_TAG               = '\\[{2}(.*?)\\]{2}'
     

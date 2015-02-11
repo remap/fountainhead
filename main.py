@@ -20,10 +20,16 @@
 # main script for debugging
 
 from fountain_script import FountainScript
+from html_generator import FountainHTMLGenerator
 
 def main():
-    fountainScript = FountainScript('../Big-Fish.fountain.txt')
-    print(fountainScript._titlePageContents)
-
+    fountainScript = FountainScript('html-test/Big-Fish.fountain.txt')
+    #print(fountainScript._titlePageContents)
+    
+    fountainHTML = FountainHTMLGenerator(fountainScript, 'ScriptCSS.css')
+    htmlOutput = fountainHTML.generateHtml()
+    
+    print(htmlOutput)
+    
 if __name__ == "__main__":
     main()

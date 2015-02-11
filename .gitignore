@@ -53,5 +53,6 @@ docs/_build/
 # PyBuilder
 target/
 
-# debug.txt; specific for this project
+# debug.txt and debug.html; specific for this project
 debug.txt
+debug.html

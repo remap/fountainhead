@@ -248,7 +248,11 @@ class Parser(object):
                 val = re.search(FountainRegex.INLINE_DIRECTIVE_PATTERN, line).group(2)
                 
                 if (key == 'author' or key == 'author(s)'):
-                    key = 'authors'
+                    key = FountainRegex.TITLE_AUTHOR_STRING
+                
+                # TODO: Is 'draft date' in two words a suitable Python key?
+                #if (key == FountainRegex.TITLE_DRAFT_DATE_STRING):
+                #    key = FountainRegex.TITLE_DRAFT_DATE_CLASS
                 
                 # TODO: check if this append is working correctly: here val is string directly converted to array, potentially wrong.
                 contents[key] = [val]
@@ -261,7 +265,7 @@ class Parser(object):
                 directiveData = []
                 
                 if (openDirective == 'author' or openDirective == 'author(s)'):
-                    openDirective = 'authors'
+                    openDirective = FountainRegex.TITLE_AUTHOR_STRING
             elif re.match(FountainRegex.MULTI_LINE_DATA_PATTERN, line):
                 directiveData.append(re.match(FountainRegex.MULTI_LINE_DATA_PATTERN, line).group(2))
         

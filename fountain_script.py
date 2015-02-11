@@ -18,7 +18,9 @@
 # A copy of the GNU General Public License is in the file COPYING.
 
 # This module defines the script class, which takes a file name, and constructs
-# elements structure by calling the parser.
+# elements structure by calling the parser. Scripts contains an element array, and
+# a title elements dictionary; both are used by html generator
+
 # Ported to Python from objc in nyousefi/Fountain repository
 
 from fountain_parser import Parser
