@@ -4,10 +4,22 @@ This is a parser for Fountain-formatted scripts that will output "active documen
 
 This work is based on the obj-c fountain parser: https://github.com/nyousefi/Fountain
 
+License: GPLv3
+
+## Usage:
+    python -O main.py -v <parser version tag> -i <inputfile> -c <cssfile: relevant to outputFile path> -o <outputfile>
+    
+Flags:
+* v: Parser version tag, supported are 'base' and 'remap'
+* i: Fountain input file path
+* o: HTML output file path
+* c: CSS file path (relative to output file path)
+* h: Print help and exit
+    
+## Links:
 Specification: http://redmine.remap.ucla.edu/projects/fountainhead/documents
 
 Issue tracking: http://redmine.remap.ucla.edu/projects/fountainhead/
 
-License: GPLv3
-
 Bug report and contact: Zhehao <wangzhehao410305@gmail.com>
+
