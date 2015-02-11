@@ -22,7 +22,15 @@
 
 # For HTML output, paginator is ignored right now.
 
-from regex_rules import FountainRegex
+# TODO: add version parsing before importing FountainRegex
+try:
+    Version
+except NameError:
+    from regex_rules import FountainRegexRemap as FountainRegex
+else:
+    if Version == 'Base':
+        from regex_rules import FountainRegexBase as FountainRegex
+
 import re
 
 class FountainHTMLGenerator(object):

@@ -21,7 +21,16 @@
 # Ported to Python from objc in nyousefi/Fountain repository
 
 import re
-from regex_rules import FountainRegex
+
+# TODO: add version parsing before importing FountainRegex
+try:
+    Version
+except NameError:
+    from regex_rules import FountainRegexRemap as FountainRegex
+else:
+    if Version == 'Base':
+        from regex_rules import FountainRegexBase as FountainRegex
+    
 from fountain_element import FountainElement
 
 class Parser(object):

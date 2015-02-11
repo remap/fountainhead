@@ -17,11 +17,12 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 # A copy of the GNU General Public License is in the file COPYING.
 
-# This module defines the regex rules for fountain scripts.
+# This module defines the regex rules, as well as class/tag constants for fountain scripts.
 
 import re
 
-class FountainRegex(object):
+# TODO: Considering 'version selection' function from specified in the script
+class FountainRegexBase(object):
     #------------------------------------------------------------------------------
     # Rule string
     
@@ -206,4 +207,14 @@ class FountainRegex(object):
     
     # TODO: don't know what this is yet
     FONT_EMPH_IGNORE_TAG               = '\\[{2}(.*?)\\]{2}'
+    
+# Child class for selecting which version of the parser, as well as defining remap specific tags 
+class FountainRegexRemap(FountainRegexBase):
+    # Spec name: Web component
+    # Spec syntax: <<@componentA[(arg1=val1,arg2=val2...)] text-description>> 
+    #              (only appears in Action); componentA: 1st, arg=val,...: 2nd, text-description: third
+    # HTML output: <link rel="import" href="components/componentA.html"> <!-- once per file -->
+    #              <componentA arg1="val1" arg2="val2">text description</component>
+    
+    WEB_COMPONENT_PATTERN              = '<<\\s([^<>]*?)\\[\\(([^<>]*?)\\)\\]\\s([^<>]*?)>>'
     
