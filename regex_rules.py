@@ -216,5 +216,6 @@ class FountainRegexRemap(FountainRegexBase):
     # HTML output: <link rel="import" href="components/componentA.html"> <!-- once per file -->
     #              <componentA arg1="val1" arg2="val2">text description</component>
     
-    WEB_COMPONENT_PATTERN              = '<<\\s([^<>]*?)\\[\\(([^<>]*?)\\)\\]\\s([^<>]*?)>>'
+    WEB_COMPONENT_PATTERN              = '&lt&lt\\s([^<>]*?)\\[\\(([^<>]*?)\\)\\]\\s([^<>]*?)&gt&gt'
+    WEB_COMPONENT_TEMPLATE             = r'<Component name=\1 arglist=\2>\3</Component>'
     

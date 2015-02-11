@@ -23,7 +23,8 @@ from fountain_script import FountainScript
 from html_generator import FountainHTMLGenerator
 
 def main():
-    fountainScript = FountainScript('html-test/Big-Fish.fountain.txt')
+    fountainScript = FountainScript('html-test/remap-script.txt')
+    #fountainScript = FountainScript('html-test/Big-Fish.fountain.txt')
     #print(fountainScript._titlePageContents)
     
     fountainHTML = FountainHTMLGenerator(fountainScript, 'ScriptCSS.css')

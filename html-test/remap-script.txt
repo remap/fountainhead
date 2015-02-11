@@ -1,0 +1,33 @@
+Title: Test Script
+Credit: written by
+Author: Zhehao
+Source: based on His Understanding of Regex
+Notes:	
+	FINAL PRODUCTION DRAFT
+	includes post-production dialogue 
+	and omitted scenes
+Copyright: (c) 2014-2015 Regents of University of California
+
+This is a test, full of lies and fabrications, but truer for their inclusion.
+
+====
+
+**FADE IN:**
+
+A TEST.
+
+We're testing, watching a fat catfish swim along. <<testComponent[(arg1=val1, arg2=val2)] my cool description>>. This seems very ambiguous.
+
+This is The Test.
+
+ZHEHAO (V.O.)
+This seems to be a dialogue.
+
+This seems to be an action.
+
+ZHEHAO (V.O.)(CONT'D)
+We actually have more than one dialogue.
+
+INT.  WILL'S BEDROOM - NIGHT (1973)
+
+> _**THE END**_ <

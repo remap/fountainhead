@@ -33,6 +33,8 @@ else:
     
 from fountain_element import FountainElement
 
+# TODO: Parser should be versioned as well as Regex
+#       As of right now, the remap update will make it unable to work with FountainRegexBase
 class Parser(object):
     def __init__(self):
         return
