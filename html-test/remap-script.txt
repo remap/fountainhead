@@ -16,7 +16,7 @@ This is a test, full of lies and fabrications, but truer for their inclusion.
 
 A TEST.
 
-We're testing, watching a fat catfish swim along. <<@testComponent[(arg1=val1, arg2=val2)] my cool description>>. This seems very ambiguous.
+We're testing, watching a fat catfish swim along. <<@testComponent(arg1=val1, arg2=val2) my cool description>>. This seems very ambiguous.
 
 This is The Test.
 
