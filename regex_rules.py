@@ -23,6 +23,27 @@ import re
 
 # TODO: Considering 'version selection' function from specified in the script
 class FountainRegexBase(object):
+    def __init__(self):
+        # Summary of pattern definition
+        self._patterns = [self.UNIVERSAL_LINE_BREAKS_PATTERN, self.BLOCK_COMMENT_PATTERN, 
+                self.BRACKET_COMMENT_PATTERN, self.SYNOPSIS_PATTERN, 
+                self.PAGE_BREAK_PATTERN, self.FALSE_TRANSITION_PATTERN, 
+                self.FORCED_TRANSITION_PATTERN, self.SCENE_HEADER_PATTERN, 
+                self.FIRST_LINE_ACTION_PATTERN, self.TRANSITION_PATTERN, 
+                self.CHARACTER_CUE_PATTERN, self.PARENTHETICAL_PATTERN, 
+                self.DIALOGUE_PATTERN, self.SECTION_HEADER_PATTERN,
+                self.ACTION_PATTERN, self.CLEANUP_PATTERN, self.NEWLINE_REPLACEMENT]
+    
+        # Summary of template definition
+        self._templates = [self.UNIVERSAL_LINE_BREAKS_TEMPLATE, self.BLOCK_COMMENT_TEMPLATE, 
+                 self.BRACKET_COMMENT_TEMPLATE, self.SYNOPSIS_TEMPLATE, 
+                 self.PAGE_BREAK_TEMPLATE, self.FALSE_TRANSITION_TEMPLATE, 
+                 self.FORCED_TRANSITION_TEMPLATE, self.SCENE_HEADER_TEMPLATE, 
+                 self.FIRST_LINE_ACTION_TEMPLATE, self.TRANSITION_TEMPLATE, 
+                 self.CHARACTER_CUE_TEMPLATE, self.PARENTHETICAL_TEMPLATE, 
+                 self.DIALOGUE_TEMPLATE, self.SECTION_HEADER_TEMPLATE,
+                 self.ACTION_TEMPLATE, self.CLEANUP_TEMPLATE, self.NEWLINE_RESTORE]
+        return
     #------------------------------------------------------------------------------
     # Rule string
     
@@ -216,6 +237,19 @@ class FountainRegexRemap(FountainRegexBase):
     # HTML output: <link rel="import" href="components/componentA.html"> <!-- once per file -->
     #              <componentA arg1="val1" arg2="val2">text description</component>
     
-    WEB_COMPONENT_PATTERN              = '&lt&lt\\s([^<>]*?)\\[\\(([^<>]*?)\\)\\]\\s([^<>]*?)&gt&gt'
-    WEB_COMPONENT_TEMPLATE             = r'<Component name=\1 arglist=\2>\3</Component>'
+    WEB_COMPONENT_PATTERN              = '\\&lt\\&lt\\s?([^<>]*?)\\[\\(([^<>]*?)\\)\\]\\s?([^<>]*?)\\&gt\\&gt'
+    WEB_COMPONENT_TEMPLATE             = r'<Component><CompName>\1</CompName><CompArg>\2</CompArg><CompDesc>\3</CompDesc></Component>'
+    
+    # Right now we don't do nested Component/CompArg definition
+    # What if the val is a list separated by commas?
+    
+    def __init__(self):
+        FountainRegexBase.__init__(self) 
+        # In order not to change the parent class's static variable, we make a copy and append
+        # Summary of pattern definition; 
+        self._patterns.append(self.WEB_COMPONENT_PATTERN)
+    
+        # Summary of template definition
+        self._templates.append(self.WEB_COMPONENT_TEMPLATE)
+        return
     
