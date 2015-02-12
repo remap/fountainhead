@@ -18,6 +18,7 @@
 # A copy of the GNU General Public License is in the file COPYING.
 
 # This module defines the regex rules, as well as class/tag constants for fountain scripts.
+# Fountain syntax reference: http://fountain.io/syntax
 
 import re
 
@@ -237,15 +238,15 @@ class FountainRegexRemap(FountainRegexBase):
     # HTML output: <link rel="import" href="components/componentA.html"> <!-- once per file -->
     #              <componentA arg1="val1" arg2="val2">text description</component>
     
+    # TODO: optional parenthesis
     WEB_COMPONENT_PATTERN              = '\\&lt\\&lt\\s?@([^<>]*?)\\(([^<>]*?)\\)\\s?([^<>]*?)\\&gt\\&gt'
     WEB_COMPONENT_TEMPLATE             = r'<Component><CompName>\1</CompName><CompArg>\2</CompArg><CompDesc>\3</CompDesc></Component>'
     
-    # Right now we don't do nested Component/CompArg definition
+    # TODO: Argument parsing. Right now we don't do nested Component/CompArg definition
     # What if the val is a list separated by commas?
     
     def __init__(self):
         FountainRegexBase.__init__(self) 
-        # In order not to change the parent class's static variable, we make a copy and append
         # Summary of pattern definition; 
         self._patterns.append(self.WEB_COMPONENT_PATTERN)
     

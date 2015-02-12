@@ -215,10 +215,11 @@ class Parser(object):
                 element._sectionDepth = depth
                 element._elementText = re.search(self._fountainRegex.SECTION_HEADER_PATTERN, element._elementText).group(3)
                 
+            # TODO: Dual dialogue related features are not tested
             if (i > 1 and element._elementType == self._fountainRegex.CHARACTER_TAG_PATTERN and re.search(self._fountainRegex.DUAL_DIALOGUE_PATTERN, element._elementText)):
                 element._isDualDialogue = True
                 # clean the ^ mark
-                element._elementText = re.replace(self._fountainRegex.CHARACTER_DUAL_DIALOGUE_PATTERN, self._fountainRegex.EMPTY_REPLACEMENT, element._elementText);
+                element._elementText = re.sub(self._fountainRegex.CHARACTER_DUAL_DIALOGUE_PATTERN, self._fountainRegex.EMPTY_REPLACEMENT, element._elementText);
                 # find the previous character cue
                 j = i - 1
                 
@@ -227,7 +228,7 @@ class Parser(object):
                     previousElement = elementsArray[j]
                     if (previousElement._elementType == self._fountainRegex.CHARACTER_TAG_PATTERN):
                         previousElement._isDualDialogue = True
-                        previousElement._elementText = re.replace(self._fountainRegex.DUAL_DIALOGUE_ANGLE_MARK_PATTERN, self._fountainRegex.EMPTY_REPLACEMENT, previousElement._elementText)
+                        previousElement._elementText = re.sub(self._fountainRegex.DUAL_DIALOGUE_ANGLE_MARK_PATTERN, self._fountainRegex.EMPTY_REPLACEMENT, previousElement._elementText)
                     j -= 1
                     if (j < 0 or previousElement._elementType == self._fountainRegex.DIALOGUE_TAG_PATTERN or previousElement._elementType == self._fountainRegex.PARENTHETICAL_TAG_PATTERN):
                         break
