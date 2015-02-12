@@ -237,7 +237,7 @@ class FountainRegexRemap(FountainRegexBase):
     # HTML output: <link rel="import" href="components/componentA.html"> <!-- once per file -->
     #              <componentA arg1="val1" arg2="val2">text description</component>
     
-    WEB_COMPONENT_PATTERN              = '\\&lt\\&lt\\s?([^<>]*?)\\[\\(([^<>]*?)\\)\\]\\s?([^<>]*?)\\&gt\\&gt'
+    WEB_COMPONENT_PATTERN              = '\\&lt\\&lt\\s?@([^<>]*?)\\[\\(([^<>]*?)\\)\\]\\s?([^<>]*?)\\&gt\\&gt'
     WEB_COMPONENT_TEMPLATE             = r'<Component><CompName>\1</CompName><CompArg>\2</CompArg><CompDesc>\3</CompDesc></Component>'
     
     # Right now we don't do nested Component/CompArg definition
