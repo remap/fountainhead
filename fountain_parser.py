@@ -118,14 +118,14 @@ class Parser(object):
         # comments, so we need to convert them before processing.
         
         # TODO: this tries to replace '\n' in block comments to '', but does not look smart
-        blockComments = re.search(self._fountainRegex.BLOCK_COMMENT_PATTERN, scriptContent)
+        blockComments = re.findall(self._fountainRegex.BLOCK_COMMENT_PATTERN, scriptContent)
         if blockComments:
             for blockComment in blockComments:
                 modifiedBlock = blockComment.replace(self._fountainRegex.NEWLINE_DEFAULT, self._fountainRegex.NEWLINE_REPLACEMENT)
                 scriptContent = scriptContent.replace(blockComment, modifiedBlock)
         
         # TODO: this tries to replace '\n' in bracket comments to '', but does not look smart
-        bracketComments = re.search(self._fountainRegex.BRACKET_COMMENT_PATTERN, scriptContent)
+        bracketComments = re.findall(self._fountainRegex.BRACKET_COMMENT_PATTERN, scriptContent)
         if bracketComments:
             for bracketComment in bracketComments:
                 modifiedBlock = bracketComment.replace(self._fountainRegex.NEWLINE_DEFAULT, self._fountainRegex.NEWLINE_REPLACEMENT)

@@ -23,6 +23,12 @@ This is The Test.
 ZHEHAO (V.O.)
 This seems to be a dialogue.
 
+[[Three days without chocolate]]
+
+[[Multi-line
+   
+Tests, even more days without chocolate]]
+
 This seems to be an action.
 
 ZHEHAO (V.O.)(CONT'D)
