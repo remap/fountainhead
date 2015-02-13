@@ -35,15 +35,15 @@ class FountainHTMLGenerator(object):
         
         self._version = version
         if self._version == ParserVersion.REMAP:
-            self.FountainRegex = FountainRegexRemap()
+            self._fountainRegex = FountainRegexRemap()
             self.generateHtml = self.generateHtmlRemap
         elif self._version == ParserVersion.BASE:
-            self.FountainRegex = FountainRegexBase()
+            self._fountainRegex = FountainRegexBase()
             self.generateHtml = self.generateHtmlBase
         else:
             # Right now using remap as default
             self._version == ParserVersion.DEFAULT
-            self.FountainRegex = FountainRegexRemap()
+            self._fountainRegex = FountainRegexRemap()
             self.generateHtml = self.generateHtmlRemap
         return
     
@@ -77,61 +77,61 @@ class FountainHTMLGenerator(object):
         titleElements = self._script._titlePageContents
         
         if titleElements:
-            bodyText += '<div id=\'' + self.FountainRegex.TITLE_DIV + '\'>'
+            bodyText += '<div id=\'' + self._fountainRegex.TITLE_DIV + '\'>'
             
             # Titles
-            bodyText += '<p class=\'' + self.FountainRegex.TITLE_TITLE_CLASS + '\'>'
-            if titleElements[self.FountainRegex.TITLE_TITLE_STRING]:
-                for temp in titleElements[self.FountainRegex.TITLE_TITLE_STRING]:
+            bodyText += '<p class=\'' + self._fountainRegex.TITLE_TITLE_CLASS + '\'>'
+            if titleElements[self._fountainRegex.TITLE_TITLE_STRING]:
+                for temp in titleElements[self._fountainRegex.TITLE_TITLE_STRING]:
                     bodyText += temp + '<br>'
             else:
                 bodyText += 'Untitled'
             bodyText += '</p>'
                 
             # Credit
-            bodyText += '<p class=\'' + self.FountainRegex.TITLE_CREDIT_CLASS + '\'>'
-            if self.FountainRegex.TITLE_CREDIT_STRING in titleElements:
-                for temp in titleElements[self.FountainRegex.TITLE_CREDIT_STRING]:
+            bodyText += '<p class=\'' + self._fountainRegex.TITLE_CREDIT_CLASS + '\'>'
+            if self._fountainRegex.TITLE_CREDIT_STRING in titleElements:
+                for temp in titleElements[self._fountainRegex.TITLE_CREDIT_STRING]:
                     bodyText += temp + '<br>'
             else:
                 bodyText += 'written by'
             bodyText += '</p>'
             
             # Authors
-            bodyText += '<p class=\'' + self.FountainRegex.TITLE_AUTHOR_CLASS + '\'>'
-            if self.FountainRegex.TITLE_AUTHOR_STRING in titleElements:
-                for temp in titleElements[self.FountainRegex.TITLE_AUTHOR_STRING]:
+            bodyText += '<p class=\'' + self._fountainRegex.TITLE_AUTHOR_CLASS + '\'>'
+            if self._fountainRegex.TITLE_AUTHOR_STRING in titleElements:
+                for temp in titleElements[self._fountainRegex.TITLE_AUTHOR_STRING]:
                     bodyText += temp + '<br>'
             else:
                 bodyText += 'Anonymous'
             bodyText += '</p>'
             
             # Sources
-            if self.FountainRegex.TITLE_SOURCE_STRING in titleElements:
-                bodyText += '<p class=\'' + self.FountainRegex.TITLE_SOURCE_CLASS + '\'>'
-                for temp in titleElements[self.FountainRegex.TITLE_SOURCE_STRING]:
+            if self._fountainRegex.TITLE_SOURCE_STRING in titleElements:
+                bodyText += '<p class=\'' + self._fountainRegex.TITLE_SOURCE_CLASS + '\'>'
+                for temp in titleElements[self._fountainRegex.TITLE_SOURCE_STRING]:
                     bodyText += temp + '<br>'
                 bodyText += '</p>'
             
             # Draft date
-            if self.FountainRegex.TITLE_DRAFT_DATE_STRING in titleElements:
-                bodyText += '<p class=\'' + self.FountainRegex.TITLE_DRAFT_DATE_CLASS + '\'>'
-                for temp in titleElements[self.FountainRegex.TITLE_DRAFT_DATE_STRING]:
+            if self._fountainRegex.TITLE_DRAFT_DATE_STRING in titleElements:
+                bodyText += '<p class=\'' + self._fountainRegex.TITLE_DRAFT_DATE_CLASS + '\'>'
+                for temp in titleElements[self._fountainRegex.TITLE_DRAFT_DATE_STRING]:
                     bodyText += temp + '<br>'
                 bodyText += '</p>'
             
             # Contact
-            if self.FountainRegex.TITLE_CONTACT_STRING in titleElements:
-                bodyText += '<p class=\'' + self.FountainRegex.TITLE_CONTACT_CLASS + '\'>'
-                for temp in titleElements[self.FountainRegex.TITLE_CONTACT_STRING]:
+            if self._fountainRegex.TITLE_CONTACT_STRING in titleElements:
+                bodyText += '<p class=\'' + self._fountainRegex.TITLE_CONTACT_CLASS + '\'>'
+                for temp in titleElements[self._fountainRegex.TITLE_CONTACT_STRING]:
                     bodyText += temp + '<br>'
                 bodyText += '</p>'
             
             bodyText += '</div>'
             
         # Page breaks are not handled in current HTML output
-        dialogueTypes = [self.FountainRegex.CHARACTER_TAG_PATTERN, self.FountainRegex.DIALOGUE_TAG_PATTERN, self.FountainRegex.PARENTHETICAL_TAG_PATTERN]
-        ignoreTypes = [self.FountainRegex.BONEYARD_TAG_PATTERN, self.FountainRegex.COMMENT_TAG_PATTERN, self.FountainRegex.SYNOPSIS_TAG_PATTERN, self.FountainRegex.SECTION_HEADING_PATTERN]
+        dialogueTypes = [self._fountainRegex.CHARACTER_TAG_PATTERN, self._fountainRegex.DIALOGUE_TAG_PATTERN, self._fountainRegex.PARENTHETICAL_TAG_PATTERN]
+        ignoreTypes = [self._fountainRegex.BONEYARD_TAG_PATTERN, self._fountainRegex.COMMENT_TAG_PATTERN, self._fountainRegex.SYNOPSIS_TAG_PATTERN, self._fountainRegex.SECTION_HEADING_PATTERN]
         
         dualDialogueCharacterCount = 0
         
@@ -140,46 +140,46 @@ class FountainHTMLGenerator(object):
             if (element._elementType in ignoreTypes):
                 continue
             
-            if (element._elementType == self.FountainRegex.PAGE_BREAK_PATTERN):
+            if (element._elementType == self._fountainRegex.PAGE_BREAK_PATTERN):
                 bodyText += '</section>\n<section>\n'
                 continue
             
-            if (element._elementType == self.FountainRegex.CHARACTER_TAG_PATTERN and element._isDualDialogue):
+            if (element._elementType == self._fountainRegex.CHARACTER_TAG_PATTERN and element._isDualDialogue):
                 dualDialogueCharacterCount += 1
                 if (dualDialogueCharacterCount == 1):
-                    bodyText += '<div class=\'' + self.FountainRegex.DUAL_DIALOGUE_CLASS + '\'>\n'
-                    bodyText += '<div class=\'' + self.FountainRegex.DUAL_DIALOGUE_LEFT_CLASS + '\'>\n'
+                    bodyText += '<div class=\'' + self._fountainRegex.DUAL_DIALOGUE_CLASS + '\'>\n'
+                    bodyText += '<div class=\'' + self._fountainRegex.DUAL_DIALOGUE_LEFT_CLASS + '\'>\n'
                 elif (dualDialogueCharacterCount == 2):
-                    bodyText += '<div class=\'' + self.FountainRegex.DUAL_DIALOGUE_RIGHT_CLASS + '\'>\n'
+                    bodyText += '<div class=\'' + self._fountainRegex.DUAL_DIALOGUE_RIGHT_CLASS + '\'>\n'
             
             if (dualDialogueCharacterCount >= 2 and not (element._elementType in dialogueTypes)):
                 dualDialogueCharacterCount = 0
                 bodyText += '</div>\n</div>\n'
             
             text = ''
-            if (element._elementType == self.FountainRegex.SCENE_HEADING_PATTERN and element._sceneNumber != None):
-                text += '<span class=\'' + self.FountainRegex.SCENE_NUMBER_LEFT + '\'>' + element._sceneNumber + '</span>'
+            if (element._elementType == self._fountainRegex.SCENE_HEADING_PATTERN and element._sceneNumber != None):
+                text += '<span class=\'' + self._fountainRegex.SCENE_NUMBER_LEFT + '\'>' + element._sceneNumber + '</span>'
                 text += element._elementText
-                text += '<span class=\'' + self.FountainRegex.SCENE_NUMBER_RIGHT + '\'>' + element._sceneNumber + '</span>'
+                text += '<span class=\'' + self._fountainRegex.SCENE_NUMBER_RIGHT + '\'>' + element._sceneNumber + '</span>'
             else:
                 text += element._elementText
                 
-            if (element._elementType == self.FountainRegex.CHARACTER_TAG_PATTERN and element._isDualDialogue):
-                re.sub(self.FountainRegex.DUAL_DIALOGUE_ANGLE_MARK_PATTERN, self.FountainRegex.EMPTY_REPLACEMENT, text)
-                
-            re.sub(self.FountainRegex.BOLD_ITALIC_UNDERLINE_PATTERN, self.FountainRegex.BOLD_ITALIC_UNDERLINE_TEMPLATE, text)
-            re.sub(self.FountainRegex.BOLD_ITALIC_PATTERN, self.FountainRegex.BOLD_ITALIC_TEMPLATE, text)
-            re.sub(self.FountainRegex.BOLD_UNDERLINE_PATTERN, self.FountainRegex.BOLD_UNDERLINE_TEMPLATE, text)
-            re.sub(self.FountainRegex.ITALIC_UNDERLINE_PATTERN, self.FountainRegex.ITALIC_UNDERLINE_TEMPLATE, text)
-            re.sub(self.FountainRegex.BOLD_PATTERN, self.FountainRegex.BOLD_TEMPLATE, text)
-            re.sub(self.FountainRegex.ITALIC_PATTERN, self.FountainRegex.ITALIC_TEMPLATE, text)
-            re.sub(self.FountainRegex.UNDERLINE_PATTERN, self.FountainRegex.UNDERLINE_TEMPLATE, text)
-            re.sub(self.FountainRegex.FONT_EMPH_IGNORE_TAG, self.FountainRegex.EMPTY_REPLACEMENT, text)
+            if (element._elementType == self._fountainRegex.CHARACTER_TAG_PATTERN and element._isDualDialogue):
+                text = re.sub(self._fountainRegex.DUAL_DIALOGUE_ANGLE_MARK_PATTERN, self._fountainRegex.EMPTY_REPLACEMENT, text)
+            
+            text = re.sub(self._fountainRegex.BOLD_ITALIC_UNDERLINE_PATTERN, self._fountainRegex.BOLD_ITALIC_UNDERLINE_TAG, text)
+            text = re.sub(self._fountainRegex.BOLD_ITALIC_PATTERN, self._fountainRegex.BOLD_ITALIC_TAG, text)
+            text = re.sub(self._fountainRegex.BOLD_UNDERLINE_PATTERN, self._fountainRegex.BOLD_UNDERLINE_TAG, text)
+            text = re.sub(self._fountainRegex.ITALIC_UNDERLINE_PATTERN, self._fountainRegex.ITALIC_UNDERLINE_TAG, text)
+            text = re.sub(self._fountainRegex.BOLD_PATTERN, self._fountainRegex.BOLD_TAG, text)
+            text = re.sub(self._fountainRegex.ITALIC_PATTERN, self._fountainRegex.ITALIC_TAG, text)
+            text = re.sub(self._fountainRegex.UNDERLINE_PATTERN, self._fountainRegex.UNDERLINE_TAG, text)
+            text = re.sub(self._fountainRegex.FONT_EMPH_IGNORE_TAG, self._fountainRegex.EMPTY_REPLACEMENT, text)
             
             if (text != ''):
                 additionalClasses = ''
                 if (element._isCentered):
-                    additionalClasses += self.FountainRegex.CENTER_CLASS
+                    additionalClasses += self._fountainRegex.CENTER_CLASS
                 bodyText += '<p class=\'' + self.htmlClassForType(element._elementType) + additionalClasses + '\'>' + text + '</p>\n'
         
         return bodyText
@@ -190,61 +190,61 @@ class FountainHTMLGenerator(object):
         titleElements = self._script._titlePageContents
         
         if titleElements:
-            bodyText += '<div id=\'' + self.FountainRegex.TITLE_DIV + '\'>'
+            bodyText += '<div id=\'' + self._fountainRegex.TITLE_DIV + '\'>'
             
             # Titles
-            bodyText += '<p class=\'' + self.FountainRegex.TITLE_TITLE_CLASS + '\'>'
-            if titleElements[self.FountainRegex.TITLE_TITLE_STRING]:
-                for temp in titleElements[self.FountainRegex.TITLE_TITLE_STRING]:
+            bodyText += '<p class=\'' + self._fountainRegex.TITLE_TITLE_CLASS + '\'>'
+            if titleElements[self._fountainRegex.TITLE_TITLE_STRING]:
+                for temp in titleElements[self._fountainRegex.TITLE_TITLE_STRING]:
                     bodyText += temp + '<br>'
             else:
                 bodyText += 'Untitled'
             bodyText += '</p>'
                 
             # Credit
-            bodyText += '<p class=\'' + self.FountainRegex.TITLE_CREDIT_CLASS + '\'>'
-            if self.FountainRegex.TITLE_CREDIT_STRING in titleElements:
-                for temp in titleElements[self.FountainRegex.TITLE_CREDIT_STRING]:
+            bodyText += '<p class=\'' + self._fountainRegex.TITLE_CREDIT_CLASS + '\'>'
+            if self._fountainRegex.TITLE_CREDIT_STRING in titleElements:
+                for temp in titleElements[self._fountainRegex.TITLE_CREDIT_STRING]:
                     bodyText += temp + '<br>'
             else:
                 bodyText += 'written by'
             bodyText += '</p>'
             
             # Authors
-            bodyText += '<p class=\'' + self.FountainRegex.TITLE_AUTHOR_CLASS + '\'>'
-            if self.FountainRegex.TITLE_AUTHOR_STRING in titleElements:
-                for temp in titleElements[self.FountainRegex.TITLE_AUTHOR_STRING]:
+            bodyText += '<p class=\'' + self._fountainRegex.TITLE_AUTHOR_CLASS + '\'>'
+            if self._fountainRegex.TITLE_AUTHOR_STRING in titleElements:
+                for temp in titleElements[self._fountainRegex.TITLE_AUTHOR_STRING]:
                     bodyText += temp + '<br>'
             else:
                 bodyText += 'Anonymous'
             bodyText += '</p>'
             
             # Sources
-            if self.FountainRegex.TITLE_SOURCE_STRING in titleElements:
-                bodyText += '<p class=\'' + self.FountainRegex.TITLE_SOURCE_CLASS + '\'>'
-                for temp in titleElements[self.FountainRegex.TITLE_SOURCE_STRING]:
+            if self._fountainRegex.TITLE_SOURCE_STRING in titleElements:
+                bodyText += '<p class=\'' + self._fountainRegex.TITLE_SOURCE_CLASS + '\'>'
+                for temp in titleElements[self._fountainRegex.TITLE_SOURCE_STRING]:
                     bodyText += temp + '<br>'
                 bodyText += '</p>'
             
             # Draft date
-            if self.FountainRegex.TITLE_DRAFT_DATE_STRING in titleElements:
-                bodyText += '<p class=\'' + self.FountainRegex.TITLE_DRAFT_DATE_CLASS + '\'>'
-                for temp in titleElements[self.FountainRegex.TITLE_DRAFT_DATE_STRING]:
+            if self._fountainRegex.TITLE_DRAFT_DATE_STRING in titleElements:
+                bodyText += '<p class=\'' + self._fountainRegex.TITLE_DRAFT_DATE_CLASS + '\'>'
+                for temp in titleElements[self._fountainRegex.TITLE_DRAFT_DATE_STRING]:
                     bodyText += temp + '<br>'
                 bodyText += '</p>'
             
             # Contact
-            if self.FountainRegex.TITLE_CONTACT_STRING in titleElements:
-                bodyText += '<p class=\'' + self.FountainRegex.TITLE_CONTACT_CLASS + '\'>'
-                for temp in titleElements[self.FountainRegex.TITLE_CONTACT_STRING]:
+            if self._fountainRegex.TITLE_CONTACT_STRING in titleElements:
+                bodyText += '<p class=\'' + self._fountainRegex.TITLE_CONTACT_CLASS + '\'>'
+                for temp in titleElements[self._fountainRegex.TITLE_CONTACT_STRING]:
                     bodyText += temp + '<br>'
                 bodyText += '</p>'
             
             bodyText += '</div>'
             
         # Page breaks are not handled in current HTML output
-        dialogueTypes = [self.FountainRegex.CHARACTER_TAG_PATTERN, self.FountainRegex.DIALOGUE_TAG_PATTERN, self.FountainRegex.PARENTHETICAL_TAG_PATTERN]
-        ignoreTypes = [self.FountainRegex.BONEYARD_TAG_PATTERN, self.FountainRegex.COMMENT_TAG_PATTERN, self.FountainRegex.SYNOPSIS_TAG_PATTERN, self.FountainRegex.SECTION_HEADING_PATTERN]
+        dialogueTypes = [self._fountainRegex.CHARACTER_TAG_PATTERN, self._fountainRegex.DIALOGUE_TAG_PATTERN, self._fountainRegex.PARENTHETICAL_TAG_PATTERN]
+        ignoreTypes = [self._fountainRegex.BONEYARD_TAG_PATTERN, self._fountainRegex.COMMENT_TAG_PATTERN, self._fountainRegex.SYNOPSIS_TAG_PATTERN, self._fountainRegex.SECTION_HEADING_PATTERN]
         
         dualDialogueCharacterCount = 0
         
@@ -253,46 +253,46 @@ class FountainHTMLGenerator(object):
             if (element._elementType in ignoreTypes):
                 continue
             
-            if (element._elementType == self.FountainRegex.PAGE_BREAK_PATTERN):
+            if (element._elementType == self._fountainRegex.PAGE_BREAK_PATTERN):
                 bodyText += '</section>\n<section>\n'
                 continue
             
-            if (element._elementType == self.FountainRegex.CHARACTER_TAG_PATTERN and element._isDualDialogue):
+            if (element._elementType == self._fountainRegex.CHARACTER_TAG_PATTERN and element._isDualDialogue):
                 dualDialogueCharacterCount += 1
                 if (dualDialogueCharacterCount == 1):
-                    bodyText += '<div class=\'' + self.FountainRegex.DUAL_DIALOGUE_CLASS + '\'>\n'
-                    bodyText += '<div class=\'' + self.FountainRegex.DUAL_DIALOGUE_LEFT_CLASS + '\'>\n'
+                    bodyText += '<div class=\'' + self._fountainRegex.DUAL_DIALOGUE_CLASS + '\'>\n'
+                    bodyText += '<div class=\'' + self._fountainRegex.DUAL_DIALOGUE_LEFT_CLASS + '\'>\n'
                 elif (dualDialogueCharacterCount == 2):
-                    bodyText += '<div class=\'' + self.FountainRegex.DUAL_DIALOGUE_RIGHT_CLASS + '\'>\n'
+                    bodyText += '<div class=\'' + self._fountainRegex.DUAL_DIALOGUE_RIGHT_CLASS + '\'>\n'
             
             if (dualDialogueCharacterCount >= 2 and not (element._elementType in dialogueTypes)):
                 dualDialogueCharacterCount = 0
                 bodyText += '</div>\n</div>\n'
             
             text = ''
-            if (element._elementType == self.FountainRegex.SCENE_HEADING_PATTERN and element._sceneNumber != None):
-                text += '<span class=\'' + self.FountainRegex.SCENE_NUMBER_LEFT + '\'>' + element._sceneNumber + '</span>'
+            if (element._elementType == self._fountainRegex.SCENE_HEADING_PATTERN and element._sceneNumber != None):
+                text += '<span class=\'' + self._fountainRegex.SCENE_NUMBER_LEFT + '\'>' + element._sceneNumber + '</span>'
                 text += element._elementText
-                text += '<span class=\'' + self.FountainRegex.SCENE_NUMBER_RIGHT + '\'>' + element._sceneNumber + '</span>'
+                text += '<span class=\'' + self._fountainRegex.SCENE_NUMBER_RIGHT + '\'>' + element._sceneNumber + '</span>'
             else:
                 text += element._elementText
                 
-            if (element._elementType == self.FountainRegex.CHARACTER_TAG_PATTERN and element._isDualDialogue):
-                re.sub(self.FountainRegex.DUAL_DIALOGUE_ANGLE_MARK_PATTERN, self.FountainRegex.EMPTY_REPLACEMENT, text)
+            if (element._elementType == self._fountainRegex.CHARACTER_TAG_PATTERN and element._isDualDialogue):
+                text = re.sub(self._fountainRegex.DUAL_DIALOGUE_ANGLE_MARK_PATTERN, self._fountainRegex.EMPTY_REPLACEMENT, text)
                 
-            re.sub(self.FountainRegex.BOLD_ITALIC_UNDERLINE_PATTERN, self.FountainRegex.BOLD_ITALIC_UNDERLINE_TEMPLATE, text)
-            re.sub(self.FountainRegex.BOLD_ITALIC_PATTERN, self.FountainRegex.BOLD_ITALIC_TEMPLATE, text)
-            re.sub(self.FountainRegex.BOLD_UNDERLINE_PATTERN, self.FountainRegex.BOLD_UNDERLINE_TEMPLATE, text)
-            re.sub(self.FountainRegex.ITALIC_UNDERLINE_PATTERN, self.FountainRegex.ITALIC_UNDERLINE_TEMPLATE, text)
-            re.sub(self.FountainRegex.BOLD_PATTERN, self.FountainRegex.BOLD_TEMPLATE, text)
-            re.sub(self.FountainRegex.ITALIC_PATTERN, self.FountainRegex.ITALIC_TEMPLATE, text)
-            re.sub(self.FountainRegex.UNDERLINE_PATTERN, self.FountainRegex.UNDERLINE_TEMPLATE, text)
-            re.sub(self.FountainRegex.FONT_EMPH_IGNORE_TAG, self.FountainRegex.EMPTY_REPLACEMENT, text)
+            text = re.sub(self._fountainRegex.BOLD_ITALIC_UNDERLINE_PATTERN, self._fountainRegex.BOLD_ITALIC_UNDERLINE_TAG, text)
+            text = re.sub(self._fountainRegex.BOLD_ITALIC_PATTERN, self._fountainRegex.BOLD_ITALIC_TAG, text)
+            text = re.sub(self._fountainRegex.BOLD_UNDERLINE_PATTERN, self._fountainRegex.BOLD_UNDERLINE_TAG, text)
+            text = re.sub(self._fountainRegex.ITALIC_UNDERLINE_PATTERN, self._fountainRegex.ITALIC_UNDERLINE_TAG, text)
+            text = re.sub(self._fountainRegex.BOLD_PATTERN, self._fountainRegex.BOLD_TAG, text)
+            text = re.sub(self._fountainRegex.ITALIC_PATTERN, self._fountainRegex.ITALIC_TAG, text)
+            text = re.sub(self._fountainRegex.UNDERLINE_PATTERN, self._fountainRegex.UNDERLINE_TAG, text)
+            text = re.sub(self._fountainRegex.FONT_EMPH_IGNORE_TAG, self._fountainRegex.EMPTY_REPLACEMENT, text)
             
             if (text != ''):
                 additionalClasses = ''
                 if (element._isCentered):
-                    additionalClasses += self.FountainRegex.CENTER_CLASS
+                    additionalClasses += self._fountainRegex.CENTER_CLASS
                 bodyText += '<p class=\'' + self.htmlClassForType(element._elementType) + additionalClasses + '\'>' + text + '</p>\n'
         
         return bodyText

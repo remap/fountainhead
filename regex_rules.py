@@ -218,7 +218,7 @@ class FountainRegexBase(object):
     
     # Corresponding HTML styling replacements
     
-    BOLD_ITALIC_UNDERLINE_TAG_STRING   = r'<strong><em><u>\2</strong></em></u>'
+    BOLD_ITALIC_UNDERLINE_TAG          = r'<strong><em><u>\2</strong></em></u>'
     BOLD_ITALIC_TAG                    = r'<strong><em>\2</strong></em>'
     BOLD_UNDERLINE_TAG                 = r'<strong><u>\2</u></strong>'
     ITALIC_UNDERLINE_TAG               = r'<em><u>\2</em></u>'
@@ -249,7 +249,7 @@ class FountainRegexRemap(FountainRegexBase):
         FountainRegexBase.__init__(self) 
         # Summary of pattern definition; 
         self._patterns.append(self.WEB_COMPONENT_PATTERN)
-    
+        
         # Summary of template definition
         self._templates.append(self.WEB_COMPONENT_TEMPLATE)
         return
