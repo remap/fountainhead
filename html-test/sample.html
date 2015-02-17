@@ -2,6 +2,9 @@
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="ScriptCSS.css">
+<link rel="import" href="components/testComponent.html">
+<link rel="import" href="components/testComponent2.html">
+<link rel="import" href="components/testComponent3.html">
 </head>
 <body>
 <section>
@@ -9,18 +12,18 @@
 <p class='action'>====</p>
 <p class='action'><strong>FADE IN:</strong></p>
 <p class='action'>A TEST.</p>
-<p class='action'>We're testing, watching a fat catfish swim along. <<@testComponent(arg1 = 'val1'  ,arg2 =val2,arg3="val3" , arg4=[infrastructure, array], arg5=(we, dont, support, nested, brackets)) my cool description>>. This seems very ambiguous.</p>
+<testComponent arg1='val1' arg2=val2 arg3="val3" arg4=[infrastructure, array] arg5=(we, dont, support, nested, brackets)>my cool description</testComponent>
 <p class='action'>This is The Test.</p>
 <p class='character'>ZHEHAO (V.O.)</p>
 <p class='dialogue'>This seems to be a dialogue.</p>
-<p class='action'>This seems to be an action. <<@testComponent(arg1 = ('val1'), arg2=cpp) this is re-occurrence of the same component>></p>
+<testComponent arg1=('val1') arg2=cpp>this is re-occurrence of the same component</testComponent>
 <p class='action'><u>This seems to be another action.</u></p>
 <p class='character'>ZHEHAO (V.O.)(CONT'D)</p>
 <p class='dialogue'><strong>We actually have more than one dialogue.</strong></p>
 <p class='scene-heading'>INT.  WILL'S BEDROOM - NIGHT (1973)</p>
-<p class='action'><<@testComponent2() this is another component with no arguments >></p>
+<testComponent2>this is another component with no arguments</testComponent2>
 <p class='action'>Everything that looks like nothing seems to be action</p>
-<p class='action'><<@testComponent3(arg1 = 'this is a component, and it has no description') >></p>
+<testComponent3 arg1='this is a component, and it has no description'></testComponent3>
 <p class='action center'><strong><u>THE END</u></strong></p>
 </section>
 </body>
