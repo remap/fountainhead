@@ -22,29 +22,34 @@
 
 # For HTML output, paginator is ignored right now.
 
-# TODO: add version parsing before importing FountainRegex;
 import re
+import sys
+
 from fountain_parser import ParserVersion
 from regex_rules import *
 
 class FountainHTMLGenerator(object):
-    def __init__(self, script, cssFile = '', version = ParserVersion.DEFAULT):
+    def __init__(self, script, cssFile = '', componentParent = 'components', version = ParserVersion.DEFAULT):
         self._script = script
         self._bodyText = ''
         self._cssFile = cssFile
+        self._componentParent = componentParent.rstrip('/') + '/'
         
         self._version = version
         if self._version == ParserVersion.REMAP:
             self._fountainRegex = FountainRegexRemap()
             self.generateHtml = self.generateHtmlRemap
+            self._componentList = []
         elif self._version == ParserVersion.BASE:
             self._fountainRegex = FountainRegexBase()
             self.generateHtml = self.generateHtmlBase
         else:
-            # Right now using remap as default
+            # Right now using remap as default; DEFAULT value was not really useful, 
+            # since self._fountainRegex is using Remap class
             self._version == ParserVersion.DEFAULT
             self._fountainRegex = FountainRegexRemap()
             self.generateHtml = self.generateHtmlRemap
+            self._componentList = []
         return
     
     # HTML class is elementType with spaces replaced by dashes
@@ -67,6 +72,9 @@ class FountainHTMLGenerator(object):
         html = '<!DOCTYPE html>\n<html>\n<head>\n'
         if (self._cssFile != ''):
             html += '<link rel=\"stylesheet\" type=\"text/css\" href=\"' + self._cssFile + '\">\n'
+        # bodyForScript fills self._componentList; Right now, components are supposed to end with a .html
+        for componentName in self._componentList:
+            html += '<link rel=\"import\" href=\"' + self._componentParent + componentName + '.html\">\n'
         # Note: here a <section> tag is added by default.
         html += '</head>\n<body>\n<section>\n' + self._bodyText + '</section>\n</body>\n</html>\n'
         return html
@@ -136,6 +144,22 @@ class FountainHTMLGenerator(object):
         dualDialogueCharacterCount = 0
         
         elements = self._script._elements
+        
+        try:
+            self._fountainRegex.COMPONENT_PATTERN
+        except NameError:
+            print('Fountain Regex pattern does not contain definition for Web component. Version mismatch?')
+            sys.exit(0)
+        else:
+            self._componentList = []
+            # Flag for whether we are in a component definition, if so, this element should not appear as normal ones
+            inComponent = False
+            # Flag for whether this component is ready for generation.
+            generateComponent = False
+            componentName = ''
+            componentArgs = dict()
+            componentDesc = ''
+            
         for element in elements:
             if (element._elementType in ignoreTypes):
                 continue
@@ -163,7 +187,33 @@ class FountainHTMLGenerator(object):
                 text += '<span class=\'' + self._fountainRegex.SCENE_NUMBER_RIGHT + '\'>' + element._sceneNumber + '</span>'
             else:
                 text += element._elementText
-                
+                # Special generation step for component and arguments
+                if (element._elementType == self._fountainRegex.COMPONENT_NAME_PATTERN):
+                    if (not inComponent):
+                        if (element._elementText in self._componentList):
+                            pass
+                        else:
+                            self._componentList.append(element._elementText)
+                        componentName = element._elementText
+                        inComponent = True
+                    else:
+                        print('ERROR: Nested component definition in script. Not sure how to parse yet.')
+                if (element._elementType == self._fountainRegex.COMPONENT_ARGUMENTS_PATTERN):
+                    if (inComponent):
+                        args = re.findall(self._fountainRegex.COMPONENT_ARGUMENTS_SPLIT, element._elementText)
+                        for arg in args:
+                            equalSign = arg.find('=')
+                            if (equalSign > 0):
+                                argName = arg[:equalSign].strip()
+                                argValue = arg[equalSign + 1:].strip()
+                                componentArgs[argName] = argValue
+                            else:
+                                print('WARNING: no equal sign found for component argument; on purpose?')
+                if (element._elementType == self._fountainRegex.COMPONENT_DESCRIPTION_PATTERN):
+                    if (inComponent):
+                        generateComponent = True
+                        componentDesc = element._elementText
+                        
             if (element._elementType == self._fountainRegex.CHARACTER_TAG_PATTERN and element._isDualDialogue):
                 text = re.sub(self._fountainRegex.DUAL_DIALOGUE_ANGLE_MARK_PATTERN, self._fountainRegex.EMPTY_REPLACEMENT, text)
             
@@ -176,12 +226,24 @@ class FountainHTMLGenerator(object):
             text = re.sub(self._fountainRegex.UNDERLINE_PATTERN, self._fountainRegex.UNDERLINE_TAG, text)
             text = re.sub(self._fountainRegex.FONT_EMPH_IGNORE_TAG, self._fountainRegex.EMPTY_REPLACEMENT, text)
             
-            if (text != ''):
-                additionalClasses = ''
-                if (element._isCentered):
-                    additionalClasses += self._fountainRegex.CENTER_CLASS
-                bodyText += '<p class=\'' + self.htmlClassForType(element._elementType) + additionalClasses + '\'>' + text + '</p>\n'
-        
+            if (not inComponent):
+                if (text != ''):
+                    additionalClasses = ''
+                    if (element._isCentered):
+                        additionalClasses += self._fountainRegex.CENTER_CLASS
+                    bodyText += '<p class=\'' + self.htmlClassForType(element._elementType) + additionalClasses + '\'>' + text + '</p>\n'
+            elif (generateComponent):
+                bodyText += '<' + componentName
+                for argName, argValue in componentArgs.items():
+                    bodyText += ' ' + argName + '=' + argValue
+                bodyText += '>' + componentDesc + '</' + componentName + '>\n'
+                
+                generateComponent = False
+                inComponent = False
+                componentName = ''
+                componentArgs = dict()
+                componentDesc = ''
+                
         return bodyText
     
     def bodyForScriptBase(self):

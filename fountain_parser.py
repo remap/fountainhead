@@ -150,8 +150,6 @@ class Parser(object):
             return
         
         for i in range(0, len(templates)):
-            print(patterns[i])
-            print(re.search(patterns[i], scriptContent))
             scriptContent = re.sub(patterns[i], templates[i], scriptContent)
             
         # For debug only: make the intermediate content human readable
@@ -166,13 +164,13 @@ class Parser(object):
         # 3rd pass - Array construction
         tagMatching = re.findall(self._fountainRegex.TAG_PATTERN, scriptContent)
         if not tagMatching:
-            print('Tag patterns does not match scriptContent')
+            print('WARNING: Tag patterns does not match scriptContent')
             return
         elementTexts = [temp[1] for temp in tagMatching]
         elementTypes = [temp[0] for temp in tagMatching]
         
         if (len(elementTexts) != len(elementTypes)):
-            print('Text and Type counts don\'t match.')
+            print('ERROR: Text and Type counts don\'t match.')
             return
         
         elementsArray = []

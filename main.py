@@ -26,16 +26,17 @@ from fountain_parser import ParserVersion
 import sys, getopt
 
 def usage():
-    print('main.py -v <parser version tag> -i <inputfile> -c <cssfile: relevant to outputFile path> -o <outputfile>')
+    print('main.py -v <parser version tag> -i <inputfile> -c <cssfile: relevant to outputFile path> -o <outputfile> -f <component parent folder name, relevant to outputFile path>')
 
 def main(argv):
     parserVersion = ParserVersion.DEFAULT
     inputFile = 'html-test/remap-script.txt'
     outputFile = 'html-test/debug.html'
     cssFile = 'ScriptCSS.css'
+    componentParent = 'components'
     
     try:
-        opts, args = getopt.getopt(argv, 'hv:i:c:o:', ['version=', 'ifile=', 'cfile=', 'ofile='])
+        opts, args = getopt.getopt(argv, 'hv:i:c:o:f:', ['version=', 'ifile=', 'cssfile=', 'ofile=', 'compfolder='])
     except getopt.GetoptError:
         usage()
         sys.exit(2)
@@ -51,10 +52,14 @@ def main(argv):
             parserVersion = arg.lower()
         elif opt in ('-c', '--cfile'):
             cssFile = arg
-    
+        elif opt in ('-f', '--compfolder'):
+            componentParent = arg
+            
     print('fountainhead: Input file is \'' + inputFile + '\'')
     print('fountainhead: Output file is \'' + outputFile + '\'')
     print('fountainhead: CSS file is \'' + cssFile + '\' (relevant to output file path)')
+    print('fountainhead: Component html parent folder is \'' + componentParent + '\' (relevant to output file path)')
+    
     if parserVersion in ParserVersion.Versions:
         print('fountainhead: Parser version tag is \'' + parserVersion + '\'')
     else:
@@ -62,8 +67,7 @@ def main(argv):
         parserVersion = ParserVersion.DEFAULT
         
     fountainScript = FountainScript(inputFile, parserVersion)
-    
-    fountainHTML = FountainHTMLGenerator(fountainScript, cssFile, parserVersion)
+    fountainHTML = FountainHTMLGenerator(fountainScript, cssFile, componentParent, parserVersion)
     htmlOutput = fountainHTML.generateHtml()
     
     # write html to file
