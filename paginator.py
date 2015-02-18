@@ -43,24 +43,24 @@ class Paginator:
     def numberOfPages():
         return len(self._pages)
     
-    def pageAtIndex(index):
+    def xpageAtIndex(index):
         return
         
     # Helper class methods
     @classmethod
-    def widthForElement():
+    def widthForElement(cls):
         return
     
     @classmethod
-    def heightForString():
+    def heightForString(cls):
         return
         
     @classmethod
-    def leftMarginForElement():
+    def leftMarginForElement(cls):
         return
         
     @classmethod
-    def spaceBeforeForElement():
+    def spaceBeforeForElement(cls):
         return
         
     
