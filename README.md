@@ -22,4 +22,3 @@ Specification: http://redmine.remap.ucla.edu/projects/fountainhead/documents
 Issue tracking: http://redmine.remap.ucla.edu/projects/fountainhead/
 
 Bug report and contact: Zhehao <wangzhehao410305@gmail.com>
-
