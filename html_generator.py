@@ -164,7 +164,7 @@ class FountainHTMLGenerator(object):
             if (element._elementType in ignoreTypes):
                 continue
             
-            if (element._elementType == self._fountainRegex.PAGE_BREAK_PATTERN):
+            if (element._elementType == self._fountainRegex.PAGE_BREAK_TAG_PATTERN):
                 bodyText += '</section>\n<section>\n'
                 continue
             
@@ -315,7 +315,7 @@ class FountainHTMLGenerator(object):
             if (element._elementType in ignoreTypes):
                 continue
             
-            if (element._elementType == self._fountainRegex.PAGE_BREAK_PATTERN):
+            if (element._elementType == self._fountainRegex.PAGE_BREAK_TAG_PATTERN):
                 bodyText += '</section>\n<section>\n'
                 continue
             

@@ -30,7 +30,8 @@ class Paginator:
         self._pages = []
         self._script = script
         return
-        
+    
+    # TODO: "===" or more should be interpreted as a page break
     def paginate(self):
         # default US letter size in pixels:  612, 792
         # paginateForSize(pageSize)

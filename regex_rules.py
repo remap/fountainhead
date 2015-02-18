@@ -176,7 +176,7 @@ class FountainRegexBase(object):
     CHARACTER_TAG_PATTERN          = 'Character'
     DIALOGUE_TAG_PATTERN           = 'Dialogue'
     PARENTHETICAL_TAG_PATTERN      = 'Parenthetical'
-    PAGE_BREAK_PATTERN             = 'Page Break'
+    PAGE_BREAK_TAG_PATTERN         = 'Page Break'
     # Ignored in html by default
     BONEYARD_TAG_PATTERN           = 'Boneyard'
     COMMENT_TAG_PATTERN            = 'Comment'
