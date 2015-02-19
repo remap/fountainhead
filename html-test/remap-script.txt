@@ -42,7 +42,8 @@ INT.  WILL'S BEDROOM - NIGHT (1973)
 
 Everything that looks like nothing seems to be action
 
-[[This *necessary* trailing space is annoying]]
 <<@testComponent3(arg1 = 'this is a component, and it has no description') >>
+
+<<@testComponent3(arg1 = 'this is a component, and it has no description')>>
 
 > _**THE END**_ <

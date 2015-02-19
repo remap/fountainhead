@@ -239,7 +239,7 @@ class FountainRegexRemap(FountainRegexBase):
     #              <componentA arg1="val1" arg2="val2">text description</component>
     
     # TODO: optional parenthesis?
-    WEB_COMPONENT_PATTERN              = '\\&lt\\&lt\\s?@([^<>]*?)\\(([^<>]*?)\\)[\\s?]([^<>]*?)\\&gt\\&gt'
+    WEB_COMPONENT_PATTERN              = '&lt&lt\\s?@([^<>]*?)\\(([^<>]*)\\)[\\s]?([^<>]*)&gt&gt'
     COMPONENT_ARGUMENTS_PATTERN        = 'CompArg'
     COMPONENT_NAME_PATTERN             = 'CompName'
     COMPONENT_DESCRIPTION_PATTERN      = 'CompDesc'
