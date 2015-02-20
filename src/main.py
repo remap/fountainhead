@@ -30,8 +30,8 @@ def usage():
 
 def main(argv):
     parserVersion = ParserVersion.DEFAULT
-    inputFile = 'html-test/remap-script.txt'
-    outputFile = 'html-test/debug.html'
+    inputFile = '../html-test/remap-script.txt'
+    outputFile = '../html-test/debug.html'
     cssFile = 'ScriptCSS.css'
     componentParent = 'components'
     

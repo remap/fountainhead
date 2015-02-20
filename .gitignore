@@ -56,3 +56,6 @@ target/
 # debug.txt and debug.html; specific for this project
 debug.txt
 debug.html
+/nbproject/
+
+.DS_Store
