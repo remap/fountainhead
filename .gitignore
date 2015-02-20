@@ -59,3 +59,4 @@ debug.html
 /nbproject/
 
 .DS_Store
+*.xcodeproj/*
