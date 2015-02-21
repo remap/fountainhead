@@ -246,6 +246,8 @@ class FountainRegexRemap(FountainRegexBase):
     COMPONENT_PATTERN                  = 'Component'
     WEB_COMPONENT_TEMPLATE             = r'<' + COMPONENT_PATTERN + '><' + COMPONENT_NAME_PATTERN + r'>\1</' + COMPONENT_NAME_PATTERN + '><' + COMPONENT_ARGUMENTS_PATTERN + r'>\2</' + COMPONENT_ARGUMENTS_PATTERN + r'><' + COMPONENT_DESCRIPTION_PATTERN + r'>\3</' + COMPONENT_DESCRIPTION_PATTERN + r'></' + COMPONENT_PATTERN + '>'
     
+    
+    
     # TODO: This regex keeps us from nesting the same expressions, like function1(function2(arg)), which (probably) should be allowed
     # Note: right now, we don't do double quotes
     COMPONENT_ARGUMENTS_SPLIT          = '(?:[^,[(\']|\\[[^]]*\\]|\\([^)]*\\)|\'[^\']*\')+'
