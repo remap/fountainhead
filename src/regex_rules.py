@@ -238,27 +238,37 @@ class FountainRegexRemap(FountainRegexBase):
     # HTML output: <link rel="import" href="components/componentA.html"> <!-- once per file -->
     #              <componentA arg1="val1" arg2="val2">text description</component>
     
-    # TODO: optional parenthesis?
     WEB_COMPONENT_PATTERN              = '&lt&lt\\s?@([^<>]*?)\\(([^<>]*)\\)[\\s]?([^<>]*)&gt&gt'
     COMPONENT_ARGUMENTS_PATTERN        = 'CompArg'
     COMPONENT_NAME_PATTERN             = 'CompName'
     COMPONENT_DESCRIPTION_PATTERN      = 'CompDesc'
     COMPONENT_PATTERN                  = 'Component'
     WEB_COMPONENT_TEMPLATE             = r'<' + COMPONENT_PATTERN + '><' + COMPONENT_NAME_PATTERN + r'>\1</' + COMPONENT_NAME_PATTERN + '><' + COMPONENT_ARGUMENTS_PATTERN + r'>\2</' + COMPONENT_ARGUMENTS_PATTERN + r'><' + COMPONENT_DESCRIPTION_PATTERN + r'>\3</' + COMPONENT_DESCRIPTION_PATTERN + r'></' + COMPONENT_PATTERN + '>'
-    
-    
-    
     # TODO: This regex keeps us from nesting the same expressions, like function1(function2(arg)), which (probably) should be allowed
     # Note: right now, we don't do double quotes
     COMPONENT_ARGUMENTS_SPLIT          = '(?:[^,[(\']|\\[[^]]*\\]|\\([^)]*\\)|\'[^\']*\')+'
     
+    # Spec name: Script header
+    # Spec syntax:
+    # HTML output:
+    # Description: similar with scene header, we want to have some metas (usually before the content), to illustrate the characters, settings, positions, etc.
+    # TODO: decide what the end of a script-header section should look like
+    #SCRIPT_HEADER_PATTERN       = '(?<=\\n)(([iI][nN][tT]|[eE][xX][tT]|[^\\w][eE][sS][tT]|\\.|[iI]\\.?\\/[eE]\\.?)([^\\n]+))\\n'
+    #SCRIPT_HEADER_TEMPLATE      = '\n' + r'<Script Heading>\1</Script Heading>'
+    
+    # Spec name: Scene description
+    # Spec syntax:
+    # HTML output:
+    # Description: defined after each scene-heading, to specify more properties of the scene, such as location
+    
     # TODO: Argument parsing. Right now we don't do nested Component/CompArg definition
     def __init__(self):
         FountainRegexBase.__init__(self) 
-        # Summary of pattern definition; 
+        # Summary of pattern definition
         self._patterns.append(self.WEB_COMPONENT_PATTERN)
-        
+        #self._patterns.append(self.SCRIPT_HEADER_PATTERN)
         # Summary of template definition
         self._templates.append(self.WEB_COMPONENT_TEMPLATE)
+        #self._templates.append(self.SCRIPT_HEADER_TEMPLATE)
         return
     
