@@ -69,7 +69,9 @@ class FountainHTMLGenerator(object):
     def generateHtmlRemap(self):
         if (self._bodyText == ''):
             self._bodyText = self.bodyForScriptRemap()
-        html = '<!DOCTYPE html>\n<html>\n<head>\n'
+        html = '<!DOCTYPE html>\n'
+        html += '<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />\n'
+        html += '<html>\n<head>\n'
         if (self._cssFile != ''):
             html += '<link rel=\"stylesheet\" type=\"text/css\" href=\"' + self._cssFile + '\">\n'
         # bodyForScript fills self._componentList; Right now, components are supposed to end with a .html
