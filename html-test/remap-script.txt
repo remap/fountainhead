@@ -1,16 +1,21 @@
 Title: Test Script
 Credit: written by
 Author: Zhehao
-Source: based on His Understanding of Regex
 Notes:	
 	FINAL PRODUCTION DRAFT
 	includes post-production dialogue 
 	and omitted scenes
 Copyright: (c) 2014-2015 Regents of University of California
 
-This is a test, full of lies and fabrications, but truer for their inclusion.
-
 ====
+
+_Here starts the "random-text" component which generates a random text on reload. Anything after this component is just gibberish._
+
+<<@random-text(len=10, prefix="Random words: ") This desc does not get rendered on the webpage. >>
+
+_Gibberish starts:_
+
+This is a test, full of lies and fabrications, but truer for their inclusion.
 
 **FADE IN:**
 

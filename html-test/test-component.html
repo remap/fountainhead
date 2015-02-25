@@ -3,15 +3,19 @@
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="ScriptCSS-zs-edits.css">
+<link rel="import" href="components/random-text.html">
 <link rel="import" href="components/testComponent.html">
 <link rel="import" href="components/testComponent2.html">
 <link rel="import" href="components/testComponent3.html">
 </head>
 <body>
 <section>
-<div id='script-title'><p class='title'>Test Script<br></p><p class='credit'>written by<br></p><p class='authors'>Zhehao<br></p><p class='source'>based on His Understanding of Regex<br></p></div><p class='action'>This is a test, full of lies and fabrications, but truer for their inclusion.</p>
-</section>
+<div id='script-title'><p class='title'>Test Script<br></p><p class='credit'>written by<br></p><p class='authors'>Zhehao<br></p></div></section>
 <section>
+<p class='action'><u>Here starts the "random-text" component which generates a random text on reload. Anything after this component is just gibberish.</u></p>
+<random-text prefix="Random words: " len=10>This desc does not get rendered on the webpage.</random-text>
+<p class='action'><u>Gibberish starts:</u></p>
+<p class='action'>This is a test, full of lies and fabrications, but truer for their inclusion.</p>
 <p class='action'><strong>FADE IN:</strong></p>
 <p class='action'>A TEST.</p>
 <testComponent arg1='val1' arg2=val2 arg3="val3" arg4=[infrastructure, array] arg5=(we, dont, support, nested, brackets)>my cool description</testComponent>
