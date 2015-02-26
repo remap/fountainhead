@@ -223,6 +223,9 @@ class Parser(object):
             print('Templates and patterns length mismatch')
             return
         
+        if __debug__:
+            print(scriptContent)
+        
         for i in range(0, len(templates)):
             if __debug__:
                 match = re.search(patterns[i], scriptContent)

@@ -1,5 +1,5 @@
 <template>
-    <p><strong></strong></p>
+    <p></p>
 </template>
 
 <script>
@@ -37,7 +37,10 @@
             var shadowRoot = this.createShadowRoot();
             var clone = thatDoc.importNode(template, true);
             shadowRoot.appendChild(clone);
-            this.strong = shadowRoot.querySelector('strong');
+            
+            this.paragraph = shadowRoot.querySelector('p');
+            
+            console.log("works");
             
             if (this.hasAttribute('len')) {
                 var len = this.getAttribute('len');
@@ -52,7 +55,16 @@
                 this.prepend(prefix);
             }
             
-            this.strong.textContent = this.str;
+            if (this.hasAttribute('style')) {
+                var style = this.getAttribute('style');
+                this.applyStyle(this.paragraph, style);
+            }
+            else {
+                this.applyStyle(this.paragraph, "color:#FFFFFF");
+            }
+            
+            this.paragraph.textContent = this.str;
+            console.log(this.paragraph);
         };
         MyElementProto.attributeChangedCallback = function(attr, oldVal, newVal) {
             if (attr === 'len') {
@@ -64,7 +76,7 @@
         };
         MyElementProto.generateList = function(val) {
             if (val == 0) {
-                this.str = "Default";
+                this.str += "Default";
             }
             for (var i = 0; i < val; i++) {
                 this.str += wordList[Math.floor((Math.random() * wordList.length))];
@@ -73,6 +85,11 @@
         };
         MyElementProto.prepend = function(val) {
             this.str = val + this.str;
+        };
+        MyElementProto.applyStyle = function(comp, val) {
+            // TODO: Figuring out why ("class", val) wouldn't work, while "style" works;
+            // Is the sequence of execution of css file load and web component initiate going to matter?
+            comp.setAttribute("style", val);
         };
         window.MyElement = thatDoc.registerElement('random-text', {
             prototype: MyElementProto

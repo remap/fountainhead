@@ -39,44 +39,6 @@ The use of media in the Ritual Chambers must be dynamically linked to the action
 
 _Here starts the "random-text" component which generates a random text on reload. Anything after this component is just gibberish._
 
-<<@random-text(len=10, prefix="Random words: ") This desc does not get rendered on the webpage. >>
-
-_Gibberish starts:_
-
-This is a test, full of lies and fabrications, but truer for their inclusion.
-
-**FADE IN:**
-
-A TEST.
-
-We're testing, watching a fat catfish swim along. <<@testComponent(arg1 = 'val1'  ,arg2 =val2,arg3="val3" , arg4=[infrastructure, array], arg5=(we, dont, support, nested, brackets)) my cool description>>. This seems very ambiguous.
-
-This is The Test.
-
-ZHEHAO (V.O.)
-This seems to be a dialogue.
-
-[[Three days without chocolate]]
-
-[[Multi-line
-   
-Tests, even more days without chocolate]]
-
-This seems to be an action. <<@testComponent(arg1 = ('val1'), arg2=cpp) this is re-occurrence of the same component>>
-
-_This seems to be another action._
-
-ZHEHAO (V.O.)(CONT'D)
-**We actually have more than one dialogue.**
-
-INT.  WILL'S BEDROOM - NIGHT (1973)
-
-<<@testComponent2() this is another component with no arguments >>
-
-Everything that looks like nothing seems to be action
-
-<<@testComponent3(arg1 = 'this is a component, and it has no description') >>
-
-<<@testComponent3(arg1 = 'this is a component, and it has no description')>>
+<<@random-text(len=10, prefix="Random words: ", style="color:#EEDDEE") This desc does not get rendered on the webpage. >>
 
 > _**THE END**_ <

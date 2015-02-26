@@ -68,7 +68,9 @@ class FountainRegexBase(object):
     CLEANUP_PATTERN            = '<Action>\\s*<\\/Action>'
     FIRST_LINE_ACTION_PATTERN  = '^\\n\\n([^<>\\n#]*?)\\n'
     SCENE_NUMBER_PATTERN       = '(\\#([0-9A-Za-z\\.\\)-]+)\\#)'
-    SECTION_HEADER_PATTERN     = '((#+)(\\s*[^\\n]*))\\n?'
+    # In order to make #{something} work in other parts of the script, 
+    # for example, the argument passed 
+    SECTION_HEADER_PATTERN     = '((#+)(\\s+[^\\n]*))\\n?'
 
     # Templates (TODO: Not yet sure if it's the correct usage of 'raw' marker)
 
