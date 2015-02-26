@@ -91,6 +91,7 @@ class FountainHTMLGenerator(object):
             html += '<link rel=\"stylesheet\" type=\"text/css\" href=\"' + self._cssFile + '\">\n'
         # bodyForScript fills self._componentList; Right now, components are supposed to end with a .html
         for componentName in self._componentList:
+            # Note: Right now web components are expected to be .htmls only.
             html += '<link rel=\"import\" href=\"' + self._componentParent + componentName + '.html\">\n'
         # Note: here a <section> tag is added by default.
         html += '</head>\n<body>\n<section>\n' + self._bodyText + '</section>\n</body>\n</html>\n'
@@ -331,13 +332,21 @@ class FountainHTMLGenerator(object):
                             additionalClasses += ' ' + self._characterList[characterName]
                             prevType = self._characterList[characterName]
                         prevTag = element._elementType
-                        
+                    
+                    # TODO: I see a lot of "THE ARCHIVE" appear throughout the script; 
+                    #       I don't think the writers want them to be an ordinary 'action';
+                    #       Shouldn't be too difficult to add parsing rules / CSS styles for those. (Their definitions already exist in # Settings)
+                    #       Should resolve this with writers.
+                    
                     bodyText += '<p class=\'' + self.htmlClassForType(element._elementType) + additionalClasses + '\'>' + text + '</p>\n'
             elif (generateComponent):
                 bodyText += '<' + componentName
                 for argName, argValue in componentArgs.items():
                     bodyText += ' ' + argName + '=' + argValue
                 bodyText += '>' + componentDesc + '</' + componentName + '>\n'
+                
+                # TODO: styling for the component hyperlink
+                bodyText += '<a href=\"' + self._componentParent + componentName + '.html\">' + componentName + '</a>\n'
                 
                 generateComponent = False
                 inComponent = False
