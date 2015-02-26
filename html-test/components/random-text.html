@@ -61,7 +61,11 @@
                 this.applyStyle(this.paragraph, "color:#FFFFFF");
             }
             
-            this.paragraph.textContent = this.str;
+            var self = this;
+            setInterval(function() {
+                self.generateList(len);
+                self.paragraph.textContent = self.str;
+            }, 1000);
         };
         MyElementProto.attributeChangedCallback = function(attr, oldVal, newVal) {
             if (attr === 'len') {
@@ -72,6 +76,7 @@
             }
         };
         MyElementProto.generateList = function(val) {
+            this.str = "";
             if (val == 0) {
                 this.str += "Default";
             }
