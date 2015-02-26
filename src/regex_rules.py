@@ -54,7 +54,10 @@ class FountainRegexBase(object):
     SCENE_HEADER_PATTERN       = '(?<=\\n)(([iI][nN][tT]|[eE][xX][tT]|[^\\w][eE][sS][tT]|\\.|[iI]\\.?\\/[eE]\\.?)([^\\n]+))\\n'
     ACTION_PATTERN             = '([^<>]*?)(\\n{2}|\\n<)'
     MULTI_LINE_ACTION_PATTERN  = '\n{2}(([^a-z\\n:]+?[\\.\\?,\\s!\\*_]*?)\n{2}){1,2}'
-    CHARACTER_CUE_PATTERN      = '(?<=\\n)([ \\t]*[^<>a-z\\s\\/\\n][^<>a-z:!\\?\\n]*[^<>a-z\\(!\\?:,\\n\\.][ \\t]?)\\n{1}(?!\\n)'
+    
+    # TODO: For some reason, the 'STOP IT' line is not correctly parsed; 
+    #       Same regex for objc and python seems to behave differently here; Currently my code thinks "stop it" a character
+    CHARACTER_CUE_PATTERN      = '(?<=\\n)([ \\t]*[^<>a-z\\s\\/\\n][^<>a-z:!\\?\\n]*[^<>a-z\\(!\\?:,\\n\\.][ \\t]?)\\n(?!\\n)'
     DIALOGUE_PATTERN           = '(<(Character|Parenthetical)>[^<>\\n]+<\\/(Character|Parenthetical)>)([^<>]*?)(?=\\n{2}|\\n{1}<Parenthetical>)'
     # Note: Newline is enforced in order for something to be recognized as parenthetical.
     #       What's the point of a parenthetical, anyway? How is it different from action?
