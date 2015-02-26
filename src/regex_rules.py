@@ -256,13 +256,13 @@ class FountainRegexRemap(FountainRegexBase):
     # Note: Currently "# or <>" symbols are not expected in "...".
     META_CHARACTER_HEADER_PATTERN       = r'(# [Cc][Hh][Aa][Rr][Aa][Cc][Tt][Ee][Rr][Ss]?\n)([^#<]+)'
     CHARACTER_CONTENT_PATTERN           = 'CharacterContent'
-    META_CHARACTER_HEADER_TEMPLATE      = '<' + CHARACTER_CONTENT_PATTERN + r'>\2</' + CHARACTER_CONTENT_PATTERN + '>'
+    META_CHARACTER_HEADER_TEMPLATE      = '<' + CHARACTER_CONTENT_PATTERN + r'>\n\2</' + CHARACTER_CONTENT_PATTERN + '>'
     
     # Spec name: Character type header
     # Spec syntax: # CharacterType ... # next part
     META_CHARACTER_TYPE_HEADER_PATTERN  = r'(# [Cc][Hh][Aa][Rr][Aa][Cc][Tt][Ee][Rr][Tt][Yy][Pp][Ee][Ss]?\n)([^#<]+)'
     CHARACTER_TYPE_CONTENT_PATTERN      = 'CharacterTypeContent'
-    META_CHARACTER_TYPE_HEADER_TEMPLATE = '<' + CHARACTER_TYPE_CONTENT_PATTERN + r'>\2</' + CHARACTER_TYPE_CONTENT_PATTERN + '>'
+    META_CHARACTER_TYPE_HEADER_TEMPLATE = '<' + CHARACTER_TYPE_CONTENT_PATTERN + r'>\n\2</' + CHARACTER_TYPE_CONTENT_PATTERN + '>'
     
     # Spec name: Setting header
     # Spec syntax: # Setting ... # next part
@@ -271,7 +271,7 @@ class FountainRegexRemap(FountainRegexBase):
     # Note: Currently "# or <>" symbols are not expected in "...".
     META_SETTING_HEADER_PATTERN         = r'(# [Ss][Ee][Tt][Tt][Ii][Nn][Gg][Ss]?)([^#<]+)'
     SETTING_CONTENT_PATTERN             = 'SettingContent'
-    META_SETTING_HEADER_TEMPLATE        = '<' + SETTING_CONTENT_PATTERN + r'>\2</' + SETTING_CONTENT_PATTERN + '>'
+    META_SETTING_HEADER_TEMPLATE        = '<' + SETTING_CONTENT_PATTERN + r'>\n\2</' + SETTING_CONTENT_PATTERN + '>'
     
     
     # Spec addon: 
@@ -280,9 +280,9 @@ class FountainRegexRemap(FountainRegexBase):
     #              (Ordinary, does nothing and gets rendered) Ordinary string with no brackets \n
     # Description: 
     # Note: We don't support multiline character description yet; for a new character, a new line is expected.
-    META_NAME_CLASS_PATTERN             = r'([^\[\]\n]+)\s\[([^\[\]\n]+)\]\s([^\n]+)'
-    META_CLASS_PATTERN                  = r'\n\[([^\[\]\n]+)\]\s([^\n]+)'
-    META_ORDINARY_PATTERN               = r'\n([^\[\]\n#]+)\n'
+    META_NAME_TYPE_PATTERN              = r'([^\[\]\n]+)\s\[([^\[\]\n]+)\]\s([^\n]+)'
+    META_TYPE_PATTERN                   = r'\[([^\[\]\n]+)\]\s([^\n]+)'
+    META_ORDINARY_PATTERN               = r'\n([^\[\]\n<]+)'
     
     # Spec name: Script body tag
     # Spec syntax: # Body ...

@@ -9,19 +9,19 @@ Copyright: (c) 2014-2015 Regents of University of California
 
 # CharacterTypes
 
-[OFFLINERS] Humans who search for something that they can't remember or articulate. They seem to suffer some form of amnesia. Characterless, disheveled, weary, impulsive, lazy, shameless, reactive, irresponsible, empathic, thoughtless, selfish. By participating in the Rituals they are able to Upload parts of themselves into the Online City.
+[Offliners] Humans who search for something that they can't remember or articulate. They seem to suffer some form of amnesia. Characterless, disheveled, weary, impulsive, lazy, shameless, reactive, irresponsible, empathic, thoughtless, selfish. By participating in the Rituals they are able to Upload parts of themselves into the Online City.
 
-[OFFLINE AUDIENCE] Live audience who physically attend the event. Tourists armed with cell phones and cameras.
+[Online Audience] Live audience who physically attend the event. Tourists armed with cell phones and cameras.
 
-[ONLINERS] Digitized entities living inside a cloud of mingled identity, information, and memory. Archetypes, spirits, demons, memes, brands - all the parts of us we have stored in representations. Intelligent, articulate, associative, poetic, seductive, insightful, parasitic, dangerous. When rituals are reenacted by visitors to the Archive the Onliners are able to briefly materialize in the Offline realm.
+[Onliners] Digitized entities living inside a cloud of mingled identity, information, and memory. Archetypes, spirits, demons, memes, brands - all the parts of us we have stored in representations. Intelligent, articulate, associative, poetic, seductive, insightful, parasitic, dangerous. When rituals are reenacted by visitors to the Archive the Onliners are able to briefly materialize in the Offline realm.
 
-[ONLINE AUDIENCE] Live audience who participate in the proceedings from their computers. They enter the Online Agora, where they can view the Archive's contents as well as upload their own images and memories.
+[Online Audience] Live audience who participate in the proceedings from their computers. They enter the Online Agora, where they can view the Archive's contents as well as upload their own images and memories.
 
 # Characters
 
-Zhehao Wang [OFFLINERS] Zhehao runs the parser
+Zhehao Wang [Offliners] Zhehao runs the parser
 
-Zoe [ONLINERS] Zoe edits the CSS
+Zoe [Onliners] Zoe edits the CSS
 
 # Setting
 

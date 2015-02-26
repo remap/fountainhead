@@ -360,5 +360,8 @@ class Parser(object):
                     print('Meta: match found for ' + patterns[i] + '\n')
             scriptContent = re.sub(patterns[i], templates[i], scriptContent)
         
+        if __debug__:
+            print(scriptContent)
+        
         return self.extractElements(scriptContent)
     

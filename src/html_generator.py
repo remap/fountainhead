@@ -40,6 +40,12 @@ class FountainHTMLGenerator(object):
             self._fountainRegex = FountainRegexRemap()
             self.generateHtml = self.generateHtmlRemap
             self._componentList = []
+            
+            # Character list is a dictionary of <character names, character type> pairs
+            self._characterList = dict()
+            self._characterTypeList = []
+            self._settingList = []
+            
         elif self._version == ParserVersion.BASE:
             self._fountainRegex = FountainRegexBase()
             self.generateHtml = self.generateHtmlBase
@@ -50,11 +56,17 @@ class FountainHTMLGenerator(object):
             self._fountainRegex = FountainRegexRemap()
             self.generateHtml = self.generateHtmlRemap
             self._componentList = []
+                        
+            self._characterList = dict()
+            self._characterTypeList = []
+            self._settingList = []
         return
     
     # HTML class is elementType with spaces replaced by dashes
     def htmlClassForType(self, elementType):
-        return re.sub(" ", "-", elementType.lower())
+        str = re.sub('([A-Z])', r'-\1', elementType)
+        str = re.sub(' ', '-', str.strip('-').lower())
+        return re.sub('-+', '-', str)
     
     def generateHtmlBase(self):
         if (self._bodyText == ''):
@@ -189,7 +201,71 @@ class FountainHTMLGenerator(object):
                 text += '<span class=\'' + self._fountainRegex.SCENE_NUMBER_RIGHT + '\'>' + element._sceneNumber + '</span>'
             else:
                 text += element._elementText
-                # Special generation step for component and arguments
+                
+                # Special generation step for CharacterTypes
+                if (element._elementType == self._fountainRegex.CHARACTER_TYPE_CONTENT_PATTERN):
+                    characterTypeDivId = self.htmlClassForType(element._elementType)
+                    bodyText += '<div id=\"' + characterTypeDivId + '\">\n'
+                    bodyText += '<table>'
+                    
+                    characterTypeStrs = re.findall(self._fountainRegex.META_TYPE_PATTERN, element._elementText)
+                    for characterTypeStr in characterTypeStrs:
+                        characterType = self.htmlClassForType(characterTypeStr[0])
+                        self._characterTypeList.append(characterType)
+                        
+                        bodyText += '<td>\n'
+                        # Note: here '-def' and '-desc' is hardcoded into the class output
+                        bodyText += '<p class=\'' + characterType + '-def\'>' + characterTypeStr[0] + '</p>\n'
+                        bodyText += '<p class=\'' + characterTypeDivId + '-desc\'>' + characterTypeStr[1] + '</p>\n'
+                        bodyText += '</td>\n'
+                        
+                    bodyText += '</table>\n'
+                    bodyText += '</div>\n'
+                    
+                    # We can continue after this special generation
+                    continue
+                
+                # Special generation step for Characters
+                if (element._elementType == self._fountainRegex.CHARACTER_CONTENT_PATTERN):
+                    characterDivId = self.htmlClassForType(element._elementType)
+                    bodyText += '<div id=\"' + characterDivId + '\">\n'
+                    
+                    characterStrs = re.findall(self._fountainRegex.META_NAME_TYPE_PATTERN, element._elementText)
+                    for characterStr in characterStrs:
+                        characterName = self.htmlClassForType(characterStr[0])
+                        characterType = self.htmlClassForType(characterStr[1])
+                        self._characterList[characterName] = characterType
+                        
+                        # Note: here '-def' and '-desc' is hardcoded into the class output
+                        bodyText += '<p class=\'' + characterName + '-def\'>' + characterStr[0] + '</p>\n'
+                        bodyText += '<p class=\'' + characterType + '-def\'>' + characterStr[1] + '</p>\n'
+                        bodyText += '<p class=\'' + characterDivId + '-desc\'>' + characterStr[2] + '</p>\n'
+                    
+                    bodyText += '</div>\n'
+                    continue
+                
+                # Special generation step for Settings
+                if (element._elementType == self._fountainRegex.SETTING_CONTENT_PATTERN):
+                    settingDivId = self.htmlClassForType(element._elementType)
+                    bodyText += '<div id=\"' + settingDivId + '\">\n'
+                    
+                    settingStrs = re.findall(self._fountainRegex.META_TYPE_PATTERN, element._elementText)
+                    for settingStr in settingStrs:
+                        settingName = self.htmlClassForType(settingStr[0])
+                        self._settingList.append(settingName)
+                        
+                        # Note: here '-def' and '-desc' is hardcoded into the class output
+                        bodyText += '<p class=\'' + settingName + '-def\'>' + settingStr[0] + '</p>\n'
+                        bodyText += '<p class=\'' + settingDivId + '-desc\'>' + settingStr[1] + '</p>\n'
+                    
+                    settingStrs = re.findall(self._fountainRegex.META_ORDINARY_PATTERN, element._elementText)
+                    for settingStr in settingStrs:
+                        bodyText += '<p class=\'' + settingDivId + '-desc\'>' + settingStr + '</p>\n'
+                    
+                    bodyText += '</div>\n'
+                    continue
+                
+                # Special generation step for web component and arguments
                 if (element._elementType == self._fountainRegex.COMPONENT_NAME_PATTERN):
                     if (not inComponent):
                         if (element._elementText in self._componentList):
