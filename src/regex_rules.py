@@ -56,7 +56,9 @@ class FountainRegexBase(object):
     MULTI_LINE_ACTION_PATTERN  = '\n{2}(([^a-z\\n:]+?[\\.\\?,\\s!\\*_]*?)\n{2}){1,2}'
     CHARACTER_CUE_PATTERN      = '(?<=\\n)([ \\t]*[^<>a-z\\s\\/\\n][^<>a-z:!\\?\\n]*[^<>a-z\\(!\\?:,\\n\\.][ \\t]?)\\n{1}(?!\\n)'
     DIALOGUE_PATTERN           = '(<(Character|Parenthetical)>[^<>\\n]+<\\/(Character|Parenthetical)>)([^<>]*?)(?=\\n{2}|\\n{1}<Parenthetical>)'
-    PARENTHETICAL_PATTERN      = '(\\([^<>]*?\\)[\\s]?)\n'
+    # Note: Newline is enforced in order for something to be recognized as parenthetical.
+    #       What's the point of a parenthetical, anyway? How is it different from action?
+    PARENTHETICAL_PATTERN      = '\\n(\\([^<>]*?\\)[\\s]?)\\n'
     TRANSITION_PATTERN         = '\\n([\\*_]*([^<>\\na-z]*TO:|FADE TO BLACK\\.|FADE OUT\\.|CUT TO BLACK\\.)[\\*_]*)\\n'
 
     FORCED_TRANSITION_PATTERN  = '\\n((&gt|>)\\s*[^<>\\n]+)\\n'     
@@ -68,8 +70,8 @@ class FountainRegexBase(object):
     CLEANUP_PATTERN            = '<Action>\\s*<\\/Action>'
     FIRST_LINE_ACTION_PATTERN  = '^\\n\\n([^<>\\n#]*?)\\n'
     SCENE_NUMBER_PATTERN       = '(\\#([0-9A-Za-z\\.\\)-]+)\\#)'
-    # In order to make #{something} work in other parts of the script, 
-    # for example, the argument passed 
+    # Note: In order to make #{something} work in other parts of the script, 
+    #       for example, the argument passed 
     SECTION_HEADER_PATTERN     = '((#+)(\\s+[^\\n]*))\\n?'
 
     # Templates (TODO: Not yet sure if it's the correct usage of 'raw' marker)

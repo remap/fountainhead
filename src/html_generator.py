@@ -63,8 +63,11 @@ class FountainHTMLGenerator(object):
         return
     
     # HTML class is elementType with spaces replaced by dashes
-    def htmlClassForType(self, elementType):
-        str = re.sub('([A-Z])', r'-\1', elementType)
+    def htmlClassForType(self, str):
+        # if the str only consists of uppercase letters, it is likely that
+        # we don't want to replace each uppercase letter with dash and the letter
+        if not (re.match('[A-Z\s]+', str)):
+            str = re.sub('([A-Z])', r'-\1', str)
         str = re.sub(' ', '-', str.strip('-').lower())
         return re.sub('-+', '-', str)
     
@@ -173,6 +176,9 @@ class FountainHTMLGenerator(object):
             componentName = ''
             componentArgs = dict()
             componentDesc = ''
+            
+        prevTag = ''
+        prevType = ''
             
         for element in elements:
             if (element._elementType in ignoreTypes):
@@ -307,9 +313,25 @@ class FountainHTMLGenerator(object):
             if (not inComponent):
                 if (text != ''):
                     additionalClasses = ''
+                    
                     if (element._isCentered):
                         additionalClasses += self._fountainRegex.CENTER_CLASS
-                    # if (element._elementType == )
+                    
+                    if (prevTag == self._fountainRegex.CHARACTER_TAG_PATTERN):
+                        if prevType != '' and (element._elementType == self._fountainRegex.DIALOGUE_TAG_PATTERN or element._elementType == self._fountainRegex.PARENTHETICAL_TAG_PATTERN):
+                            additionalClasses += ' ' + prevType
+                        else:
+                            prevTag = ''
+                            prevType = ''
+                            
+                    if (element._elementType == self._fountainRegex.CHARACTER_TAG_PATTERN):
+                        characterName = self.htmlClassForType(element._elementText)
+                        additionalClasses += ' ' + characterName
+                        if characterName in self._characterList:
+                            additionalClasses += ' ' + self._characterList[characterName]
+                            prevType = self._characterList[characterName]
+                        prevTag = element._elementType
+                        
                     bodyText += '<p class=\'' + self.htmlClassForType(element._elementType) + additionalClasses + '\'>' + text + '</p>\n'
             elif (generateComponent):
                 bodyText += '<' + componentName
