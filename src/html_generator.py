@@ -309,6 +309,7 @@ class FountainHTMLGenerator(object):
                     additionalClasses = ''
                     if (element._isCentered):
                         additionalClasses += self._fountainRegex.CENTER_CLASS
+                    # if (element._elementType == )
                     bodyText += '<p class=\'' + self.htmlClassForType(element._elementType) + additionalClasses + '\'>' + text + '</p>\n'
             elif (generateComponent):
                 bodyText += '<' + componentName

@@ -319,14 +319,16 @@ class Parser(object):
     
     def metaOfBody(self, string):
         parts = re.split(self._fountainRegex.SCRIPT_BODY_PATTERN, string, 1)
-        if parts:
+        if len(parts) > 1:
             return parts[0]
         return 
     
     def bodyOfBody(self, string):
         parts = re.split(self._fountainRegex.SCRIPT_BODY_PATTERN, string, 1)
-        if parts:
+        if len(parts) > 1:
             return parts[1]
+        else:
+            return parts[0]
         return
     
     # Remap functions for script body and meta parsing
@@ -340,13 +342,15 @@ class Parser(object):
         
         elementsArray = []
         
-        metaElements = self.parseMetaOfBody(scriptMeta)
-        if not (metaElements is None):
-            elementsArray += metaElements
+        if not (scriptMeta is None):
+            metaElements = self.parseMetaOfBody(scriptMeta)
+            if not (metaElements is None):
+                elementsArray += metaElements
         
-        bodyElements = self.parseBodyOfBody(scriptBody)
-        if not (bodyElements is None):
-            elementsArray += bodyElements
+        if not (scriptBody is None):
+            bodyElements = self.parseBodyOfBody(scriptBody)
+            if not (bodyElements is None):
+                elementsArray += bodyElements
             
         return elementsArray
     
