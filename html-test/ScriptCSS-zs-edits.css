@@ -75,20 +75,6 @@ td {
 	margin-left: auto;
 }
 
-.offliners-def {
-	color: #FF2A00;
-}
-.offline-audience-def {
-	color: #FFFA00;
-}
-.onliners-def {
-	color: #2BDB00;
-}
-
-.online-audience-def{
-	color: #9500DB;
-}
-
 .scene-heading, .transition, .new-act, .end-of-act, .character {
 	text-transform: uppercase;
 }
@@ -208,4 +194,35 @@ p.page-break {
 	text-align: center;
 	background: #5B5B5B;
 	/* width and height can be anything, as long as they're equal */
+}
+
+/* Added classes for characters types, characters and their dialogues*/
+.offliners-def {
+	color: #FF2A00;
+}
+.offline-audience-def {
+	color: #FFFA00;
+}
+.onliners-def {
+	color: #2BDB00;
+}
+.online-audience-def{
+	color: #9500DB;
+}
+
+/* Classes for each character or each character definition can be the same as their type; Left here for flexibility */
+.sheena, .sheena-def {
+	color: #FF2306;
+}
+
+.rachel, .rachel-def {
+	color: #2BD000;
+}
+
+.eddie, .eddie-def {
+	color: #9505D6;
+}
+
+.felix, .felix-def {
+	color: #FFF706;
 }
