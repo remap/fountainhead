@@ -68,24 +68,24 @@ td {
 	padding: 5px;
 }
 
-#action-table {
+#character-type-content {
 	padding: 0 0 0 0px;
 	width: 960px;
 	margin-right: auto;
 	margin-left: auto;
 }
 
-.off {
+.offliners-def {
 	color: #FF2A00;
 }
-.offaud {
+.offline-audience-def {
 	color: #FFFA00;
 }
-.on {
+.onliners-def {
 	color: #2BDB00;
 }
 
-.onaud{
+.online-audience-def{
 	color: #9500DB;
 }
 
