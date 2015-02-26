@@ -20,6 +20,8 @@ FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 IN THE SOFTWARE.
 */
 
+
+
 * {
 	-webkit-touch-callout: none;
 	-webkit-user-select: none;
@@ -29,8 +31,8 @@ html {
 	padding: 0;
 }
 body {
-	background-color: #3F7CAC;
-	color: #3e3e3e;
+	background-color: #000000;
+	color: #EDE6DE;
 	font: 14px/1.3em 'Courier', serif;
 	padding: 0;
 	margin: 0;
@@ -45,6 +47,7 @@ section {
 	margin-right: auto;
 	margin-left: auto;
 }
+
 p {
 	margin: 1.3em auto;
 	word-wrap: break-word;
@@ -53,6 +56,25 @@ p {
 body > p:first-child {
 	margin-top: 0;
 }
+
+table {
+	border: 1px solid white;
+	width: 1000px;
+}
+
+td {
+	border: 1px solid white;
+	width: 1000px;
+	padding: 5px;
+}
+
+#character-type-content {
+	padding: 0 0 0 0px;
+	width: 960px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
 .scene-heading, .transition, .new-act, .end-of-act, .character {
 	text-transform: uppercase;
 }
@@ -95,6 +117,13 @@ body > p:first-child {
 	right: 0;
 	top: 0;
 }
+
+
+#location-a {
+	background-color: #3F3F3F;
+	padding: 15px;
+}
+
 #script-title {
 	overflow: hidden;
 	display: block;
@@ -155,4 +184,45 @@ p.page-break {
     border-top: 1px solid #ccc;
     padding-top: 20px;
     margin-top: 20px;
+}
+
+#section1 {
+	width: 500px;
+	height: 500px; 
+	border-radius: 50px;
+	font-size: 12px;
+	text-align: center;
+	background: #5B5B5B;
+	/* width and height can be anything, as long as they're equal */
+}
+
+/* Added classes for characters types, characters and their dialogues*/
+.offliners-def {
+	color: #FF2A00;
+}
+.offline-audience-def {
+	color: #FFFA00;
+}
+.onliners-def {
+	color: #2BDB00;
+}
+.online-audience-def{
+	color: #9500DB;
+}
+
+/* Classes for each character or each character definition can be the same as their type; Left here for flexibility */
+.sheena, .sheena-def {
+	color: #FF2306;
+}
+
+.rachel, .rachel-def {
+	color: #2BD000;
+}
+
+.eddie, .eddie-def {
+	color: #9505D6;
+}
+
+.felix, .felix-def {
+	color: #FFF706;
 }
