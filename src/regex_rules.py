@@ -237,7 +237,7 @@ class FountainRegexRemap(FountainRegexBase):
     #              (only appears in Action); componentA: 1st, arg=val,...: 2nd, text-description: third
     # HTML output: <link rel="import" href="components/componentA.html"> <!-- once per file -->
     #              <componentA arg1="val1" arg2="val2">text description</component>
-    
+    # Description: Web component pattern from Fountain spec document
     WEB_COMPONENT_PATTERN              = '&lt&lt\\s?@([^<>]*?)\\(([^<>]*)\\)[\\s]?([^<>]*)&gt&gt'
     COMPONENT_ARGUMENTS_PATTERN        = 'CompArg'
     COMPONENT_NAME_PATTERN             = 'CompName'
@@ -245,30 +245,63 @@ class FountainRegexRemap(FountainRegexBase):
     COMPONENT_PATTERN                  = 'Component'
     WEB_COMPONENT_TEMPLATE             = r'<' + COMPONENT_PATTERN + '><' + COMPONENT_NAME_PATTERN + r'>\1</' + COMPONENT_NAME_PATTERN + '><' + COMPONENT_ARGUMENTS_PATTERN + r'>\2</' + COMPONENT_ARGUMENTS_PATTERN + r'><' + COMPONENT_DESCRIPTION_PATTERN + r'>\3</' + COMPONENT_DESCRIPTION_PATTERN + r'></' + COMPONENT_PATTERN + '>'
     # TODO: This regex keeps us from nesting the same expressions, like function1(function2(arg)), which (probably) should be allowed
-    # Note: right now, we don't do double quotes
+    # Note: right now, we don't do double quotes; This split rule is only used in the generator, which does another pass + generation
     COMPONENT_ARGUMENTS_SPLIT          = '(?:[^,[(\']|\\[[^]]*\\]|\\([^)]*\\)|\'[^\']*\')+'
     
-    # Spec name: Script header
-    # Spec syntax:
-    # HTML output:
-    # Description: similar with scene header, we want to have some metas (usually before the content), to illustrate the characters, settings, positions, etc.
-    # TODO: decide what the end of a script-header section should look like
-    #SCRIPT_HEADER_PATTERN       = '(?<=\\n)(([iI][nN][tT]|[eE][xX][tT]|[^\\w][eE][sS][tT]|\\.|[iI]\\.?\\/[eE]\\.?)([^\\n]+))\\n'
-    #SCRIPT_HEADER_TEMPLATE      = '\n' + r'<Script Heading>\1</Script Heading>'
     
-    # Spec name: Scene description
-    # Spec syntax:
-    # HTML output:
-    # Description: defined after each scene-heading, to specify more properties of the scene, such as location
+    # Spec name: Character header
+    # Spec syntax: # Character ... # next part
+    # Description: Character header is used specifically to decide characters definition; 
+    #              since character was a special type of script meta info, 
+    # Note: Currently "# or <>" symbols are not expected in "...".
+    META_CHARACTER_HEADER_PATTERN       = r'(# [Cc][Hh][Aa][Rr][Aa][Cc][Tt][Ee][Rr][Ss]?\n)([^#<]+)'
+    CHARACTER_CONTENT_PATTERN           = 'CharacterContent'
+    META_CHARACTER_HEADER_TEMPLATE      = '<' + CHARACTER_CONTENT_PATTERN + r'>\2</' + CHARACTER_CONTENT_PATTERN + '>'
+    
+    # Spec name: Character type header
+    # Spec syntax: # CharacterType ... # next part
+    META_CHARACTER_TYPE_HEADER_PATTERN  = r'(# [Cc][Hh][Aa][Rr][Aa][Cc][Tt][Ee][Rr][Tt][Yy][Pp][Ee][Ss]?\n)([^#<]+)'
+    CHARACTER_TYPE_CONTENT_PATTERN      = 'CharacterTypeContent'
+    META_CHARACTER_TYPE_HEADER_TEMPLATE = '<' + CHARACTER_TYPE_CONTENT_PATTERN + r'>\2</' + CHARACTER_TYPE_CONTENT_PATTERN + '>'
+    
+    # Spec name: Setting header
+    # Spec syntax: # Setting ... # next part
+    # Description: Setting is a type of meta, which according to Jeff's suggestion, 
+    #              should not be applied with td tags in html
+    # Note: Currently "# or <>" symbols are not expected in "...".
+    META_SETTING_HEADER_PATTERN         = r'(# [Ss][Ee][Tt][Tt][Ii][Nn][Gg][Ss]?)([^#<]+)'
+    SETTING_CONTENT_PATTERN             = 'SettingContent'
+    META_SETTING_HEADER_TEMPLATE        = '<' + SETTING_CONTENT_PATTERN + r'>\2</' + SETTING_CONTENT_PATTERN + '>'
+    
+    
+    # Spec addon: 
+    # Spec syntax: (Name + class, such as a character description)Appeared name [class] description \n
+    #              (Class, defines a class) [Class name] description \n
+    #              (Ordinary, does nothing and gets rendered) Ordinary string with no brackets \n
+    # Description: 
+    # Note: We don't support multiline character description yet; for a new character, a new line is expected.
+    META_NAME_CLASS_PATTERN             = r'([^\[\]\n]+)\s\[([^\[\]\n]+)\]\s([^\n]+)'
+    META_CLASS_PATTERN                  = r'\n\[([^\[\]\n]+)\]\s([^\n]+)'
+    META_ORDINARY_PATTERN               = r'\n([^\[\]\n#]+)\n'
+    
+    # Spec name: Script body tag
+    # Spec syntax: # Body ...
+    # Description: Everything after body will be matched against _patterns, and replaced with _templates.
+    SCRIPT_BODY_PATTERN                   = '# [Bb][Oo][Dd][Yy]'
+    
     
     # TODO: Argument parsing. Right now we don't do nested Component/CompArg definition
     def __init__(self):
-        FountainRegexBase.__init__(self) 
+        FountainRegexBase.__init__(self)
         # Summary of pattern definition
         self._patterns.append(self.WEB_COMPONENT_PATTERN)
-        #self._patterns.append(self.SCRIPT_HEADER_PATTERN)
         # Summary of template definition
         self._templates.append(self.WEB_COMPONENT_TEMPLATE)
-        #self._templates.append(self.SCRIPT_HEADER_TEMPLATE)
+        
+        self._metaPatterns = [self.META_CHARACTER_HEADER_PATTERN, self.META_SETTING_HEADER_PATTERN, 
+                              self.META_CHARACTER_TYPE_HEADER_PATTERN]
+        self._metaTemplates = [self.META_CHARACTER_HEADER_TEMPLATE, self.META_SETTING_HEADER_TEMPLATE,
+                               self.META_CHARACTER_TYPE_HEADER_TEMPLATE]
+        
         return
     

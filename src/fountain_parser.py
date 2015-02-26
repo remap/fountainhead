@@ -21,7 +21,7 @@
 # Ported to Python from objc in nyousefi/Fountain repository
 
 import re        
-    
+
 from fountain_element import FountainElement
 from regex_rules import *
 
@@ -40,24 +40,26 @@ class ParserVersion(object):
 class Parser(object):
 	# Right now each 'parser version tag' may correspond with a different function (largely duplicate of each other),
     # Though they don't necessarily need to: regex_rules are summarized in corresponding rule class variables.
-    # Left here for future potential needs.    
+    # Left here for future potential needs.
     def __init__(self, version = ParserVersion.DEFAULT):
         self._version = version
         if self._version == ParserVersion.REMAP:
             self._fountainRegex = FountainRegexRemap()
-            self.parseBodyOfFile = self.parseBodyOfFileBase
-            self.parseTitlePageOfFile = self.parseTitlePageOfFileBase
+            self.parseBodyOfString = self.parseBodyOfStringRemap
+            self.parseTitlePageOfString = self.parseTitlePageOfStringBase
         elif self._version == ParserVersion.BASE:
             self._fountainRegex = FountainRegexBase()
-            self.parseBodyOfFile = self.parseBodyOfFileBase
-            self.parseTitlePageOfFile = self.parseTitlePageOfFileBase
+            self.parseBodyOfString = self.parseBodyOfStringBase
+            self.parseTitlePageOfString = self.parseTitlePageOfStringBase
         else:
             # Right now using remap as default
             self._version == ParserVersion.DEFAULT
             self._fountainRegex = FountainRegexRemap()
-            self.parseBodyOfFile = self.parseBodyOfFileBase
-            self.parseTitlePageOfFile = self.parseTitlePageOfFileBase
+            self.parseBodyOfString = self.parseBodyOfStringRemap
+            self.parseTitlePageOfString = self.parseTitlePageOfStringBase
         return
+    
+    # Script separation methods: separate a given script to title and body
     
     def bodyOfString(self, string):
         body = re.sub(self._fountainRegex.SLASH_N_PATTERN, self._fountainRegex.EMPTY_REPLACEMENT, string)
@@ -100,68 +102,9 @@ class Parser(object):
                 return documentTop
         return
     
-    def parseBodyOfStringBase(self, string):
-        # Three-pass parsing method. 
-        # 1st we check for block comments, and manipulate them for regexes
-        # 2nd we run regexes against the file to convert it into a marked up format 
-        # 3rd we split the marked up elements, and loop through them adding each to 
-        #   an our array of FNElements.
-        #
-        # The intermediate marked up format makes subsequent parsing very simple, 
-        # even if it means less efficiency overall.
-        #
-        
-        scriptContent = self.bodyOfString(string)
-        
-        # 1st pass - Block comments
-        # The regexes aren't smart enough (yet) to deal with newlines in the
-        # comments, so we need to convert them before processing.
-        
-        # TODO: this tries to replace '\n' in block comments to '', but does not look smart
-        blockComments = re.findall(self._fountainRegex.BLOCK_COMMENT_PATTERN, scriptContent)
-        if blockComments:
-            for blockComment in blockComments:
-                modifiedBlock = blockComment.replace(self._fountainRegex.NEWLINE_DEFAULT, self._fountainRegex.NEWLINE_REPLACEMENT)
-                scriptContent = scriptContent.replace(blockComment, modifiedBlock)
-        
-        # TODO: this tries to replace '\n' in bracket comments to '', but does not look smart
-        bracketComments = re.findall(self._fountainRegex.BRACKET_COMMENT_PATTERN, scriptContent)
-        if bracketComments:
-            for bracketComment in bracketComments:
-                modifiedBlock = bracketComment.replace(self._fountainRegex.NEWLINE_DEFAULT, self._fountainRegex.NEWLINE_REPLACEMENT)
-                scriptContent = scriptContent.replace(bracketComment, modifiedBlock)
-            
-        # Sanitize < and > chars for conversion to the markup
-        # TODO: need to make sure &lt and &gt are not special objc characters
-        scriptContent = scriptContent.replace(self._fountainRegex.LESS_THAN_PATTERN, self._fountainRegex.LESS_THAN_REPLACEMENT)
-        scriptContent = scriptContent.replace(self._fountainRegex.MORE_THAN_PATTERN, self._fountainRegex.MORE_THAN_REPLACEMENT)
-        scriptContent = scriptContent.replace(self._fountainRegex.DOT_DOT_PATTERN, self._fountainRegex.DOT_DOT_REPLACEMENT)
-        
-        # 2nd pass - Regexes
-        # Blast the script with regexes. 
-        # Make sure pattern and template regexes match up!
-        
-        patterns = self._fountainRegex._patterns
-        templates = self._fountainRegex._templates
-                     
-        # Validate the array counts (protection purposes only)
-        if (len(templates) != len(patterns)):
-            print('Templates and patterns length mismatch')
-            return
-        
-        for i in range(0, len(templates)):
-            scriptContent = re.sub(patterns[i], templates[i], scriptContent)
-            
-        # For debug only: make the intermediate content human readable
-        # TODO: Make sure this creates a copy of the string 'scriptContent'
-        if __debug__:
-            print('*** Parsed body string with elements ***\n')
-            debugContent = re.sub(self._fountainRegex.MULTI_NEWLINES_PATTERN, self._fountainRegex.EMPTY_REPLACEMENT, scriptContent)
-            debugContent = re.sub(self._fountainRegex.CLOSING_TAG_PATTERN, self._fountainRegex.CLOSING_TAG_REPLACEMENT, debugContent)
-            print(debugContent)
-            print('\n*** Individual elements from element array ***\n')
-        
-        # 3rd pass - Array construction
+    # Shared function for script parsing; parseBodyOfBody -> extractElements
+    
+    def extractElements(self, scriptContent):
         tagMatching = re.findall(self._fountainRegex.TAG_PATTERN, scriptContent)
         if not tagMatching:
             print('WARNING: Tag patterns does not match scriptContent')
@@ -236,14 +179,84 @@ class Parser(object):
             if __debug__:
                 print(element._elementText)
                 print(element._elementType + "\n")
-        
         return elementsArray
     
-    def parseBodyOfFileBase(self, path):        
+    def parseBodyOfBody(self, scriptContent):
+        # Three-pass parsing. 
+        # 1st we check for block comments, and manipulate them for regexes
+        # 2nd we run regexes against the file to convert it into a marked up format 
+        # 3rd we split the marked up elements, and loop through them adding each to 
+        #   an our array of FNElements.
+        #
+        # The intermediate marked up format makes subsequent parsing very simple, 
+        # even if it means less efficiency overall.
+        
+        # 1st pass - Block comments
+        # The regexes aren't smart enough (yet) to deal with newlines in the
+        # comments, so we need to convert them before processing.
+        
+        blockComments = re.findall(self._fountainRegex.BLOCK_COMMENT_PATTERN, scriptContent)
+        if blockComments:
+            for blockComment in blockComments:
+                modifiedBlock = blockComment.replace(self._fountainRegex.NEWLINE_DEFAULT, self._fountainRegex.NEWLINE_REPLACEMENT)
+                scriptContent = scriptContent.replace(blockComment, modifiedBlock)
+        
+        bracketComments = re.findall(self._fountainRegex.BRACKET_COMMENT_PATTERN, scriptContent)
+        if bracketComments:
+            for bracketComment in bracketComments:
+                modifiedBlock = bracketComment.replace(self._fountainRegex.NEWLINE_DEFAULT, self._fountainRegex.NEWLINE_REPLACEMENT)
+                scriptContent = scriptContent.replace(bracketComment, modifiedBlock)
+            
+        # Sanitize < and > chars for conversion to the markup
+        # TODO: need to make sure &lt and &gt are not special objc characters
+        scriptContent = scriptContent.replace(self._fountainRegex.LESS_THAN_PATTERN, self._fountainRegex.LESS_THAN_REPLACEMENT)
+        scriptContent = scriptContent.replace(self._fountainRegex.MORE_THAN_PATTERN, self._fountainRegex.MORE_THAN_REPLACEMENT)
+        scriptContent = scriptContent.replace(self._fountainRegex.DOT_DOT_PATTERN, self._fountainRegex.DOT_DOT_REPLACEMENT)
+        
+        # 2nd pass - Script body regex replacement
+        
+        patterns = self._fountainRegex._patterns
+        templates = self._fountainRegex._templates
+                     
+        # Validate the array counts (protection purposes only)
+        if (len(templates) != len(patterns)):
+            print('Templates and patterns length mismatch')
+            return
+        
+        for i in range(0, len(templates)):
+            if __debug__:
+                match = re.search(patterns[i], scriptContent)
+                print(str(i) + ' ' + patterns[i])
+                if match:
+                    print('Body: match found for ' + patterns[i] + '\n')
+            scriptContent = re.sub(patterns[i], templates[i], scriptContent)
+            
+        # For debug only: make the intermediate content human readable
+        # TODO: Make sure this creates a copy of the string 'scriptContent'
+        if __debug__:
+            print('*** Parsed body string with elements ***\n')
+            debugContent = re.sub(self._fountainRegex.MULTI_NEWLINES_PATTERN, self._fountainRegex.EMPTY_REPLACEMENT, scriptContent)
+            debugContent = re.sub(self._fountainRegex.CLOSING_TAG_PATTERN, self._fountainRegex.CLOSING_TAG_REPLACEMENT, debugContent)
+            print(debugContent)
+            print('\n*** Individual elements from element array ***\n')
+        
+        # 3rd pass - Array construction
+        return self.extractElements(scriptContent)
+    
+    # File wrappers for body and title parsing
+    
+    def parseBodyOfFile(self, path):        
         with open(path) as inputFile:
             data = inputFile.read()
-            return self.parseBodyOfStringBase(data)
-        
+            return self.parseBodyOfString(data)
+    
+    def parseTitlePageOfFile(self, path):
+        with open(path) as inputFile:
+            data = inputFile.read()
+            return self.parseTitlePageOfString(data)
+    
+    # Shared function for title parsing
+    
     def parseTitlePageOfStringBase(self, string):
         pageTitle = self.titlePageOfString(string)
         contents = {}
@@ -290,8 +303,62 @@ class Parser(object):
             contents[openDirective] = directiveData
             
         return contents
+    
+    # Base function for string parsing.
+    # Used by base tag only
+    
+    def parseBodyOfStringBase(self, string):
+        scriptContent = self.bodyOfString(string)
+        return self.parseBodyOfBody(scriptContent)
+    
+    # Script body separation methods: separates a given script to meta and body; 
+    # Used by remap parse tag only
+    
+    def metaOfBody(self, string):
+        parts = re.split(self._fountainRegex.SCRIPT_BODY_PATTERN, string, 1)
+        if parts:
+            return parts[0]
+        return 
+    
+    def bodyOfBody(self, string):
+        parts = re.split(self._fountainRegex.SCRIPT_BODY_PATTERN, string, 1)
+        if parts:
+            return parts[1]
+        return
+    
+    # Remap functions for script body and meta parsing
+    
+    def parseBodyOfStringRemap(self, string):
+        scriptContent = self.bodyOfString(string)
+        # For remap script, before going into body parsing, we separate the script into
+        # meta description and body
+        scriptMeta = self.metaOfBody(scriptContent)
+        scriptBody = self.bodyOfBody(scriptContent)
         
-    def parseTitlePageOfFileBase(self, path):
-        with open(path) as inputFile:
-            data = inputFile.read()
-            return self.parseTitlePageOfStringBase(data)
+        elementsArray = []
+        
+        metaElements = self.parseMetaOfBody(scriptMeta)
+        if not (metaElements is None):
+            elementsArray += metaElements
+        
+        bodyElements = self.parseBodyOfBody(scriptBody)
+        if not (bodyElements is None):
+            elementsArray += bodyElements
+            
+        return elementsArray
+    
+    def parseMetaOfBody(self, scriptContent):
+        # Block comments are not recognized by the meta
+        patterns = self._fountainRegex._metaPatterns
+        templates = self._fountainRegex._metaTemplates
+        
+        for i in range(0, len(templates)):
+            if __debug__:
+                match = re.search(patterns[i], scriptContent)
+                print(str(i) + ' ' + patterns[i])
+                if match:
+                    print('Meta: match found for ' + patterns[i] + '\n')
+            scriptContent = re.sub(patterns[i], templates[i], scriptContent)
+        
+        return self.extractElements(scriptContent)
+    
