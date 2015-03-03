@@ -33,10 +33,7 @@ class ParserVersion(object):
     Versions = [DEFAULT, BASE, REMAP]
 
 # TODO: Parser should be versioned as well as Regex
-#       As of right now, the remap update will make it unable to work with FountainRegexBase
-#       
-#       Ideally each version of the parser should be a child class implementing an interface;
-#       Though right now they are crammed in this one class;
+#       Ideally each version of the parser should be a child class implementing an interface?
 class Parser(object):
 	# Right now each 'parser version tag' may correspond with a different function (largely duplicate of each other),
     # Though they don't necessarily need to: regex_rules are summarized in corresponding rule class variables.
