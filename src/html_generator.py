@@ -29,11 +29,10 @@ from fountain_parser import ParserVersion
 from regex_rules import *
 
 class FountainHTMLGenerator(object):
-    def __init__(self, script, cssFile = '', componentParent = 'components', version = ParserVersion.DEFAULT):
+    def __init__(self, script, cssFile = '', componentParent = 'components', includeParent = 'includes', version = ParserVersion.DEFAULT):
         self._script = script
         self._bodyText = ''
         self._cssFile = cssFile
-        self._componentParent = componentParent.rstrip('/') + '/'
         
         self._version = version
         if self._version == ParserVersion.REMAP:
@@ -46,6 +45,8 @@ class FountainHTMLGenerator(object):
             self._characterTypeList = []
             self._settingList = []
             
+            self._componentParent = componentParent.rstrip('/') + '/'
+            self._includeParent = includeParent.rstrip('/') + '/'
         elif self._version == ParserVersion.BASE:
             self._fountainRegex = FountainRegexBase()
             self.generateHtml = self.generateHtmlBase
@@ -60,6 +61,9 @@ class FountainHTMLGenerator(object):
             self._characterList = dict()
             self._characterTypeList = []
             self._settingList = []
+            
+            self._componentParent = componentParent.rstrip('/') + '/'
+            self._includeParent = includeParent.rstrip('/') + '/'
         return
     
     # HTML class is elementType with spaces replaced by dashes
@@ -209,6 +213,23 @@ class FountainHTMLGenerator(object):
             else:
                 text += element._elementText
                 
+                # Special generation step for Environments
+                if (element._elementType == self._fountainRegex.ENVIRONMENT_CONTENT_PATTERN):
+                    bodyText += "<script>";
+                    
+                    environmentDeclarations = re.findall(self._fountainRegex.META_TYPE_PATTERN, element._elementText)
+                    for (environmentDeclaration) in environmentDeclarations:
+                        environmentName = environmentDeclaration[0]
+                        environmentValue = environmentDeclaration[1]
+                        
+                        # Note: Right now tha parser 'just knows' to deal with 'includes' differently, 
+                        # and it 'just knows' that when ndn-js is included, a Face can be created with [uri:port].
+                        if (environmentName == self._fountainRegex.ENVIRONMENT_INCLUDE_PATTERN):
+                            bodyText += '</script><script src=\"' + self._includeParent + environmentValue + '\"></script>'
+                        
+                    bodyText += '</script>'
+                    continue
+                    
                 # Special generation step for CharacterTypes
                 if (element._elementType == self._fountainRegex.CHARACTER_TYPE_CONTENT_PATTERN):
                     characterTypeDivId = self.htmlClassForType(element._elementType)

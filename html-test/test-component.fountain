@@ -7,6 +7,14 @@ Notes:
 	and omitted scenes
 Copyright: (c) 2014-2015 Regents of University of California
 
+# Environment
+
+[showid] test-show
+
+[include] ndn-js.js
+[prefix] /ndn/edu/ucla/remap/losatlantis
+[face] localhost:9696
+
 # CharacterTypes
 
 [Offliners] Humans who search for something that they can't remember or articulate. They seem to suffer some form of amnesia. Characterless, disheveled, weary, impulsive, lazy, shameless, reactive, irresponsible, empathic, thoughtless, selfish. By participating in the Rituals they are able to Upload parts of themselves into the Online City.
@@ -40,5 +48,9 @@ The use of media in the Ritual Chambers must be dynamically linked to the action
 _Here starts the "random-text" component which generates a random text on reload. Anything after this component is just gibberish._
 
 <<@random-text(len=10, prefix="Random words: ", style="color:#EEDDEE") This desc does not get rendered on the webpage. >>
+
+[[Note: Web component's parameter to html does not recognize parameters like subname=["1A", "part1"], with a space in between...]]
+
+<<@video-control(showid=test-show, prefix=/ndn/edu/ucla/remap/losatlantis/, subname=["1A","part1"], keyid=1, videotags=["sunset"], description="iconic vistas of the sun setting over the city") This component fetches relevant videos links onLoad, and publishes the URL via NDN onClick. >>
 
 > _**THE END**_ <

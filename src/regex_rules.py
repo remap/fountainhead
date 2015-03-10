@@ -261,13 +261,13 @@ class FountainRegexRemap(FountainRegexBase):
     # Description: Character header is used specifically to decide characters definition; 
     #              since character was a special type of script meta info, 
     # Note: Currently "# or <>" symbols are not expected in "...".
-    META_CHARACTER_HEADER_PATTERN       = r'(# [Cc][Hh][Aa][Rr][Aa][Cc][Tt][Ee][Rr][Ss]?\n)([^#<]+)'
+    META_CHARACTER_HEADER_PATTERN       = r'(#\s?[Cc][Hh][Aa][Rr][Aa][Cc][Tt][Ee][Rr][Ss]?\n)([^#<]+)'
     CHARACTER_CONTENT_PATTERN           = 'CharacterContent'
     META_CHARACTER_HEADER_TEMPLATE      = '<' + CHARACTER_CONTENT_PATTERN + r'>\n\2</' + CHARACTER_CONTENT_PATTERN + '>'
     
     # Spec name: Character type header
     # Spec syntax: # CharacterType ... # next part
-    META_CHARACTER_TYPE_HEADER_PATTERN  = r'(# [Cc][Hh][Aa][Rr][Aa][Cc][Tt][Ee][Rr][Tt][Yy][Pp][Ee][Ss]?\n)([^#<]+)'
+    META_CHARACTER_TYPE_HEADER_PATTERN  = r'(#\s?[Cc][Hh][Aa][Rr][Aa][Cc][Tt][Ee][Rr][Tt][Yy][Pp][Ee][Ss]?\n)([^#<]+)'
     CHARACTER_TYPE_CONTENT_PATTERN      = 'CharacterTypeContent'
     META_CHARACTER_TYPE_HEADER_TEMPLATE = '<' + CHARACTER_TYPE_CONTENT_PATTERN + r'>\n\2</' + CHARACTER_TYPE_CONTENT_PATTERN + '>'
     
@@ -276,10 +276,17 @@ class FountainRegexRemap(FountainRegexBase):
     # Description: Setting is a type of meta, which according to Jeff's suggestion, 
     #              should not be applied with td tags in html
     # Note: Currently "# or <>" symbols are not expected in "...".
-    META_SETTING_HEADER_PATTERN         = r'(# [Ss][Ee][Tt][Tt][Ii][Nn][Gg][Ss]?)([^#<]+)'
+    META_SETTING_HEADER_PATTERN         = r'(#\s?[Ss][Ee][Tt][Tt][Ii][Nn][Gg][Ss]?)([^#<]+)'
     SETTING_CONTENT_PATTERN             = 'SettingContent'
     META_SETTING_HEADER_TEMPLATE        = '<' + SETTING_CONTENT_PATTERN + r'>\n\2</' + SETTING_CONTENT_PATTERN + '>'
     
+    # Spec name: Environment header
+    # Spec syntax: # Environment ... # next part
+    # Description: Environment is type of javascript metadata, whose definitions can be used by the web components used in the script.
+    META_ENVIRONMENT_HEADER_PATTERN     = r'(#\s?[Ee][Nn][Vv][Ii][Rr][Oo][Nn][Mm][Ee][Nn][Tt][Ss]?)([^#<]+)' 
+    ENVIRONMENT_CONTENT_PATTERN         = 'EnvironmentContent'
+    META_ENVIRONMENT_HEADER_TEMPLATE    = '<' + ENVIRONMENT_CONTENT_PATTERN + r'>\n\2</' + ENVIRONMENT_CONTENT_PATTERN + '>'
+    ENVIRONMENT_INCLUDE_PATTERN         = 'include'
     
     # Spec addon: 
     # Spec syntax: (Name + class, such as a character description)Appeared name [class] description \n
@@ -306,9 +313,9 @@ class FountainRegexRemap(FountainRegexBase):
         self._templates.append(self.WEB_COMPONENT_TEMPLATE)
         
         self._metaPatterns = [self.META_CHARACTER_HEADER_PATTERN, self.META_SETTING_HEADER_PATTERN, 
-                              self.META_CHARACTER_TYPE_HEADER_PATTERN]
+                              self.META_CHARACTER_TYPE_HEADER_PATTERN, self.META_ENVIRONMENT_HEADER_PATTERN]
         self._metaTemplates = [self.META_CHARACTER_HEADER_TEMPLATE, self.META_SETTING_HEADER_TEMPLATE,
-                               self.META_CHARACTER_TYPE_HEADER_TEMPLATE]
+                               self.META_CHARACTER_TYPE_HEADER_TEMPLATE, self.META_ENVIRONMENT_HEADER_TEMPLATE]
         
         return
     

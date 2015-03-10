@@ -26,7 +26,7 @@ from fountain_parser import ParserVersion
 import sys, getopt
 
 def usage():
-    print('main.py -v <parser version tag> -i <inputfile> -c <cssfile: relevant to outputFile path> -o <outputfile> -f <component parent folder name, relevant to outputFile path>')
+    print('main.py -v <parser version tag> -i <inputfile> -c <cssfile: relevant to outputFile path> -o <outputfile> -f <component parent folder name, relevant to outputFile path> -n <include parent folder name, relevant to outputFile path>')
 
 def main(argv):
     parserVersion = ParserVersion.DEFAULT
@@ -34,9 +34,10 @@ def main(argv):
     outputFile = '../html-test/debug.html'
     cssFile = 'ScriptCSS.css'
     componentParent = 'components'
+    includeParent = 'includes'
     
     try:
-        opts, args = getopt.getopt(argv, 'hv:i:c:o:f:', ['version=', 'ifile=', 'cssfile=', 'ofile=', 'compfolder='])
+        opts, args = getopt.getopt(argv, 'hv:i:c:o:f:n:', ['version=', 'ifile=', 'cssfile=', 'ofile=', 'compfolder=', 'incfolder='])
     except getopt.GetoptError:
         usage()
         sys.exit(2)
@@ -54,11 +55,14 @@ def main(argv):
             cssFile = arg
         elif opt in ('-f', '--compfolder'):
             componentParent = arg
+        elif opt in ['-n', '--incfolder']:
+            includeParent = arg
             
     print('fountainhead: Input file is \'' + inputFile + '\'')
     print('fountainhead: Output file is \'' + outputFile + '\'')
     print('fountainhead: CSS file is \'' + cssFile + '\' (relevant to output file path)')
     print('fountainhead: Component html parent folder is \'' + componentParent + '\' (relevant to output file path)')
+    print('fountainhead: Include html parent folder is \'' + includeParent + '\' (relevant to output file path)')
     
     if parserVersion in ParserVersion.Versions:
         print('fountainhead: Parser version tag is \'' + parserVersion + '\'')
@@ -67,7 +71,7 @@ def main(argv):
         parserVersion = ParserVersion.DEFAULT
         
     fountainScript = FountainScript(inputFile, parserVersion)
-    fountainHTML = FountainHTMLGenerator(fountainScript, cssFile, componentParent, parserVersion)
+    fountainHTML = FountainHTMLGenerator(fountainScript, cssFile, componentParent, includeParent, parserVersion)
     htmlOutput = fountainHTML.generateHtml()
     
     # write html to file
