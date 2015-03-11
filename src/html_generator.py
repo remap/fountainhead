@@ -230,6 +230,8 @@ class FountainHTMLGenerator(object):
                             bodyText += 'var ' + environmentName + ' = ' + environmentValue + ';\n'
                         elif (environmentName == self._fountainRegex.ENVIRONMENT_FACE_PATTERN):
                             bodyText += 'var ' + environmentName + ' = ' + environmentValue + ';\n'
+                        else:
+                            bodyText += 'var ' + environmentName + ' = ' + environmentValue + ';\n'
                             
                     bodyText += '</script>'
                     continue

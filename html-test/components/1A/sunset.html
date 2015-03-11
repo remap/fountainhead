@@ -20,25 +20,36 @@
             // We may not want to contain these in a paragraph at some point
             this.innerElement = shadowRoot.querySelector('p');
             
-            /*
             if (Name === undefined || Name === null) {
-                console.log("Name is undefined; include ndn-js?");
+                console.log("com-1a-sunset: Name is undefined; include ndn-js?");
             }
-            
-            this.prefix = new Name();
-            */
             
             if (this.hasAttribute('description')) {
                 this.innerElement.textContent = this.getAttribute('description');
             }
             
+            this.prefix = new Name();
             if (this.hasAttribute('prefix')) {
-                
+                this.prefix = this.getAttribute('prefix');
+            } else if (window.prefix !== undefined && window.prefix !== null) {
+                this.prefix = window.prefix;
+            } else {
+                console.log("com-1a-sunset: prefix is not defined for sunset URL publishing");
             }
+            
+            this.showid = "";
+            if (this.hasAttribute('showid')) {
+                this.showid = this.getAttribute('showid');
+            } else if (window.showid !== undefined && window.showid !== null) {
+                this.showid = window.showid;
+            } else {
+                console.log("com-1a-sunset: showid is not defined for sunset URL publishing");
+            }
+            
             // Queries the Cassandra database for related video links
             
             this.innerElement.addEventListener('click', function(){
-                console.log('InnerElement click called');
+                console.log('com-1a-sunset: InnerElement click called');
                 // Publish NDN content under specified name
                 
             });
