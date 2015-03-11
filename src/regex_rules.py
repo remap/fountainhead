@@ -283,10 +283,15 @@ class FountainRegexRemap(FountainRegexBase):
     # Spec name: Environment header
     # Spec syntax: # Environment ... # next part
     # Description: Environment is type of javascript metadata, whose definitions can be used by the web components used in the script.
+    # Note: Right now the script has some built-in definitions, such as 'include', and 'face', which should be formalized in a more ideal way.
     META_ENVIRONMENT_HEADER_PATTERN     = r'(#\s?[Ee][Nn][Vv][Ii][Rr][Oo][Nn][Mm][Ee][Nn][Tt][Ss]?)([^#<]+)' 
     ENVIRONMENT_CONTENT_PATTERN         = 'EnvironmentContent'
     META_ENVIRONMENT_HEADER_TEMPLATE    = '<' + ENVIRONMENT_CONTENT_PATTERN + r'>\n\2</' + ENVIRONMENT_CONTENT_PATTERN + '>'
     ENVIRONMENT_INCLUDE_PATTERN         = 'include'
+    
+    # NDN specific environment declarations...
+    ENVIRONMENT_PREFIX_PATTERN          = 'prefix'
+    ENVIRONMENT_FACE_PATTERN            = 'face'
     
     # Spec addon: 
     # Spec syntax: (Name + class, such as a character description)Appeared name [class] description \n

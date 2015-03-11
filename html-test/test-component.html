@@ -8,7 +8,13 @@
 </head>
 <body>
 <section>
-<div id='script-title'><p class='title'>Test Script<br></p><p class='credit'>written by<br></p><p class='authors'>Zhehao<br></p></div><script></script><script src="includes/ndn-js.js"></script></script><div id="charactertypecontent">
+<div id='script-title'><p class='title'>Test Script<br></p><p class='credit'>written by<br></p><p class='authors'>Zhehao<br></p></div><script>
+</script>
+<script src="includes/ndn.js"></script>
+<script>
+var prefix = new Name("/ndn/edu/ucla/remap/losatlantis");
+var face = new Face({host: "localhost"});
+</script><div id="charactertypecontent">
 <table><td>
 <p class='offliners-def'>Offliners</p>
 <p class='charactertypecontent-desc'>Humans who search for something that they can't remember or articulate. They seem to suffer some form of amnesia. Characterless, disheveled, weary, impulsive, lazy, shameless, reactive, irresponsible, empathic, thoughtless, selfish. By participating in the Rituals they are able to Upload parts of themselves into the Online City.</p>

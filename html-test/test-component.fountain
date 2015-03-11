@@ -11,9 +11,9 @@ Copyright: (c) 2014-2015 Regents of University of California
 
 [showid] test-show
 
-[include] ndn-js.js
-[prefix] /ndn/edu/ucla/remap/losatlantis
-[face] localhost:9696
+[include] ndn.js
+[prefix] new Name("/ndn/edu/ucla/remap/losatlantis")
+[face] new Face({host: "localhost"})
 
 # CharacterTypes
 

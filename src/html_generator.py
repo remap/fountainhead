@@ -215,7 +215,7 @@ class FountainHTMLGenerator(object):
                 
                 # Special generation step for Environments
                 if (element._elementType == self._fountainRegex.ENVIRONMENT_CONTENT_PATTERN):
-                    bodyText += "<script>";
+                    bodyText += '<script>\n';
                     
                     environmentDeclarations = re.findall(self._fountainRegex.META_TYPE_PATTERN, element._elementText)
                     for (environmentDeclaration) in environmentDeclarations:
@@ -225,8 +225,12 @@ class FountainHTMLGenerator(object):
                         # Note: Right now tha parser 'just knows' to deal with 'includes' differently, 
                         # and it 'just knows' that when ndn-js is included, a Face can be created with [uri:port].
                         if (environmentName == self._fountainRegex.ENVIRONMENT_INCLUDE_PATTERN):
-                            bodyText += '</script><script src=\"' + self._includeParent + environmentValue + '\"></script>'
-                        
+                            bodyText += '</script>\n<script src=\"' + self._includeParent + environmentValue + '\"></script>\n<script>\n'
+                        elif (environmentName == self._fountainRegex.ENVIRONMENT_PREFIX_PATTERN):
+                            bodyText += 'var ' + environmentName + ' = ' + environmentValue + ';\n'
+                        elif (environmentName == self._fountainRegex.ENVIRONMENT_FACE_PATTERN):
+                            bodyText += 'var ' + environmentName + ' = ' + environmentValue + ';\n'
+                            
                     bodyText += '</script>'
                     continue
                     
