@@ -5,6 +5,7 @@
 <link rel="stylesheet" type="text/css" href="ScriptCSS.css">
 <link rel="import" href="components/random-text.html">
 <link rel="import" href="components/video-control.html">
+<link rel="import" href="components/1A/sunset.html">
 </head>
 <body>
 <section>
@@ -52,10 +53,12 @@ var face = new Face({host: "localhost"});
 <p class='settingcontent-desc'>The use of media in the Ritual Chambers must be dynamically linked to the actions of the characters and the audience, and should incorporate echoes of the real-world lives of the audience, responsiveness to their actions as characters within the piece, and possibly further agency as contributors.</p>
 </div>
 <p class='action'><u>Here starts the "random-text" component which generates a random text on reload. Anything after this component is just gibberish.</u></p>
-<random-text prefix="Random words: " style="color:#EEDDEE" len=10>This desc does not get rendered on the webpage.</random-text>
+<com-random-text prefix="Random words: " style="color:#EEDDEE" len=10>This desc does not get rendered on the webpage.</com-random-text>
 <a href="components/random-text.html">random-text</a>
-<video-control showid=test-show keyid=1 description="iconic vistas of the sun setting over the city" videotags=["sunset"] prefix=/ndn/edu/ucla/remap/losatlantis/ subname=["1A","part1"]>This component fetches relevant videos links onLoad, and publishes the URL via NDN onClick.</video-control>
+<com-video-control showid=test-show keyid=1 description="iconic vistas of the sun setting over the city" videotags=["sunset"] prefix=/ndn/edu/ucla/remap/losatlantis/ subname=["1A","part1"]>This component fetches relevant videos links onLoad, and publishes the URL via NDN onClick.</com-video-control>
 <a href="components/video-control.html">video-control</a>
+<com-1a-sunset instance="1" description="iconic vistas of the sun setting over the city">Not as concise as it could be...I feel we need a design discussion.</com-1a-sunset>
+<a href="components/1A/sunset.html">1A/sunset</a>
 <p class='action center'><strong><u>THE END</u></strong></p>
 </section>
 </body>

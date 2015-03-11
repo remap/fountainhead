@@ -53,4 +53,6 @@ _Here starts the "random-text" component which generates a random text on reload
 
 <<@video-control(showid=test-show, prefix=/ndn/edu/ucla/remap/losatlantis/, subname=["1A","part1"], keyid=1, videotags=["sunset"], description="iconic vistas of the sun setting over the city") This component fetches relevant videos links onLoad, and publishes the URL via NDN onClick. >>
 
+<<@1A/sunset(instance="1", description="iconic vistas of the sun setting over the city") Not as concise as it could be...I feel we need a design discussion.>>
+
 > _**THE END**_ <

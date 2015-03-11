@@ -1,0 +1,62 @@
+<template>
+    <p></p>
+</template>
+
+<script>
+    // TODO: This seems to only work in Chrome, verifying. There is a flag in Firefox that needs to be set to true
+    
+    (function(window, document, undefined) {
+        var thatDoc = document;
+        var thisDoc =  (thatDoc._currentScript || thatDoc.currentScript).ownerDocument;
+        var template = thisDoc.querySelector('template').content;
+        
+        var SunsetElement = Object.create(HTMLElement.prototype);
+        
+        SunsetElement.createdCallback = function() {
+            var shadowRoot = this.createShadowRoot();
+            var clone = thatDoc.importNode(template, true);
+            shadowRoot.appendChild(clone);
+            
+            // We may not want to contain these in a paragraph at some point
+            this.innerElement = shadowRoot.querySelector('p');
+            
+            /*
+            if (Name === undefined || Name === null) {
+                console.log("Name is undefined; include ndn-js?");
+            }
+            
+            this.prefix = new Name();
+            */
+            
+            if (this.hasAttribute('description')) {
+                this.innerElement.textContent = this.getAttribute('description');
+            }
+            
+            if (this.hasAttribute('prefix')) {
+                
+            }
+            // Queries the Cassandra database for related video links
+            
+            this.innerElement.addEventListener('click', function(){
+                console.log('InnerElement click called');
+                // Publish NDN content under specified name
+                
+            });
+        };
+        SunsetElement.attributeChangedCallback = function(attr, oldVal, newVal) {
+            
+        };
+        // Note: web component registered names should not begin with numeric characters;
+        //       web component names should always have a dash. (https://github.com/divshot/ele-web/issues/22)
+        //       web component names should not have slash in them.
+        window.sunsetElement = thatDoc.registerElement('com-1a-sunset', {
+            prototype: SunsetElement
+        });
+    })(window, document);
+    
+    // Turn a parameter string into an array
+    function JSONStringToArray(string) {
+        var array = JSON.parse(string);
+        return array;
+    }
+</script>

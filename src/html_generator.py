@@ -365,10 +365,13 @@ class FountainHTMLGenerator(object):
                     
                     bodyText += '<p class=\'' + self.htmlClassForType(element._elementType) + additionalClasses + '\'>' + text + '</p>\n'
             elif (generateComponent):
-                bodyText += '<' + componentName
+                # Note: The "com-" is mandatorily prepended to the component name at this moment, may want to change in the future
+                componentTagName = self.componentNameToTag(componentName)
+                
+                bodyText += '<' + componentTagName
                 for argName, argValue in componentArgs.items():
                     bodyText += ' ' + argName + '=' + argValue
-                bodyText += '>' + componentDesc + '</' + componentName + '>\n'
+                bodyText += '>' + componentDesc + '</' + componentTagName + '>\n'
                 
                 # TODO: styling for the component hyperlink
                 bodyText += '<a href=\"' + self._componentParent + componentName + '.html\">' + componentName + '</a>\n'
@@ -380,6 +383,11 @@ class FountainHTMLGenerator(object):
                 componentDesc = ''
                 
         return bodyText
+    
+    def componentNameToTag(self, componentName):
+        tagName = 'com-' + componentName
+        tagName = tagName.lower().replace('/', '-')
+        return tagName
     
     def bodyForScriptBase(self):
         bodyText = ''
