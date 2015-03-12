@@ -142,7 +142,7 @@
                     data.sign();
                     
                     self.memoryContentCache.add(data);
-                    console.log('NDN content published. Name: ' + data.getName().toUri() + '; Content: ' + self.videoURL);
+                    console.log('NDN content published. Name: ' + data.getName().toUri() + '; Content: ' + data.getContent().buf().toString());
                 } else {
                     console.log('com-1a-sunset: no relevant entries found or loaded');
                 }
