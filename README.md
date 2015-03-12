@@ -7,13 +7,15 @@ This work is based on the obj-c fountain parser: https://github.com/nyousefi/Fou
 License: GPLv3
 
 ## Usage:
-    python -O main.py -v <parser version tag> -i <inputfile> -c <css file: relevant to output file path> -o <output file> -f <component parent folder name, relevant to output file path>
+    python -O main.py -v <parser version tag> -i <inputfile> -c <css file: relevant to output file path> -o <output file> -f <component parent folder name, relevant to output file path> -n <include parent folder name, relevant to outputFile path>
     
 Flags:
 * v: Parser version tag, supported are 'base' and 'remap'
 * i: Fountain input file path
 * o: HTML output file path
 * c: CSS file path (relative to output file path)
+* f: component folder path (relative to output file path)
+* n: include folder path (relative to output file path)
 * h: Print help and exit
     
 ## Links:
