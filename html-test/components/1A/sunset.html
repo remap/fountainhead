@@ -119,12 +119,15 @@
             xhr.send(data);
             
             // TODO: unique ID is not updated to the given window right now.
+            // TODO: what happens when multiple producers.
             
             this.innerElement.addEventListener('click', function(){
                 if (self.videoURL != '') {
                     
                     var data = new Data(self.namePrefix);
                     // Note: for now, the names are hard-coded, since namespace design is not fully discussed
+                    // TODO: Freshness period was not set in current Data.
+                    
                     data.getName().append(self.showid).append('ritual').append('1A').append('1A_sunset_1').append('url').appendVersion((new Date).getTime());
                     data.setContent(self.videoURL);
                     data.sign();
