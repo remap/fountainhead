@@ -30,8 +30,8 @@ def usage():
 
 def main(argv):
     parserVersion = ParserVersion.DEFAULT
-    inputFile = '../html-test/LosAtlantisPlayCLEAN2.4part1.fountain'
-    outputFile = '../html-test/debug.html'
+    inputFile = '../html-test/los-atlantis-latest.fountain'
+    outputFile = '../html-test/sample.html'
     cssFile = 'ScriptCSS.css'
     componentParent = 'components'
     includeParent = 'includes'

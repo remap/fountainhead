@@ -34,6 +34,14 @@
                 this.innerElement.textContent = 'Default description for sunset video.'
             }
             
+            if (this.hasAttribute('style')) {
+                var style = this.getAttribute('style');
+                this.applyStyle(this.innerElement, style);
+            }
+            else {
+                this.applyStyle(this.innerElement, "color:#FFFFFF");
+            }
+            
             if (this.hasAttribute('face')) {
                 this.face = this.getAttribute('face');
             } else if (window.face !== undefined && window.face !== null) {
@@ -111,7 +119,6 @@
             xhr.send(data);
             
             this.innerElement.addEventListener('click', function(){
-                console.log('com-1a-sunset: InnerElement click called');
                 if (self.videoURL != '') {
                     
                     var data = new Data(self.namePrefix);
@@ -121,6 +128,7 @@
                     data.sign();
                     
                     self.memoryContentCache.add(data);
+                    console.log('NDN content published. Name: ' + data.getName().toUri() + '; Content: ' + self.videoURL);
                 } else {
                     console.log('com-1a-sunset: no relevant entries found or loaded');
                 }
@@ -128,6 +136,11 @@
         };
         SunsetElement.attributeChangedCallback = function(attr, oldVal, newVal) {
             
+        };
+        SunsetElement.applyStyle = function(comp, val) {
+            // TODO: Figuring out why ("class", val) wouldn't work, while "style" works;
+            // Is the sequence of execution of css file load and web component initiate going to matter?
+            comp.setAttribute("style", val);
         };
         // Note: web component registered names should not begin with numeric characters;
         //       web component names should always have a dash. (https://github.com/divshot/ele-web/issues/22)

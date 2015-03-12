@@ -4,7 +4,6 @@
 <head>
 <link rel="stylesheet" type="text/css" href="ScriptCSS.css">
 <link rel="import" href="components/random-text.html">
-<link rel="import" href="components/video-control.html">
 <link rel="import" href="components/1A/sunset.html">
 </head>
 <body>
@@ -16,7 +15,8 @@ var showid = "chocolate_cookie_show";
 <script>
 var prefix = new Name("/ndn/edu/ucla/remap/losatlantis");
 var face = new Face({host: "localhost"});
-var DEFAULT_RSA_PUBLIC_KEY_DER = new Buffer([
+
+                        var DEFAULT_RSA_PUBLIC_KEY_DER = new Buffer([
                             0x30, 0x82, 0x01, 0x22, 0x30, 0x0d, 0x06, 0x09, 0x2a, 0x86, 0x48, 0x86, 0xf7, 0x0d, 0x01, 0x01,
                             0x01, 0x05, 0x00, 0x03, 0x82, 0x01, 0x0f, 0x00, 0x30, 0x82, 0x01, 0x0a, 0x02, 0x82, 0x01, 0x01,
                             0x00, 0xb8, 0x09, 0xa7, 0x59, 0x82, 0x84, 0xec, 0x4f, 0x06, 0xfa, 0x1c, 0xb2, 0xe1, 0x38, 0x93,
@@ -114,22 +114,22 @@ var DEFAULT_RSA_PUBLIC_KEY_DER = new Buffer([
                             0x89, 0x7f, 0x32, 0x23, 0xec, 0x67, 0x66, 0x52, 0x83, 0x89, 0x99, 0x5e, 0x42, 0x2b, 0x42, 0x4b,
                             0x84, 0x50, 0x1b, 0x3e, 0x47, 0x6d, 0x74, 0xfb, 0xd1, 0xa6, 0x10, 0x20, 0x6c, 0x6e, 0xbe, 0x44,
                             0x3f, 0xb9, 0xfe, 0xbc, 0x8d, 0xda, 0xcb, 0xea, 0x8f
-                            ]);
+                        ]);
                             
-                            var identityStorage = new MemoryIdentityStorage();
-                            var privateKeyStorage = new MemoryPrivateKeyStorage();
-                            var keyChain = new KeyChain
-                              (new IdentityManager(identityStorage, privateKeyStorage),
-                               new SelfVerifyPolicyManager(identityStorage));
+                        var identityStorage = new MemoryIdentityStorage();
+                        var privateKeyStorage = new MemoryPrivateKeyStorage();
+                        var keyChain = new KeyChain
+                          (new IdentityManager(identityStorage, privateKeyStorage),
+                           new SelfVerifyPolicyManager(identityStorage));
 
-                            var keyName = new Name("/testname/DSK-123");
-                            var certificateName = keyName.getSubName(0, keyName.size() - 1).append
-                              ("KEY").append(keyName.get(-1)).append("ID-CERT").append("0");
-                            identityStorage.addKey(keyName, KeyType.RSA, new Blob(DEFAULT_RSA_PUBLIC_KEY_DER, false));
-                            privateKeyStorage.setKeyPairForKeyName
-                              (keyName, KeyType.RSA, DEFAULT_RSA_PUBLIC_KEY_DER, DEFAULT_RSA_PRIVATE_KEY_DER);
+                        var keyName = new Name("/testname/DSK-123");
+                        var certificateName = keyName.getSubName(0, keyName.size() - 1).append
+                          ("KEY").append(keyName.get(-1)).append("ID-CERT").append("0");
+                        identityStorage.addKey(keyName, KeyType.RSA, new Blob(DEFAULT_RSA_PUBLIC_KEY_DER, false));
+                        privateKeyStorage.setKeyPairForKeyName
+                          (keyName, KeyType.RSA, DEFAULT_RSA_PUBLIC_KEY_DER, DEFAULT_RSA_PRIVATE_KEY_DER);
 
-                            face.setCommandSigningInfo(keyChain, certificateName);
+                        face.setCommandSigningInfo(keyChain, certificateName);
                             </script><div id="charactertypecontent">
 <table><td>
 <p class='offliners-def'>Offliners</p>
@@ -170,9 +170,7 @@ var DEFAULT_RSA_PUBLIC_KEY_DER = new Buffer([
 <p class='action'><u>Here starts the "random-text" component which generates a random text on reload. Anything after this component is just gibberish.</u></p>
 <com-random-text prefix="Random words: " style="color:#EEDDEE" len=10>This desc does not get rendered on the webpage.</com-random-text>
 <a href="components/random-text.html">random-text</a>
-<com-video-control showid=test-show keyid=1 description="iconic vistas of the sun setting over the city" videotags=["sunset"] prefix=/ndn/edu/ucla/remap/losatlantis/ subname=["1A","part1"]>This component fetches relevant videos links onLoad, and publishes the URL via NDN onClick.</com-video-control>
-<a href="components/video-control.html">video-control</a>
-<com-1a-sunset instance="1" description="iconic vistas of the sun setting over the city">Not as concise as it could be...I feel we need a design discussion.</com-1a-sunset>
+<com-1a-sunset instance="1" style="color:#EEDDEE" description="iconic vistas of the sun setting over the city">Not as concise as it could be...I feel we need a design discussion.</com-1a-sunset>
 <a href="components/1A/sunset.html">1A/sunset</a>
 <p class='action center'><strong><u>THE END</u></strong></p>
 </section>
