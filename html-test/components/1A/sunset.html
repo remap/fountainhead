@@ -42,6 +42,7 @@
                 this.applyStyle(this.innerElement, "color:#FFFFFF");
             }
             
+            // TODO: Face setup's different from the online version, which hardcoded the server's IP address.
             if (this.hasAttribute('face')) {
                 this.face = this.getAttribute('face');
             } else if (window.face !== undefined && window.face !== null) {
@@ -126,10 +127,12 @@
                     
                     var data = new Data(self.namePrefix);
                     // Note: for now, the names are hard-coded, since namespace design is not fully discussed
-                    // TODO: Freshness period was not set in current Data.
                     
                     data.getName().append(self.showid).append('ritual').append('1A').append('1A_sunset_1').append('url').appendVersion((new Date).getTime());
                     data.setContent(self.videoURL);
+                    
+                    // TODO: Arbitrary data freshness period
+                    data.getMetaInfo().setFreshnessPeriod(2000);
                     data.sign();
                     
                     self.memoryContentCache.add(data);
