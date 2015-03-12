@@ -61,6 +61,9 @@ debug.html
 # Old versions of the script that is not yet processed
 losatlantis-scripts/
 
+# Don't track included stuff
+html-test/includes/
+
 .DS_Store
 *.xcodeproj/*
 
