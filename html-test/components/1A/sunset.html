@@ -3,9 +3,11 @@
 </template>
 
 <script>
+
     // TODO: This seems to only work in Chrome, verifying. There is a flag in Firefox that needs to be set to true
     
     (function(window, document, undefined) {
+    
         var thatDoc = document;
         var thisDoc =  (thatDoc._currentScript || thatDoc.currentScript).ownerDocument;
         var template = thisDoc.querySelector('template').content;
@@ -22,36 +24,106 @@
             
             if (Name === undefined || Name === null) {
                 console.log("com-1a-sunset: Name is undefined; include ndn-js?");
+                return;
             }
             
             if (this.hasAttribute('description')) {
                 this.innerElement.textContent = this.getAttribute('description');
-            }
-            
-            this.prefix = new Name();
-            if (this.hasAttribute('prefix')) {
-                this.prefix = this.getAttribute('prefix');
-            } else if (window.prefix !== undefined && window.prefix !== null) {
-                this.prefix = window.prefix;
             } else {
-                console.log("com-1a-sunset: prefix is not defined for sunset URL publishing");
+                console.log('com-1a-sunset: description is not defined for sunset component, using default description');
+                this.innerElement.textContent = 'Default description for sunset video.'
             }
             
-            this.showid = "";
+            if (this.hasAttribute('face')) {
+                this.face = this.getAttribute('face');
+            } else if (window.face !== undefined && window.face !== null) {
+                this.face = window.face;
+            } else {
+                console.log('com-1a-sunset: face is not defined, creating new one for window');
+                window.face = new Face();
+                this.face = window.face;
+            }
+            
+            // Note: very weird that here I can't seem to set this.prefix...
+            if (this.hasAttribute('prefix')) {
+                this.namePrefix = this.getAttribute('prefix');
+            } else if (window.prefix !== undefined && window.prefix !== null) {
+                this.namePrefix = window.prefix;
+            } else {
+                console.log('com-1a-sunset: prefix is not defined for sunset URL publishing, creating default name for window');
+                window.prefix = new Name("/ndn/edu/ucla/remap/losatlantis");
+                this.namePrefix = window.prefix;
+            }
+            
+            if (this.hasAttribute('memoryContentCache')) {
+                this.memoryContentCache = this.getAttribute('memoryContentCache');
+            } else if (window.memoryContentCache !== undefined && window.memoryContentCache !== null) {
+                this.memoryContentCache = window.memoryContentCache;
+            } else {
+                console.log('com-1a-sunset: memoryContentCache is not defined, creating new one for window');
+                window.memoryContentCache = new MemoryContentCache(this.face);
+                this.memoryContentCache = window.memoryContentCache;
+            }
+            
+            var registeredPrefix = this.face.getEntryForRegisteredPrefix(this.namePrefix);
+            if (registeredPrefix == null || registeredPrefix == 0) {
+                console.log("registeredPrefix is not found on Face, reregistering default prefix");
+                this.memoryContentCache.registerPrefix(this.namePrefix, function (prefix) {
+				  console.log("Register failed for prefix.");
+				});
+            }
+            
             if (this.hasAttribute('showid')) {
                 this.showid = this.getAttribute('showid');
             } else if (window.showid !== undefined && window.showid !== null) {
                 this.showid = window.showid;
             } else {
-                console.log("com-1a-sunset: showid is not defined for sunset URL publishing");
+                console.log('com-1a-sunset: showid is not defined for sunset URL publishing, creating default for window');
+                window.showid = 'default';
+                this.showid = window.showid;
             }
             
             // Queries the Cassandra database for related video links
+            this.resultURLs = [];
+            // videoURL is the random selected URL among all that's returned.
+            this.videoURL = '';
+            var self = this;
+            
+            var data = new FormData();
+            data.append('query', 'select * from sunsets;');
+
+            var xhr = new XMLHttpRequest();
+            // Note: POST is using hardcoded URL with my test server; server currently set to accept request originated from all.
+            // Note: seems that right now the random video URL should be chosen onLoad, instead of onClick; need to confirm
+            xhr.open('POST', 'http://archive-dev.remap.ucla.edu:5003/query', true);
+            xhr.onload = function () {
+                var result = JSON.parse(this.responseText);
+                if (result !== undefined && result !== null && result.length > 0) {
+                    for (var i = 0; i < result.length; i++) {
+                        self.resultURLs.push(result[i][0]);
+                    }
+                    
+                    var index = Math.floor((Math.random() * (self.resultURLs.length)));
+                    self.videoURL = self.resultURLs[index];
+                    console.log('com-1a-sunset: chosen URL: ' + self.videoURL);
+                }
+            };
+            xhr.send(data);
             
             this.innerElement.addEventListener('click', function(){
                 console.log('com-1a-sunset: InnerElement click called');
-                // Publish NDN content under specified name
-                
+                if (self.videoURL != '') {
+                    
+                    var data = new Data(self.namePrefix);
+                    // Note: for now, the names are hard-coded, since namespace design is not fully discussed
+                    data.getName().append(self.showid).append('ritual').append('1A').append('1A_sunset_1').append('url').appendVersion((new Date).getTime());
+                    data.setContent(self.videoURL);
+                    data.sign();
+                    
+                    self.memoryContentCache.add(data);
+                } else {
+                    console.log('com-1a-sunset: no relevant entries found or loaded');
+                }
             });
         };
         SunsetElement.attributeChangedCallback = function(attr, oldVal, newVal) {
