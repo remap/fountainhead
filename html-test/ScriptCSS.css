@@ -26,24 +26,26 @@ IN THE SOFTWARE.
 	-webkit-touch-callout: none;
 	-webkit-user-select: none;
 }
+
 html {
-	margin: 0;
-	padding: 0;
+	margin: ;
+	padding: ;
 }
 body {
-	background-color: #000000;
-	color: #EDE6DE;
-	font: 14px/1.3em 'Courier', serif;
+	background-color: #161616;
+	color: #F7F8FF;
+	font: 14px/1.2em 'Courier New', serif;
+	width: 960px;
 	padding: 0;
 	margin: 0;
 }
 article {
-	padding: 40px 0;
+	padding: 0px;
 	margin: 0;
 }
 section {
-	padding: 0 0 0 40px;
-	width: 465px;
+	padding: 0 0 0 0px;
+	width: 485px;
 	margin-right: auto;
 	margin-left: auto;
 }
@@ -58,19 +60,23 @@ body > p:first-child {
 }
 
 table {
-	border: 1px solid white;
 	width: 1000px;
 }
 
 td {
-	border: 1px solid white;
+	vertical-align: top;
+	border: 1px dashed gray;
 	width: 1000px;
 	padding: 5px;
 }
 
 #character-type-content {
 	padding: 0 0 0 0px;
-	width: 960px;
+	width: center;
+}
+
+.charactertypecontent-desc {
+	padding: 0 0 0 0px;
 	margin-right: auto;
 	margin-left: auto;
 }
@@ -107,6 +113,7 @@ td {
 	font-weight: bold;
 	position: relative;
 	padding-right: 40px;
+	background-color: #2D0027-;
 }
 .scene-number-left {
 	float: left;
@@ -118,9 +125,13 @@ td {
 	top: 0;
 }
 
+#setting1 {
+	padding-top: 50px;
+	width: 485px;
+}
 
 #location-a {
-	background-color: #3F3F3F;
+	background-color: #16002D;
 	padding: 15px;
 }
 
@@ -198,31 +209,31 @@ p.page-break {
 
 /* Added classes for characters types, characters and their dialogues*/
 .offliners-def {
-	color: #FF2A00;
+	color: #EEFF56;
 }
 .offline-audience-def {
-	color: #FFFA00;
+	color: #AFFF72;
 }
 .onliners-def {
-	color: #2BDB00;
+	color: #4C80C4;
 }
 .online-audience-def{
-	color: #9500DB;
+	color: #D272FF;
 }
 
 /* Classes for each character or each character definition can be the same as their type; Left here for flexibility */
 .sheena, .sheena-def {
-	color: #FF2306;
+	color: #D36210; 
 }
 
 .rachel, .rachel-def {
-	color: #2BD000;
+	color: #BA2828;
 }
 
 .eddie, .eddie-def {
-	color: #9505D6;
+	color: #E0D53C;
 }
 
 .felix, .felix-def {
-	color: #FFF706;
+	color: #D347BE;
 }
