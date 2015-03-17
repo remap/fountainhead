@@ -391,7 +391,9 @@ class FountainHTMLGenerator(object):
                         
                         # Note: here '-def' and '-desc' is hardcoded into the class output
                         bodyText += '<p class=\'' + characterName + '-def\'>' + characterStr[0] + '</p>\n'
-                        bodyText += '<p class=\'' + characterType + '-def\'>' + characterStr[1] + '</p>\n'
+                        # According to Zoe's edits, the following line that generates 'character
+                        # type of character' line does not seem necessary
+                        #bodyText += '<p class=\'' + characterType + '-def\'>' + characterStr[1] + '</p>\n'
                         bodyText += '<p class=\'' + characterDivId + '-desc\'>' + characterStr[2] + '</p>\n'
                     
                     bodyText += '</div>\n'
