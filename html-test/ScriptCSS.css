@@ -209,13 +209,13 @@ p.page-break {
 
 /* Added classes for characters types, characters and their dialogues*/
 .offliners-def {
-	color: #EEFF56;
+	color: #FD971F;
 }
 .offline-audience-def {
-	color: #AFFF72;
+	color: #A6E22E;
 }
 .onliners-def {
-	color: #4C80C4;
+	color: #66D9EF;
 }
 .online-audience-def{
 	color: #D272FF;
@@ -223,7 +223,7 @@ p.page-break {
 
 /* Classes for each character or each character definition can be the same as their type; Left here for flexibility */
 .sheena, .sheena-def {
-	color: #D36210; 
+	color: #6F9977; 
 }
 
 .rachel, .rachel-def {
@@ -235,5 +235,5 @@ p.page-break {
 }
 
 .felix, .felix-def {
-	color: #D347BE;
+	color: #C97132;
 }
