@@ -136,10 +136,12 @@ td {
 }
 
 #script-title {
-	overflow: hidden;
+	overflow: center;
 	display: block;
-	padding-bottom: 2.6em;
-	margin-bottom: 2.6em;
+	padding-left: 35em;
+	padding-bottom: 1.5em;
+	margin-bottom: 1.5em;
+	text-align: center;
 }
 #script-title .title {
 	text-align: center;
@@ -209,31 +211,31 @@ p.page-break {
 
 /* Added classes for characters types, characters and their dialogues*/
 .offliners-def {
-	color: #EEFF56;
+	color: #6F9977;
 }
 .offline-audience-def {
-	color: #AFFF72;
+	color: #7C6189;
 }
 .onliners-def {
-	color: #4C80C4;
+	color: #596BA8;
 }
 .online-audience-def{
-	color: #D272FF;
+	color: #D66D6D;
 }
 
 /* Classes for each character or each character definition can be the same as their type; Left here for flexibility */
 .sheena, .sheena-def {
-	color: #D36210; 
+	color: #6F9977; 
 }
 
 .rachel, .rachel-def {
-	color: #BA2828;
+	color: #6F9977;
 }
 
 .eddie, .eddie-def {
-	color: #E0D53C;
+	color: #6F9977;
 }
 
 .felix, .felix-def {
-	color: #D347BE;
+	color: #6F9977;
 }
