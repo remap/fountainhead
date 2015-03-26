@@ -138,10 +138,11 @@ td {
 #script-title {
 	overflow: center;
 	display: block;
-	padding-left: 35em;
 	padding-bottom: 1.5em;
 	margin-bottom: 1.5em;
 	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
 }
 #script-title .title {
 	text-align: center;
@@ -165,6 +166,9 @@ td {
 }
 #script-title .notes {
 	white-space: pre-line !important;shape-rendering
+}
+#script-title p {
+    word-wrap: normal;
 }
 .center {
 	text-align: center !important;
