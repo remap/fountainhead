@@ -295,8 +295,8 @@ class FountainRegexRemap(FountainRegexBase):
     ENVIRONMENT_FACE_PATTERN            = 'face'
     
     # XMPP specific environment declarations...
+    # Note: Right now this pattern should come after all XMPP related definitions are finished
     ENVIRONMENT_XMPP_HTTP_HOST_PATTERN  = 'hostXMPPHttpBind'
-    ENVIRONMENT_XMPP_MUC_ROOM_PATTERN   = 'observatoryRoomID'
     
     # Spec addon: 
     # Spec syntax: (Name + class, such as a character description)Appeared name [class] description \n

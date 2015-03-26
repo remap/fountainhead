@@ -353,8 +353,7 @@ class FountainHTMLGenerator(object):
                         # Note: This is so bad...
                         elif (environmentName == self._fountainRegex.ENVIRONMENT_XMPP_HTTP_HOST_PATTERN):
                             bodyText += 'var ' + environmentName + ' = ' + environmentValue + ';\n'
-                            
-                            bodyText += 'var connection = null; \n connection = new Strophe.Connection(hostXMPPHttpBind);\n'
+                            bodyText += 'var connection = null; \nconnection = new Strophe.Connection(hostXMPPHttpBind);\n'
                             bodyText += '''
                         
                         connection.connect(chatJID, chatPasswd, onConnect);
@@ -371,13 +370,13 @@ class FountainHTMLGenerator(object):
                             } else if (status == Strophe.Status.CONNECTED) {
                                 console.log('Strophe is connected.');
                                 connection.addHandler(onMessage, null, 'message', null, null,  null); 
-                                
                                 connection.send($pres().tree());
                                 
-                                console.log(defaultMucRoom);
-                                
-                                // TODO: figure out why using admin@admin account won't work...
-                                connection.muc.join(defaultMucRoom, observatoryNickname, onMessage, onPresence, onRoster);
+                                // TODO: figure out why using admin@admin account won't work...This part requires more thinking...
+                                // using the other account won't allow me to receive onMessage either...
+                                // Instead of using defaultMucNickName, we can try with a random string, 
+                                // since from the point of view of a user, the nickname is always overwritten
+                                connection.muc.join(defaultMucRoom, defaultMucNickName, onMessage, onPresence, onRoster);
                             }
                         }
                         
@@ -385,13 +384,20 @@ class FountainHTMLGenerator(object):
                             console.log(message);
                         }
                         
-                        function onPresence(message) {
-                            console.log(message);
+                        function onPresence(presence) {
+                            console.log(presence);
                         }
                         
-                        function onRoster(message) {
-                            console.log(message);
+                        function onRoster(roster) {
+                            console.log(roster);
                         }
+                        
+                        window.onbeforeunload = function () {
+                            console.log("Page unload");
+                            connection.options.sync = true; 
+                            connection.flush();
+                            connection.disconnect();
+                        };
                             '''
                         else:
                             bodyText += 'var ' + environmentName + ' = ' + environmentValue + ';\n'

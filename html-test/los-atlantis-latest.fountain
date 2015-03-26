@@ -18,13 +18,14 @@ Author: Eben Portnoy, Israel Lopez, and J. Ed Araiza
 [include] strophe.js
 [include] strophe.muc.js
 
-[chatJID] "admin@archive-dev.remap.ucla.edu"
-[chatPasswd] "uclaremap2015"
+[chatJID] "admin.admin@archive-dev.remap.ucla.edu"
+[chatPasswd] "admin@admin"
+
+[defaultMucNickName] "The observatory" 
+[defaultMucRoom] "observatory@conference.archive-dev.remap.ucla.edu"
 
 [hostXMPP] "archive-dev.remap.ucla.edu" 
 [hostXMPPHttpBind] "http://archive-dev.remap.ucla.edu:5280/http-bind"
-[defaultMucRoom] "observatory@conference.archive-dev.remap.ucla.edu"
-[defaultMucNickName] "The observatory" 
 
 # CharacterTypes
 
