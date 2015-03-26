@@ -14,6 +14,18 @@ Author: Eben Portnoy, Israel Lopez, and J. Ed Araiza
 [prefix] new Name("/ndn/edu/ucla/remap/losatlantis")
 [face] new Face({host: "localhost"})
 
+[include] jquery-1.2.6.min.js
+[include] strophe.js
+[include] strophe.muc.js
+
+[chatJID] "admin@archive-dev.remap.ucla.edu"
+[chatPasswd] "uclaremap2015"
+
+[hostXMPP] "archive-dev.remap.ucla.edu" 
+[hostXMPPHttpBind] "http://archive-dev.remap.ucla.edu:5280/http-bind"
+[defaultMucRoom] "observatory@conference.archive-dev.remap.ucla.edu"
+[defaultMucNickName] "The observatory" 
+
 # CharacterTypes
 
 [Offliners] Humans who search for something that they can't remember or articulate. They seem to suffer some form of amnesia. By participating in the Rituals they are able to Upload parts of themselves into the Online City. Rachel, Eddie, Sheena, Felix.
@@ -48,11 +60,15 @@ The use of media in the Ritual Chambers must be dynamically linked to the action
 
 # Body
 
-(Following is a web component example in script, click the paragraph to publish NDN data)
-
 .PROLOGUE : ONLINE (INVITATION)
 
+(Following is a web component example in script, click the paragraph to publish NDN data)
+
 <<@1A/sunset(instance="1", description="iconic vistas of the sun setting over the city", style="color:#EEDDEE;text-decoration:underline;") Not as concise as it could be...I feel we need a design discussion.>>
+
+(Following is a web component example in script, click the paragraph to send chat message as observatory)
+
+<<@chat-control-muc(message="Hello watchers!", description="Observatory: Hello watchers", style="color:#EEDDEE;text-decoration:underline;")>>
 
 In the weeks before the performance, potential audience members first encounter the Archive on the LOS ATLANTIS Website. 
 

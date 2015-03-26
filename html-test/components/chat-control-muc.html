@@ -1,0 +1,109 @@
+<template>
+    <p></p>
+</template>
+
+<script>
+    // TODO: This seems to only work in Chrome, verifying.
+    
+    // chat-control-muc: Chat control component for observatory is an XMPP client
+    //   that connects to a chatroom on a given XMPP host, and talks to it
+    //   
+    // @dependency: Strophe.js, Strophe.muc.js, jquery
+    //
+    // @env connection XMPP connection should be established to use this component
+    // @env chatroom connection This user should join the chatroom in order to send messages to that chatroom
+    //
+    // @param roomJID The chatroom JID on the XMPP host; 
+    //    if not specified, the component will look for if defaultMucRoom is defined
+    // @param message The message to be sent
+    // @param fromNickname This user's nickname in the muc chatroom;
+    //    if not specified, the component will look for if defaultMucNickName is defined
+    
+    (function(window, document, undefined) {
+        var thatDoc = document;
+        var thisDoc =  (thatDoc._currentScript || thatDoc.currentScript).ownerDocument;
+        var template = thisDoc.querySelector('template').content;
+        
+        var ChatControlMucElement = Object.create(HTMLElement.prototype);
+        
+        ChatControlMucElement.createdCallback = function() {
+            var shadowRoot = this.createShadowRoot();
+            var clone = thatDoc.importNode(template, true);
+            shadowRoot.appendChild(clone);
+            
+            // We may not want to contain these in a paragraph at some point
+            this.innerElement = shadowRoot.querySelector('p');
+            
+            if (this.hasAttribute('description')) {            
+                this.innerElement.textContent = this.getAttribute('description');
+            }
+            
+            if (this.hasAttribute('style')) {
+                var style = this.getAttribute('style');
+                this.applyStyle(this.innerElement, style);
+            }
+            else {
+                this.applyStyle(this.innerElement, "color:#FFFFFF");
+            }
+            
+            var self = this;
+            
+            this.innerElement.addEventListener('click', function(){
+                console.log('chatControlMuc click called');
+                if (connection == undefined || connection == null) {
+                    console.log('XMPP connection not established');
+                    return;
+                }
+                var roomJID = '';
+                if (self.hasAttribute('roomJID')) {
+                    roomJID = self.getAttribute('roomJID');
+                } else {
+                    if (window.defaultMucRoom == undefined || window.defaultMucRoom == null || window.defaultMucRoom == '') {
+                        console.log('Room JID not specified; defaultMucRoom definition not found, either');
+                        return;
+                    } else {
+                        roomJID = defaultMucRoom;
+                    }
+                }
+                var fromNickname = ''
+                if (self.hasAttribute('fromNickname')) {
+                    fromNickname = self.getAttribute('fromNickname');
+                } else {
+                    if (window.defaultMucNickName == undefined || window.defaultMucNickName == null || window.defaultMucNickName == '') {
+                        console.log('Default nickname not specified; defaultMucNickName definition not found, either');
+                        return;
+                    } else {
+                        fromNickname = defaultMucNickName;
+                    }
+                }
+                var content = '';
+                
+                if (self.hasAttribute('message')) {
+                    content = self.getAttribute('message');
+                } else {
+                    console.log('Message content should not be empty');
+                    return;
+                }
+                
+				var message = $msg({
+				  "to" : roomJID,
+				  "type" : 'groupchat',
+				  "from_nickname" : fromNickname,
+				}).c("body").t(content);
+				
+				connection.send(message.tree()); 
+            });
+        };
+        ChatControlMucElement.applyStyle = function(comp, val) {
+            // TODO: Figuring out why ("class", val) wouldn't work, while "style" works;
+            // Is the sequence of execution of css file load and web component initiate going to matter?
+            comp.setAttribute("style", val);
+        };
+        ChatControlMucElement.attributeChangedCallback = function(attr, oldVal, newVal) {
+            console.log('chatControlMuc onAttributeChanged stub');
+        };
+        window.chatControlMucElement = thatDoc.registerElement('com-chat-control-muc', {
+            prototype: ChatControlMucElement
+        });
+    })(window, document);
+</script>

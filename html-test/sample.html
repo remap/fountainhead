@@ -4,6 +4,7 @@
 <head>
 <link rel="stylesheet" type="text/css" href="ScriptCSS.css">
 <link rel="import" href="components/1A/sunset.html">
+<link rel="import" href="components/chat-control-muc.html">
 </head>
 <body>
 <section>
@@ -129,7 +130,62 @@ var face = new Face({host: "localhost"});
                           (keyName, KeyType.RSA, DEFAULT_RSA_PUBLIC_KEY_DER, DEFAULT_RSA_PRIVATE_KEY_DER);
 
                         face.setCommandSigningInfo(keyChain, certificateName);
-                            </script><div id="charactertypecontent">
+                            </script>
+<script src="includes/jquery-1.2.6.min.js"></script>
+<script>
+</script>
+<script src="includes/strophe.js"></script>
+<script>
+</script>
+<script src="includes/strophe.muc.js"></script>
+<script>
+var chatJID = "admin@archive-dev.remap.ucla.edu";
+var chatPasswd = "uclaremap2015";
+var hostXMPP = "archive-dev.remap.ucla.edu" ;
+var hostXMPPHttpBind = "http://archive-dev.remap.ucla.edu:5280/http-bind";
+var connection = null; 
+ connection = new Strophe.Connection(hostXMPPHttpBind);
+
+                        
+                        connection.connect(chatJID, chatPasswd, onConnect);
+                        
+                        function onConnect(status) {
+                            if (status == Strophe.Status.CONNECTING) {
+                                console.log('Strophe is connecting.');
+                            } else if (status == Strophe.Status.CONNFAIL) {
+                                console.log('Strophe failed to connect.');
+                            } else if (status == Strophe.Status.DISCONNECTING) {
+                                console.log('Strophe is disconnecting.');
+                            } else if (status == Strophe.Status.DISCONNECTED) {
+                                console.log('Strophe is disconnected.');
+                            } else if (status == Strophe.Status.CONNECTED) {
+                                console.log('Strophe is connected.');
+                                connection.addHandler(onMessage, null, 'message', null, null,  null); 
+                                
+                                connection.send($pres().tree());
+                                
+                                console.log(defaultMucRoom);
+                                
+                                connection.muc.join(defaultMucRoom, observatoryNickname, onMessage, onPresence, onRoster);
+                                console.log("still working");
+                            }
+                        }
+                        
+                        function onMessage(message) {
+                            console.log(message);
+                        }
+                        
+                        function onPresence(message) {
+                            console.log(message);
+                        }
+                        
+                        function onRoster(message) {
+                            console.log(message);
+                        }
+                            var defaultMucRoom = "observatory@conference.archive-dev.remap.ucla.edu";
+var defaultMucNickName = "The observatory";
+</script>
+<div id="charactertypecontent">
 <table><td>
 <p class='offliners-def'>Offliners</p>
 <p class='charactertypecontent-desc'>Humans who search for something that they can't remember or articulate. They seem to suffer some form of amnesia. By participating in the Rituals they are able to Upload parts of themselves into the Online City. Rachel, Eddie, Sheena, Felix.</p>
@@ -168,10 +224,13 @@ var face = new Face({host: "localhost"});
 <p class='settingcontent-desc'>The ritual actions must be independent of the content of the Archive but must by Code define the use of this content (as content will change when the Archive appears in different Cities).</p>
 <p class='settingcontent-desc'>The use of media in the Ritual Chambers must be dynamically linked to the actions of the characters and the audience, and should incorporate echoes of the real-world lives of the audience, responsiveness to their actions as characters within the piece, and possibly further agency as contributors.</p>
 </div>
-<p class='action'>(Following is a web component example in script, click the paragraph to publish NDN data)</p>
 <p class='scene-heading'>PROLOGUE : ONLINE (INVITATION)</p>
+<p class='action'>(Following is a web component example in script, click the paragraph to publish NDN data)</p>
 <com-1a-sunset instance="1" style="color:#EEDDEE;text-decoration:underline;" description="iconic vistas of the sun setting over the city">Not as concise as it could be...I feel we need a design discussion.</com-1a-sunset>
 <a href="components/1A/sunset.html">1A/sunset</a>
+<p class='action'>(Following is a web component example in script, click the paragraph to send chat message as observatory)</p>
+<com-chat-control-muc message="Hello watchers!" style="color:#EEDDEE;text-decoration:underline;" description="Observatory: Hello watchers"></com-chat-control-muc>
+<a href="components/chat-control-muc.html">chat-control-muc</a>
 <p class='action'>In the weeks before the performance, potential audience members first encounter the Archive on the LOS ATLANTIS Website.</p>
 <p class='action'>THE ARCHIVE</p>
 <p class='action'>(on the Web)</p>

@@ -224,6 +224,7 @@ class FountainHTMLGenerator(object):
                         
                         # Note: Right now tha parser 'just knows' to deal with 'includes' differently, 
                         # and it 'just knows' that when ndn-js is included, a Face can be created with [uri:port].
+                        # TODO: This should probably be handled by 'plugins' to this parser.
                         if (environmentName == self._fountainRegex.ENVIRONMENT_INCLUDE_PATTERN):
                             bodyText += '</script>\n<script src=\"' + self._includeParent + environmentValue + '\"></script>\n<script>\n'
                         elif (environmentName == self._fountainRegex.ENVIRONMENT_PREFIX_PATTERN):
@@ -349,10 +350,53 @@ class FountainHTMLGenerator(object):
 
                         face.setCommandSigningInfo(keyChain, certificateName);
                             '''
+                        # Note: This is so bad...
+                        elif (environmentName == self._fountainRegex.ENVIRONMENT_XMPP_HTTP_HOST_PATTERN):
+                            bodyText += 'var ' + environmentName + ' = ' + environmentValue + ';\n'
+                            
+                            bodyText += 'var connection = null; \n connection = new Strophe.Connection(hostXMPPHttpBind);\n'
+                            bodyText += '''
+                        
+                        connection.connect(chatJID, chatPasswd, onConnect);
+                        
+                        function onConnect(status) {
+                            if (status == Strophe.Status.CONNECTING) {
+                                console.log('Strophe is connecting.');
+                            } else if (status == Strophe.Status.CONNFAIL) {
+                                console.log('Strophe failed to connect.');
+                            } else if (status == Strophe.Status.DISCONNECTING) {
+                                console.log('Strophe is disconnecting.');
+                            } else if (status == Strophe.Status.DISCONNECTED) {
+                                console.log('Strophe is disconnected.');
+                            } else if (status == Strophe.Status.CONNECTED) {
+                                console.log('Strophe is connected.');
+                                connection.addHandler(onMessage, null, 'message', null, null,  null); 
+                                
+                                connection.send($pres().tree());
+                                
+                                console.log(defaultMucRoom);
+                                
+                                // TODO: figure out why using admin@admin account won't work...
+                                connection.muc.join(defaultMucRoom, observatoryNickname, onMessage, onPresence, onRoster);
+                            }
+                        }
+                        
+                        function onMessage(message) {
+                            console.log(message);
+                        }
+                        
+                        function onPresence(message) {
+                            console.log(message);
+                        }
+                        
+                        function onRoster(message) {
+                            console.log(message);
+                        }
+                            '''
                         else:
                             bodyText += 'var ' + environmentName + ' = ' + environmentValue + ';\n'
                             
-                    bodyText += '</script>'
+                    bodyText += '</script>\n'
                     continue
                     
                 # Special generation step for CharacterTypes

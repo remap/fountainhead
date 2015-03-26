@@ -289,9 +289,14 @@ class FountainRegexRemap(FountainRegexBase):
     META_ENVIRONMENT_HEADER_TEMPLATE    = '<' + ENVIRONMENT_CONTENT_PATTERN + r'>\n\2</' + ENVIRONMENT_CONTENT_PATTERN + '>'
     ENVIRONMENT_INCLUDE_PATTERN         = 'include'
     
+    # TODO: These should be handled by 'plugins' to this parser
     # NDN specific environment declarations...
     ENVIRONMENT_PREFIX_PATTERN          = 'prefix'
     ENVIRONMENT_FACE_PATTERN            = 'face'
+    
+    # XMPP specific environment declarations...
+    ENVIRONMENT_XMPP_HTTP_HOST_PATTERN  = 'hostXMPPHttpBind'
+    ENVIRONMENT_XMPP_MUC_ROOM_PATTERN   = 'observatoryRoomID'
     
     # Spec addon: 
     # Spec syntax: (Name + class, such as a character description)Appeared name [class] description \n
