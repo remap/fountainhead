@@ -63,13 +63,17 @@ The use of media in the Ritual Chambers must be dynamically linked to the action
 
 .PROLOGUE : ONLINE (INVITATION)
 
-(Following is a web component example in script, click the paragraph to publish NDN data)
+(Following is a web component example, click the paragraph to publish 1A-sunset NDN data)
 
 <<@1A/sunset(instance="1", description="iconic vistas of the sun setting over the city", style="color:#EEDDEE;text-decoration:underline;") Not as concise as it could be...I feel we need a design discussion.>>
 
-(Following is a web component example in script, click the paragraph to send chat message as observatory)
+(Following is a web component example, click the paragraph to send chat message as observatory)
 
 <<@chat-control-muc(message="Hello watchers!", description="Observatory: Hello watchers", style="color:#EEDDEE;text-decoration:underline;")>>
+
+(Following is a web component example, click the paragraph to send chat message 'hello' to all registered members; as function requirements for the Guide is not fully specified, this example works with only with default parameters)
+
+<<@chat-control-guide(message="Hello {{ user_name }}!", fromNickname="The guide", description="The guide: Hello XXX", style="color:#EEDDEE;text-decoration:underline;")>>
 
 In the weeks before the performance, potential audience members first encounter the Archive on the LOS ATLANTIS Website. 
 

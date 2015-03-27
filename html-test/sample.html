@@ -5,6 +5,7 @@
 <link rel="stylesheet" type="text/css" href="ScriptCSS.css">
 <link rel="import" href="components/1A/sunset.html">
 <link rel="import" href="components/chat-control-muc.html">
+<link rel="import" href="components/chat-control-guide.html">
 </head>
 <body>
 <section>
@@ -232,12 +233,15 @@ connection = new Strophe.Connection(hostXMPPHttpBind);
 <p class='settingcontent-desc'>The use of media in the Ritual Chambers must be dynamically linked to the actions of the characters and the audience, and should incorporate echoes of the real-world lives of the audience, responsiveness to their actions as characters within the piece, and possibly further agency as contributors.</p>
 </div>
 <p class='scene-heading'>PROLOGUE : ONLINE (INVITATION)</p>
-<p class='action'>(Following is a web component example in script, click the paragraph to publish NDN data)</p>
+<p class='action'>(Following is a web component example, click the paragraph to publish 1A-sunset NDN data)</p>
 <com-1a-sunset instance="1" style="color:#EEDDEE;text-decoration:underline;" description="iconic vistas of the sun setting over the city">Not as concise as it could be...I feel we need a design discussion.</com-1a-sunset>
 <a href="components/1A/sunset.html">1A/sunset</a>
-<p class='action'>(Following is a web component example in script, click the paragraph to send chat message as observatory)</p>
+<p class='action'>(Following is a web component example, click the paragraph to send chat message as observatory)</p>
 <com-chat-control-muc message="Hello watchers!" style="color:#EEDDEE;text-decoration:underline;" description="Observatory: Hello watchers"></com-chat-control-muc>
 <a href="components/chat-control-muc.html">chat-control-muc</a>
+<p class='action'>(Following is a web component example, click the paragraph to send chat message 'hello' to all registered members; as function requirements for the Guide is not fully specified, this example works with only with default parameters)</p>
+<com-chat-control-guide fromNickname="The guide" message="Hello {{ user_name }}!" style="color:#EEDDEE;text-decoration:underline;" description="The guide: Hello XXX"></com-chat-control-guide>
+<a href="components/chat-control-guide.html">chat-control-guide</a>
 <p class='action'>In the weeks before the performance, potential audience members first encounter the Archive on the LOS ATLANTIS Website.</p>
 <p class='action'>THE ARCHIVE</p>
 <p class='action'>(on the Web)</p>
