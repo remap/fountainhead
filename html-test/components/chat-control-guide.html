@@ -78,7 +78,6 @@
                 if (self.hasAttribute('message')) {
                     content = self.getAttribute('message');
                     
-                    // Note: we'll probably want a model class that reflects the users table schema
                     /*
                     var matchedResult = content.match(/{{\s+(\w+)\s+}}?/g);
                     
@@ -102,6 +101,7 @@
                         if (result !== undefined && result !== null && result.length > 0) {
                             console.log(result);
                             
+                            // Note: we'll probably want a model class that reflects the users table schema
                             for (var i = 0; i < result.length; i++) {
                                 var contentSent = content.replace(/{{\s+(email)\s+}}?/g, result[i][0])
                                                      .replace(/{{\s+(user_name)\s+}}?/g, result[i][1])
