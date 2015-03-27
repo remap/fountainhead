@@ -32,6 +32,7 @@ class FountainHTMLGenerator(object):
     def __init__(self, script, cssFile = '', componentParent = 'components', includeParent = 'includes', version = ParserVersion.DEFAULT):
         self._script = script
         self._bodyText = ''
+        self._indentLevel = 0
         self._cssFile = cssFile
         
         self._version = version
@@ -76,18 +77,22 @@ class FountainHTMLGenerator(object):
         return re.sub('-+', '-', str)
     
     def generateHtmlBase(self):
-        if (self._bodyText == ''):
-            self._bodyText = self.bodyForScriptBase()
+        self._indentLevel = 0
         html = '<!DOCTYPE html>\n<html>\n<head>\n'
         if (self._cssFile != ''):
             html += '<link rel=\"stylesheet\" type=\"text/css\" href=\"' + self._cssFile + '\">\n'
         # Note: here a <section> tag is added by default.
-        html += '</head>\n<body>\n<section>\n' + self._bodyText + '</section>\n</body>\n</html>\n'
+        html += '</head>\n<body>\n<section>\n'
+        self._indentLevel += 1
+        if (self._bodyText == ''):
+            self._bodyText = self.bodyForScriptBase()
+        html += self._bodyText 
+        self._indentLevel -= 1
+        html += '</section>\n</body>\n</html>\n'
         return html
     
     def generateHtmlRemap(self):
-        if (self._bodyText == ''):
-            self._bodyText = self.bodyForScriptRemap()
+        self._indentLevel = 0
         html = '<!DOCTYPE html>\n'
         html += '<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />\n'
         html += '<html>\n<head>\n'
@@ -98,8 +103,17 @@ class FountainHTMLGenerator(object):
             # Note: Right now web components are expected to be .htmls only.
             html += '<link rel=\"import\" href=\"' + self._componentParent + componentName + '.html\">\n'
         # Note: here a <section> tag is added by default.
-        html += '</head>\n<body>\n<section>\n' + self._bodyText + '</section>\n</body>\n</html>\n'
+        html += '</head>\n<body>\n<section>\n'
+        self._indentLevel += 1
+        if (self._bodyText == ''):
+            self._bodyText = self.bodyForScriptRemap()
+        html += self._bodyText 
+        self._indentLevel -= 1
+        html += '</section>\n</body>\n</html>\n'
         return html
+    
+    def prependIndentLevel(self):
+        return self._indentLevel * 2 * ' '
     
     def bodyForScriptRemap(self):
         bodyText = ''
@@ -107,57 +121,59 @@ class FountainHTMLGenerator(object):
         titleElements = self._script._titlePageContents
         
         if titleElements:
-            bodyText += '<div id=\'' + self._fountainRegex.TITLE_DIV + '\'>'
+            bodyText += self.prependIndentLevel() + '<div id=\'' + self._fountainRegex.TITLE_DIV + '\'>\n'
+            self._indentLevel += 1
             
             # Titles
-            bodyText += '<p class=\'' + self._fountainRegex.TITLE_TITLE_CLASS + '\'>'
+            bodyText += self.prependIndentLevel() + '<p class=\'' + self._fountainRegex.TITLE_TITLE_CLASS + '\'>'
             if titleElements[self._fountainRegex.TITLE_TITLE_STRING]:
                 for temp in titleElements[self._fountainRegex.TITLE_TITLE_STRING]:
                     bodyText += temp + '<br>'
             else:
                 bodyText += 'Untitled'
-            bodyText += '</p>'
+            bodyText += '</p>\n'
                 
             # Credit
-            bodyText += '<p class=\'' + self._fountainRegex.TITLE_CREDIT_CLASS + '\'>'
+            bodyText += self.prependIndentLevel() + '<p class=\'' + self._fountainRegex.TITLE_CREDIT_CLASS + '\'>'
             if self._fountainRegex.TITLE_CREDIT_STRING in titleElements:
                 for temp in titleElements[self._fountainRegex.TITLE_CREDIT_STRING]:
                     bodyText += temp + '<br>'
             else:
                 bodyText += 'written by'
-            bodyText += '</p>'
+            bodyText += '</p>\n'
             
             # Authors
-            bodyText += '<p class=\'' + self._fountainRegex.TITLE_AUTHOR_CLASS + '\'>'
+            bodyText += self.prependIndentLevel() + '<p class=\'' + self._fountainRegex.TITLE_AUTHOR_CLASS + '\'>'
             if self._fountainRegex.TITLE_AUTHOR_STRING in titleElements:
                 for temp in titleElements[self._fountainRegex.TITLE_AUTHOR_STRING]:
                     bodyText += temp + '<br>'
             else:
                 bodyText += 'Anonymous'
-            bodyText += '</p>'
+            bodyText += '</p>\n'
             
             # Sources
             if self._fountainRegex.TITLE_SOURCE_STRING in titleElements:
-                bodyText += '<p class=\'' + self._fountainRegex.TITLE_SOURCE_CLASS + '\'>'
+                bodyText += self.prependIndentLevel() + '<p class=\'' + self._fountainRegex.TITLE_SOURCE_CLASS + '\'>'
                 for temp in titleElements[self._fountainRegex.TITLE_SOURCE_STRING]:
                     bodyText += temp + '<br>'
-                bodyText += '</p>'
+                bodyText += '</p>\n'
             
             # Draft date
             if self._fountainRegex.TITLE_DRAFT_DATE_STRING in titleElements:
-                bodyText += '<p class=\'' + self._fountainRegex.TITLE_DRAFT_DATE_CLASS + '\'>'
+                bodyText += self.prependIndentLevel() + '<p class=\'' + self._fountainRegex.TITLE_DRAFT_DATE_CLASS + '\'>'
                 for temp in titleElements[self._fountainRegex.TITLE_DRAFT_DATE_STRING]:
                     bodyText += temp + '<br>'
-                bodyText += '</p>'
+                bodyText += '</p>\n'
             
             # Contact
             if self._fountainRegex.TITLE_CONTACT_STRING in titleElements:
-                bodyText += '<p class=\'' + self._fountainRegex.TITLE_CONTACT_CLASS + '\'>'
+                bodyText += self.prependIndentLevel() + '<p class=\'' + self._fountainRegex.TITLE_CONTACT_CLASS + '\'>'
                 for temp in titleElements[self._fountainRegex.TITLE_CONTACT_STRING]:
                     bodyText += temp + '<br>'
-                bodyText += '</p>'
+                bodyText += '</p>\n'
             
-            bodyText += '</div>'
+            self._indentLevel -= 1
+            bodyText += self.prependIndentLevel() + '</div>\n'
             
         # Page breaks are not handled in current HTML output
         dialogueTypes = [self._fountainRegex.CHARACTER_TAG_PATTERN, self._fountainRegex.DIALOGUE_TAG_PATTERN, self._fountainRegex.PARENTHETICAL_TAG_PATTERN]
@@ -190,7 +206,7 @@ class FountainHTMLGenerator(object):
                 continue
             
             if (element._elementType == self._fountainRegex.PAGE_BREAK_TAG_PATTERN):
-                bodyText += '</section>\n<section>\n'
+                bodyText += self.prependIndentLevel() + '</section>\n<section>\n'
                 continue
             
             if (element._elementType == self._fountainRegex.CHARACTER_TAG_PATTERN and element._isDualDialogue):
@@ -215,7 +231,7 @@ class FountainHTMLGenerator(object):
                 
                 # Special generation step for Environments
                 if (element._elementType == self._fountainRegex.ENVIRONMENT_CONTENT_PATTERN):
-                    bodyText += '<script>\n';
+                    bodyText += self.prependIndentLevel() + '<script>\n';
                     
                     environmentDeclarations = re.findall(self._fountainRegex.META_TYPE_PATTERN, element._elementText)
                     for (environmentDeclaration) in environmentDeclarations:
@@ -226,12 +242,11 @@ class FountainHTMLGenerator(object):
                         # and it 'just knows' that when ndn-js is included, a Face can be created with [uri:port].
                         # TODO: This should probably be handled by 'plugins' to this parser.
                         if (environmentName == self._fountainRegex.ENVIRONMENT_INCLUDE_PATTERN):
-                            bodyText += '</script>\n<script src=\"' + self._includeParent + environmentValue + '\"></script>\n<script>\n'
+                            bodyText += self.prependIndentLevel() + '</script>\n' + self.prependIndentLevel() + '<script src=\"' + self._includeParent + environmentValue + '\"></script>\n' + self.prependIndentLevel() + '<script>\n'
                         elif (environmentName == self._fountainRegex.ENVIRONMENT_PREFIX_PATTERN):
                             bodyText += 'var ' + environmentName + ' = ' + environmentValue + ';\n'
                         elif (environmentName == self._fountainRegex.ENVIRONMENT_FACE_PATTERN):
                             bodyText += 'var ' + environmentName + ' = ' + environmentValue + ';\n'
-                            # Face's setCommandSigningInfo...
                             # TODO: Right now the script has to have a Face definition in order for setCommandSigningInfo to be executed,
                             #       which is not ideal.
                             bodyText += '''
@@ -402,28 +417,34 @@ class FountainHTMLGenerator(object):
                         else:
                             bodyText += 'var ' + environmentName + ' = ' + environmentValue + ';\n'
                             
-                    bodyText += '</script>\n'
+                    bodyText += self.prependIndentLevel() + '</script>\n'
                     continue
                     
                 # Special generation step for CharacterTypes
                 if (element._elementType == self._fountainRegex.CHARACTER_TYPE_CONTENT_PATTERN):
                     characterTypeDivId = self.htmlClassForType(element._elementType)
-                    bodyText += '<div id=\"' + characterTypeDivId + '\">\n'
-                    bodyText += '<table>'
+                    bodyText += self.prependIndentLevel() + '<div id=\"' + characterTypeDivId + '\">\n'
+                    self._indentLevel += 1
+                    
+                    bodyText += self.prependIndentLevel() + '<table>\n'
                     
                     characterTypeStrs = re.findall(self._fountainRegex.META_TYPE_PATTERN, element._elementText)
                     for characterTypeStr in characterTypeStrs:
                         characterType = self.htmlClassForType(characterTypeStr[0])
                         self._characterTypeList.append(characterType)
                         
-                        bodyText += '<td>\n'
+                        bodyText += self.prependIndentLevel() + '<td>\n'
+                        self._indentLevel += 1
                         # Note: here '-def' and '-desc' is hardcoded into the class output
-                        bodyText += '<p class=\'' + characterType + '-def\'>' + characterTypeStr[0] + '</p>\n'
-                        bodyText += '<p class=\'' + characterTypeDivId + '-desc\'>' + characterTypeStr[1] + '</p>\n'
-                        bodyText += '</td>\n'
+                        bodyText += self.prependIndentLevel() + '<p class=\'' + characterType + '-def\'>' + characterTypeStr[0] + '</p>\n'
+                        bodyText += self.prependIndentLevel() + '<p class=\'' + characterTypeDivId + '-desc\'>' + characterTypeStr[1] + '</p>\n'
+                        self._indentLevel -= 1
+                        bodyText += self.prependIndentLevel() + '</td>\n'
                         
-                    bodyText += '</table>\n'
-                    bodyText += '</div>\n'
+                    bodyText += self.prependIndentLevel() + '</table>\n'
+                    
+                    self._indentLevel -= 1
+                    bodyText += self.prependIndentLevel() + '</div>\n'
                     
                     # We can continue after this special generation
                     continue
@@ -431,7 +452,8 @@ class FountainHTMLGenerator(object):
                 # Special generation step for Characters
                 if (element._elementType == self._fountainRegex.CHARACTER_CONTENT_PATTERN):
                     characterDivId = self.htmlClassForType(element._elementType)
-                    bodyText += '<div id=\"' + characterDivId + '\">\n'
+                    bodyText += self.prependIndentLevel() + '<div id=\"' + characterDivId + '\">\n'
+                    self._indentLevel += 1
                     
                     characterStrs = re.findall(self._fountainRegex.META_NAME_TYPE_PATTERN, element._elementText)
                     for characterStr in characterStrs:
@@ -440,19 +462,21 @@ class FountainHTMLGenerator(object):
                         self._characterList[characterName] = characterType
                         
                         # Note: here '-def' and '-desc' is hardcoded into the class output
-                        bodyText += '<p class=\'' + characterName + '-def\'>' + characterStr[0] + '</p>\n'
+                        bodyText += self.prependIndentLevel() + '<p class=\'' + characterName + '-def\'>' + characterStr[0] + '</p>\n'
                         # According to Zoe's edits, the following line that generates 'character
                         # type of character' line does not seem necessary
-                        #bodyText += '<p class=\'' + characterType + '-def\'>' + characterStr[1] + '</p>\n'
-                        bodyText += '<p class=\'' + characterDivId + '-desc\'>' + characterStr[2] + '</p>\n'
+                        #bodyText += self.prependIndentLevel() + '<p class=\'' + characterType + '-def\'>' + characterStr[1] + '</p>\n'
+                        bodyText += self.prependIndentLevel() + '<p class=\'' + characterDivId + '-desc\'>' + characterStr[2] + '</p>\n'
                     
-                    bodyText += '</div>\n'
+                    self._indentLevel -= 1
+                    bodyText += self.prependIndentLevel() + '</div>\n'
                     continue
                 
                 # Special generation step for Settings
                 if (element._elementType == self._fountainRegex.SETTING_CONTENT_PATTERN):
                     settingDivId = self.htmlClassForType(element._elementType)
-                    bodyText += '<div id=\"' + settingDivId + '\">\n'
+                    bodyText += self.prependIndentLevel() + '<div id=\"' + settingDivId + '\">\n'
+                    self._indentLevel += 1
                     
                     settingStrs = re.findall(self._fountainRegex.META_TYPE_PATTERN, element._elementText)
                     for settingStr in settingStrs:
@@ -460,14 +484,15 @@ class FountainHTMLGenerator(object):
                         self._settingList.append(settingName)
                         
                         # Note: here '-def' and '-desc' is hardcoded into the class output
-                        bodyText += '<p class=\'' + settingName + '-def\'>' + settingStr[0] + '</p>\n'
-                        bodyText += '<p class=\'' + settingDivId + '-desc\'>' + settingStr[1] + '</p>\n'
+                        bodyText += self.prependIndentLevel() + '<p class=\'' + settingName + '-def\'>' + settingStr[0] + '</p>\n'
+                        bodyText += self.prependIndentLevel() + '<p class=\'' + settingDivId + '-desc\'>' + settingStr[1] + '</p>\n'
                     
                     settingStrs = re.findall(self._fountainRegex.META_ORDINARY_PATTERN, element._elementText)
                     for settingStr in settingStrs:
-                        bodyText += '<p class=\'' + settingDivId + '-desc\'>' + settingStr + '</p>\n'
+                        bodyText += self.prependIndentLevel() + '<p class=\'' + settingDivId + '-desc\'>' + settingStr + '</p>\n'
                     
-                    bodyText += '</div>\n'
+                    self._indentLevel -= 1
+                    bodyText += self.prependIndentLevel() + '</div>\n'
                     continue
                 
                 # Special generation step for web component and arguments
@@ -536,7 +561,7 @@ class FountainHTMLGenerator(object):
                     #       Shouldn't be too difficult to add parsing rules / CSS styles for those. (Their definitions already exist in # Settings)
                     #       Should resolve this with writers.
                     
-                    bodyText += '<p class=\'' + self.htmlClassForType(element._elementType) + additionalClasses + '\'>' + text + '</p>\n'
+                    bodyText += self.prependIndentLevel() + '<p class=\'' + self.htmlClassForType(element._elementType) + additionalClasses + '\'>' + text + '</p>\n'
             elif (generateComponent):
                 # Note: The "com-" is mandatorily prepended to the component name at this moment, may want to change in the future
                 componentTagName = self.componentNameToTag(componentName)
@@ -547,7 +572,7 @@ class FountainHTMLGenerator(object):
                 bodyText += '>' + componentDesc + '</' + componentTagName + '>\n'
                 
                 # TODO: styling for the component hyperlink
-                bodyText += '<a href=\"' + self._componentParent + componentName + '.html\">' + componentName + '</a>\n'
+                bodyText += self.prependIndentLevel() + '<a href=\"' + self._componentParent + componentName + '.html\">' + componentName + '</a>\n'
                 
                 generateComponent = False
                 inComponent = False
@@ -632,7 +657,11 @@ class FountainHTMLGenerator(object):
                 continue
             
             if (element._elementType == self._fountainRegex.PAGE_BREAK_TAG_PATTERN):
-                bodyText += '</section>\n<section>\n'
+                self._indentLevel -= 1
+                if (self._indentLevel < 0):
+                    self._indentLevel = 0
+                bodyText += self.prependIndentLevel() + '</section>\n<section>\n'
+                self._indentLevel += 1
                 continue
             
             if (element._elementType == self._fountainRegex.CHARACTER_TAG_PATTERN and element._isDualDialogue):
