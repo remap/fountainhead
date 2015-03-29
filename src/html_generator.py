@@ -79,16 +79,17 @@ class FountainHTMLGenerator(object):
     def generateHtmlBase(self):
         self._indentLevel = 0
         html = '<!DOCTYPE html>\n<html>\n<head>\n'
-        if (self._cssFile != ''):
-            html += '<link rel=\"stylesheet\" type=\"text/css\" href=\"' + self._cssFile + '\">\n'
-        # Note: here a <section> tag is added by default.
-        html += '</head>\n<body>\n<section>\n'
+        
         self._indentLevel += 1
         if (self._bodyText == ''):
             self._bodyText = self.bodyForScriptBase()
+        
+        if (self._cssFile != ''):
+            html += self.prependIndentLevel() + '<link rel=\"stylesheet\" type=\"text/css\" href=\"' + self._cssFile + '\">\n'
+        html += '</head>\n<body>\n<section>\n'
         html += self._bodyText 
         self._indentLevel -= 1
-        html += '</section>\n</body>\n</html>\n'
+        html += self.prependIndentLevel() + '</body>\n</html>\n</section>\n'
         return html
     
     def generateHtmlRemap(self):
@@ -96,17 +97,19 @@ class FountainHTMLGenerator(object):
         html = '<!DOCTYPE html>\n'
         html += '<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />\n'
         html += '<html>\n<head>\n'
-        if (self._cssFile != ''):
-            html += '<link rel=\"stylesheet\" type=\"text/css\" href=\"' + self._cssFile + '\">\n'
-        # bodyForScript fills self._componentList; Right now, components are supposed to end with a .html
-        for componentName in self._componentList:
-            # Note: Right now web components are expected to be .htmls only.
-            html += '<link rel=\"import\" href=\"' + self._componentParent + componentName + '.html\">\n'
-        # Note: here a <section> tag is added by default.
-        html += '</head>\n<body>\n<section>\n'
+        
         self._indentLevel += 1
         if (self._bodyText == ''):
             self._bodyText = self.bodyForScriptRemap()
+        
+        if (self._cssFile != ''):
+            html += self.prependIndentLevel() + '<link rel=\"stylesheet\" type=\"text/css\" href=\"' + self._cssFile + '\">\n'
+        # bodyForScript fills self._componentList; Right now, components are supposed to end with a .html
+        for componentName in self._componentList:
+            # Note: Right now web components are expected to be .htmls only.
+            html += self.prependIndentLevel() + '<link rel=\"import\" href=\"' + self._componentParent + componentName + '.html\">\n'
+        html += '</head>\n<body>\n<section>\n'
+        
         html += self._bodyText 
         self._indentLevel -= 1
         html += '</section>\n</body>\n</html>\n'
