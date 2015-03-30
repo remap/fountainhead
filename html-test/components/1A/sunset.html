@@ -17,8 +17,6 @@
         
         var SunsetElement = Object.create(HTMLElement.prototype);
         
-        console.log(window.CSS);
-        
         SunsetElement.createdCallback = function() {
             var shadowRoot = this.createShadowRoot();
             var clone = thatDoc.importNode(template, true);
