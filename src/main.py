@@ -26,7 +26,7 @@ from fountain_parser import ParserVersion
 import sys, getopt
 
 def usage():
-    print('main.py -v <parser version tag> -i <inputfile> -c <cssfile: relevant to outputFile path> -o <outputfile> -f <component parent folder name, relevant to outputFile path> -n <include parent folder name, relevant to outputFile path>')
+    print('main.py -v <parser version tag> -i <inputfile> -c <cssfile: relevant to outputFile path> -o <outputfile> -f <component parent folder name, relevant to outputFile path> -n <include parent folder name, relevant to outputFile path> -p <given for generate PDF with outputFile name>')
 
 def main(argv):
     parserVersion = ParserVersion.DEFAULT
@@ -35,9 +35,10 @@ def main(argv):
     cssFile = 'ScriptCSS.css'
     componentParent = 'components'
     includeParent = 'includes'
+    generatePdf = False
     
     try:
-        opts, args = getopt.getopt(argv, 'hv:i:c:o:f:n:', ['version=', 'ifile=', 'cssfile=', 'ofile=', 'compfolder=', 'incfolder='])
+        opts, args = getopt.getopt(argv, 'hv:i:c:o:f:n:p', ['version=', 'ifile=', 'cssfile=', 'ofile=', 'compfolder=', 'incfolder=', 'pdf'])
     except getopt.GetoptError:
         usage()
         sys.exit(2)
@@ -57,6 +58,8 @@ def main(argv):
             componentParent = arg
         elif opt in ['-n', '--incfolder']:
             includeParent = arg
+        elif opt in ['-p', '--pdf']:
+            generatePdf = True
             
     print('fountainhead: Input file is \'' + inputFile + '\'')
     print('fountainhead: Output file is \'' + outputFile + '\'')
@@ -79,6 +82,12 @@ def main(argv):
     file.write(htmlOutput)
     
     print('SUCCESS: HTML file written to ' + outputFile)
+    file.close()
+    
+    if generatePdf:
+        from pdf_generator import PdfGenerator
+        fountainPdf = PdfGenerator()
+        fountainPdf.run(outputFile, outputFile.replace('.html', '.pdf'))
     
 if __name__ == "__main__":
     main(sys.argv[1:])

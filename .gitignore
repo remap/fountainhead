@@ -67,3 +67,5 @@ html-test/includes/
 .DS_Store
 *.xcodeproj/*
 
+# Ignore generated PDFs
+*.pdf
