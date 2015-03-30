@@ -1,8 +1,9 @@
 <template>
+    
     <!-- Note: At this point, the character/dialogue class and cursor pointer are hardcoded in 
        - chat component, while additional classes are derived from fromNickname -->
     <p id="guide-character" class="character"></p>
-    <p id="guide-dialogue" class="dialogue" style="cursor:pointer"></p>
+    <p id="guide-dialogue" class="dialogue"></p>
 </template>
 
 <script>
@@ -68,6 +69,28 @@
                 return;
             }
             
+            // Use "inherited" style sheet
+            // Note: This may not be ideal for applying the CSS styles from window's document
+            var characterStyle = this.getStyle(window.document, ".character");
+            if (characterStyle != undefined) {
+                this.copyStyleToElement(characterStyle.style, this.characterElement);
+            }
+            
+            var dialogueStyle = this.getStyle(window.document, ".dialogue");
+            if (dialogueStyle != undefined) {
+                this.copyStyleToElement(dialogueStyle.style, this.dialogueElement);
+            }
+            
+            var specificStyle = this.getStyle(window.document, "." + this.htmlClassFromName(this.fromNickname));
+            if (specificStyle != undefined) {
+                this.copyStyleToElement(specificStyle.style, this.characterElement);
+                this.copyStyleToElement(specificStyle.style, this.dialogueElement);
+            }
+            
+            // Override cursor style for dialogue
+            this.dialogueElement.style["cursor"] = "pointer";
+            
+            // Apply text for elements
             this.characterElement.setAttribute("class", this.characterElement.getAttribute("class") + " " + this.htmlClassFromName(this.fromNickname));
             this.dialogueElement.setAttribute("class", this.dialogueElement.getAttribute("class") + " " + this.htmlClassFromName(this.fromNickname));
             
@@ -138,6 +161,24 @@
         ChatControlGuideElement.htmlClassFromName = function(fromName) {
             str = fromName.toLowerCase().replace(' ', '-');
             return str;
+        };
+        ChatControlGuideElement.getStyle = function(document, className) {
+            var classes = document.styleSheets[0].rules || document.styleSheets[0].cssRules;
+            for (var i = 0; i < classes.length; i++) {
+                if (classes[i].selectorText == className) {
+                    return classes[i];
+                }
+            }
+        };
+        ChatControlGuideElement.copyStyleToElement = function(cs, to) {
+            for (var prop in cs) {
+                if (cs[prop] != undefined && cs[prop].length > 0 && 
+                    typeof cs[prop] !== 'object' && typeof cs[prop] !== 'function' && 
+                    prop != parseInt(prop) ) {
+                    
+                    to.style[prop] = cs[prop];
+                }
+            }
         };
         window.chatControlGuideElement = thatDoc.registerElement('com-chat-control-guide', {
             prototype: ChatControlGuideElement
