@@ -1,6 +1,8 @@
 # Fountain+ Syntax
 
-Description of Fountain+ syntax used by current parser (tag name REMAP).
+Description of added Fountain+ syntax used by current parser (tag name REMAP).
+
+For basic fountain syntax, please refer to [this page](http://fountain.io/syntax).
 
 ## Web component declaration
 
