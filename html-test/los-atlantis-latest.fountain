@@ -12,7 +12,7 @@ Author: Eben Portnoy, Israel Lopez, and J. Ed Araiza
 
 [include] ndn.js
 [prefix] new Name("/ndn/edu/ucla/remap/losatlantis")
-[face] new Face({host: "localhost"})
+[face] new Face({host: "archive-dev.remap.ucla.edu"})
 
 [include] jquery-1.2.6.min.js
 [include] strophe.js
