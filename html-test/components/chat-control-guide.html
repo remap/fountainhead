@@ -8,6 +8,7 @@
 
 <script>
     // TODO: This seems to only work in Chrome, verifying.
+    // TODO: We'll want more extensive formatting to the clickable dialogue, as an ordinary <a href>; or use <a href directly>
     
     // chat-control-guide: Chat control component for the guide is an XMPP client
     //   that talks to specific JIDs
@@ -48,7 +49,7 @@
                 
             }
             
-            this.fromNickname = ''
+            this.fromNickname = '';
             if (this.hasAttribute('fromNickname')) {
                 fromNickname = this.getAttribute('fromNickname');
             } else {
