@@ -218,14 +218,22 @@ class FountainHTMLGenerator(object):
             if (element._elementType == self._fountainRegex.CHARACTER_TAG_PATTERN and element._isDualDialogue):
                 dualDialogueCharacterCount += 1
                 if (dualDialogueCharacterCount == 1):
-                    bodyText += '<div class=\'' + self._fountainRegex.DUAL_DIALOGUE_CLASS + '\'>\n'
-                    bodyText += '<div class=\'' + self._fountainRegex.DUAL_DIALOGUE_LEFT_CLASS + '\'>\n'
+                    bodyText += self.prependIndentLevel() + '<div class=\'' + self._fountainRegex.DUAL_DIALOGUE_CLASS + '\'>\n'
+                    self._indentLevel += 1
+                    bodyText += self.prependIndentLevel() + '<div class=\'' + self._fountainRegex.DUAL_DIALOGUE_LEFT_CLASS + '\'>\n'
+                    self._indentLevel += 1
                 elif (dualDialogueCharacterCount == 2):
-                    bodyText += '<div class=\'' + self._fountainRegex.DUAL_DIALOGUE_RIGHT_CLASS + '\'>\n'
+                    self._indentLevel -= 1
+                    bodyText += self.prependIndentLevel() + '</div>\n'
+                    bodyText += self.prependIndentLevel() + '<div class=\'' + self._fountainRegex.DUAL_DIALOGUE_RIGHT_CLASS + '\'>\n'
+                    self._indentLevel += 1
             
             if (dualDialogueCharacterCount >= 2 and not (element._elementType in dialogueTypes)):
                 dualDialogueCharacterCount = 0
-                bodyText += '</div>\n</div>\n'
+                self._indentLevel -= 1
+                bodyText += self.prependIndentLevel() + '</div>\n'
+                self._indentLevel -= 1
+                bodyText += self.prependIndentLevel() + '</div>\n'
             
             text = ''
             if (element._elementType == self._fountainRegex.SCENE_HEADING_PATTERN and element._sceneNumber != None):
@@ -512,11 +520,12 @@ class FountainHTMLGenerator(object):
             
             if (element._elementType == self._fountainRegex.CHARACTER_TAG_PATTERN and element._isDualDialogue):
                 dualDialogueCharacterCount += 1
+                
                 if (dualDialogueCharacterCount == 1):
                     bodyText += '<div class=\'' + self._fountainRegex.DUAL_DIALOGUE_CLASS + '\'>\n'
                     bodyText += '<div class=\'' + self._fountainRegex.DUAL_DIALOGUE_LEFT_CLASS + '\'>\n'
                 elif (dualDialogueCharacterCount == 2):
-                    bodyText += '<div class=\'' + self._fountainRegex.DUAL_DIALOGUE_RIGHT_CLASS + '\'>\n'
+                    bodyText += '</div>\n<div class=\'' + self._fountainRegex.DUAL_DIALOGUE_RIGHT_CLASS + '\'>\n'
             
             if (dualDialogueCharacterCount >= 2 and not (element._elementType in dialogueTypes)):
                 dualDialogueCharacterCount = 0
