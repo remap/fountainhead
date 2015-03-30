@@ -39,8 +39,6 @@
             this.characterElement = shadowRoot.querySelector('#muc-character');
             this.dialogueElement = shadowRoot.querySelector('#muc-dialogue');
             
-            console.log(this.characterElement);
-            
             if (this.hasAttribute('style')) {
                 var style = this.getAttribute('style');
                 this.characterElement.setAttribute("style", style);
