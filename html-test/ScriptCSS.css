@@ -243,3 +243,8 @@ p.page-break {
 .felix, .felix-def {
 	color: #6F9977;
 }
+
+.web-component {
+    color:#EEDDEE;
+    text-decoration:underline;
+}

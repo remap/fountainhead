@@ -120,6 +120,9 @@ class FountainHTMLGenerator(object):
     
     def bodyForScriptRemap(self):
         bodyText = ''
+        
+        # inScriptBody is the flag that separates meta from actual script body
+        inScriptBody = False
         # add title page
         titleElements = self._script._titlePageContents
         
@@ -498,6 +501,13 @@ class FountainHTMLGenerator(object):
                     bodyText += self.prependIndentLevel() + '</div>\n'
                     continue
                 
+                # Special generation step for the beginning of the actual script 'body'
+                if (element._elementType == self._fountainRegex.SCRIPT_BODY_CONTENT_PATTERN):
+                    inScriptBody = True
+                    bodyText += self.prependIndentLevel() + '<div id=\"' + self.htmlClassForType(self._fountainRegex.SCRIPT_BODY_CONTENT_PATTERN) + '\">\n'
+                    self._indentLevel += 1
+                    continue
+                
                 # Special generation step for web component and arguments
                 if (element._elementType == self._fountainRegex.COMPONENT_NAME_PATTERN):
                     if (not inComponent):
@@ -575,14 +585,18 @@ class FountainHTMLGenerator(object):
                 bodyText += '>' + componentDesc + '</' + componentTagName + '>\n'
                 
                 # TODO: styling for the component hyperlink
-                bodyText += self.prependIndentLevel() + '<a href=\"' + self._componentParent + componentName + '.html\">' + componentName + '</a>\n'
+                bodyText += self.prependIndentLevel() + '<a href=\"' + self._componentParent + componentName + '.html\" class=\"' + self._fountainRegex.COMPONENT_LINK_CLASS + '\">' + componentName + '</a>\n'
                 
                 generateComponent = False
                 inComponent = False
                 componentName = ''
                 componentArgs = dict()
                 componentDesc = ''
-                
+        
+        if (inScriptBody):
+            self._indentLevel -= 1
+            bodyText += self.prependIndentLevel() + '</div>'
+            
         return bodyText
     
     def componentNameToTag(self, componentName):

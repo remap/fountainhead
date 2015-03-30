@@ -1,5 +1,8 @@
 <template>
-    <p></p>
+    <!-- Note: At this point, the character/dialogue class and cursor pointer are hardcoded in 
+       - chat component, while additional classes are derived from fromNickname -->
+    <p id="muc-character" class="character"></p>
+    <p id="muc-dialogue" class="dialogue" style="cursor:pointer"></p>
 </template>
 
 <script>
@@ -17,6 +20,7 @@
     //    if not specified, the component will look for if defaultMucRoom is defined
     // @param message The message to be sent
     // @param fromNickname This user's nickname in the muc chatroom;
+    //    this name is also used for css class and the name of the dialogue character
     //    if not specified, the component will look for if defaultMucNickName is defined
     
     (function(window, document, undefined) {
@@ -32,75 +36,82 @@
             shadowRoot.appendChild(clone);
             
             // We may not want to contain these in a paragraph at some point
-            this.innerElement = shadowRoot.querySelector('p');
+            this.characterElement = shadowRoot.querySelector('#muc-character');
+            this.dialogueElement = shadowRoot.querySelector('#muc-dialogue');
             
-            if (this.hasAttribute('description')) {            
-                this.innerElement.textContent = this.getAttribute('description');
-            }
+            console.log(this.characterElement);
             
             if (this.hasAttribute('style')) {
                 var style = this.getAttribute('style');
-                this.applyStyle(this.innerElement, style);
+                this.characterElement.setAttribute("style", style);
             }
             else {
-                this.applyStyle(this.innerElement, "color:#FFFFFF");
+                
             }
+            
+            this.roomJID = '';
+            if (this.hasAttribute('roomJID')) {
+                this.roomJID = this.getAttribute('roomJID');
+            } else {
+                if (window.defaultMucRoom == undefined || window.defaultMucRoom == null || window.defaultMucRoom == '') {
+                    console.log('Room JID not specified; defaultMucRoom definition not found, either');
+                    return;
+                } else {
+                    this.roomJID = window.defaultMucRoom;
+                }
+            }
+            
+            this.fromNickname = ''
+            if (this.hasAttribute('fromNickname')) {
+                fromNickname = this.getAttribute('fromNickname');
+            } else {
+                if (window.defaultMucNickName == undefined || window.defaultMucNickName == null || window.defaultMucNickName == '') {
+                    console.log('Default nickname not specified; defaultMucNickName definition not found, either');
+                    return;
+                } else {
+                    this.fromNickname = window.defaultMucNickName;
+                }
+            }
+            
+            this.content = '';
+            
+            if (this.hasAttribute('message')) {
+                this.content = this.getAttribute('message');
+            } else {
+                console.log('Message content should not be empty');
+                return;
+            }
+            
+            this.characterElement.setAttribute("class", this.characterElement.getAttribute("class") + " " + this.htmlClassFromName(this.fromNickname));
+            this.dialogueElement.setAttribute("class", this.dialogueElement.getAttribute("class") + " " + this.htmlClassFromName(this.fromNickname));
+            
+            this.characterElement.textContent = this.fromNickname.toUpperCase();
+            this.dialogueElement.textContent = this.content;
             
             var self = this;
             
-            this.innerElement.addEventListener('click', function(){
+            this.dialogueElement.addEventListener('click', function(){
                 console.log('chatControlMuc click called');
                 if (connection == undefined || connection == null) {
                     console.log('XMPP connection not established');
                     return;
                 }
-                var roomJID = '';
-                if (self.hasAttribute('roomJID')) {
-                    roomJID = self.getAttribute('roomJID');
-                } else {
-                    if (window.defaultMucRoom == undefined || window.defaultMucRoom == null || window.defaultMucRoom == '') {
-                        console.log('Room JID not specified; defaultMucRoom definition not found, either');
-                        return;
-                    } else {
-                        roomJID = defaultMucRoom;
-                    }
-                }
-                var fromNickname = ''
-                if (self.hasAttribute('fromNickname')) {
-                    fromNickname = self.getAttribute('fromNickname');
-                } else {
-                    if (window.defaultMucNickName == undefined || window.defaultMucNickName == null || window.defaultMucNickName == '') {
-                        console.log('Default nickname not specified; defaultMucNickName definition not found, either');
-                        return;
-                    } else {
-                        fromNickname = defaultMucNickName;
-                    }
-                }
-                var content = '';
                 
-                if (self.hasAttribute('message')) {
-                    content = self.getAttribute('message');
-                } else {
-                    console.log('Message content should not be empty');
-                    return;
-                }
+                var message = $msg({
+                  "to" : self.roomJID,
+                  "type" : 'groupchat',
+                  "from_nickname" : self.fromNickname,
+                }).c("body").t(self.content);
                 
-				var message = $msg({
-				  "to" : roomJID,
-				  "type" : 'groupchat',
-				  "from_nickname" : fromNickname,
-				}).c("body").t(content);
-				
-				connection.send(message.tree()); 
+                connection.send(message.tree());
             });
-        };
-        ChatControlMucElement.applyStyle = function(comp, val) {
-            // TODO: Figuring out why ("class", val) wouldn't work, while "style" works;
-            // Is the sequence of execution of css file load and web component initiate going to matter?
-            comp.setAttribute("style", val);
         };
         ChatControlMucElement.attributeChangedCallback = function(attr, oldVal, newVal) {
             console.log('chatControlMuc onAttributeChanged stub');
+        };
+        ChatControlMucElement.htmlClassFromName = function(fromName) {
+            str = fromName.toLowerCase().replace(' ', '-');
+            return str;
         };
         window.chatControlMucElement = thatDoc.registerElement('com-chat-control-muc', {
             prototype: ChatControlMucElement

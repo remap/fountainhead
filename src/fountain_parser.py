@@ -317,7 +317,7 @@ class Parser(object):
     def metaOfBody(self, string):
         parts = re.split(self._fountainRegex.SCRIPT_BODY_PATTERN, string, 1)
         if len(parts) > 1:
-            return parts[0]
+            return parts[0] + self._fountainRegex.SCRIPT_BODY_ADDON_PATTERN
         return 
     
     def bodyOfBody(self, string):
@@ -363,7 +363,7 @@ class Parser(object):
                 if match:
                     print('Meta: match found for ' + patterns[i] + '\n')
             scriptContent = re.sub(patterns[i], templates[i], scriptContent)
-        
+            
         if __debug__:
             print(scriptContent)
         

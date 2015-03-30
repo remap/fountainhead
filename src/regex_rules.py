@@ -255,6 +255,8 @@ class FountainRegexRemap(FountainRegexBase):
     # Note: right now, we don't do double quotes; This split rule is only used in the generator, which does another pass + generation
     COMPONENT_ARGUMENTS_SPLIT          = '(?:[^,[(\']|\\[[^]]*\\]|\\([^)]*\\)|\'[^\']*\')+'
     
+    # The CSS style for component links generated with the parser.
+    COMPONENT_LINK_CLASS               = 'xref-code'
     
     # Spec name: Character header
     # Spec syntax: # Character ... # next part
@@ -313,6 +315,11 @@ class FountainRegexRemap(FountainRegexBase):
     # Description: Everything after body will be matched against _patterns, and replaced with _templates.
     SCRIPT_BODY_PATTERN                   = '# [Bb][Oo][Dd][Yy]'
     
+    # Spec name: Script body addon
+    # After using the above body tag to separate the script, we use this pattern to notify the generated html to start a new div
+    SCRIPT_BODY_ADDON_PATTERN             = '# Body'
+    SCRIPT_BODY_CONTENT_PATTERN           = 'ScriptBody'
+    SCRIPT_BODY_TEMPLATE                  = '<' + SCRIPT_BODY_CONTENT_PATTERN + '>ScriptBodyNotification' + '</' + SCRIPT_BODY_CONTENT_PATTERN + '>\n'
     
     # TODO: Argument parsing. Right now we don't do nested Component/CompArg definition
     def __init__(self):
@@ -323,9 +330,11 @@ class FountainRegexRemap(FountainRegexBase):
         self._templates.append(self.WEB_COMPONENT_TEMPLATE)
         
         self._metaPatterns = [self.META_CHARACTER_HEADER_PATTERN, self.META_SETTING_HEADER_PATTERN, 
-                              self.META_CHARACTER_TYPE_HEADER_PATTERN, self.META_ENVIRONMENT_HEADER_PATTERN]
+                              self.META_CHARACTER_TYPE_HEADER_PATTERN, self.META_ENVIRONMENT_HEADER_PATTERN,
+                              self.SCRIPT_BODY_PATTERN]
         self._metaTemplates = [self.META_CHARACTER_HEADER_TEMPLATE, self.META_SETTING_HEADER_TEMPLATE,
-                               self.META_CHARACTER_TYPE_HEADER_TEMPLATE, self.META_ENVIRONMENT_HEADER_TEMPLATE]
+                               self.META_CHARACTER_TYPE_HEADER_TEMPLATE, self.META_ENVIRONMENT_HEADER_TEMPLATE,
+                               self.SCRIPT_BODY_TEMPLATE]
         
         return
     

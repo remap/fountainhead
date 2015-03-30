@@ -1,5 +1,8 @@
 <template>
-    <p></p>
+    <!-- Note: At this point, the character/dialogue class and cursor pointer are hardcoded in 
+       - chat component, while additional classes are derived from fromNickname -->
+    <p id="guide-character" class="character"></p>
+    <p id="guide-dialogue" class="dialogue" style="cursor:pointer"></p>
 </template>
 
 <script>
@@ -17,7 +20,7 @@
     //    if not specified, the component will talk to all users
     // @param message The message to be sent
     // @param fromNickname This user's nickname in the muc chatroom;
-    //    if not specified, the component will look for if defaultMucNickName is defined
+    //    if not specified, the component will look for if defaultChatNickName is defined
     
     (function(window, document, undefined) {
         var thatDoc = document;
@@ -32,52 +35,55 @@
             shadowRoot.appendChild(clone);
             
             // We may not want to contain these in a paragraph at some point
-            this.innerElement = shadowRoot.querySelector('p');
+            this.characterElement = shadowRoot.querySelector('#guide-character');
+            this.dialogueElement = shadowRoot.querySelector('#guide-dialogue');
             
-            if (this.hasAttribute('description')) {            
-                this.innerElement.textContent = this.getAttribute('description');
+            this.userJID = '';
+            if (this.hasAttribute('userJID')) {
+                this.userJID = this.getAttribute('userJID');
+                console.log('To UserJID is specified, unexpected behavior.');
+                return;
+            } else {
+                
             }
             
-            if (this.hasAttribute('style')) {
-                var style = this.getAttribute('style');
-                this.applyStyle(this.innerElement, style);
+            this.fromNickname = ''
+            if (this.hasAttribute('fromNickname')) {
+                fromNickname = this.getAttribute('fromNickname');
+            } else {
+                if (window.defaultChatNickName == undefined || window.defaultChatNickName == null || window.defaultChatNickName == '') {
+                    console.log('Default nickname not specified; defaultChatNickName definition not found, either');
+                    return;
+                } else {
+                    this.fromNickname = window.defaultChatNickName;
+                }
             }
-            else {
-                this.applyStyle(this.innerElement, "color:#FFFFFF");
+            
+            this.content = '';
+            
+            if (this.hasAttribute('message')) {
+                this.content = this.getAttribute('message');
+            } else {
+                console.log('Message content should not be empty');
+                return;
             }
+            
+            this.characterElement.setAttribute("class", this.characterElement.getAttribute("class") + " " + this.htmlClassFromName(this.fromNickname));
+            this.dialogueElement.setAttribute("class", this.dialogueElement.getAttribute("class") + " " + this.htmlClassFromName(this.fromNickname));
+            
+            this.characterElement.textContent = this.fromNickname.toUpperCase();
+            this.dialogueElement.textContent = this.content;
             
             var self = this;
             
-            this.innerElement.addEventListener('click', function(){
+            this.dialogueElement.addEventListener('click', function(){
                 console.log('chatControlGuide click called');
                 if (connection == undefined || connection == null) {
                     console.log('XMPP connection not established');
                     return;
                 }
-                var userJID = '';
-                if (self.hasAttribute('userJID')) {
-                    userJID = self.getAttribute('userJID');
-                    console.log('UserJID is specified, unexpected behavior.');
-                    return;
-                } else {
-                    
-                }
-                var fromNickname = ''
-                if (self.hasAttribute('fromNickname')) {
-                    fromNickname = self.getAttribute('fromNickname');
-                } else {
-                    if (window.defaultMucNickName == undefined || window.defaultMucNickName == null || window.defaultMucNickName == '') {
-                        console.log('Default nickname not specified; defaultMucNickName definition not found, either');
-                        return;
-                    } else {
-                        fromNickname = defaultMucNickName;
-                    }
-                }
-                var content = '';
                 
-                if (self.hasAttribute('message')) {
-                    content = self.getAttribute('message');
-                    
+                if (self.content != '') {
                     /*
                     var matchedResult = content.match(/{{\s+(\w+)\s+}}?/g);
                     
@@ -103,15 +109,15 @@
                             
                             // Note: we'll probably want a model class that reflects the users table schema
                             for (var i = 0; i < result.length; i++) {
-                                var contentSent = content.replace(/{{\s+(email)\s+}}?/g, result[i][0])
-                                                     .replace(/{{\s+(user_name)\s+}}?/g, result[i][1])
-                                                     .replace(/{{\s+(type)\s+}}?/g, result[i][2]);
+                                var contentSent = self.content.replace(/{{\s+(email)\s+}}?/g, result[i][0])
+                                                      .replace(/{{\s+(user_name)\s+}}?/g, result[i][1])
+                                                      .replace(/{{\s+(type)\s+}}?/g, result[i][2]);
                             
                                 var message = $msg({
                                     // Note: here we also use the jabber account name inference
                                     "to" : result[i][0].replace('@', '.') + '@archive-dev.remap.ucla.edu',
                                     "type" : "chat",
-                                    "from_nickname" : fromNickname
+                                    "from_nickname" : self.fromNickname
                                 }).c("body").t(contentSent);
                                 
                                 connection.send(message.tree()); 
@@ -126,13 +132,12 @@
                 }
             });
         };
-        ChatControlGuideElement.applyStyle = function(comp, val) {
-            // TODO: Figuring out why ("class", val) wouldn't work, while "style" works;
-            // Is the sequence of execution of css file load and web component initiate going to matter?
-            comp.setAttribute("style", val);
-        };
         ChatControlGuideElement.attributeChangedCallback = function(attr, oldVal, newVal) {
             console.log('chatControlMuc onAttributeChanged stub');
+        };
+        ChatControlGuideElement.htmlClassFromName = function(fromName) {
+            str = fromName.toLowerCase().replace(' ', '-');
+            return str;
         };
         window.chatControlGuideElement = thatDoc.registerElement('com-chat-control-guide', {
             prototype: ChatControlGuideElement
