@@ -163,9 +163,13 @@ class Parser(object):
                 # Replacement for original do-while loop
                 while True:
                     previousElement = elementsArray[j]
+                    
                     if (previousElement._elementType == self._fountainRegex.CHARACTER_TAG_PATTERN):
                         previousElement._isDualDialogue = True
                         previousElement._elementText = re.sub(self._fountainRegex.DUAL_DIALOGUE_ANGLE_MARK_PATTERN, self._fountainRegex.EMPTY_REPLACEMENT, previousElement._elementText)
+                        # Note: This differs from the example parser's behavior, too; they don't break here
+                        break
+                        
                     j -= 1
                     if (j < 0 or (previousElement._elementType != self._fountainRegex.DIALOGUE_TAG_PATTERN and previousElement._elementType != self._fountainRegex.PARENTHETICAL_TAG_PATTERN)):
                         break
