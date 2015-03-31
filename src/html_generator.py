@@ -182,7 +182,7 @@ class FountainHTMLGenerator(object):
             bodyText += self.prependIndentLevel() + '</div>\n'
             
         # Page breaks are not handled in current HTML output
-        dialogueTypes = [self._fountainRegex.CHARACTER_TAG_PATTERN, self._fountainRegex.DIALOGUE_TAG_PATTERN, self._fountainRegex.PARENTHETICAL_TAG_PATTERN]
+        dialogueTypes = [self._fountainRegex.DIALOGUE_TAG_PATTERN, self._fountainRegex.PARENTHETICAL_TAG_PATTERN]
         ignoreTypes = [self._fountainRegex.BONEYARD_TAG_PATTERN, self._fountainRegex.COMMENT_TAG_PATTERN, self._fountainRegex.SYNOPSIS_TAG_PATTERN, self._fountainRegex.SECTION_HEADING_PATTERN]
         
         dualDialogueCharacterCount = 0
@@ -206,8 +206,12 @@ class FountainHTMLGenerator(object):
             
         prevTag = ''
         prevType = ''
-            
+        
+        skipDualDialogueEnd = False
+        
         for element in elements:
+            skipDualDialogueEnd = False
+            
             if (element._elementType in ignoreTypes):
                 continue
             
@@ -227,8 +231,10 @@ class FountainHTMLGenerator(object):
                     bodyText += self.prependIndentLevel() + '</div>\n'
                     bodyText += self.prependIndentLevel() + '<div class=\'' + self._fountainRegex.DUAL_DIALOGUE_RIGHT_CLASS + '\'>\n'
                     self._indentLevel += 1
+                    skipDualDialogueEnd = True
             
-            if (dualDialogueCharacterCount >= 2 and not (element._elementType in dialogueTypes)):
+            # Note: this part differs from our example in ObjC, since theirs would include all following dual dialogues in right div
+            if ((not skipDualDialogueEnd) and dualDialogueCharacterCount >= 2 and (not (element._elementType in dialogueTypes))):
                 dualDialogueCharacterCount = 0
                 self._indentLevel -= 1
                 bodyText += self.prependIndentLevel() + '</div>\n'
@@ -500,7 +506,7 @@ class FountainHTMLGenerator(object):
             bodyText += '</div>'
             
         # Page breaks are not handled in current HTML output
-        dialogueTypes = [self._fountainRegex.CHARACTER_TAG_PATTERN, self._fountainRegex.DIALOGUE_TAG_PATTERN, self._fountainRegex.PARENTHETICAL_TAG_PATTERN]
+        dialogueTypes = [self._fountainRegex.DIALOGUE_TAG_PATTERN, self._fountainRegex.PARENTHETICAL_TAG_PATTERN]
         ignoreTypes = [self._fountainRegex.BONEYARD_TAG_PATTERN, self._fountainRegex.COMMENT_TAG_PATTERN, self._fountainRegex.SYNOPSIS_TAG_PATTERN, self._fountainRegex.SECTION_HEADING_PATTERN]
         
         dualDialogueCharacterCount = 0
