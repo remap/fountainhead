@@ -74,6 +74,7 @@
             // Note: This may not be ideal for applying the CSS styles from window's document
             var characterStyle = this.getStyle(window.document, ".character");
             if (characterStyle != undefined) {
+                console.log("*** defined! ***");
                 this.copyStyleToElement(characterStyle.style, this.characterElement);
             }
             

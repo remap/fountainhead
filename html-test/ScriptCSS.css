@@ -310,3 +310,33 @@ a:hover {
 
 .felix, .felix-def {
 }
+
+/**
+ * The inheritance on these haven't been figured out yet.
+ */
+
+.the-observatory {
+    margin: 1.3em auto 0;
+	width: 180px;
+    color: #ECE47E;
+}
+
+.the-observatory-dialogue {
+    color: #ECE47E;
+    margin: 0 auto;
+	width: 400px;
+	text-decoration: underline;
+}
+
+.the-guide {
+    margin: 1.3em auto 0;
+	width: 180px;
+    color: #ECE47E;
+}
+
+.the-guide-dialogue {
+    color: #ECE47E;
+    margin: 0 auto;
+	width: 400px;
+	text-decoration: underline;
+}
