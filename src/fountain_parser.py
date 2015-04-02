@@ -263,6 +263,10 @@ class Parser(object):
     def parseTitlePageOfStringBase(self, string):
         pageTitle = self.titlePageOfString(string)
         contents = {}
+        
+        if not pageTitle:
+            return contents
+            
         openDirective = ''
         directiveData = []
         
