@@ -4,7 +4,7 @@
     <script src="includes/ndn.js"></script>
 
     <script>
-      var DefaultName1A = "/ndn/edu/ucla/remap/losatlantis/chocolate_cookie_show/ritual/1A/1A_sunset_1/url/";
+      var DefaultName1A = "/ndn/edu/ucla/remap/losatlantis/chocolate_cookie_show/ritual/1A/1A_departure_1/url/";
       var DefaultName1B = "/ndn/edu/ucla/remap/losatlantis/chocolate_cookie_show/ritual/1B/1B_long_way_from_home_1/url/";
       var DefaultName1C = "/ndn/edu/ucla/remap/losatlantis/chocolate_cookie_show/ritual/1C/1C_polaroids_1/url/";
       var DefaultName1D = "/ndn/edu/ucla/remap/losatlantis/chocolate_cookie_show/ritual/1D/1D_underpass_1/url/";
@@ -17,11 +17,6 @@
       var face = new Face({host: ndnHost});
       
       var memoryContentCache = new MemoryContentCache(face);
-      
-      // Note: here we still don't have a in-application PIT to answer outstanding interest
-      this.memoryContentCache.registerPrefix(Name(prefix), function () {
-        console.log("Register failed for prefix: " + prefix);
-      });
       
       window.onload = function() {
         document.getElementById("ritual_1A_ndn_name").value = DefaultName1A;
@@ -69,6 +64,12 @@
     </script>
     
     <script src="includes/ndn-init.js"></script>
+    <script>
+      // Note: here we still don't have a in-application PIT to answer outstanding interest
+      memoryContentCache.registerPrefix(Name(prefix), function () {
+        console.log("Register failed for prefix: " + prefix);
+      });
+    </script>
   </head>
   
   <!-- Hide and show script elements for different classes of viewers -->
@@ -151,7 +152,7 @@
       <button id="register_btn">Register prefix</button>
       
       <dt>NDN name:
-      <dd><input type="text" id="ndn_name_edit" name="ndn_name_edit" value="/ndn/edu/ucla/remap/losatlantis/chocolate_cookie_show/rituals/1A/1A_sunset_url" size=80></input>
+      <dd><input type="text" id="ndn_name_edit" name="ndn_name_edit" value="/ndn/edu/ucla/remap/losatlantis/chocolate_cookie_show/rituals/1A/1A_departure_1" size=80></input>
       
       <dt>Text content:
       <dd><input type="text" id="text_content_edit" name="text_content_edit" size=40></input>
