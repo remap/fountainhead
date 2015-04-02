@@ -93,9 +93,12 @@
             }
             
             var specificStyle = this.getStyle(window.document, "." + this.htmlClassFromName(this.fromNickname));
+            var specificDialogueStyle = this.getStyle(window.document, "." + this.htmlClassFromName(this.fromNickname) + "-dialogue");
             if (specificStyle != undefined) {
                 this.copyStyleToElement(specificStyle.style, this.characterElement);
-                this.copyStyleToElement(specificStyle.style, this.dialogueElement);
+            }
+            if (specificDialogueStyle != undefined) {
+                this.copyStyleToElement(specificDialogueStyle.style, this.dialogueElement);
             }
             
             // Override cursor style for dialogue
@@ -103,7 +106,7 @@
             
             // Apply text for elements
             this.characterElement.setAttribute("class", this.characterElement.getAttribute("class") + " " + this.htmlClassFromName(this.fromNickname));
-            this.dialogueElement.setAttribute("class", this.dialogueElement.getAttribute("class") + " " + this.htmlClassFromName(this.fromNickname));
+            this.dialogueElement.setAttribute("class", this.dialogueElement.getAttribute("class") + " " + this.htmlClassFromName(this.fromNickname) + "-dialogue");
             
             this.characterElement.textContent = this.fromNickname.toUpperCase();
             this.dialogueElement.textContent = this.content;

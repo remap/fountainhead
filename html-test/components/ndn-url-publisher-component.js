@@ -133,13 +133,13 @@ function createVideoControlComponent(componentName, ndnSuffix, urlTableName, win
         this.innerElement.addEventListener('click', function(){
             var index = Math.floor((Math.random() * (self.resultURLs.length)));
             self.videoURL = self.resultURLs[index];
-        
-            if (self.videoURL != '') {
+            
+            if (self.videoURL && self.videoURL != '') {
             
                 var data = new Data(self.namePrefix);
                 // Note: for now, the names are hard-coded, since namespace design is not fully discussed
-            
-                data.getName().append(self.showid).append(ndnSuffix).appendVersion((new Date).getTime());
+                var suffixName = new Name(ndnSuffix);
+                data.getName().append(self.showid).append(suffixName).appendVersion((new Date).getTime());
                 if (!self.empty) {
                     data.setContent(self.videoURL);
                     self.empty = true;
@@ -150,7 +150,9 @@ function createVideoControlComponent(componentName, ndnSuffix, urlTableName, win
                 // TODO: Arbitrary data freshness period
                 data.getMetaInfo().setFreshnessPeriod(2000);
                 data.sign();
-            
+                
+                console.log(data.getName().toUri());
+                
                 self.memoryContentCache.add(data);
                 console.log('NDN content published. Name: ' + data.getName().toUri() + '; Content: ' + data.getContent().buf().toString());
             } else {
