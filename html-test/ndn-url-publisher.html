@@ -65,8 +65,10 @@
     
     <script src="includes/ndn-init.js"></script>
     <script>
+      var namePrefix = new Name(prefix);
+      
       // Note: here we still don't have a in-application PIT to answer outstanding interest
-      memoryContentCache.registerPrefix(Name(prefix), function () {
+      memoryContentCache.registerPrefix(namePrefix, function () {
         console.log("Register failed for prefix: " + prefix);
       });
     </script>
