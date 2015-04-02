@@ -1,0 +1,165 @@
+<html>
+  <head>
+    <title>NDN url publisher to control touch designer</title>
+    <script src="includes/ndn.js"></script>
+
+    <script>
+      var DefaultName1A = "/ndn/edu/ucla/remap/losatlantis/chocolate_cookie_show/ritual/1A/1A_sunset_1/url/";
+      var DefaultName1B = "/ndn/edu/ucla/remap/losatlantis/chocolate_cookie_show/ritual/1B/1B_long_way_from_home_1/url/";
+      var DefaultName1C = "/ndn/edu/ucla/remap/losatlantis/chocolate_cookie_show/ritual/1C/1C_polaroids_1/url/";
+      var DefaultName1D = "/ndn/edu/ucla/remap/losatlantis/chocolate_cookie_show/ritual/1D/1D_underpass_1/url/";
+      
+      var ndnHost = "archive-dev.remap.ucla.edu";
+      var prefix = "/ndn/edu/ucla/remap/losatlantis";
+    </script>
+
+    <script>
+      var face = new Face({host: ndnHost});
+      
+      var memoryContentCache = new MemoryContentCache(face);
+      
+      // Note: here we still don't have a in-application PIT to answer outstanding interest
+      this.memoryContentCache.registerPrefix(Name(prefix), function () {
+        console.log("Register failed for prefix: " + prefix);
+      });
+      
+      window.onload = function() {
+        document.getElementById("ritual_1A_ndn_name").value = DefaultName1A;
+        document.getElementById("ritual_1B_ndn_name").value = DefaultName1B;
+        document.getElementById("ritual_1C_ndn_name").value = DefaultName1C;
+        document.getElementById("ritual_1D_ndn_name").value = DefaultName1D;
+        
+        document.getElementById("ritual_1A_publish_btn").addEventListener
+          ("click", function() {
+            publishContent(document.getElementById("ritual_1A_url_edit").value, document.getElementById("ritual_1A_ndn_name").value, true)
+          });
+        document.getElementById("ritual_1B_publish_btn").addEventListener
+          ("click", function() {
+            publishContent(document.getElementById("ritual_1B_url_edit").value, document.getElementById("ritual_1B_ndn_name").value, true)
+          });
+        document.getElementById("ritual_1C_publish_btn").addEventListener
+          ("click", function() {
+            publishContent(document.getElementById("ritual_1C_url_edit").value, document.getElementById("ritual_1C_ndn_name").value, true)
+          });
+        document.getElementById("ritual_1D_publish_btn").addEventListener
+          ("click", function() {
+            publishContent(document.getElementById("ritual_1D_url_edit").value, document.getElementById("ritual_1D_ndn_name").value, true)
+          });
+      };
+      
+      function publishContent(content, ndnName, appendVersion)
+      {
+        var data = new Data(ndnName);
+        // Note: for now, the names are hard-coded, since namespace design is not fully discussed
+
+        if (appendVersion) {
+          data.getName().appendVersion((new Date).getTime());
+        } else {
+          
+        }
+        data.setContent(content);
+        
+        // TODO: Arbitrary data freshness period
+        data.getMetaInfo().setFreshnessPeriod(2000);
+        data.sign();
+        
+        self.memoryContentCache.add(data);
+        console.log('NDN content published. Name: ' + data.getName().toUri() + '; Content: ' + data.getContent().buf().toString());
+      }
+    </script>
+    
+    <script src="includes/ndn-init.js"></script>
+  </head>
+  
+  <!-- Hide and show script elements for different classes of viewers -->
+  
+  <body>
+    Touchbox control: <br><br>
+    <table>
+      <tr>
+        <td>Ritual 1A:</td>
+      </tr>
+      <tr> 
+        <td>video url:</td> 
+        <td><input type="text" id="ritual_1A_url_edit" name="ritual_1A_url_edit" value="" size=80></input></td>
+      </tr>
+      <tr>
+        <td>NDN name:</td> 
+        <td><input type="text" id="ritual_1A_ndn_name" name="ritual_1A_ndn_name" value="" size=80></input></td>
+      </tr>
+      <tr>
+        <td><button id="ritual_1A_publish_btn" name="ritual_1A_publish_btn">Publish 1A</button></td>
+      </tr>
+    </table>
+    <br>
+    <table>
+      <tr>
+        <td>Ritual 1B:</td>
+      </tr>
+      <tr> 
+        <td>video url:</td> 
+        <td><input type="text" id="ritual_1B_url_edit" name="ritual_1B_url_edit" value="" size=80></input></td>
+      </tr>
+      <tr>
+        <td>NDN name:</td> 
+        <td><input type="text" id="ritual_1B_ndn_name" name="ritual_1B_ndn_name" value="" size=80></input></td>
+      </tr>
+      <tr>
+        <td><button id="ritual_1B_publish_btn" name="ritual_1B_publish_btn">Publish 1B</button></td>
+      </tr>
+    </table>
+    <br>
+    <table>
+      <tr>
+        <td>Ritual 1C:</td>
+      </tr>
+      <tr> 
+        <td>video url:</td> 
+        <td><input type="text" id="ritual_1C_url_edit" name="ritual_1C_url_edit" value="" size=80></input></td>
+      </tr>
+      <tr>
+        <td>NDN name:</td> 
+        <td><input type="text" id="ritual_1C_ndn_name" name="ritual_1C_ndn_name" value="" size=80></input></td>
+      </tr>
+      <tr>
+        <td><button id="ritual_1C_publish_btn" name="ritual_1C_publish_btn">Publish 1C</button></td>
+      </tr>
+    </table>
+    <br>
+    <table>
+      <tr>
+        <td>Ritual 1D:</td>
+      </tr>
+      <tr> 
+        <td>video url:</td> 
+        <td><input type="text" id="ritual_1D_url_edit" name="ritual_1D_url_edit" value="" size=80></input></td>
+      </tr>
+      <tr>
+        <td>NDN name:</td> 
+        <td><input type="text" id="ritual_1D_ndn_name" name="ritual_1D_ndn_name" value="" size=80></input></td>
+      </tr>
+      <tr>
+        <td><button id="ritual_1D_publish_btn" name="ritual_1D_publish_btn">Publish 1D</button></td>
+      </tr>
+    </table>
+    <!--
+    Customize control:
+    <dl>
+      <dt>NDN prefix:
+      
+      <dd><input type="text" id="prefix_edit" name="prefix_edit" value="/ndn/edu/ucla/remap/losatlantis" size=80></input><br>
+      <button id="register_btn">Register prefix</button>
+      
+      <dt>NDN name:
+      <dd><input type="text" id="ndn_name_edit" name="ndn_name_edit" value="/ndn/edu/ucla/remap/losatlantis/chocolate_cookie_show/rituals/1A/1A_sunset_url" size=80></input>
+      
+      <dt>Text content:
+      <dd><input type="text" id="text_content_edit" name="text_content_edit" size=40></input>
+      
+      <dt><input type="checkbox" name="includeVersionCbox" value="">Append version</input><br><br>
+      
+      <button id="publish_btn">Publish</button>
+    </dl>
+    -->
+  </body>
+</html>

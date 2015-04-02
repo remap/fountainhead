@@ -127,6 +127,9 @@
             // TODO: what happens when multiple producers.
             
             this.innerElement.addEventListener('click', function(){
+                var index = Math.floor((Math.random() * (self.resultURLs.length)));
+                self.videoURL = self.resultURLs[index];
+                
                 if (self.videoURL != '') {
                     
                     var data = new Data(self.namePrefix);
