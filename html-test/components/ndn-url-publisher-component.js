@@ -5,6 +5,12 @@ Config = {
     ndnPrefix: '/ndn/edu/ucla/remap/losatlantis'
 };
 
+// Turn a parameter string into an array
+function JSONStringToArray(string) {
+    var array = JSON.parse(string);
+    return array;
+}
+
 // Name for published content: [Config.ndnPrefix]/[ndnSuffix]/<version>
 // The suffix usually consists of 'ritual/1A/1A_sunset_1/url'
 
@@ -98,10 +104,10 @@ function createVideoControlComponent(componentName, ndnSuffix, urlTableName, win
         // videoURL is the random selected URL among all that's returned.
         this.videoURL = '';
         var self = this;
-    
+        
         var data = new FormData();
         data.append('query', 'select * from ' + urlTableName + ';');
-
+        
         var xhr = new XMLHttpRequest();
         // Note: POST is using hardcoded URL with my test server; server currently set to accept request originated from all.
         // Note: seems that right now the random video URL should be chosen onLoad, instead of onClick; need to confirm
@@ -119,7 +125,7 @@ function createVideoControlComponent(componentName, ndnSuffix, urlTableName, win
             }
         };
         xhr.send(data);
-    
+        
         this.empty = false;
         // TODO: unique ID is not updated to the given window right now.
         // TODO: what happens when multiple producers.
@@ -162,10 +168,4 @@ function createVideoControlComponent(componentName, ndnSuffix, urlTableName, win
     thatDoc.registerElement(componentName, {
         prototype: VideoControlElement
     });
-}
-
-// Turn a parameter string into an array
-function JSONStringToArray(string) {
-    var array = JSON.parse(string);
-    return array;
 }
