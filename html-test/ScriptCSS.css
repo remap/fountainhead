@@ -210,10 +210,12 @@ hr {
 }
 .dual-dialogue {
 	overflow: hidden;
+	margin: 0 auto;
+	width: 600px;
 }
 .dual-dialogue .dual-dialogue-left,
 .dual-dialogue .dual-dialogue-right {
-	width: 228px;
+	width: 48%;
 	float: left;
 }
 .dual-dialogue p {
