@@ -74,7 +74,6 @@
             // Note: This may not be ideal for applying the CSS styles from window's document
             var characterStyle = this.getStyle(window.document, ".character");
             if (characterStyle != undefined) {
-                console.log("*** defined! ***");
                 this.copyStyleToElement(characterStyle.style, this.characterElement);
             }
             
@@ -132,8 +131,6 @@
                     xhr.onload = function () {
                         var result = JSON.parse(this.responseText);
                         if (result !== undefined && result !== null && result.length > 0) {
-                            console.log(result);
-                            
                             // Note: we'll probably want a model class that reflects the users table schema
                             for (var i = 0; i < result.length; i++) {
                                 var contentSent = self.content.replace(/{{\s+(email)\s+}}?/g, result[i][0])
