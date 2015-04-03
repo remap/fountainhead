@@ -58,7 +58,7 @@
         data.getMetaInfo().setFreshnessPeriod(2000);
         data.sign();
         
-        self.memoryContentCache.add(data);
+        memoryContentCache.add(data);
         console.log('NDN content published. Name: ' + data.getName().toUri() + '; Content: ' + data.getContent().buf().toString());
       }
     </script>

@@ -112,3 +112,25 @@ privateKeyStorage.setKeyPairForKeyName
  (keyName, KeyType.RSA, DEFAULT_RSA_PUBLIC_KEY_DER, DEFAULT_RSA_PRIVATE_KEY_DER);
 
 face.setCommandSigningInfo(keyChain, certificateName);
+
+var ritualNames = 
+["/ndn/edu/ucla/remap/losatlantis/chocolate_cookie_show/ritual/1A/1A_departure_1/url/",
+ "/ndn/edu/ucla/remap/losatlantis/chocolate_cookie_show/ritual/1B/1B_long_way_from_home_1/url/",
+ "/ndn/edu/ucla/remap/losatlantis/chocolate_cookie_show/ritual/1C/1C_polaroids_1/url/",
+ "/ndn/edu/ucla/remap/losatlantis/chocolate_cookie_show/ritual/1D/1D_underpass_1/url/"];
+
+function publishContent(content, ritualID)
+{
+  var data = new Data(ritualNames[ritualID]);
+  // Note: for now, the names are hard-coded, since namespace design is not fully discussed
+
+  data.getName().appendVersion((new Date).getTime());
+  data.setContent(content);
+  
+  // TODO: Arbitrary data freshness period
+  data.getMetaInfo().setFreshnessPeriod(2000);
+  data.sign();
+  
+  memoryContentCache.add(data);
+  console.log('NDN content published. Name: ' + data.getName().toUri() + '; Content: ' + data.getContent().buf().toString());
+}

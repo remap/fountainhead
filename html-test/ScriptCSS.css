@@ -340,3 +340,13 @@ a:hover {
 	width: 400px;
 	text-decoration: underline;
 }
+
+/* Temporary CSS styles */
+#manual_links p {
+    cursor:pointer; 
+    text-decoration:none;
+}
+
+#manual_links p:hover {
+    text-decoration:underline;
+}
