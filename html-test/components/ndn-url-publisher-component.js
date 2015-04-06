@@ -14,6 +14,11 @@ function JSONStringToArray(string) {
 // Name for published content: [Config.ndnPrefix]/[ndnSuffix]/<version>
 // The suffix usually consists of 'ritual/1A/1A_sunset_1/url'
 
+/**
+ * Create and register a web component of given name, which queries a given table in 
+ * the database, selects an URL, and publish that URL under given name when clicked
+ */
+ 
 function createVideoControlComponent(componentName, ndnSuffix, urlTableName, window, document) {
     var thatDoc = document;
     var thisDoc =  (thatDoc._currentScript || thatDoc.currentScript).ownerDocument;
@@ -121,7 +126,7 @@ function createVideoControlComponent(componentName, ndnSuffix, urlTableName, win
             
                 var index = Math.floor((Math.random() * (self.resultURLs.length)));
                 self.videoURL = self.resultURLs[index];
-                console.log('com-1a-sunset: chosen URL: ' + self.videoURL);
+                console.log(componentName + ': chosen URL: ' + self.videoURL);
             }
         };
         xhr.send(data);
