@@ -1,17 +1,14 @@
 <template>
-    <p></p>
+  <p></p>
 </template>
-
-<script src="../../includes/ndn.js"></script>
-<script src="../ndn-url-publisher-component.js"></script>
 
 <script>
 
-    // TODO: This seems to only work in Chrome, verifying. There is a flag in Firefox that needs to be set to true
-    // TODO: First click does not seem to work? Second and third works? Verifying
+  // TODO: This seems to only work in Chrome, verifying. There is a flag in Firefox that needs to be set to true
+  // TODO: First click does not seem to work? Second and third works? Verifying
 
-    (function(window, document, undefined) {
-        createVideoControlComponent('com-1d-underpass', 'ritual/1D/1D_underpass_1/url', 'underpass', window, document);    
-    })(window, document);
-    
+  (function(window, document, undefined) {
+    window.ndnURLPublisherFactory.createVideoControlComponent('com-1d-underpass', 'ritual/1D/1D_underpass_1/url', 'underpass', window, document);  
+  })(window, document);
+  
 </script>

@@ -3,12 +3,6 @@
 <html>
 <head>
   <link rel="stylesheet" type="text/css" href="ScriptCSS.css">
-  <link rel="import" href="components/chat-control-guide.html">
-  <link rel="import" href="components/chat-control-muc.html">
-  <link rel="import" href="components/1A/departures.html">
-  <link rel="import" href="components/1B/long-way-from-home.html">
-  <link rel="import" href="components/1C/polaroids.html">
-  <link rel="import" href="components/1D/underpass.html">
 </head>
 <body>
 <section>
@@ -26,6 +20,9 @@ var prefix = new Name("/ndn/edu/ucla/remap/losatlantis");
 var face = new Face({host: "archive-dev.remap.ucla.edu"});
   </script>
   <script src="includes/ndn-init.js"></script>
+  <script>
+  </script>
+  <script src="includes/ndn-url-publisher-component.js"></script>
   <script>
 var defaultChatNickName = "The guide";
 var chatJID = "admin.admin@archive-dev.remap.ucla.edu";
@@ -51,6 +48,15 @@ var connection = new Strophe.Connection(hostXMPPHttpBind);;
   <script src="includes/script-control.js"></script>
   <script>
   </script>
+  <script src="includes/onload.js"></script>
+  <script>
+  </script>
+  <link rel="import" href="components/chat-control-guide.html">
+  <link rel="import" href="components/chat-control-muc.html">
+  <link rel="import" href="components/1A/departures.html">
+  <link rel="import" href="components/1B/long-way-from-home.html">
+  <link rel="import" href="components/1C/polaroids.html">
+  <link rel="import" href="components/1D/underpass.html">
   <div id="charactertypecontent">
     <table>
     <td>

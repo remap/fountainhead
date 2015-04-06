@@ -104,10 +104,7 @@ class FountainHTMLGenerator(object):
         
         if (self._cssFile != ''):
             html += self.prependIndentLevel() + '<link rel=\"stylesheet\" type=\"text/css\" href=\"' + self._cssFile + '\">\n'
-        # bodyForScript fills self._componentList; Right now, components are supposed to end with a .html
-        for componentName in self._componentList:
-            # Note: Right now web components are expected to be .htmls only.
-            html += self.prependIndentLevel() + '<link rel=\"import\" href=\"' + self._componentParent + componentName + '.html\">\n'
+        
         html += '</head>\n<body>\n<section>\n'
         
         html += self._bodyText 
@@ -115,9 +112,12 @@ class FountainHTMLGenerator(object):
         html += '</section>\n</body>\n</html>\n'
         return html
     
-    def prependIndentLevel(self):
-        return self._indentLevel * 2 * ' '
-    
+    def prependIndentLevel(self, level = -1):
+        if (level == -1):
+            return self._indentLevel * 2 * ' '
+        else:
+            return level * 2 * ' '
+            
     def bodyForScriptRemap(self):
         bodyText = ''
         
@@ -209,6 +209,8 @@ class FountainHTMLGenerator(object):
         prevType = ''
         
         skipDualDialogueEnd = False
+        componentImportInsertionPoint = -1
+        componentImportInsertionIndent = -1
         
         for element in elements:
             skipDualDialogueEnd = False
@@ -269,7 +271,7 @@ class FountainHTMLGenerator(object):
                         environmentValue = environmentDeclaration[1]
                         
                         # Note: Right now tha parser 'just knows' to deal with 'includes' differently, 
-                        # and it 'just knows' that when ndn-js is included, a Face can be created with [uri:port].
+                        # and the writer 'just knows' that when ndn-js is included, a Face can be created with [uri:port], and ndn-init should be included.
                         # TODO: This should probably be handled by 'plugins' to this parser.
                         if (environmentName == self._fountainRegex.ENVIRONMENT_INCLUDE_PATTERN):
                             bodyText += self.prependIndentLevel() + '</script>\n' + self.prependIndentLevel() + '<script src=\"' + self._includeParent + environmentValue + '\"></script>\n' + self.prependIndentLevel() + '<script>\n'
@@ -277,6 +279,9 @@ class FountainHTMLGenerator(object):
                             bodyText += 'var ' + environmentName + ' = ' + environmentValue + ';\n'
                             
                     bodyText += self.prependIndentLevel() + '</script>\n'
+                    componentImportInsertionPoint = len(bodyText)
+                    componentImportInsertionIndent = self._indentLevel
+                    
                     continue
                     
                 # Special generation step for CharacterTypes
@@ -449,6 +454,17 @@ class FountainHTMLGenerator(object):
         if (inScriptBody):
             self._indentLevel -= 1
             bodyText += self.prependIndentLevel() + '</div>'
+        
+        # Special insertion step for web component imports
+        # At this point, self._componentList is filled, 
+        # and we append the import links after all scripts are included
+        importInsertion = ''
+        if (componentImportInsertionPoint != -1):
+            for componentName in self._componentList:
+                # Note: Right now web components are expected to be .htmls only.
+                importInsertion += self.prependIndentLevel(componentImportInsertionIndent) + '<link rel=\"import\" href=\"' + self._componentParent + componentName + '.html\">\n'
+        
+            bodyText = bodyText[:componentImportInsertionPoint] + importInsertion + bodyText[componentImportInsertionPoint:]
             
         return bodyText
     

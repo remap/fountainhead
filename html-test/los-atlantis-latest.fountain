@@ -20,6 +20,7 @@ Author: Future of Storytelling Studio 2015
 [prefix] new Name("/ndn/edu/ucla/remap/losatlantis")
 [face] new Face({host: "archive-dev.remap.ucla.edu"})
 [include] ndn-init.js
+[include] ndn-url-publisher-component.js
 
 [defaultChatNickName] "The guide"
 [chatJID] "admin.admin@archive-dev.remap.ucla.edu"
@@ -38,6 +39,7 @@ Author: Future of Storytelling Studio 2015
 [include] strophe-init.js
 
 [include] script-control.js
+[include] onload.js
 
 # CharacterTypes
 
