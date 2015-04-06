@@ -380,14 +380,40 @@ class FountainHTMLGenerator(object):
                 if (element._elementType == self._fountainRegex.COMPONENT_ARGUMENTS_PATTERN):
                     if (inComponent):
                         args = re.findall(self._fountainRegex.COMPONENT_ARGUMENTS_SPLIT, element._elementText)
+                        
+                        prevArgValue = ''
+                        prevArgName = ''
+                        
                         for arg in args:
-                            equalSign = arg.find('=')
-                            if (equalSign > 0):
-                                argName = arg[:equalSign].strip()
-                                argValue = arg[equalSign + 1:].strip()
-                                componentArgs[argName] = argValue
+                            quoteCnt = arg.count('\"')
+                            
+                            if (prevArgValue != ''):
+                                prevArgValue += ',' + arg
+                                if quoteCnt == 1:
+                                    componentArgs[prevArgName] = prevArgValue.strip()
+                                    prevArgName = ''
+                                    prevArgValue = ''
+                                elif quoteCnt > 1:
+                                    print('WARNING: subsequent web component argument has more than one quote; Parsing result may be unexpected')
                             else:
-                                print('WARNING: no equal sign found for component argument; on purpose?')
+                                equalSign = arg.find('=')
+                                if (equalSign > 0):
+                                    argName = arg[:equalSign].strip()
+                                    argValue = arg[equalSign + 1:]
+                                    if quoteCnt > 0:
+                                        if quoteCnt == 2:
+                                            argValue = argValue.strip()
+                                            componentArgs[argName] = argValue
+                                        elif quoteCnt == 1:
+                                            prevArgValue += argValue
+                                            prevArgName = argName
+                                        elif quoteCnt > 2:
+                                            print('WARNING: more than two quotes found in one component argument; Parsing result may be unexpected')
+                                    else:
+                                        componentArgs[argName] = argValue
+                                else:
+                                    print('WARNING: no equal sign found for web component argument; Parsing result may be unexpected')
+                                
                 if (element._elementType == self._fountainRegex.COMPONENT_DESCRIPTION_PATTERN):
                     if (inComponent):
                         generateComponent = True
