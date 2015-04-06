@@ -443,7 +443,7 @@ class FountainHTMLGenerator(object):
                 bodyText += '>' + componentDesc + '</' + componentTagName + '>\n'
                 
                 # TODO: styling for the component hyperlink
-                bodyText += self.prependIndentLevel() + '<a href=\"' + self._componentParent + componentName + '.html\" class=\"' + self._fountainRegex.COMPONENT_LINK_CLASS + '\">' + componentName + '</a>\n'
+                bodyText += self.prependIndentLevel() + '<a target=\"_blank\" href=\"' + self._componentParent + componentName + '.html\" class=\"' + self._fountainRegex.COMPONENT_LINK_CLASS + '\">' + componentName + '</a>\n'
                 
                 generateComponent = False
                 inComponent = False

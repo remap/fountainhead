@@ -16,7 +16,8 @@
   
   // TODO: This seems to only work in Chrome, verifying. There is a flag in Firefox that needs to be set to true
   // TODO: First click does not seem to work? Second and third works? Verifying
-
+  
+  // Note: referring to the ndnURLPublisherFactory would require this line to be executed after the script tags
   (function(window, document, undefined) {
     window.ndnURLPublisherFactory.createVideoControlComponent('com-1b-long-way-from-home', 'ritual/1B/1B_long_way_from_home_1/url', 'long_way_from_home', window, document);  
   })(window, document);
