@@ -134,7 +134,7 @@ class FountainRegexBase(object):
     
     # For constructing arrays from tags; added so that constant string does not exist in Parsers
     
-    TAG_PATTERN                    = '<([a-zA-Z\\s]+)>([^<>]*)<\\/[a-zA-Z\\s]+>'
+    TAG_PATTERN                    = r'<([a-zA-Z\s]+)>(.*?)<\/\1>'
     CLOSING_TAG_PATTERN            = '(<\\/[a-zA-Z\\s]+>)'
     CLOSING_TAG_REPLACEMENT        = r'\1' + '\n'
     # TODO: rename this

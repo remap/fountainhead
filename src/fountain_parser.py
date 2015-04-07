@@ -102,7 +102,7 @@ class Parser(object):
     # Shared function for script parsing; parseBodyOfBody -> extractElements
     
     def extractElements(self, scriptContent):
-        tagMatching = re.findall(self._fountainRegex.TAG_PATTERN, scriptContent)
+        tagMatching = re.findall(self._fountainRegex.TAG_PATTERN, scriptContent, flags=re.DOTALL)
         if not tagMatching:
             print('WARNING: Tag patterns does not match scriptContent')
             return

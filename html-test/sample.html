@@ -51,12 +51,6 @@ var connection = new Strophe.Connection(hostXMPPHttpBind);;
   <script src="includes/onload.js"></script>
   <script>
   </script>
-  <link rel="import" href="components/chat-control-guide.html">
-  <link rel="import" href="components/chat-control-muc.html">
-  <link rel="import" href="components/1A/departures.html">
-  <link rel="import" href="components/1B/long-way-from-home.html">
-  <link rel="import" href="components/1C/polaroids.html">
-  <link rel="import" href="components/1D/underpass.html">
   <div id="charactertypecontent">
     <table>
     <td>
@@ -90,13 +84,14 @@ var connection = new Strophe.Connection(hostXMPPHttpBind);;
     <p class='settingcontent-desc'>The Observatory of the WATCHERS.</p>
   </div>
   <div id="scriptbody">
-    <p class='action center'><strong>The Contents of THE ARCHIVE</strong></p>
+    <p class='action'><Action>> <strong>The Contents of THE ARCHIVE</strong> <</p>
     <p class='action'>THE ARCHIVE contains real and fictional memories of <<Los Angeles>> - images, audio, video, text, and other media gathered by the company and supplemented by the WATCHERS.</p>
+    <p class='action'><Action>> 	 <</p>
     <p class='action center'><strong>Code</strong></p>
     <p class='action'>LOS ATLANTIS incorporates software code that dynamically updates the script based on the context of the performance: where it is performed, what media is in THE ARCHIVE, who is attending, etc.</p>
     <p class='action'>Double angle brackets, <<>> are used to indicate sections in the script that are to be replaced programmatically by code.</p>
     <p class='action'>In this version of the script, the rules by which the replacement occurs is suggested by the example text inside the brackets but not explicitly described.</p>
-    <p class='action center'><strong>Technical Elements</strong></p>
+    <p class='action'><Action>> <strong>Technical Elements</strong> <</p>
     <p class='action'>This script is typically accompanied by, but does not require, a diagram showing the relative location of major technical elements (archive projection, access control kiosks, signs, etc.)  These are denoted throughout as follows:</p>
     <p class='action'>AC-xyz		Access control element.</p>
     <p class='action'>CAM-xyz	Live camera.</p>
@@ -114,7 +109,7 @@ var connection = new Strophe.Connection(hostXMPPHttpBind);;
     <p class='action'>The Potential Audience first encounters THE ARCHIVE via the LOS ATLANTIS Website.</p>
     <p class='character the-archive'>THE ARCHIVE</p>
     <p class='dialogue'>(on the Web)
-No time? No space? No worries! THE ARCHIVE of <<Los Angeles>> has more than enough room for everyone's memories. Learn what it's like today!</p>
+No time? No space? No worries! THE ARCHIVE of @Los Angeles <Component><CompName>1A/departures</CompName><CompArg>description="Stub"</CompArg><CompDesc></CompDesc></Component> has more than enough room for everyone's memories. Learn what it's like today!</p>
     <p class='action'>The Potential Audience are presented with a choice.</p>
     <p class='character the-archive'>THE ARCHIVE</p>
     <p class='dialogue'>(on the Web)
@@ -138,20 +133,17 @@ Time:  << - 02 Days, 12 Hours, 05 Minutes>></p>
     <p class='parenthetical'>(to the TOURISTS)</p>
     <p class='dialogue'>Your personal Transfer Guide: <<http://the-archive.org/losangeles/219010>></p>
     <p class='action'>The GUIDE,<em>Virgil</em>, is accessed from the TOURISTS' smartphones.</p>
-<com-chat-control-guide message="Hi, I am really looking forward to this, you are very special to me."></com-chat-control-guide>
-    <a target="_blank" href="components/chat-control-guide.html" class="xref-code">chat-control-guide</a>
+    <p class='action'><Component><CompName>chat-control-guide</CompName><CompArg>message="Hi, I am really looking forward to this, you are very special to me."</CompArg><CompDesc></CompDesc></Component></p>
     <p class='action'>In the days leading up to the event, its content is mostly a countdown timer.</p>
     <p class='action'>It may occasionally spout memes drawn from THE ARCHIVE to pique the Interest of the TOURISTS.</p>
-<com-chat-control-muc message="Thank you for contributing to the ARCHIVE. Please consider using this media in the Transfer. Do you think these tags will resonate with our visitors: #sunset #seabreeze?"></com-chat-control-muc>
-    <a target="_blank" href="components/chat-control-muc.html" class="xref-code">chat-control-muc</a>
+    <p class='action'><Component><CompName>chat-control-muc</CompName><CompArg>message="Thank you for contributing to the ARCHIVE. Please consider using this media in the Transfer. Do you think these tags will resonate with our visitors: #sunset #seabreeze?"</CompArg><CompDesc></CompDesc></Component></p>
     <p class='action'>WATCHERS can change the metadata associated with their uploaded media.</p>
     <p class='scene-heading'>ACT 1</p>
     <p class='scene-heading'>SCENE 1: ADMISSION</p>
     <p class='action'>Observatory Live Feed (<em>OLF</em>): Wide shot of the Lobby, occasionally zooming to medium shots of groups of TOURISTS and TRAVELERS.</p>
     <p class='action'>The TOURISTS filter into the Lobby of THE ARCHIVE. A sign reminds them to log in to the GUIDE on their mobile phones.</p>
-    <p class='action'>(to each TOURIST, after they log in on their phone, with a Clippy-like icon popping up)</p>
-<com-chat-control-guide message="Hello! {{ user_name }}! Where do you want to go today? Just kidding... Welcome."></com-chat-control-guide>
-    <a target="_blank" href="components/chat-control-guide.html" class="xref-code">chat-control-guide</a>
+    <p class='parenthetical'><Action>(to each TOURIST, after they log in on their phone, with a Clippy-like icon popping up)</Action></p>
+    <p class='action'><Component><CompName>chat-control-guide</CompName><CompArg>message="Hello! {{ user_name }}! Where do you want to go today? Just kidding... Welcome."</CompArg><CompDesc></CompDesc></Component></p>
     <p class='action'>The TOURISTS browse their GUIDE.</p>
     <p class='action'>Gradually  the audience congregates  in the lobby.</p>
     <p class='action'>The WATCHERS logged into the OBSERVATORY are greeted. They can watch the live feed streaming to the OBSERVATORY. They can still browse THE ARCHIVE.</p>
@@ -269,7 +261,7 @@ Time to your Transfer: << - 00 Days, 00 Hours, 00 Minutes>>.</p>
     <p class='character rachel onliners'>RACHEL</p>
     <p class='dialogue onliners'>Did you hear that?[[OLF: Title overlaid - "Provide Identification Image" 
 ]]</p>
-    <p class='action'>(from here on the OLF details are in notes only for this script)</p>
+    <p class='parenthetical onliners'><Action>(from here on the OLF details are in notes only for this script)</Action></p>
     <p class='action'>A digital sign appears: "PROVIDE IDENTIFICATION IMAGE"</p>
     <div class='dual-dialogue'>
       <div class='dual-dialogue-left'>
@@ -625,8 +617,9 @@ A second set of thumbnails, perhaps color-coded and ordered, show the media that
     <p class='character the-observatory'>THE OBSERVATORY</p>
     <p class='dialogue'>Hometown of your visitor, <<Jeff Burke>> is <<Brea, California>>.</p>
     <p class='scene-heading'>RITUAL 1/A - "DEPARTURE" (@ SHEENA)[[  Im not sure what this means?  about the music</p>
-<com-1a-departures instance="1" description="Play video: Departure"></com-1a-departures>
-    <a target="_blank" href="components/1A/departures.html" class="xref-code">1A/departures</a>
+    <p class='action'><Component><CompName>1A/departures</CompName><CompArg>instance="1", description="Play video: Departure"</CompArg><CompDesc></CompDesc></Component>
+  
+Thundersbird  ressorts  zrizal   manila]]</p>
     <p class='action'>A group of TOURISTS follow Sheena, passing luggage,  shoes, and images of people waiting in line. The sound of departure announcements.</p>
     <p class='action'>They reach a space with luggage and four plastic seats in two pairs, observed by the WATCHERS.</p>
     <p class='action'>The sounds of people chatting, a gate announcement "Number 304 to <<Brea, California>> at the gate. (pause) Flight 102 to Manila is on schedule." Other announcements with the hometowns of audience members.</p>
@@ -717,8 +710,7 @@ A second set of thumbnails, perhaps color-coded and ordered, show the media that
     <p class='action'>At an appointed time (no matter where the scene is) a cue (via PRJ-RC*) signals that Ritual 1 is over. The Transfer fades and the TOURISTS exit back to the Agora.</p>
     <p class='action'>= Hey  beautiful.Just a little videola from the Long Beach. Taking a break from work  so say, “Paano ginagawa mo maganda, huwag makaligtaan mo sa akin?”  and you answer... YES! OK  sabrosa  you gotta come on down and check out  the Long Beach sooner or later... cuz’ I got sumthing to show you- LATER!” Gracias Ramon.</p>
     <p class='scene-heading'>RITUAL 1/B  LONG WAY FROM HOMES( @EDDIE)</p>
-<com-1b-long-way-from-home instance="1" description="Play video: Long way from home"></com-1b-long-way-from-home>
-    <a target="_blank" href="components/1B/long-way-from-home.html" class="xref-code">1B/long-way-from-home</a>
+    <p class='action'><Component><CompName>1B/long-way-from-home</CompName><CompArg>instance="1", description="Play video: Long way from home"</CompArg><CompDesc></CompDesc></Component></p>
     <p class='action'>EDDIE walks down a passage way. On The walls is projected  scenes of  driving on the harbor  freeway, pass DTLA, pass USC, pass LAX ,  405,   we see Palms trees,  a beach - Suddenly a loud crackly boombox  snaps to life behind the audience, it is playing BANDA music. BLACKOUT the audience turns to the music and  a harsh sunlit space is revealed</p>
     <p class='action'>Jesus, wearing a bandana or busboy's cap walks in with a tray of wet bowls. He whistles to the music as he drys the bowls and lines them up on the tray set on a box</p>
     <p class='action'>Raul runs in with a bag of Hawaiian bread. He speaks.</p>
@@ -790,8 +782,7 @@ A second set of thumbnails, perhaps color-coded and ordered, show the media that
     <p class='action'>Raul runs out.</p>
     <p class='scene-heading'>RITUAL 1/C - "POLAROIDS" (@ FELIX)[[OLF: Wide shot at entry gives way to alternating closeups of each and every TOURIST and TRAVELER within the ritual.  As needed, the feed can cut to direct input from the projection video source, before returning to closeups.</p>
     <p class='action'>]]</p>
-<com-1c-polaroids instance="1" description="Play video: Polaroids"></com-1c-polaroids>
-    <a target="_blank" href="components/1C/polaroids.html" class="xref-code">1C/polaroids</a>
+    <p class='action'><Component><CompName>1C/polaroids</CompName><CompArg>instance="1", description="Play video: Polaroids"</CompArg><CompDesc></CompDesc></Component></p>
     <p class='character the-observatory[[again-as-with-the-music-in-previous-the-previous-sc.-the-intent-is-unclear.-how-will-the-watchers-know-what-is-meant.-i-think-for-this-early-on-we-can-risk-being-abit-more-obvious,.]]'>THE OBSERVATORY</p>
     <p class='dialogue'>What places will connect with your visitors [WATCHERS vote on videos, with their favorites and uploads available, and their choices are taken into account.]</p>
     <p class='action'>A third group of TOURISTS follows Felix, passing boxes and stacks of old magazines and newspapers, menus, jars of matchbooks. The sound of a clock ticking, then more clocks. They hear an old Philco radio tuning in long forgotten radio shows. Eddie pauses as the lights come up.</p>
@@ -859,15 +850,14 @@ I can't speak good, but I'd like to be an astronaut. You have to be good at math
     <p class='action'>FATIMA disappears with her telescope. The printer continues to print the WATCHERS' selections.</p>
     <p class='action'>The Transfer fades and the TOURISTS exit back to the Agora with the Polaroids in their pockets.</p>
     <p class='scene-heading'>RITUAL 1/D - "UNDERPASS" (@ RACHEL)</p>
-<com-1d-underpass instance="1" description="Play video: Underpass"></com-1d-underpass>
-    <a target="_blank" href="components/1D/underpass.html" class="xref-code">1D/underpass</a>
+    <p class='action'><Component><CompName>1D/underpass</CompName><CompArg>instance="1", description="Play video: Underpass"</CompArg><CompDesc></CompDesc></Component></p>
     <p class='character the-observatory'>THE OBSERVATORY</p>
     <p class='dialogue'>(showing a library of lonely streets from <<LOS ANGELES>>, including the WATCHER'S own relevant uploads)
 What late night locations might resonate with your visitor? 
 [WATCHERS vote, and their choices are taken into account.]</p>
     <p class='action'>The fourth group of TOURISTS follows Rachel past projections of a dark, wet, slick street into a space observed by the WATCHERS. Dog sounds in the distance.</p>
     <p class='action'>Rachel spots and bends down to pick up a crumbled pack of cigarettes.</p>
-    <p class='action'>(FILM) A car stereo, headlights pass by tires screech, a crumbled beer can clatters by joining the street detritus they pass.(note: an actual beer can lands on stage as if thrown from the car in the films)</p>
+    <p class='parenthetical'><Action>(FILM) A car stereo, headlights pass by tires screech, a crumbled beer can clatters by joining the street detritus they pass.(note: an actual beer can lands on stage as if thrown from the car in the films)</Action></p>
     <p class='action'>Rachel still bent over pauses looking after the car, perhaps humming the fading song. Pauses, she pulls a cigarette out of the pack.</p>
     <p class='character rachel onliners'>RACHEL</p>
     <p class='dialogue onliners'>(to the TOURISTS)
@@ -1001,7 +991,7 @@ I could almost... taste. And I started to remembered things.</p>
     <p class='dialogue offline-audience'>Yeah.</p>
     <p class='character eddie online-audience'>EDDIE</p>
     <p class='dialogue online-audience'>Like what?</p>
-    <p class='action'>(A very long beat...)</p>
+    <p class='parenthetical online-audience'><Action>(A very long beat...)</Action></p>
     <p class='character felix offline-audience'>FELIX</p>
     <p class='dialogue offline-audience'>I dunno.</p>
     <p class='character sheena offliners'>SHEENA</p>
