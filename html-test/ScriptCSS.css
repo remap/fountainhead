@@ -343,12 +343,18 @@ a:hover {
 	text-decoration: underline;
 }
 
-/* Temporary CSS styles */
+/** 
+ * Temporary CSS styles for direct links in script shown on Thursday, Apr 2
+ */
 #manual_links p {
-    cursor:pointer; 
-    text-decoration:none;
+    cursor: pointer; 
+    text-decoration: none;
 }
 
 #manual_links p:hover {
-    text-decoration:underline;
+    text-decoration: underline;
+}
+
+.olf {
+    color: #BBBB00;
 }
