@@ -34,6 +34,7 @@ class FountainHTMLGenerator(object):
         self._bodyText = ''
         self._indentLevel = 0
         self._cssFile = cssFile
+        self._sceneHeadings = []
         
         self._version = version
         if self._version == ParserVersion.REMAP:
@@ -207,10 +208,15 @@ class FountainHTMLGenerator(object):
             
         prevTag = ''
         prevType = ''
+        sceneCnt = 0
         
         skipDualDialogueEnd = False
+        
         componentImportInsertionPoint = -1
         componentImportInsertionIndent = -1
+        
+        menuInsertionPoint = -1
+        menuInsertionIndent = -1
         
         for element in elements:
             skipDualDialogueEnd = False
@@ -266,12 +272,8 @@ class FountainHTMLGenerator(object):
                     
                     # Special generation step for Floating Menu, left here temporarily
                     # TODO: remove/customize this, as it does not fit in here currently
-                    bodyText += '''
-  <div id="floating-menu">
-    <h3>Floating Menu</h3>
-    <a id="floating-menu-toggle-olf" href="#" onclick="scriptControl.toggleClassVisibility('olf');return false;">Toggle OLF</a>
-  </div>
-                    '''
+                    menuInsertionPoint = len(bodyText)
+                    menuInsertionIndent = self._indentLevel
                     
                     bodyText += self.prependIndentLevel() + '<script>\n';
                     
@@ -374,6 +376,13 @@ class FountainHTMLGenerator(object):
                     inScriptBody = True
                     bodyText += self.prependIndentLevel() + '<div id=\"' + self.htmlClassForType(self._fountainRegex.SCRIPT_BODY_CONTENT_PATTERN) + '\">\n'
                     self._indentLevel += 1
+                    continue
+                
+                # Special generation step for scene headings to provide the table of content for jumping
+                if (element._elementType == self._fountainRegex.SCENE_HEADING_PATTERN):
+                    self._sceneHeadings.append(element._elementText)
+                    bodyText += self.prependIndentLevel() + '<p id=\'toc' + str(sceneCnt) + '\' class=\'' + self.htmlClassForType(element._elementType) + '\'>' + element._elementText + '</p>\n'
+                    sceneCnt += 1
                     continue
                 
                 # Special generation step for web component and arguments
@@ -498,14 +507,34 @@ class FountainHTMLGenerator(object):
         # Special insertion step for web component imports
         # At this point, self._componentList is filled, 
         # and we append the import links after all scripts are included
-        importInsertion = ''
         if (componentImportInsertionPoint != -1):
+            importInsertion = ''
             for componentName in self._componentList:
                 # Note: Right now web components are expected to be .htmls only.
                 importInsertion += self.prependIndentLevel(componentImportInsertionIndent) + '<link rel=\"import\" href=\"' + self._componentParent + componentName + '.html\">\n'
         
             bodyText = bodyText[:componentImportInsertionPoint] + importInsertion + bodyText[componentImportInsertionPoint:]
         
+        # Special generation step for floating menu
+        # TODO: reconsider this; should remove/customize along with the menuInsertionPoint assignment
+        if (menuInsertionPoint != -1):
+            menuInsertion = ''
+        
+            menuInsertion += self.prependIndentLevel(menuInsertionIndent) + '<div id="floating-menu">'
+            menuInsertion += self.prependIndentLevel(menuInsertionIndent + 1) + '<h3>Floating Menu</h3>'
+            menuInsertion += self.prependIndentLevel(menuInsertionIndent + 1) + '<a id="floating-menu-toggle-olf" href="#" onclick="scriptControl.toggleClassVisibility(\'olf\');return false;">Toggle OLF</a>'
+            
+            menuInsertion += '<br>'
+            
+            tocCnt = 0
+            for menuItem in self._sceneHeadings:
+                menuInsertion += self.prependIndentLevel(menuInsertionIndent + 1) + '<a href=\"#toc' + str(tocCnt) + '\">' + menuItem + '</a>'
+                tocCnt += 1
+                
+            menuInsertion += self.prependIndentLevel(menuInsertionIndent) + '</div>'
+            
+            bodyText = bodyText[:menuInsertionPoint] + menuInsertion + bodyText[menuInsertionPoint:]
+            
         return bodyText
     
     def componentNameToTag(self, componentName):

@@ -478,7 +478,9 @@ The TOURISTS and RACHEL reach the Agora.
 
 .ACT 2  THE AGORA
 
-.SCENE 1  FINDING THE OTHERS<<@OLF: Four independent feeds, distributed evenly across the WATCHERS, each with a CU of one TRAVELER. >>
+.SCENE 1  FINDING THE OTHERS
+
+<<@OLF: Four independent feeds, distributed evenly across the WATCHERS, each with a CU of one TRAVELER. >>
 
 THE OBSERVATORY
 (on the status bar)
@@ -832,7 +834,9 @@ Hometown of your visitor, <<Jeff Burke>> is <<Brea, California>>.
 
 # RITUAL 1/A - “DEPARTURE” (@ SHEENA)
 
-.RITUAL 1/A - "DEPARTURE" (@ SHEENA)[[  Im not sure what this means?  about the music
+.RITUAL 1/A - "DEPARTURE" (@ SHEENA)
+
+[[  Im not sure what this means?  about the music
 
 <<@1A/departures(instance="1", description="Play video: Departure")>>
   
@@ -1204,7 +1208,9 @@ Raul runs out.
 
 # RITUAL 1/C - “POLAROIDS” (@ FELIX)
 
-.RITUAL 1/C - "POLAROIDS" (@ FELIX)<<@OLF: Wide shot at entry gives way to alternating closeups of each and every TOURIST and TRAVELER within the ritual.  As needed, the feed can cut to direct input from the projection video source, before returning to closeups.>>
+.RITUAL 1/C - "POLAROIDS" (@ FELIX)
+
+<<@OLF: Wide shot at entry gives way to alternating closeups of each and every TOURIST and TRAVELER within the ritual.  As needed, the feed can cut to direct input from the projection video source, before returning to closeups.>>
 
 <<@1C/polaroids(instance="1", description="Play video: Polaroids")>>
 
@@ -1322,7 +1328,9 @@ The Transfer fades and the TOURISTS exit back to the Agora with the Polaroids in
 
 # RITUAL 1/D - “UNDERPASS” (@ RACHEL) 
 
-.RITUAL 1/D - "UNDERPASS" (@ RACHEL)<<@OLF:  Wide shot at entry gives way to alternating closeups of each and every TOURIST and TRAVELER within the ritual.  As needed, the feed can cut to direct input from the projection video source, before returning to closeups.>> 
+.RITUAL 1/D - "UNDERPASS" (@ RACHEL)
+
+<<@OLF:  Wide shot at entry gives way to alternating closeups of each and every TOURIST and TRAVELER within the ritual.  As needed, the feed can cut to direct input from the projection video source, before returning to closeups.>> 
 
 <<@1D/underpass(instance="1", description="Play video: Underpass")>>
 
@@ -1403,8 +1411,9 @@ The light fades. The traffic softens into the sound of waves.
 
 # (IN THE OBSERVATORY)SCENE 3
 
-.(IN THE OBSERVATORY)SCENE 3<<@OLF:  The view of all WATCHERS returns to the cameras of the Agora as soon as the Ritual ends. >>
+.(IN THE OBSERVATORY)SCENE 3
 
+<<@OLF:  The view of all WATCHERS returns to the cameras of the Agora as soon as the Ritual ends. >>
 
 The WATCHERS' view into the website has switched from four possible feeds to only the Agora (CAM-AG*), and the interface has changed, so that they feel that they are also in the Agora, through the OBSERVATORY.
 
@@ -1442,9 +1451,9 @@ Options of the four TRAVELERS are presented, and the WATCHER must select one.  T
 
 = everyone returns to the Agora and relays what they saw
 
-.SCENE 3 B (IN THE AGORA) REUNION<<@OLF:  Wide shot of Agora on entrance, then alternating between medium wides on the TRAVELER groups and CU of each and every TOURIST. >>
+.SCENE 3 B (IN THE AGORA) REUNION
 
-
+<<@OLF:  Wide shot of Agora on entrance, then alternating between medium wides on the TRAVELER groups and CU of each and every TOURIST. >>
 
 Reunited in the Agora, the TRAVELERS speak to the TOURISTS, expecting more response after the shared experience. 
 
