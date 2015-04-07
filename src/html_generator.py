@@ -453,6 +453,15 @@ class FountainHTMLGenerator(object):
                             prevType = self._characterList[characterName]
                         prevTag = element._elementType
                     
+                    # Special generation step for text marked with specific classes
+                    specificClasses = re.findall(self._fountainRegex.SPECIFIC_CSS_ADDON_PATTERN, text)
+                    
+                    for specificClass in specificClasses:
+                        className = self.htmlClassForType(specificClass[0])
+                        classText = specificClass[1]
+                        replacement = self.prependIndentLevel() + '<span class=\'' + className + '\'>' + classText + '</span>'
+                        text = re.sub(self._fountainRegex.SPECIFIC_CSS_ADDON_PATTERN, replacement, text, 1)
+                        
                     bodyText += self.prependIndentLevel() + '<p class=\'' + self.htmlClassForType(element._elementType) + additionalClasses + '\'>' + text + '</p>\n'
             elif (generateComponent):
                 # Note: The "com-" is mandatorily prepended to the component name at this moment, may want to change in the future

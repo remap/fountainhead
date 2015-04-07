@@ -321,6 +321,12 @@ class FountainRegexRemap(FountainRegexBase):
     SCRIPT_BODY_CONTENT_PATTERN           = 'ScriptBody'
     SCRIPT_BODY_TEMPLATE                  = '<' + SCRIPT_BODY_CONTENT_PATTERN + '>ScriptBodyNotification' + '</' + SCRIPT_BODY_CONTENT_PATTERN + '>\n'
     
+    # Spec name: Specific CSS class pattern
+    # Spec syntax: <<@addon-class: text>>
+    # HTML output: <span class="addon-class">text</span>
+    # Description: 
+    SPECIFIC_CSS_ADDON_PATTERN            = r'<<@([^:]+)\s*:\s*(.+?)>>'
+    
     # TODO: Argument parsing. Right now we don't do nested Component/CompArg definition
     def __init__(self):
         FountainRegexBase.__init__(self)

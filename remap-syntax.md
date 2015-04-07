@@ -35,9 +35,9 @@ Script matching this syntax will be applied with given CSS class in addition to 
 </pre>
 * **HTML output**:
 <pre>
-\<p class="existing-classes CSS-class-addon"\>
+\<span class="CSS-class-addon"\>
 text-description
-\</p\>
+\</span\>
 </pre>
 * **Description**:
 
