@@ -453,11 +453,6 @@ class FountainHTMLGenerator(object):
                             prevType = self._characterList[characterName]
                         prevTag = element._elementType
                     
-                    # TODO: I see a lot of "THE ARCHIVE" appear throughout the script; 
-                    #       I don't think the writers want them to be an ordinary 'action';
-                    #       Shouldn't be too difficult to add parsing rules / CSS styles for those. (Their definitions already exist in # Settings)
-                    #       Should resolve this with writers.
-                    
                     bodyText += self.prependIndentLevel() + '<p class=\'' + self.htmlClassForType(element._elementType) + additionalClasses + '\'>' + text + '</p>\n'
             elif (generateComponent):
                 # Note: The "com-" is mandatorily prepended to the component name at this moment, may want to change in the future

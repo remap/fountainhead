@@ -4,22 +4,47 @@ Description of added Fountain+ syntax used by current parser (tag name REMAP).
 
 For basic fountain syntax, please refer to [this page](http://fountain.io/syntax).
 
-## Web component declaration
+## In-script syntax add-ons
+
+These additions to Fountain appears in the script, to extend the functionality or formatting flexibility of the script.
+
+### Web component declaration
 
 Web component declarations include web components in component parent folder, and insert them into the parsed html.
 
 * **Syntax**: 
 <pre>
-<<@componentA[(arg1=val1,arg2=val2...)] text-description>>
+<<@componentA(arg1=val1,arg2=val2...) text-description>>
 </pre>
 * **HTML output**: 
 <pre>
 \<link rel="import" href="components/componentA.html"\> 
 \<!-- once per file --\> \<componentA arg1="val1" arg2="val2">text description</component\>
 </pre>
-* **Description**: Web components only appear in Action; The components parent folder can be specified with parser parameters.
+* **Description**: 
 
-## Preamble section declaration
+Web components only appear in Action; The components parent folder can be specified with parser parameters.
+
+### Use specific CSS class declaration
+
+Script matching this syntax will be applied with given CSS class in addition to existing classes that is belongs to.
+
+* **Syntax**:
+<pre>
+<<@CSS-class-addon: text-description>>
+</pre>
+* **HTML output**:
+<pre>
+<p class="existing-classes CSS-class-addon">
+text-description
+</p>
+</pre>
+* **Description**:
+
+
+## Preamble section syntax add-ons
+
+These additions to Fountain appears in the Preamble section, to help defining environments such as Javascript code inclusion and CSS classes
 
 ### Environment declaration
 
@@ -53,10 +78,6 @@ Environment declarations declare Javascript variables for usage in the parsed ht
   \<script src="js/filename"\>\</script\>
   </pre>
   * **Description**: The includes parent folder can be specified with parser parameters
-
-  ###### NDN-JS
-
-  ###### Strophe-JS
 
 **Pending**: should the following ones be generalized, or handled by plugins to the parser?
   
