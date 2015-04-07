@@ -26,14 +26,6 @@ FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 IN THE SOFTWARE.
 */
 
-
-
-* {
-	-webkit-touch-callout: none;
-	-webkit-user-select: none;
-}
-
-
 /* TODO: These probably need to be classes, not redefining ALL tables. 
     Further, they need to generate a responsive layout, and should 
     not use pixel dimensions!  (Percent instead.)  */ 
