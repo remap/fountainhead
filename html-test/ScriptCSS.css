@@ -355,6 +355,21 @@ a:hover {
     text-decoration: underline;
 }
 
+/* Stub for current OLF class */
 .olf {
     color: #BBBB00;
+}
+
+/* Example for floating menu */
+#floating-menu {
+    position:fixed;
+    background: #333333;
+    border:1px solid #BBBBBB;
+    width: 150px;
+    z-index:2;
+}
+
+#floating-menu a, #floating-menu h3 {
+    display:block;
+    margin:0.5em 0.5em;
 }

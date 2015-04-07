@@ -44,7 +44,8 @@ ScriptControl.prototype.toggleClassVisibility = function(className, visible) {
 };
 
 /**
- * TODO: This does not work yet, debugging
+ * TODO: This tries to load the docs created by web components, but 
+ * does not work yet, debugging
  */
 ScriptControl.prototype.loadComponentDocs = function()
 {

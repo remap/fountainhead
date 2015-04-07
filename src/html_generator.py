@@ -261,8 +261,18 @@ class FountainHTMLGenerator(object):
             else:
                 text += element._elementText
                 
-                # Special generation step for Environments
+                # Special generation step for Environments (and temporarily, for the floating menu)
                 if (element._elementType == self._fountainRegex.ENVIRONMENT_CONTENT_PATTERN):
+                    
+                    # Special generation step for Floating Menu, left here temporarily
+                    # TODO: remove/customize this, as it does not fit in here currently
+                    bodyText += '''
+  <div id="floating-menu">
+    <h3>Floating Menu</h3>
+    <a id="floating-menu-toggle-olf" href="#" onclick="scriptControl.toggleClassVisibility('olf');return false;">Toggle OLF</a>
+  </div>
+                    '''
+                    
                     bodyText += self.prependIndentLevel() + '<script>\n';
                     
                     environmentDeclarations = re.findall(self._fountainRegex.META_TYPE_PATTERN, element._elementText)
@@ -495,7 +505,7 @@ class FountainHTMLGenerator(object):
                 importInsertion += self.prependIndentLevel(componentImportInsertionIndent) + '<link rel=\"import\" href=\"' + self._componentParent + componentName + '.html\">\n'
         
             bodyText = bodyText[:componentImportInsertionPoint] + importInsertion + bodyText[componentImportInsertionPoint:]
-            
+        
         return bodyText
     
     def componentNameToTag(self, componentName):
