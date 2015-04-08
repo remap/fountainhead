@@ -192,7 +192,7 @@ WATCHERS can change the metadata associated with their uploaded media.
 
 .SCENE 1: ADMISSION
 
-<<@OLF:Observatory Live Feed: Wide shot of the Lobby, occasionally zooming to medium shots of groups of TOURISTS and TRAVELERS. >>
+<<@olf(description="Observatory Live Feed: Wide shot of the Lobby, occasionally zooming to medium shots of groups of TOURISTS and TRAVELERS. ")>>
 
 The TOURISTS filter into the Lobby of THE ARCHIVE. A sign reminds them to log in to the GUIDE on their mobile phones.
 
@@ -226,7 +226,7 @@ Please connect to the ARCHIVE-<<LOS_ANGELES>> WiFi network.  The GUIDE will acti
 
 While the audience enters and mills around in one corner there is a  soft ambient display. It is simple and inviting. A gentle installation of dusk in Los Angeles
 
-<<@OLF: Wide shot at entry gives way to alternating *closeups* of each and every TOURIST.  As needed, the feed can cut to direct input from the projection video source, before returning to *closeups*. >>
+<<@olf(description = "Wide shot at entry gives way to alternating *closeups* of each and every TOURIST.  As needed, the feed can cut to direct input from the projection video source, before returning to *closeups*. ")>>
 
 THE OBSERVATORY
 (showing a library of sunsets from different vistas in <<LOS ANGELES>>, including the WATCHER'S own relevant uploads)
@@ -272,7 +272,8 @@ Watch that big orange fiery ball in the sky.
 
 It's nice here in L.A. ain' it? 
 
-Damn we're lucky huh.<<@OLF: Shot progression continues, interspersing wide shot and projections source as needed.>>
+Damn we're lucky huh.
+<<@olf(description=" Shot progression continues, interspersing wide shot and projections source as needed.")>>
 
 
 
@@ -307,7 +308,8 @@ Sheena's silhouette becomes clearer in the sunset with each detail the TOURISTS 
 
 .SCENE 2 RACHEL ENTERS
 
-The follow happens during this sunset installation.<<@OLF: Medium shot of RACHEL amidst the other TRAVELERS and TOURISTS, possibly intercut with CU of their reactions. >>
+The follow happens during this sunset installation.
+<<@olf(description=" Medium shot of RACHEL amidst the other TRAVELERS and TOURISTS, possibly intercut with CU of their reactions. ")>>
 
 
 A young woman enters along with the  audience, the Tourists, she is carrying a large purse or backpack distractedly and using her  mobile device. She moves slowly thru the space  stopping  to  punch fiercely at her device and whisper to herself. She seems to be expecting someone, (*"Where are you, it's gonna start. You're gonna be late")* It begins subtlely and grows in  intensity as the time to enter grows close, at first she  should appear to just be part of the audience. Eventually she stops in the center of the space and drops her bag. A light slowly comes up on this  woman. She is RACHEL a TRAVELER, in the Lobby with the TOURISTS. She appears to be texting or playing or on her mobile device obsessively. The WATCHERS are...watching.
@@ -356,7 +358,8 @@ THE GUIDE
 Time to your Transfer: << - 00 Days, 00 Hours, 00 Minutes>>. 
 
 RACHEL
-Did you hear that?<<@OLF: Title overlaid - "Provide Identification Image" >>
+Did you hear that?
+<<@olf(description=" Title overlaid - "Provide Identification Image" ")>>
 
 (from here on the OLF details are in notes only for this script)
 
@@ -407,7 +410,8 @@ It worked. Come with me. It's OK... I think. You were invited right?
 
 RACHEL gently grabs the hand of her new friend and enters.
 
-The remaining TOURISTS take and upload a picture of themselves in order to enter, each showing the name+face+barcode combination on the GUIDE to the door access control unit (AC-A*).<<@OLF: MCU of hands and phones doing the access scanning, cut with WS of other TOURISTS and TRAVELERS.>>
+The remaining TOURISTS take and upload a picture of themselves in order to enter, each showing the name+face+barcode combination on the GUIDE to the door access control unit (AC-A*).
+<<@olf(description=" MCU of hands and phones doing the access scanning, cut with WS of other TOURISTS and TRAVELERS.")>>
 
 
 
@@ -424,7 +428,7 @@ Like RACHEL, the other TRAVELERS borrow TOURISTS' phones and identities.  They d
 .SCENE 3 DOWN THE RABBIT HOLE
 
 THE OBSERVATORY
-<<@OLF: DARK, NOISY IMAGE. COULD BE BLACK. >>
+<<@olf(description=" DARK, NOISY IMAGE. COULD BE BLACK. ")>>
 Rain. 
 
 Rain sounds drift in from THE ARCHIVE. Rachel walks down a passage way and then stops, she picks up an umbrella and opens it. The sound of rain grows more present, the memory of rain. Rachel continues walking through the tunnel and addressing her new friend.
@@ -439,9 +443,9 @@ The WATCHERS continue to watch on the Web via the OBSERVATORY, or browse THE ARC
 
 There is barely enough light to see. RACHEL stops suddenly and points. 
 
-A TOURIST finds a small flashlight labeled "TURN ME ON". The tourist turns it on and the walls flicker a bit brighter and seem to quiver.<<@OLF: Gain up to see noisy image of medium shot with RACHEL in the middle.>>
+A TOURIST finds a small flashlight labeled "TURN ME ON". The tourist turns it on and the walls flicker a bit brighter and seem to quiver.
 
-
+<<@olf(description=" Gain up to see noisy image of medium shot with RACHEL in the middle.")>>
 
 In the distance is a faint buzzing sound of machinery. They move towards it. As they get closer, it resolves into thousands of overlapping recordings of the CITIZENS, phone calls. Including several of people ordering take food delivery. Rachel hears something, she turns her head toward it
 
@@ -461,7 +465,8 @@ The rain builds then stops. Fog. Electromechanical sounds.
 
 In the distance, THE ARCHIVE leaks through. Dim lights become photos, video, brief archival records from <<Los Angeles>> seen on a "door" at the end of the passageway. 
 
-PING! A welcoming sound. The group moves towards it. The walls seems to disappear. PING! The sound is louder and closer.<<@OLF: Widen out to show as much of the Agora as possible. >>
+PING! A welcoming sound. The group moves towards it. The walls seems to disappear. PING! The sound is louder and closer.
+<<@olf(description=" Widen out to show as much of the Agora as possible. ")>>
 
 
 The TOURISTS and RACHEL reach the Agora.
@@ -476,7 +481,8 @@ The TOURISTS and RACHEL reach the Agora.
 
 .SCENE 1  FINDING THE OTHERS
 
-<<@OLF: Four independent feeds, distributed evenly across the WATCHERS, each with a CU of one TRAVELER. >>
+
+<<@olf(description=" Four independent feeds, distributed evenly across the WATCHERS, each with a CU of one TRAVELER. ")>>
 
 THE OBSERVATORY
 (on the status bar)
@@ -596,8 +602,9 @@ EDDIE ^
 Rachel check it out!
 
 RACHEL
-Do I have a choice?<<@OLF: Return to wide shot. >>
+Do I have a choice?
 
+<<@olf(description=" Return to wide shot. ")>>
 
 The travelers begin to spread out and explore the images throughout the space. These are NOT random images... Altho' they might seem to be at this point. Later it will become clear to most that they are seeing imagery connected to someone there that night,. The audience, encouraged by the Travelers,  might also explore the Agora. THE IMAGES BEGIN TO MOVE ABOUT THE SPACE. The images they encounter seem to speed up and slow down according to the visitors proximity to the walls. The TRAVELERS move around the space, point to, comment on, engage the images, mixing with the TOURISTS and encouraging them to explore, speaking quietly and individually to them of smell, sound, taste, and touch - again, personalized by the performer. 
 
@@ -683,7 +690,9 @@ THE OBSERVATORY
 First Transfer options. 
 
 CITIZENS (V/O)
-We are your City. We are you. Come remember with us.<<@OLF: Medium wide of the four TRAVELERS, cut with TOURIST reaction closeups if possible. >>
+We are your City. We are you. Come remember with us.
+
+<<@olf(description=" Medium wide of the four TRAVELERS, cut with TOURIST reaction closeups if possible. ")>>
 
 On the walls, four projected signs appear, above what will become doors to the Ritual Chambers.  
 
@@ -696,8 +705,10 @@ THE GUIDE
 Enter <<"#urban nitescape #airport #album, #longbeach">>, or well, maybe one of the other ones. 
 
 CITIZENS (V/O)
-Remember.<<@OLF: Switches to one of the four Ritual Chambers to be viewed by the WATCHERS. >>
+Remember.
 
+
+<<@olf(description=" Switches to one of the four Ritual Chambers to be viewed by the WATCHERS. ")>>
 
 EDDIE
 Look, you see that?
@@ -787,8 +798,9 @@ Transfer commencing.
 THE GUIDE ^
 This first one is always pretty easy. Just enjoy it.
 
-As far as possible, THE OBSERVATORY shifts the view of each WATCHER to the TOURIST they have previously agreed to "follow".<<@OLF: THE OBSERVATORY presents four possible views to the WATCHERS, one for each Ritual, which they can switch between at any time. >>
+As far as possible, THE OBSERVATORY shifts the view of each WATCHER to the TOURIST they have previously agreed to "follow".
 
+<<@olf(description=" THE OBSERVATORY presents four possible views to the WATCHERS, one for each Ritual, which they can switch between at any time. ")>>
 
 THE OBSERVATORY
 (to the WATCHERS)
@@ -816,7 +828,8 @@ Thumbnails of media that they have uploaded or favorited is juxtaposed on screen
 A second set of thumbnails, perhaps color-coded and ordered, show the media that THE ARCHIVE will choose from in this ritual. 
 ]]  
 
-If possible, the OBSERVATORY's view into each ritual should show the previously captured faces of the TOURISTS above the live stream.<<@OLF:  Wide shot at entry gives way to alternating closeups of each and every TOURIST and TRAVELER within the ritual.  >> 
+If possible, the OBSERVATORY's view into each ritual should show the previously captured faces of the TOURISTS above the live stream.
+<<@olf(description="  Wide shot at entry gives way to alternating closeups of each and every TOURIST and TRAVELER within the ritual.  ")>> 
 
 
 
@@ -970,7 +983,8 @@ TINA
 Because you love me right? 
 
 TONY
-(pause) Right.<<@OLF: Shot progression interrupted by CU on FELIX.>>
+(pause) Right.
+<<@olf(description=" Shot progression interrupted by CU on FELIX.")>>
 
 
 They kiss briefly and then settle back into their chairs looking straight ahead.  They sit there for a moment without saying a word. Then TINA turns to Sheena.	
@@ -1206,7 +1220,8 @@ Raul runs out.
 
 .RITUAL 1/C - "POLAROIDS" (@ FELIX)
 
-<<@OLF: Wide shot at entry gives way to alternating closeups of each and every TOURIST and TRAVELER within the ritual.  As needed, the feed can cut to direct input from the projection video source, before returning to closeups.>>
+
+<<@olf(description=" Wide shot at entry gives way to alternating closeups of each and every TOURIST and TRAVELER within the ritual.  As needed, the feed can cut to direct input from the projection video source, before returning to closeups.")>>
 
 <<@1C/polaroids(instance="1", description="Play video: Polaroids")>>
 
@@ -1306,12 +1321,14 @@ FATIMA
 (as the TOURISTS and Rachel explore the polaroids)
 I can't speak good, but I'd like to be an astronaut. You have to be good at math, but I'm pretty terrible at it. You have to be physically fit, but I usually can't run fast. 
 
-She points the telescope into a dark area offstage, and the image projected is one of stars.<<@OLF: Shot progression interrupted by CU on Felix, with CITIZEN'S dialogue as V/O. >>
+She points the telescope into a dark area offstage, and the image projected is one of stars.
+<<@olf(description=" Shot progression interrupted by CU on Felix, with CITIZEN'S dialogue as V/O. ")>>
 
 
 
 FATIMA
-I can't really get around. I can't read what's on the signs. If I got on the freeway I'd never know when to jump off! But one day I'll bounce up to the big bad moon! One day I'll be understood, because everything is silent in the cosmos, and no language is sacred up there. We're just little bits of stardust rumbling along, and up there will be no laws of communication and participation and taxes and hospital bills. No tongue will be alien. I'll have my day. I'll have my day when I land on that big rock. When I bounce without gravity and put my flag on that crater. And everything... *everything* will be quiet... except for my sister talking.<<@OLF:  Return to wide shot and alternating closeups. >>  
+I can't really get around. I can't read what's on the signs. If I got on the freeway I'd never know when to jump off! But one day I'll bounce up to the big bad moon! One day I'll be understood, because everything is silent in the cosmos, and no language is sacred up there. We're just little bits of stardust rumbling along, and up there will be no laws of communication and participation and taxes and hospital bills. No tongue will be alien. I'll have my day. I'll have my day when I land on that big rock. When I bounce without gravity and put my flag on that crater. And everything... *everything* will be quiet... except for my sister talking.
+<<@olf(description="  Return to wide shot and alternating closeups. ")>>  
 
 
 The guides encourages the Tourist to  pickup and read the Polaroids aloud to each other 
@@ -1326,7 +1343,8 @@ The Transfer fades and the TOURISTS exit back to the Agora with the Polaroids in
 
 .RITUAL 1/D - "UNDERPASS" (@ RACHEL)
 
-<<@OLF:  Wide shot at entry gives way to alternating closeups of each and every TOURIST and TRAVELER within the ritual.  As needed, the feed can cut to direct input from the projection video source, before returning to closeups.>> 
+
+<<@olf(description="  Wide shot at entry gives way to alternating closeups of each and every TOURIST and TRAVELER within the ritual.  As needed, the feed can cut to direct input from the projection video source, before returning to closeups.")>> 
 
 <<@1D/underpass(instance="1", description="Play video: Underpass")>>
 
@@ -1347,7 +1365,8 @@ RACHEL
 (to the TOURISTS)
 Hey do you..... nahhhh.
 
-She squats down and picks up a book of matches with two lonely matches left.<<@OLF:  Medium wide of sleeping bags, then returning to alternating closeups.>> 
+She squats down and picks up a book of matches with two lonely matches left.
+<<@olf(description="  Medium wide of sleeping bags, then returning to alternating closeups.")>> 
 
 
 
@@ -1409,7 +1428,8 @@ The light fades. The traffic softens into the sound of waves.
 
 .(IN THE OBSERVATORY)SCENE 3
 
-<<@OLF:  The view of all WATCHERS returns to the cameras of the Agora as soon as the Ritual ends. >>
+
+<<@olf(description="  The view of all WATCHERS returns to the cameras of the Agora as soon as the Ritual ends. ")>>
 
 The WATCHERS' view into the website has switched from four possible feeds to only the Agora (CAM-AG*), and the interface has changed, so that they feel that they are also in the Agora, through the OBSERVATORY.
 
@@ -1449,7 +1469,8 @@ Options of the four TRAVELERS are presented, and the WATCHER must select one.  T
 
 .SCENE 3 B (IN THE AGORA) REUNION
 
-<<@OLF:  Wide shot of Agora on entrance, then alternating between medium wides on the TRAVELER groups and CU of each and every TOURIST. >>
+
+<<@olf(description="  Wide shot of Agora on entrance, then alternating between medium wides on the TRAVELER groups and CU of each and every TOURIST. ")>>
 
 Reunited in the Agora, the TRAVELERS speak to the TOURISTS, expecting more response after the shared experience. 
 
@@ -1636,7 +1657,8 @@ Yeah it's in-
 SHEENA
 Long Beach-
 
-An image appears of a smiling dark skinned man with a bike<<@OLF:  Slow zoom out to wide shot. >>
+An image appears of a smiling dark skinned man with a bike
+<<@olf(description="  Slow zoom out to wide shot. ")>>
 
 
 
@@ -1666,7 +1688,8 @@ I don't remember it like that
 Please  ..not yet
 LET ME REMEMBER the before!
 
-There is the sounds of a LOUD  needle scratching on an old school Record album or perhaps the squealing of air brakes- of both. SHEENA and EDDIE have been  laughing, bumping into each other trying to follow the images -stop<<@OLF:  Medium wide shot of four TRAVELERS.>>
+There is the sounds of a LOUD  needle scratching on an old school Record album or perhaps the squealing of air brakes- of both. SHEENA and EDDIE have been  laughing, bumping into each other trying to follow the images -stop
+<<@olf(description="  Medium wide shot of four TRAVELERS.")>>
 
 
 RACHEL
@@ -1818,7 +1841,8 @@ DING! A new sound, a song, a dance track fades in, a memory from a long ago part
 
 How good it was and can be 
 
-<<@OLF: Medium shots of dancers, covering the reaction of each TRAVELER and TOURIST. >>
+
+<<@olf(description=" Medium shots of dancers, covering the reaction of each TRAVELER and TOURIST. ")>>
 
 The music start to crank up , on the walls are videos, home movies of parties ALL OVER the city all race, and ethnicities. Sheena grabs Rachel and pulls her into a memory of a dance long ago.
 
@@ -1857,7 +1881,8 @@ The TRAVELERS' dance in and through each other follow the changing media on the 
 
 After a time, certain images that the TRAVELERS move to most deliberately slow down to a stop. 
 
-Eventually, RACHEL stops in front of an image of a smiling man wearing a bike helmet. Eddie stand close to her. Felix stands looking at an image of smiling grad students at an IN n OUT burger. Sheena is close by.<<@OLF:  Two live feeds, evenly distributed between the WATCHERS, one MWS of EDDIE and SHEENA, another MWS of RACHEL and FELIX.>>
+Eventually, RACHEL stops in front of an image of a smiling man wearing a bike helmet. Eddie stand close to her. Felix stands looking at an image of smiling grad students at an IN n OUT burger. Sheena is close by.
+<<@olf(description="  Two live feeds, evenly distributed between the WATCHERS, one MWS of EDDIE and SHEENA, another MWS of RACHEL and FELIX.")>>
 
  
 
@@ -1897,7 +1922,8 @@ This process should complete roughly when the dancing in the Agora finishes and 
 
 .SCENE 4: PRIMAL UPLOAD 
 
-The shadows of the CITIZENS disappear.<<@OLF:  The MWS of each pair of TRAVELERS cut to two live feeds from inside each of the two Ritual Chambers.>> 
+The shadows of the CITIZENS disappear.
+<<@olf(description="  The MWS of each pair of TRAVELERS cut to two live feeds from inside each of the two Ritual Chambers.")>> 
 
 PING!
 
@@ -1999,7 +2025,8 @@ In[[where the performer can see a readout of the voting status from THE OBSERVAT
 
 EXT. UNDERWATER
 
-<<@OLF:   Cut between medium shots of RACHEL, FELIX, and the TOURISTS, cutting to film sequences as projected when appropriate.>> 
+
+<<@olf(description="   Cut between medium shots of RACHEL, FELIX, and the TOURISTS, cutting to film sequences as projected when appropriate.")>> 
 
 RAUL
 The first thing I fell in love with was your voice. 
@@ -2056,7 +2083,8 @@ Put on your helmet wear your helmet Put on your helmet wear your helmet Put on y
 
 She runs as if looking for a way out. She breathes heavily but she could run forever. The running is all that keeps the panic at bay.
 
-(FILM) RAUL is running towards the camera from far away. Every time he gets close, it cuts to him  running  towards her but even further away. Rachel prays louder as RAUL gets further away. RACHEL finally runs towards his image and he stops in front of her. Eddie moves as if to protect her.<<@OLF:  CU of Xavi >>
+(FILM) RAUL is running towards the camera from far away. Every time he gets close, it cuts to him  running  towards her but even further away. Rachel prays louder as RAUL gets further away. RACHEL finally runs towards his image and he stops in front of her. Eddie moves as if to protect her.
+<<@olf(description="  CU of Xavi ")>>
 
 RACHEL
 You.
@@ -2089,7 +2117,8 @@ I have something to show you.
 
 (FILM) The 720 Metro bus heading  east.
 
-RACHEL<<@OLF:  MWS OF RACHEL >>
+RACHEL
+<<@olf(description="  MWS OF RACHEL ")>>
 No Wait. NOT YET!
 
 RACHEL reaches for the shadow, fighting the image of the bus. She pulls at the screen and projections of the Bus, EDDIE tries to pull her back.
@@ -2116,7 +2145,8 @@ RACHEL breaks away from EDDIE and begins to  run thru the Tourists
 
 I don't want to remember that. I'm not ready. Not yet it's too soon. I don't want to remember! STOP!
 
-The video abruptly stops - BLACKOUT- The sound of a bus departing.<<@OLF:  Blackout and cut to Agora wide shot, which should be empty. >> 
+The video abruptly stops - BLACKOUT- The sound of a bus departing.
+<<@olf(description="  Blackout and cut to Agora wide shot, which should be empty. ")>> 
 
 
 
@@ -2384,7 +2414,8 @@ He can't answer. The 3 students are laughing and singing loudly! They stop sudde
 FELIX
 I'm here... because I wasn't there
 
-The needle continue to skip in the darkness<<@OLF:  The view of all WATCHERS is returned to the cameras of the Agora. >>
+The needle continue to skip in the darkness
+<<@olf(description="  The view of all WATCHERS is returned to the cameras of the Agora. ")>>
 
 THE ARCHIVE 
 (aloud, via the OBSERVATORY, and on GUIDE)
@@ -2404,7 +2435,8 @@ Etc.
 
 .SCENE 5 (CONFUSION IN THE AGORA)
 
-<<@OLF:  Add wide shots to show CITIZEN'S presence.>> 
+
+<<@olf(description="  Add wide shots to show CITIZEN'S presence.")>> 
 
 The TRAVELERS are stunned
 
@@ -2447,7 +2479,8 @@ What did she see... what did you do
 
 The interior walls of the Agora disappear. 
 
-The CITIZENS appear as shadows surrounding the Agora, via PRJ-AG*. They move quietly, carefully. Perhaps the CITIZENS' shadows bear more of a resemblance to the TRAVELERS than before.<<@OLF:  Closeup on the GUIDE.>> 
+The CITIZENS appear as shadows surrounding the Agora, via PRJ-AG*. They move quietly, carefully. Perhaps the CITIZENS' shadows bear more of a resemblance to the TRAVELERS than before.
+<<@olf(description="  Closeup on the GUIDE.")>> 
 
 
 
@@ -2872,7 +2905,8 @@ The music gets louder the rain storms down.YUKI and MATT sing. RAUL laughs as he
 
 .EPILOGUE
 
-<<@OLF: Pre-recorded video of the CITIZEN. The source of the Voiceover. >>
+
+<<@olf(description=" Pre-recorded video of the CITIZEN. The source of the Voiceover. ")>>
 
 THE ARCHIVE resets. 
 

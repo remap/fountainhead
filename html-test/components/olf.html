@@ -1,0 +1,122 @@
+<template>
+    <!-- Note: At this point, the character/dialogue class and cursor pointer are hardcoded in 
+       - chat component, while additional classes are derived from fromNickname -->
+    <p id="olf-paragraph" class="olf"></p>
+</template>
+
+<script>
+    // The part about a show-specific CSS, and generic fountain+ CSS; would it have impact on OLF component?
+    // I think it makes sense that OLF is a losatlantis-only component, while dialogue is a generic fountain CSS
+    // Maybe we can modify the innerhtml of the parent window directly, instead of creating another shadowroot?
+    // If we are doing that, why do we use web components for OLF in the first place?
+    
+    // TODO: This seems to only work in Chrome, verifying.
+    // TODO: We'll want more extensive formatting to the clickable dialogue, as an ordinary <a href>; or use <a href directly>
+    
+    (function(window, document, undefined) {
+        var thatDoc = document;
+        var thisDoc =  (thatDoc._currentScript || thatDoc.currentScript).ownerDocument;
+        var template = thisDoc.querySelector('template').content;
+        
+        var element = Object.create(HTMLElement.prototype);
+        
+        element.createdCallback = function() {
+            this.shadowRoot = this.createShadowRoot();
+            var clone = thatDoc.importNode(template, true);
+            this.shadowRoot.appendChild(clone);
+            
+            // We may not want to contain these in a paragraph at some point
+            this.paragraphElement = this.shadowRoot.querySelector('#olf-paragraph');
+            
+            this.content = '';
+            
+            if (this.hasAttribute('default')) {
+                this.content = this.getAttribute('default');
+            } else if (this.hasAttribute('message')) {
+                this.content = this.getAttribute('message');
+            } else if (this.hasAttribute('description')) {
+                this.content = this.getAttribute('description');
+            } else {
+                console.log('OLF: Content should not be empty');
+                return;
+            }
+            
+            // Use "inherited" style sheet
+            // Note: This may not be ideal for applying the CSS styles from window's document
+            this.applyStyleFromParentDocument(this.paragraphElement);
+            
+            // Apply text for elements
+            this.paragraphElement.textContent = this.content;
+            
+            // Append thisDoc to parent's importedDocs:
+            // Note: This assumes the knowledge of window's scriptControl element name
+            if (window.scriptControl.importedElements != undefined) {
+                window.scriptControl.importedElements.push(this);
+            }
+        };
+        element.attributeChangedCallback = function(attr, oldVal, newVal) {
+            console.log('olf onAttributeChanged stub');
+        };
+        element.htmlClassFromName = function(fromName) {
+            str = fromName.toLowerCase().replace(' ', '-');
+            return str;
+        };
+        element.getStyle = function(document, className) {
+            var classes = document.styleSheets[0].rules || document.styleSheets[0].cssRules;
+            for (var i = 0; i < classes.length; i++) {
+                if (classes[i].selectorText == className) {
+                    return classes[i];
+                }
+            }
+        };
+        element.copyStyleToElement = function(cs, to) {
+            for (var prop in cs) {
+                if (cs[prop] != undefined && cs[prop].length > 0 && 
+                    typeof cs[prop] !== 'object' && typeof cs[prop] !== 'function' && 
+                    prop != parseInt(prop) ) {
+                    
+                    to.style[prop] = cs[prop];
+                }
+            }
+        };
+        // This function takes the existing class name of given element
+        // Note: should be 'classes names'
+        element.applyStyleFromParentDocument = function(ele) {
+            var elementStyle = this.getStyle(window.document, "." + this.htmlClassFromName(ele.className));
+            if (elementStyle != undefined) {
+                this.copyStyleToElement(elementStyle.style, ele);
+            }
+        };
+        // Note: untested function
+        element.applyStyleFromParentDocumentForClass = function (className) {
+            var eles = this.shadowRoot.querySelectorAll('.' + className);
+            for (var i = 0; i < eles.length; i++) {
+                this.applyStyleFromParentDocument(eles[i]);
+            }
+        };
+        // This is a specific function for the visibility of the paragraph known to this web component
+        element.toggleParagraphVisibility = function (visible) {
+            var ele = this.paragraphElement;
+            if (ele == undefined) {
+                console.log("olf: paragraph element undefined");
+                return ;
+            }
+            
+            var flag = visible;
+            
+            if (flag == undefined) {
+                flag = ele.style.display;                
+                if (flag == 'none') {
+                    flag = 'block';
+                } else {
+                    flag = 'none';
+                }
+            }
+            
+            ele.style.display = flag;
+        };
+        window.element = thatDoc.registerElement('com-olf', {
+            prototype: element
+        });
+    })(window, document);
+</script>

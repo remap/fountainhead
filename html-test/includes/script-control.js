@@ -4,9 +4,9 @@
 
 var ScriptControl = function ScriptControl(doc) {
   this.document = doc;
-  this.links = this.document.querySelectorAll('link[rel="import"]');
+  this.links = [];
   
-  this.importedDocuments = [];
+  this.importedElements = [];
 };
 
 /**
@@ -15,14 +15,28 @@ var ScriptControl = function ScriptControl(doc) {
  * Note: Difference between display and visibility: a hidden element is still taking up the space
  * while a 'none' display element is not; Implementing the function as 'display:none' for now.
  *
- * Note: this execution does not affect the elements in web component generated documents.
  */
 ScriptControl.prototype.toggleClassVisibility = function(className, visible) {
   var flag = visible;
+  
+  // This is one way to locate the element by class in the web component's shadow dom
+  // Investigating why it's not working (importedDocuments is an array of the documents of the web components)
+  /*
+  var elements = [].slice.call(this.document.getElementsByClassName(className));
+  for (var i = 0; i < this.importedDocuments.length; i++) {
+    elements.push.apply(elements, [].slice.call(this.importedDocuments[i].querySelector('template').content.querySelectorAll("." + className)));
+  }
+  */
+  
+  // Note: Apply toggle for imported documents from web components;
+  // Need to do the same for other types of toggling.
   var elements = this.document.getElementsByClassName(className);
+  for (var i = 0; i < this.importedElements.length; i++) {
+    this.importedElements[i].toggleParagraphVisibility();
+  }
   
   if (elements == undefined || elements.length == 0) {
-    console.log("No elements of such class " + className);
+    console.log("No elements of such class " + className + " in parent");
     return ;
   }
   
@@ -69,22 +83,6 @@ ScriptControl.prototype.toggleDivIdVisibility = function(divId, visible)
   }
   
   element.style.display = flag;
-};
-
-/**
- * TODO: This tries to load the docs created by web components, but 
- * does not work yet, debugging
- */
-ScriptControl.prototype.loadComponentDocs = function()
-{
-  var self = this;
-  
-  for (var i = 0; i < this.links.length; i++) {
-    this.links[i].addEventListener('load', function(e) {
-      self.importedDocuments.push(self.links[i].import);
-      console.log("*** imported load ***" + i);
-    });
-  }
 };
 
 exports.ScriptControl = ScriptControl;
