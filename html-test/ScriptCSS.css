@@ -31,54 +31,54 @@ IN THE SOFTWARE.
     not use pixel dimensions!  (Percent instead.)  */ 
 
 p {
-	margin: 1.3em auto;
-	word-wrap: break-word;
-	padding: 0 10px;
+    margin: 1.3em auto;
+    word-wrap: break-word;
+    padding: 0 10px;
 }
 body > p:first-child {
-	margin-top: 0;
+    margin-top: 0;
 }
 
 /* Revised to only modify the #charactertypecontent table */
 
 
 #charactertypecontent table  {
-	width: 90%; /*1000px;*/
-	margin-left: 5%;    /* margins used to center it */ 
-	margin-right: 5%; 
-	table-layout: fixed;  /* Evenly spaced columns */ 
+    width: 90%; /*1000px;*/
+    margin-left: 5%;    /* margins used to center it */ 
+    margin-right: 5%; 
+    table-layout: fixed;  /* Evenly spaced columns */ 
 }
 
 #charactertypecontent td  {
-	vertical-align: top;
-	border: 1px dashed gray;
-	/* width: 1000px; */
-	padding: 5px;
+    vertical-align: top;
+    border: 1px dashed gray;
+    /* width: 1000px; */
+    padding: 5px;
 }
 
 
 
 html {
-	margin: ;
-	padding: ;
+    margin: ;
+    padding: ;
 }
 body {
-	background-color: #161616;
-	color: #FFFFFF;
-	font: 14px/1.2em 'Courier New', serif;
-	/* width: 960px; Don't define the width here  - it affects everything*/
-	padding: 0;
-	margin: 0;
+    background-color: #161616;
+    color: #FFFFFF;
+    font: 14px/1.2em 'Courier New', serif;
+    /* width: 960px; Don't define the width here  - it affects everything*/
+    padding: 0;
+    margin: 0;
 }
 article {
-	padding: 0px;
-	margin: 0;
+    padding: 0px;
+    margin: 0;
 }
 section {
-	padding: 0 0 0 0px;
-	/* width:  485px; */
-	margin-right: auto;
-	margin-left: auto;
+    padding: 0 0 0 0px;
+    /* width:  485px; */
+    margin-right: auto;
+    margin-left: auto;
 }
 
 
@@ -87,113 +87,113 @@ section {
 /* Fountain */ 
 
 #character-type-content {
-	padding: 0 0 0 0px;
-	width: center;
+    padding: 0 0 0 0px;
+    width: center;
 }
 
 .charactertypecontent-desc {
-	padding: 0 0 0 0px;
-	margin-right: auto;
-	margin-left: auto;
+    padding: 0 0 0 0px;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 .scene-heading, .transition, .new-act, .end-of-act, .character {
-	text-transform: uppercase;
+    text-transform: uppercase;
 }
 
 .transition {
-	text-align: right;
+    text-align: right;
 }
 
 .new-act, .end-of-act {
-	text-align: center;
+    text-align: center;
 }
 
 
 .action {/* added - jb - not here before - should do this instead of body styling*/ 
 
     width: 400px; 
-    } 
+} 
 
 .character {
-	margin: 1.3em auto 0;
-	width: 180px;
+    margin: 1.3em auto 0;
+    width: 180px;
 }
 
 .dialogue {
-	margin: 0 auto;
-	width: 400px;
+    margin: 0 auto;
+    width: 400px;
 }
 
 .parenthetical {
-	margin: 0 auto;
-	width: 250px;
+    margin: 0 auto;
+    width: 250px;
 }
 
 .scene-heading {
-	margin-top: 2.6em;
-	font-weight: bold;
-	position: relative;
-	padding-right: 40px;
-	background-color: #2D0027-;
+    margin-top: 2.6em;
+    font-weight: bold;
+    position: relative;
+    padding-right: 40px;
+    background-color: #2D0027-;
 }
 .scene-number-left {
-	float: left;
-	margin-left: -50px;
+    float: left;
+    margin-left: -50px;
 }
 .scene-number-right {
-	position: absolute;
-	right: 0;
-	top: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
 }
 
 #setting1 {
-	padding-top: 50px;
-	width: 485px;
+    padding-top: 50px;
+    width: 485px;
 }
 
 #location-a {
-	background-color: #16002D;
-	padding: 15px;
+    background-color: #16002D;
+    padding: 15px;
 }
 
 #script-title {
-	overflow: center;
-	display: block;
-	padding-bottom: 1.5em;
-	margin-bottom: 1.5em;
-	text-align: center;
-	margin-left: auto;
-	margin-right: auto;
+    overflow: center;
+    display: block;
+    padding-bottom: 1.5em;
+    margin-bottom: 1.5em;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 #script-title .title {
-	text-align: center;
-	margin: 1.3em 0;
-	text-decoration: underline;
-	font-weight: bold;
-	text-transform: uppercase;
+    text-align: center;
+    margin: 1.3em 0;
+    text-decoration: underline;
+    font-weight: bold;
+    text-transform: uppercase;
 }
 #script-title .credit {
-	text-align: center;
+    text-align: center;
 }
 #script-title .authors {
-	text-align: center;
+    text-align: center;
 }
 #script-title .source {
-	text-align: center;
-	padding-top: 1.3em;
+    text-align: center;
+    padding-top: 1.3em;
 }
 #script-title .notes {
-	padding-top: 2.6em;
+    padding-top: 2.6em;
 }
 #script-title .notes {
-	white-space: pre-line !important;shape-rendering
+    white-space: pre-line !important;shape-rendering
 }
 #script-title p {
     word-wrap: normal;
 }
 .center {
-	text-align: center !important;
+    text-align: center !important;
 }
 hr {
     height: 0px;
@@ -201,24 +201,24 @@ hr {
     border-bottom: 1px solid #ccc;
 }
 .dual-dialogue {
-	overflow: hidden;
-	margin: 0 auto;
-	width: 600px;
+    overflow: hidden;
+    margin: 0 auto;
+    width: 600px;
 }
 .dual-dialogue .dual-dialogue-left,
 .dual-dialogue .dual-dialogue-right {
-	width: 48%;
-	float: left;
+    width: 48%;
+    float: left;
 }
 .dual-dialogue p {
-	width: auto;
+    width: auto;
 }
 .dual-dialogue .character {
-	xtext-align: center;
-	padding-left: 40px;
+    xtext-align: center;
+    padding-left: 40px;
 }
 .dual-dialogue .parenthetical {
-	padding-left: 40px;
+    padding-left: 40px;
 }
 p.page-break {
     text-align: right;
@@ -230,13 +230,13 @@ p.page-break {
 /* Fountain+ */
 
 #section1 {
-	width: 500px;
-	height: 500px; 
-	border-radius: 50px;
-	font-size: 12px;
-	text-align: center;
-	background: #5B5B5B;
-	/* width and height can be anything, as long as they're equal */
+    width: 500px;
+    height: 500px; 
+    border-radius: 50px;
+    font-size: 12px;
+    text-align: center;
+    background: #5B5B5B;
+    /* width and height can be anything, as long as they're equal */
 }
 
 /* Links */ 
@@ -259,31 +259,31 @@ a:hover {
 
 /* Style the character definitions */ 
 .offliners-def {
-	color: #A7EC21;
+    color: #A7EC21;
 }
 .offline-audience-def {
-	color: #C48CFF;
+    color: #C48CFF;
 }
 .onliners-def {
-	color: #52E3F6;
+    color: #52E3F6;
 }
 .online-audience-def{
-	color: #ECE47E;
+    color: #ECE47E;
 }
 
 /* Style the character names */ 
 
 .offliners.character {
-	color: #A7EC21;
+    color: #A7EC21;
 }
 .offline-audience.character {
-	color: #C48CFF;
+    color: #C48CFF;
 }
 .onliners.character {
-	color: #52E3F6;
+    color: #52E3F6;
 }
 .online-audience.character {
-	color: #ECE47E;
+    color: #ECE47E;
 }
 
 
@@ -311,28 +311,28 @@ a:hover {
 
 .the-observatory {
     margin: 1.3em auto 0;
-	width: 180px;
+    width: 180px;
     color: #ECE47E;
 }
 
 .the-observatory-dialogue {
     color: #ECE47E;
     margin: 0 auto;
-	width: 400px;
-	text-decoration: underline;
+    width: 400px;
+    text-decoration: underline;
 }
 
 .the-guide {
     margin: 1.3em auto 0;
-	width: 180px;
+    width: 180px;
     color: #ECE47E;
 }
 
 .the-guide-dialogue {
     color: #ECE47E;
     margin: 0 auto;
-	width: 400px;
-	text-decoration: underline;
+    width: 400px;
+    text-decoration: underline;
 }
 
 /** 
@@ -350,6 +350,12 @@ a:hover {
 /* Stub for current OLF class */
 .olf {
     color: #BBBB00;
+    
+    margin-left: 50%;
+    margin-right: auto;
+    
+    word-wrap: break-word;
+    width: 250px;
 }
 
 /* Example for floating menu */

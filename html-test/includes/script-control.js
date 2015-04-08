@@ -35,12 +35,40 @@ ScriptControl.prototype.toggleClassVisibility = function(className, visible) {
   } else if (flag == 'none' || flag == true) {
     flag = 'inline';
   } else {
-    console.log("Unrecognized toggle flag option: " + flag);
+    console.log('Unrecognized toggle flag option: ' + flag);
   }
   
   for (var i = 0; i < elements.length; i++) {
     elements[i].style.display = flag;
   }
+};
+
+/**
+ * Toggle the display of floating toolbar
+ */
+ScriptControl.prototype.toggleDivIdVisibility = function(divId, visible)
+{
+  var flag = visible;
+  var element = document.getElementById(divId);
+  
+  if (element == undefined) {
+    console.log("No element by such id " + divId);
+    return ;
+  }
+  
+  if (flag == undefined) {
+    flag = element.style.display;
+  }
+  
+  if (flag != 'none' || flag == false) {
+    flag = 'none';
+  } else if (flag == 'none' || flag == true) {
+    flag = 'inline';
+  } else {
+    console.log('Unrecognized toggle flag option: ' + flag);
+  }
+  
+  element.style.display = flag;
 };
 
 /**

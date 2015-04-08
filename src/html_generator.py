@@ -478,7 +478,7 @@ class FountainHTMLGenerator(object):
                     for specificClass in specificClasses:
                         className = self.htmlClassForType(specificClass[0])
                         classText = specificClass[1]
-                        replacement = self.prependIndentLevel() + '<span class=\'' + className + '\'>' + classText + '</span>'
+                        replacement = self.prependIndentLevel() + '<p class=\'' + className + '\'>' + classText + '</p>'
                         text = re.sub(self._fountainRegex.SPECIFIC_CSS_ADDON_PATTERN, replacement, text, 1)
                         
                     bodyText += self.prependIndentLevel() + '<p class=\'' + self.htmlClassForType(element._elementType) + additionalClasses + '\'>' + text + '</p>\n'
