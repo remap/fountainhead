@@ -7,12 +7,11 @@
   // TODO: This seems to only work in Chrome, verifying. There is a flag in Firefox that needs to be set to true
   // TODO: First click does not seem to work? Second and third works? Verifying
   
-  // Note: referring to the ndnURLPublisherFactory would require this line to be executed after the script tags
-
+  // Note: after decoupling projector name with ritualID, the components are created to control projector1 by default
   (function(window, document, undefined) {
     var componentName = 'com-1b-long-way-from-home';
     window.ndnURLPublisherFactory.createVideoControlComponent
-      (componentName, 'ritual/1B/1B_long_way_from_home_1/url', 'long_way_from_home', 
+      (componentName, 'projectors/projector1/url', 'long_way_from_home', 
        '#' + componentName + '-text', '#' + componentName + '-chunk');  
     
   })(window, document);

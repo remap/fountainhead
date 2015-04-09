@@ -79,7 +79,8 @@
                 }
             }
         };
-        // This function takes the existing class name of given element
+        // This function takes the existing class names of given element,
+        // and apply the class definitions in the parent document to this document
         element.applyStyleFromParentDocument = function(ele) {
             var classNames = ele.className.split(" ");
     
@@ -99,17 +100,18 @@
             }
         };
         // This is a specific function for the visibility of the paragraph known to this web component
-        element.toggleParagraphVisibility = function (visible) {
-            var ele = this.paragraphElement;
-            if (ele == undefined) {
-                console.log("olf: paragraph element undefined");
-                return ;
+        element.toggleClassVisibility = function (className, visible) {
+            var normalizedClass = className;
+            if (!normalizedClass.startsWith('.')) {
+                normalizedClass = '.' + normalizedClass;
             }
             
+            var eles = this.shadowRoot.querySelectorAll(normalizedClass);
+
             var flag = visible;
             
-            if (flag == undefined) {
-                flag = ele.style.display;                
+            if (flag == undefined && eles.length > 0) {
+                flag = eles[0].style.display;                
                 if (flag == 'none') {
                     flag = 'block';
                 } else {
@@ -117,7 +119,9 @@
                 }
             }
             
-            ele.style.display = flag;
+            for (var i = 0; i < eles.length; i++) {
+                eles[i].style.display = flag;
+            }
         };
         window.element = thatDoc.registerElement('com-olf', {
             prototype: element

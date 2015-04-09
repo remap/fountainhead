@@ -28,12 +28,12 @@ ScriptControl.prototype.toggleClassVisibility = function(className, visible) {
   }
   */
   
-  // Note: Apply toggle for imported documents from web components;
-  // Need to do the same for other types of toggling.
-  var elements = this.document.getElementsByClassName(className);
+  // Note: Apply toggle by class names for imported documents;
   for (var i = 0; i < this.importedElements.length; i++) {
-    this.importedElements[i].toggleParagraphVisibility();
+    this.importedElements[i].toggleClassVisibility(className);
   }
+  
+  var elements = this.document.getElementsByClassName(className);
   
   if (elements == undefined || elements.length == 0) {
     console.log("No elements of such class " + className + " in parent");

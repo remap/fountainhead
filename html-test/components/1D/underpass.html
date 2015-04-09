@@ -8,11 +8,12 @@
   // TODO: This seems to only work in Chrome, verifying. There is a flag in Firefox that needs to be set to true
   // TODO: First click does not seem to work? Second and third works? Verifying
 
+  // Note: after decoupling projector name with ritualID, the components are created to control projector1 by default
   (function(window, document, undefined) {
     var componentName = 'com-1d-underpass';
     
     window.ndnURLPublisherFactory.createVideoControlComponent
-      (componentName, 'ritual/1D/1D_underpass_1/url', 'underpass', 
+      (componentName, 'projectors/projector1/url', 'underpass', 
        '#' + componentName + '-text', '#' + componentName + '-chunk');  
   })(window, document);
   
