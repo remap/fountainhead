@@ -530,6 +530,8 @@ class FountainHTMLGenerator(object):
         
             menuInsertion += self.prependIndentLevel(menuInsertionIndent) + '<div id="floating-menu">\n'
             menuInsertion += self.prependIndentLevel(menuInsertionIndent + 1) + '<h3>Menu (Press \'t\' to show/hide)</h3>\n'
+            
+            # TODO: remove hard-coded direct Javascript call from here; maybe implement the menu as a separate component or included html (rather than JS only includes that we have now)?
             menuInsertion += self.prependIndentLevel(menuInsertionIndent + 1) + '<a id="floating-menu-toggle-olf" href="#" onclick="scriptControl.toggleClassVisibility(\'olf\');return false;">Show/hide OLF</a>\n'
             
             menuInsertion += self.prependIndentLevel(menuInsertionIndent + 1) + '<br><hr>\n'

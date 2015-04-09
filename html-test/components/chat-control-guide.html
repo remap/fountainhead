@@ -133,18 +133,21 @@
                         if (result !== undefined && result !== null && result.length > 0) {
                             // Note: we'll probably want a model class that reflects the users table schema
                             for (var i = 0; i < result.length; i++) {
-                                var contentSent = self.content.replace(/{{\s+(email)\s+}}?/g, result[i][0])
-                                                      .replace(/{{\s+(user_name)\s+}}?/g, result[i][1])
-                                                      .replace(/{{\s+(type)\s+}}?/g, result[i][2]);
+                                // The guide only talks to tourists
+                                if (result[i][2] == 1) {
+                                    var contentSent = self.content.replace(/{{\s+(email)\s+}}?/g, result[i][0])
+                                                          .replace(/{{\s+(user_name)\s+}}?/g, result[i][1])
+                                                          .replace(/{{\s+(type)\s+}}?/g, result[i][2]);
                             
-                                var message = $msg({
-                                    // Note: here we also use the jabber account name inference
-                                    "to" : result[i][0].replace('@', '.') + '@archive-dev.remap.ucla.edu',
-                                    "type" : "chat",
-                                    "from_nickname" : self.fromNickname
-                                }).c("body").t(contentSent);
+                                    var message = $msg({
+                                        // Note: here we also use the jabber account name inference
+                                        "to" : result[i][0].replace('@', '.') + '@archive-dev.remap.ucla.edu',
+                                        "type" : "chat",
+                                        "from_nickname" : self.fromNickname
+                                    }).c("body").t(contentSent);
                                 
-                                connection.send(message.tree()); 
+                                    connection.send(message.tree()); 
+                                }
                             }
                         }
                     };
