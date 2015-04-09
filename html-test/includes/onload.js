@@ -3,6 +3,12 @@ var ndnURLPublisherFactory = new URLPublisherFactory(window, document);
 var scriptControl = new ScriptControl(document);
 //scriptControl.loadComponentDocs();
 
+// Firefox does not give an import error if web component's not enabled.
+function onImportError(event) {
+  console.log('Error loading import: ' + event.target.href);
+  return;
+}
+
 window.onload = function() {
   //scriptControl.toggleClassVisibility('dialogue');
   

@@ -519,7 +519,8 @@ class FountainHTMLGenerator(object):
             importInsertion = ''
             for componentName in self._componentList:
                 # Note: Right now web components are expected to be .htmls only.
-                importInsertion += self.prependIndentLevel(componentImportInsertionIndent) + '<link rel=\"import\" href=\"' + self._componentParent + componentName + '.html\">\n'
+                # Note: here the parser is assumed to know the load error callback, which is not ideal
+                importInsertion += self.prependIndentLevel(componentImportInsertionIndent) + '<link rel=\"import\" href=\"' + self._componentParent + componentName + '.html\" onerror=\"onImportError(event)\">\n'
         
             bodyText = bodyText[:componentImportInsertionPoint] + importInsertion + bodyText[componentImportInsertionPoint:]
         

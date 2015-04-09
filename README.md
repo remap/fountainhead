@@ -19,6 +19,10 @@ Flags:
 * h: Print help and exit
     
 ## Links:
+Active script: http://the-archive.la/script/fountainhead/html-test/sample.html
+
+(For Firefox, please enable web components)
+
 Specification: http://redmine.remap.ucla.edu/projects/fountainhead/documents
 
 Issue tracking: http://redmine.remap.ucla.edu/projects/fountainhead/
