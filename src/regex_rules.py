@@ -52,7 +52,7 @@ class FountainRegexBase(object):
     UNIVERSAL_LINE_BREAKS_TEMPLATE = '\n'
 
     # Note: This is different from the sample, for scenes starting directly with characters and dialogues
-    SCENE_HEADER_PATTERN       = '(?<=\\n)(([iI][nN][tT]|[eE][xX][tT]|[^\\w][eE][sS][tT]|\\.|[iI]\\.?\\/[eE]\\.?)([^\\n]+))(?=\\n)'
+    SCENE_HEADER_PATTERN       = r'(?<=\n)(([iI][nN][tT][\ |.]|[eE][xX][tT][\ |.]|[^\w][eE][sS][tT]|\.|[iI]\.?\/[eE]\.?)([^\n]+))(?=\n)'
     ACTION_PATTERN             = '([^<>]*?)(\\n{2}|\\n<)'
     MULTI_LINE_ACTION_PATTERN  = '\n{2}(([^a-z\\n:]+?[\\.\\?,\\s!\\*_]*?)\n{2}){1,2}'
     

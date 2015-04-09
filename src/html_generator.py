@@ -419,6 +419,7 @@ class FountainHTMLGenerator(object):
                                     prevArgValue = ''
                                 elif quoteCnt > 1:
                                     print('WARNING: subsequent web component argument has more than one quote; Parsing result may be unexpected')
+                                    print('Related element text: ' + element._elementText)
                             else:
                                 equalSign = arg.find('=')
                                 if (equalSign > 0):
@@ -433,10 +434,12 @@ class FountainHTMLGenerator(object):
                                             prevArgName = argName
                                         elif quoteCnt > 2:
                                             print('WARNING: more than two quotes found in one component argument; Parsing result may be unexpected')
+                                            print('Related element text: ' + element._elementText)
                                     else:
                                         componentArgs[argName] = argValue
                                 else:
                                     print('WARNING: no equal sign found for web component argument; Parsing result may be unexpected')
+                                    print('Related element text: ' + element._elementText)
                                 
                 if (element._elementType == self._fountainRegex.COMPONENT_DESCRIPTION_PATTERN):
                     if (inComponent):

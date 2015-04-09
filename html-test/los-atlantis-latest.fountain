@@ -359,13 +359,12 @@ Time to your Transfer: << - 00 Days, 00 Hours, 00 Minutes>>.
 
 RACHEL
 Did you hear that?
-<<@olf(description=" Title overlaid - "Provide Identification Image" ")>>
+
+<<@olf(description=" Title overlaid - Provide Identification Image ")>>
 
 (from here on the OLF details are in notes only for this script)
 
 A digital sign appears: "PROVIDE IDENTIFICATION IMAGE" 
-
-
 
 THE GUIDE
 (in a businesslike tone)
@@ -1286,10 +1285,7 @@ FATIMA
 Now YOU! Please? THANK YOU!
 
 TOURIST 2
-
-<<June, 1968. This is an elephant in Culver City. My mom took
-
-me to the circus and bought me cotton candy.>>
+<<June, 1968. This is an elephant in Culver City. My mom took me to the circus and bought me cotton candy.>>
 
 FATIMA 
 
@@ -1322,14 +1318,13 @@ FATIMA
 I can't speak good, but I'd like to be an astronaut. You have to be good at math, but I'm pretty terrible at it. You have to be physically fit, but I usually can't run fast. 
 
 She points the telescope into a dark area offstage, and the image projected is one of stars.
-<<@olf(description=" Shot progression interrupted by CU on Felix, with CITIZEN'S dialogue as V/O. ")>>
 
-
+<<@olf(description="Shot progression interrupted by CU on Felix, with CITIZEN'S dialogue as V/O. ")>>
 
 FATIMA
 I can't really get around. I can't read what's on the signs. If I got on the freeway I'd never know when to jump off! But one day I'll bounce up to the big bad moon! One day I'll be understood, because everything is silent in the cosmos, and no language is sacred up there. We're just little bits of stardust rumbling along, and up there will be no laws of communication and participation and taxes and hospital bills. No tongue will be alien. I'll have my day. I'll have my day when I land on that big rock. When I bounce without gravity and put my flag on that crater. And everything... *everything* will be quiet... except for my sister talking.
-<<@olf(description="  Return to wide shot and alternating closeups. ")>>  
 
+<<@olf(description="Return to wide shot and alternating closeups. ")>>  
 
 The guides encourages the Tourist to  pickup and read the Polaroids aloud to each other 
 
@@ -2819,9 +2814,9 @@ Campus life, study groups. A football game YUKI looks on comfused. Video snippet
 Perhas we don't see any video of the students just their voices from the previous scene
 
 MATT
-Are you guys  hungry? I'm hungry?
+Are you guys hungry? I'm hungry?
 
-Interwoven thru all this are  renactments and memories we have seen earlier as well as images and memories upload by the Tourists and Watchers online. 
+Interwoven thru all this are renactments and memories we have seen earlier as well as images and memories upload by the Tourists and Watchers online. 
 
 YUKI
 Staving.
