@@ -1,5 +1,6 @@
 <template>
-  <p></p>
+  <p id="com-1a-departures-text" class="web-component com-1a-departures video-control-text"></p>
+  <p id="com-1a-departures-chunk" class="web-component com-1a-departures video-control-chunk"></p>
 </template>
 
 <script>
@@ -8,7 +9,11 @@
   // TODO: First click does not seem to work? Second and third works? Verifying
 
   (function(window, document, undefined) {
-    window.ndnURLPublisherFactory.createVideoControlComponent('com-1a-departures', 'ritual/1A/1A_departure_1/url', 'departures', window, document);  
+    var componentName = 'com-1a-departures';
+    
+    window.ndnURLPublisherFactory.createVideoControlComponent
+      (componentName, 'ritual/1A/1A_departure_1/url', 'departures', 
+       '#' + componentName + '-text', '#' + componentName + '-chunk');  
   })(window, document);
   
 </script>

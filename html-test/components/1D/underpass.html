@@ -1,5 +1,7 @@
 <template>
-  <p></p>
+  // Probably would want to modify class in code so that duplication of elements becomes easier.
+  <p id="com-1d-underpass-text" class="web-component com-1d-underpass video-control-text"></p>
+  <p id="com-1d-underpass-chunk" class="web-component com-1d-underpass video-control-chunk"></p>
 </template>
 
 <script>
@@ -8,7 +10,11 @@
   // TODO: First click does not seem to work? Second and third works? Verifying
 
   (function(window, document, undefined) {
-    window.ndnURLPublisherFactory.createVideoControlComponent('com-1d-underpass', 'ritual/1D/1D_underpass_1/url', 'underpass', window, document);  
+    var componentName = 'com-1d-underpass';
+    
+    window.ndnURLPublisherFactory.createVideoControlComponent
+      (componentName, 'ritual/1D/1D_underpass_1/url', 'underpass', 
+       '#' + componentName + '-text', '#' + componentName + '-chunk');  
   })(window, document);
   
 </script>

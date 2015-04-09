@@ -251,7 +251,7 @@ a {   /* Should there be a class identifier for this? */
 } 
 a:hover {
     text-decoration: underline;
-    }
+}
 
 /* Proposed by JB */
 
@@ -291,6 +291,8 @@ a:hover {
 }
 
 /**
+ * CSS class for web component generated content; copied by code into web components
+ *
  * The inheritance, or coexisting of classes like above haven't been figured out on these yet.
  */
 
@@ -318,6 +320,18 @@ a:hover {
     margin: 0 auto;
     width: 400px;
     text-decoration: underline;
+}
+
+.video-control-text {
+    color: #ECE47E;
+    margin: 0 auto;
+    width: 400px;
+    text-decoration: underline;    
+    cursor: pointer; 
+}
+
+.video-control-chunk {
+    float: right;
 }
 
 /* Classes for each character or each character definition can be the same as their type; Left here for flexibility.

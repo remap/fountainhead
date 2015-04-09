@@ -1,5 +1,6 @@
 <template>
-  <p></p>
+  <p id="com-1b-long-way-from-home-text" class="web-component com-1b-long-way-from-home video-control-text"></p>
+  <p id="com-1b-long-way-from-home-chunk" class="web-component com-1b-long-way-from-home-text video-control-chunk"></p>
 </template>
 
 <script>
@@ -7,8 +8,13 @@
   // TODO: First click does not seem to work? Second and third works? Verifying
   
   // Note: referring to the ndnURLPublisherFactory would require this line to be executed after the script tags
+
   (function(window, document, undefined) {
-    window.ndnURLPublisherFactory.createVideoControlComponent('com-1b-long-way-from-home', 'ritual/1B/1B_long_way_from_home_1/url', 'long_way_from_home', window, document);  
+    var componentName = 'com-1b-long-way-from-home';
+    window.ndnURLPublisherFactory.createVideoControlComponent
+      (componentName, 'ritual/1B/1B_long_way_from_home_1/url', 'long_way_from_home', 
+       '#' + componentName + '-text', '#' + componentName + '-chunk');  
+    
   })(window, document);
   
 </script>

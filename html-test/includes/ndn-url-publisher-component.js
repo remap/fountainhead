@@ -24,7 +24,7 @@ var URLPublisherFactory = function URLPublisherFactory(window, document) {
  * @param document The document object of the parent page
  */
  
-URLPublisherFactory.prototype.createVideoControlComponent = function (componentName, ndnSuffix, urlTableName) {
+URLPublisherFactory.prototype.createVideoControlComponent = function (componentName, ndnSuffix, urlTableName, textElementId, chunkElementId) {
   var thatDoc = this.document;
   var window = this.window;
   
@@ -40,9 +40,9 @@ URLPublisherFactory.prototype.createVideoControlComponent = function (componentN
     var shadowRoot = this.createShadowRoot();
     var clone = thatDoc.importNode(template, true);
     shadowRoot.appendChild(clone);
-  
-    // We may not want to contain these in a paragraph at some point
-    this.innerElement = shadowRoot.querySelector('p');
+    
+    this.innerElement = shadowRoot.querySelector(textElementId);
+    this.chunkElement = shadowRoot.querySelector(chunkElementId);
     
     if (Name === undefined || Name === null) {
       console.log(componentName + ': Name is undefined; include ndn-js?');
@@ -56,13 +56,9 @@ URLPublisherFactory.prototype.createVideoControlComponent = function (componentN
       this.innerElement.textContent = 'Default description for ' + componentName + '.';
     }
   
-    if (this.hasAttribute('style')) {
-      var style = this.getAttribute('style');
-      this.innerElement.setAttribute("style", style);
-    }
-    else {
-      this.innerElement.setAttribute("class", componentName);
-    }
+    // Styling for text and chunk element
+    this.applyStyleFromParentDocument(this.innerElement);
+    this.applyStyleFromParentDocument(this.chunkElement);
   
     // TODO: Face setup's different from the online version, which hardcoded the server's IP address.
     if (this.hasAttribute('face')) {
@@ -118,6 +114,20 @@ URLPublisherFactory.prototype.createVideoControlComponent = function (componentN
     this.resultURLs = [];
     // videoURL is the random selected URL among all that's returned.
     this.videoURL = '';
+    // right now we are not using youtube Data API for video thumbnails
+    this.imgURL = '';
+    // Javascript parser for getting key from youtube URL
+    // ref: http://stackoverflow.com/questions/3452546/javascript-regex-how-to-get-youtube-video-id-from-url
+    this.youtubeKeyParser = function (url) {
+      var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
+      var match = url.match(regExp);
+      if (match && match[7].length == 11){
+        return match[7];
+      } else {
+        alert("Url incorrecta");
+      }
+    }
+    
     var self = this;
     
     var data = new FormData();
@@ -136,6 +146,8 @@ URLPublisherFactory.prototype.createVideoControlComponent = function (componentN
       
         var index = Math.floor((Math.random() * (self.resultURLs.length)));
         self.videoURL = self.resultURLs[index];
+        self.imgURL = 'http://img.youtube.com/vi/' + self.youtubeKeyParser(self.videoURL) + '/0.jpg';
+        
         console.log(componentName + ': chosen URL: ' + self.videoURL);
       }
     };
@@ -146,11 +158,11 @@ URLPublisherFactory.prototype.createVideoControlComponent = function (componentN
     // TODO: what happens when multiple producers.
   
     this.innerElement.addEventListener('click', function(){
-      var index = Math.floor((Math.random() * (self.resultURLs.length)));
-      self.videoURL = self.resultURLs[index];
+      // Note: Right now we don't do randomize video onClick; for thumbnail display
+      //var index = Math.floor((Math.random() * (self.resultURLs.length)));
+      //self.videoURL = self.resultURLs[index];
       
       if (self.videoURL && self.videoURL != '') {
-      
         var data = new Data(self.namePrefix);
         // Note: for now, the names are hard-coded, since namespace design is not fully discussed
         var suffixName = new Name(ndnSuffix);
@@ -171,13 +183,74 @@ URLPublisherFactory.prototype.createVideoControlComponent = function (componentN
         self.memoryContentCache.add(data);
         console.log('NDN content published. Name: ' + data.getName().toUri() + '; Content: ' + data.getContent().buf().toString());
       } else {
-        console.log('com-1a-sunset: no relevant entries found or loaded');
+        console.log(componentName + ': no relevant entries found or loaded');
       }
     });
+    
+    // Added for example of chunk html display: 
+    // We'll need a parameter interface for html chunk display
+    this.innerElement.addEventListener('mouseover', function() {
+      if (self.imgURL && self.imgURL != '') {
+        self.chunkElement.innerHTML = '<img src=' + self.imgURL + '></img>';
+      } else {
+        console.log(componentName + ': no relevant thumbnail entries found or loaded');
+      }
+    });
+    
+    this.innerElement.addEventListener('mouseout', function() {
+      self.chunkElement.innerHTML = '';
+    });
+    
   };
+  // TODO: resolve duplication of these methods in here, OLF and chat style control.
+  
   VideoControlElement.attributeChangedCallback = function(attr, oldVal, newVal) {
   
   };
+  
+  // Added methods for CSS styling
+  VideoControlElement.htmlClassFromName = function(fromName) {
+    str = fromName.toLowerCase().replace(' ', '-');
+    return str;
+  };
+  VideoControlElement.getStyle = function(document, className) {
+    var classes = document.styleSheets[0].rules || document.styleSheets[0].cssRules;
+    for (var i = 0; i < classes.length; i++) {
+      if (classes[i].selectorText == className) {
+        return classes[i];
+      }
+    }
+  };
+  VideoControlElement.copyStyleToElement = function(cs, to) {
+    for (var prop in cs) {
+      if (cs[prop] != undefined && cs[prop].length > 0 && 
+        typeof cs[prop] !== 'object' && typeof cs[prop] !== 'function' && 
+        prop != parseInt(prop) ) {
+        
+        to.style[prop] = cs[prop];
+      }
+    }
+  };
+  // This function takes the existing class name of given element
+  VideoControlElement.applyStyleFromParentDocument = function(ele) {
+    var classNames = ele.className.split(" ");
+    
+    for (var i = 0; i < classNames.length; i++) {
+      var elementStyle = this.getStyle(window.document, "." + this.htmlClassFromName(classNames[i]));
+    
+      if (elementStyle != undefined) {
+        this.copyStyleToElement(elementStyle.style, ele);
+      }
+    }
+  };
+  // Note: untested function
+  VideoControlElement.applyStyleFromParentDocumentForClass = function (className) {
+    var eles = this.shadowRoot.querySelectorAll('.' + className);
+    for (var i = 0; i < eles.length; i++) {
+      this.applyStyleFromParentDocument(eles[i]);
+    }
+  };
+  
   // Note: web component registered names should not begin with numeric characters;
   //     web component names should always have a dash. (https://github.com/divshot/ele-web/issues/22)
   //     web component names should not have slash in them.

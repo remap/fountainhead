@@ -80,11 +80,15 @@
             }
         };
         // This function takes the existing class name of given element
-        // Note: should be 'classes names'
         element.applyStyleFromParentDocument = function(ele) {
-            var elementStyle = this.getStyle(window.document, "." + this.htmlClassFromName(ele.className));
-            if (elementStyle != undefined) {
-                this.copyStyleToElement(elementStyle.style, ele);
+            var classNames = ele.className.split(" ");
+    
+            for (var i = 0; i < classNames.length; i++) {
+                var elementStyle = this.getStyle(window.document, "." + this.htmlClassFromName(classNames[i]));
+    
+                if (elementStyle != undefined) {
+                    this.copyStyleToElement(elementStyle.style, ele);
+                }
             }
         };
         // Note: untested function
