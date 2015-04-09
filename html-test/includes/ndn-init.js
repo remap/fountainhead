@@ -113,6 +113,7 @@ privateKeyStorage.setKeyPairForKeyName
 
 face.setCommandSigningInfo(keyChain, certificateName);
 
+// Confirm: ritualNames and publishContent here is not used by any scripts right now?
 var ritualNames = 
 ["/ndn/edu/ucla/remap/losatlantis/chocolate_cookie_show/ritual/1A/1A_departure_1/url/",
  "/ndn/edu/ucla/remap/losatlantis/chocolate_cookie_show/ritual/1B/1B_long_way_from_home_1/url/",
