@@ -525,18 +525,19 @@ class FountainHTMLGenerator(object):
         if (menuInsertionPoint != -1):
             menuInsertion = ''
         
-            menuInsertion += self.prependIndentLevel(menuInsertionIndent) + '<div id="floating-menu">'
-            menuInsertion += self.prependIndentLevel(menuInsertionIndent + 1) + '<h3>Floating Menu</h3>'
-            menuInsertion += self.prependIndentLevel(menuInsertionIndent + 1) + '<a id="floating-menu-toggle-olf" href="#" onclick="scriptControl.toggleClassVisibility(\'olf\');return false;">Toggle OLF</a>'
+            menuInsertion += self.prependIndentLevel(menuInsertionIndent) + '<div id="floating-menu">\n'
+            menuInsertion += self.prependIndentLevel(menuInsertionIndent + 1) + '<h3>Menu (Press \'t\' to show/hide)</h3>\n'
+            menuInsertion += self.prependIndentLevel(menuInsertionIndent + 1) + '<a id="floating-menu-toggle-olf" href="#" onclick="scriptControl.toggleClassVisibility(\'olf\');return false;">Show/hide OLF</a>\n'
             
-            menuInsertion += '<br>'
+            menuInsertion += self.prependIndentLevel(menuInsertionIndent + 1) + '<br><hr>\n'
+            menuInsertion += self.prependIndentLevel(menuInsertionIndent + 1) + '<h3>Table of Contents</h3>\n'
             
             tocCnt = 0
             for menuItem in self._sceneHeadings:
-                menuInsertion += self.prependIndentLevel(menuInsertionIndent + 1) + '<a href=\"#toc' + str(tocCnt) + '\">' + menuItem + '</a>'
+                menuInsertion += self.prependIndentLevel(menuInsertionIndent + 1) + '<a href=\"#toc' + str(tocCnt) + '\">' + menuItem + '</a>\n'
                 tocCnt += 1
                 
-            menuInsertion += self.prependIndentLevel(menuInsertionIndent) + '</div>'
+            menuInsertion += self.prependIndentLevel(menuInsertionIndent) + '</div>\n'
             
             bodyText = bodyText[:menuInsertionPoint] + menuInsertion + bodyText[menuInsertionPoint:]
             

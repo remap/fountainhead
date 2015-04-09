@@ -109,8 +109,12 @@ section {
     text-align: center;
 }
 
+/**
+ * added - jb - not here before - should do this instead of body styling
+ * modified - zhehao - changed to styling the newly added scriptbody div
+ */ 
 
-.action {/* added - jb - not here before - should do this instead of body styling*/ 
+.action {
 
     width: 400px; 
 } 
@@ -287,7 +291,7 @@ a:hover {
 }
 
 /**
- * The inheritance on these haven't been figured out yet.
+ * The inheritance, or coexisting of classes like above haven't been figured out on these yet.
  */
 
 .the-observatory {
@@ -334,17 +338,9 @@ a:hover {
 .felix, .felix-def {
 }
 
-/** 
- * Temporary CSS styles for direct links in script shown on Thursday, Apr 2
+/**
+ * Zhehao's added stubs for Online feed and floating menu
  */
-#manual_links p {
-    cursor: pointer; 
-    text-decoration: none;
-}
-
-#manual_links p:hover {
-    text-decoration: underline;
-}
 
 /* Stub for current OLF class */
 .olf {
@@ -369,7 +365,16 @@ a:hover {
     z-index:2;
 }
 
-#floating-menu a, #floating-menu h3 {
+#floating-menu h3 {
     display:block;
     margin:0.5em 0.5em;
+    font: 14px/1.2em 'Sans-Serif', serif;
+    color: #FFFFFF;
+}
+
+#floating-menu a {
+    display:block;
+    margin:0.5em 0.5em;
+    font: 14px/1em 'Sans-Serif', serif;
+    color: #CCBBCC;
 }
