@@ -751,7 +751,7 @@ You think she should try?
 SHEENA ^
 I think we all should. (To TOURISTS.) You think we should ?
 
-RACHEL
+RACHEL ^
 I'm hungry. 
 
 FELIX ^
@@ -849,12 +849,9 @@ Hometown of your visitor, <<Jeff Burke>> is <<Brea, California>>.
 
 .RITUAL 1/A - "DEPARTURE" (@ SHEENA)
 
-[[  Im not sure what this means?  about the music
+[[  Im not sure what this means?  about the music Thundersbird  ressorts  zrizal   manila]]
 
 <<@1A/departures(instance="1", description="Play video: Departure")>>
-  
-Thundersbird  ressorts  zrizal   manila]]
-
 
 A group of TOURISTS follow Sheena, passing luggage,  shoes, and images of people waiting in line. The sound of departure announcements. 
 
@@ -1481,7 +1478,7 @@ Sheena listen I saw-
 SHEENA ^
 That was fucking WIERD!
 
-FELIX
+FELIX ^
 That was *weird and kinda sad*.. But beautiful
 
 EDDIE ^
