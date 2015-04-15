@@ -17,7 +17,7 @@
     <script>
       var face = new Face({host: ndnHost});
       
-      var memoryContentCache = new MemoryContentCache(face);
+      var memoryContentCache = new MemoryContentCache(face, 10);
       var ndnName = new Name();
       
       window.onload = function() {
