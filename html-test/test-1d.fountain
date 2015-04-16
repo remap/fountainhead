@@ -6,7 +6,7 @@
 [prefix] new Name("/ndn/edu/ucla/remap/losatlantis")
 [face] new Face({host: "archive-dev.remap.ucla.edu"})
 [include] ndn-init.js
-[include] ndn-URL-publisher-component.js
+[include] ndn-url-publisher-component.js
 
 [include] script-control.js
 [include] onload.js
