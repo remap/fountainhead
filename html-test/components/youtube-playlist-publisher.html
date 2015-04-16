@@ -1,0 +1,240 @@
+<template>
+  <p id="video-links" class="video-control-text"></p>
+</template>
+
+<script>
+  (function(window, document, undefined) {
+    var thatDoc = document;
+    var thisDoc =  (thatDoc._currentScript || thatDoc.currentScript).ownerDocument;
+    var template = thisDoc.querySelector('template').content;
+    
+    var componentName = 'com-youtube-playlist-publisher';
+    
+    var element = Object.create(HTMLElement.prototype);
+    
+    element.createdCallback = function() {
+      this.shadowRoot = this.createShadowRoot();
+      var clone = thatDoc.importNode(template, true);
+      this.shadowRoot.appendChild(clone);
+      
+      // We may not want to contain these in a paragraph at some point
+      this.paragraphElement = this.shadowRoot.querySelector('#video-links');
+      
+      // Use "inherited" style sheet
+      // Note: This may not be ideal for applying the CSS styles from window's document
+      this.applyStyleFromParentDocument(this.paragraphElement);
+      
+      // Append thisDoc to parent's importedDocs:
+      // Note: This assumes the knowledge of window's scriptControl element name
+      if (window.scriptControl.importedElements != undefined) {
+        window.scriptControl.importedElements.push(this);
+      }
+      
+      /**
+       * Duplicate of code from ndn-url-publisher-component.js: 
+       * ndn environment parameter processing 
+       */
+      // TODO: Face setup's different from the online version, which hardcoded the server's IP address.
+      if (this.hasAttribute('face')) {
+        this.face = this.getAttribute('face');
+      } else if (window.face !== undefined && window.face !== null) {
+        this.face = window.face;
+      } else {
+        console.log(componentName + ': face is not defined, creating new one for window');
+        window.face = new Face();
+        this.face = window.face;
+      }
+ 
+      if (this.hasAttribute('prefix')) {
+        this.namePrefix = this.getAttribute('prefix');
+      } else if (window.prefix !== undefined && window.prefix !== null) {
+        this.namePrefix = window.prefix;
+      } else {
+        console.log(componentName + ': prefix is not defined for sunset URL publishing, creating default name for window');
+        window.prefix = new Name(ndnPrefix);
+        this.namePrefix = window.prefix;
+      }
+ 
+      if (this.hasAttribute('memoryContentCache')) {
+        this.memoryContentCache = this.getAttribute('memoryContentCache');
+      } else if (window.memoryContentCache !== undefined && window.memoryContentCache !== null) {
+        this.memoryContentCache = window.memoryContentCache;
+      } else {
+        console.log(componentName + ': memoryContentCache is not defined, creating new one for window');
+        window.memoryContentCache = new MemoryContentCache(this.face);
+        this.memoryContentCache = window.memoryContentCache;
+      }
+ 
+      var registeredPrefix = this.face.getEntryForRegisteredPrefix(this.namePrefix);
+      if (registeredPrefix == null || registeredPrefix == 0) {
+        console.log("registeredPrefix is not found on Face, reregistering default prefix");
+        this.memoryContentCache.registerPrefix(this.namePrefix, function (prefix) {
+        console.log("Register failed for prefix.");
+        });
+      }
+ 
+      if (this.hasAttribute('showid')) {
+        this.showid = this.getAttribute('showid');
+      } else if (window.showid !== undefined && window.showid !== null) {
+        this.showid = window.showid;
+      } else {
+        console.log(componentName + ': showid is not defined for sunset URL publishing, creating default for window');
+        window.showid = 'default';
+        this.showid = window.showid;
+      }
+      
+      /**
+       * Unique code for Youtube playlist videos fetching
+       * Youtube example URL for fetching playlist items:
+       * https://www.googleapis.com/youtube/v3/playlistItems?part=contentDetails&playlistId=PLjardEiAzhrqARf5iNO0SLUiC_c0XquV_&key=AIzaSyDCjPW8n_9MgGcEAYVPMmuO_sJ3a7jLe5M
+       *
+       * Using video id from the JSON feed of that request, video details can be fetched:
+       * https://www.googleapis.com/youtube/v3/videos?part=snippet,contentDetails,statistics,status&key=AIzaSyDCjPW8n_9MgGcEAYVPMmuO_sJ3a7jLe5M&id=QEb6ANksXCs
+       */
+      
+      if (this.hasAttribute('playlistId')) {
+        this.playlistId = this.getAttribute('playlistId');
+      } else {
+        console.log(componentName + ': playlistId not defined');
+        return;
+      } 
+
+      this.videoLinks = [];
+      this.apiKey = 'AIzaSyDCjPW8n_9MgGcEAYVPMmuO_sJ3a7jLe5M';
+      this.requestYoutubePlaylist(this.playlistId, undefined, this.videoLinks, this.apiKey, 0);
+    };
+    /**
+     * Load videos from a playlist ID calls requestYoutubeVideo to populate videoLinks array with video title and URLs.
+     * cntStart is used to create a ID -> sequence in videoLinks array mapping
+     */
+    element.requestYoutubePlaylist = function(playlistId, nextPageToken, videoLinks, apiKey, cntStart) {
+      var listRequest = new XMLHttpRequest();
+      var videoCnt = cntStart;
+      
+      listRequest.onreadystatechange = function() {
+        if (listRequest.readyState==4 && listRequest.status==200) {
+          var result = JSON.parse(listRequest.responseText);
+          var videoSeq = {};
+          for (var i = 0; i < result.items.length; i++) {
+            videoSeq[result.items[i].contentDetails.videoId] = videoCnt;
+            videoCnt ++;
+            
+            element.requestYoutubeVideo(result.items[i].contentDetails.videoId, videoLinks, videoSeq, apiKey);
+          }
+          
+          if (result.nextPageToken != undefined && result.nextPageToken != null) {
+            element.requestYoutubePlaylist(playlistId, result.nextPageToken, videoLinks, apiKey, videoCnt);
+          }
+        }
+      }
+      // TODO: API key is hard coded in the function at this point
+      var url = 'https://www.googleapis.com/youtube/v3/playlistItems?part=contentDetails&playlistId=' + playlistId + '&key=' + apiKey;
+      if (nextPageToken != undefined) {
+        url += '&pageToken=' + nextPageToken;
+      }
+      listRequest.open('GET', url, true);
+      listRequest.send();
+    };
+    /**
+     * Load video from with a specific ID and populate videoLinks with its title; 
+     * videoSeq object is used to find the corresponding position in videoLinks where this video's details belongs.
+     */
+    element.requestYoutubeVideo = function(videoId, videoLinks, videoSeq, apiKey) {
+      var videoRequest = new XMLHttpRequest();
+      var url = 'https://www.googleapis.com/youtube/v3/videos?part=snippet,contentDetails,statistics,status&key=' + apiKey + '&id=';
+      url += videoId;
+      
+      videoRequest.onreadystatechange = function() {
+        if (videoRequest.readyState == 4 && videoRequest.status == 200) {
+          var videoResult = JSON.parse(videoRequest.responseText);
+          videoLinks[videoSeq[videoResult.items[0].id]] = 
+            ({'title' : videoResult.items[0].snippet.title,
+              'url'   : 'https://www.youtube.com/watch?v=' + videoResult.items[0].id
+            });
+          console.log(videoLinks);
+        }
+      }
+      
+      // TODO: To ensure order, we can make the request synchronous, but not ideal
+      videoRequest.open('GET', url, true);
+      videoRequest.send();
+    }
+    
+    /**
+     * Duplicate of code from OLF: CSS editting
+     */
+    element.attributeChangedCallback = function(attr, oldVal, newVal) {
+      console.log('olf onAttributeChanged stub');
+    };
+    element.htmlClassFromName = function(fromName) {
+      str = fromName.toLowerCase().replace(' ', '-');
+      return str;
+    };
+    element.getStyle = function(document, className) {
+      var classes = document.styleSheets[0].rules || document.styleSheets[0].cssRules;
+      for (var i = 0; i < classes.length; i++) {
+        if (classes[i].selectorText == className) {
+          return classes[i];
+        }
+      }
+    };
+    element.copyStyleToElement = function(cs, to) {
+      for (var prop in cs) {
+        if (cs[prop] != undefined && cs[prop].length > 0 && 
+          typeof cs[prop] !== 'object' && typeof cs[prop] !== 'function' && 
+          prop != parseInt(prop) ) {
+          
+          to.style[prop] = cs[prop];
+        }
+      }
+    };
+    // This function takes the existing class names of given element,
+    // and apply the class definitions in the parent document to this document
+    element.applyStyleFromParentDocument = function(ele) {
+      var classNames = ele.className.split(" ");
+  
+      for (var i = 0; i < classNames.length; i++) {
+        var elementStyle = this.getStyle(window.document, "." + this.htmlClassFromName(classNames[i]));
+  
+        if (elementStyle != undefined) {
+          this.copyStyleToElement(elementStyle.style, ele);
+        }
+      }
+    };
+    // Note: untested function
+    element.applyStyleFromParentDocumentForClass = function (className) {
+      var eles = this.shadowRoot.querySelectorAll('.' + className);
+      for (var i = 0; i < eles.length; i++) {
+        this.applyStyleFromParentDocument(eles[i]);
+      }
+    };
+    // This is a specific function for the visibility of the paragraph known to this web component
+    element.toggleClassVisibility = function (className, visible) {
+      var normalizedClass = className;
+      if (!normalizedClass.startsWith('.')) {
+        normalizedClass = '.' + normalizedClass;
+      }
+      
+      var eles = this.shadowRoot.querySelectorAll(normalizedClass);
+
+      var flag = visible;
+      
+      if (flag == undefined && eles.length > 0) {
+        flag = eles[0].style.display;        
+        if (flag == 'none') {
+          flag = 'block';
+        } else {
+          flag = 'none';
+        }
+      }
+      
+      for (var i = 0; i < eles.length; i++) {
+        eles[i].style.display = flag;
+      }
+    };
+    
+    thatDoc.registerElement(componentName, {
+      prototype: element
+    });
+  })(window, document);
+</script>
