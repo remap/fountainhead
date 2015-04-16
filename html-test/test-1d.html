@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="ScriptCSS.css">
+</head>
+<body>
+<section>
+  <div id="floating-menu">
+    <h3>Menu (Press 't' to show/hide)</h3>
+    <a id="floating-menu-toggle-olf" href="#" onclick="scriptControl.toggleClassVisibility('olf');return false;">Show/hide OLF</a>
+    <br><hr>
+    <h3>Table of Contents</h3>
+  </div>
+  <script>
+var showid = "chocolate_cookie_show";
+  </script>
+  <script src="includes/ndn.js"></script>
+  <script>
+var prefix = new Name("/ndn/edu/ucla/remap/losatlantis");
+var face = new Face({host: "archive-dev.remap.ucla.edu"});
+  </script>
+  <script src="includes/ndn-init.js"></script>
+  <script>
+  </script>
+  <script src="includes/ndn-url-publisher-component.js"></script>
+  <script>
+  </script>
+  <script src="includes/script-control.js"></script>
+  <script>
+  </script>
+  <script src="includes/onload.js"></script>
+  <script>
+  </script>
+  <link rel="import" href="components/cue-publisher.html" onerror="onImportError(event)">
+  <link rel="import" href="components/blackout.html" onerror="onImportError(event)">
+  <div id="scriptbody">
+<com-cue-publisher content= {"url":"https://www.youtube.com/watch?v=IpXth5vIFdE","inverted":false} desc= "50% speed, not inverted. slight rectangular vignette" t= "Match strike 1" cid= 160></com-cue-publisher>
+    <a target="_blank" href="components/cue-publisher.html" class="xref-code">cue-publisher</a>
+<com-cue-publisher content= {} desc= "(same settings as last)" t= "Match strike 2" cid= 165></com-cue-publisher>
+    <a target="_blank" href="components/cue-publisher.html" class="xref-code">cue-publisher</a>
+<com-cue-publisher content= {} desc= "(50% speed, inverted, with HSV adjust (default params), slight rect vignette after inversion)" t= "Match strike 3" cid= 170></com-cue-publisher>
+    <a target="_blank" href="components/cue-publisher.html" class="xref-code">cue-publisher</a>
+<com-cue-publisher content= {} desc= "(same as above but rotate source image 90-deg CCW and scale just enough to fill window, losing some of the stone wall on the left of the original image)" t= "Lucy" cid= 175></com-cue-publisher>
+    <a target="_blank" href="components/cue-publisher.html" class="xref-code">cue-publisher</a>
+<com-cue-publisher content= {} desc= "(same as above but no rotation, scaled/pushed into pigeons in upper part of the image)" t= "Opera" cid= 180></com-cue-publisher>
+    <a target="_blank" href="components/cue-publisher.html" class="xref-code">cue-publisher</a>
+<com-cue-publisher content= {} desc= "(same as above but no rotation, no scaling, 25% speed)" t= "Bicycle" cid= 185></com-cue-publisher>
+    <a target="_blank" href="components/cue-publisher.html" class="xref-code">cue-publisher</a>
+<com-cue-publisher content= {} desc= "(50% speed, not inverted, slight rectangular vignette)" t= "Close" cid= 190></com-cue-publisher>
+    <a target="_blank" href="components/cue-publisher.html" class="xref-code">cue-publisher</a>
+<com-blackout></com-blackout>
+    <a target="_blank" href="components/blackout.html" class="xref-code">blackout</a>
+  </div></section>
+</body>
+</html>
