@@ -26,6 +26,9 @@ var face = new Face({host: "archive-dev.remap.ucla.edu"});
   <script src="includes/ndn-url-publisher-component.js"></script>
   <script>
   </script>
+  <script src="includes/jquery-1.2.6.min.js"></script>
+  <script>
+  </script>
   <script src="includes/script-control.js"></script>
   <script>
   </script>
@@ -34,7 +37,7 @@ var face = new Face({host: "archive-dev.remap.ucla.edu"});
   </script>
   <link rel="import" href="components/youtube-playlist-publisher.html" onerror="onImportError(event)">
   <div id="scriptbody">
-<com-youtube-playlist-publisher playlistId="PLjardEiAzhrqARf5iNO0SLUiC_c0XquV_"></com-youtube-playlist-publisher>
+<com-youtube-playlist-publisher content={"postproc1":{"reset":true,"Playback&#32;speed":0.60},"yt1":{"reset":true}} playlistId="PLjardEiAzhrqARf5iNO0SLUiC_c0XquV_" startId=110></com-youtube-playlist-publisher>
     <a target="_blank" href="components/youtube-playlist-publisher.html" class="xref-code">youtube-playlist-publisher</a>
   </div></section>
 </body>

@@ -6,7 +6,7 @@
 [prefix] new Name("/ndn/edu/ucla/remap/losatlantis")
 [face] new Face({host: "archive-dev.remap.ucla.edu"})
 [include] ndn-init.js
-[include] ndn-url-publisher-component.js
+[include] ndn-URL-publisher-component.js
 
 [include] script-control.js
 [include] onload.js
@@ -17,18 +17,18 @@
 Chrome would add automatic quotes to component arguments, which would mess things up if I add whites spaces inside the JSON string parameter
 */
 
-<<@cue-publisher(t = "Match strike 1", cid = 160, desc = "50% speed, not inverted. slight rectangular vignette", content = {"url":"https://www.youtube.com/watch?v=IpXth5vIFdE","inverted":false})>>
+<<@cue-publisher(t = "Match strike 1", cid = 160, desc = "50% speed, not Invert. slight rectangular vignette", content = {"yt1":{"reset":true, "URL":"https://www.youtube.com/watch?v=IpXth5vIFdE","Playback speed":0.5},"postproc1":{"reset":true, "Invert":[0, 2, -0.5, 0]}})>>
 
-<<@cue-publisher(t = "Match strike 2", cid = 165, desc = "(same settings as last)", content = {})>>
+<<@cue-publisher(t = "Match strike 2", cid = 165, desc = "(same settings as last)", content = {"yt1":{"reset":true, "URL":"https://www.youtube.com/watch?v=ER0lJDG1mNc","Playback speed":0.5},"postproc1":{"reset":true, "Invert":[0, 2, -0.5, 0]}})>>
 
-<<@cue-publisher(t = "Match strike 3", cid = 170, desc = "(50% speed, inverted, with HSV adjust (default params), slight rect vignette after inversion)", content = {})>>
+<<@cue-publisher(t = "Match strike 3", cid = 170, desc = "(50% speed, Invert, with HSV adjust (default params), slight rect vignette after inversion)", content = {"yt1":{"reset":true, "URL":"https://www.youtube.com/watch?v=qdoM04fLkzY","Playback speed":0.5},"postproc1":{"reset":true, "Invert":[0, -2, 0.5, 0]}})>>
 
-<<@cue-publisher(t = "Lucy", cid = 175, desc = "(same as above but rotate source image 90-deg CCW and scale just enough to fill window, losing some of the stone wall on the left of the original image)", content = {})>>
+<<@cue-publisher(t = "Lucy", cid = 175, desc = "(same as above but rotate source image 90-deg CCW and scale just enough to fill window, losing some of the stone wall on the left of the original image)", content = {"yt1":{"reset":true, "URL":"https://www.youtube.com/watch?v=Dyqp8gpZClI","Playback speed":0.5},"postproc1":{"reset":true, "Invert":[0, -2, 0.5, 0]}})>>
 
-<<@cue-publisher(t = "Opera", cid = 180, desc = "(same as above but no rotation, scaled/pushed into pigeons in upper part of the image)", content = {})>>
+<<@cue-publisher(t = "Opera", cid = 180, desc = "(same as above but no rotation, scaled/pushed into pigeons in upper part of the image)", content = {"yt1":{"reset":true, "URL":"https://www.youtube.com/watch?v=fvRQi-vIu_U","Playback speed":0.5},"postproc1":{"reset":true, "Invert":[0, -2, 0.5, 0]}})>>
 
-<<@cue-publisher(t = "Bicycle", cid = 185, desc = "(same as above but no rotation, no scaling, 25% speed)", content = {})>>
+<<@cue-publisher(t = "Bicycle", cid = 185, desc = "(same as above but no rotation, no scaling, 25% speed)", content = {"yt1":{"reset":true, "URL":"https://www.youtube.com/watch?v=6TaoityOFi4","Playback speed":0.25},"postproc1":{"reset":true, "Invert":[0, -2, 0.5, 0]}})>>
 
-<<@cue-publisher(t = "Close", cid = 190, desc = "(50% speed, not inverted, slight rectangular vignette)", content = {})>>
+<<@cue-publisher(t = "Close", cid = 190, desc = "(50% speed, not Invert, slight rectangular vignette)", content = {"yt1":{"reset":true, "URL":"https://www.youtube.com/watch?v=ER0lJDG1mNc","Playback speed":0.5},"postproc1":{"reset":true, "Invert":[0, 2, -0.5, 0]}})>>
 
 <<@blackout()>>

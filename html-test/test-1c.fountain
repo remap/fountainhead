@@ -8,10 +8,15 @@
 [include] ndn-init.js
 [include] ndn-url-publisher-component.js
 
+[include] jquery-1.2.6.min.js
 [include] script-control.js
 [include] onload.js
 
 # Body
 
-<<@youtube-playlist-publisher(playlistId="PLjardEiAzhrqARf5iNO0SLUiC_c0XquV_")>>
+/*
+For 1C, Zoe wanted all the videos in this list to be played at 0.6
+*/
+
+<<@youtube-playlist-publisher(playlistId = "PLjardEiAzhrqARf5iNO0SLUiC_c0XquV_", content = {"postproc1":{"reset":true,"Playback speed":0.60},"yt1":{"reset":true}}, startId = 110)>>
 

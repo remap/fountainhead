@@ -142,8 +142,8 @@
           }
 
           this.titleElement.addEventListener('mouseover', function() {
-            if (cueContent.url != undefined) {
-              self.chunkElement.innerHTML = '<img src=\"http://img.youtube.com/vi/' + self.youtubeKeyParser(cueContent.url) + '/0.jpg\"></img>';
+            if (cueContent.yt1.URL != undefined) {
+              self.chunkElement.innerHTML = '<img src=\"http://img.youtube.com/vi/' + self.youtubeKeyParser(cueContent.yt1.URL) + '/0.jpg\"></img>';
             } else {
               console.log(componentName + ': no video url provided for this cue');
             }
@@ -159,8 +159,9 @@
             
             var data = new Data(self.namePrefix);
             // Note: for now, the names are hard-coded, since namespace design is not fully discussed
-            var cueComponent = new Name('cues/' + self.cueId);
-            data.getName().append(self.showid).append(cueComponent).appendVersion((new Date).getTime());
+            var cueComponent = new Name('cues');
+            var nameSuffix = new Name(self.cueId);
+            data.getName().append(self.showid).append(cueComponent).appendVersion((new Date).getTime()).append(nameSuffix);
               
             // TODO: decide content format
             data.setContent(self.content);

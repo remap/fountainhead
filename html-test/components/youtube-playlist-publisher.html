@@ -186,28 +186,44 @@
             self.paragraphElement.appendChild(para);
             self.paragraphElement.appendChild(chunk);
             
+            if (self.hasAttribute('content')) {
+              self.content = self.getAttribute('content');
+            } else {
+              self.content = '{}';
+            }
+            
+            if (self.hasAttribute('startId')) {
+              self.startId = self.getAttribute('startId');
+            }
+            
             // Note: This publisher function is cue based for now.
             // Note: This is an example of Javascript variable scope.
+            
             para.addEventListener('click', function(idx) {
               return function () {                
                 if (self.videoLinks[idx].key) {
-                  console.log('Stub: publish video link:' + self.videoLinks[idx].key);
-                  /*
-                  var data = new Data(self.namePrefix);
-                  // Note: for now, the names are hard-coded, since namespace design is not fully discussed
-                  var suffixName = new Name(ndnSuffix);
-                  data.getName().append(self.showid).append(suffixName).appendVersion((new Date).getTime());
+                  try {
+                    var cueContent = JSON.parse('{"yt1":{"URL":"https://www.youtube.com/watch?v=' + self.videoLinks[idx].key + '"}}');
+                    $.extend(true, cueContent, JSON.parse(self.content));
+                    
+                    var data = new Data(self.namePrefix);
+                    // Note: for now, the names are hard-coded, since namespace design is not fully discussed
+                    var cueComponent = new Name('cues');
+                    var nameSuffix = new Name((parseInt(self.startId) + idx).toString());
+                    data.getName().append(self.showid).append(cueComponent).appendVersion((new Date).getTime()).append(nameSuffix);
+
+                    // TODO: decide content format
+                    data.setContent(JSON.stringify(cueContent));
               
-                  // TODO: decide content format
-                  data.setContent();
-              
-                  // TODO: Arbitrary data freshness period
-                  data.getMetaInfo().setFreshnessPeriod(2000);
-                  data.sign();
+                    // TODO: Arbitrary data freshness period
+                    data.getMetaInfo().setFreshnessPeriod(2000);
+                    data.sign();
       
-                  self.memoryContentCache.add(data);
-                  console.log('NDN content published. Name: ' + data.getName().toUri() + '; Content: ' + data.getContent().buf().toString());
-                  */
+                    self.memoryContentCache.add(data);
+                    console.log('NDN content published. Name: ' + data.getName().toUri() + '; Content: ' + data.getContent().buf().toString());    
+                  } catch (error) {
+                    console.log(componentName + ': ' + error);
+                  }
                 } else {
                   console.log(componentName + ': no relevant entries found in videoLinks');
                 }

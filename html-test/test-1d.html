@@ -23,7 +23,7 @@ var face = new Face({host: "archive-dev.remap.ucla.edu"});
   <script src="includes/ndn-init.js"></script>
   <script>
   </script>
-  <script src="includes/ndn-url-publisher-component.js"></script>
+  <script src="includes/ndn-URL-publisher-component.js"></script>
   <script>
   </script>
   <script src="includes/script-control.js"></script>
@@ -35,19 +35,19 @@ var face = new Face({host: "archive-dev.remap.ucla.edu"});
   <link rel="import" href="components/cue-publisher.html" onerror="onImportError(event)">
   <link rel="import" href="components/blackout.html" onerror="onImportError(event)">
   <div id="scriptbody">
-<com-cue-publisher content= {"url":"https://www.youtube.com/watch?v=IpXth5vIFdE","inverted":false} desc= "50% speed, not inverted. slight rectangular vignette" t= "Match strike 1" cid= 160></com-cue-publisher>
+<com-cue-publisher content={"yt1":{"reset":true,&#32;"URL":"https://www.youtube.com/watch?v=IpXth5vIFdE","Playback&#32;speed":0.5},"postproc1":{"reset":true,&#32;"Invert":[0,&#32;2,&#32;-0.5,&#32;0]}} desc="50%&#32;speed,&#32;not&#32;Invert.&#32;slight&#32;rectangular&#32;vignette" t="Match&#32;strike&#32;1" cid=160></com-cue-publisher>
     <a target="_blank" href="components/cue-publisher.html" class="xref-code">cue-publisher</a>
-<com-cue-publisher content= {} desc= "(same settings as last)" t= "Match strike 2" cid= 165></com-cue-publisher>
+<com-cue-publisher content={"yt1":{"reset":true,&#32;"URL":"https://www.youtube.com/watch?v=ER0lJDG1mNc","Playback&#32;speed":0.5},"postproc1":{"reset":true,&#32;"Invert":[0,&#32;2,&#32;-0.5,&#32;0]}} desc="(same&#32;settings&#32;as&#32;last)" t="Match&#32;strike&#32;2" cid=165></com-cue-publisher>
     <a target="_blank" href="components/cue-publisher.html" class="xref-code">cue-publisher</a>
-<com-cue-publisher content= {} desc= "(50% speed, inverted, with HSV adjust (default params), slight rect vignette after inversion)" t= "Match strike 3" cid= 170></com-cue-publisher>
+<com-cue-publisher content={"yt1":{"reset":true,&#32;"URL":"https://www.youtube.com/watch?v=qdoM04fLkzY","Playback&#32;speed":0.5},"postproc1":{"reset":true,&#32;"Invert":[0,&#32;-2,&#32;0.5,&#32;0]}} desc="(50%&#32;speed,&#32;Invert,&#32;with&#32;HSV&#32;adjust&#32;(default&#32;params),&#32;slight&#32;rect&#32;vignette&#32;after&#32;inversion)" t="Match&#32;strike&#32;3" cid=170></com-cue-publisher>
     <a target="_blank" href="components/cue-publisher.html" class="xref-code">cue-publisher</a>
-<com-cue-publisher content= {} desc= "(same as above but rotate source image 90-deg CCW and scale just enough to fill window, losing some of the stone wall on the left of the original image)" t= "Lucy" cid= 175></com-cue-publisher>
+<com-cue-publisher content={"yt1":{"reset":true,&#32;"URL":"https://www.youtube.com/watch?v=Dyqp8gpZClI","Playback&#32;speed":0.5},"postproc1":{"reset":true,&#32;"Invert":[0,&#32;-2,&#32;0.5,&#32;0]}} desc="(same&#32;as&#32;above&#32;but&#32;rotate&#32;source&#32;image&#32;90-deg&#32;CCW&#32;and&#32;scale&#32;just&#32;enough&#32;to&#32;fill&#32;window,&#32;losing&#32;some&#32;of&#32;the&#32;stone&#32;wall&#32;on&#32;the&#32;left&#32;of&#32;the&#32;original&#32;image)" t="Lucy" cid=175></com-cue-publisher>
     <a target="_blank" href="components/cue-publisher.html" class="xref-code">cue-publisher</a>
-<com-cue-publisher content= {} desc= "(same as above but no rotation, scaled/pushed into pigeons in upper part of the image)" t= "Opera" cid= 180></com-cue-publisher>
+<com-cue-publisher content={"yt1":{"reset":true,&#32;"URL":"https://www.youtube.com/watch?v=fvRQi-vIu_U","Playback&#32;speed":0.5},"postproc1":{"reset":true,&#32;"Invert":[0,&#32;-2,&#32;0.5,&#32;0]}} desc="(same&#32;as&#32;above&#32;but&#32;no&#32;rotation,&#32;scaled/pushed&#32;into&#32;pigeons&#32;in&#32;upper&#32;part&#32;of&#32;the&#32;image)" t="Opera" cid=180></com-cue-publisher>
     <a target="_blank" href="components/cue-publisher.html" class="xref-code">cue-publisher</a>
-<com-cue-publisher content= {} desc= "(same as above but no rotation, no scaling, 25% speed)" t= "Bicycle" cid= 185></com-cue-publisher>
+<com-cue-publisher content={"yt1":{"reset":true,&#32;"URL":"https://www.youtube.com/watch?v=6TaoityOFi4","Playback&#32;speed":0.25},"postproc1":{"reset":true,&#32;"Invert":[0,&#32;-2,&#32;0.5,&#32;0]}} desc="(same&#32;as&#32;above&#32;but&#32;no&#32;rotation,&#32;no&#32;scaling,&#32;25%&#32;speed)" t="Bicycle" cid=185></com-cue-publisher>
     <a target="_blank" href="components/cue-publisher.html" class="xref-code">cue-publisher</a>
-<com-cue-publisher content= {} desc= "(50% speed, not inverted, slight rectangular vignette)" t= "Close" cid= 190></com-cue-publisher>
+<com-cue-publisher content={"yt1":{"reset":true,&#32;"URL":"https://www.youtube.com/watch?v=ER0lJDG1mNc","Playback&#32;speed":0.5},"postproc1":{"reset":true,&#32;"Invert":[0,&#32;2,&#32;-0.5,&#32;0]}} desc="(50%&#32;speed,&#32;not&#32;Invert,&#32;slight&#32;rectangular&#32;vignette)" t="Close" cid=190></com-cue-publisher>
     <a target="_blank" href="components/cue-publisher.html" class="xref-code">cue-publisher</a>
 <com-blackout></com-blackout>
     <a target="_blank" href="components/blackout.html" class="xref-code">blackout</a>

@@ -409,7 +409,7 @@ class FountainHTMLGenerator(object):
                             equalSign = arg.find('=')
                             if (equalSign > 0):
                                 argName = arg[:equalSign].strip()
-                                argValue = arg[equalSign + 1:]
+                                argValue = arg[equalSign + 1:].strip().replace(' ', '&#32;')
                                 componentArgs[argName] = argValue
                             else:
                                 print('WARNING: no equal sign found for web component argument; Parsing result may be unexpected')
