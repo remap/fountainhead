@@ -1,4 +1,6 @@
-var ndnURLPublisherFactory = new URLPublisherFactory(window, document);
+if (URLPublisherFactory != undefined) {
+  var ndnURLPublisherFactory = new URLPublisherFactory(window, document);
+}
 
 var scriptControl = new ScriptControl(document);
 //scriptControl.loadComponentDocs();

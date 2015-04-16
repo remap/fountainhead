@@ -324,7 +324,7 @@ a:hover {
 
 .video-control-text {
     color: #ECE47E;
-    margin: 0 auto;
+    margin: 1.3em auto;
     width: 400px;
     text-decoration: underline;    
     cursor: pointer; 

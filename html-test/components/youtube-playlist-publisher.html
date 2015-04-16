@@ -1,5 +1,5 @@
 <template>
-  <p id="video-links" class="video-control-text"></p>
+  <div id="video-links"></div>
 </template>
 
 <script>
@@ -98,67 +98,92 @@
         console.log(componentName + ': playlistId not defined');
         return;
       } 
-
-      this.videoLinks = [];
+      
       this.apiKey = 'AIzaSyDCjPW8n_9MgGcEAYVPMmuO_sJ3a7jLe5M';
+      
+      var self = this;
+      
+      this.videoCnt = 0;
+      this.receivedCnt = 0;
+      this.videoLinks = [];
+    
+      /**
+       * Load videos from a playlist ID calls requestYoutubeVideo to populate videoLinks array with video title and URLs.
+       * cntStart is used to create a ID -> sequence in videoLinks array mapping
+       */
+      this.requestYoutubePlaylist = function(playlistId, nextPageToken, videoLinks, apiKey, cntStart) {
+        var listRequest = new XMLHttpRequest();
+        var videoCnt = cntStart;
+      
+        listRequest.onreadystatechange = function() {
+          if (listRequest.readyState==4 && listRequest.status==200) {
+            var result = JSON.parse(listRequest.responseText);
+            var videoSeq = {};
+            for (var i = 0; i < result.items.length; i++) {
+              // could there be same video occurring twice in a playlist?
+              videoSeq[result.items[i].contentDetails.videoId] = videoCnt;
+              videoCnt ++;
+            
+              self.requestYoutubeVideo(result.items[i].contentDetails.videoId, videoLinks, videoSeq, apiKey);
+            }
+          
+            if (result.nextPageToken != undefined && result.nextPageToken != null) {
+              self.requestYoutubePlaylist(playlistId, result.nextPageToken, videoLinks, apiKey, videoCnt);
+            } else {
+              self.videoCnt = videoCnt;
+            }
+          }
+        }
+        // TODO: API key is hard coded in the function at this point
+        var url = 'https://www.googleapis.com/youtube/v3/playlistItems?part=contentDetails&playlistId=' + playlistId + '&key=' + apiKey;
+        if (nextPageToken != undefined) {
+          url += '&pageToken=' + nextPageToken;
+        }
+        listRequest.open('GET', url, true);
+        listRequest.send();
+      };
+      /**
+       * Load video from with a specific ID and populate videoLinks with its title; 
+       * videoSeq object is used to find the corresponding position in videoLinks where this video's details belongs.
+       */
+      this.requestYoutubeVideo = function(videoId, videoLinks, videoSeq, apiKey) {
+        var videoRequest = new XMLHttpRequest();
+        var url = 'https://www.googleapis.com/youtube/v3/videos?part=snippet,contentDetails,statistics,status&key=' + apiKey + '&id=';
+        url += videoId;
+            
+        videoRequest.onreadystatechange = function() {
+          if (videoRequest.readyState == 4 && videoRequest.status == 200) {
+            var videoResult = JSON.parse(videoRequest.responseText);
+            videoLinks[videoSeq[videoResult.items[0].id]] = 
+              ({'title' : videoResult.items[0].snippet.title,
+                'url'   : 'https://www.youtube.com/watch?v=' + videoResult.items[0].id
+              });
+            self.onVideoReceived();
+          }
+        }
+      
+        // TODO: To ensure order, we can make the request synchronous, but not ideal
+        videoRequest.open('GET', url, true);
+        videoRequest.send();
+      };
+      this.onVideoReceived = function() {
+        self.receivedCnt ++;
+        if (self.videoCnt == self.receivedCnt) {
+          // Last video received, ready to populate the p element
+          for (var i = 0; i < self.videoCnt; i++) {
+            var para = document.createElement("p");
+            var node = document.createTextNode(self.videoLinks[i].title);
+            para.className = "video-control-text";
+            para.appendChild(node);
+            
+            self.applyStyleFromParentDocument(para);
+            self.paragraphElement.appendChild(para);
+          }
+        }
+      };
+      
       this.requestYoutubePlaylist(this.playlistId, undefined, this.videoLinks, this.apiKey, 0);
     };
-    /**
-     * Load videos from a playlist ID calls requestYoutubeVideo to populate videoLinks array with video title and URLs.
-     * cntStart is used to create a ID -> sequence in videoLinks array mapping
-     */
-    element.requestYoutubePlaylist = function(playlistId, nextPageToken, videoLinks, apiKey, cntStart) {
-      var listRequest = new XMLHttpRequest();
-      var videoCnt = cntStart;
-      
-      listRequest.onreadystatechange = function() {
-        if (listRequest.readyState==4 && listRequest.status==200) {
-          var result = JSON.parse(listRequest.responseText);
-          var videoSeq = {};
-          for (var i = 0; i < result.items.length; i++) {
-            videoSeq[result.items[i].contentDetails.videoId] = videoCnt;
-            videoCnt ++;
-            
-            element.requestYoutubeVideo(result.items[i].contentDetails.videoId, videoLinks, videoSeq, apiKey);
-          }
-          
-          if (result.nextPageToken != undefined && result.nextPageToken != null) {
-            element.requestYoutubePlaylist(playlistId, result.nextPageToken, videoLinks, apiKey, videoCnt);
-          }
-        }
-      }
-      // TODO: API key is hard coded in the function at this point
-      var url = 'https://www.googleapis.com/youtube/v3/playlistItems?part=contentDetails&playlistId=' + playlistId + '&key=' + apiKey;
-      if (nextPageToken != undefined) {
-        url += '&pageToken=' + nextPageToken;
-      }
-      listRequest.open('GET', url, true);
-      listRequest.send();
-    };
-    /**
-     * Load video from with a specific ID and populate videoLinks with its title; 
-     * videoSeq object is used to find the corresponding position in videoLinks where this video's details belongs.
-     */
-    element.requestYoutubeVideo = function(videoId, videoLinks, videoSeq, apiKey) {
-      var videoRequest = new XMLHttpRequest();
-      var url = 'https://www.googleapis.com/youtube/v3/videos?part=snippet,contentDetails,statistics,status&key=' + apiKey + '&id=';
-      url += videoId;
-      
-      videoRequest.onreadystatechange = function() {
-        if (videoRequest.readyState == 4 && videoRequest.status == 200) {
-          var videoResult = JSON.parse(videoRequest.responseText);
-          videoLinks[videoSeq[videoResult.items[0].id]] = 
-            ({'title' : videoResult.items[0].snippet.title,
-              'url'   : 'https://www.youtube.com/watch?v=' + videoResult.items[0].id
-            });
-          console.log(videoLinks);
-        }
-      }
-      
-      // TODO: To ensure order, we can make the request synchronous, but not ideal
-      videoRequest.open('GET', url, true);
-      videoRequest.send();
-    }
     
     /**
      * Duplicate of code from OLF: CSS editting

@@ -6,8 +6,36 @@
 </head>
 <body>
 <section>
-<com-chat-control-guide message="Hi, I am really looking forward to this, you are very special to me."></com-chat-control-guide>
-  <a target="_blank" href="components/chat-control-guide.html" class="xref-code">chat-control-guide</a>
-</section>
+  <div id="floating-menu">
+    <h3>Menu (Press 't' to show/hide)</h3>
+    <a id="floating-menu-toggle-olf" href="#" onclick="scriptControl.toggleClassVisibility('olf');return false;">Show/hide OLF</a>
+    <br><hr>
+    <h3>Table of Contents</h3>
+  </div>
+  <script>
+var showid = "chocolate_cookie_show";
+  </script>
+  <script src="includes/ndn.js"></script>
+  <script>
+var prefix = new Name("/ndn/edu/ucla/remap/losatlantis");
+var face = new Face({host: "archive-dev.remap.ucla.edu"});
+  </script>
+  <script src="includes/ndn-init.js"></script>
+  <script>
+  </script>
+  <script src="includes/ndn-url-publisher-component.js"></script>
+  <script>
+  </script>
+  <script src="includes/script-control.js"></script>
+  <script>
+  </script>
+  <script src="includes/onload.js"></script>
+  <script>
+  </script>
+  <link rel="import" href="components/youtube-playlist-publisher.html" onerror="onImportError(event)">
+  <div id="scriptbody">
+<com-youtube-playlist-publisher playlistId="PLjardEiAzhrqARf5iNO0SLUiC_c0XquV_"></com-youtube-playlist-publisher>
+    <a target="_blank" href="components/youtube-playlist-publisher.html" class="xref-code">youtube-playlist-publisher</a>
+  </div></section>
 </body>
 </html>
