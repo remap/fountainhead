@@ -156,7 +156,7 @@
             var videoResult = JSON.parse(videoRequest.responseText);
             videoLinks[videoSeq[videoResult.items[0].id]] = 
               ({'title' : videoResult.items[0].snippet.title,
-                'url'   : 'https://www.youtube.com/watch?v=' + videoResult.items[0].id
+                'key'   : videoResult.items[0].id
               });
             self.onVideoReceived();
           }
@@ -168,16 +168,67 @@
       };
       this.onVideoReceived = function() {
         self.receivedCnt ++;
+        
+        // Last video received, ready to populate the p element
         if (self.videoCnt == self.receivedCnt) {
-          // Last video received, ready to populate the p element
           for (var i = 0; i < self.videoCnt; i++) {
-            var para = document.createElement("p");
+            var para = document.createElement('p');
             var node = document.createTextNode(self.videoLinks[i].title);
-            para.className = "video-control-text";
+            para.className = 'video-control-text';
             para.appendChild(node);
             
+            var chunk = document.createElement('p');
+            chunk.className = 'video-control-chunk';
+            
             self.applyStyleFromParentDocument(para);
+            self.applyStyleFromParentDocument(chunk);
+            
             self.paragraphElement.appendChild(para);
+            self.paragraphElement.appendChild(chunk);
+            
+            // Note: This publisher function is cue based for now.
+            // Note: This is an example of Javascript variable scope.
+            para.addEventListener('click', function(idx) {
+              return function () {                
+                if (self.videoLinks[idx].key) {
+                  console.log('Stub: publish video link:' + self.videoLinks[idx].key);
+                  /*
+                  var data = new Data(self.namePrefix);
+                  // Note: for now, the names are hard-coded, since namespace design is not fully discussed
+                  var suffixName = new Name(ndnSuffix);
+                  data.getName().append(self.showid).append(suffixName).appendVersion((new Date).getTime());
+              
+                  // TODO: decide content format
+                  data.setContent();
+              
+                  // TODO: Arbitrary data freshness period
+                  data.getMetaInfo().setFreshnessPeriod(2000);
+                  data.sign();
+      
+                  self.memoryContentCache.add(data);
+                  console.log('NDN content published. Name: ' + data.getName().toUri() + '; Content: ' + data.getContent().buf().toString());
+                  */
+                } else {
+                  console.log(componentName + ': no relevant entries found in videoLinks');
+                }
+              };
+            } (i));
+
+            // Added for example of chunk html display: 
+            // We'll need a parameter interface for html chunk display
+            para.addEventListener('mouseover', function(idx) {
+              return function() {
+                if (self.videoLinks[idx].key) {
+                  chunk.innerHTML = '<img src=' + 'http://img.youtube.com/vi/' + self.videoLinks[idx].key + '/0.jpg></img>';
+                } else {
+                  console.log(componentName + ': no key found for given videoLinks entry');
+                }
+              }
+            } (i));
+            
+            para.addEventListener('mouseout', function() {
+              chunk.innerHTML = '';
+            });
           }
         }
       };

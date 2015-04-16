@@ -1,0 +1,263 @@
+<template>
+  <p id="cue-title" class="video-control-text"></p>
+  <p id="cue-description" class="video-control-desc"></p>
+  <p id="cue-chunk" class="video-control-chunk"></p>
+</template>
+
+<script>
+  (function(window, document, undefined) {
+    var thatDoc = document;
+    var thisDoc =  (thatDoc._currentScript || thatDoc.currentScript).ownerDocument;
+    var template = thisDoc.querySelector('template').content;
+    
+    var componentName = 'com-cue-publisher';
+    
+    var element = Object.create(HTMLElement.prototype);
+    
+    element.createdCallback = function() {
+      this.shadowRoot = this.createShadowRoot();
+      var clone = thatDoc.importNode(template, true);
+      this.shadowRoot.appendChild(clone);
+      
+      
+      // Use "inherited" style sheet
+      // Note: This may not be ideal for applying the CSS styles from window's document
+      //this.applyStyleFromParentDocument(this.paragraphElement);
+      
+      // Append thisDoc to parent's importedDocs:
+      // Note: This assumes the knowledge of window's scriptControl element name
+      if (window.scriptControl.importedElements != undefined) {
+        window.scriptControl.importedElements.push(this);
+      }
+      
+      /**
+       * Duplicate of code from ndn-url-publisher-component.js: 
+       * ndn environment parameter processing 
+       */
+      // TODO: Face setup's different from the online version, which hardcoded the server's IP address.
+      if (this.hasAttribute('face')) {
+        this.face = this.getAttribute('face');
+      } else if (window.face !== undefined && window.face !== null) {
+        this.face = window.face;
+      } else {
+        console.log(componentName + ': face is not defined, creating new one for window');
+        window.face = new Face();
+        this.face = window.face;
+      }
+ 
+      if (this.hasAttribute('prefix')) {
+        this.namePrefix = this.getAttribute('prefix');
+      } else if (window.prefix !== undefined && window.prefix !== null) {
+        this.namePrefix = window.prefix;
+      } else {
+        console.log(componentName + ': prefix is not defined for sunset URL publishing, creating default name for window');
+        window.prefix = new Name(ndnPrefix);
+        this.namePrefix = window.prefix;
+      }
+ 
+      if (this.hasAttribute('memoryContentCache')) {
+        this.memoryContentCache = this.getAttribute('memoryContentCache');
+      } else if (window.memoryContentCache !== undefined && window.memoryContentCache !== null) {
+        this.memoryContentCache = window.memoryContentCache;
+      } else {
+        console.log(componentName + ': memoryContentCache is not defined, creating new one for window');
+        window.memoryContentCache = new MemoryContentCache(this.face);
+        this.memoryContentCache = window.memoryContentCache;
+      }
+ 
+      var registeredPrefix = this.face.getEntryForRegisteredPrefix(this.namePrefix);
+      if (registeredPrefix == null || registeredPrefix == 0) {
+        console.log("registeredPrefix is not found on Face, reregistering default prefix");
+        this.memoryContentCache.registerPrefix(this.namePrefix, function (prefix) {
+        console.log("Register failed for prefix.");
+        });
+      }
+ 
+      if (this.hasAttribute('showid')) {
+        this.showid = this.getAttribute('showid');
+      } else if (window.showid !== undefined && window.showid !== null) {
+        this.showid = window.showid;
+      } else {
+        console.log(componentName + ': showid is not defined for sunset URL publishing, creating default for window');
+        window.showid = 'default';
+        this.showid = window.showid;
+      }
+      
+      /**
+       * Unique code for cue publishing
+       *
+       * Using youtube's video key, video details can be fetched:
+       * https://www.googleapis.com/youtube/v3/videos?part=snippet,contentDetails,statistics,status&key=AIzaSyDCjPW8n_9MgGcEAYVPMmuO_sJ3a7jLe5M&id=QEb6ANksXCs
+       */
+      // this.title is reserved for something else
+      this.cueTitle = '';
+      
+      this.titleElement = this.shadowRoot.querySelector('#cue-title');
+      this.descElement = this.shadowRoot.querySelector('#cue-description');
+      this.chunkElement = this.shadowRoot.querySelector('#cue-chunk');
+      
+      this.applyStyleFromParentDocument(this.titleElement);
+      this.applyStyleFromParentDocument(this.descElement);
+      this.applyStyleFromParentDocument(this.chunkElement);
+
+      if (this.hasAttribute('cueTitle')) {
+        this.cueTitle = this.getAttribute('cueTitle');
+      } else if (this.hasAttribute('t')) {
+        this.cueTitle = this.getAttribute('t');
+      }
+      
+      if (this.cueTitle != '') {
+        this.titleElement.textContent = this.cueTitle;
+      } else {
+        console.log(componentName + ' : cueTitle(clickable link) empty');
+        return;
+      }
+      
+      this.description = '';
+      
+      if (this.hasAttribute('description')) {
+        this.description = this.getAttribute('description');
+      } else if (this.hasAttribute('desc')) {
+        this.description = this.getAttribute('desc');
+      }
+      
+      this.descElement.textContent = this.description;
+      
+      var self = this;
+      
+      if (this.hasAttribute('content')) {
+        this.content = this.getAttribute('content');
+        
+        try{
+          var cueContent = JSON.parse(this.content);
+          
+          this.youtubeKeyParser = function (url) {
+            var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
+            var match = url.match(regExp);
+            if (match && match[7].length == 11){
+              return match[7];
+            } else {
+              alert("Youtube video url incorrect");
+            }
+          }
+
+          this.titleElement.addEventListener('mouseover', function() {
+            if (cueContent.url != undefined) {
+              self.chunkElement.innerHTML = '<img src=\"http://img.youtube.com/vi/' + self.youtubeKeyParser(cueContent.url) + '/0.jpg\"></img>';
+            } else {
+              console.log(componentName + ': no video url provided for this cue');
+            }
+          });
+    
+          this.titleElement.addEventListener('mouseout', function() {
+            self.chunkElement.innerHTML = '';
+          });
+
+          this.titleElement.addEventListener('click', function() {
+            console.log('Example for cue publishing');
+            self.cueId = self.getAttribute('cid');
+            
+            var data = new Data(self.namePrefix);
+            // Note: for now, the names are hard-coded, since namespace design is not fully discussed
+            var cueComponent = new Name('cues/' + self.cueId);
+            data.getName().append(self.showid).append(cueComponent).appendVersion((new Date).getTime());
+              
+            // TODO: decide content format
+            data.setContent(self.content);
+              
+            // TODO: Arbitrary data freshness period
+            data.getMetaInfo().setFreshnessPeriod(2000);
+            data.sign();
+      
+            self.memoryContentCache.add(data);
+            console.log('NDN content published. Name: ' + data.getName().toUri() + '; Content: ' + data.getContent().buf().toString());      
+          });
+          
+        } catch (error) {
+          console.log(componentName + ' ' + error);
+        }
+
+      } else {
+        console.log(componentName + ': content empty');
+        return;
+      }
+    };
+    
+    /**
+     * Duplicate of code from OLF: CSS editting
+     */
+    element.attributeChangedCallback = function(attr, oldVal, newVal) {
+      console.log('olf onAttributeChanged stub');
+    };
+    element.htmlClassFromName = function(fromName) {
+      str = fromName.toLowerCase().replace(' ', '-');
+      return str;
+    };
+    element.getStyle = function(document, className) {
+      var classes = document.styleSheets[0].rules || document.styleSheets[0].cssRules;
+      for (var i = 0; i < classes.length; i++) {
+        if (classes[i].selectorText == className) {
+          return classes[i];
+        }
+      }
+    };
+    element.copyStyleToElement = function(cs, to) {
+      for (var prop in cs) {
+        if (cs[prop] != undefined && cs[prop].length > 0 && 
+          typeof cs[prop] !== 'object' && typeof cs[prop] !== 'function' && 
+          prop != parseInt(prop) ) {
+          
+          to.style[prop] = cs[prop];
+        }
+      }
+    };
+    // This function takes the existing class names of given element,
+    // and apply the class definitions in the parent document to this document
+    element.applyStyleFromParentDocument = function(ele) {
+      var classNames = ele.className.split(" ");
+  
+      for (var i = 0; i < classNames.length; i++) {
+        var elementStyle = this.getStyle(window.document, "." + this.htmlClassFromName(classNames[i]));
+  
+        if (elementStyle != undefined) {
+          this.copyStyleToElement(elementStyle.style, ele);
+        }
+      }
+    };
+    // Note: untested function
+    element.applyStyleFromParentDocumentForClass = function (className) {
+      var eles = this.shadowRoot.querySelectorAll('.' + className);
+      for (var i = 0; i < eles.length; i++) {
+        this.applyStyleFromParentDocument(eles[i]);
+      }
+    };
+    // This is a specific function for the visibility of the paragraph known to this web component
+    element.toggleClassVisibility = function (className, visible) {
+      var normalizedClass = className;
+      if (!normalizedClass.startsWith('.')) {
+        normalizedClass = '.' + normalizedClass;
+      }
+      
+      var eles = this.shadowRoot.querySelectorAll(normalizedClass);
+
+      var flag = visible;
+      
+      if (flag == undefined && eles.length > 0) {
+        flag = eles[0].style.display;        
+        if (flag == 'none') {
+          flag = 'block';
+        } else {
+          flag = 'none';
+        }
+      }
+      
+      for (var i = 0; i < eles.length; i++) {
+        eles[i].style.display = flag;
+      }
+    };
+    
+    thatDoc.registerElement(componentName, {
+      prototype: element
+    });
+  })(window, document);
+</script>
