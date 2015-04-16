@@ -33,7 +33,6 @@ var face = new Face({host: "archive-dev.remap.ucla.edu"});
   <script>
   </script>
   <link rel="import" href="components/cue-publisher.html" onerror="onImportError(event)">
-  <link rel="import" href="components/blackout.html" onerror="onImportError(event)">
   <div id="scriptbody">
 <com-cue-publisher content={"yt1":{"reset":true,&#32;"URL":"https://www.youtube.com/watch?v=IpXth5vIFdE","Playback&#32;speed":0.5},"postproc1":{"reset":true,&#32;"Invert":[0,&#32;2,&#32;-0.5,&#32;0]}} desc="50%&#32;speed,&#32;not&#32;Invert.&#32;slight&#32;rectangular&#32;vignette" t="Match&#32;strike&#32;1" cid=160></com-cue-publisher>
     <a target="_blank" href="components/cue-publisher.html" class="xref-code">cue-publisher</a>
@@ -49,8 +48,8 @@ var face = new Face({host: "archive-dev.remap.ucla.edu"});
     <a target="_blank" href="components/cue-publisher.html" class="xref-code">cue-publisher</a>
 <com-cue-publisher content={"yt1":{"reset":true,&#32;"URL":"https://www.youtube.com/watch?v=ER0lJDG1mNc","Playback&#32;speed":0.5},"postproc1":{"reset":true,&#32;"Invert":[0,&#32;2,&#32;-0.5,&#32;0]}} desc="(50%&#32;speed,&#32;not&#32;Invert,&#32;slight&#32;rectangular&#32;vignette)" t="Close" cid=190></com-cue-publisher>
     <a target="_blank" href="components/cue-publisher.html" class="xref-code">cue-publisher</a>
-<com-blackout></com-blackout>
-    <a target="_blank" href="components/blackout.html" class="xref-code">blackout</a>
+<com-cue-publisher content={"blackout":true} t="Blackout" desc="Black&#32;out&#32;by&#32;publishing&#32;blackout:&#32;true"></com-cue-publisher>
+    <a target="_blank" href="components/cue-publisher.html" class="xref-code">cue-publisher</a>
   </div></section>
 </body>
 </html>

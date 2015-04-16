@@ -20,3 +20,10 @@ For 1C, Zoe wanted all the videos in this list to be played at 0.6
 
 <<@youtube-playlist-publisher(playlistId = "PLjardEiAzhrqARf5iNO0SLUiC_c0XquV_", content = {"postproc1":{"reset":true,"Playback speed":0.60},"yt1":{"reset":true}}, startId = 110)>>
 
+/*
+Need to make sure "blackout" is reset to default in previous publishings
+*/
+
+<<@cue-publisher(t = "Blackout", desc = "Black out by publishing blackout: true", content = {"blackout":true})>>
+
+

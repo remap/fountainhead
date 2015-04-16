@@ -31,4 +31,8 @@ Chrome would add automatic quotes to component arguments, which would mess thing
 
 <<@cue-publisher(t = "Close", cid = 190, desc = "(50% speed, not Invert, slight rectangular vignette)", content = {"yt1":{"reset":true, "URL":"https://www.youtube.com/watch?v=ER0lJDG1mNc","Playback speed":0.5},"postproc1":{"reset":true, "Invert":[0, 2, -0.5, 0]}})>>
 
-<<@blackout()>>
+/*
+Need to make sure "blackout" is reset to default in previous publishings
+*/
+
+<<@cue-publisher(t = "Blackout", desc = "Black out by publishing blackout: true", content = {"blackout":true})>>

@@ -142,7 +142,7 @@
           }
 
           this.titleElement.addEventListener('mouseover', function() {
-            if (cueContent.yt1.URL != undefined) {
+            if (cueContent.yt1 != undefined && cueContent.yt1.URL != undefined) {
               self.chunkElement.innerHTML = '<img src=\"http://img.youtube.com/vi/' + self.youtubeKeyParser(cueContent.yt1.URL) + '/0.jpg\"></img>';
             } else {
               console.log(componentName + ': no video url provided for this cue');
@@ -155,7 +155,11 @@
 
           this.titleElement.addEventListener('click', function() {
             console.log('Example for cue publishing');
-            self.cueId = self.getAttribute('cid');
+            
+            self.cueId = '0';
+            if (self.hasAttribute('cid')) {
+              self.cueId = self.getAttribute('cid');
+            }
             
             var data = new Data(self.namePrefix);
             // Note: for now, the names are hard-coded, since namespace design is not fully discussed
