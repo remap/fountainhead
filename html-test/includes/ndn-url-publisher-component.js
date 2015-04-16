@@ -124,7 +124,7 @@ URLPublisherFactory.prototype.createVideoControlComponent = function (componentN
       if (match && match[7].length == 11){
         return match[7];
       } else {
-        alert("Url incorrecta");
+        alert("Url incorrect");
       }
     }
     

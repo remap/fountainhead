@@ -411,7 +411,6 @@ class FountainHTMLGenerator(object):
                                 argName = arg[:equalSign].strip()
                                 argValue = arg[equalSign + 1:]
                                 componentArgs[argName] = argValue
-                                print(argName + ' : ' + argValue)
                             else:
                                 print('WARNING: no equal sign found for web component argument; Parsing result may be unexpected')
                                 print('Related element text: ' + element._elementText)
