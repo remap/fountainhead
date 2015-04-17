@@ -2,6 +2,9 @@
  * ComponentObject is the parent class of web components, which includes basic component functions
  *
  * TODO: maybe better to have components inherit from two parent classes? One for HTMLElement, The other one for style related functions?
+ *
+ * Function:
+ *   
  */
 
 ComponentObject.prototype = Object.create(HTMLElement.prototype);
