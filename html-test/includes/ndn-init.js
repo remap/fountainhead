@@ -114,6 +114,9 @@ privateKeyStorage.setKeyPairForKeyName
 face.setCommandSigningInfo(keyChain, certificateName);
 
 // Confirm: ritualNames and publishContent here is not used by any scripts right now?
+/**
+ * Deprecated functions for per ritual publishing
+ */
 var ritualNames = 
 ["/ndn/edu/ucla/remap/losatlantis/chocolate_cookie_show/ritual/1A/1A_departure_1/url/",
  "/ndn/edu/ucla/remap/losatlantis/chocolate_cookie_show/ritual/1B/1B_long_way_from_home_1/url/",
@@ -135,3 +138,5 @@ function publishContent(content, ritualID)
   memoryContentCache.add(data);
   console.log('NDN content published. Name: ' + data.getName().toUri() + '; Content: ' + data.getContent().buf().toString());
 }
+
+function 

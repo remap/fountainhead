@@ -1,3 +1,4 @@
+// Deprecated method
 if (URLPublisherFactory != undefined) {
   var ndnURLPublisherFactory = new URLPublisherFactory(window, document);
 }
