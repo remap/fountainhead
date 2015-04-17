@@ -138,5 +138,3 @@ function publishContent(content, ritualID)
   memoryContentCache.add(data);
   console.log('NDN content published. Name: ' + data.getName().toUri() + '; Content: ' + data.getContent().buf().toString());
 }
-
-function 
