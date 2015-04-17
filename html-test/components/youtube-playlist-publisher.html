@@ -169,11 +169,11 @@
       this.onVideoReceived = function() {
         self.receivedCnt ++;
         
-        // Last video received, ready to populate the p element
+        // Last video received, ready to populate the p elements
         if (self.videoCnt == self.receivedCnt) {
           for (var i = 0; i < self.videoCnt; i++) {
             var para = document.createElement('p');
-            var node = document.createTextNode(self.videoLinks[i].title);
+            var node = document.createTextNode(i + '. ' + self.videoLinks[i].title);
             para.className = 'video-control-text';
             para.appendChild(node);
             
