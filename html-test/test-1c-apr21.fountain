@@ -1,0 +1,91 @@
+# Environment
+
+[showid] "chocolate_cookie_show"
+
+[include] ndn.js
+[prefix] new Name("/ndn/edu/ucla/remap/losatlantis")
+[face] new Face({host: "archive-dev.remap.ucla.edu"})
+[include] ndn-init.js
+[include] ndn-url-publisher-component.js
+
+[include] script-control.js
+[include] onload.js
+
+# Body
+
+/*
+2nd version of Zoe's 1C, using arbitrary video publishing component instead of playlist fetching element
+TODO: 
+1. Nail down the json format, fill out parameters as needed
+2. Circular vignetting and rectangular vignetting
+3. Json for composition of two videos
+4. For cue 110 that's not added here yet:
+Establish scene: (ADD) LIVE CAMERA IN TELESCOPE
+*/
+
+<<@cue-publisher
+  (t       = "ANDI: <<1995: An Assyrian food festival. We were really cute as a kids!>>", 
+   cid     = 115, 
+   desc    = "Assyrian food fest (50% speed, circular vignette)", 
+   content = {"yt1":{"reset":true, "URL":"https://www.youtube.com/watch?v=QEb6ANksXCs","Playback speed":[0.5, 1]},"postproc1":{"reset":true, "Invert":[0, 2, -0.5, 0]}})>>
+
+<<@cue-publisher
+  (t       = "FELIX: <<March 2008: the skateboard park in Venice Beach.>>", 
+   cid     = 120, 
+   desc    = "Skateboarders 2 (50% speed, circular vignette)", 
+   content = {"yt1":{"reset":true, "URL":"https://www.youtube.com/watch?v=KwDuj2T8HqA","Playback speed":[0.5, 1]},"postproc1":{"reset":true, "Invert":[0, 2, -0.5, 0]}})>>
+
+<<@cue-publisher
+  (t       = "T1: <<January 2012: an Ethiopian baptism in Dodger Stadium. Everyone wore white. We were dancing.>>", 
+   cid     = 130, 
+   desc    = "Timket 1 (50% speed, circular vignette)", 
+   content = {"yt1":{"reset":true, "URL":"https://www.youtube.com/watch?v=EhxRf1-uZUA","Playback speed":[0.5, 1]},"postproc1":{"reset":true, "Invert":[0, -2, 0.5, 0]}})>>
+
+<<@cue-publisher
+  (t       = "T2: <<July 2014: Danza Pukllay Chuko. A magical Peruvian dance.>>", 
+   cid     = 131, 
+   desc    = "Danza Pukklay (50% speed, circular vignette)", 
+   content = {"yt1":{"reset":true, "URL":"https://www.youtube.com/watch?v=4VniyvaOVc0","Playback speed":[0.5, 1]},"postproc1":{"reset":true, "Invert":[0, -2, 0.5, 0]}})>>
+
+<<@cue-publisher
+  (t       = "T3: <<August 1997: A mural in Echo Park. We call her the woman who watches.>>", 
+   cid     = 132, 
+   desc    = "Mural in Echo Park (50% speed, circular vignette) ", 
+   content = {"yt1":{"reset":true, "URL":"https://www.youtube.com/watch?v=vOd38aQjd3o","Playback speed":[0.5, 1]},"postproc1":{"reset":true, "Invert":[0, -2, 0.5, 0]}})>>
+
+<<@cue-publisher
+  (t       = "ANDI: <<June 2001: Belmont High School.>>", 
+   cid     = 140, 
+   desc    = "Belmont High (50% speed, circular)", 
+   content = {"yt1":{"reset":true, "URL":"https://www.youtube.com/watch?v=0t8lsQLK1vM","Playback speed":[0.25, 1]},"postproc1":{"reset":true, "Invert":[0, -2, 0.5, 0]}})>>
+
+<<@cue-publisher
+  (t       = "ANDI: Look! It’s you at the Santa Monica Pier!", 
+   cid     = 141, 
+   desc    = "Rollercoaster + wheel (50% speed, rectangular vignette, ADD w/ Beach 1) (TBC)", 
+   content = {"yt1":{"reset":true, "URL":"https://www.youtube.com/watch?v=dnxfcdhkel8","Playback speed":[0.25, 1]},"postproc1":{"reset":true, "Invert":[0, -2, 0.5, 0]}})>>
+
+<<@cue-publisher
+  (t       = "ANDI: I can't really get around here...", 
+   cid     = 142, 
+   desc    = "Sunrise attempt 1 (Fade in, rectangular vignette)", 
+   content = {
+     "yt1":
+       {"reset":true, 
+        "URL"  :"https://www.youtube.com/watch?v=6WfElPMvf80",
+        "Playback speed":[0.5, 1]
+       },
+     "postproc1":
+       {"reset":true, 
+        "Invert":[0, 2, -0.5, 0]
+       }
+     })>>
+/*
+Need to make sure "blackout" is reset to default in previous publishings
+*/
+
+<<@cue-publisher
+  (t       = "Blackout", 
+   cid     = 150,
+   desc    = "Fade to black", 
+   content = {"blackout":true})>>

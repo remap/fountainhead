@@ -228,10 +228,10 @@ class FountainHTMLGenerator(object):
                 bodyText += self.prependIndentLevel() + '</section>\n<section>\n'
                 continue
             
-            # Special handling for < and > characters
+            # Special handling for < and > characters for not messing up with html elements
             # TODO: check if this would mess up with anything
-            element._elementText = element._elementText.replace('<', '&lt')
-            element._elementText = element._elementText.replace('>', '&gt')
+            element._elementText = element._elementText.replace('<', '&lt;')
+            element._elementText = element._elementText.replace('>', '&gt;')
             
             if (element._elementType == self._fountainRegex.CHARACTER_TAG_PATTERN and element._isDualDialogue):
                 dualDialogueCharacterCount += 1

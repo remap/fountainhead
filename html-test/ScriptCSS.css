@@ -333,8 +333,7 @@ a:hover {
 .video-control-desc {
     color: white;
     margin: 0 auto;
-    width: 400px;    
-    cursor: pointer; 
+    width: 400px;
 }
 
 .video-control-chunk {
