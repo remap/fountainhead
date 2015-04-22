@@ -42,7 +42,9 @@ Debug: Something has to be here...fixing
        "Brightness": [1, 1, 0, 0],
        "Contrast": [1, 1, 0, 0],
        "Circle crop": 1,
-       "Opacity": 0.65
+       "Opacity": 0.65,
+       "OriginX": [0, 1, 0, 0],
+       "OriginY": 0
      },
      "postproc_video1": {
        "reset": true,
@@ -58,7 +60,9 @@ Debug: Something has to be here...fixing
        "Gamma": [1, 1, 0, 0],
        "Brightness": [1, 1, 0, 0],
        "Contrast": [1, 1, 0, 0],
-       "Circle crop": 1
+       "Circle crop": 1,
+       "OriginX": [0, 1, 0, 0],
+       "OriginY": 0
      }
    })>>
 
@@ -87,7 +91,9 @@ Debug: Something has to be here...fixing
        "Brightness": [1, 1, 0, 0],
        "Contrast": [1, 1, 0, 0],
        "Circle crop": 1,
-       "Opacity": 0.65
+       "Opacity": 0.65,
+       "OriginX": [0, 1, 0, 0],
+       "OriginY": 0
      },
      "postproc_video1": {
        "reset": true,
@@ -103,7 +109,9 @@ Debug: Something has to be here...fixing
        "Gamma": [1, 1, 0, 0],
        "Brightness": [1, 1, 0, 0],
        "Contrast": [1, 1, 0, 0],
-       "Circle crop": 1
+       "Circle crop": 1,
+       "OriginX": [0, 1, 0, 0],
+       "OriginY": 0
      }
    })>>
 
@@ -132,7 +140,9 @@ Debug: Something has to be here...fixing
        "Brightness": [1, 1, 0, 0],
        "Contrast": [1, 1, 0, 0],
        "Circle crop": 1,
-       "Opacity": 0.65
+       "Opacity": 0.65,
+       "OriginX": [0, 1, 0, 0],
+       "OriginY": 0
      },
      "postproc_video1": {
        "reset": true,
@@ -148,7 +158,9 @@ Debug: Something has to be here...fixing
        "Gamma": [1, 1, 0, 0],
        "Brightness": [1, 1, 0, 0],
        "Contrast": [1, 1, 0, 0],
-       "Circle crop": 1
+       "Circle crop": 1,
+       "OriginX": [0, 1, 0, 0],
+       "OriginY": 0
      }
    })>>
 
@@ -177,7 +189,9 @@ Debug: Something has to be here...fixing
        "Brightness": [1, 1, 0, 0],
        "Contrast": [1, 1, 0, 0],
        "Circle crop": 1,
-       "Opacity": 0.65
+       "Opacity": 0.65,
+       "OriginX": [0, 1, 0, 0],
+       "OriginY": 0
      },
      "postproc_video1": {
        "reset": true,
@@ -193,7 +207,9 @@ Debug: Something has to be here...fixing
        "Gamma": [1, 1, 0, 0],
        "Brightness": [1, 1, 0, 0],
        "Contrast": [1, 1, 0, 0],
-       "Circle crop": 1
+       "Circle crop": 1,
+       "OriginX": [0, 1, 0, 0],
+       "OriginY": 0
      }
    })>>
 
@@ -222,7 +238,9 @@ Debug: Something has to be here...fixing
        "Brightness": [1, 1, 0, 0],
        "Contrast": [1, 1, 0, 0],
        "Circle crop": 1,
-       "Opacity": 0.65
+       "Opacity": 0.65,
+       "OriginX": [0, 1, 0, 0],
+       "OriginY": 0
      },
      "postproc_video1": {
        "reset": true,
@@ -238,7 +256,9 @@ Debug: Something has to be here...fixing
        "Gamma": [1, 1, 0, 0],
        "Brightness": [1, 1, 0, 0],
        "Contrast": [1, 1, 0, 0],
-       "Circle crop": 1
+       "Circle crop": 1,
+       "OriginX": [0, 1, 0, 0],
+       "OriginY": 0
      }
    })>>
 
@@ -267,7 +287,9 @@ Debug: Something has to be here...fixing
        "Brightness": [1, 1, 0, 0],
        "Contrast": [1, 1, 0, 0],
        "Circle crop": 1,
-       "Opacity": 0.65
+       "Opacity": 0.65,
+       "OriginX": [0, 1, 0, 0],
+       "OriginY": 0
      },
      "postproc_video1": {
        "reset": true,
@@ -283,7 +305,9 @@ Debug: Something has to be here...fixing
        "Gamma": [1, 1, 0, 0],
        "Brightness": [1, 1, 0, 0],
        "Contrast": [1, 1, 0, 0],
-       "Circle crop": 1
+       "Circle crop": 1,
+       "OriginX": [0, 1, 0, 0],
+       "OriginY": 0
      }
    })>>
 
@@ -312,7 +336,9 @@ Debug: Something has to be here...fixing
        "Brightness": [1, 1, 0, 0],
        "Contrast": [1, 1, 0, 0],
        "Circle crop": 0,
-       "Opacity": 0.65
+       "Opacity": 0.65,
+       "OriginX": [0, 1, 0, 0],
+       "OriginY": 0
      },
      "postproc_video1": {
        "reset": true,
@@ -328,7 +354,9 @@ Debug: Something has to be here...fixing
        "Gamma": [1, 1, 0, 0],
        "Brightness": [1, 1, 0, 0],
        "Contrast": [1, 1, 0, 0],
-       "Circle crop": 0
+       "Circle crop": 0,
+       "OriginX": [0, 1, 0, 0],
+       "OriginY": 0
      }
    })>>
 
@@ -357,7 +385,9 @@ Debug: Something has to be here...fixing
        "Brightness": [1, 1, 0, 0],
        "Contrast": [1, 1, 0, 0],
        "Circle crop": 0,
-       "Opacity": 0.65
+       "Opacity": 0.65,
+       "OriginX": [0, 1, 0, 0],
+       "OriginY": 0
      },
      "postproc_video1": {
        "reset": true,
@@ -373,7 +403,9 @@ Debug: Something has to be here...fixing
        "Gamma": [1, 1, 0, 0],
        "Brightness": [1, 1, 0, 0],
        "Contrast": [1, 1, 0, 0],
-       "Circle crop": 0
+       "Circle crop": 0,
+       "OriginX": [0, 1, 0, 0],
+       "OriginY": 0
      }
    })>>
 /*
@@ -405,7 +437,9 @@ Need to make sure "blackout" is reset to default in previous publishings
        "Gamma": [1, 1, 0, 0],
        "Brightness": [1, 1, 0, 0],
        "Contrast": [1, 1, 0, 0],
-       "Circle crop": 0
+       "Circle crop": 0,
+       "OriginX": [0, 1, 0, 0],
+       "OriginY": 0
      },
      "postproc_video1": {
        "Crop left": 0,
@@ -420,6 +454,8 @@ Need to make sure "blackout" is reset to default in previous publishings
        "Gamma": [1, 1, 0, 0],
        "Brightness": [1, 1, 0, 0],
        "Contrast": [1, 1, 0, 0],
-       "Circle crop": 0
+       "Circle crop": 0,
+       "OriginX": [0, 1, 0, 0],
+       "OriginY": 0
      }
 */
