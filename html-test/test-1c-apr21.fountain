@@ -37,7 +37,8 @@
        "Gamma": [1, 1, 0, 0],
        "Brightness": [1, 1, 0, 0],
        "Contrast": [1, 1, 0, 0],
-       "Circle crop": 1
+       "Circle crop": 1,
+       "Opacity": 0.65
      },
      "postproc_video1": {
        "reset": true,
@@ -81,7 +82,8 @@
        "Gamma": [1, 1, 0, 0],
        "Brightness": [1, 1, 0, 0],
        "Contrast": [1, 1, 0, 0],
-       "Circle crop": 1
+       "Circle crop": 1,
+       "Opacity": 0.65
      },
      "postproc_video1": {
        "reset": true,
@@ -125,7 +127,8 @@
        "Gamma": [1, 1, 0, 0],
        "Brightness": [1, 1, 0, 0],
        "Contrast": [1, 1, 0, 0],
-       "Circle crop": 1
+       "Circle crop": 1,
+       "Opacity": 0.65
      },
      "postproc_video1": {
        "reset": true,
@@ -169,7 +172,8 @@
        "Gamma": [1, 1, 0, 0],
        "Brightness": [1, 1, 0, 0],
        "Contrast": [1, 1, 0, 0],
-       "Circle crop": 1
+       "Circle crop": 1,
+       "Opacity": 0.65
      },
      "postproc_video1": {
        "reset": true,
@@ -213,7 +217,8 @@
        "Gamma": [1, 1, 0, 0],
        "Brightness": [1, 1, 0, 0],
        "Contrast": [1, 1, 0, 0],
-       "Circle crop": 1
+       "Circle crop": 1,
+       "Opacity": 0.65
      },
      "postproc_video1": {
        "reset": true,
@@ -257,7 +262,8 @@
        "Gamma": [1, 1, 0, 0],
        "Brightness": [1, 1, 0, 0],
        "Contrast": [1, 1, 0, 0],
-       "Circle crop": 1
+       "Circle crop": 1,
+       "Opacity": 0.65
      },
      "postproc_video1": {
        "reset": true,
@@ -301,7 +307,8 @@
        "Gamma": [1, 1, 0, 0],
        "Brightness": [1, 1, 0, 0],
        "Contrast": [1, 1, 0, 0],
-       "Circle crop": 0
+       "Circle crop": 0,
+       "Opacity": 0.65
      },
      "postproc_video1": {
        "reset": true,
@@ -345,7 +352,8 @@
        "Gamma": [1, 1, 0, 0],
        "Brightness": [1, 1, 0, 0],
        "Contrast": [1, 1, 0, 0],
-       "Circle crop": 0
+       "Circle crop": 0,
+       "Opacity": 0.65
      },
      "postproc_video1": {
        "reset": true,
@@ -373,7 +381,7 @@ Need to make sure "blackout" is reset to default in previous publishings
    cid     = 150,
    desc    = "Fade to black", 
    content = {
-     "blackout": "true"
+     "blackout": true
    })>>
 
 /*
