@@ -34,8 +34,36 @@ Establish scene: (ADD) LIVE CAMERA IN TELESCOPE
        "Playback speed":[0.5, 1]
      },
      "postproc1": {
-       "reset":true, 
-       "Invert":[0, 2, -0.5, 0]
+       "reset": true,
+       "Crop left": 0.164557,
+       "Crop bottom": 0,
+       "Crop right": 0.7594936,
+       "Crop top": 1,
+       "Vignette edge": 0.05,
+       "ScaleX": [1, 1],
+       "ScaleY": 1,
+       "Invert": [0, 1, 0, 0],
+       "Black level": [0, 1, 0, 0],
+       "Gamma": [1, 1, 0, 0],
+       "Brightness": [1, 1, 0, 0],
+       "Contrast": [1, 1, 0, 0],
+       "Circle crop": 1
+     },
+     "postproc_video1": {
+       "reset": true,
+       "Crop left": 0.144557,
+       "Crop bottom": 0,
+       "Crop right": 0.7394936,
+       "Crop top": 1,
+       "Vignette edge": 0.05,
+       "ScaleX": [1, 1],
+       "ScaleY": 1,
+       "Invert": [0, 1, 0, 0],
+       "Black level": [0, 1, 0, 0],
+       "Gamma": [1, 1, 0, 0],
+       "Brightness": [1, 1, 0, 0],
+       "Contrast": [1, 1, 0, 0],
+       "Circle crop": 1
      }
    })>>
 
@@ -50,8 +78,36 @@ Establish scene: (ADD) LIVE CAMERA IN TELESCOPE
        "Playback speed":[0.5, 1]
      },
      "postproc1": {
-       "reset":true, 
-       "Invert":[0, 2, -0.5, 0]
+       "reset": true,
+       "Crop left": 0.164557,
+       "Crop bottom": 0,
+       "Crop right": 0.7594936,
+       "Crop top": 1,
+       "Vignette edge": 0.05,
+       "ScaleX": [1, 1],
+       "ScaleY": 1,
+       "Invert": [0, 1, 0, 0],
+       "Black level": [0, 1, 0, 0],
+       "Gamma": [1, 1, 0, 0],
+       "Brightness": [1, 1, 0, 0],
+       "Contrast": [1, 1, 0, 0],
+       "Circle crop": 1
+     },
+     "postproc_video1": {
+       "reset": true,
+       "Crop left": 0.144557,
+       "Crop bottom": 0,
+       "Crop right": 0.7394936,
+       "Crop top": 1,
+       "Vignette edge": 0.05,
+       "ScaleX": [1, 1],
+       "ScaleY": 1,
+       "Invert": [0, 1, 0, 0],
+       "Black level": [0, 1, 0, 0],
+       "Gamma": [1, 1, 0, 0],
+       "Brightness": [1, 1, 0, 0],
+       "Contrast": [1, 1, 0, 0],
+       "Circle crop": 1
      }
    })>>
 
@@ -66,8 +122,36 @@ Establish scene: (ADD) LIVE CAMERA IN TELESCOPE
        "Playback speed":[0.5, 1]
      },
      "postproc1": {
-       "reset":true, 
-       "Invert":[0, -2, 0.5, 0]
+       "reset": true,
+       "Crop left": 0.164557,
+       "Crop bottom": 0,
+       "Crop right": 0.7594936,
+       "Crop top": 1,
+       "Vignette edge": 0.05,
+       "ScaleX": [1, 1],
+       "ScaleY": 1,
+       "Invert": [0, 1, 0, 0],
+       "Black level": [0, 1, 0, 0],
+       "Gamma": [1, 1, 0, 0],
+       "Brightness": [1, 1, 0, 0],
+       "Contrast": [1, 1, 0, 0],
+       "Circle crop": 1
+     },
+     "postproc_video1": {
+       "reset": true,
+       "Crop left": 0.144557,
+       "Crop bottom": 0,
+       "Crop right": 0.7394936,
+       "Crop top": 1,
+       "Vignette edge": 0.05,
+       "ScaleX": [1, 1],
+       "ScaleY": 1,
+       "Invert": [0, 1, 0, 0],
+       "Black level": [0, 1, 0, 0],
+       "Gamma": [1, 1, 0, 0],
+       "Brightness": [1, 1, 0, 0],
+       "Contrast": [1, 1, 0, 0],
+       "Circle crop": 1
      }
    })>>
 
@@ -82,8 +166,36 @@ Establish scene: (ADD) LIVE CAMERA IN TELESCOPE
        "Playback speed":[0.5, 1]
      },
      "postproc1": {
-       "reset":true, 
-       "Invert":[0, -2, 0.5, 0]
+       "reset": true,
+       "Crop left": 0.164557,
+       "Crop bottom": 0,
+       "Crop right": 0.7594936,
+       "Crop top": 1,
+       "Vignette edge": 0.05,
+       "ScaleX": [1, 1],
+       "ScaleY": 1,
+       "Invert": [0, 1, 0, 0],
+       "Black level": [0, 1, 0, 0],
+       "Gamma": [1, 1, 0, 0],
+       "Brightness": [1, 1, 0, 0],
+       "Contrast": [1, 1, 0, 0],
+       "Circle crop": 1
+     },
+     "postproc_video1": {
+       "reset": true,
+       "Crop left": 0.144557,
+       "Crop bottom": 0,
+       "Crop right": 0.7394936,
+       "Crop top": 1,
+       "Vignette edge": 0.05,
+       "ScaleX": [1, 1],
+       "ScaleY": 1,
+       "Invert": [0, 1, 0, 0],
+       "Black level": [0, 1, 0, 0],
+       "Gamma": [1, 1, 0, 0],
+       "Brightness": [1, 1, 0, 0],
+       "Contrast": [1, 1, 0, 0],
+       "Circle crop": 1
      }
    })>>
 
@@ -98,8 +210,36 @@ Establish scene: (ADD) LIVE CAMERA IN TELESCOPE
        "Playback speed":[0.5, 1]
      },
      "postproc1": {
-       "reset":true, 
-       "Invert":[0, -2, 0.5, 0]
+       "reset": true,
+       "Crop left": 0.164557,
+       "Crop bottom": 0,
+       "Crop right": 0.7594936,
+       "Crop top": 1,
+       "Vignette edge": 0.05,
+       "ScaleX": [1, 1],
+       "ScaleY": 1,
+       "Invert": [0, 1, 0, 0],
+       "Black level": [0, 1, 0, 0],
+       "Gamma": [1, 1, 0, 0],
+       "Brightness": [1, 1, 0, 0],
+       "Contrast": [1, 1, 0, 0],
+       "Circle crop": 1
+     },
+     "postproc_video1": {
+       "reset": true,
+       "Crop left": 0.144557,
+       "Crop bottom": 0,
+       "Crop right": 0.7394936,
+       "Crop top": 1,
+       "Vignette edge": 0.05,
+       "ScaleX": [1, 1],
+       "ScaleY": 1,
+       "Invert": [0, 1, 0, 0],
+       "Black level": [0, 1, 0, 0],
+       "Gamma": [1, 1, 0, 0],
+       "Brightness": [1, 1, 0, 0],
+       "Contrast": [1, 1, 0, 0],
+       "Circle crop": 1
      }
    })>>
 
@@ -114,8 +254,36 @@ Establish scene: (ADD) LIVE CAMERA IN TELESCOPE
        "Playback speed":[0.25, 1]
      },
      "postproc1": {
-       "reset":true, 
-       "Invert":[0, -2, 0.5, 0]
+       "reset": true,
+       "Crop left": 0.164557,
+       "Crop bottom": 0,
+       "Crop right": 0.7594936,
+       "Crop top": 1,
+       "Vignette edge": 0.05,
+       "ScaleX": [1, 1],
+       "ScaleY": 1,
+       "Invert": [0, 1, 0, 0],
+       "Black level": [0, 1, 0, 0],
+       "Gamma": [1, 1, 0, 0],
+       "Brightness": [1, 1, 0, 0],
+       "Contrast": [1, 1, 0, 0],
+       "Circle crop": 1
+     },
+     "postproc_video1": {
+       "reset": true,
+       "Crop left": 0.144557,
+       "Crop bottom": 0,
+       "Crop right": 0.7394936,
+       "Crop top": 1,
+       "Vignette edge": 0.05,
+       "ScaleX": [1, 1],
+       "ScaleY": 1,
+       "Invert": [0, 1, 0, 0],
+       "Black level": [0, 1, 0, 0],
+       "Gamma": [1, 1, 0, 0],
+       "Brightness": [1, 1, 0, 0],
+       "Contrast": [1, 1, 0, 0],
+       "Circle crop": 1
      }
    })>>
 
@@ -130,8 +298,36 @@ Establish scene: (ADD) LIVE CAMERA IN TELESCOPE
        "Playback speed":[0.25, 1]
      },
      "postproc1": {
-       "reset":true, 
-       "Invert":[0, -2, 0.5, 0]
+       "reset": true,
+       "Crop left": 0,
+       "Crop bottom": 0,
+       "Crop right": 1,
+       "Crop top": 1,
+       "Vignette edge": 0.05,
+       "ScaleX": [1, 1],
+       "ScaleY": 1,
+       "Invert": [0, 1, 0, 0],
+       "Black level": [0, 1, 0, 0],
+       "Gamma": [1, 1, 0, 0],
+       "Brightness": [1, 1, 0, 0],
+       "Contrast": [1, 1, 0, 0],
+       "Circle crop": 0
+     },
+     "postproc_video1": {
+       "reset": true,
+       "Crop left": 0,
+       "Crop bottom": 0,
+       "Crop right": 1,
+       "Crop top": 1,
+       "Vignette edge": 0.05,
+       "ScaleX": [1, 1],
+       "ScaleY": 1,
+       "Invert": [0, 1, 0, 0],
+       "Black level": [0, 1, 0, 0],
+       "Gamma": [1, 1, 0, 0],
+       "Brightness": [1, 1, 0, 0],
+       "Contrast": [1, 1, 0, 0],
+       "Circle crop": 0
      }
    })>>
 
@@ -146,8 +342,36 @@ Establish scene: (ADD) LIVE CAMERA IN TELESCOPE
        "Playback speed":[0.5, 1]
      },
      "postproc1": {
-       "reset":true, 
-       "Invert":[0, 2, -0.5, 0]
+       "reset": true,
+       "Crop left": 0,
+       "Crop bottom": 0,
+       "Crop right": 1,
+       "Crop top": 1,
+       "Vignette edge": 0.05,
+       "ScaleX": [1, 1],
+       "ScaleY": 1,
+       "Invert": [0, 1, 0, 0],
+       "Black level": [0, 1, 0, 0],
+       "Gamma": [1, 1, 0, 0],
+       "Brightness": [1, 1, 0, 0],
+       "Contrast": [1, 1, 0, 0],
+       "Circle crop": 0
+     },
+     "postproc_video1": {
+       "reset": true,
+       "Crop left": 0,
+       "Crop bottom": 0,
+       "Crop right": 1,
+       "Crop top": 1,
+       "Vignette edge": 0.05,
+       "ScaleX": [1, 1],
+       "ScaleY": 1,
+       "Invert": [0, 1, 0, 0],
+       "Black level": [0, 1, 0, 0],
+       "Gamma": [1, 1, 0, 0],
+       "Brightness": [1, 1, 0, 0],
+       "Contrast": [1, 1, 0, 0],
+       "Circle crop": 0
      }
    })>>
 /*
@@ -158,4 +382,42 @@ Need to make sure "blackout" is reset to default in previous publishings
   (t       = "Blackout", 
    cid     = 150,
    desc    = "Fade to black", 
-   content = {"blackout":true})>>
+   content = {
+     "blackout": "true"
+   })>>
+
+/*
+"yt1": {
+       "Playback speed": [0.5, 1]
+     },
+     "postproc1": {
+       "Crop left": 0,
+       "Crop bottom": 0,
+       "Crop right": 1,
+       "Crop top": 1,
+       "Vignette edge": 0.05,
+       "ScaleX": [1, 1],
+       "ScaleY": 1,
+       "Invert": [0, 1, 0, 0],
+       "Black level": [0, 1, 0, 0],
+       "Gamma": [1, 1, 0, 0],
+       "Brightness": [1, 1, 0, 0],
+       "Contrast": [1, 1, 0, 0],
+       "Circle crop": 0
+     },
+     "postproc_video1": {
+       "Crop left": 0,
+       "Crop bottom": 0,
+       "Crop right": 1,
+       "Crop top": 1,
+       "Vignette edge": 0.05,
+       "ScaleX": [1, 1],
+       "ScaleY": 1,
+       "Invert": [0, 1, 0, 0],
+       "Black level": [0, 1, 0, 0],
+       "Gamma": [1, 1, 0, 0],
+       "Brightness": [1, 1, 0, 0],
+       "Contrast": [1, 1, 0, 0],
+       "Circle crop": 0
+     }
+*/
