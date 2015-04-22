@@ -21,26 +21,113 @@ Chrome would add automatic quotes to component arguments, which would mess thing
 
 <<@cue-publisher(t = "Match strike 2", cid = 165, desc = "(same settings as last)", content = {"yt1":{"reset":true, "URL":"https://www.youtube.com/watch?v=ER0lJDG1mNc","Playback speed":[0.5, 1]},"postproc1":{"reset":true, "Invert":[0, 2, -0.5, 0]}})>>
 
-<<@cue-publisher(t = "Match strike 3", cid = 170, desc = "(50% speed, Invert, with HSV adjust (default params), slight rect vignette after inversion)", content = {"yt1":{"reset":true, "URL":"https://www.youtube.com/watch?v=qdoM04fLkzY","Playback speed":[0.5, 1]},"postproc1":{"reset":true, "Invert":[0, -2, 0.5, 0]}})>>
+<<@cue-publisher
+  (t       = "Match strike 3", 
+   cid     = 170, 
+   desc    = "(50% speed, Invert, with HSV adjust (default params), slight rect vignette after inversion)", 
+   content = {
+     "yt1": {
+       "reset":true, 
+       "URL":"https://www.youtube.com/watch?v=qdoM04fLkzY",
+       "Playback speed":[0.5, 1]
+     },
+     "postproc1":{
+       "reset":true, 
+       "Invert":[1, 2, -0.5, 0]
+     }
+   })>>
 
-<<@cue-publisher(t = "Lucy", cid = 175, desc = "(same as above but rotate source image 90-deg CCW and scale just enough to fill window, losing some of the stone wall on the left of the original image)", content = {"yt1":{"reset":true, "URL":"https://www.youtube.com/watch?v=Dyqp8gpZClI","Playback speed":[0.5, 1]},"postproc1":{"reset":true, "Invert":[0, -2, 0.5, 0]}})>>
+<<@cue-publisher
+  (t       = "Lucy", 
+   cid     = 175, 
+   desc    = "(same as above but rotate source image 90-deg CCW and scale just enough to fill window, losing some of the stone wall on the left of the original image)", 
+   content = {
+     "yt1": {
+       "reset":true, 
+       "URL":"https://www.youtube.com/watch?v=Dyqp8gpZClI",
+       "Playback speed":[0.5, 1]
+     },
+     "postproc1":{
+       "reset": true,
+       "Rotate": 0.25,
+       "ScaleX": [2, 1],
+       "ScaleY": 1.6,
+       "Invert": [1, 2, -0.5, 0],
+       "Black level": [0, 1, 0, 0],
+       "Gamma": [0.8, 1, 0, 0],
+       "Brightness": [0.3, 1, 0, 0],
+       "Contrast": [0.95, 1, 0, 0]
+     }
+   })>>
 
-<<@cue-publisher(t = "Opera", cid = 180, desc = "(same as above but no rotation, scaled/pushed into pigeons in upper part of the image)", content = {"yt1":{"reset":true, "URL":"https://www.youtube.com/watch?v=fvRQi-vIu_U","Playback speed":[0.5, 1]},"postproc1":{"reset":true, "Invert":[0, -2, 0.5, 0]}})>>
+<<@cue-publisher
+  (t       = "Opera", 
+   cid     = 180, 
+   desc    = "(same as above but no rotation, scaled/pushed into pigeons in upper part of the image)", 
+   content = {
+     "yt1": {
+       "reset":true, 
+       "URL":"https://www.youtube.com/watch?v=fvRQi-vIu_U",
+       "Playback speed":[0.5, 1]
+     },
+     "postproc1": {
+       "reset": true,
+       "Rotate": 0,
+       "ScaleX": [3.25, 1],
+       "ScaleY": 3.25,
+       "OriginX": [0, 1, 0, 0],
+       "OriginY": -0.9,
+       "Invert": [1, 2, -0.5, 0],
+       "Black level": [0, 1, 0, 0],
+       "Gamma": [0.8, 1, 0, 0],
+       "Brightness": [0.3, 1, 0, 0],
+       "Contrast": [0.95, 1, 0, 0]
+     }
+   })>>
 
-<<@cue-publisher(t = "Bicycle", cid = 185, desc = "(same as above but no rotation, no scaling, 25% speed)", content = {"yt1":{"reset":true, "URL":"https://www.youtube.com/watch?v=6TaoityOFi4","Playback speed":[0.25, 1]},"postproc1":{"reset":true, "Invert":[0, -2, 0.5, 0]}})>>
+<<@cue-publisher
+  (t       = "Bicycle", 
+   cid     = 185, 
+   desc    = "(same as above but no rotation, no scaling, 25% speed)", 
+   content = {
+     "yt1": {
+       "reset":true, 
+       "URL":"https://www.youtube.com/watch?v=6TaoityOFi4",
+       "Playback speed":[0.25, 1]
+     },
+     "postproc1": {
+       "reset": true,
+       "Crop left": 0.3291139,
+       "Crop bottom": 0,
+       "Crop right": 0.6582279,
+       "Crop top": 1,
+       "Vignette edge": 0.04,
+       "Invert": [1, 2, -0.5, 0],
+       "Black level": [0, 1, 0, 0],
+       "Gamma": [0.8, 1, 0, 0],
+       "Brightness": [0.3, 1, 0, 0],
+       "Contrast": [0.95, 1, 0, 0]
+     }
+   })>>
 
 <<@cue-publisher(t = "Close", cid = 190, desc = "(50% speed, not Invert, slight rectangular vignette)", 
    content = {
-     "yt1":
-       {"reset":true, 
-        "URL"  :"https://www.youtube.com/watch?v=ER0lJDG1mNc",
-        "Playback speed":[0.5, 1]
-       },
-     "postproc1":
-       {"reset":true, 
-        "Invert":[0, 2, -0.5, 0]
-       }
-     })>>
+     "yt1": {
+       "reset":true, 
+       "URL"  :"https://www.youtube.com/watch?v=ER0lJDG1mNc",
+       "Playback speed":[0.5, 1]
+     },
+     "postproc1": {
+       "reset": true,
+       "Crop left": 0,
+       "Crop bottom": 0,
+       "Crop right": 1,
+       "Crop top": 1,
+       "Vignette edge": 0.04,
+       "OriginX": [0, 1, 0, 0],
+       "OriginY": 0
+     }
+   })>>
 /*
 Need to make sure "blackout" is reset to default in previous publishings
 */
