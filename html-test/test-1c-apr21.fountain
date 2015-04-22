@@ -251,7 +251,7 @@ Establish scene: (ADD) LIVE CAMERA IN TELESCOPE
      "yt1": {
        "reset":true, 
        "URL":"https://www.youtube.com/watch?v=0t8lsQLK1vM",
-       "Playback speed":[0.25, 1]
+       "Playback speed":[0.50, 1]
      },
      "postproc1": {
        "reset": true,
@@ -295,7 +295,7 @@ Establish scene: (ADD) LIVE CAMERA IN TELESCOPE
      "yt1": { 
        "reset":true, 
        "URL":"https://www.youtube.com/watch?v=dnxfcdhkel8",
-       "Playback speed":[0.25, 1]
+       "Playback speed":[0.50, 1]
      },
      "postproc1": {
        "reset": true,
