@@ -13,16 +13,6 @@
 
 # Body
 
-/*
-2nd version of Zoe's 1C, using arbitrary video publishing component instead of playlist fetching element
-TODO: 
-1. Nail down the json format, fill out parameters as needed
-2. Circular vignetting and rectangular vignetting
-3. Json for composition of two videos
-4. For cue 110 that's not added here yet:
-Establish scene: (ADD) LIVE CAMERA IN TELESCOPE
-*/
-
 <<@cue-publisher
   (t       = "ANDI: <<1995: An Assyrian food festival. We were really cute as a kids!>>", 
    cid     = 115, 

@@ -17,9 +17,9 @@
 Chrome would add automatic quotes to component arguments, which would mess things up if I add whites spaces inside the JSON string parameter
 */
 
-<<@cue-publisher(t = "Match strike 1", cid = 160, desc = "50% speed, not Invert. slight rectangular vignette", content = {"yt1":{"reset":true, "URL":"https://www.youtube.com/watch?v=IpXth5vIFdE","Playback speed":[0.5, 1]},"postproc1":{"reset":true, "Invert":[0, 2, -0.5, 0]}})>>
+<<@cue-publisher(t = "Match strike 1", cid = 160, desc = "50% speed, not Invert. slight rectangular vignette", content = {"yt1":{"reset":true, "URL":"https://www.youtube.com/watch?v=IpXth5vIFdE","Playback speed":[0.5, 1]},"postproc1":{"reset":true, "Invert":[0.5, 2, -0.5, 0]}})>>
 
-<<@cue-publisher(t = "Match strike 2", cid = 165, desc = "(same settings as last)", content = {"yt1":{"reset":true, "URL":"https://www.youtube.com/watch?v=ER0lJDG1mNc","Playback speed":[0.5, 1]},"postproc1":{"reset":true, "Invert":[0, 2, -0.5, 0]}})>>
+<<@cue-publisher(t = "Match strike 2", cid = 165, desc = "(same settings as last)", content = {"yt1":{"reset":true, "URL":"https://www.youtube.com/watch?v=ER0lJDG1mNc","Playback speed":[0.5, 1]},"postproc1":{"reset":true, "Invert":[0.5, 2, -0.5, 0]}})>>
 
 <<@cue-publisher
   (t       = "Match strike 3", 
