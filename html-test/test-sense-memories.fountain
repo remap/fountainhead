@@ -1,0 +1,326 @@
+# Environment
+
+[showid] "chocolate_cookie_show"
+
+[include] ndn.js
+[prefix] new Name("/ndn/edu/ucla/remap/losatlantis")
+[face] new Face({host: "archive-dev.remap.ucla.edu"})
+[include] ndn-init.js
+[include] ndn-url-publisher-component.js
+
+[include] script-control.js
+[include] onload.js
+
+# Body
+
+/*
+Debug: Something has to be here...fixing
+*/
+
+<<@cue-publisher
+  (t       = "Felix", 
+   cid     = 170, 
+   desc    = "", 
+   content = {
+     "yt1": {
+       "reset": true,
+       "URL": "https://www.youtube.com/watch?v=XJqm2irnYlM",
+       "Reload": 0,
+       "Black": 0,
+       "Pause": 0,
+       "Loop": 1,
+       "Seek": 0,
+       "Switch on cue": 0,
+       "Cue": 0,
+       "Playback speed": [0.5, 1, 0, 0],
+       "Start time": 0
+     },
+     "postproc1": {
+       "Crop left": 0,
+       "Crop bottom": 0,
+       "Crop right": 1,
+       "Crop top": 1,
+       "Vignette edge": 0.1,
+       "Rotate": 0,
+       "ScaleX": [1, 1, 0, 0],
+       "ScaleY": 1,
+       "OriginX": [0, 1, 0, 0],
+       "OriginY": 0,
+       "Invert": [-0.5, 1, 0, 0],
+       "Black level": [0, 1, 0, 0],
+       "Gamma": [1.5, 1, 0, 0],
+       "Brightness": [1, 1, 0, 0],
+       "Contrast": [1, 1, 0, 0],
+       "Opacity": 1,
+       "Scale crop": 0,
+       "Circle crop": 1
+     },
+     "yt2": {
+       "reset": true,
+       "URL": "https://www.youtube.com/watch?v=GH5Eri5pGW0&list=PLjardEiAzhroN3ioUrwHZumVercXjWQeE",
+       "Reload": 0,
+       "Black": 0,
+       "Pause": 0,
+       "Loop": 1,
+       "Seek": 0,
+       "Switch on cue": 0,
+       "Cue": 0,
+       "Playback speed": [0.5, 1, 0, 0],
+       "Start time": 10
+     },
+     "postproc2": {
+       "reset": true,
+       "Crop left": 0,
+       "Crop bottom": 0,
+       "Crop right": 1,
+       "Crop top": 1,
+       "Vignette edge": 0.1,
+       "Rotate": 0,
+       "ScaleX": [1, 1, 0, 0],
+       "ScaleY": 1,
+       "OriginX": [0, 1, 0, 0],
+       "OriginY": 0,
+       "Invert": [0, 1, 0, 0],
+       "Black level": [0, 1, 0, 0],
+       "Gamma": [1.5, 1, 0, 0],
+       "Brightness": [1, 1, 0, 0],
+       "Contrast": [1, 1, 0, 0],
+       "Opacity": 1,
+       "Scale crop": 0,
+       "Circle crop": 1
+     },
+     "Comp": "Add"
+   })>>
+
+<<@cue-publisher
+  (t       = "Eddie", 
+   cid     = 175, 
+   desc    = "", 
+   content = {
+     "yt1": {
+       "reset": true,
+       "URL": "https://www.youtube.com/watch?v=MgvHMx3eSU8&index=17&list=PLjardEiAzhroN3ioUrwHZumVercXjWQeE",
+       "Reload": 0,
+       "Black": 0,
+       "Pause": 0,
+       "Loop": 1,
+       "Seek": 0,
+       "Switch on cue": 0,
+       "Cue": 0,
+       "Playback speed": [0.7, 1, 0, 0],
+       "Start time": 0
+     },
+     "postproc1": {
+       "reset": true,
+       "Crop left": 0,
+       "Crop bottom": 0,
+       "Crop right": 1,
+       "Crop top": 1,
+       "Vignette edge": 0.1,
+       "Rotate": 0,
+       "ScaleX": [1, 1, 0, 0],
+       "ScaleY": 1,
+       "OriginX": [0, 1, 0, 0],
+       "OriginY": 0,
+       "Invert": [-1, 1, 0, 0],
+       "Black level": [0, 1, 0, 0],
+       "Gamma": [1, 1, 0, 0],
+       "Brightness": [1, 1, 0, 0],
+       "Contrast": [1, 1, 0, 0],
+       "Opacity": 1,
+       "Scale crop": 0,
+       "Circle crop": 1
+     },
+     "yt2": {
+       "URL": "https://www.youtube.com/watch?v=ygaY-nXtUNI&index=7&list=PLjardEiAzhroN3ioUrwHZumVercXjWQeE",
+       "reset": true,
+       "Reload": 0,
+       "Black": 0,
+       "Pause": 0,
+       "Loop": 1,
+       "Seek": 0,
+       "Switch on cue": 0,
+       "Cue": 0,
+       "Playback speed": [0.5, 1, 0, 0],
+       "Start time": 3
+     },
+     "postproc2": {
+       "reset": true,
+       "Crop left": 0,
+       "Crop bottom": 0,
+       "Crop right": 1,
+       "Crop top": 1,
+       "Vignette edge": 0.1,
+       "Rotate": 0,
+       "ScaleX": [1, 1, 0, 0],
+       "ScaleY": 1,
+       "OriginX": [0, 1, 0, -1],
+       "OriginY": 0,
+       "Invert": [-0.02, 1, 0, 0],
+       "Black level": [0, 1, 0, 0],
+       "Gamma": [1, 1, 0, 0],
+       "Brightness": [1, 1, 0, 0],
+       "Contrast": [1, 1, 0, 0],
+       "Opacity": 1,
+       "Scale crop": 0,
+       "Circle crop": 1
+     },
+     "Comp": "Add"
+   })>>
+
+<<@cue-publisher
+  (t       = "Rachel", 
+   cid     = 180, 
+   desc    = "", 
+   content = {
+     "yt1": {
+       "URL": "https://youtu.be/0LLzAY107XQ?list=PLjardEiAzhroN3ioUrwHZumVercXjWQeE",
+       "reset": true,
+       "Reload": 0,
+       "Black": 0,
+       "Pause": 0,
+       "Loop": 1,
+       "Seek": 0.1,
+       "Switch on cue": 0,
+       "Cue": 0,
+       "Playback speed": [0.5, 1, 0, 0],
+       "Start time": 40
+     },
+     "postproc1": {
+       "reset": true,
+       "Crop left": 0,
+       "Crop bottom": 0,
+       "Crop right": 1,
+       "Crop top": 1,
+       "Vignette edge": 0.1,
+       "Rotate": 0,
+       "ScaleX": [1, 1, 0, 0],
+       "ScaleY": 1,
+       "OriginX": [0, 1, 0, 0],
+       "OriginY": 0,
+       "Invert": [-1, 1, 0, 0],
+       "Black level": [0, 1, 0, 0],
+       "Gamma": [1, 1, 0, 0],
+       "Brightness": [1, 1, 0, 0],
+       "Contrast": [1, 1, 0, 0],
+       "Opacity": 1,
+       "Scale crop": 0,
+       "Circle crop": 1
+     },
+     "yt2": {
+       "URL": "https://youtu.be/dkyq3sqlb0I?list=PLjardEiAzhroN3ioUrwHZumVercXjWQeE",
+       "reset": true,
+       "Reload": 0,
+       "Black": 0,
+       "Pause": 0,
+       "Loop": 1,
+       "Seek": 0,
+       "Switch on cue": 0,
+       "Cue": 0,
+       "Playback speed": [0.5, 1, 0, 0],
+       "Start time": 10
+     },
+     "postproc2": {
+       "reset": true,
+       "Crop left": 0,
+       "Crop bottom": 0,
+       "Crop right": 1,
+       "Crop top": 1,
+       "Vignette edge": 0.1,
+       "Rotate": 0,
+       "ScaleX": [1, 1, 0, 0],
+       "ScaleY": 1,
+       "OriginX": [0, 1, 0, 0],
+       "OriginY": 0,
+       "Invert": [-1, 1, 0, 0],
+       "Black level": [0, 1, 0, 0],
+       "Gamma": [1.1, 1, 0, 0],
+       "Brightness": [1, 1, 0, 0],
+       "Contrast": [1, 1, 0, 0],
+       "Opacity": 1,
+       "Scale crop": 0,
+       "Circle crop": 1
+     },
+     "Comp": "Max"
+   })>>
+
+<<@cue-publisher
+  (t       = "Sheena", 
+   cid     = 185, 
+   desc    = "", 
+   content = {
+     "yt1": {
+       "URL": "https://www.youtube.com/watch?v=97SKpNZu7Eg",
+       "reset": true,
+       "Reload": 0,
+       "Black": 0,
+       "Pause": 0,
+       "Loop": 1,
+       "Seek": 0,
+       "Switch on cue": 0,
+       "Cue": 0,
+       "Playback speed": [0.5, 1, 0, 0],
+       "Start time": 0
+     },
+     "postproc1": {
+       "reset": true,
+       "Crop left": 0,
+       "Crop bottom": 0,
+       "Crop right": 1,
+       "Crop top": 1,
+       "Vignette edge": 0.1,
+       "Rotate": 0,
+       "ScaleX": [1, 1, 0, 0],
+       "ScaleY": 1,
+       "OriginX": [0, 1, 0, 0],
+       "OriginY": 0,
+       "Invert": [-1, 1, 0, 0],
+       "Black level": [0, 1, 0, 0],
+       "Gamma": [1, 1, 0, 0],
+       "Brightness": [1, 1, 0, 0],
+       "Contrast": [1, 1, 0, 0],
+       "Opacity": 1,
+       "Scale crop": 0,
+       "Circle crop": 1
+     },
+     "yt2": {
+       "URL": "https://www.youtube.com/watch?v=xW_AsV7k42o&index=12&list=PLjardEiAzhroN3ioUrwHZumVercXjWQeE",
+       "reset": true,
+       "Reload": 0,
+       "Black": 0,
+       "Pause": 0,
+       "Loop": 1,
+       "Seek": 0,
+       "Switch on cue": 0,
+       "Cue": 0,
+       "Playback speed": [0.5, 1, 0, 0],
+       "Start time": 3
+     },
+     "postproc2": {
+       "reset": true,
+       "Crop left": 0,
+       "Crop bottom": 0,
+       "Crop right": 1,
+       "Crop top": 1,
+       "Vignette edge": 0.1,
+       "Rotate": 0,
+       "ScaleX": [1, 1, 0, 0],
+       "ScaleY": 1,
+       "OriginX": [0, 1, 0, 0],
+       "OriginY": 0,
+       "Invert": [-1, 1, 0, 0],
+       "Black level": [0, 1, 0, 0],
+       "Gamma": [1, 1, 0, 0],
+       "Brightness": [1, 1, 0, 0],
+       "Contrast": [1, 1, 0, 0],
+       "Opacity": 1,
+       "Scale crop": 0,
+       "Circle crop": 1
+     },
+     "Comp": "Multiply"
+   })>>
+/*
+Need to make sure "blackout" is reset to default in previous publishings
+*/
+
+<<@cue-publisher(t = "Blackout", desc = "Black out by publishing blackout: true", content = {"blackout":true})>>

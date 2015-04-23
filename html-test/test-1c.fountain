@@ -8,22 +8,239 @@
 [include] ndn-init.js
 [include] ndn-url-publisher-component.js
 
-[include] jquery-1.2.6.min.js
 [include] script-control.js
 [include] onload.js
 
 # Body
 
 /*
-For 1C, Zoe wanted all the videos in this list to be played at 0.6
+Debug: Something has to be here...fixing
 */
 
-<<@youtube-playlist-publisher(playlistId = "PLjardEiAzhrqARf5iNO0SLUiC_c0XquV_", content = {"postproc1":{"reset":true},"yt1":{"reset":true, "Playback speed":[0.60, 1]}}, startId = 110)>>
+<<@cue-publisher
+  (t       = "ANDI: <<1995: An Assyrian food festival. We were really cute as a kids!>>", 
+   cid     = 115, 
+   desc    = "Assyrian food fest (50% speed, circular vignette)", 
+   content = {
+     "yt1": {
+       "URL": "https://www.youtube.com/watch?v=QEb6ANksXCs",
+       "reset": true,
+       "Playback speed": [0.5, 1]
+     },
+     "postproc1": {
+       "reset": true,
+       "Crop left": 0.25,
+       "Crop bottom": 0,
+       "Crop right": 0.75,
+       "Crop top": 1,
+       "Vignette edge": 0.05,
+       "Circle crop": 1
+     },
+     "postproc_video1": {
+       "reset": true,
+       "Crop left": 0.25,
+       "Crop bottom": 0,
+       "Crop right": 0.75,
+       "Crop top": 1,
+       "Vignette edge": 0.05,
+       "Circle crop": 1
+     }
+   })>>
 
-/*
-Need to make sure "blackout" is reset to default in previous publishings
-*/
+<<@cue-publisher
+  (t       = "FELIX: <<March 2008: the skateboard park in Venice Beach.>>", 
+   cid     = 120, 
+   desc    = "Skateboarders 2 (50% speed, circular vignette)", 
+   content = {
+     "yt1": {
+       "URL": "https://www.youtube.com/watch?v=KwDuj2T8HqA",
+       "reset": true,
+       "Playback speed": [0.5, 1]
+     },
+     "postproc1": {
+       "reset": true,
+       "Crop left": 0.25,
+       "Crop bottom": 0,
+       "Crop right": 0.75,
+       "Crop top": 1,
+       "Vignette edge": 0.05,
+       "Circle crop": 1
+     },
+     "postproc_video1": {
+       "reset": true,
+       "Crop left": 0.25,
+       "Crop bottom": 0,
+       "Crop right": 0.75,
+       "Crop top": 1,
+       "Vignette edge": 0.05,
+       "Circle crop": 1
+     }
+   })>>
 
-<<@cue-publisher(t = "Blackout", desc = "Black out by publishing blackout: true", content = {"blackout":true})>>
+<<@cue-publisher
+  (t       = "T1: <<January 2012: an Ethiopian baptism in Dodger Stadium. Everyone wore white. We were dancing.>>", 
+   cid     = 130, 
+   desc    = "Timket 1 (50% speed, circular vignette)", 
+   content = {
+     "yt1": {
+       "URL": "https://www.youtube.com/watch?v=EhxRf1-uZUA",
+       "reset": true,
+       "Playback speed": [0.5, 1]
+     },
+     "postproc1": {
+       "reset": true,
+       "Crop left": 0.25,
+       "Crop bottom": 0,
+       "Crop right": 0.75,
+       "Crop top": 1,
+       "Vignette edge": 0.05,
+       "Circle crop": 1
+     },
+     "postproc_video1": {
+       "reset": true,
+       "Crop left": 0.25,
+       "Crop bottom": 0,
+       "Crop right": 0.75,
+       "Crop top": 1,
+       "Vignette edge": 0.05,
+       "Circle crop": 1
+     }
+   })>>
 
+<<@cue-publisher
+  (t       = "T2: <<July 2014: Danza Pukllay Chuko. A magical Peruvian dance.>>", 
+   cid     = 131, 
+   desc    = "Danza Pukklay (50% speed, circular vignette)", 
+   content = {
+     "yt1": {
+       "URL": "https://www.youtube.com/watch?v=4VniyvaOVc0",
+       "reset": true,
+       "Playback speed": [0.5, 1]
+     },
+     "postproc1": {
+       "reset": true,
+       "Crop left": 0.25,
+       "Crop bottom": 0,
+       "Crop right": 0.75,
+       "Crop top": 1,
+       "Vignette edge": 0.05,
+       "Circle crop": 1
+     },
+     "postproc_video1": {
+       "reset": true,
+       "Crop left": 0.25,
+       "Crop bottom": 0,
+       "Crop right": 0.75,
+       "Crop top": 1,
+       "Vignette edge": 0.05,
+       "Circle crop": 1
+     }
+   })>>
 
+<<@cue-publisher
+  (t       = "T3: <<August 1997: A mural in Echo Park. We call her the woman who watches.>>", 
+   cid     = 132, 
+   desc    = "Mural in Echo Park (50% speed, circular vignette) ", 
+   content = {
+     "yt1": {
+       "URL": "https://www.youtube.com/watch?v=vOd38aQjd3o",
+       "reset": true,
+       "Playback speed": [0.5, 1]
+     },
+     "postproc1": {
+       "reset": true,
+       "Crop left": 0.25,
+       "Crop bottom": 0,
+       "Crop right": 0.75,
+       "Crop top": 1,
+       "Vignette edge": 0.05,
+       "Circle crop": 1
+     },
+     "postproc_video1": {
+       "reset": true,
+       "Crop left": 0.25,
+       "Crop bottom": 0,
+       "Crop right": 0.75,
+       "Crop top": 1,
+       "Vignette edge": 0.05,
+       "Circle crop": 1
+     }
+   })>>
+
+<<@cue-publisher
+  (t       = "ANDI: <<June 2001: Belmont High School.>>", 
+   cid     = 140, 
+   desc    = "Belmont High (50% speed, circular)", 
+   content = {
+     "yt1": {
+       "URL": "https://www.youtube.com/watch?v=0t8lsQLK1vM",
+       "reset": true,
+       "Playback speed": [0.5, 1]
+     },
+     "postproc1": {
+       "reset": true,
+       "Crop left": 0.25,
+       "Crop bottom": 0,
+       "Crop right": 0.75,
+       "Crop top": 1,
+       "Vignette edge": 0.05,
+       "Circle crop": 1
+     },
+     "postproc_video1": {
+       "reset": true,
+       "Crop left": 0.25,
+       "Crop bottom": 0,
+       "Crop right": 0.75,
+       "Crop top": 1,
+       "Vignette edge": 0.05,
+       "Circle crop": 1
+     }
+   })>>
+
+<<@cue-publisher
+  (t       = "ANDI: Look! It’s you at the Santa Monica Pier!", 
+   cid     = 141, 
+   desc    = "Rollercoaster + wheel (50% speed, rectangular vignette, ADD w/ Beach 1) (TBC)", 
+   content = {
+     "yt1": {
+       "URL":"https://www.youtube.com/watch?v=dnxfcdhkel8",
+       "reset": true,
+       "Playback speed": [0.5, 1]
+     },
+     "postproc1": {
+       "reset": true,
+       "Vignette edge": 0.05
+     },
+     "postproc_video1": {
+       "reset": true,
+       "Vignette edge": 0.05
+     }
+   })>>
+
+<<@cue-publisher
+  (t       = "ANDI: I can't really get around here...", 
+   cid     = 142, 
+   desc    = "Sunrise attempt 1 (Fade in, rectangular vignette)", 
+   content = {
+     "yt1": {
+       "URL": "https://www.youtube.com/watch?v=6WfElPMvf80",
+       "reset": true,
+       "Playback speed": [0.5, 1]
+     },
+     "postproc1": {
+       "reset": true,
+       "Vignette edge": 0.05
+     },
+     "postproc_video1": {
+       "reset": true,
+       "Vignette edge": 0.05
+     }
+   })>>
+
+<<@cue-publisher
+  (t       = "Blackout", 
+   cid     = 150,
+   desc    = "Fade to black", 
+   content = {
+     "blackout": true
+   })>>
