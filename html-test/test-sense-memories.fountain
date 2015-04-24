@@ -155,7 +155,7 @@ Debug: Something has to be here...fixing
        "Rotate": 0,
        "ScaleX": [1, 1, 0, 0],
        "ScaleY": 1,
-       "OriginX": [0, 1, 0, -1],
+       "OriginX": [0, 1, 0, 0],
        "OriginY": 0,
        "Invert": [-0.5, 1, 0, 0],
        "Black level": [0, 1, 0, 0],
