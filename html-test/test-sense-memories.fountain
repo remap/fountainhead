@@ -36,6 +36,7 @@ Debug: Something has to be here...fixing
        "Start time": 0
      },
      "postproc1": {
+       "reset": true,
        "Crop left": 0,
        "Crop bottom": 0,
        "Crop right": 1,
