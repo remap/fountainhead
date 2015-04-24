@@ -157,7 +157,7 @@ Debug: Something has to be here...fixing
        "ScaleY": 1,
        "OriginX": [0, 1, 0, -1],
        "OriginY": 0,
-       "Invert": [-0.02, 1, 0, 0],
+       "Invert": [-0.5, 1, 0, 0],
        "Black level": [0, 1, 0, 0],
        "Gamma": [1, 1, 0, 0],
        "Brightness": [1, 1, 0, 0],
