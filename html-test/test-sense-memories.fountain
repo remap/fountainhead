@@ -19,7 +19,7 @@ Debug: Something has to be here...fixing
 
 <<@cue-publisher
   (t       = "Felix", 
-   cid     = 170, 
+   cid     = 2000, 
    desc    = "", 
    content = {
      "yt1": {
@@ -94,7 +94,7 @@ Debug: Something has to be here...fixing
 
 <<@cue-publisher
   (t       = "Eddie", 
-   cid     = 175, 
+   cid     = 2001, 
    desc    = "", 
    content = {
      "yt1": {
@@ -170,7 +170,7 @@ Debug: Something has to be here...fixing
 
 <<@cue-publisher
   (t       = "Rachel", 
-   cid     = 180, 
+   cid     = 2002, 
    desc    = "", 
    content = {
      "yt1": {
@@ -246,7 +246,7 @@ Debug: Something has to be here...fixing
 
 <<@cue-publisher
   (t       = "Sheena", 
-   cid     = 185, 
+   cid     = 2003, 
    desc    = "", 
    content = {
      "yt1": {
