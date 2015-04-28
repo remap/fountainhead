@@ -189,7 +189,7 @@ THE OBSERVATORY
 Thank you for contributing to the ARCHIVE, please consider using this media in the Transfer.  Do you think these tags will resonate with our visitors, <<"#sunset #seabreeze">>?
 */
 
-<<@chat-control-muc(message="Thank you for contributing to the ARCHIVE, please consider using this media in the Transfer.  Do you think these tags will resonate with our visitors, <<"#sunset #seabreeze">>?")>>
+<<@chat-control-muc(message="Thank you for contributing to the ARCHIVE, please consider using this media in the Transfer.  Do you think these tags will resonate with our visitors, <<#sunset #seabreeze>>?")>>
 
 WATCHERS can change the metadata associated with their uploaded media.
 
