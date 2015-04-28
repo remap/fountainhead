@@ -25,6 +25,8 @@
             var clone = thatDoc.importNode(template, true);
             this.shadowRoot.appendChild(clone);
             
+            this.componentObject = new window.ComponentObject(this.shadowRoot, window);
+        
             // We may not want to contain these in a paragraph at some point
             this.paragraphElement = this.shadowRoot.querySelector('#olf-paragraph');
             
@@ -43,7 +45,7 @@
             
             // Use "inherited" style sheet
             // Note: This may not be ideal for applying the CSS styles from window's document
-            this.applyStyleFromParentDocument(this.paragraphElement);
+            this.componentObject.applyStyleFromParentDocument(this.paragraphElement);
             
             // Apply text for elements
             this.paragraphElement.textContent = this.content;
@@ -56,72 +58,6 @@
         };
         element.attributeChangedCallback = function(attr, oldVal, newVal) {
             console.log('olf onAttributeChanged stub');
-        };
-        element.htmlClassFromName = function(fromName) {
-            str = fromName.toLowerCase().replace(' ', '-');
-            return str;
-        };
-        element.getStyle = function(document, className) {
-            var classes = document.styleSheets[0].rules || document.styleSheets[0].cssRules;
-            for (var i = 0; i < classes.length; i++) {
-                if (classes[i].selectorText == className) {
-                    return classes[i];
-                }
-            }
-        };
-        element.copyStyleToElement = function(cs, to) {
-            for (var prop in cs) {
-                if (cs[prop] != undefined && cs[prop].length > 0 && 
-                    typeof cs[prop] !== 'object' && typeof cs[prop] !== 'function' && 
-                    prop != parseInt(prop) ) {
-                    
-                    to.style[prop] = cs[prop];
-                }
-            }
-        };
-        // This function takes the existing class names of given element,
-        // and apply the class definitions in the parent document to this document
-        element.applyStyleFromParentDocument = function(ele) {
-            var classNames = ele.className.split(" ");
-    
-            for (var i = 0; i < classNames.length; i++) {
-                var elementStyle = this.getStyle(window.document, "." + this.htmlClassFromName(classNames[i]));
-    
-                if (elementStyle != undefined) {
-                    this.copyStyleToElement(elementStyle.style, ele);
-                }
-            }
-        };
-        // Note: untested function
-        element.applyStyleFromParentDocumentForClass = function (className) {
-            var eles = this.shadowRoot.querySelectorAll('.' + className);
-            for (var i = 0; i < eles.length; i++) {
-                this.applyStyleFromParentDocument(eles[i]);
-            }
-        };
-        // This is a specific function for the visibility of the paragraph known to this web component
-        element.toggleClassVisibility = function (className, visible) {
-            var normalizedClass = className;
-            if (!normalizedClass.startsWith('.')) {
-                normalizedClass = '.' + normalizedClass;
-            }
-            
-            var eles = this.shadowRoot.querySelectorAll(normalizedClass);
-
-            var flag = visible;
-            
-            if (flag == undefined && eles.length > 0) {
-                flag = eles[0].style.display;                
-                if (flag == 'none') {
-                    flag = 'block';
-                } else {
-                    flag = 'none';
-                }
-            }
-            
-            for (var i = 0; i < eles.length; i++) {
-                eles[i].style.display = flag;
-            }
         };
         window.element = thatDoc.registerElement('com-olf', {
             prototype: element

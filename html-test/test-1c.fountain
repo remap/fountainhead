@@ -9,6 +9,7 @@
 [include] ndn-url-publisher-component.js
 
 [include] script-control.js
+[include] component-object.js
 [include] onload.js
 
 # Body

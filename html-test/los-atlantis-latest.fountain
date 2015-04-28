@@ -45,6 +45,7 @@ Author: Future of Storytelling Studio 2015
 [include] strophe-init.js
 
 [include] script-control.js
+[include] component-object.js
 [include] onload.js
 
 # CharacterTypes

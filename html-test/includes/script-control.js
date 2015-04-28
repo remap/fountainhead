@@ -30,7 +30,7 @@ ScriptControl.prototype.toggleClassVisibility = function(className, visible) {
   
   // Note: Apply toggle by class names for imported documents;
   for (var i = 0; i < this.importedElements.length; i++) {
-    this.importedElements[i].toggleClassVisibility(className);
+    this.importedElements[i].componentObject.toggleClassVisibility(className);
   }
   
   var elements = this.document.getElementsByClassName(className);

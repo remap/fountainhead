@@ -1,10 +1,11 @@
 // Deprecated method
-if (URLPublisherFactory != undefined) {
+/*
+if (URLPublisherFactory !== undefined) {
   var ndnURLPublisherFactory = new URLPublisherFactory(window, document);
 }
+*/
 
 var scriptControl = new ScriptControl(document);
-//scriptControl.loadComponentDocs();
 
 // Firefox does not give an import error if web component's not enabled.
 function onImportError(event) {

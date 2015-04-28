@@ -7,17 +7,20 @@
  *   
  */
 
-ComponentObject.prototype = Object.create(HTMLElement.prototype);
+var ComponentObject = function ComponentObject(shadowRoot, window) {
+  this.window = window;
+  this.shadowRoot = shadowRoot;
+};
 
 /**
- * The static functions for web components goes here
+ * Styling functions for general web components goes here
  */
 ComponentObject.prototype.htmlClassFromName = function(fromName) {
   str = fromName.toLowerCase().replace(' ', '-');
   return str;
 };
-ComponentObject.prototype.getStyle = function(document, className) {
-  var classes = document.styleSheets[0].rules || document.styleSheets[0].cssRules;
+ComponentObject.prototype.getStyle = function(className) {
+  var classes = this.window.document.styleSheets[0].rules || this.window.document.styleSheets[0].cssRules;
   for (var i = 0; i < classes.length; i++) {
     if (classes[i].selectorText == className) {
       return classes[i];
@@ -40,7 +43,7 @@ ComponentObject.prototype.applyStyleFromParentDocument = function(ele) {
   var classNames = ele.className.split(" ");
 
   for (var i = 0; i < classNames.length; i++) {
-    var elementStyle = this.getStyle(this.window.document, "." + this.htmlClassFromName(classNames[i]));
+    var elementStyle = this.getStyle("." + this.htmlClassFromName(classNames[i]));
 
     if (elementStyle != undefined) {
       this.copyStyleToElement(elementStyle.style, ele);
@@ -76,6 +79,7 @@ ComponentObject.prototype.toggleClassVisibility = function (className, visible) 
  * Component object takes the template element of this page to operate on, 
  * and the parent document
  */
+/*
 ComponentObject.prototype.constructor = function ComponentObject(template, thatDoc, window) {
     this.template = template;
     this.thatDoc = thatDoc;
@@ -187,5 +191,5 @@ ComponentObject.prototype.toggleClassVisibility = function (className, visible, 
 };
 
 var co = new ComponentObject(undefined, undefined);
-
+*/
 exports.ComponentObject = ComponentObject;
