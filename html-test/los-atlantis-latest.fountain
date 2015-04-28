@@ -211,7 +211,7 @@ THE GUIDE
 Hello, <<Manasi>>!  Where do you want to go today? Just kidding... Welcome.  -Virgil. 
 */
 
-<<@chat-control-muc(message="Hello, {{ user_name }}!  Where do you want to go today? Just kidding... Welcome.  -Virgil.")>>
+<<@chat-control-guide(message="Hello, {{ user_name }}!  Where do you want to go today? Just kidding... Welcome.  -Virgil.")>>
 
 The TOURISTS browse their GUIDE. 
 
@@ -225,7 +225,7 @@ THE GUIDE
 Time to your Transfer: << - 00 Days, 00 Hours, 7 Minutes>>. 
 */
 
-<<@chat-control-muc(message="Time to your Transfer: << - 00 Days, 00 Hours, 7 Minutes>>.")>>
+<<@chat-control-guide(message="Time to your Transfer: << - 00 Days, 00 Hours, 7 Minutes>>.")>>
 
 /*
 THE OBSERVATORY ^
