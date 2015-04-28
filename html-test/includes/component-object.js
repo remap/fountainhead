@@ -10,6 +10,69 @@
 ComponentObject.prototype = Object.create(HTMLElement.prototype);
 
 /**
+ * The static functions for web components goes here
+ */
+ComponentObject.prototype.htmlClassFromName = function(fromName) {
+  str = fromName.toLowerCase().replace(' ', '-');
+  return str;
+};
+ComponentObject.prototype.getStyle = function(document, className) {
+  var classes = document.styleSheets[0].rules || document.styleSheets[0].cssRules;
+  for (var i = 0; i < classes.length; i++) {
+    if (classes[i].selectorText == className) {
+      return classes[i];
+    }
+  }
+};
+ComponentObject.prototype.copyStyleToElement = function(cs, to) {
+  for (var prop in cs) {
+    if (cs[prop] != undefined && cs[prop].length > 0 && 
+      typeof cs[prop] !== 'object' && typeof cs[prop] !== 'function' && 
+      prop != parseInt(prop) ) {
+      
+      to.style[prop] = cs[prop];
+    }
+  }
+};
+// This function takes the existing class names of given element,
+// and apply the class definitions in the parent document to this document
+ComponentObject.prototype.applyStyleFromParentDocument = function(ele) {
+  var classNames = ele.className.split(" ");
+
+  for (var i = 0; i < classNames.length; i++) {
+    var elementStyle = this.getStyle(this.window.document, "." + this.htmlClassFromName(classNames[i]));
+
+    if (elementStyle != undefined) {
+      this.copyStyleToElement(elementStyle.style, ele);
+    }
+  }
+};
+// This is a specific function for the visibility of the paragraph known to this web component
+ComponentObject.prototype.toggleClassVisibility = function (className, visible) {
+  var normalizedClass = className;
+  if (!normalizedClass.startsWith('.')) {
+    normalizedClass = '.' + normalizedClass;
+  }
+  
+  var eles = this.shadowRoot.querySelectorAll(normalizedClass);
+
+  var flag = visible;
+  
+  if (flag == undefined && eles.length > 0) {
+    flag = eles[0].style.display;        
+    if (flag == 'none') {
+      flag = 'block';
+    } else {
+      flag = 'none';
+    }
+  }
+  
+  for (var i = 0; i < eles.length; i++) {
+    eles[i].style.display = flag;
+  }
+};
+
+/**
  * Component object takes the template element of this page to operate on, 
  * and the parent document
  */

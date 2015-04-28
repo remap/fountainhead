@@ -9,10 +9,12 @@
     var thatDoc = document;
     var thisDoc =  (thatDoc._currentScript || thatDoc.currentScript).ownerDocument;
     var template = thisDoc.querySelector('template').content;
-    
+     
     var componentName = 'com-cue-publisher';
     
     var element = Object.create(HTMLElement.prototype);
+    
+    //element.componentObject = new window.ComponentObject();
     
     element.createdCallback = function() {
       this.shadowRoot = this.createShadowRoot();
