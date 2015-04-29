@@ -28,13 +28,21 @@ import sys
 from fountain_parser import ParserVersion
 from regex_rules import *
 
+# 'the-guide': chat-control-guide
+# 'the-observatory': chat-control-muc                            
+specialGenerationTags = {
+    'the-guide':'chat-control-guide', 
+    'the-observatory':'chat-control-muc'
+}
+
 class FountainHTMLGenerator(object):
-    def __init__(self, script, cssFile = '', componentParent = 'components', includeParent = 'includes', version = ParserVersion.DEFAULT):
+    def __init__(self, script, cssFile = '', componentParent = 'components', includeParent = 'includes', version = ParserVersion.DEFAULT, special = False):
         self._script = script
         self._bodyText = ''
         self._indentLevel = 0
         self._cssFile = cssFile
         self._sceneHeadings = []
+        self._parseSpecial = special
         
         self._version = version
         if self._version == ParserVersion.REMAP:
@@ -52,6 +60,8 @@ class FountainHTMLGenerator(object):
         elif self._version == ParserVersion.BASE:
             self._fountainRegex = FountainRegexBase()
             self.generateHtml = self.generateHtmlBase
+            if (self._parseSpecial == True):
+                print('WARNING: --parse-special flag may not be existent for BASE tag')
         else:
             # Right now using remap as default; DEFAULT value was not really useful, 
             # since self._fountainRegex is using Remap class
@@ -68,14 +78,18 @@ class FountainHTMLGenerator(object):
             self._includeParent = includeParent.rstrip('/') + '/'
         return
     
+    def sanitizeElementText(self, strText):
+        strText = strText.replace('<', '&lt;').replace('>', '&gt;').replace(' ', '&#32;').replace('\n', '&#32;').replace('\"', '&#34;').replace('\'', '&#8216;')
+        return strText
+    
     # HTML class is elementType with spaces replaced by dashes
-    def htmlClassForType(self, str):
+    def htmlClassForType(self, strType):
         # if the str only consists of uppercase letters, it is likely that
         # we don't want to replace each uppercase letter with dash and the letter
-        if not (re.match('[A-Z\s]+', str)):
-            str = re.sub('([A-Z])', r'-\1', str)
-        str = re.sub(' ', '-', str.strip('-').lower())
-        return re.sub('-+', '-', str)
+        if not (re.match('[A-Z\s]+', strType)):
+            strType = re.sub('([A-Z])', r'-\1', strType)
+        strType = re.sub(' ', '-', strType.strip('-').lower())
+        return re.sub('-+', '-', strType)
     
     def generateHtmlBase(self):
         self._indentLevel = 0
@@ -206,9 +220,16 @@ class FountainHTMLGenerator(object):
             componentArgs = dict()
             componentDesc = ''
             
+        # Previous tag and type try to apply the character type class (such as 'travelers') 
+        # of a character to the character's parenthetical or dialogue
         prevTag = ''
         prevType = ''
         sceneCnt = 0
+        
+        # If true, skip ordinary <p class='...'> + '...' + </p> generation, 
+        # and (probably) switch to web component generation
+        # Right now used by special web component generation for the-guide/observatory
+        skipOrdinaryGeneration = False
         
         skipDualDialogueEnd = False
         
@@ -221,6 +242,9 @@ class FountainHTMLGenerator(object):
         for element in elements:
             skipDualDialogueEnd = False
             
+            # TODO: skipOrdinaryGeneration should be better handled
+            skipOrdinaryGeneration = False
+                    
             if (element._elementType in ignoreTypes):
                 continue
             
@@ -280,7 +304,7 @@ class FountainHTMLGenerator(object):
                     menuInsertionPoint = len(bodyText)
                     menuInsertionIndent = self._indentLevel
                     
-                    bodyText += self.prependIndentLevel() + '<script>\n';
+                    bodyText += self.prependIndentLevel() + '<script>\n'
                     
                     environmentDeclarations = re.findall(self._fountainRegex.META_TYPE_PATTERN, element._elementText)
                     for (environmentDeclaration) in environmentDeclarations:
@@ -409,7 +433,7 @@ class FountainHTMLGenerator(object):
                             equalSign = arg.find('=')
                             if (equalSign > 0):
                                 argName = arg[:equalSign].strip()
-                                argValue = arg[equalSign + 1:].strip().replace(' ', '&#32;').replace('\n', '&#32;')
+                                argValue = self.sanitizeElementText(arg[equalSign + 1:].strip())
                                 
                                 componentArgs[argName] = argValue
                             else:
@@ -440,13 +464,23 @@ class FountainHTMLGenerator(object):
                     if (element._isCentered):
                         additionalClasses += self._fountainRegex.CENTER_CLASS
                     
+                    # This tries to parse special dialogues when parseSpecial is present
+                    # TODO: possibly not handled correctly when both parenthetical and dialogues are present after a character tag
                     if (prevTag == self._fountainRegex.CHARACTER_TAG_PATTERN):
-                        if prevType != '' and (element._elementType == self._fountainRegex.DIALOGUE_TAG_PATTERN or element._elementType == self._fountainRegex.PARENTHETICAL_TAG_PATTERN):
+                        if (element._elementType == self._fountainRegex.DIALOGUE_TAG_PATTERN or element._elementType == self._fountainRegex.PARENTHETICAL_TAG_PATTERN):
                             additionalClasses += ' ' + prevType
+                            if (prevType in specialGenerationTags):
+                                # For Parentheticals that come after a specially treated character, we ignore it
+                                if (element._elementType == self._fountainRegex.PARENTHETICAL_TAG_PATTERN):
+                                    continue
+                                skipOrdinaryGeneration = True
+                                bodyText += '\n' + self.prependIndentLevel() + '<' + self.componentNameToTag(specialGenerationTags[prevType])
+                                bodyText += ' message=\"' + self.sanitizeElementText(element._elementText) + '\">'
+                                bodyText += '\n' + self.prependIndentLevel() + '</' + self.componentNameToTag(specialGenerationTags[prevType]) + '>'
                         else:
                             prevTag = ''
                             prevType = ''
-                            
+                    
                     if (element._elementType == self._fountainRegex.CHARACTER_TAG_PATTERN):
                         characterName = self.htmlClassForType(element._elementText)
                         additionalClasses += ' ' + characterName
@@ -454,7 +488,19 @@ class FountainHTMLGenerator(object):
                             additionalClasses += ' ' + self._characterList[characterName]
                             prevType = self._characterList[characterName]
                         prevTag = element._elementType
-                    
+                        
+                        # TODO: For parseSpecial flag, hardcoding this (without basic generalization) is not preferable.
+                        if self._parseSpecial:
+                            # For losatlantis, the-guide and the-observatory are specially handled:
+                            # they do not generate elementText_, and skip ordinary generation; instead they create
+                            # web component code with remap syntax...
+                            if characterName in specialGenerationTags:
+                                prevType = characterName
+                                skipOrdinaryGeneration = True
+                                # Do not forget to add this web component to the imported list
+                                if (not characterName in self._componentList):
+                                    self._componentList.append(specialGenerationTags[characterName])
+                        
                     # Special generation step for text marked with specific classes
                     specificClasses = re.findall(self._fountainRegex.SPECIFIC_CSS_ADDON_PATTERN, text)
                     
@@ -464,7 +510,8 @@ class FountainHTMLGenerator(object):
                         replacement = self.prependIndentLevel() + '<p class=\'' + className + '\'>' + classText + '</p>'
                         text = re.sub(self._fountainRegex.SPECIFIC_CSS_ADDON_PATTERN, replacement, text, 1)
                         
-                    bodyText += self.prependIndentLevel() + '<p class=\'' + self.htmlClassForType(element._elementType) + additionalClasses + '\'>' + text + '</p>\n'
+                    if not (skipOrdinaryGeneration and self._parseSpecial):
+                        bodyText += self.prependIndentLevel() + '<p class=\'' + self.htmlClassForType(element._elementType) + additionalClasses + '\'>' + text + '</p>\n'
             elif (generateComponent):
                 # Note: The "com-" is mandatorily prepended to the component name at this moment, may want to change in the future
                 componentTagName = self.componentNameToTag(componentName)
