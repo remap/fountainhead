@@ -25,7 +25,7 @@
             var clone = thatDoc.importNode(template, true);
             this.shadowRoot.appendChild(clone);
             
-            this.componentObject = new window.ComponentObject(this.shadowRoot, window);
+            this.componentObject = new window.ComponentObject(this, window);
         
             // We may not want to contain these in a paragraph at some point
             this.paragraphElement = this.shadowRoot.querySelector('#olf-paragraph');

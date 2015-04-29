@@ -19,7 +19,7 @@
       var clone = thatDoc.importNode(template, true);
       this.shadowRoot.appendChild(clone);
       
-      this.componentObject = new window.ComponentObject(this.shadowRoot, window);
+      this.componentObject = new window.ComponentObject(this, window);
       
       // Append thisDoc to parent's importedDocs:
       // Note: This assumes the knowledge of window's scriptControl element name
