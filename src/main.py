@@ -37,8 +37,12 @@ def main(argv):
     includeParent = 'includes'
     generatePdf = False
     
+    # parseSpecial flag contains a few losatlantis specific html generation instructions
+    # Such as: The dialogue of 'the guide' and 'the observatory' gets generated as html web components source.
+    parseSpecial = False
+    
     try:
-        opts, args = getopt.getopt(argv, 'hv:i:c:o:f:n:p', ['version=', 'ifile=', 'cssfile=', 'ofile=', 'compfolder=', 'incfolder=', 'pdf'])
+        opts, args = getopt.getopt(argv, 'hv:i:c:o:f:n:p:s', ['version=', 'ifile=', 'cssfile=', 'ofile=', 'compfolder=', 'incfolder=', 'pdf', 'special'])
     except getopt.GetoptError:
         usage()
         sys.exit(2)
@@ -56,10 +60,12 @@ def main(argv):
             cssFile = arg
         elif opt in ('-f', '--compfolder'):
             componentParent = arg
-        elif opt in ['-n', '--incfolder']:
+        elif opt in ('-n', '--incfolder'):
             includeParent = arg
-        elif opt in ['-p', '--pdf']:
+        elif opt in ('-p', '--pdf'):
             generatePdf = True
+        elif opt in ('-s', '--special-generation'):
+            parseSpecial = True
             
     print('fountainhead: Input file is \'' + inputFile + '\'')
     print('fountainhead: Output file is \'' + outputFile + '\'')
@@ -72,9 +78,11 @@ def main(argv):
     else:
         print('WARNING: Unknown version tag \'' + parserVersion + '\'; using default version \'' + ParserVersion.DEFAULT + '\' instead')
         parserVersion = ParserVersion.DEFAULT
+    
+    print('fountainhead: Special generation is \'' + str(parseSpecial) + '\'')
         
     fountainScript = FountainScript(inputFile, parserVersion)
-    fountainHTML = FountainHTMLGenerator(fountainScript, cssFile, componentParent, includeParent, parserVersion)
+    fountainHTML = FountainHTMLGenerator(fountainScript, cssFile, componentParent, includeParent, parserVersion, parseSpecial)
     htmlOutput = fountainHTML.generateHtml()
     
     # write html to file

@@ -153,16 +153,11 @@ Feel at home to browse the records and memories of <<Los Angeles>>, free of the 
 The WATCHERS are free to explore the records of THE ARCHIVE via the website. Each record has a title, such as "Silent sunrise", a location in the city, "Venice", keywords "#beach #silent #beauty", etc. 
 
 /*
-TODO: Parenthetical in boneyard does not work correctly...
+Link to tasks that request uploads matching the needs of the Rituals, plus some options to upload anything they would like.
 */
 
-/*
 THE OBSERVATORY
-(to the WATCHERS)
-Please share your own memories of <<Los Angeles>> to THE ARCHIVE, to be remembered, and to be shared with the participants. [Link to tasks that request uploads matching the needs of the Rituals, plus some options to upload anything they would like.] 
-*/
-
-<<@chat-control-muc(message="Please share your own memories of <<Los Angeles>> to THE ARCHIVE, to be remembered, and to be shared with the participants.")>>
+Please share your own memories of <<Los Angeles>> to THE ARCHIVE, to be remembered, and to be shared with the participants. 
 
 THE ARCHIVE 
 (to the WATCHERS and TOURISTS, via the websites, by email, and text)
@@ -174,23 +169,16 @@ Your personal Transfer Guide: <<http://the-archive.org/losangeles/219010>>
 
 The GUIDE,Virgil, is accessed from the TOURISTS' smartphones.
 
-/*
 THE GUIDE
- Hi, I'm really looking forward to this. You are very  special to me.
-*/
-<<@chat-control-guide(message="Hi, I'm really looking forward to this. You are very  special to me.")>>
+Hi, I'm really looking forward to this. You are very special to me.
 
 In the days leading up to the event, its content is mostly a countdown timer. 
 
 It may occasionally spout memes drawn from THE ARCHIVE to pique the Interest of the TOURISTS.
 
-/*
 THE OBSERVATORY
 (to WATCHERS who have successfully uploaded content)
-Thank you for contributing to the ARCHIVE, please consider using this media in the Transfer.  Do you think these tags will resonate with our visitors, <<"#sunset #seabreeze">>?
-*/
-
-<<@chat-control-muc(message="Thank you for contributing to the ARCHIVE, please consider using this media in the Transfer.  Do you think these tags will resonate with our visitors, <<#sunset #seabreeze>>?")>>
+Thank you for contributing to the ARCHIVE, please consider using this media in the Transfer. Do you think these tags will resonate with our visitors, <<"#sunset #seabreeze">>?
 
 WATCHERS can change the metadata associated with their uploaded media.
 
@@ -210,13 +198,9 @@ WATCHERS can change the metadata associated with their uploaded media.
 
 The TOURISTS filter into the Lobby of THE ARCHIVE. A sign reminds them to log in to the GUIDE on their mobile phones.
 
-/*
 THE GUIDE
 (to each TOURIST, after they log in on their phone, with a Clippy-like icon popping up)
-Hello, <<Manasi>>!  Where do you want to go today? Just kidding... Welcome.  -Virgil. 
-*/
-
-<<@chat-control-guide(message="Hello, {{ user_name }}!  Where do you want to go today? Just kidding... Welcome.  -Virgil.")>>
+Hello, {{ user_name }}!  Where do you want to go today? Just kidding... Welcome.  -Virgil. 
 
 The TOURISTS browse their GUIDE. 
 
@@ -224,21 +208,13 @@ Gradually  the audience congregates  in the lobby.
 
 The WATCHERS logged into the OBSERVATORY are greeted. They can watch the live feed streaming to the OBSERVATORY. They can still browse THE ARCHIVE. 
 
-/*
 THE GUIDE
 (to each TOURIST)
 Time to your Transfer: << - 00 Days, 00 Hours, 7 Minutes>>. 
-*/
 
-<<@chat-control-guide(message="Time to your Transfer: << - 00 Days, 00 Hours, 7 Minutes>>.")>>
-
-/*
 THE OBSERVATORY ^
 (to each WATCHER, via a status bar)
 Time to the Transfer: << - 00 Days, 00 Hours, 7 Minutes>>. 
-*/
-
-<<@chat-control-muc(message="Time to the Transfer: << - 00 Days, 00 Hours, 7 Minutes>>.")>>
 
 THE ARCHIVE
 (voice/over and on each GUIDE)
@@ -253,13 +229,12 @@ Please connect to the ARCHIVE-<<LOS_ANGELES>> WiFi network.  The GUIDE will acti
 While the audience enters and mills around in one corner there is a  soft ambient display. It is simple and inviting. A gentle installation of dusk in Los Angeles
 
 /*
+WATCHERS vote, and their choices are taken into account.
+*/
+
 THE OBSERVATORY
 (showing a library of sunsets from different vistas in <<LOS ANGELES>>, including the WATCHER'S own relevant uploads)
 Which sunsets resonate with you
-[WATCHERS vote, and their choices are taken into account.] 
-*/
-
-<<@chat-control-muc(message="Which sunsets resonate with you")>>
 
 As the WATCHERS look on from the OBSERVATORY, 
 
@@ -302,50 +277,27 @@ It's nice here in L.A. ain' it?
 
 Damn we're lucky huh.
 
-
-/*
 THE GUIDE
 (vibrating the TOURISTS' phones)
 Watch this memory. Be completely still. Be quiet. You can take a photo if you like but pay attention to the sun, it sets quickly.
-*/
-
-<<@chat-control-guide(message="Watch this memory. Be completely still. Be quiet. You can take a photo if you like but pay attention to the sun, it sets quickly.")>>
 
 VOICEOVER
 Feel that breeze? Can you see the Hollywood sign?  
 
 The image shifts to another sunset, in a different <<Los Angeles>> location.
 
-/*
 THE GUIDE
 Use your imagination. It's Ok to move to a better viewpoint if needed. 
-*/
 
-<<@chat-control-guide(message="Use your imagination. It's Ok to move to a better viewpoint if needed.")>>
-
-/*
 VOICEOVER ^
-Look at the sky painted in  orange, red, and yellow. Look at the clouds colored with a bright disguise. I've never seen this sunset before... And I never will again 
-*/
-
-VOICEOVER
 Look at the sky painted in  orange, red, and yellow. Look at the clouds colored with a bright disguise. I've never seen this sunset before... And I never will again 
 
 The image shifts to another sunset, in a different <<Los Angeles>> location.
 
-/*
 THE GUIDE
 What do you think it felt like to be there? [Enter words...]How would you TAG this memory. How does the sunset make you feel?
-*/
 
-<<@chat-control-guide(message="What do you think it felt like to be there? [Enter words...]How would you TAG this memory. How does the sunset make you feel?")>>
-
-/*
 VOICEOVER ^
-It's almost gone, behind the hills and the shadows of black tree branches.  It was a close to a long day. We took this moment to remember all that has happened during the day. 
-*/
-
-VOICEOVER
 It's almost gone, behind the hills and the shadows of black tree branches.  It was a close to a long day. We took this moment to remember all that has happened during the day. 
 
 Sheena's silhouette becomes clearer in the sunset with each detail the TOURISTS provide to the GUIDE.
@@ -370,17 +322,12 @@ Electromechanical sounds are heard off-stage. They could be related to Rachel's 
 
 The image shifts to a final sunset, in a different <<Los Angeles>> location.  
 
-/*
+
 THE GUIDE
 The cycle of renewal is complete every evening when the sun sets to deep sleep. Take a picture. You can create a new memory from this one.  
-*/
 
-<<@chat-control-guide(message="The cycle of renewal is complete every evening when the sun sets to deep sleep. Take a picture. You can create a new memory from this one.")>>
-
-/*
 VOICEOVER ^
 All that is left now is the smear of red in the sky.
-*/
 
 Quick take my picture now! Capture the Kodak moment.
 
@@ -411,13 +358,9 @@ Why am I here in this-
 
 A louder ping, closer. 
 
-/*
 THE GUIDE
 (to each TOURIST)
 Time to your Transfer: << - 00 Days, 00 Hours, 00 Minutes>>. 
-*/
-
-<<@chat-control-guide(message="Time to your Transfer: << - 00 Days, 00 Hours, 00 Minutes>>.")>>
 
 RACHEL
 Did you hear that?
@@ -427,55 +370,28 @@ Did you hear that?
 A digital sign appears: "PROVIDE IDENTIFICATION IMAGE" 
 
 
-/*
 THE GUIDE
 (in a businesslike tone)
 Image capture and authentication ready. 
-*/
 
-<<@chat-control-guide(message="Image capture and authentication ready.")>>
-
-/*
 THE OBSERVATORY ^
 (in a status bar, regardless of what the WATCHERS are viewing)
 Visitor arrival underway. [Link to view.] 
-*/
-
-<<@chat-control-muc(message="Visitor arrival underway.")>>
 
 RACHEL tries to open the door. It's locked.
 
-/*
 THE GUIDE
 Please use your guide.
-*/
 
-<<@chat-control-guide(message="Please use your guide.")>>
-
-/*
 RACHEL ^
-Damnit  I know he's in there. I got in yesterday!
-*/
-
-RACHEL
 Damnit  I know he's in there. I got in yesterday!
 
 Her phone is also dead. 
 
-/*
 THE GUIDE
 Alright, now it's time, <<Yuki Izumihara>>. Take your picture to authorize entry.
-*/
 
-<<@chat-control-guide(message="Alright, now it's time, {{ user_name }}. Take your picture to authorize entry.")>>
-
-/*
 RACHEL ^
-(seeing what the TOURISTS' GUIDES say)
-Shit it's dead. Everything is  dead  or dying. I need.... I need your help... Please take my picture yeah? Someone- anyone? 
-*/
-
-RACHEL
 (seeing what the TOURISTS' GUIDES say)
 Shit it's dead. Everything is  dead  or dying. I need.... I need your help... Please take my picture yeah? Someone- anyone? 
 
@@ -513,12 +429,9 @@ Like RACHEL, the other TRAVELERS borrow TOURISTS' phones and identities.  They d
 
 .SCENE 4: DOWN THE RABBIT HOLE
 
-/*
+
 THE OBSERVATORY
 Rain. 
-*/
-
-<<@chat-control-muc(message="Rain.")>>
 
 <<@olf(description="Dark, noisy image. Could be black.")>>
 

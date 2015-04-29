@@ -246,3 +246,15 @@ Debug: Something has to be here...fixing
    content = {
      "blackout": true
    })>>
+
+<<@cue-publisher
+  (t       = "Test text publisher", 
+   cid     = 3000,
+   desc    = "Cue 3000: test for text publisher", 
+   content = {
+     "renderText.text": "quick",
+     "postproc_text": {
+       "Blackout": true
+     }
+   })>>
+

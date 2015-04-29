@@ -59,9 +59,8 @@ class FountainRegexBase(object):
     # Note: This is different from the sample, for lines like "STOP IT"
     CHARACTER_CUE_PATTERN      = '(?<=\\n\\n)([ \\t]*[^<>a-z\\s\\/\\n][^<>a-z:!\\?\\n]*[^<>a-z\\(!\\?:,\\n\\.][ \\t]?)\\n(?!\\n)'
     DIALOGUE_PATTERN           = '(<(Character|Parenthetical)>[^<>\\n]+<\\/(Character|Parenthetical)>)([^<>]*?)(?=\\n{2}|\\n{1}<Parenthetical>)'
-    # Note: Newline is enforced in order for something to be recognized as parenthetical.
-    #       What's the point of a parenthetical, anyway? How is it different from action?
-    PARENTHETICAL_PATTERN      = '\\n(\\([^<>]*?\\)[\\s]?)\\n'
+    
+    PARENTHETICAL_PATTERN      = '(\\([^<>]*?\\)[\\s]?)\\n'
     TRANSITION_PATTERN         = '\\n([\\*_]*([^<>\\na-z]*TO:|FADE TO BLACK\\.|FADE OUT\\.|CUT TO BLACK\\.)[\\*_]*)\\n'
 
     FORCED_TRANSITION_PATTERN  = '\\n((&gt|>)\\s*[^<>\\n]+)\\n'     
