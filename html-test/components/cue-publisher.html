@@ -20,6 +20,7 @@
       this.shadowRoot.appendChild(clone);
       
       this.componentObject = new window.ComponentObject(this, window);
+      this.ndnPublisherComponentObject = new window.NDNPublisherComponentObject(this, window);
       
       // Append thisDoc to parent's importedDocs:
       // Note: This assumes the knowledge of window's scriptControl element name
@@ -31,45 +32,8 @@
        * Duplicate of code from ndn-url-publisher-component.js: 
        * ndn environment parameter processing 
        */
-      // TODO: Face setup's different from the online version, which hardcoded the server's IP address.
-      if (this.hasAttribute('face')) {
-        this.face = this.getAttribute('face');
-      } else if (window.face !== undefined && window.face !== null) {
-        this.face = window.face;
-      } else {
-        console.log(componentName + ': face is not defined, creating new one for window');
-        window.face = new Face();
-        this.face = window.face;
-      }
- 
-      if (this.hasAttribute('prefix')) {
-        this.namePrefix = this.getAttribute('prefix');
-      } else if (window.prefix !== undefined && window.prefix !== null) {
-        this.namePrefix = window.prefix;
-      } else {
-        console.log(componentName + ': prefix is not defined for sunset URL publishing, creating default name for window');
-        window.prefix = new Name(ndnPrefix);
-        this.namePrefix = window.prefix;
-      }
- 
-      if (this.hasAttribute('memoryContentCache')) {
-        this.memoryContentCache = this.getAttribute('memoryContentCache');
-      } else if (window.memoryContentCache !== undefined && window.memoryContentCache !== null) {
-        this.memoryContentCache = window.memoryContentCache;
-      } else {
-        console.log(componentName + ': memoryContentCache is not defined, creating new one for window');
-        window.memoryContentCache = new MemoryContentCache(this.face);
-        this.memoryContentCache = window.memoryContentCache;
-      }
- 
-      var registeredPrefix = this.face.getEntryForRegisteredPrefix(this.namePrefix);
-      if (registeredPrefix == null || registeredPrefix == 0) {
-        console.log("registeredPrefix is not found on Face, reregistering default prefix");
-        this.memoryContentCache.registerPrefix(this.namePrefix, function (prefix) {
-        console.log("Register failed for prefix.");
-        });
-      }
- 
+      this.ndnPublisherComponentObject.parseParameters();
+      
       if (this.hasAttribute('showid')) {
         this.showid = this.getAttribute('showid');
       } else if (window.showid !== undefined && window.showid !== null) {
@@ -159,21 +123,13 @@
               self.cueId = self.getAttribute('cid');
             }
             
-            var data = new Data(self.namePrefix);
+            var dataName = new Name(self.namePrefix);
             // Note: for now, the names are hard-coded, since namespace design is not fully discussed
             var cueComponent = new Name('cues');
             var nameSuffix = new Name(self.cueId);
-            data.getName().append(self.showid).append(cueComponent).appendVersion((new Date).getTime()).append(nameSuffix);
-              
-            // TODO: decide content format
-            data.setContent(self.content);
-              
-            // TODO: Arbitrary data freshness period
-            data.getMetaInfo().setFreshnessPeriod(2000);
-            data.sign();
-      
-            self.memoryContentCache.add(data);
-            console.log('NDN content published. Name: ' + data.getName().toUri() + '; Content: ' + data.getContent().buf().toString());      
+            dataName.append(self.showid).append(cueComponent).appendVersion((new Date).getTime()).append(nameSuffix);
+
+            self.ndnPublisherComponentObject.publishContent(dataName, self.content, false);
           });
           
         } catch (error) {
