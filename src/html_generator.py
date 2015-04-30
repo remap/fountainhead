@@ -35,6 +35,13 @@ specialGenerationTags = {
     'the-observatory':'chat-control-muc'
 }
 
+specialGenerationComponentNames = [
+    'olf'
+]
+specialGenerationPatterns = {
+    '\\*olf:(.*)\\*': r'description=\1'
+}
+
 class FountainHTMLGenerator(object):
     def __init__(self, script, cssFile = '', componentParent = 'components', includeParent = 'includes', version = ParserVersion.DEFAULT, special = False):
         self._script = script
@@ -469,19 +476,41 @@ class FountainHTMLGenerator(object):
                     if (prevTag == self._fountainRegex.CHARACTER_TAG_PATTERN):
                         if (element._elementType == self._fountainRegex.DIALOGUE_TAG_PATTERN or element._elementType == self._fountainRegex.PARENTHETICAL_TAG_PATTERN):
                             additionalClasses += ' ' + prevType
-                            if (prevType in specialGenerationTags):
+                            if (self._parseSpecial and prevType in specialGenerationTags):
                                 # For Parentheticals that come after a specially treated character, we ignore it
                                 if (element._elementType == self._fountainRegex.PARENTHETICAL_TAG_PATTERN):
                                     continue
-                                skipOrdinaryGeneration = True
                                 bodyText += '\n' + self.prependIndentLevel() + '<' + self.componentNameToTag(specialGenerationTags[prevType])
                                 bodyText += ' message=\"' + self.sanitizeElementText(element._elementText) + '\">'
                                 bodyText += '\n' + self.prependIndentLevel() + '</' + self.componentNameToTag(specialGenerationTags[prevType]) + '>'
                                 # Commented out intentionally because of the potential dual-dialogue link generation confusion
                                 # bodyText += self.prependIndentLevel() + '<a target=\"_blank\" href=\"' + self._componentParent + specialGenerationTags[prevType] + '.html\" class=\"' + self._fountainRegex.COMPONENT_LINK_CLASS + '\">' + specialGenerationTags[prevType] + '</a>\n'
+                                continue
                         else:
                             prevTag = ''
                             prevType = ''
+                    
+                    # For 'Actions', there may be special generation step for olfs when parseSpecial flag is present
+                    # Note: for now, we've only tested with one 'special' pattern treatment, which is olf
+                    if (element._elementType == self._fountainRegex.ACTION_TAG_PATTERN):
+                        if (self._parseSpecial):
+                            specialGenerationKeyCnt = 0
+                            matchFound = False
+                            for key in specialGenerationPatterns:
+                                if re.match(key, element._elementText):
+                                    matchFound = True
+                                    bodyText += '\n' + self.prependIndentLevel() + '<' + self.componentNameToTag(specialGenerationComponentNames[specialGenerationKeyCnt])
+                                    bodyText += ' ' + self.sanitizeElementText(re.sub(key, specialGenerationPatterns[key], element._elementText)) + '>'
+                                    bodyText += '\n' + self.prependIndentLevel() + '</' + self.componentNameToTag(specialGenerationComponentNames[specialGenerationKeyCnt]) + '>'
+                                    # Note: We only try for one potential special pattern matches now
+                                    break
+                                specialGenerationKeyCnt += 1
+                                
+                            if matchFound:
+                                if (not specialGenerationComponentNames[specialGenerationKeyCnt] in self._componentList):
+                                    self._componentList.append(specialGenerationComponentNames[specialGenerationKeyCnt])
+                                
+                                continue
                     
                     if (element._elementType == self._fountainRegex.CHARACTER_TAG_PATTERN):
                         characterName = self.htmlClassForType(element._elementText)
@@ -498,10 +527,11 @@ class FountainHTMLGenerator(object):
                             # web component code with remap syntax...
                             if characterName in specialGenerationTags:
                                 prevType = characterName
-                                skipOrdinaryGeneration = True
+                                # skipOrdinaryGeneration = True
                                 # Do not forget to add this web component to the imported list
                                 if (not characterName in self._componentList):
                                     self._componentList.append(specialGenerationTags[characterName])
+                                continue
                         
                     # Special generation step for text marked with specific classes
                     specificClasses = re.findall(self._fountainRegex.SPECIFIC_CSS_ADDON_PATTERN, text)
