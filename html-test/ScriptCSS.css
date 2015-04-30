@@ -216,10 +216,10 @@ hr {
 }
 .dual-dialogue p {
     width: auto;
+    padding: 0 10px;
 }
 .dual-dialogue .character {
-    xtext-align: center;
-    padding-left: 40px;
+    text-align: center;
 }
 .dual-dialogue .parenthetical {
     padding-left: 40px;
@@ -297,29 +297,25 @@ a:hover {
  */
 
 .the-observatory {
-    margin: 1.3em auto 0;
     width: 180px;
     color: #BBBBDD;
 }
 
 .the-observatory-dialogue {
     color: #ECE47E;
-    margin: 0 auto;
-    width: 400px;
     text-decoration: underline;
+    cursor: pointer;
 }
 
 .the-guide {
-    margin: 1.3em auto 0;
     width: 180px;
     color: #DDBBBB;
 }
 
 .the-guide-dialogue {
     color: #ECE47E;
-    margin: 0 auto;
-    width: 400px;
     text-decoration: underline;
+    cursor: pointer;
 }
 
 .video-control-text {

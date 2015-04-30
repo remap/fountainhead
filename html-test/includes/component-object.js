@@ -35,18 +35,47 @@ ComponentObject.prototype.copyStyleToElement = function(cs, to) {
       typeof cs[prop] !== 'object' && typeof cs[prop] !== 'function' && 
       prop != parseInt(prop) ) {
       
-      to.style[prop] = cs[prop];
+      // Per current observation, cssText (which contains width and color) is copied directly as string;
+      // which means, without string merging, either width or color is maintained.
+      if (prop == 'cssText') {
+        to.style[prop] = this.mergeCSSText([to.style[prop], cs[prop]]);
+      } else {
+        to.style[prop] = cs[prop];
+      }
     }
   }
+};
+ComponentObject.prototype.createObjectFromCSSStr = function(str) {
+  var obj = {};
+  var properties = str.split(';');
+  for(var i = 0; i < properties.length; i++){
+    var property = properties[i].split(':');
+    if(property.length == 2){
+      obj[property[0].trim()] = property[1].trim();
+    }
+  }
+  return obj;
+}
+ComponentObject.prototype.mergeCSSText = function(texts) {
+  var result = {};
+  for(var i in texts){
+    var cssProperties = this.createObjectFromCSSStr(texts[i]);
+    for (var attr in cssProperties) {
+      result[attr] = cssProperties[attr];
+    }
+  }
+  var s = '';
+  for(var attr in result){
+    s += attr + ':' + ' ' + result[attr] + '; ';
+  }
+  return s.trim();
 };
 // This function takes the existing class names of given element,
 // and apply the class definitions in the parent document to this document
 ComponentObject.prototype.applyStyleFromParentDocument = function(ele) {
   var classNames = ele.className.split(" ");
-
   for (var i = 0; i < classNames.length; i++) {
     var elementStyle = this.getStyle("." + this.htmlClassFromName(classNames[i]));
-
     if (elementStyle != undefined) {
       this.copyStyleToElement(elementStyle.style, ele);
     }

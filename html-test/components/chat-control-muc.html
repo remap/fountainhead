@@ -2,7 +2,7 @@
     <!-- Note: At this point, the character/dialogue class and cursor pointer are hardcoded in 
        - chat component, while additional classes are derived from fromNickname -->
     <p id="muc-character" class="character"></p>
-    <p id="muc-dialogue" class="dialogue" style="cursor:pointer"></p>
+    <p id="muc-dialogue" class="dialogue"></p>
 </template>
 
 <script>
@@ -38,6 +38,8 @@
             // We may not want to contain these in a paragraph at some point
             this.characterElement = shadowRoot.querySelector('#muc-character');
             this.dialogueElement = shadowRoot.querySelector('#muc-dialogue');
+            
+            this.componentObject = new window.ComponentObject(this, window);
             
             if (this.hasAttribute('style')) {
                 var style = this.getAttribute('style');
@@ -80,38 +82,37 @@
                 return;
             }
             
-            // Use "inherited" style sheet
-            // Note: This may not be ideal for applying the CSS styles from window's document
-            var characterStyle = this.getStyle(window.document, ".character");
-            if (characterStyle != undefined) {
-                this.copyStyleToElement(characterStyle.style, this.characterElement);
-            }
-            
-            var dialogueStyle = this.getStyle(window.document, ".dialogue");
-            if (dialogueStyle != undefined) {
-                this.copyStyleToElement(dialogueStyle.style, this.dialogueElement);
-            }
-            
-            var specificStyle = this.getStyle(window.document, "." + this.htmlClassFromName(this.fromNickname));
-            var specificDialogueStyle = this.getStyle(window.document, "." + this.htmlClassFromName(this.fromNickname) + "-dialogue");
-            if (specificStyle != undefined) {
-                this.copyStyleToElement(specificStyle.style, this.characterElement);
-            }
-            if (specificDialogueStyle != undefined) {
-                this.copyStyleToElement(specificDialogueStyle.style, this.dialogueElement);
-            }
-            
-            // Override cursor style for dialogue
-            this.dialogueElement.style["cursor"] = "pointer";
-            
-            // Apply text for elements
-            this.characterElement.setAttribute("class", this.characterElement.getAttribute("class") + " " + this.htmlClassFromName(this.fromNickname));
-            this.dialogueElement.setAttribute("class", this.dialogueElement.getAttribute("class") + " " + this.htmlClassFromName(this.fromNickname) + "-dialogue");
+            // Apply class names (dynamically) for the specific character that said this line
+            this.characterElement.setAttribute("class", this.characterElement.getAttribute("class") + " " + this.componentObject.htmlClassFromName(this.fromNickname));
+            this.dialogueElement.setAttribute("class", this.dialogueElement.getAttribute("class") + " " + this.componentObject.htmlClassFromName(this.fromNickname) + "-dialogue");
             
             this.characterElement.textContent = this.fromNickname.toUpperCase();
             this.dialogueElement.textContent = this.content;
             
             var self = this;
+            
+            this.componentObject.applyStyleFromParentDocument(this.characterElement);
+            this.componentObject.applyStyleFromParentDocument(this.dialogueElement);
+            
+            // We trace up the CSS styles in the parent documents that created this component
+            // This is used for handling potential dual dialogues of the guide and observatory
+            
+            // TODO: This does not treat inheritance correctly yet: generic definition for element type, such as 'p', 
+            // and element type belonging to a class, such as '.dual-dialogue p' are not treated correctly
+            var tempNode = this.parentNode;
+            while (tempNode) {
+                if (tempNode.className && tempNode.className.indexOf("dual-dialogue") >= 0) {
+                    var dualDialogueStyle = this.componentObject.getStyle('.dual-dialogue p');
+                    this.componentObject.copyStyleToElement(dualDialogueStyle.style, this.characterElement);
+                    this.componentObject.copyStyleToElement(dualDialogueStyle.style, this.dialogueElement);
+                    
+                    var dualDialogueCharacterStyle = this.componentObject.getStyle('.dual-dialogue .character');
+                    this.componentObject.copyStyleToElement(dualDialogueCharacterStyle.style, this.characterElement);
+                    
+                    break;
+                }
+                tempNode = tempNode.parentNode;
+            }
             
             this.dialogueElement.addEventListener('click', function(){
                 if (connection == undefined || connection == null) {
@@ -130,28 +131,6 @@
         };
         ChatControlMucElement.attributeChangedCallback = function(attr, oldVal, newVal) {
             console.log('chatControlMuc onAttributeChanged stub');
-        };
-        ChatControlMucElement.htmlClassFromName = function(fromName) {
-            str = fromName.toLowerCase().replace(' ', '-');
-            return str;
-        };
-        ChatControlMucElement.getStyle = function(document, className) {
-            var classes = document.styleSheets[0].rules || document.styleSheets[0].cssRules;
-            for (var i = 0; i < classes.length; i++) {
-                if (classes[i].selectorText == className) {
-                    return classes[i];
-                }
-            }
-        };
-        ChatControlMucElement.copyStyleToElement = function(cs, to) {
-            for (var prop in cs) {
-                if (cs[prop] != undefined && cs[prop].length > 0 && 
-                    typeof cs[prop] !== 'object' && typeof cs[prop] !== 'function' && 
-                    prop != parseInt(prop) ) {
-                    
-                    to.style[prop] = cs[prop];
-                }
-            }
         };
         window.chatControlMucElement = thatDoc.registerElement('com-chat-control-muc', {
             prototype: ChatControlMucElement

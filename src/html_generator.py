@@ -477,6 +477,8 @@ class FountainHTMLGenerator(object):
                                 bodyText += '\n' + self.prependIndentLevel() + '<' + self.componentNameToTag(specialGenerationTags[prevType])
                                 bodyText += ' message=\"' + self.sanitizeElementText(element._elementText) + '\">'
                                 bodyText += '\n' + self.prependIndentLevel() + '</' + self.componentNameToTag(specialGenerationTags[prevType]) + '>'
+                                # Commented out intentionally because of the potential dual-dialogue link generation confusion
+                                # bodyText += self.prependIndentLevel() + '<a target=\"_blank\" href=\"' + self._componentParent + specialGenerationTags[prevType] + '.html\" class=\"' + self._fountainRegex.COMPONENT_LINK_CLASS + '\">' + specialGenerationTags[prevType] + '</a>\n'
                         else:
                             prevTag = ''
                             prevType = ''
@@ -521,7 +523,6 @@ class FountainHTMLGenerator(object):
                     bodyText += ' ' + argName + '=' + argValue
                 bodyText += '>' + componentDesc + '</' + componentTagName + '>\n'
                 
-                # TODO: styling for the component hyperlink
                 bodyText += self.prependIndentLevel() + '<a target=\"_blank\" href=\"' + self._componentParent + componentName + '.html\" class=\"' + self._fountainRegex.COMPONENT_LINK_CLASS + '\">' + componentName + '</a>\n'
                 
                 generateComponent = False
