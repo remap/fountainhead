@@ -39,7 +39,7 @@ specialGenerationComponentNames = [
     'olf'
 ]
 specialGenerationPatterns = {
-    '\\*olf:(.*)\\*': r'description=\1'
+    '\\*olf:(.*)\\*': r'description=OLF: \1'
 }
 
 class FountainHTMLGenerator(object):
