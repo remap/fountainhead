@@ -109,6 +109,7 @@
                     return;
                 }
                 
+                // Probably should move {{ user_name }} interpretation to client side; left on server side for now.
                 if (self.content != '') {
                     /*
                     var matchedResult = content.match(/{{\s+(\w+)\s+}}?/g);

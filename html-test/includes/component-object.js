@@ -105,5 +105,10 @@ ComponentObject.prototype.toggleClassVisibility = function (className, visible) 
     eles[i].style.display = flag;
   }
 };
+// This desanitizes texts such as sent chat messages, so that they get interpreted correctly on receiving side as html tags;
+// Reverse operation of similar call in Python
+ComponentObject.prototype.desanitizeText = function (text) {
+  return text.replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&#32;/g, ' ').replace(/&#34;/g, '\"').replace(/&#8216;/g, '\'');
+};
 
 exports.ComponentObject = ComponentObject;

@@ -120,12 +120,12 @@
                     return;
                 }
                 
+                // Looks like desanitize here does not help
                 var message = $msg({
                   "to" : self.roomJID,
                   "type" : 'groupchat',
                   "from_nickname" : self.fromNickname,
                 }).c("body").t(self.content);
-                
                 connection.send(message.tree());
             });
         };

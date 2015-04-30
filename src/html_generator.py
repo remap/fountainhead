@@ -28,6 +28,7 @@ import sys
 from fountain_parser import ParserVersion
 from regex_rules import *
 
+# This is used for special character and dialogue generation
 # 'the-guide': chat-control-guide
 # 'the-observatory': chat-control-muc                            
 specialGenerationTags = {
@@ -35,11 +36,14 @@ specialGenerationTags = {
     'the-observatory':'chat-control-muc'
 }
 
+# This is used for special action generation
+# specialGenerationComponentNames describes the corresponding web component name
 specialGenerationComponentNames = [
-    'olf'
+    'olf', 'cue-publisher'
 ]
 specialGenerationPatterns = {
-    '\\*olf:(.*)\\*': r'description=OLF: \1'
+    '\\*olf:(.*)\\*': r'description="OLF: \1"',
+    '\\*[Vv][Qq] *\\#([^ ]*) *- *([^\\n]*)\\*': r'content="{}" t="VQ #\1" cid="\1" desc="\2"'
 }
 
 class FountainHTMLGenerator(object):
@@ -481,6 +485,7 @@ class FountainHTMLGenerator(object):
                                 if (element._elementType == self._fountainRegex.PARENTHETICAL_TAG_PATTERN):
                                     continue
                                 bodyText += '\n' + self.prependIndentLevel() + '<' + self.componentNameToTag(specialGenerationTags[prevType])
+                                # TODO: for this type of special generation, we need to decide whether to sanitize the parameters here or not.
                                 bodyText += ' message=\"' + self.sanitizeElementText(element._elementText) + '\">'
                                 bodyText += '\n' + self.prependIndentLevel() + '</' + self.componentNameToTag(specialGenerationTags[prevType]) + '>'
                                 # Commented out intentionally because of the potential dual-dialogue link generation confusion
@@ -500,7 +505,7 @@ class FountainHTMLGenerator(object):
                                 if re.match(key, element._elementText):
                                     matchFound = True
                                     bodyText += '\n' + self.prependIndentLevel() + '<' + self.componentNameToTag(specialGenerationComponentNames[specialGenerationKeyCnt])
-                                    bodyText += ' ' + self.sanitizeElementText(re.sub(key, specialGenerationPatterns[key], element._elementText)) + '>'
+                                    bodyText += ' ' + re.sub(key, specialGenerationPatterns[key], element._elementText) + '>'
                                     bodyText += '\n' + self.prependIndentLevel() + '</' + self.componentNameToTag(specialGenerationComponentNames[specialGenerationKeyCnt]) + '>'
                                     # Note: We only try for one potential special pattern matches now
                                     break

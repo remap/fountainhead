@@ -123,7 +123,8 @@
               self.cueId = self.getAttribute('cid');
             }
             
-            var dataName = new Name(self.namePrefix);
+            // TODO: referencing namePrefix like this is not ideal
+            var dataName = new Name(self.ndnPublisherComponentObject.namePrefix);
             // Note: for now, the names are hard-coded, since namespace design is not fully discussed
             var cueComponent = new Name('cues');
             var nameSuffix = new Name(self.cueId);

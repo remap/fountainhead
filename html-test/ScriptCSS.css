@@ -367,6 +367,7 @@ a:hover {
     
     word-wrap: break-word;
     width: 250px;
+    font-style: italic;
 }
 
 /* Example for floating menu */

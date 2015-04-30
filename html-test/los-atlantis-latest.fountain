@@ -46,6 +46,7 @@ Author: Future of Storytelling Studio 2015
 
 [include] script-control.js
 [include] component-object.js
+[include] ndn-publisher-component-object.js
 [include] onload.js
 
 # CharacterTypes
@@ -128,26 +129,22 @@ In this version of the script, the rules by which the replacement occurs is sugg
 
 The Potential Audience first encounters THE ARCHIVE via the LOS ATLANTIS Website. 
 
-THE ARCHIVE
-(on the Web)
+THE OBSERVATORY
 No time? No space? No worries! THE ARCHIVE of <<Los Angeles>> has more than enough room for everyone's memories. Learn what it's like today!   
 
 The Potential Audience are presented with a choice. 
 
-THE ARCHIVE
-(on the Web)
+THE OBSERVATORY
 You can register as an online user with privileged access and an opportunity to upload, or reserve a spot at a live Transfer... Just tell us your name, where you are from, and please follow the links and provide your billing  and contact information.  Upload a photo of yourselves. Where are you originally from? 
 
 In the time leading up to the performance, the Potential Audience divides into either TOURISTS (attending in person) or WATCHERS (attending via the web). 
 
 Going forward, WATCHERS will interact via the OBSERVATORY.  TOURISTS will interact via their GUIDE.
 
-THE ARCHIVE
-(to the TOURISTS, on the Web, before the performance)
+THE OBSERVATORY
 You've elected to participate in the Transfer. Come to <<location of the performance>> at <<date and time of the performance>>.  Bring yourself, an open mind and your mobile device  Etc.     
 
-THE ARCHIVE
-(to the WATCHERS, via the OBSERVATORY, before the performance)
+THE OBSERVATORY
 Feel at home to browse the records and memories of <<Los Angeles>>, free of the constraints of time and space. From the comfort of your home or computer you can witness the live Transfer at <<date and time of the performance>>.  
 
 The WATCHERS are free to explore the records of THE ARCHIVE via the website. Each record has a title, such as "Silent sunrise", a location in the city, "Venice", keywords "#beach #silent #beauty", etc. 
@@ -159,8 +156,7 @@ Link to tasks that request uploads matching the needs of the Rituals, plus some 
 THE OBSERVATORY
 Please share your own memories of <<Los Angeles>> to THE ARCHIVE, to be remembered, and to be shared with the participants. 
 
-THE ARCHIVE 
-(to the WATCHERS and TOURISTS, via the websites, by email, and text)
+THE OBSERVATORY 
 Date of Transfer: <<Thursday, June 2, 2026>>. 
 Time:  << - 02 Days, 12 Hours, 05 Minutes>>
 
@@ -178,7 +174,8 @@ It may occasionally spout memes drawn from THE ARCHIVE to pique the Interest of 
 
 THE OBSERVATORY
 (to WATCHERS who have successfully uploaded content)
-Thank you for contributing to the ARCHIVE, please consider using this media in the Transfer. Do you think these tags will resonate with our visitors, <<"#sunset #seabreeze">>?
+Thank you for contributing to the ARCHIVE, please consider using this media in the Transfer. Do you think these tags will resonate with our visitors, #sunset #seabreeze. 
+Click <br><button onclick="send({bool:true})">yes</button> or <button onclick="send({bool:false})">no</button>?
 
 WATCHERS can change the metadata associated with their uploaded media.
 
@@ -216,15 +213,20 @@ THE OBSERVATORY ^
 (to each WATCHER, via a status bar)
 Time to the Transfer: << - 00 Days, 00 Hours, 7 Minutes>>. 
 
-THE ARCHIVE
-(voice/over and on each GUIDE)
+THE GUIDE
 Please connect to the ARCHIVE-<<LOS_ANGELES>> WiFi network.  The GUIDE will activate (hello!) when needed during the Transfer event.  The Transference may be challenging. Be calm and observant.
 
 # ARCHIVE INSTALLATION: WHAT’S SHOWING NEXT WEEK
 
 .ARCHIVE INSTALLATION: WHAT'S SHOWING NEXT WEEK
 
-*VQ #10 - Sunset installation fade up.*  
+*VQ #10 - Sunset on the beach (50% speed, play for 30s).*  
+
+*VQ #11 - Sunlight through branches (50% speed)*  
+
+*VQ #12 - Ocean sunset 1 (50% speed)*  
+
+*VQ #13 - Sunset fence  (50% speed)*  
 
 While the audience enters and mills around in one corner there is a  soft ambient display. It is simple and inviting. A gentle installation of dusk in Los Angeles
 
@@ -246,8 +248,7 @@ A pin lite comes up on two backpacks. Perhaps one is labeled "OPEN ME", the othe
 
 The WATCHERS who are browsing receive additional instructions on how to use the OBSERVATORY interface. 
 
-THE ARCHIVE
-(to each online WATCHER via the OBSERVATORY)
+THE OBSERVATORY
 Each Transfer takes advantage of crowdsourcing, so thank you for being willing to participate.  It is through the wisdom of the Village that we gain insight into individuals.  As the Transfer proceeds, you will watch and, if you wish, help curate the memories chosen for the participants.   Our sponsor tonight is <<Johnson & Johnson>> - click on any product to purchase. Etc...
 
  A projection of a woman,"Sheena" in silhouette She stands still facing the sunlight, her eyes closed in the warmth of the sun. 
@@ -295,7 +296,7 @@ Look at the sky painted in  orange, red, and yellow. Look at the clouds colored 
 The image shifts to another sunset, in a different <<Los Angeles>> location.
 
 THE GUIDE
-What do you think it felt like to be there? [Enter words...]How would you TAG this memory. How does the sunset make you feel?
+What do you think it felt like to be there? Choose: {{ tags }} How would you TAG this memory. How does the sunset make you feel?
 
 VOICEOVER ^
 It's almost gone, behind the hills and the shadows of black tree branches.  It was a close to a long day. We took this moment to remember all that has happened during the day. 
@@ -318,10 +319,15 @@ Electromechanical sounds are heard off-stage. They could be related to Rachel's 
 
 (Back in the SUNSET installation)The radio clicks on, <<music plays, selected by the sentiments supplied by the TOURISTS to the GUIDE>>. Sheena responds to the music.
 
-*VQ #15*
+*VQ #15 - Sunset beach 1 (50% speed)*
 
 The image shifts to a final sunset, in a different <<Los Angeles>> location.  
 
+THE GUIDE
+Command: {{ clear }}
+
+THE OBSERVATORY ^
+Command: {{ clear }}
 
 THE GUIDE
 The cycle of renewal is complete every evening when the sun sets to deep sleep. Take a picture. You can create a new memory from this one.  
@@ -397,8 +403,7 @@ Shit it's dead. Everything is  dead  or dying. I need.... I need your help... Pl
 
 RACHEL takes a photo of herself using a TOURIST'S phone.
 
-THE ARCHIVE
-(on the Guide used by Rachel)
+THE GUIDE
 Confirmed, <<Randy Illum>>.  (Photo of Rachel.) (Barcode.) 
 
 RACHEL proceeds to show the barcode to the door's access control unit. 
@@ -568,8 +573,7 @@ IMAGES start to appear fading in and out on the walls
 RACHEL 
 Hey... Look. I know that place!
 
- THE ARCHIVE
-(via the Guides and aloud)
+THE GUIDE
 Here, your memories are safe TO REMEMBER
 
 EDDIE
@@ -863,7 +867,17 @@ Hometown of your visitor, <<Jeff Burke>> is <<Brea, California>>.
 
 .RITUAL 1/A: "DEPARTURE" (@ SHEENA)
 
-*VQ #80 - Establish "Departure".* 
+*VQ #80 - Establish Departure.* 
+
+*VQ #81 - Gate announcement Number 304 to <<Brea, CA>>.* 
+
+*VQ #82 - Second glitch i love you babe.* 
+
+*VQ #83 - Third It's going to be the best trip ever.* 
+
+*VQ #84 - Because you love me right?.* 
+
+*VQ #85 - Fade to black.* 
 
 *olf: Wide shot at entry gives way to alternating closeups of each and every TOURIST and TRAVELER within the ritual. As needed, the feed can cut to direct input from the projection video source, before returning to closeups.* 
 
@@ -1113,11 +1127,9 @@ At an appointed time (no matter where the scene is) a cue (via PRJ-RC*) signals 
 
 *olf: Wide shot at entry gives way to alternating closeups of each and every TOURIST and TRAVELER within the ritual. As needed, the feed can cut to direct input from the projection video source, before returning to closeups.* 
 
-*VQ #90 - establish.* 
+*VQ #90 - Establishing > Black out.* 
 
 EDDIE walks down a passage way. On The walls is projected  scenes of  driving on the harbor  freeway, pass DTLA, pass USC, pass LAX ,  405,   we see Palms trees,  a beach - Suddenly a loud crackly boombox  snaps to life behind the audience, it is playing BANDA music. 
-
-*VQ #92 - Blackout*
 
 BLACKOUT the audience turns to the music and  a harsh sunlit space is revealed
 
@@ -1125,7 +1137,7 @@ Jesus, wearing a bandana or busboy's cap walks in with a tray of wet bowls. He w
 
 Raul runs in with a bag of Hawaiian bread. He speaks. 
 
-*VQ #95 - Establish scene*
+*VQ #91 - Raul's first line "FUUUUUUCKKK!"*
 
 RAUL
 FUUUUUUUUUUUUUUUUUUUUUUUUUUUUUCK!!!! (He puts his hands on his knees and catches his breath. He breathes.) Man paisa, my boss is a real cabron. You know? Like this place? I hate this place. But break time right now bro.
@@ -1174,8 +1186,21 @@ Cool.
 
 Jesus looks thru the viewer and gives Raul the thumbs up. Raul slicks back his hair and give his killer smile.
 
-*VQ #100 - Raul's video?*
+*VQ #92 - Hey Beautiful talking in cell phone*
 
+*VQ #93 - This place used to be something pretty*
+
+*VQ #94 - Let me take you back*
+
+*VQ #95 - Real nice*
+
+*VQ #96 - You know. We could do that. If you want*
+
+*VQ #97 - Now repeat after me*
+
+*VQ #98 - SIREN SOUND*
+
+*VQ #100 - Raul's video*
 
 Hey  beautiful. Just a little video from Long Beach... Taking a break from work. You know hustling and making them tips right? (We hear Jesus say something like mandilon or pendejo)Okay okay so you say, "Hola papi te extraño...muchisimo, and te queiro guapo" REALLY NO WAY!? OK  sabrosa you gotta come on down and check out the LBC sooner or later... cuz' I got sumthing to show you- Ok? Alright then LATER GUAPA!" Gracias bruther. You ever wanna switch shifts I got you dawg.
 

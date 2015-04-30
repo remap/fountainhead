@@ -91,9 +91,17 @@ var connection = new Strophe.Connection(hostXMPPHttpBind);;
   <script src="includes/component-object.js"></script>
   <script>
   </script>
+  <script src="includes/ndn-publisher-component-object.js"></script>
+  <script>
+  </script>
   <script src="includes/onload.js"></script>
   <script>
   </script>
+  <link rel="import" href="components/chat-control-muc.html" onerror="onImportError(event)">
+  <link rel="import" href="components/chat-control-muc.html" onerror="onImportError(event)">
+  <link rel="import" href="components/chat-control-muc.html" onerror="onImportError(event)">
+  <link rel="import" href="components/chat-control-muc.html" onerror="onImportError(event)">
+  <link rel="import" href="components/chat-control-muc.html" onerror="onImportError(event)">
   <link rel="import" href="components/chat-control-muc.html" onerror="onImportError(event)">
   <link rel="import" href="components/chat-control-guide.html" onerror="onImportError(event)">
   <link rel="import" href="components/chat-control-muc.html" onerror="onImportError(event)">
@@ -101,18 +109,25 @@ var connection = new Strophe.Connection(hostXMPPHttpBind);;
   <link rel="import" href="components/chat-control-guide.html" onerror="onImportError(event)">
   <link rel="import" href="components/chat-control-guide.html" onerror="onImportError(event)">
   <link rel="import" href="components/chat-control-muc.html" onerror="onImportError(event)">
+  <link rel="import" href="components/chat-control-guide.html" onerror="onImportError(event)">
+  <link rel="import" href="components/cue-publisher.html" onerror="onImportError(event)">
+  <link rel="import" href="components/chat-control-muc.html" onerror="onImportError(event)">
+  <link rel="import" href="components/chat-control-muc.html" onerror="onImportError(event)">
+  <link rel="import" href="components/chat-control-guide.html" onerror="onImportError(event)">
+  <link rel="import" href="components/chat-control-guide.html" onerror="onImportError(event)">
+  <link rel="import" href="components/chat-control-guide.html" onerror="onImportError(event)">
+  <link rel="import" href="components/chat-control-guide.html" onerror="onImportError(event)">
   <link rel="import" href="components/chat-control-muc.html" onerror="onImportError(event)">
   <link rel="import" href="components/chat-control-guide.html" onerror="onImportError(event)">
   <link rel="import" href="components/chat-control-guide.html" onerror="onImportError(event)">
   <link rel="import" href="components/chat-control-guide.html" onerror="onImportError(event)">
+  <link rel="import" href="components/chat-control-muc.html" onerror="onImportError(event)">
   <link rel="import" href="components/chat-control-guide.html" onerror="onImportError(event)">
   <link rel="import" href="components/chat-control-guide.html" onerror="onImportError(event)">
   <link rel="import" href="components/chat-control-guide.html" onerror="onImportError(event)">
   <link rel="import" href="components/chat-control-muc.html" onerror="onImportError(event)">
-  <link rel="import" href="components/chat-control-guide.html" onerror="onImportError(event)">
-  <link rel="import" href="components/chat-control-guide.html" onerror="onImportError(event)">
   <link rel="import" href="components/chat-control-muc.html" onerror="onImportError(event)">
-  <link rel="import" href="components/chat-control-muc.html" onerror="onImportError(event)">
+  <link rel="import" href="components/chat-control-guide.html" onerror="onImportError(event)">
   <link rel="import" href="components/chat-control-guide.html" onerror="onImportError(event)">
   <link rel="import" href="components/chat-control-guide.html" onerror="onImportError(event)">
   <link rel="import" href="components/chat-control-muc.html" onerror="onImportError(event)">
@@ -194,44 +209,38 @@ var connection = new Strophe.Connection(hostXMPPHttpBind);;
     <p class='parenthetical'>(ONLINE)</p>
     <p id='toc0' class='scene-heading'>PROLOGUE: INVITATION (ONLINE)</p>
     <p class='action'>The Potential Audience first encounters THE ARCHIVE via the LOS ATLANTIS Website.</p>
-    <p class='character the-archive'>THE ARCHIVE</p>
-    <p class='parenthetical '>(on the Web)</p>
-    <p class='dialogue '>No time? No space? No worries! THE ARCHIVE of &lt;&lt;Los Angeles&gt;&gt; has more than enough room for everyone's memories. Learn what it's like today!</p>
-    <p class='action'>The Potential Audience are presented with a choice.</p>
-    <p class='character the-archive'>THE ARCHIVE</p>
-    <p class='parenthetical '>(on the Web)</p>
-    <p class='dialogue '>You can register as an online user with privileged access and an opportunity to upload, or reserve a spot at a live Transfer... Just tell us your name, where you are from, and please follow the links and provide your billing  and contact information.  Upload a photo of yourselves. Where are you originally from?</p>
-    <p class='action'>In the time leading up to the performance, the Potential Audience divides into either TOURISTS (attending in person) or WATCHERS (attending via the web).</p>
+
+    <com-chat-control-muc message="No&#32;time?&#32;No&#32;space?&#32;No&#32;worries!&#32;THE&#32;ARCHIVE&#32;of&#32;&lt;&lt;Los&#32;Angeles&gt;&gt;&#32;has&#32;more&#32;than&#32;enough&#32;room&#32;for&#32;everyone&#8216;s&#32;memories.&#32;Learn&#32;what&#32;it&#8216;s&#32;like&#32;today!">
+    </com-chat-control-muc>    <p class='action'>The Potential Audience are presented with a choice.</p>
+
+    <com-chat-control-muc message="You&#32;can&#32;register&#32;as&#32;an&#32;online&#32;user&#32;with&#32;privileged&#32;access&#32;and&#32;an&#32;opportunity&#32;to&#32;upload,&#32;or&#32;reserve&#32;a&#32;spot&#32;at&#32;a&#32;live&#32;Transfer...&#32;Just&#32;tell&#32;us&#32;your&#32;name,&#32;where&#32;you&#32;are&#32;from,&#32;and&#32;please&#32;follow&#32;the&#32;links&#32;and&#32;provide&#32;your&#32;billing&#32;&#32;and&#32;contact&#32;information.&#32;&#32;Upload&#32;a&#32;photo&#32;of&#32;yourselves.&#32;Where&#32;are&#32;you&#32;originally&#32;from?">
+    </com-chat-control-muc>    <p class='action'>In the time leading up to the performance, the Potential Audience divides into either TOURISTS (attending in person) or WATCHERS (attending via the web).</p>
     <p class='action'>Going forward, WATCHERS will interact via the OBSERVATORY.  TOURISTS will interact via their GUIDE.</p>
-    <p class='character the-archive'>THE ARCHIVE</p>
-    <p class='parenthetical '>(to the TOURISTS, on the Web, before the performance)</p>
-    <p class='dialogue '>You've elected to participate in the Transfer. Come to &lt;&lt;location of the performance&gt;&gt; at &lt;&lt;date and time of the performance&gt;&gt;.  Bring yourself, an open mind and your mobile device  Etc.</p>
-    <p class='character the-archive'>THE ARCHIVE</p>
-    <p class='parenthetical '>(to the WATCHERS, via the OBSERVATORY, before the performance)</p>
-    <p class='dialogue '>Feel at home to browse the records and memories of &lt;&lt;Los Angeles&gt;&gt;, free of the constraints of time and space. From the comfort of your home or computer you can witness the live Transfer at &lt;&lt;date and time of the performance&gt;&gt;.</p>
-    <p class='action'>The WATCHERS are free to explore the records of THE ARCHIVE via the website. Each record has a title, such as "Silent sunrise", a location in the city, "Venice", keywords "#beach #silent #beauty", etc.</p>
+
+    <com-chat-control-muc message="You&#8216;ve&#32;elected&#32;to&#32;participate&#32;in&#32;the&#32;Transfer.&#32;Come&#32;to&#32;&lt;&lt;location&#32;of&#32;the&#32;performance&gt;&gt;&#32;at&#32;&lt;&lt;date&#32;and&#32;time&#32;of&#32;the&#32;performance&gt;&gt;.&#32;&#32;Bring&#32;yourself,&#32;an&#32;open&#32;mind&#32;and&#32;your&#32;mobile&#32;device&#32;&#32;Etc.">
+    </com-chat-control-muc>
+    <com-chat-control-muc message="Feel&#32;at&#32;home&#32;to&#32;browse&#32;the&#32;records&#32;and&#32;memories&#32;of&#32;&lt;&lt;Los&#32;Angeles&gt;&gt;,&#32;free&#32;of&#32;the&#32;constraints&#32;of&#32;time&#32;and&#32;space.&#32;From&#32;the&#32;comfort&#32;of&#32;your&#32;home&#32;or&#32;computer&#32;you&#32;can&#32;witness&#32;the&#32;live&#32;Transfer&#32;at&#32;&lt;&lt;date&#32;and&#32;time&#32;of&#32;the&#32;performance&gt;&gt;.">
+    </com-chat-control-muc>    <p class='action'>The WATCHERS are free to explore the records of THE ARCHIVE via the website. Each record has a title, such as "Silent sunrise", a location in the city, "Venice", keywords "#beach #silent #beauty", etc.</p>
 
     <com-chat-control-muc message="Please&#32;share&#32;your&#32;own&#32;memories&#32;of&#32;&lt;&lt;Los&#32;Angeles&gt;&gt;&#32;to&#32;THE&#32;ARCHIVE,&#32;to&#32;be&#32;remembered,&#32;and&#32;to&#32;be&#32;shared&#32;with&#32;the&#32;participants.">
-    </com-chat-control-muc>    <p class='character the-archive'>THE ARCHIVE</p>
-    <p class='parenthetical '>(to the WATCHERS and TOURISTS, via the websites, by email, and text)</p>
-    <p class='dialogue '>Date of Transfer: &lt;&lt;Thursday, June 2, 2026&gt;&gt;. 
-Time:  &lt;&lt; - 02 Days, 12 Hours, 05 Minutes&gt;&gt;</p>
-    <p class='parenthetical '>(to the TOURISTS)</p>
-    <p class='dialogue '>Your personal Transfer Guide: &lt;&lt;http://the-archive.org/losangeles/219010&gt;&gt;</p>
-    <p class='action'>The GUIDE,Virgil, is accessed from the TOURISTS' smartphones.</p>
+    </com-chat-control-muc>
+    <com-chat-control-muc message="Date&#32;of&#32;Transfer:&#32;&lt;&lt;Thursday,&#32;June&#32;2,&#32;2026&gt;&gt;.&#32;&#32;Time:&#32;&#32;&lt;&lt;&#32;-&#32;02&#32;Days,&#32;12&#32;Hours,&#32;05&#32;Minutes&gt;&gt;">
+    </com-chat-control-muc>
+    <com-chat-control-muc message="Your&#32;personal&#32;Transfer&#32;Guide:&#32;&lt;&lt;http://the-archive.org/losangeles/219010&gt;&gt;">
+    </com-chat-control-muc>    <p class='action'>The GUIDE,Virgil, is accessed from the TOURISTS' smartphones.</p>
 
     <com-chat-control-guide message="Hi,&#32;I&#8216;m&#32;really&#32;looking&#32;forward&#32;to&#32;this.&#32;You&#32;are&#32;very&#32;special&#32;to&#32;me.">
     </com-chat-control-guide>    <p class='action'>In the days leading up to the event, its content is mostly a countdown timer.</p>
     <p class='action'>It may occasionally spout memes drawn from THE ARCHIVE to pique the Interest of the TOURISTS.</p>
 
-    <com-chat-control-muc message="Thank&#32;you&#32;for&#32;contributing&#32;to&#32;the&#32;ARCHIVE,&#32;please&#32;consider&#32;using&#32;this&#32;media&#32;in&#32;the&#32;Transfer.&#32;Do&#32;you&#32;think&#32;these&#32;tags&#32;will&#32;resonate&#32;with&#32;our&#32;visitors,&#32;&lt;&lt;&#34;#sunset&#32;#seabreeze&#34;&gt;&gt;?">
+    <com-chat-control-muc message="Thank&#32;you&#32;for&#32;contributing&#32;to&#32;the&#32;ARCHIVE,&#32;please&#32;consider&#32;using&#32;this&#32;media&#32;in&#32;the&#32;Transfer.&#32;Do&#32;you&#32;think&#32;these&#32;tags&#32;will&#32;resonate&#32;with&#32;our&#32;visitors,&#32;#sunset&#32;#seabreeze.&#32;&#32;Click&#32;&lt;br&gt;&lt;button&#32;onclick=&#34;send({bool:true})&#34;&gt;yes&lt;/button&gt;&#32;or&#32;&lt;button&#32;onclick=&#34;send({bool:false})&#34;&gt;no&lt;/button&gt;?">
     </com-chat-control-muc>    <p class='action'>WATCHERS can change the metadata associated with their uploaded media.</p>
     </section>
 <section>
     <p id='toc1' class='scene-heading'>ACT 1</p>
     <p id='toc2' class='scene-heading'>SCENE 1: ADMISSION</p>
 
-    <com-olf description=OLF:&#32;&#32;Wide&#32;shot&#32;of&#32;the&#32;Lobby,&#32;occasionally&#32;zooming&#32;to&#32;medium&#32;shots&#32;of&#32;groups&#32;of&#32;TOURISTS&#32;and&#32;TRAVELERS.>
+    <com-olf description="OLF:  Wide shot of the Lobby, occasionally zooming to medium shots of groups of TOURISTS and TRAVELERS.">
     </com-olf>    <p class='action'>The TOURISTS filter into the Lobby of THE ARCHIVE. A sign reminds them to log in to the GUIDE on their mobile phones.</p>
 
     <com-chat-control-guide message="Hello,&#32;{{&#32;user_name&#32;}}!&#32;&#32;Where&#32;do&#32;you&#32;want&#32;to&#32;go&#32;today?&#32;Just&#32;kidding...&#32;Welcome.&#32;&#32;-Virgil.">
@@ -248,12 +257,18 @@ Time:  &lt;&lt; - 02 Days, 12 Hours, 05 Minutes&gt;&gt;</p>
         <com-chat-control-muc message="Time&#32;to&#32;the&#32;Transfer:&#32;&lt;&lt;&#32;-&#32;00&#32;Days,&#32;00&#32;Hours,&#32;7&#32;Minutes&gt;&gt;.">
         </com-chat-control-muc>      </div>
     </div>
-    <p class='character the-archive'>THE ARCHIVE</p>
-    <p class='parenthetical '>(voice/over and on each GUIDE)</p>
-    <p class='dialogue '>Please connect to the ARCHIVE-&lt;&lt;LOS_ANGELES&gt;&gt; WiFi network.  The GUIDE will activate (hello!) when needed during the Transfer event.  The Transference may be challenging. Be calm and observant.</p>
-    <p id='toc3' class='scene-heading'>ARCHIVE INSTALLATION: WHAT'S SHOWING NEXT WEEK</p>
-    <p class='action'><em>VQ #10 - Sunset installation fade up.</em></p>
-    <p class='action'>While the audience enters and mills around in one corner there is a  soft ambient display. It is simple and inviting. A gentle installation of dusk in Los Angeles</p>
+
+    <com-chat-control-guide message="Please&#32;connect&#32;to&#32;the&#32;ARCHIVE-&lt;&lt;LOS_ANGELES&gt;&gt;&#32;WiFi&#32;network.&#32;&#32;The&#32;GUIDE&#32;will&#32;activate&#32;(hello!)&#32;when&#32;needed&#32;during&#32;the&#32;Transfer&#32;event.&#32;&#32;The&#32;Transference&#32;may&#32;be&#32;challenging.&#32;Be&#32;calm&#32;and&#32;observant.">
+    </com-chat-control-guide>    <p id='toc3' class='scene-heading'>ARCHIVE INSTALLATION: WHAT'S SHOWING NEXT WEEK</p>
+
+    <com-cue-publisher content="{}" t="VQ #10" cid="10" desc="Sunset on the beach (50% speed, play for 30s).">
+    </com-cue-publisher>
+    <com-cue-publisher content="{}" t="VQ #11" cid="11" desc="Sunlight through branches (50% speed)">
+    </com-cue-publisher>
+    <com-cue-publisher content="{}" t="VQ #12" cid="12" desc="Ocean sunset 1 (50% speed)">
+    </com-cue-publisher>
+    <com-cue-publisher content="{}" t="VQ #13" cid="13" desc="Sunset fence  (50% speed)">
+    </com-cue-publisher>    <p class='action'>While the audience enters and mills around in one corner there is a  soft ambient display. It is simple and inviting. A gentle installation of dusk in Los Angeles</p>
 
     <com-chat-control-muc message="Which&#32;sunsets&#32;resonate&#32;with&#32;you">
     </com-chat-control-muc>    <p class='action'>As the WATCHERS look on from the OBSERVATORY,</p>
@@ -261,10 +276,9 @@ Time:  &lt;&lt; - 02 Days, 12 Hours, 05 Minutes&gt;&gt;</p>
     <p class='action'>We hear the sounds of nature and in the distance, children, cars and the city.</p>
     <p class='action'>A pin lite comes up on two backpacks. Perhaps one is labeled "OPEN ME", the other says" GUESS WHAT'S INSIDE?". Inside is a map of a particular &lt;&lt;Los Angeles&gt;&gt; park, a radio, and other items needed for a hike. Perhaps other blankets are scattered and spread out</p>
     <p class='action'>The WATCHERS who are browsing receive additional instructions on how to use the OBSERVATORY interface.</p>
-    <p class='character the-archive'>THE ARCHIVE</p>
-    <p class='parenthetical '>(to each online WATCHER via the OBSERVATORY)</p>
-    <p class='dialogue '>Each Transfer takes advantage of crowdsourcing, so thank you for being willing to participate.  It is through the wisdom of the Village that we gain insight into individuals.  As the Transfer proceeds, you will watch and, if you wish, help curate the memories chosen for the participants.   Our sponsor tonight is &lt;&lt;Johnson & Johnson&gt;&gt; - click on any product to purchase. Etc...</p>
-    <p class='action'>A projection of a woman,"Sheena" in silhouette She stands still facing the sunlight, her eyes closed in the warmth of the sun.</p>
+
+    <com-chat-control-muc message="Each&#32;Transfer&#32;takes&#32;advantage&#32;of&#32;crowdsourcing,&#32;so&#32;thank&#32;you&#32;for&#32;being&#32;willing&#32;to&#32;participate.&#32;&#32;It&#32;is&#32;through&#32;the&#32;wisdom&#32;of&#32;the&#32;Village&#32;that&#32;we&#32;gain&#32;insight&#32;into&#32;individuals.&#32;&#32;As&#32;the&#32;Transfer&#32;proceeds,&#32;you&#32;will&#32;watch&#32;and,&#32;if&#32;you&#32;wish,&#32;help&#32;curate&#32;the&#32;memories&#32;chosen&#32;for&#32;the&#32;participants.&#32;&#32;&#32;Our&#32;sponsor&#32;tonight&#32;is&#32;&lt;&lt;Johnson&#32;&&#32;Johnson&gt;&gt;&#32;-&#32;click&#32;on&#32;any&#32;product&#32;to&#32;purchase.&#32;Etc...">
+    </com-chat-control-muc>    <p class='action'>A projection of a woman,"Sheena" in silhouette She stands still facing the sunlight, her eyes closed in the warmth of the sun.</p>
     <p class='character voiceover'>VOICEOVER</p>
     <p class='action'>(an unseen voice with a soft accent[Raul?}; spoken live)</p>
     <p class='action'>It's been a long day. Tired, we needed a break. We had climbed up the windy hill through an empty obstacle course left by previous hikers... Why do people trash such beautiful places? When we reached the summit of the hill, we rested.</p>
@@ -298,7 +312,7 @@ Time:  &lt;&lt; - 02 Days, 12 Hours, 05 Minutes&gt;&gt;</p>
     <div class='dual-dialogue'>
       <div class='dual-dialogue-left'>
 
-        <com-chat-control-guide message="What&#32;do&#32;you&#32;think&#32;it&#32;felt&#32;like&#32;to&#32;be&#32;there?&#32;[Enter&#32;words...]How&#32;would&#32;you&#32;TAG&#32;this&#32;memory.&#32;How&#32;does&#32;the&#32;sunset&#32;make&#32;you&#32;feel?">
+        <com-chat-control-guide message="What&#32;do&#32;you&#32;think&#32;it&#32;felt&#32;like&#32;to&#32;be&#32;there?&#32;Choose:&#32;{{&#32;tags&#32;}}&#32;How&#32;would&#32;you&#32;TAG&#32;this&#32;memory.&#32;How&#32;does&#32;the&#32;sunset&#32;make&#32;you&#32;feel?">
         </com-chat-control-guide>      </div>
       <div class='dual-dialogue-right'>
         <p class='character voiceover'>VOICEOVER</p>
@@ -309,12 +323,23 @@ Time:  &lt;&lt; - 02 Days, 12 Hours, 05 Minutes&gt;&gt;</p>
     <p id='toc4' class='scene-heading'>SCENE 2: RACHEL ENTERS</p>
     <p class='action'>The follow happens during the sunset installation.</p>
 
-    <com-olf description=OLF:&#32;&#32;Medium&#32;shot&#32;of&#32;RACHEL&#32;amidst&#32;the&#32;other&#32;TRAVELERS&#32;and&#32;TOURISTS,&#32;possibly&#32;intercut&#32;with&#32;CU&#32;of&#32;their&#32;reactions.>
+    <com-olf description="OLF:  Medium shot of RACHEL amidst the other TRAVELERS and TOURISTS, possibly intercut with CU of their reactions.">
     </com-olf>    <p class='action'>A young woman enters along with the  audience, the Tourists, she is carrying a large purse or backpack distractedly and using her  mobile device. She moves slowly thru the space  stopping  to  punch fiercely at her device and whisper to herself. She seems to be expecting someone, ("Where are you, it's gonna start. You're gonna be late") It begins subtlely and grows in  intensity as the time to enter grows close, at first she  should appear to just be part of the audience. Eventually she stops in the center of the space and drops her bag. A light slowly comes up on this  woman. She is RACHEL a TRAVELER, in the Lobby with the TOURISTS. She appears to be texting or playing or on her mobile device obsessively. The WATCHERS are...watching.</p>
     <p class='action'>Electromechanical sounds are heard off-stage. They could be related to Rachel's obsessive activity.  She pauses and then hits a button hard - the sound of rain  begins nearby. A LONG BEAT and then a distant pinging sound off-stage.</p>
     <p class='action'>(Back in the SUNSET installation)The radio clicks on, &lt;&lt;music plays, selected by the sentiments supplied by the TOURISTS to the GUIDE&gt;&gt;. Sheena responds to the music.</p>
-    <p class='action'><em>VQ #15</em></p>
-    <p class='action'>The image shifts to a final sunset, in a different &lt;&lt;Los Angeles&gt;&gt; location.</p>
+
+    <com-cue-publisher content="{}" t="VQ #15" cid="15" desc="Sunset beach 1 (50% speed)">
+    </com-cue-publisher>    <p class='action'>The image shifts to a final sunset, in a different &lt;&lt;Los Angeles&gt;&gt; location.</p>
+    <div class='dual-dialogue'>
+      <div class='dual-dialogue-left'>
+
+        <com-chat-control-guide message="Command:&#32;{{&#32;clear&#32;}}">
+        </com-chat-control-guide>      </div>
+      <div class='dual-dialogue-right'>
+
+        <com-chat-control-muc message="Command:&#32;{{&#32;clear&#32;}}">
+        </com-chat-control-muc>      </div>
+    </div>
     <div class='dual-dialogue'>
       <div class='dual-dialogue-left'>
 
@@ -329,8 +354,9 @@ Time:  &lt;&lt; - 02 Days, 12 Hours, 05 Minutes&gt;&gt;</p>
     <p class='action'>These memories are what keep us alive. How magnificent each moment, each sunset. It was a great day, remember!</p>
     <p class='action'>Music continues, then fades replace by pinging as the lights rise  on RACHEL.</p>
     <p id='toc5' class='scene-heading'>SCENE 3: SHE SPEAKS - FIRST INTRODUCTION</p>
-    <p class='action'><em>VQ #20 - sunset out.</em></p>
-    <p class='action'>Rachel looks up seemingly in a daze. She speaks slowly at first as if trying to remember something. Perhaps there are  projections/images that elicit her  speaking  but these  should be faded, blurry, hard to see.</p>
+
+    <com-cue-publisher content="{}" t="VQ #20" cid="20" desc="sunset out.">
+    </com-cue-publisher>    <p class='action'>Rachel looks up seemingly in a daze. She speaks slowly at first as if trying to remember something. Perhaps there are  projections/images that elicit her  speaking  but these  should be faded, blurry, hard to see.</p>
     <p class='character rachel travelers'>RACHEL</p>
     <p class='dialogue travelers'>Where are you? You're late 
 I don't wanna be here alone  
@@ -349,7 +375,7 @@ Why am I here in this-</p>
     </com-chat-control-guide>    <p class='character rachel travelers'>RACHEL</p>
     <p class='dialogue travelers'>Did you hear that?</p>
 
-    <com-olf description=OLF:&#32;&#32;Title&#32;overlaid&#32;-&#32;Provide&#32;Identification&#32;Image>
+    <com-olf description="OLF:  Title overlaid - Provide Identification Image">
     </com-olf>    <p class='action'>A digital sign appears: "PROVIDE IDENTIFICATION IMAGE"</p>
     <div class='dual-dialogue'>
       <div class='dual-dialogue-left'>
@@ -385,11 +411,9 @@ Why am I here in this-</p>
       </div>
     </div>
     <p class='action'>RACHEL takes a photo of herself using a TOURIST'S phone.</p>
-    <p class='character the-archive'>THE ARCHIVE</p>
-    <p class='parenthetical '>(on the Guide used by Rachel)</p>
-    <p class='parenthetical '>(Photo of Rachel.) (Barcode.)</p>
-    <p class='dialogue '>RACHEL proceeds to show the barcode to the door's access control unit.</p>
-    <p class='character the-archive'>THE ARCHIVE</p>
+
+    <com-chat-control-guide message="RACHEL&#32;proceeds&#32;to&#32;show&#32;the&#32;barcode&#32;to&#32;the&#32;door&#8216;s&#32;access&#32;control&#32;unit.">
+    </com-chat-control-guide>    <p class='character the-archive'>THE ARCHIVE</p>
     <p class='parenthetical '>(on projection by the door)</p>
     <p class='action'>(Photo of Rachel.)</p>
     <p class='character rachel travelers'>RACHEL</p>
@@ -398,7 +422,7 @@ Why am I here in this-</p>
     <p class='action'>RACHEL gently grabs the hand of her new friend and enters.</p>
     <p class='action'>The remaining TOURISTS take and upload a picture of themselves in order to enter, each showing the name+face+barcode combination on the GUIDE to the door access control unit (AC-A*).</p>
 
-    <com-olf description=OLF:&#32;&#32;MCU&#32;of&#32;hands&#32;and&#32;phones&#32;doing&#32;the&#32;access&#32;scanning,&#32;cut&#32;with&#32;WS&#32;of&#32;other&#32;TOURISTS&#32;and&#32;TRAVELERS.>
+    <com-olf description="OLF:  MCU of hands and phones doing the access scanning, cut with WS of other TOURISTS and TRAVELERS.">
     </com-olf>    <p class='action'>As the photos are scanned, THE OBSERVATORY is populated with the pictures of the TOURISTS (and the TRAVELERS) entering THE ARCHIVE.</p>
     <p class='action'>For each WATCHER, one TOURIST's photo is overlaid with the text "MEET". Clicking on it allows them to learn a bit about the TOURIST and "follow" them.</p>
     <p class='action'>Like RACHEL, the other TRAVELERS borrow TOURISTS' phones and identities.  They do this throughout the performance, as needed.</p>
@@ -406,7 +430,7 @@ Why am I here in this-</p>
 
     <com-chat-control-muc message="Rain.">
     </com-chat-control-muc>
-    <com-olf description=OLF:&#32;&#32;Dark,&#32;noisy&#32;image.&#32;Could&#32;be&#32;black.>
+    <com-olf description="OLF:  Dark, noisy image. Could be black.">
     </com-olf>    <p class='action'>Rain sounds drift in from THE ARCHIVE. Rachel walks down a passage way and then stops, she picks up an umbrella and opens it. The sound of rain grows more present, the memory of rain. Rachel continues walking through the tunnel and addressing her new friend.</p>
     <p class='character rachel travelers'>RACHEL</p>
     <p class='parenthetical travelers'>(she laughs softly)</p>
@@ -416,7 +440,7 @@ Why am I here in this-</p>
     <p class='action'>There is barely enough light to see. RACHEL stops suddenly and points.</p>
     <p class='action'>A TOURIST finds a small flashlight labeled "TURN ME ON". The tourist turns it on and the walls flicker a bit brighter and seem to quiver.</p>
 
-    <com-olf description=OLF:&#32;&#32;Gain&#32;up&#32;to&#32;see&#32;noisy&#32;image&#32;of&#32;medium&#32;shot&#32;with&#32;RACHEL&#32;in&#32;the&#32;middle.>
+    <com-olf description="OLF:  Gain up to see noisy image of medium shot with RACHEL in the middle.">
     </com-olf>    <p class='action'>In the distance is a faint buzzing sound of machinery. They move towards it. As they get closer, it resolves into thousands of overlapping recordings of the CITIZENS, phone calls. Including several of people ordering take food delivery. Rachel hears something, she turns her head toward it</p>
     <p class='action'>The following should be personalized by the actor.</p>
     <p class='character rachel travelers'>RACHEL</p>
@@ -427,20 +451,22 @@ Why am I here in this-</p>
     <p class='dialogue travelers'>Do you know? Can you remember?
 I've got the anatomy but I've forgotten how to connect. I've got sensation but no feeling. Maybe It starts with... I don't remember.... food. I need to eat... I need to feel ... full again.</p>
     <p class='action'>The rain builds then stops. Fog. Electromechanical sounds.</p>
-    <p class='action'><em>VQ #40 - archive leaks through.</em></p>
-    <p class='action'>In the distance, THE ARCHIVE leaks through. Dim lights become photos, video, brief archival records from &lt;&lt;Los Angeles&gt;&gt; seen on a "door" at the end of the passageway.</p>
+
+    <com-cue-publisher content="{}" t="VQ #40" cid="40" desc="archive leaks through.">
+    </com-cue-publisher>    <p class='action'>In the distance, THE ARCHIVE leaks through. Dim lights become photos, video, brief archival records from &lt;&lt;Los Angeles&gt;&gt; seen on a "door" at the end of the passageway.</p>
     <p class='action'>PING! A welcoming sound. The group moves towards it. The walls seems to disappear. PING! The sound is louder and closer.</p>
 
-    <com-olf description=OLF:&#32;&#32;The&#32;WATCHERS&#32;see&#32;the&#32;same&#32;images,&#32;intercut&#32;with&#32;MCU&#32;of&#32;the&#32;TOURISTS&#32;as&#32;well&#32;as&#32;another&#32;group&#32;in&#32;another&#32;space(the&#32;other&#32;travelers)they&#32;emerge&#32;through&#32;the&#32;passageway,&#32;led&#32;by&#32;RACHEL.>
+    <com-olf description="OLF:  The WATCHERS see the same images, intercut with MCU of the TOURISTS as well as another group in another space(the other travelers)they emerge through the passageway, led by RACHEL.">
     </com-olf>    <p class='action'>The TOURISTS and RACHEL reach the Agora.</p>
     </section>
 <section>
     <p id='toc7' class='scene-heading'>ACT 2:  THE AGORA</p>
     <p id='toc8' class='scene-heading'>SCENE 1:  FINDING THE OTHERS</p>
 
-    <com-olf description=OLF:&#32;&#32;Widen&#32;out&#32;to&#32;show&#32;as&#32;much&#32;of&#32;the&#32;Agora&#32;as&#32;possible.>
-    </com-olf>    <p class='action'><em>VQ #50 - establish agora.</em></p>
-
+    <com-olf description="OLF:  Widen out to show as much of the Agora as possible.">
+    </com-olf>
+    <com-cue-publisher content="{}" t="VQ #50" cid="50" desc="establish agora.">
+    </com-cue-publisher>
     <com-chat-control-muc message="Acclimating&#32;our&#32;visitors&#32;to&#32;records&#32;of&#32;&lt;&lt;Los&#32;Angeles&gt;&gt;.">
     </com-chat-control-muc>    <p class='action'>The WATCHERS see a menu of media about Los Angeles, with links to follow deeper into the memory of THE ARCHIVE. They may "favorite" media to use later. At the same time, they view a live cameras of the Agora and instructions to keep track of the TOURIST they "followed".</p>
     <p class='action'>The TOURISTS enter The Agora, an open space bathed in warm and friendly light wit four facing doors. The space is surrounded by soft fog drifting through shafts of light. Faint flickering images from THE ARCHIVE move around the space.</p>
@@ -499,10 +525,9 @@ Hi Felix</p>
     <p class='action'>IMAGES start to appear fading in and out on the walls</p>
     <p class='character rachel travelers'>RACHEL</p>
     <p class='dialogue travelers'>Hey... Look. I know that place!</p>
-    <p class='character the-archive'>THE ARCHIVE</p>
-    <p class='parenthetical '>(via the Guides and aloud)</p>
-    <p class='dialogue '>Here, your memories are safe TO REMEMBER</p>
-    <p class='character eddie travelers'>EDDIE</p>
+
+    <com-chat-control-guide message="Here,&#32;your&#32;memories&#32;are&#32;safe&#32;TO&#32;REMEMBER">
+    </com-chat-control-guide>    <p class='character eddie travelers'>EDDIE</p>
     <p class='dialogue travelers'>Yeah! It's ... it's-</p>
     <p class='character rachel travelers'>RACHEL</p>
     <p class='dialogue travelers'>Yeah right it's.. Look over there that's-</p>
@@ -525,7 +550,7 @@ Hi Felix</p>
     <com-chat-control-guide message="This&#32;is&#32;your&#32;ARCHIVE.&#32;Take&#32;a&#32;look&#32;before&#32;the&#32;Transfer&#32;starts.">
     </com-chat-control-guide>    <p class='action'>The TRAVELERS see a collage/montage of memories of &lt;&lt;Los Angeles&gt;&gt;.</p>
 
-    <com-olf description=OLF:&#32;&#32;Four&#32;independent&#32;feeds,&#32;distributed&#32;evenly&#32;across&#32;the&#32;WATCHERS,&#32;each&#32;with&#32;a&#32;CU&#32;of&#32;one&#32;TRAVELER.>
+    <com-olf description="OLF:  Four independent feeds, distributed evenly across the WATCHERS, each with a CU of one TRAVELER.">
     </com-olf>    <p class='character felix travelers'>FELIX</p>
     <p class='dialogue travelers'>I don't know why I'm here.</p>
     <p class='character eddie travelers'>EDDIE</p>
@@ -544,8 +569,9 @@ Hi Felix</p>
     </div>
     <p class='character rachel travelers'>RACHEL</p>
     <p class='dialogue travelers'>Do I have a choice?</p>
-    <p class='action'><em>VQ #60 - Agora becomes more active.</em></p>
-    <p class='action'>The travelers begin to spread out and explore the images throughout the space. These are NOT random images... Altho' they might seem to be at this point. Later it will become clear to most that they are seeing imagery connected to someone there that night,. The audience, encouraged by the Travelers,  might also explore the Agora. THE IMAGES BEGIN TO MOVE ABOUT THE SPACE. The images they encounter seem to speed up and slow down according to the visitors proximity to the walls. The TRAVELERS move around the space, point to, comment on, engage the images, mixing with the TOURISTS and encouraging them to explore, speaking quietly and individually to them of smell, sound, taste, and touch - again, personalized by the performer.</p>
+
+    <com-cue-publisher content="{}" t="VQ #60" cid="60" desc="Agora becomes more active.">
+    </com-cue-publisher>    <p class='action'>The travelers begin to spread out and explore the images throughout the space. These are NOT random images... Altho' they might seem to be at this point. Later it will become clear to most that they are seeing imagery connected to someone there that night,. The audience, encouraged by the Travelers,  might also explore the Agora. THE IMAGES BEGIN TO MOVE ABOUT THE SPACE. The images they encounter seem to speed up and slow down according to the visitors proximity to the walls. The TRAVELERS move around the space, point to, comment on, engage the images, mixing with the TOURISTS and encouraging them to explore, speaking quietly and individually to them of smell, sound, taste, and touch - again, personalized by the performer.</p>
     <p class='character rachel travelers'>RACHEL</p>
     <p class='parenthetical travelers'>(aside speaking to those tourists close to her)</p>
     <p class='dialogue travelers'>When I was a little I could EAT. I ate for days. Ice-cream, soda, broccoli, caulifower, he was so surprised I LOVED CAULIFLOWER and toast. Eggs, bacon, oatmeal, cereal and soup- tomato soup... from a CAN!
@@ -609,16 +635,17 @@ Slow down.</p>
     </com-chat-control-muc>    <p class='character citizens-(v/o)'>CITIZENS (V/O)</p>
     <p class='dialogue '>We are your City. We are you. Come remember with us.</p>
 
-    <com-olf description=OLF:&#32;&#32;Return&#32;to&#32;wide&#32;shot.>
+    <com-olf description="OLF:  Return to wide shot.">
     </com-olf>    <p class='action'>On the walls, four projected signs appear, above what will become doors to the Ritual Chambers.</p>
-    <p class='action'><em>VQ #65 - Door labels.</em></p>
-    <p class='action'>Another PING sound from the GUIDE in the TOURISTS' hands, pockets, purses, etc. It is answered by a similar sound behind the walls of the Agora.  The sound is heard in the OBSERVATORY.</p>
+
+    <com-cue-publisher content="{}" t="VQ #65" cid="65" desc="Door labels.">
+    </com-cue-publisher>    <p class='action'>Another PING sound from the GUIDE in the TOURISTS' hands, pockets, purses, etc. It is answered by a similar sound behind the walls of the Agora.  The sound is heard in the OBSERVATORY.</p>
 
     <com-chat-control-guide message="Enter&#32;&lt;&lt;&#34;#urban&#32;nitescape&#32;#airport&#32;#album,&#32;#longbeach&#34;&gt;&gt;,&#32;or&#32;well,&#32;maybe&#32;one&#32;of&#32;the&#32;other&#32;ones.">
     </com-chat-control-guide>    <p class='character citizens-(v/o)'>CITIZENS (V/O)</p>
     <p class='dialogue '>Remember.</p>
 
-    <com-olf description=OLF:&#32;&#32;Medium&#32;wide&#32;of&#32;the&#32;four&#32;TRAVELERS,&#32;cut&#32;with&#32;TOURIST&#32;reaction&#32;closeups&#32;if&#32;possible.>
+    <com-olf description="OLF:  Medium wide of the four TRAVELERS, cut with TOURIST reaction closeups if possible.">
     </com-olf>    <p class='character eddie travelers'>EDDIE</p>
     <p class='dialogue travelers'>Look, you see that?</p>
     <p class='character rachel travelers'>RACHEL</p>
@@ -697,7 +724,7 @@ Slow down.</p>
     </div>
     <p class='action'>As far as possible, THE OBSERVATORY shifts the view of each WATCHER to the TOURIST they have previously agreed to "follow".</p>
 
-    <com-olf description=OLF:&#32;&#32;Switches&#32;to&#32;one&#32;of&#32;the&#32;four&#32;Ritual&#32;Chambers&#32;to&#32;be&#32;viewed&#32;by&#32;the&#32;WATCHERS.>
+    <com-olf description="OLF:  Switches to one of the four Ritual Chambers to be viewed by the WATCHERS.">
     </com-olf>
     <com-chat-control-muc message="Full&#32;screen&#32;mode&#32;is&#32;recommended.">
     </com-chat-control-muc>    <p id='toc10' class='scene-heading'>SCENE 3: FOREPLAY (1ST RITUAL)</p>
@@ -707,7 +734,7 @@ Slow down.</p>
 
     <com-chat-control-muc message="The&#32;visitors&#32;undergo&#32;the&#32;first&#32;Transfer.">
     </com-chat-control-muc>
-    <com-olf description=OLF:&#32;&#32;THE&#32;OBSERVATORY&#32;presents&#32;four&#32;possible&#32;views&#32;to&#32;the&#32;WATCHERS,&#32;one&#32;for&#32;each&#32;Ritual,&#32;which&#32;they&#32;can&#32;switch&#32;between&#32;at&#32;any&#32;time.>
+    <com-olf description="OLF:  THE OBSERVATORY presents four possible views to the WATCHERS, one for each Ritual, which they can switch between at any time.">
     </com-olf>    <p class='action'>If possible, the OBSERVATORY's view into each ritual should show the previously captured faces of the TOURISTS above the live stream.</p>
 
     <com-chat-control-muc message="Shepherd&#32;your&#32;visitor&#32;to&#32;a&#32;more&#32;fulfilling&#32;remembrance.">
@@ -717,9 +744,20 @@ Slow down.</p>
     </com-chat-control-muc>    </section>
 <section>
     <p id='toc11' class='scene-heading'>RITUAL 1/A: "DEPARTURE" (@ SHEENA)</p>
-    <p class='action'><em>VQ #80 - Establish "Departure".</em></p>
 
-    <com-olf description=OLF:&#32;&#32;Wide&#32;shot&#32;at&#32;entry&#32;gives&#32;way&#32;to&#32;alternating&#32;closeups&#32;of&#32;each&#32;and&#32;every&#32;TOURIST&#32;and&#32;TRAVELER&#32;within&#32;the&#32;ritual.&#32;As&#32;needed,&#32;the&#32;feed&#32;can&#32;cut&#32;to&#32;direct&#32;input&#32;from&#32;the&#32;projection&#32;video&#32;source,&#32;before&#32;returning&#32;to&#32;closeups.>
+    <com-cue-publisher content="{}" t="VQ #80" cid="80" desc="Establish Departure.">
+    </com-cue-publisher>
+    <com-cue-publisher content="{}" t="VQ #81" cid="81" desc="Gate announcement Number 304 to &lt;&lt;Brea, CA&gt;&gt;.">
+    </com-cue-publisher>
+    <com-cue-publisher content="{}" t="VQ #82" cid="82" desc="Second glitch i love you babe.">
+    </com-cue-publisher>
+    <com-cue-publisher content="{}" t="VQ #83" cid="83" desc="Third It's going to be the best trip ever.">
+    </com-cue-publisher>
+    <com-cue-publisher content="{}" t="VQ #84" cid="84" desc="Because you love me right?.">
+    </com-cue-publisher>
+    <com-cue-publisher content="{}" t="VQ #85" cid="85" desc="Fade to black.">
+    </com-cue-publisher>
+    <com-olf description="OLF:  Wide shot at entry gives way to alternating closeups of each and every TOURIST and TRAVELER within the ritual. As needed, the feed can cut to direct input from the projection video source, before returning to closeups.">
     </com-olf>    <p class='action'>A group of TOURISTS follow Sheena, passing luggage,  shoes, and images of people waiting in line. The sound of departure announcements.</p>
     <p class='action'>They reach a space with luggage and four plastic seats in two pairs, observed by the WATCHERS.</p>
     <p class='action'>The sounds of people chatting, a gate announcement "Number 304 to &lt;&lt;Brea, California&gt;&gt; at the gate. (pause) Flight 102 to Manila is on schedule." Other announcements with the hometowns of audience members.</p>
@@ -802,29 +840,31 @@ Slow down.</p>
     <p class='character tony'>TONY</p>
     <p class='dialogue '>(pause) Right.</p>
 
-    <com-olf description=OLF:&#32;&#32;Shot&#32;progression&#32;interrupted&#32;by&#32;CU&#32;on&#32;FELIX.>
+    <com-olf description="OLF:  Shot progression interrupted by CU on FELIX.">
     </com-olf>    <p class='action'>They kiss briefly and then settle back into their chairs looking straight ahead.  They sit there for a moment without saying a word. Then TINA turns to Sheena.</p>
     <p class='character tina'>TINA</p>
     <p class='dialogue '>He promised</p>
     <p class='character sheena travelers'>SHEENA</p>
     <p class='dialogue travelers'>He did-</p>
-    <p class='action'><em>VQ #85 - Fade to black.</em></p>
-    <p class='action'>At an appointed time (no matter where the scene is) a cue (via PRJ-RC*) signals that Ritual 1 is over. The Transfer fades and the TOURISTS exit back to the Agora.</p>
+
+    <com-cue-publisher content="{}" t="VQ #85" cid="85" desc="Fade to black.">
+    </com-cue-publisher>    <p class='action'>At an appointed time (no matter where the scene is) a cue (via PRJ-RC*) signals that Ritual 1 is over. The Transfer fades and the TOURISTS exit back to the Agora.</p>
     </section>
 <section>
     <p class='parenthetical'>(@ EDDIE)</p>
     <p class='action'>= Hey  beautiful.Just a little videola from the Long Beach. Taking a break from work  so say, “Paano ginagawa mo maganda, huwag makaligtaan mo sa akin?”  and you answer... YES! OK  sabrosa  you gotta come on down and check out  the Long Beach sooner or later... cuz’ I got sumthing to show you- LATER!” Gracias Ramon.</p>
     <p id='toc12' class='scene-heading'>RITUAL 1/B:  "LONG WAY FROM HOME" (@ EDDIE)</p>
 
-    <com-olf description=OLF:&#32;&#32;Wide&#32;shot&#32;at&#32;entry&#32;gives&#32;way&#32;to&#32;alternating&#32;closeups&#32;of&#32;each&#32;and&#32;every&#32;TOURIST&#32;and&#32;TRAVELER&#32;within&#32;the&#32;ritual.&#32;As&#32;needed,&#32;the&#32;feed&#32;can&#32;cut&#32;to&#32;direct&#32;input&#32;from&#32;the&#32;projection&#32;video&#32;source,&#32;before&#32;returning&#32;to&#32;closeups.>
-    </com-olf>    <p class='action'><em>VQ #90 - establish.</em></p>
-    <p class='action'>EDDIE walks down a passage way. On The walls is projected  scenes of  driving on the harbor  freeway, pass DTLA, pass USC, pass LAX ,  405,   we see Palms trees,  a beach - Suddenly a loud crackly boombox  snaps to life behind the audience, it is playing BANDA music.</p>
-    <p class='action'><em>VQ #92 - Blackout</em></p>
+    <com-olf description="OLF:  Wide shot at entry gives way to alternating closeups of each and every TOURIST and TRAVELER within the ritual. As needed, the feed can cut to direct input from the projection video source, before returning to closeups.">
+    </com-olf>
+    <com-cue-publisher content="{}" t="VQ #90" cid="90" desc="Establishing &gt; Black out.">
+    </com-cue-publisher>    <p class='action'>EDDIE walks down a passage way. On The walls is projected  scenes of  driving on the harbor  freeway, pass DTLA, pass USC, pass LAX ,  405,   we see Palms trees,  a beach - Suddenly a loud crackly boombox  snaps to life behind the audience, it is playing BANDA music.</p>
     <p class='action'>BLACKOUT the audience turns to the music and  a harsh sunlit space is revealed</p>
     <p class='action'>Jesus, wearing a bandana or busboy's cap walks in with a tray of wet bowls. He whistles to the music as he drys the bowls and lines them up on the tray set on a box</p>
     <p class='action'>Raul runs in with a bag of Hawaiian bread. He speaks.</p>
-    <p class='action'><em>VQ #95 - Establish scene</em></p>
-    <p class='character raul'>RAUL</p>
+
+    <com-cue-publisher content="{}" t="VQ #91" cid="91" desc="Raul's first line "FUUUUUUCKKK!"">
+    </com-cue-publisher>    <p class='character raul'>RAUL</p>
     <p class='dialogue '>FUUUUUUUUUUUUUUUUUUUUUUUUUUUUUCK!!!! (He puts his hands on his knees and catches his breath. He breathes.) Man paisa, my boss is a real cabron. You know? Like this place? I hate this place. But break time right now bro.</p>
     <p class='action'>Jesus keeps working</p>
     <p class='action'>It's break time Jesus. Vamonos! Ey dawg, don't work so hard people will know you're illegal.</p>
@@ -852,8 +892,23 @@ Slow down.</p>
     <p class='character raul'>RAUL</p>
     <p class='dialogue '>Cool.</p>
     <p class='action'>Jesus looks thru the viewer and gives Raul the thumbs up. Raul slicks back his hair and give his killer smile.</p>
-    <p class='action'><em>VQ #100 - Raul's video?</em></p>
-    <p class='action'>Hey  beautiful. Just a little video from Long Beach... Taking a break from work. You know hustling and making them tips right? (We hear Jesus say something like mandilon or pendejo)Okay okay so you say, "Hola papi te extraño...muchisimo, and te queiro guapo" REALLY NO WAY!? OK  sabrosa you gotta come on down and check out the LBC sooner or later... cuz' I got sumthing to show you- Ok? Alright then LATER GUAPA!" Gracias bruther. You ever wanna switch shifts I got you dawg.</p>
+
+    <com-cue-publisher content="{}" t="VQ #92" cid="92" desc="Hey Beautiful talking in cell phone">
+    </com-cue-publisher>
+    <com-cue-publisher content="{}" t="VQ #93" cid="93" desc="This place used to be something pretty">
+    </com-cue-publisher>
+    <com-cue-publisher content="{}" t="VQ #94" cid="94" desc="Let me take you back">
+    </com-cue-publisher>
+    <com-cue-publisher content="{}" t="VQ #95" cid="95" desc="Real nice">
+    </com-cue-publisher>
+    <com-cue-publisher content="{}" t="VQ #96" cid="96" desc="You know. We could do that. If you want">
+    </com-cue-publisher>
+    <com-cue-publisher content="{}" t="VQ #97" cid="97" desc="Now repeat after me">
+    </com-cue-publisher>
+    <com-cue-publisher content="{}" t="VQ #98" cid="98" desc="SIREN SOUND">
+    </com-cue-publisher>
+    <com-cue-publisher content="{}" t="VQ #100" cid="100" desc="Raul's video">
+    </com-cue-publisher>    <p class='action'>Hey  beautiful. Just a little video from Long Beach... Taking a break from work. You know hustling and making them tips right? (We hear Jesus say something like mandilon or pendejo)Okay okay so you say, "Hola papi te extraño...muchisimo, and te queiro guapo" REALLY NO WAY!? OK  sabrosa you gotta come on down and check out the LBC sooner or later... cuz' I got sumthing to show you- Ok? Alright then LATER GUAPA!" Gracias bruther. You ever wanna switch shifts I got you dawg.</p>
     <p class='action'>Jesus tosses his phone back.</p>
     <p class='character jesus'>JESUS</p>
     <p class='dialogue '>Tiene hermana?</p>
@@ -891,13 +946,14 @@ Slow down.</p>
     <p class='character raul'>RAUL</p>
     <p class='dialogue '>AW SHIT! Esperate cabron! Gotta run now. Ok, beautiful see you this weekend.</p>
     <p class='action'>Raul runs out.</p>
-    <p class='action'><em>VQ #105 - Fade to black.</em></p>
-    </section>
+
+    <com-cue-publisher content="{}" t="VQ #105" cid="105" desc="Fade to black.">
+    </com-cue-publisher>    </section>
 <section>
     <p class='parenthetical'>(@ FELIX)</p>
     <p class='action'>(@ FELIX)**</p>
 
-    <com-olf description=OLF:&#32;&#32;Wide&#32;shot&#32;at&#32;entry&#32;gives&#32;way&#32;to&#32;alternating&#32;closeups&#32;of&#32;each&#32;TOURIST&#32;and&#32;TRAVELER&#32;within&#32;the&#32;ritual.&#32;As&#32;needed,&#32;the&#32;feed&#32;can&#32;cut&#32;to&#32;direct&#32;input&#32;from&#32;the&#32;projection&#32;video&#32;source,&#32;before&#32;returning&#32;to&#32;closeups.>
+    <com-olf description="OLF:  Wide shot at entry gives way to alternating closeups of each TOURIST and TRAVELER within the ritual. As needed, the feed can cut to direct input from the projection video source, before returning to closeups.">
     </com-olf>    <p class='action'>THE OBSERVATORY</p>
     <p class='action'>What places will connect with your visitors? [WATCHERS vote on videos and their choices are taken into account and printed as pictures in the space.]</p>
     <p class='action'>**BEAT 1 of RITUAL BEGIN – ARRANGE PHOTOS ON GROUND</p>
@@ -972,12 +1028,13 @@ Slow down.</p>
     <p class='parenthetical'>(@ RACHEL)</p>
     <p id='toc13' class='scene-heading'>RITUAL 1/D: "UNDERPASS" (@ RACHEL)</p>
 
-    <com-olf description=OLF:&#32;&#32;Wide&#32;shot&#32;at&#32;entry&#32;gives&#32;way&#32;to&#32;alternating&#32;closeups&#32;of&#32;each&#32;and&#32;every&#32;TOURIST&#32;and&#32;TRAVELER&#32;within&#32;the&#32;ritual.&#32;As&#32;needed,&#32;the&#32;feed&#32;can&#32;cut&#32;to&#32;direct&#32;input&#32;from&#32;the&#32;projection&#32;video&#32;source,&#32;before&#32;returning&#32;to&#32;closeups.>
+    <com-olf description="OLF:  Wide shot at entry gives way to alternating closeups of each and every TOURIST and TRAVELER within the ritual. As needed, the feed can cut to direct input from the projection video source, before returning to closeups.">
     </com-olf>
     <com-chat-control-muc message="What&#32;late&#32;night&#32;locations&#32;might&#32;resonate&#32;with&#32;your&#32;visitor?&#32;&#32;[WATCHERS&#32;vote,&#32;and&#32;their&#32;choices&#32;are&#32;taken&#32;into&#32;account.]">
     </com-chat-control-muc>    <p class='action'>The fourth group of TOURISTS follows Rachel past projections of a dark, wet, slick street into a space observed by the WATCHERS. Dog sounds in the distance.</p>
-    <p class='action'><em>VQ #160 - Establish scene.</em></p>
-    <p class='action'>Rachel spots and bends down to pick up a crumbled pack of cigarettes.</p>
+
+    <com-cue-publisher content="{}" t="VQ #160" cid="160" desc="Establish scene.">
+    </com-cue-publisher>    <p class='action'>Rachel spots and bends down to pick up a crumbled pack of cigarettes.</p>
     <p class='action'>(FILM) A car stereo, headlights pass by tires screech, a crumbled beer can clatters by joining the street detritus they pass.(note: an actual beer can lands on stage as if thrown from the car in the films)</p>
     <p class='action'>Rachel still bent over pauses looking after the car, perhaps humming the fading song. Pauses, she pulls a cigarette out of the pack.</p>
     <p class='character rachel travelers'>RACHEL</p>
@@ -985,7 +1042,7 @@ Slow down.</p>
     <p class='dialogue travelers'>Hey do you..... nahhhh.</p>
     <p class='action'>She squats down and picks up a book of matches with two lonely matches left.</p>
 
-    <com-olf description=OLF:&#32;&#32;Medium&#32;wide&#32;of&#32;sleeping&#32;bags,&#32;then&#32;returning&#32;to&#32;alternating&#32;closeups.>
+    <com-olf description="OLF:  Medium wide of sleeping bags, then returning to alternating closeups.">
     </com-olf>    <p class='action'>She strikes one, the match dimmly reveals a dark underpass (projected). The sound of waves ebbing and falling. Dim lights pulse. Two rows of sleeping bags on the ground, about eight feet between the rows. From the sleeping bags come murmurred sounds of sleeping (perhaps the voices of the WATCHERS).</p>
     <p class='character lucy'>LUCY</p>
     <p class='dialogue '>Welcome. Como estan? Please, come in. Find a spot. Anywhere. Go ahead, sit down, Lie down, chillax. Mi casa es su casa.</p>
@@ -999,7 +1056,7 @@ Slow down.</p>
     <p class='character lucy'>LUCY</p>
     <p class='dialogue '>In your jacket pocket. No the other side. Yeah... right there.</p>
 
-    <com-olf description=OLF:&#32;&#32;Shot&#32;progression&#32;interrupted&#32;by&#32;CU&#32;on&#32;RACHEL,&#32;with&#32;CITIZEN&#8216;S&#32;dialogue&#32;as&#32;V/O.>
+    <com-olf description="OLF:  Shot progression interrupted by CU on RACHEL, with CITIZEN'S dialogue as V/O.">
     </com-olf>    <p class='action'>RACHEL surprises herself by finding a harmonica and even more by trying to play it.</p>
     <p class='character lucy'>LUCY</p>
     <p class='dialogue '>So... Rachel right?  So  how are you.</p>
@@ -1019,10 +1076,11 @@ Slow down.</p>
     <p class='dialogue '>I have to go- and so do you.  Follow the music now... Keep playing Rachel. You got to keep playing.</p>
     <p class='action'>RACHEL gets up from the sleeping bag and goes to the small tunnel still playing. The TOURISTS follow. The bicyclist, now tiny, enters the tunnel and disappears into light</p>
     <p class='action'>The light fades. The traffic softens into the sound of waves.</p>
-    <p class='action'><em>VQ #200 - Fade to black</em></p>
-    <p id='toc14' class='scene-heading'>SCENE 3A: IN THE OBSERVATORY (ONLINE)</p>
 
-    <com-olf description=OLF:&#32;&#32;The&#32;view&#32;of&#32;all&#32;WATCHERS&#32;returns&#32;to&#32;the&#32;cameras&#32;of&#32;the&#32;Agora&#32;as&#32;soon&#32;as&#32;the&#32;Ritual&#32;ends.>
+    <com-cue-publisher content="{}" t="VQ #200" cid="200" desc="Fade to black">
+    </com-cue-publisher>    <p id='toc14' class='scene-heading'>SCENE 3A: IN THE OBSERVATORY (ONLINE)</p>
+
+    <com-olf description="OLF:  The view of all WATCHERS returns to the cameras of the Agora as soon as the Ritual ends.">
     </com-olf>    <p class='action'>The WATCHERS' view into the website has switched from four possible feeds to only the Agora (CAM-AG*), and the interface has changed, so that they feel that they are also in the Agora, through the OBSERVATORY.</p>
     <p class='action'>For the first time, a chat window opens, connecting them with other WATCHERS and THE GUIDE.</p>
     <p class='action'>Here, the GUIDE is played by a live performer who chats with the WATCHERS or, if possible, a customized chatterbot. Either way, it possesses an attitude and intellect somewhere between ELIZA and The Hitchhiker's Guide to the Galaxy.</p>
@@ -1041,9 +1099,10 @@ Slow down.</p>
     </com-chat-control-muc>    <p class='action'>Options of the four TRAVELERS are presented, and the WATCHER must select one.  The face of the TRAVELER and of the TOURIST they have followed appear in their status bar at all times.</p>
     <p id='toc15' class='scene-heading'>SCENE 3B: REUNION IN THE AGORA</p>
 
-    <com-olf description=OLF:&#32;&#32;Wide&#32;shot&#32;of&#32;Agora&#32;on&#32;entrance,&#32;then&#32;alternating&#32;between&#32;medium&#32;wides&#32;on&#32;the&#32;TRAVELER&#32;groups&#32;and&#32;CU&#32;of&#32;each&#32;and&#32;every&#32;TOURIST.>
-    </com-olf>    <p class='action'><em>VQ #220 - Establish Agora.</em></p>
-    <p class='action'>Reunited in the Agora, the TRAVELERS speak to the TOURISTS, expecting more response after the shared experience.</p>
+    <com-olf description="OLF:  Wide shot of Agora on entrance, then alternating between medium wides on the TRAVELER groups and CU of each and every TOURIST.">
+    </com-olf>
+    <com-cue-publisher content="{}" t="VQ #220" cid="220" desc="Establish Agora.">
+    </com-cue-publisher>    <p class='action'>Reunited in the Agora, the TRAVELERS speak to the TOURISTS, expecting more response after the shared experience.</p>
     <div class='dual-dialogue'>
       <div class='dual-dialogue-left'>
         <p class='character eddie travelers'>EDDIE</p>
@@ -1162,8 +1221,9 @@ Slow down.</p>
     <p class='character rachel travelers'>RACHEL</p>
     <p class='dialogue travelers'>No, noooo I  just  meant-</p>
     <p class='action'>PING!</p>
-    <p class='action'><em>VQ #230 - Door signs appear.</em></p>
-    <p class='action'>On the walls, two projected signs appear.</p>
+
+    <com-cue-publisher content="{}" t="VQ #230" cid="230" desc="Door signs appear.">
+    </com-cue-publisher>    <p class='action'>On the walls, two projected signs appear.</p>
     <p class='action'>This time, they read with the real names of the four TOURISTS who let the TRAVELERS (like RACHEL) use their GUIDE for identification.</p>
     <p class='character sheena travelers'>SHEENA</p>
     <p class='dialogue travelers'>She meant ....she felt something! It's a start</p>
@@ -1180,16 +1240,18 @@ Slow down.</p>
     <p class='dialogue travelers'>Ok then satisfied. Lets take these nice memories and get out of here.</p>
     <p class='character rachel travelers'>RACHEL</p>
     <p class='dialogue travelers'>Maybe  he's right.  I think so, do you?</p>
-    <p class='action'><em>VQ #240 - Faces appear.</em></p>
-    <p class='action'>Below each sign the corresponding TRAVELER'S face appears.</p>
+
+    <com-cue-publisher content="{}" t="VQ #240" cid="240" desc="Faces appear.">
+    </com-cue-publisher>    <p class='action'>Below each sign the corresponding TRAVELER'S face appears.</p>
     <p class='action'>PING!!!</p>
     <p class='character sheena travelers'>SHEENA</p>
     <p class='parenthetical travelers'>(distracted by the ping)</p>
     <p class='dialogue travelers'>Do I... Rachel?.... Rachel... are you still hungry?</p>
     <p class='character rachel travelers'>RACHEL</p>
     <p class='dialogue travelers'>I don't know?</p>
-    <p class='action'><em>VQ #250 - Images replace tags.</em></p>
-    <p class='action'>They all look at her. IMAGES instead of words appear over the doors, fading in and out. They appear on the walls.</p>
+
+    <com-cue-publisher content="{}" t="VQ #250" cid="250" desc="Images replace tags.">
+    </com-cue-publisher>    <p class='action'>They all look at her. IMAGES instead of words appear over the doors, fading in and out. They appear on the walls.</p>
     <p class='character sheena travelers'>SHEENA</p>
     <p class='dialogue travelers'>Hey Look. Rachel there's that place again! I swear I think we've been there?</p>
     <div class='dual-dialogue'>
@@ -1210,7 +1272,7 @@ Slow down.</p>
     <p class='dialogue travelers'>Long Beach-</p>
     <p class='action'>An image appears of a smiling dark skinned man with a bike</p>
 
-    <com-olf description=OLF:&#32;&#32;Slow&#32;zoom&#32;out&#32;to&#32;wide&#32;shot.>
+    <com-olf description="OLF:  Slow zoom out to wide shot.">
     </com-olf>    <p class='action'>RACHEL moves towards the image. The        man mounts his bike and smiling rides off. The image riding across the walls. Rachel tries to follow it</p>
     <p class='character rachel travelers'>RACHEL</p>
     <p class='dialogue travelers'>Raul.. Wait... put on your helmet!</p>
@@ -1230,9 +1292,10 @@ I don't remember it like that
 Please  ..not yet
 LET ME REMEMBER the before!</p>
     <p class='action'>There is the sounds of a LOUD  needle scratching on an old school Record album or perhaps the squealing of air brakes- of both. SHEENA and EDDIE have been  laughing, bumping into each other trying to follow the images -stop</p>
-    <p class='action'><em>VQ #270 - Images freeze/stop.</em></p>
 
-    <com-olf description=OLF:&#32;&#32;Medium&#32;wide&#32;shot&#32;of&#32;four&#32;TRAVELERS.>
+    <com-cue-publisher content="{}" t="VQ #270" cid="270" desc="Images freeze/stop.">
+    </com-cue-publisher>
+    <com-olf description="OLF:  Medium wide shot of four TRAVELERS.">
     </com-olf>    <p class='character rachel travelers'>RACHEL</p>
     <p class='dialogue travelers'>I'm leaving.</p>
     <p class='character sheena travelers'>SHEENA</p>
@@ -1274,8 +1337,9 @@ Your Archive. Celebrate your memories.</p>
     <p class='character eddie travelers'>EDDIE</p>
     <p class='dialogue travelers'>we just have to remember ...all of it.</p>
     <p id='toc16' class='scene-heading'>SCENE 4A: MUSIC MAKES ME HAPPY</p>
-    <p class='action'><em>VQ #280 - setup music scene.</em></p>
-    <p class='action'>The melody plays in the background, it slowly fades up. It is folklike, a slow but happy tune from a distant land like...Glendale. It starts to come from the wall... and then the wall moves to reveal a table</p>
+
+    <com-cue-publisher content="{}" t="VQ #280" cid="280" desc="setup music scene.">
+    </com-cue-publisher>    <p class='action'>The melody plays in the background, it slowly fades up. It is folklike, a slow but happy tune from a distant land like...Glendale. It starts to come from the wall... and then the wall moves to reveal a table</p>
     <p class='character guide'>GUIDE</p>
     <p class='dialogue '>Do you remember this melody? Please feel free to pick an instrument.</p>
     <p class='action'>Instruments are on display on the table: tambourine, cowbell, harmonica. A guitar an.... wait for it... an accordian. Simple instruments that fit the tune. Eddie picks up the  accordian, it wheezes.</p>
@@ -1336,10 +1400,11 @@ One, two, three. One, two, One two.</p>
     <p class='character eddie travelers'>EDDIE</p>
     <p class='dialogue travelers'>It's gone, the good and the bad but we have to remember how..</p>
     <p class='action'>DING! A new sound, a song, a dance track fades in, a memory from a long ago party, like  - CELEBRATION! by Kool and the Gang</p>
-    <p class='action'><em>VQ #300 - Dance party.</em></p>
-    <p class='action'>How good it was and can be</p>
 
-    <com-olf description=OLF:&#32;&#32;Medium&#32;shots&#32;of&#32;dancers,&#32;covering&#32;the&#32;reaction&#32;of&#32;each&#32;TRAVELER&#32;and&#32;TOURIST.>
+    <com-cue-publisher content="{}" t="VQ #300" cid="300" desc="Dance party.">
+    </com-cue-publisher>    <p class='action'>How good it was and can be</p>
+
+    <com-olf description="OLF:  Medium shots of dancers, covering the reaction of each TRAVELER and TOURIST.">
     </com-olf>    <p class='action'>The music start to crank up , on the walls are videos, home movies of parties ALL OVER the city all race, and ethnicities. Sheena grabs Rachel and pulls her into a memory of a dance long ago.</p>
     <p class='character felix travelers'>FELIX</p>
     <p class='dialogue travelers'>It's not that easy</p>
@@ -1368,10 +1433,11 @@ One, two, three. One, two, One two.</p>
     <p class='action'>The TRAVELERS' bodies know the dances already. They join in, pulling in the TOURISTS.</p>
     <p class='action'>The TRAVELERS' dance in and through each other follow the changing media on the walls.</p>
     <p class='action'>After a time, certain images that the TRAVELERS move to most deliberately slow down to a stop.</p>
-    <p class='action'><em>VQ #350 - Party gives way to memories.</em></p>
-    <p class='action'>Eventually, RACHEL stops in front of an image of a smiling man wearing a bike helmet. Eddie stand close to her. Felix stands looking at an image of smiling grad students at an IN n OUT burger. Sheena is close by.</p>
 
-    <com-olf description=OLF:&#32;&#32;Two&#32;live&#32;feeds,&#32;evenly&#32;distributed&#32;between&#32;the&#32;WATCHERS,&#32;one&#32;MWS&#32;of&#32;EDDIE&#32;and&#32;SHEENA,&#32;another&#32;MWS&#32;of&#32;RACHEL&#32;and&#32;FELIX.>
+    <com-cue-publisher content="{}" t="VQ #350" cid="350" desc="Party gives way to memories.">
+    </com-cue-publisher>    <p class='action'>Eventually, RACHEL stops in front of an image of a smiling man wearing a bike helmet. Eddie stand close to her. Felix stands looking at an image of smiling grad students at an IN n OUT burger. Sheena is close by.</p>
+
+    <com-olf description="OLF:  Two live feeds, evenly distributed between the WATCHERS, one MWS of EDDIE and SHEENA, another MWS of RACHEL and FELIX.">
     </com-olf>    <p class='action'>The shadows of the CITIZENS disappear.</p>
     <p class='action'>PING!</p>
     <div class='dual-dialogue'>
@@ -1385,8 +1451,9 @@ One, two, three. One, two, One two.</p>
         <com-chat-control-guide message="That&#32;was&#32;fun&#32;but&#32;it&#8216;s&#32;time&#32;to&#32;go.&#32;Commence&#32;Transfer&#32;for&#32;&lt;&lt;Yuki&gt;&gt;">
         </com-chat-control-guide>      </div>
     </div>
-    <p class='action'><em>VQ #360 - Door signs re-establish.</em></p>
-    <p id='toc17' class='scene-heading'>SCENE 4B: IN THE OBSERVATORY (ONLINE)</p>
+
+    <com-cue-publisher content="{}" t="VQ #360" cid="360" desc="Door signs re-establish.">
+    </com-cue-publisher>    <p id='toc17' class='scene-heading'>SCENE 4B: IN THE OBSERVATORY (ONLINE)</p>
     <p class='action'>During the party above, the chat continues among the WATCHERS as they desire.</p>
     <p class='action'>THE GUIDE may drop off or continue as needed to maintain their engagement.</p>
     <p class='action'>At the same time, the OBSERVATORY prepares the WATCHERS for the next Ritual.</p>
@@ -1399,7 +1466,7 @@ One, two, three. One, two, One two.</p>
     <p id='toc18' class='scene-heading'>SCENE 5: PRIMAL UPLOAD (2ND RITUAL)</p>
     <p class='action'><em>There are two versions of Ritual 2, each with half of the TOURISTS and half of the TRAVELERS.</em></p>
 
-    <com-olf description=OLF:&#32;&#32;The&#32;MWS&#32;of&#32;each&#32;pair&#32;of&#32;TRAVELERS&#32;cut&#32;to&#32;two&#32;live&#32;feeds&#32;from&#32;inside&#32;each&#32;of&#32;the&#32;two&#32;Ritual&#32;Chambers.>
+    <com-olf description="OLF:  The MWS of each pair of TRAVELERS cut to two live feeds from inside each of the two Ritual Chambers.">
     </com-olf>    <p class='action'>The shadows of the CITIZENS disappear.</p>
     <p class='action'>PING!</p>
     <div class='dual-dialogue'>
@@ -1458,10 +1525,11 @@ We must look back to go forward</p>
 <section>
     <p class='parenthetical'>(@ RACHEL, EDDIE)</p>
     <p id='toc19' class='scene-heading'>RITUAL 2/A: "BIKE MAN" (@ RACHEL, EDDIE)</p>
-    <p class='action'><em>VQ #400 - Establish ritual.</em></p>
-    <p class='action'>RACHEL and EDDIE enter together with half the TOURISTS who were selected by CODE to join them, they turn a corner and hear the sounds of rain, Rachel opens her umbrella which causes Lightening, a CLAP of thunder, followed by a BLACKOUT.</p>
 
-    <com-olf description=OLF:&#32;&#32;Cut&#32;to&#32;video&#32;of&#32;ocean.&#32;V/O&#32;of&#32;RACHEL&#32;breathing.>
+    <com-cue-publisher content="{}" t="VQ #400" cid="400" desc="Establish ritual.">
+    </com-cue-publisher>    <p class='action'>RACHEL and EDDIE enter together with half the TOURISTS who were selected by CODE to join them, they turn a corner and hear the sounds of rain, Rachel opens her umbrella which causes Lightening, a CLAP of thunder, followed by a BLACKOUT.</p>
+
+    <com-olf description="OLF:  Cut to video of ocean. V/O of RACHEL breathing.">
     </com-olf>    <p class='character rachel travelers'>RACHEL</p>
     <p class='dialogue travelers'>Eddie?</p>
     <p class='character eddie travelers'>EDDIE</p>
@@ -1476,7 +1544,7 @@ We must look back to go forward</p>
     <p class='action'>In the following sequence, the Raul's voiceover should be done live by CITIZEN.</p>
     <p id='toc20' class='scene-heading'>EXT. UNDERWATER</p>
 
-    <com-olf description=OLF:&#32;&#32;Cut&#32;between&#32;medium&#32;shots&#32;of&#32;RACHEL,&#32;FELIX,&#32;and&#32;the&#32;TOURISTS,&#32;cutting&#32;to&#32;film&#32;sequences&#32;as&#32;projected&#32;when&#32;appropriate.>
+    <com-olf description="OLF:  Cut between medium shots of RACHEL, FELIX, and the TOURISTS, cutting to film sequences as projected when appropriate.">
     </com-olf>    <p class='character raul'>RAUL</p>
     <p class='dialogue '>The first thing I fell in love with was your voice. 
 It's the only thing I hear now when I close my eyes. 
@@ -1507,13 +1575,13 @@ I was proud and a little embarrassed. You're not like me. You were from another 
     <p class='action'>She runs as if looking for a way out. She breathes heavily but she could run forever. The running is all that keeps the panic at bay.</p>
     <p class='action'>(FILM) RAUL is running towards the camera from far away. Every time he gets close, it cuts to him  running  towards her but even further away. Rachel prays louder as RAUL gets further away. RACHEL finally runs towards his image and he stops in front of her. Eddie moves as if to protect her.</p>
 
-    <com-olf description=OLF:&#32;&#32;CU&#32;of&#32;RACHEL.>
+    <com-olf description="OLF:  CU of RACHEL.">
     </com-olf>    <p class='character rachel travelers'>RACHEL</p>
     <p class='dialogue travelers'>You.</p>
     <p class='character raul'>RAUL</p>
     <p class='dialogue '>Me.</p>
 
-    <com-olf description=OLF:&#32;&#32;CU&#32;of&#32;RAUL>
+    <com-olf description="OLF:  CU of RAUL">
     </com-olf>    <p class='character rachel travelers'>RACHEL</p>
     <p class='dialogue travelers'>Yo</p>
     <p class='character raul'>RAUL</p>
@@ -1532,7 +1600,7 @@ I was proud and a little embarrassed. You're not like me. You were from another 
     <p class='character rachel travelers'>RACHEL</p>
     <p class='dialogue travelers'>No Wait. NOT YET!</p>
 
-    <com-olf description=OLF:&#32;&#32;MWS&#32;of&#32;Rachel>
+    <com-olf description="OLF:  MWS of Rachel">
     </com-olf>    <p class='action'>RACHEL reaches for the shadow, fighting the image of the bus. She pulls at the screen and projections of the Bus, EDDIE tries to pull her back.</p>
     <p class='character eddie travelers'>EDDIE</p>
     <p class='dialogue travelers'>Rachel, he's not there</p>
@@ -1549,19 +1617,21 @@ I was proud and a little embarrassed. You're not like me. You were from another 
     <p class='action'>I don't want to remember that. I'm not ready. Not yet it's too soon. I don't want to remember! STOP!</p>
     <p class='action'>The video abruptly stops - BLACKOUT- The sound of a bus departing.</p>
 
-    <com-olf description=OLF:&#32;&#32;Blackout&#32;and&#32;cut&#32;to&#32;Agora&#32;wide&#32;shot,&#32;which&#32;should&#32;be&#32;empty.>
+    <com-olf description="OLF:  Blackout and cut to Agora wide shot, which should be empty.">
     </com-olf>    <p class='character the-archive'>THE ARCHIVE</p>
     <p class='parenthetical '>(aloud, via the OBSERVATORY, and on GUIDE)</p>
     <p class='dialogue '>Transfer failure. Contacting administrator.</p>
-    <p class='action'><em>VQ #490 - Fade to black.</em></p>
-    </section>
+
+    <com-cue-publisher content="{}" t="VQ #490" cid="490" desc="Fade to black.">
+    </com-cue-publisher>    </section>
 <section>
     <p class='parenthetical'>(@ FELIX, SHEENA)</p>
     <p id='toc22' class='scene-heading'>RITUAL 2/B.1: "WHATS THE PROBLEM" (@ FELIX, SHEENA)</p>
 
-    <com-olf description=OLF:&#32;&#32;Medium&#32;shot&#32;of&#32;TRAVELERS,&#32;cutting&#32;to&#32;various&#32;reactions&#32;of&#32;TOURISTS.>
-    </com-olf>    <p class='action'><em>VQ #510 - Establish ritual</em></p>
-    <p class='action'>FELIX and SHEENA  walk down a long hallway of doors some are open, some partially shut, others closed. WE hear laughter, whispers, music- dorm hallways ambience. SHEENA and the Tourist crowd into a small room lit with a single light. Felix hangs back</p>
+    <com-olf description="OLF:  Medium shot of TRAVELERS, cutting to various reactions of TOURISTS.">
+    </com-olf>
+    <com-cue-publisher content="{}" t="VQ #510" cid="510" desc="Establish ritual">
+    </com-cue-publisher>    <p class='action'>FELIX and SHEENA  walk down a long hallway of doors some are open, some partially shut, others closed. WE hear laughter, whispers, music- dorm hallways ambience. SHEENA and the Tourist crowd into a small room lit with a single light. Felix hangs back</p>
     <p class='character sheena travelers'>SHEENA</p>
     <p class='dialogue travelers'>Felix you have to</p>
     <p class='action'>FELIX starts to hyperventilate quietly</p>
@@ -1609,12 +1679,14 @@ I just started running the code! It's going to take at least another hour!! </
     <p class='character yuki'>YUKI</p>
     <p class='dialogue '>There goes our designated driver. FUCK!</p>
     <p class='action'>Yuki, Matt and Daisy howl with laughter BEAT .YUKI makes a stupid  MATH SEX joke. NO one laughs BEAT-they get back to work. BLACK</p>
-    <p class='action'><em>VQ #540 - Blackout.</em></p>
-    </section>
+
+    <com-cue-publisher content="{}" t="VQ #540" cid="540" desc="Blackout.">
+    </com-cue-publisher>    </section>
 <section>
     <p id='toc23' class='scene-heading'>RITUAL 2/B.2: "UPLOADING"</p>
-    <p class='action'><em>VQ #550 - Fade up to new environment.</em></p>
-    <p class='action'>Lights back up immediately. They are all in different positions and frantically banging on their computers.</p>
+
+    <com-cue-publisher content="{}" t="VQ #550" cid="550" desc="Fade up to new environment.">
+    </com-cue-publisher>    <p class='action'>Lights back up immediately. They are all in different positions and frantically banging on their computers.</p>
     <p class='character daisy'>DAISY</p>
     <p class='dialogue '>11:59!</p>
     <p class='action'>YUKI screams! Matt mutters and then yells out a math equation. The answer appears as a projection. Yuki meows like a cat-Daisy barks like a dog-Matt prays.</p>
@@ -1635,12 +1707,14 @@ I just started running the code! It's going to take at least another hour!! </
     <p class='character daisy'>DAISY</p>
     <p class='dialogue '>(singing in Tamil) Wonderwoman uh uh I'm Wonderwoman</p>
     <p class='action'>BLACKOUT!</p>
-    <p class='action'><em>VQ #570 - Blackout.</em></p>
-    </section>
+
+    <com-cue-publisher content="{}" t="VQ #570" cid="570" desc="Blackout.">
+    </com-cue-publisher>    </section>
 <section>
     <p id='toc24' class='scene-heading'>RITUAL 2/B.3:  "TANGARINE AND CHEETOS"</p>
-    <p class='action'><em>VQ #580 - Fade up to new environment.</em></p>
-    <p class='action'>Lights up immediately. They are different position. Chillaxing. Yuki is singing "TANGARINE" quietly with the stereo. The Dorm room is filled with smoke. Windows are closed so that they don't get caught by the RA... no wait DAISY is the RA!. A tequila bottle is on the table. Daisy is smoking, she passes it to Matt</p>
+
+    <com-cue-publisher content="{}" t="VQ #580" cid="580" desc="Fade up to new environment.">
+    </com-cue-publisher>    <p class='action'>Lights up immediately. They are different position. Chillaxing. Yuki is singing "TANGARINE" quietly with the stereo. The Dorm room is filled with smoke. Windows are closed so that they don't get caught by the RA... no wait DAISY is the RA!. A tequila bottle is on the table. Daisy is smoking, she passes it to Matt</p>
     <p class='character matt'>MATT</p>
     <p class='dialogue '>Are you sure this is not addictive?</p>
     <p class='character yuki'>YUKI</p>
@@ -1706,12 +1780,14 @@ I just started running the code! It's going to take at least another hour!! </
     <p class='action'>FELIX looks at her.</p>
     <p class='action'>What happened?</p>
     <p class='action'>He looks back into the room BLACKOUT!</p>
-    <p class='action'><em>VQ #600 - Blackout</em></p>
-    </section>
+
+    <com-cue-publisher content="{}" t="VQ #600" cid="600" desc="Blackout">
+    </com-cue-publisher>    </section>
 <section>
     <p id='toc25' class='scene-heading'>RITUAL 2/B.4: "IN AND OUT"</p>
-    <p class='action'><em>VQ #610 - Fade up to new environment.</em></p>
-    <p class='action'>Lites up immediately. They are in a car. Daisy is driving.</p>
+
+    <com-cue-publisher content="{}" t="VQ #610" cid="610" desc="Fade up to new environment.">
+    </com-cue-publisher>    <p class='action'>Lites up immediately. They are in a car. Daisy is driving.</p>
     <p class='character matt'>MATT</p>
     <p class='dialogue '>Are you guys  hungry? I'm hungry?</p>
     <p class='character yuki'>YUKI</p>
@@ -1736,8 +1812,9 @@ I just started running the code! It's going to take at least another hour!! </
     <p class='character sheena travelers'>SHEENA</p>
     <p class='dialogue travelers'>Felix what happened?</p>
     <p class='action'>He can't answer. The 3 students are laughing and singing loudly! They stop suddenly and look out front. We  hear the same loud sound of tires, brakes and  a needle scratch we heard before. BLACKOUT</p>
-    <p class='action'><em>VQ #630 - Blackout</em></p>
-    <p class='character felix travelers'>FELIX</p>
+
+    <com-cue-publisher content="{}" t="VQ #630" cid="630" desc="Blackout">
+    </com-cue-publisher>    <p class='character felix travelers'>FELIX</p>
     <p class='dialogue travelers'>I'm here... because I wasn't there</p>
     <p class='action'>The needle continue to skip in the darkness</p>
     <p class='character the-archive'>THE ARCHIVE</p>
@@ -1749,8 +1826,9 @@ I just started running the code! It's going to take at least another hour!! </
     <com-chat-control-guide message="I&#32;bet&#32;Siri&#32;doesn&#8216;t&#32;have&#32;to&#32;deal&#32;with&#32;stuff&#32;like&#32;this.&#32;&#32;&#32;What&#32;happened&#32;in&#32;there?">
     </com-chat-control-guide>    <p class='action'>Etc.</p>
     <p id='toc27' class='scene-heading'>SCENE 6B: CONFUSION IN THE AGORA</p>
-    <p class='action'><em>VQ #660 - Establish Agora.</em></p>
-    <p class='action'>The TRAVELERS are stunned</p>
+
+    <com-cue-publisher content="{}" t="VQ #660" cid="660" desc="Establish Agora.">
+    </com-cue-publisher>    <p class='action'>The TRAVELERS are stunned</p>
     <p class='character sheena travelers'>SHEENA</p>
     <p class='dialogue travelers'>What the hell just happened. Felix I'm sorry</p>
     <p class='character felix travelers'>FELIX</p>
@@ -1777,8 +1855,9 @@ Some painful memory .. Rachel</p>
     <p class='character felix travelers'>FELIX</p>
     <p class='dialogue travelers'>What did she see... what did you do</p>
     <p class='action'>The interior walls of the Agora disappear.</p>
-    <p class='action'><em>VQ #670 - Shadows of citizens.</em></p>
-    <p class='action'>The CITIZENS appear as shadows surrounding the Agora, via PRJ-AG*. They move quietly, carefully. Perhaps the CITIZENS' shadows bear more of a resemblance to the TRAVELERS than before.</p>
+
+    <com-cue-publisher content="{}" t="VQ #670" cid="670" desc="Shadows of citizens.">
+    </com-cue-publisher>    <p class='action'>The CITIZENS appear as shadows surrounding the Agora, via PRJ-AG*. They move quietly, carefully. Perhaps the CITIZENS' shadows bear more of a resemblance to the TRAVELERS than before.</p>
     <p class='character citizen'>CITIZEN</p>
     <p class='action'>(softly)</p>
     <p class='action'>RACHEL.</p>
@@ -1912,7 +1991,7 @@ Some painful memory .. Rachel</p>
     <p class='character sheena travelers'>SHEENA</p>
     <p class='dialogue travelers'>FUCK!  Gimme that you perverted freak!</p>
 
-    <com-olf description=OLF:&#32;&#32;Closeup&#32;on&#32;the&#32;GUIDE.>
+    <com-olf description="OLF:  Closeup on the GUIDE.">
     </com-olf>    <p class='action'>SHEENA takes his device and examines it, reading the GUIDE text.</p>
     <p class='character sheena travelers'>SHEENA</p>
     <p class='dialogue travelers'>"It's your memory now. You make up the story." What the fuck is that?</p>
@@ -2019,33 +2098,38 @@ I'm leaving.</p>
     <p class='dialogue travelers'>but not for food?</p>
     <p class='character citizen-2'>CITIZEN 2</p>
     <p class='dialogue '>You are not lost. Look at the sky. You are never lost.</p>
-    <p class='action'><em>VQ #700 - Shadows fade, remix begins, citizens leave shadows.</em></p>
-    <p class='action'>The sun sets in the distance as the selected videos of &lt;&lt;Los Angeles&gt;&gt; appears. A harmonica riff on &lt;&lt;"Back in the USSR"&gt;&gt; and voices in non-English languages are heard.</p>
+
+    <com-cue-publisher content="{}" t="VQ #700" cid="700" desc="Shadows fade, remix begins, citizens leave shadows.">
+    </com-cue-publisher>    <p class='action'>The sun sets in the distance as the selected videos of &lt;&lt;Los Angeles&gt;&gt; appears. A harmonica riff on &lt;&lt;"Back in the USSR"&gt;&gt; and voices in non-English languages are heard.</p>
     <p class='character rachel travelers'>RACHEL</p>
     <p class='dialogue travelers'>Ok, I think I'm ready.</p>
     <p class='action'>PING!</p>
     <p id='toc28' class='scene-heading'>TRANSITION : THE CITIZENS EMERGE.</p>
-    <p class='action'><em>VQ #710 - Environment changes.</em></p>
-    <p class='action'>Something changes, The SPACE change- TIME changes- EVERYTHING changes. it might be huge or simple but everything is finally revealed. The revelation of technology is  presented simply and so is more beautiful and moving. Somehow the rules have changed so that the CITIZENS can join us  both in reenacting and observing as equals. CODE switches on EVERYWHERE</p>
+
+    <com-cue-publisher content="{}" t="VQ #710" cid="710" desc="Environment changes.">
+    </com-cue-publisher>    <p class='action'>Something changes, The SPACE change- TIME changes- EVERYTHING changes. it might be huge or simple but everything is finally revealed. The revelation of technology is  presented simply and so is more beautiful and moving. Somehow the rules have changed so that the CITIZENS can join us  both in reenacting and observing as equals. CODE switches on EVERYWHERE</p>
     <p class='character citizens'>CITIZENS</p>
     <p class='dialogue '>We are never lost. 
 We are your memories. 
 We are here</p>
-    <p class='action'><em>VQ #720 - Remix evolves.</em></p>
-    <p class='action'>In the Agora, THE ARCHIVE reiterates the Rituals according to the WATCHERS' votes.  - &lt;&lt;a man pedaling a bike, a polaroid memory, and a departure lounge appear&gt;&gt;.</p>
+
+    <com-cue-publisher content="{}" t="VQ #720" cid="720" desc="Remix evolves.">
+    </com-cue-publisher>    <p class='action'>In the Agora, THE ARCHIVE reiterates the Rituals according to the WATCHERS' votes.  - &lt;&lt;a man pedaling a bike, a polaroid memory, and a departure lounge appear&gt;&gt;.</p>
     </section>
 <section>
     <p id='toc29' class='scene-heading'>SCENE 1: RITUAL OF STORYTELLING</p>
     <p class='action'>There is only a single version of Ritual 3, for everyone.</p>
 
-    <com-olf description=OLF:&#32;&#32;Live&#32;feed&#32;shots&#32;to&#32;be&#32;determined.&#32;>
-    </com-olf>    <p class='action'><em>VQ #750 - Establish ritual in agora.</em></p>
-    <p class='action'>The CITIZENS enact records from within THE ARCHIVE. RACHEL and FELIX's painful memories are at the center, but they branch out to become and encompass all of their stories - fact and fiction, remixing themselves with media of both the previous and yet unseen rituals.</p>
+    <com-olf description="OLF:  Live feed shots to be determined. ">
+    </com-olf>
+    <com-cue-publisher content="{}" t="VQ #750" cid="750" desc="Establish ritual in agora.">
+    </com-cue-publisher>    <p class='action'>The CITIZENS enact records from within THE ARCHIVE. RACHEL and FELIX's painful memories are at the center, but they branch out to become and encompass all of their stories - fact and fiction, remixing themselves with media of both the previous and yet unseen rituals.</p>
     </section>
 <section>
     <p id='toc30' class='scene-heading'>RITUAL 3/A:  "RAUL'S REVELATION"</p>
-    <p class='action'><em>VQ #800 - Start ritual 3/A.</em></p>
-    <p class='action'>The Bike rider on the walls of the  UNDERPASS reappears. The Rider gets both closer and further  as it did in  Rachel's Primal memory. The memory gets closer and closer. It's RACHEL's boyfriend RAUL he rides up  and smiles his killer smile.</p>
+
+    <com-cue-publisher content="{}" t="VQ #800" cid="800" desc="Start ritual 3/A.">
+    </com-cue-publisher>    <p class='action'>The Bike rider on the walls of the  UNDERPASS reappears. The Rider gets both closer and further  as it did in  Rachel's Primal memory. The memory gets closer and closer. It's RACHEL's boyfriend RAUL he rides up  and smiles his killer smile.</p>
     <p class='character raul'>RAUL</p>
     <p class='parenthetical '>(projection : closeup of RACHEL's mouth)</p>
     <p class='parenthetical '>( projection RAUL/RACHEL)</p>
@@ -2060,8 +2144,9 @@ I never got a chance to show it to you, I was always too busy trying to make som
     </section>
 <section>
     <p id='toc31' class='scene-heading'>RITUAL 3/B: "DRIVING DAISY"</p>
-    <p class='action'><em>VQ #900 - Start ritual 3/B.</em></p>
-    <p class='action'>A montage, a collage, an homage to  to the  culture of hard work and  comradeship in a  high level gradate school program. It starts again the sound of an airplance landing it, we hear the noise of the airplanes tires squeal upon landing. BACK IN THE USSR plays. Perhaps we  see TONY and TINA  kissing at LAX. YUKI walks by with a  LARGE backpack and a rolling carryon. She looks down at her phone confused- maybe she bumps into Matt.  A line of  people walking for the FYLAWAY back to Westwood. FELIX, YUKI, MATT and Daisy are in line, they do not know each other. Perhaps we see  Daisy and Felix sitting next to each other on the bus but facing away.</p>
+
+    <com-cue-publisher content="{}" t="VQ #900" cid="900" desc="Start ritual 3/B.">
+    </com-cue-publisher>    <p class='action'>A montage, a collage, an homage to  to the  culture of hard work and  comradeship in a  high level gradate school program. It starts again the sound of an airplance landing it, we hear the noise of the airplanes tires squeal upon landing. BACK IN THE USSR plays. Perhaps we  see TONY and TINA  kissing at LAX. YUKI walks by with a  LARGE backpack and a rolling carryon. She looks down at her phone confused- maybe she bumps into Matt.  A line of  people walking for the FYLAWAY back to Westwood. FELIX, YUKI, MATT and Daisy are in line, they do not know each other. Perhaps we see  Daisy and Felix sitting next to each other on the bus but facing away.</p>
     <p class='action'>Campus life, study groups. A football game YUKI looks on comfused. Video snippets of "MY WEEK AT GRAD SCHOOL" pop up at the same time on different screens. They talk about their journeys to LA. YUKI and MATT seem nervous DAISY is radiant The four are studying together only Felix has a beer in his hand. WE see and hear the four grad students all over Westwood and LA. Perhas we see FELIX's Asking "doesn't it EVER rain here?"</p>
     <p class='action'>Perhas we don't see any video of the students just their voices from the previous scene</p>
     <p class='character matt'>MATT</p>
@@ -2128,15 +2213,18 @@ I never got a chance to show it to you, I was always too busy trying to make som
     <p class='character rachel travelers'>RACHEL</p>
     <p class='dialogue travelers'>Put on your helmet! It's gonna rain today. WAIT  let me say it , let me say it just one more time!</p>
     <p class='action'>The music gets louder the rain storms down.YUKI and MATT sing. RAUL laughs as he turn his face up to the sky. LIGHTING! THUNDERCLAP, A needle scratches an old album BLACKOUT!  We sit in the darkeness as long as we can, there is only the sound of  RACHEL breathing , gasping loudly. FELIX whispering "I wasn't there" and a record skipping over and over.</p>
-    <p class='action'><em>VQ #990 - Blackout.</em></p>
-    <p class='action'><em>VQ #995 - Re-establish Agora</em></p>
-    </section>
+
+    <com-cue-publisher content="{}" t="VQ #990" cid="990" desc="Blackout.">
+    </com-cue-publisher>
+    <com-cue-publisher content="{}" t="VQ #995" cid="995" desc="Re-establish Agora">
+    </com-cue-publisher>    </section>
 <section>
     <p id='toc32' class='scene-heading'>EPILOGUE</p>
 
-    <com-olf description=OLF:&#32;&#32;Pre-recorded&#32;video&#32;of&#32;the&#32;CITIZEN.&#32;The&#32;source&#32;of&#32;the&#32;Voiceover.>
-    </com-olf>    <p class='action'><em>VQ #1000 - Archive resets</em></p>
-    <p class='action'>THE ARCHIVE resets.</p>
+    <com-olf description="OLF:  Pre-recorded video of the CITIZEN. The source of the Voiceover.">
+    </com-olf>
+    <com-cue-publisher content="{}" t="VQ #1000" cid="1000" desc="Archive resets">
+    </com-cue-publisher>    <p class='action'>THE ARCHIVE resets.</p>
     <p class='action'>A CITIZEN speaks; the words also are transmitted into the chatroom of the OBSERVATORY.</p>
     <p class='character raul'>RAUL</p>
     <p class='dialogue '>The year before I met RACHEL, I heard an Architects give a TED talk..</p>
@@ -2172,8 +2260,9 @@ We are here</p>
     <p class='action'>The doors open that lead to the Lobby, into &lt;&lt;Los Angeles&gt;&gt;, to some reception or coffee house or lobby bar beyond.</p>
     <p class='action'>Simultaneously, each GUIDE opens a live chat window for TOURISTS and their assigned WATCHERS.</p>
     <p class='action'>The audience and the Travelers EXIT. The CITIZENS remain inside. They wave to the Observatory cameras and then fade behind the walls</p>
-    <p class='action'><em>VQ #1100 - Fade to black</em></p>
-    <p id='toc33' class='scene-heading'>POSTSHOW POST ITS</p>
+
+    <com-cue-publisher content="{}" t="VQ #1100" cid="1100" desc="Fade to black">
+    </com-cue-publisher>    <p id='toc33' class='scene-heading'>POSTSHOW POST ITS</p>
     <p class='action'>The experience of the performance continues to be available - to the TOURISTS, through their GUIDE, and the WATCHERS, through the OBSERVATORY.</p>
   </div></section>
 </body>
