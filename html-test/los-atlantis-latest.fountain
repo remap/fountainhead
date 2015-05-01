@@ -206,12 +206,22 @@ Gradually  the audience congregates  in the lobby.
 The WATCHERS logged into the OBSERVATORY are greeted. They can watch the live feed streaming to the OBSERVATORY. They can still browse THE ARCHIVE. 
 
 THE GUIDE
-(to each TOURIST)
 Time to your Transfer: << - 00 Days, 00 Hours, 7 Minutes>>. 
 
 THE OBSERVATORY ^
-(to each WATCHER, via a status bar)
 Time to the Transfer: << - 00 Days, 00 Hours, 7 Minutes>>. 
+
+THE GUIDE
+Time to your Transfer: << - 00 Days, 00 Hours, 5 Minutes>>. 
+
+THE OBSERVATORY ^
+Time to the Transfer: << - 00 Days, 00 Hours, 5 Minutes>>. 
+
+THE GUIDE
+Time to your Transfer: << - 00 Days, 00 Hours, 3 Minutes>>. 
+
+THE OBSERVATORY ^
+Time to the Transfer: << - 00 Days, 00 Hours, 3 Minutes>>. 
 
 THE GUIDE
 Please connect to the ARCHIVE-<<LOS_ANGELES>> WiFi network.  The GUIDE will activate (hello!) when needed during the Transfer event.  The Transference may be challenging. Be calm and observant.
