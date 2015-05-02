@@ -17,10 +17,10 @@ Web component declarations include web components in component parent folder, an
 <<@componentA(arg1=val1,arg2=val2...) text-description>>
 </pre>
 * **HTML output**: 
-<pre>
-\<link rel="import" href="components/componentA.html"\> 
-\<componentA arg1="val1" arg2="val2">text description</component\>
-</pre>
+```html
+<link rel="import" href="components/componentA.html"> 
+<componentA arg1="val1" arg2="val2">text description</component>
+```
 * **Description**: 
 
 Web components should appear in the source with two line breaks before and after (like Actions); The components parent folder can be specified with parser parameters.
@@ -108,9 +108,9 @@ Environment declarations declare Javascript variables for usage in the parsed ht
   [include1] filename
   </pre>
   * **HTML output**: 
-  <pre>
-  \<script src="js/filename"\>\</script\>
-  </pre>
+  ```html
+  <script src="js/filename"></script>
+  ```
   * **Description**: The includes parent folder can be specified with parser parameters
 
 **Pending**: should the following ones be generalized, or handled by plugins to the parser?
@@ -155,7 +155,7 @@ name1 [type1] description
 <div id="charactercontent">
   <p class='name1-def'>name1</p>
   <p class='charactercontent-desc'>description</p>
-</div\>
+</div>
 ```
 * **Description**: By correlating a character name here with a character type, all the dialogues of this character will be assigned corresponding class for the character's type
 
@@ -175,7 +175,7 @@ Setting declarations describe other settings that want to get rendered in the ht
 <div id="settingcontent">
   <p class='name1-def'>name1</p>
   <p class='settingcontent-desc'>description</p>
-</div\>
+</div>
 ```
 * **Description**: Settings declarations has the same syntax as character type declarations
 
