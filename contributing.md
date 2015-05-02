@@ -6,23 +6,23 @@
 
 In parent HTML documents, such code
 
-<pre>
-\<link rel="import" href="components/example.html"\> 
+<pre lang="html"><code>
+<link rel="import" href="components/example.html"\> 
 ...
-\<com-example param1=val1></com-example\>
+<com-example param1=val1></com-example\>
 ...
-</pre>
+</code></pre>
 
 will import a given web component file from given directory, and insert the component at given location.
 
 An example of web component code looks like
 
-<pre>
-\<template>
-    \<p></p>
-\</template>
+<pre lang="html"><code>
+<template>
+    <p></p>
+</template>
 
-\<script>
+<script>
     (function(window, document, undefined) {
         var MyElementProto = Object.create(HTMLElement.prototype);
         MyElementProto.str = "";
@@ -35,8 +35,8 @@ An example of web component code looks like
             prototype: MyElementProto
         });
     })(window, document);
-\</script>
-</pre>
+</script>
+</code></pre>
 
 Upon HTML _import_, the function in the script will be executed with parent window and document as parameter. The example function will create an object from HTML element, and register a prototype of that object on the parent window with a given name by calling parent window's _registerElement_. (Please note that web component names should follow a convention, see reference below.)
 
