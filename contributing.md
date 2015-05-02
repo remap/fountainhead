@@ -37,9 +37,9 @@ An example of web component code looks like
 </script>
 ```
 
-Upon HTML _import_, the function in the script will be executed with parent window and document as parameter. The example function will create an object from HTML element, and register a prototype of that object on the parent window with a given name by calling parent window's _registerElement_. (Please note that web component names should follow a convention, see reference below.)
+Upon HTML _import_, the function in the script will be executed with parent window and document as parameter. The example function will create an object from HTML element, and register a prototype of that object on the parent window with a given name, by calling parent window's _registerElement_. (Please note that web component names should follow a convention, see reference below.)
 
-If your browser support web components, upon _insertion_ of the HTML element with your registered name, the _createdCallback_ in the sample code will be called. In the createdCallback, usually we would make a copy of the template in the web component html page under the created ShadowRoot, and operate on the elements in that template.
+If your browser supports web components, upon _insertion_ of the HTML element with your registered name, the _createdCallback_ in the sample code will be called. In the createdCallback, usually we would make a copy of the template in the web component html page under the created ShadowRoot, and operate on the elements in that template.
 
 References:
 
