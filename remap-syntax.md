@@ -40,10 +40,10 @@ THE OBSERVATORY
 Some Dialogue
 </pre>
 * **HTML output**:
-<pre>
-\<link rel="import" href="components/chat-control-muc.html"\> 
-\<com-chat-control-muc message="Some Dialogue"></com-chat-control-muc\>
-</pre>
+```html
+<link rel="import" href="components/chat-control-muc.html"> 
+<com-chat-control-muc message="Some Dialogue"></com-chat-control-muc>
+```
 * **Description**: 
 For the guide, the character name is THE GUIDE, and the corresponding component is chat-control-guide.html
 This will, by default, make the dialogue clickable, and clicking will trigger a chat message being sent as the character.
@@ -55,10 +55,10 @@ _actions_ beginning with *olf;
 *olf: Some online feed description.*
 </pre>
 * **HTML output**:
-<pre>
-\<link rel="import" href="components/olf.html"\> 
-\<com-olf description="Some online feed description"></com-olf\>
-</pre>
+```html
+<link rel="import" href="components/olf.html"> 
+<com-olf description="Some online feed description"></com-olf>
+```
 * **Description**: 
 This will, by default, apply special style (olf class) for the given description.
 
@@ -69,10 +69,10 @@ _actions_ beginning with VQ number;
 *VQ # Number: Some video cue description*
 </pre>
 * **HTML output**:
-<pre>
-\<link rel="import" href="components/cue-publisher.html"\> 
-\<com-cue-publisher t="VQ # Number" content="{}" cid="Number" desc="Some video cue description"></com-cue-publisher\>
-</pre>
+```html
+<link rel="import" href="components/cue-publisher.html"> 
+<com-cue-publisher t="VQ # Number" content="{}" cid="Number" desc="Some video cue description"></com-cue-publisher>
+```
 * **Description**: 
 This will, by default, make the video cue title clickable, and publish an NDN data with given prefix, show ID and cue ID on click.
 
@@ -92,9 +92,9 @@ Environment declarations declare Javascript variables for usage in the parsed ht
 # ...
 </pre>
 * **HTML output**: 
-<pre>
-\<script\>var name1 = javascript code;...\</script\>
-</pre>
+```html
+<script>var name1 = javascript code;...</script>
+```
 * **Description**: A few keywords, such as 'include' are retained for special purposes
 
   #### Specially handled environments:
@@ -127,16 +127,16 @@ Character type declarations generate a table and apply corresponding CSS classes
 # ...
 </pre>
 * **HTML output**: 
-<pre>
-\<div id="charactertypecontent"\>
-  \<table\>
-    \<td\>
-      \<p class=type1-def\>type1\</p\>
-      \<p class=charactertypecontent-desc\>description\</p\>
-    \</td\>
-  \</table\>
-\</div\>
-</pre>
+```html
+<div id="charactertypecontent">
+  <table>
+    <td>
+      <p class=type1-def>type1</p>
+      <p class=charactertypecontent-desc>description</p>
+    </td>
+  </table>
+</div>
+```
 * **Description**: Characters in character declaration section will be associated with classes declared in this section.
 
 ### Character declaration
@@ -151,12 +151,12 @@ name1 [type1] description
 # ...
 </pre>
 * **HTML output**:
-<pre>
-\<div id="charactercontent"\>
-  \<p class='name1-def'\>name1\</p\>
-  \<p class='charactercontent-desc'\>description\</p\>
-\</div\>
-</pre>
+```html
+<div id="charactercontent">
+  <p class='name1-def'>name1</p>
+  <p class='charactercontent-desc'>description</p>
+</div\>
+```
 * **Description**: By correlating a character name here with a character type, all the dialogues of this character will be assigned corresponding class for the character's type
 
 ### Setting declaration
@@ -171,12 +171,12 @@ Setting declarations describe other settings that want to get rendered in the ht
 # ...
 </pre>
 * **HTML output**:
-<pre>
-\<div id="settingcontent"\>
-  \<p class='name1-def'\>name1\</p\>
-  \<p class='settingcontent-desc'\>description\</p\>
-\</div\>
-</pre>
+```html
+<div id="settingcontent">
+  <p class='name1-def'>name1</p>
+  <p class='settingcontent-desc'>description</p>
+</div\>
+```
 * **Description**: Settings declarations has the same syntax as character type declarations
 
 ### Body declaration
@@ -189,9 +189,9 @@ Body declaration declares the beginning of the actual script.
 ...
 </pre>
 * **HTML output**:
-<pre>
-\<div id="scriptbody"\>
+```html
+<div id="scriptbody">
     ...
-\</div\>
-</pre>
+</div>
+```
 * **Description**: Body declaration should be the last of the preamble sections; and all content after this section will be parsed with fountain syntax and web component syntax

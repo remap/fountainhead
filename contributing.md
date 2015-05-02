@@ -59,15 +59,15 @@ These prototypes are currently included once in the parent HTML document.
 
 Component object contains common functions such as applying styles of CSS classes from parent. They are created with:
 
-<pre>
+```html
 element.componentObject = new parentWindow.ComponentObject(parentWindow, window);
-</pre>
+```
 
 And by calling
 
-<pre>
+```html
 element.componentObject.applyStyleFromParentDocument(childElement);
-</pre>
+```
 
 The CSS style classes that you've assigned to childElement will try to inherit from the parent window's CSS. (Alternatively, you can include the parent's CSS file in the web component, though that would assume knowledge of the location of the CSS file.)
 
@@ -77,11 +77,11 @@ Many of our components publish NDN data. This prototype contains functions for p
 
 This sample code
 
-<pre>
+```html
 element.ndnPublisherComponentObject = new window.NDNPublisherComponentObject(this, window);
 element.ndnPublisherComponentObject.parseParameters();
 element.ndnPublisherComponentObject.publishContent(dataName, content, false);
-</pre>
+```
 
 creates such a object, tries to parse the parameters passed to this element, and publishes NDN data.
 
