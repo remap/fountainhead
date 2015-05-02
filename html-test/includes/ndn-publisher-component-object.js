@@ -2,6 +2,8 @@
  * NDN publisher component object provides NDN publish functions
  *
  * Function:
+ *   parseParameters
+ *   publishContent
  *   
  * @param self The web component element created from HTMLElement
  * @param window The parent window of the web component

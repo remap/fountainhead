@@ -25,7 +25,6 @@ An example of web component code looks like
 <script>
     (function(window, document, undefined) {
         var MyElementProto = Object.create(HTMLElement.prototype);
-        MyElementProto.str = "";
         
         MyElementProto.createdCallback = function() {
             ...
