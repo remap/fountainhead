@@ -10,14 +10,14 @@ License: GPLv3
     python -O main.py -v <parser version tag> -i <inputfile> -c <css file: relevant to output file path> -o <output file> -f <component parent folder name, relevant to output file path> -n <include parent folder name, relevant to outputFile path> -s <special generation flag>
     
 Flags:
-* -v/--version: Parser version tag, supported are 'base' and 'remap'
-* -i/--ifile: Fountain input file path
-* -o/--ofile: HTML output file path
-* -c/--cfile: CSS file path (relative to output file path)
-* -f/--compfolder: Component folder path (relative to output file path)
-* -n/--incfolder: Include folder path (relative to output file path)
-* -s/--special-generation: Special generation flag
-* -h/: Print help and exit
+* -v, --version: Parser version tag, supported are 'base' and 'remap'
+* -i, --ifile: Fountain input file path
+* -o, --ofile: HTML output file path
+* -c, --cfile: CSS file path (relative to output file path)
+* -f, --compfolder: Component folder path (relative to output file path)
+* -n, --incfolder: Include folder path (relative to output file path)
+* -s, --special-generation: Special generation flag
+* -h: Print help and exit
     
 Please refer to [remap-syntax.md](https://github.com/remap/fountainhead/blob/master/remap-syntax.md) for added syntax for version tag "remap", and added functions for "special generation flag".
     

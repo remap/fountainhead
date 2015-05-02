@@ -18,11 +18,11 @@ will import a given web component file from given directory, and insert the comp
 An example of web component code looks like
 
 <pre>
-<template>
-    <p></p>
-</template>
+\<template>
+    \<p></p>
+\</template>
 
-<script>
+\<script>
     (function(window, document, undefined) {
         var MyElementProto = Object.create(HTMLElement.prototype);
         MyElementProto.str = "";
@@ -35,7 +35,7 @@ An example of web component code looks like
             prototype: MyElementProto
         });
     })(window, document);
-</script>
+\</script>
 </pre>
 
 Upon HTML _import_, the function in the script will be executed with parent window and document as parameter. The example function will create an object from HTML element, and register a prototype of that object on the parent window with a given name by calling parent window's _registerElement_. (Please note that web component names should follow a convention, see reference below.)
@@ -55,7 +55,7 @@ Many of our web components may share similar purposes. To avoid (over) duplicate
 
 These prototypes are currently included once in the parent HTML document.
 
-*ComponentObject*
+**ComponentObject**
 
 Component object contains common functions such as applying styles of CSS classes from parent. They are created with:
 
@@ -71,7 +71,7 @@ element.componentObject.applyStyleFromParentDocument(childElement);
 
 The CSS style classes that you've assigned to childElement will try to inherit from the parent window's CSS. (Alternatively, you can include the parent's CSS file in the web component, though that would assume knowledge of the location of the CSS file.)
 
-*NDNPublisherComponentObject*
+**NDNPublisherComponentObject**
 
 Many of our components publish NDN data. This prototype contains functions for parsing NDN related parameters, and publishing NDN content under given name.
 
