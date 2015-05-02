@@ -42,7 +42,7 @@ def main(argv):
     parseSpecial = False
     
     try:
-        opts, args = getopt.getopt(argv, 'hv:i:c:o:f:n:p:s', ['version=', 'ifile=', 'cssfile=', 'ofile=', 'compfolder=', 'incfolder=', 'pdf', 'special'])
+        opts, args = getopt.getopt(argv, 'hv:i:c:o:f:n:p:s', ['version=', 'ifile=', 'cssfile=', 'ofile=', 'compfolder=', 'incfolder=', 'pdf', 'special-generation'])
     except getopt.GetoptError:
         usage()
         sys.exit(2)

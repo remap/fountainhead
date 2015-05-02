@@ -19,28 +19,62 @@ Web component declarations include web components in component parent folder, an
 * **HTML output**: 
 <pre>
 \<link rel="import" href="components/componentA.html"\> 
-\<!-- once per file --\> \<componentA arg1="val1" arg2="val2">text description</component\>
+\<componentA arg1="val1" arg2="val2">text description</component\>
 </pre>
 * **Description**: 
 
-Web components only appear in Action; The components parent folder can be specified with parser parameters.
+Web components should appear in the source with two line breaks before and after (like Actions); The components parent folder can be specified with parser parameters.
 
-### Use specific CSS class declaration
+### Special generation flag
 
-Script matching this syntax will be applied with given CSS class in addition to existing classes that is belongs to.
+With special generation flag, a few fountain syntax will be overwritten for the purpose of Los Atlantis project.
+
+Affected syntax include: 
+
+_dialogues_ from the guide or the observatory; 
 
 * **Syntax**:
 <pre>
-<<@CSS-class-addon: text-description>>
+THE OBSERVATORY
+(Some Parenthetical)
+Some Dialogue
 </pre>
 * **HTML output**:
 <pre>
-\<span class="CSS-class-addon"\>
-text-description
-\</span\>
+\<link rel="import" href="components/chat-control-muc.html"\> 
+\<com-chat-control-muc message="Some Dialogue"></com-chat-control-muc\>
 </pre>
-* **Description**:
+* **Description**: 
+For the guide, the character name is THE GUIDE, and the corresponding component is chat-control-guide.html
+This will, by default, make the dialogue clickable, and clicking will trigger a chat message being sent as the character.
 
+_actions_ beginning with *olf;
+
+* **Syntax**:
+<pre>
+*olf: Some online feed description.*
+</pre>
+* **HTML output**:
+<pre>
+\<link rel="import" href="components/olf.html"\> 
+\<com-olf description="Some online feed description"></com-olf\>
+</pre>
+* **Description**: 
+This will, by default, apply special style (olf class) for the given description.
+
+_actions_ beginning with VQ number;
+
+* **Syntax**:
+<pre>
+*VQ # Number: Some video cue description*
+</pre>
+* **HTML output**:
+<pre>
+\<link rel="import" href="components/cue-publisher.html"\> 
+\<com-cue-publisher t="VQ # Number" content="{}" cid="Number" desc="Some video cue description"></com-cue-publisher\>
+</pre>
+* **Description**: 
+This will, by default, make the video cue title clickable, and publish an NDN data with given prefix, show ID and cue ID on click.
 
 ## Preamble section syntax add-ons
 

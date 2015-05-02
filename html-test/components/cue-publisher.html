@@ -106,6 +106,8 @@
           }
 
           this.titleElement.addEventListener('mouseover', function() {
+            // Note: after the cue publishing discussion, it's possible that URL's not exposed here; 
+            // getting rid of the preview temporarily
             if (cueContent.yt1 != undefined && cueContent.yt1.URL != undefined) {
               self.chunkElement.innerHTML = '<img src=\"http://img.youtube.com/vi/' + self.youtubeKeyParser(cueContent.yt1.URL) + '/0.jpg\"></img>';
             } else {
@@ -138,7 +140,9 @@
         }
 
       } else {
+        // We accept empty content after discussion on cue publishing.
         console.log(componentName + ': content empty');
+        
         return;
       }
     };
