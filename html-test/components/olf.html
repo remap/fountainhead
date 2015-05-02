@@ -1,6 +1,4 @@
 <template>
-    <!-- Note: At this point, the character/dialogue class and cursor pointer are hardcoded in 
-       - chat component, while additional classes are derived from fromNickname -->
     <p id="olf-paragraph" class="olf"></p>
 </template>
 
@@ -9,9 +7,6 @@
     // I think it makes sense that OLF is a losatlantis-only component, while dialogue is a generic fountain CSS
     // Maybe we can modify the innerhtml of the parent window directly, instead of creating another shadowroot?
     // If we are doing that, why do we use web components for OLF in the first place?
-    
-    // TODO: This seems to only work in Chrome, verifying.
-    // TODO: We'll want more extensive formatting to the clickable dialogue, as an ordinary <a href>; or use <a href directly>
     
     (function(window, document, undefined) {
         var thatDoc = document;

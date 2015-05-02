@@ -33,6 +33,9 @@ Or run
     cd src
     python -O main.py -i ../html-test/your-fountain-file -o ../html-test/your-target-html-output -s
 
+## Contributing:
+For guide on scripting your own web components, please refer to [contributing.md](https://github.com/remap/fountainhead/blob/master/contributing.md)
+
 ## Links:
 Active script: http://the-archive.la/script/fountainhead/html-test/sample.html
 
