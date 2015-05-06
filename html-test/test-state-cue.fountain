@@ -23,9 +23,9 @@ Debug: Something has to be here...fixing
 Test for cue state publishing
 
 <<@cue-publisher-state
-  (t       = "Long running cue", 
+  (t       = "Series publishing cue", 
    cid     = -1, 
-   desc    = "This is a cue which uses JS cue state", 
+   desc    = "This is a cue which uses JS cue states; it triggers a random video play from a playlist every 10 seconds; replacing the events with load, wait_in, fade_in and run for actual cues.", 
    state   = {
 	 'play1': {
 	   time: 1000,

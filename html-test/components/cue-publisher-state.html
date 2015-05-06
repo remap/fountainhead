@@ -90,6 +90,10 @@
         var jsExpression = this.componentObject.desanitizeText(this.getAttribute('state'));
         // TODO: This way of passing arbitrary JS is not ideal; even if we keep this, we should catch the expection
         eval("var states = " + jsExpression);
+        
+        // Quick hack for not playing the same one twice
+        this.lastUrl = '';
+        
         if (states !== undefined) {
           this.cueObject = new window.CueObject(states);
           
@@ -115,7 +119,15 @@
                 nameSuffix.append(cmd);
                 dataName.append(self.showid).append(cueComponent).appendVersion((new Date).getTime()).append(nameSuffix);
                 
-                var content = '{\"yt1\": {\"URL\": \"https://www.youtube.com/watch?v=' + self.videoLinks[Math.floor((Math.random() * self.videoLinks.length))] + '\"}, \"postproc1\": {\"reset\": true}}';
+                // Try load a different url each time
+                var randIndex = Math.floor(Math.random() * self.videoLinks.length);
+                while (self.lastUrl != '' && self.videoLinks[randIndex] == self.lastUrl) {
+                  randIndex = Math.floor(Math.random() * self.videoLinks.length);
+                  self.lastUrl = self.videoLinks[randIndex];
+                }
+                self.lastUrl = self.videoLinks[randIndex];
+                
+                var content = '{\"yt1\": {\"URL\": \"https://www.youtube.com/watch?v=' + self.lastUrl + '\"}, \"postproc1\": {\"reset\": true}}';
                 self.ndnPublisherComponentObject.publishContent(dataName, content, false);
               }
             }(key));
