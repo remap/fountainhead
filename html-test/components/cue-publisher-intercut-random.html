@@ -71,7 +71,7 @@
       }
       
       if (this.cueTitle != '') {
-        this.titleElement.textContent = this.cueTitle;
+        this.titleElement.textContent = 'Start: ' + this.cueTitle;
       } else {
         console.log(componentName + ' : cueTitle(clickable link) empty');
         return;
@@ -88,71 +88,91 @@
       this.descElement.textContent = this.description;
       
       var self = this;
+      this.running = false;
+            
+      this.getRandomTimeout = function (low, range) {
+        if (low === undefined) {
+          low = 5000;
+        }
+        if (range === undefined) {
+          range = 5000;
+        }
+        return Math.floor(Math.random() * range) + low;
+      };
       
       this.publishRandom = function() {
-		var dataName = new Name(self.ndnPublisherComponentObject.namePrefix);
-		var cueComponent = new Name('cues');
-		var nameSuffix = new Name(self.cueId);
-	  
-		dataName.append(self.showid).append(cueComponent).appendVersion((new Date).getTime()).append(nameSuffix);
-	  
-		// Try load a different url each time, expected a list of more than 1 videos
-		var randIndex = Math.floor(Math.random() * self.videoLinks.length);
-		while (self.thisUrl != '' && self.lastUrl == self.thisUrl) {
-		  randIndex = Math.floor(Math.random() * self.videoLinks.length);
-		  self.thisUrl = self.videoLinks[randIndex];
-		}
-		self.thisUrl = self.videoLinks[randIndex];
-		self.lastUrl = self.thisUrl;
-	  
-		var content = '{\"yt1\": {\"URL\": \"https://www.youtube.com/watch?v=' + self.lastUrl + '\"}, \"postproc1\": {\"reset\": true}}';
-		self.ndnPublisherComponentObject.publishContent(dataName, content, false);
-	  }
+        if (this.running) {
+          var dataName = new Name(this.ndnPublisherComponentObject.namePrefix);
+          var cueComponent = new Name('cues');
+          var nameSuffix = new Name(this.cueId);
       
-      this.titleElement.addEventListener('click', function() {
-		self.cueId = '0';
-		if (self.hasAttribute('cid')) {
-		  self.cueId = self.getAttribute('cid');
-		}
-         
-        var lastTime = 0;
-        for (var i = 0; i < 30; i++) {
-          setTimeout(self.publishRandom, lastTime);
-          lastTime += Math.floor(Math.random() * 5000) + 5000;
+          dataName.append(this.showid).append(cueComponent).appendVersion((new Date).getTime()).append(nameSuffix);
+      
+          // Try load a different url each time, expected a list of more than 1 videos
+          var randIndex = Math.floor(Math.random() * this.videoLinks.length);
+          while (this.thisUrl != '' && this.lastUrl == this.thisUrl) {
+            randIndex = Math.floor(Math.random() * this.videoLinks.length);
+            this.thisUrl = this.videoLinks[randIndex];
+          }
+          this.thisUrl = this.videoLinks[randIndex];
+          this.lastUrl = this.thisUrl;
+      
+          var content = '{\"yt1\": {\"URL\": \"https://www.youtube.com/watch?v=' + this.lastUrl + '\"}}';
+          this.ndnPublisherComponentObject.publishContent(dataName, content, false);
+        
+          setTimeout(this.publishRandom.bind(this), this.getRandomTimeout());
+        } else {
+          console.log('Scheduled event: currently stopped.');
         }
-	  });
+      };
+      
+      this.cueId = '0';
+      if (this.hasAttribute('cid')) {
+        this.cueId = this.getAttribute('cid');
+      }
+    
+      this.titleElement.addEventListener('click', function() {
+        if (!self.running) {
+          self.titleElement.textContent = 'Stop: ' + self.cueTitle;
+          setTimeout(self.publishRandom.bind(self), self.getRandomTimeout(0, 0));
+          self.running = true;
+        } else {
+          self.titleElement.textContent = 'Start: ' + self.cueTitle;
+          self.running = false;
+        }
+      });
         
       this.requestYoutubePlaylist = function(playlistId, nextPageToken, videoLinks, apiKey, cntStart) {
-		var listRequest = new XMLHttpRequest();
-		var videoCnt = cntStart;
-	
-		listRequest.onreadystatechange = function() {
-		  if (listRequest.readyState==4 && listRequest.status==200) {
-			var result = JSON.parse(listRequest.responseText);
-			var videoSeq = {};
-			for (var i = 0; i < result.items.length; i++) {
-			  // could there be same video occurring twice in a playlist?
-			  videoSeq[result.items[i].contentDetails.videoId] = videoCnt;
-			  videoCnt ++;
-			  
-			  videoLinks.push(result.items[i].contentDetails.videoId);
-			}
-		
-			if (result.nextPageToken != undefined && result.nextPageToken != null) {
-			  self.requestYoutubePlaylist(playlistId, result.nextPageToken, videoLinks, apiKey, videoCnt);
-			} else {
-			  self.videoCnt = videoCnt;
-			}
-		  }
-		}
-		// TODO: API key is hard coded in the function at this point
-		var url = 'https://www.googleapis.com/youtube/v3/playlistItems?part=contentDetails&playlistId=' + playlistId + '&key=' + apiKey;
-		if (nextPageToken != undefined) {
-		  url += '&pageToken=' + nextPageToken;
-		}
-		listRequest.open('GET', url, true);
-		listRequest.send();
-	  };
+        var listRequest = new XMLHttpRequest();
+        var videoCnt = cntStart;
+    
+        listRequest.onreadystatechange = function() {
+          if (listRequest.readyState==4 && listRequest.status==200) {
+            var result = JSON.parse(listRequest.responseText);
+            var videoSeq = {};
+            for (var i = 0; i < result.items.length; i++) {
+              // could there be same video occurring twice in a playlist?
+              videoSeq[result.items[i].contentDetails.videoId] = videoCnt;
+              videoCnt ++;
+              
+              videoLinks.push(result.items[i].contentDetails.videoId);
+            }
+        
+            if (result.nextPageToken != undefined && result.nextPageToken != null) {
+              self.requestYoutubePlaylist(playlistId, result.nextPageToken, videoLinks, apiKey, videoCnt);
+            } else {
+              self.videoCnt = videoCnt;
+            }
+          }
+        }
+        // TODO: API key is hard coded in the function at this point
+        var url = 'https://www.googleapis.com/youtube/v3/playlistItems?part=contentDetails&playlistId=' + playlistId + '&key=' + apiKey;
+        if (nextPageToken != undefined) {
+          url += '&pageToken=' + nextPageToken;
+        }
+        listRequest.open('GET', url, true);
+        listRequest.send();
+      };
       
       this.playlistId = 'PLjardEiAzhrqARf5iNO0SLUiC_c0XquV_';
       this.videoLinks = [];

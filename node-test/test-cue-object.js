@@ -1,3 +1,4 @@
+// Test of cue object timing/pause/resume in node
 //export NODE_PATH=$NODE_PATH:/Users/zhehaowang/projects/fos/fountainhead/html-test/includes/
 
 var CueObject = require('cue-object').CueObject;

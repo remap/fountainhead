@@ -38,7 +38,7 @@ Test for cue state publishing
 	   time: 10000,
 	   callback: function () {
 		 self.shadowRoot.querySelector('#state-play2').click();
-	   }, 
+	   },
 	   state: 'playing2'
 	 },
 	 'play3': {
