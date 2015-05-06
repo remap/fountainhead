@@ -93,6 +93,7 @@
         
         // Quick hack for not playing the same one twice
         this.lastUrl = '';
+        this.thisUrl = '';
         
         if (states !== undefined) {
           this.cueObject = new window.CueObject(states);
@@ -119,13 +120,14 @@
                 nameSuffix.append(cmd);
                 dataName.append(self.showid).append(cueComponent).appendVersion((new Date).getTime()).append(nameSuffix);
                 
-                // Try load a different url each time
+                // Try load a different url each time, expected a list of more than 1 videos
                 var randIndex = Math.floor(Math.random() * self.videoLinks.length);
-                while (self.lastUrl != '' && self.videoLinks[randIndex] == self.lastUrl) {
+                while (self.thisUrl != '' && self.lastUrl == self.thisUrl) {
                   randIndex = Math.floor(Math.random() * self.videoLinks.length);
-                  self.lastUrl = self.videoLinks[randIndex];
+                  self.thisUrl = self.videoLinks[randIndex];
                 }
-                self.lastUrl = self.videoLinks[randIndex];
+                self.thisUrl = self.videoLinks[randIndex];
+                self.lastUrl = self.thisUrl;
                 
                 var content = '{\"yt1\": {\"URL\": \"https://www.youtube.com/watch?v=' + self.lastUrl + '\"}, \"postproc1\": {\"reset\": true}}';
                 self.ndnPublisherComponentObject.publishContent(dataName, content, false);
