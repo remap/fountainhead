@@ -29,10 +29,8 @@
 //var cueCmds = ['LOAD', 'GO', 'PAUSE', 'RESET', 'UNLOAD']
 
 // Note: need to keep the states in order when adding new states
-var cueStates = ['PAUSED', 'STOPPED', 'ACTIVE']
-
 var CueObject = function CueObject(events) {
-  this.state = cueStates[1];
+  this.state = CueObject.cueStates[1];
 
   this.timelineState = '';
   this.currentTime = 0;
@@ -43,6 +41,8 @@ var CueObject = function CueObject(events) {
   this.remainingEvents = 0;
 };
 
+CueObject.cueStates = ['PAUSED', 'STOPPED', 'ACTIVE'];
+
 /**
  * (Re)start execution from 'time' milliseconds
  */
@@ -51,7 +51,7 @@ CueObject.prototype.run = function(time) {
   if (time !== undefined) {
     startTime = time;
   }
-  this.state = cueStates[2];
+  this.state = CueObject.cueStates[2];
   this.remainingEvents = 0;
   
   for (key in this.events) {
@@ -74,7 +74,7 @@ CueObject.prototype.run = function(time) {
   }
   
   if (this.remainingEvents == 0) {
-    this.state = cueStates[1];
+    this.state = CueObject.cueStates[1];
   }
 };
 
@@ -84,7 +84,7 @@ CueObject.prototype.executeCallback = function(eventKey) {
   this.scheduledEvents[eventKey].remaining = -1;
   this.remainingEvents --;
   if (this.remainingEvents == 0) {
-    this.state = cueStates[1];
+    this.state = CueObject.cueStates[1];
   }
 };
 
@@ -96,7 +96,7 @@ CueObject.prototype.stop = function() {
     }
   }
   
-  this.state = cueStates[1];
+  this.state = CueObject.cueStates[1];
   this.timelineState = '';
   this.currentTime = 0;
   this.remainingEvents = 0;
@@ -107,13 +107,12 @@ CueObject.prototype.stop = function() {
  * TODO: Pause implementation
  */
 CueObject.prototype.pause = function(time) { 
-  console.log('Pause called');
-  if (this.state == cueStates[2]) {
+  if (this.state == CueObject.cueStates[2]) {
     var pauseTime = 0;
     if (time !== undefined) {
       console.log('Pause at arbitrary time not implemented yet.');
     } else {
-      this.state = cueStates[0];
+      this.state = CueObject.cueStates[0];
       var currentTime = Date.now();
       
       for (key in this.scheduledEvents) {
@@ -131,7 +130,7 @@ CueObject.prototype.pause = function(time) {
 };
 
 CueObject.prototype.resume = function() {
-  if (this.state == cueStates[0]) {
+  if (this.state == CueObject.cueStates[0]) {
     var self = this;
     for (key in this.scheduledEvents) {
       if (this.scheduledEvents[key].remaining > 0) {
@@ -139,39 +138,10 @@ CueObject.prototype.resume = function() {
         this.scheduledEvents[key].start = Date.now();
       }
     }
-    this.state = cueStates[2];
+    this.state = CueObject.cueStates[2];
   } else {
     console.log('Warning: current state of cue is not paused; resume ignored.')
   }
 };
 
 exports.CueObject = CueObject;
-
-
-// Sample test cue object.
-function onLoad(param) {
-  var currentTime = Date.now();
-  console.log('onLoad:\t' + (currentTime - startTime) + ' since start; Param ' + param);
-}
-
-function onRun(param) {
-  var currentTime = Date.now();
-  console.log('onRun:\t' + (currentTime - startTime) + ' since start; Param ' + param);
-}
-
-var testEvents = {
-  'load': {
-    time: 1000,
-    callback: function () {
-      onLoad('test param');
-    }, 
-    state: 'loaded'
-  },
-  'run': {
-    time: 2000,
-    callback: function () {
-      onRun('test run param');
-    }, 
-    state: 'running'
-  }
-};

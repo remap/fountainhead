@@ -1,4 +1,34 @@
+//export NODE_PATH=$NODE_PATH:/Users/zhehaowang/projects/fos/fountainhead/html-test/includes/
+
 var CueObject = require('cue-object').CueObject;
+
+// Sample test cue object.
+function onLoad(param) {
+  var currentTime = Date.now();
+  console.log('onLoad:\t' + (currentTime - startTime) + ' since start; Param ' + param);
+}
+
+function onRun(param) {
+  var currentTime = Date.now();
+  console.log('onRun:\t' + (currentTime - startTime) + ' since start; Param ' + param);
+}
+
+var testEvents = {
+  'load': {
+    time: 1000,
+    callback: function () {
+      onLoad('test param');
+    }, 
+    state: 'loaded'
+  },
+  'run': {
+    time: 2000,
+    callback: function () {
+      onRun('test run param');
+    }, 
+    state: 'running'
+  }
+};
 
 var testCue = new CueObject(testEvents);
 var startTime = Date.now();
@@ -54,7 +84,7 @@ setTimeout(
 // Keep this running forever
 setInterval(
   function(){
-    if (testCue.state == cueStates[1]) {
+    if (testCue.state == CueObject.cueStates[1]) {
       console.log('Cue execution done.');
     }
   }, 100);
