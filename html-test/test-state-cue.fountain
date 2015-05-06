@@ -35,28 +35,28 @@ Test for cue state publishing
 	   state: 'playing1'
 	 },
 	 'play2': {
-	   time: 4000,
+	   time: 10000,
 	   callback: function () {
 		 self.shadowRoot.querySelector('#state-play2').click();
 	   }, 
 	   state: 'playing2'
 	 },
 	 'play3': {
-	   time: 7000,
+	   time: 20000,
 	   callback: function () {
 		 self.shadowRoot.querySelector('#state-play3').click();
 	   }, 
 	   state: 'playing3'
 	 },
 	 'play4': {
-	   time: 10000,
+	   time: 30000,
 	   callback: function () {
 		 self.shadowRoot.querySelector('#state-play4').click();
 	   }, 
 	   state: 'playing4'
 	 },
 	 'play5': {
-	   time: 13000,
+	   time: 40000,
 	   callback: function () {
 		 self.shadowRoot.querySelector('#state-play5').click();
 	   }, 
