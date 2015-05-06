@@ -64,3 +64,7 @@ Test for cue state publishing
 	 }
    })>>
 
+<<@cue-publisher-intercut-random
+  (t       = "Random intercutting cue", 
+   cid     = -1,
+   desc    = "This is a cue which triggers random intercutting between 5-10 seconds.")>>
