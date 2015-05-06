@@ -80,7 +80,7 @@ def main(argv):
         parserVersion = ParserVersion.DEFAULT
     
     print('fountainhead: Special generation is \'' + str(parseSpecial) + '\'')
-        
+    
     fountainScript = FountainScript(inputFile, parserVersion)
     fountainHTML = FountainHTMLGenerator(fountainScript, cssFile, componentParent, includeParent, parserVersion, parseSpecial)
     htmlOutput = fountainHTML.generateHtml()

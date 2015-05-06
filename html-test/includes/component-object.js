@@ -1,8 +1,6 @@
 /**
  * ComponentObject is the parent class of web components, which includes basic component functions
  *
- * TODO: maybe better to have components inherit from two parent classes? One for HTMLElement, The other one for style related functions?
- *
  * Function:
  *   
  * @param self The web component element created from HTMLElement
@@ -65,13 +63,15 @@ ComponentObject.prototype.mergeCSSText = function(texts) {
     }
   }
   var s = '';
-  for(var attr in result){
+  for(var attr in result) {
     s += attr + ':' + ' ' + result[attr] + '; ';
   }
   return s.trim();
 };
 // This function takes the existing class names of given element,
 // and apply the class definitions in the parent document to this document
+// TODO: This class does not recognize styling options per element type, or element types in classes/divs
+//   (such as divid > p)
 ComponentObject.prototype.applyStyleFromParentDocument = function(ele) {
   var classNames = ele.className.split(" ");
   for (var i = 0; i < classNames.length; i++) {
@@ -108,7 +108,7 @@ ComponentObject.prototype.toggleClassVisibility = function (className, visible) 
 // This desanitizes texts such as sent chat messages, so that they get interpreted correctly on receiving side as html tags;
 // Reverse operation of similar call in Python
 ComponentObject.prototype.desanitizeText = function (text) {
-  return text.replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&#32;/g, ' ').replace(/&#34;/g, '\"').replace(/&#8216;/g, '\'');
+  return text.replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&#32;/g, ' ').replace(/&#34;/g, '\"').replace(/&#39;/g, '\'');
 };
 
 exports.ComponentObject = ComponentObject;

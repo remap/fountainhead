@@ -90,7 +90,8 @@ class FountainHTMLGenerator(object):
         return
     
     def sanitizeElementText(self, strText):
-        strText = strText.replace('<', '&lt;').replace('>', '&gt;').replace(' ', '&#32;').replace('\n', '&#32;').replace('\"', '&#34;').replace('\'', '&#8216;')
+        strText = strText.replace('<', '&lt;').replace('>', '&gt;').replace('\"', '&#34;').replace('\'', '&#39;')
+        strText = re.sub(r'\s+', '&#32;', strText).strip()
         return strText
     
     # HTML class is elementType with spaces replaced by dashes

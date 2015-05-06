@@ -1,0 +1,66 @@
+# Environment
+
+[showid] "chocolate_cookie_show"
+
+[include] ndn.js
+[prefix] new Name("/ndn/edu/ucla/remap/losatlantis")
+[face] new Face({host: "archive-dev.remap.ucla.edu"})
+[include] ndn-init.js
+[include] ndn-url-publisher-component.js
+
+[include] script-control.js
+[include] component-object.js
+[include] ndn-publisher-component-object.js
+[include] onload.js
+[include] cue-object.js
+
+# Body
+
+/*
+Debug: Something has to be here...fixing
+*/
+
+Test for cue state publishing
+
+<<@cue-publisher-state
+  (t       = "Long running cue", 
+   cid     = 90024, 
+   desc    = "This is a cue which uses JS cue state", 
+   state   = {
+	 'play1': {
+	   time: 1000,
+	   callback: function () {
+	     self.shadowRoot.querySelector('#state-play1').click();
+	   }, 
+	   state: 'playing1'
+	 },
+	 'play2': {
+	   time: 4000,
+	   callback: function () {
+		 self.shadowRoot.querySelector('#state-play2').click();
+	   }, 
+	   state: 'playing2'
+	 },
+	 'play3': {
+	   time: 7000,
+	   callback: function () {
+		 self.shadowRoot.querySelector('#state-play3').click();
+	   }, 
+	   state: 'playing3'
+	 },
+	 'play4': {
+	   time: 10000,
+	   callback: function () {
+		 self.shadowRoot.querySelector('#state-play4').click();
+	   }, 
+	   state: 'playing4'
+	 },
+	 'play5': {
+	   time: 13000,
+	   callback: function () {
+		 self.shadowRoot.querySelector('#state-play5').click();
+	   }, 
+	   state: 'playing5'
+	 }
+   })>>
+
