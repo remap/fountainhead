@@ -115,7 +115,7 @@
                 nameSuffix.append(cmd);
                 dataName.append(self.showid).append(cueComponent).appendVersion((new Date).getTime()).append(nameSuffix);
                 
-                var content = '{\"yt1\": {\"URL\": \"https://www.youtube.com/watch?v=' + self.videoLinks[Math.floor((Math.random() * self.videoLinks.length))] + '\"}}';
+                var content = '{\"yt1\": {\"URL\": \"https://www.youtube.com/watch?v=' + self.videoLinks[Math.floor((Math.random() * self.videoLinks.length))] + '\"}, \"postproc1\": {\"reset\": true}}';
                 self.ndnPublisherComponentObject.publishContent(dataName, content, false);
               }
             }(key));
