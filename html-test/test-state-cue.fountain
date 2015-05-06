@@ -24,7 +24,7 @@ Test for cue state publishing
 
 <<@cue-publisher-state
   (t       = "Long running cue", 
-   cid     = 90024, 
+   cid     = -1, 
    desc    = "This is a cue which uses JS cue state", 
    state   = {
 	 'play1': {
