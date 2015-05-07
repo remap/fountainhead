@@ -7,14 +7,98 @@
  * @param window The parent window of the web component
  */
 
-var ComponentObject = function ComponentObject(self, window) {
+var ComponentObject = function ComponentObject(document, window) {
   this.window = window;
-  this.shadowRoot = self.shadowRoot;
+  this.document = document;
+};
+
+ComponentObject.prototype.createComponent = function(componentName, createdCallback, attributeChangedCallback) {
+  var thatDoc = document;
+  var thisDoc = (thatDoc._currentScript || thatDoc.currentScript).ownerDocument;
+  if (thisDoc.querySelector('template') === null) {
+    console.log('Warning: createComponent halted because of no <template> in this document');
+    return;
+  }
+  var template = thisDoc.querySelector('template').content;
+  
+  var element = Object.create(HTMLElement.prototype);
+  var self = this;
+  
+  element.createdCallback = function() {
+    this.shadowRoot = this.createShadowRoot();
+    var clone = thatDoc.importNode(template, true);
+    this.shadowRoot.appendChild(clone);
+    
+    this.componentObject = self;
+    
+    var createdSelf = this;
+    
+    this.toggleClassVisibility = function (className, visible) {
+      var normalizedClass = className;
+      if (!normalizedClass.startsWith('.')) {
+        normalizedClass = '.' + normalizedClass;
+      }
+  
+      var eles = createdSelf.shadowRoot.querySelectorAll(normalizedClass);
+
+      var flag = visible;
+  
+      if (flag == undefined && eles.length > 0) {
+        flag = eles[0].style.display;        
+        if (flag == 'none') {
+          flag = 'block';
+        } else {
+          flag = 'none';
+        }
+      }
+  
+      for (var i = 0; i < eles.length; i++) {
+        eles[i].style.display = flag;
+      }
+    };
+    
+    this.getAttributeByListName = function (listAlias, defaultValue) {
+      for (var i = 0; i < listAlias.length; i++) {
+        if (this.hasAttribute(listAlias[i])) {
+          return this.getAttribute(listAlias[i]);
+        }
+      }
+      var ret = null;
+      if (defaultValue !== undefined) {
+        ret = defaultValue;
+      }
+      return ret;
+    };
+    
+    createdCallback(this);
+    
+    if (self.window.scriptControl.importedElements != undefined) {
+      self.window.scriptControl.importedElements.push(this);
+    } else {
+      console.log('Warning: scriptControl on window not defined; createdElement may not be accessible from parent document');
+    }
+  };
+  element.attributeChangedCallback = function(attr, oldVal, newVal) {
+    if (attributeChangedCallback !== undefined) {
+      attributeChangedCallback(attr, oldVal, newVal);
+    }
+  };
+  thatDoc.registerElement(componentName, {
+    prototype: element
+  });
 };
 
 /**
  * Styling functions for general web components goes here
  */
+ComponentObject.prototype.applyStyleFromParentDocumentAll = function(createdElement) {
+  var all = createdElement.shadowRoot.querySelectorAll('*');
+  
+  for (var i = 0; i < all.length; i++) {
+    this.applyStyleFromParentDocument(all[i]);
+  }
+};
+ 
 ComponentObject.prototype.htmlClassFromName = function(fromName) {
   str = fromName.toLowerCase().replace(' ', '-');
   return str;
@@ -79,30 +163,6 @@ ComponentObject.prototype.applyStyleFromParentDocument = function(ele) {
     if (elementStyle != undefined) {
       this.copyStyleToElement(elementStyle.style, ele);
     }
-  }
-};
-// This is a specific function for the visibility of the paragraph known to this web component
-ComponentObject.prototype.toggleClassVisibility = function (className, visible) {
-  var normalizedClass = className;
-  if (!normalizedClass.startsWith('.')) {
-    normalizedClass = '.' + normalizedClass;
-  }
-  
-  var eles = this.shadowRoot.querySelectorAll(normalizedClass);
-
-  var flag = visible;
-  
-  if (flag == undefined && eles.length > 0) {
-    flag = eles[0].style.display;        
-    if (flag == 'none') {
-      flag = 'block';
-    } else {
-      flag = 'none';
-    }
-  }
-  
-  for (var i = 0; i < eles.length; i++) {
-    eles[i].style.display = flag;
   }
 };
 // This desanitizes texts such as sent chat messages, so that they get interpreted correctly on receiving side as html tags;

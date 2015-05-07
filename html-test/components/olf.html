@@ -3,55 +3,12 @@
 </template>
 
 <script>
+  var componentObject = new window.ComponentObject(document, window);
+  
+  function onCreate(createdElement) {
+    createdElement.shadowRoot.querySelector('#olf-paragraph').textContent = createdElement.getAttributeByListName(['default', 'message', 'description', 'desc'], '');
+    componentObject.applyStyleFromParentDocumentAll(createdElement);
+  }
     
-    (function(window, document, undefined) {
-        var thatDoc = document;
-        var thisDoc =  (thatDoc._currentScript || thatDoc.currentScript).ownerDocument;
-        var template = thisDoc.querySelector('template').content;
-        
-        var element = Object.create(HTMLElement.prototype);
-        
-        element.createdCallback = function() {
-            this.shadowRoot = this.createShadowRoot();
-            var clone = thatDoc.importNode(template, true);
-            this.shadowRoot.appendChild(clone);
-            
-            this.componentObject = new window.ComponentObject(this, window);
-        
-            // We may not want to contain these in a paragraph at some point
-            this.paragraphElement = this.shadowRoot.querySelector('#olf-paragraph');
-            
-            this.content = '';
-            
-            if (this.hasAttribute('default')) {
-                this.content = this.getAttribute('default');
-            } else if (this.hasAttribute('message')) {
-                this.content = this.getAttribute('message');
-            } else if (this.hasAttribute('description')) {
-                this.content = this.getAttribute('description');
-            } else {
-                console.log('OLF: Content should not be empty');
-                return;
-            }
-            
-            // Use "inherited" style sheet
-            // Note: This may not be ideal for applying the CSS styles from window's document
-            this.componentObject.applyStyleFromParentDocument(this.paragraphElement);
-            
-            // Apply text for elements
-            this.paragraphElement.textContent = this.content;
-            
-            // Append thisDoc to parent's importedDocs:
-            // Note: This assumes the knowledge of window's scriptControl element name
-            if (window.scriptControl.importedElements != undefined) {
-                window.scriptControl.importedElements.push(this);
-            }
-        };
-        element.attributeChangedCallback = function(attr, oldVal, newVal) {
-            console.log('olf onAttributeChanged stub');
-        };
-        window.element = thatDoc.registerElement('com-olf', {
-            prototype: element
-        });
-    })(window, document);
+  componentObject.createComponent('com-olf', onCreate);
 </script>

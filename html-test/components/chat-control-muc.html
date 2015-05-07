@@ -6,134 +6,72 @@
 </template>
 
 <script>
-    // TODO: This seems to only work in Chrome, verifying.
+  // chat-control-muc: Chat control component for observatory is an XMPP client
+  //   that connects to a chatroom on a given XMPP host, and talks to it
+  //   
+  // @dependency: Strophe.js, Strophe.muc.js, jquery
+  //
+  // @env connection XMPP connection should be established to use this component
+  // @env chatroom connection This user should join the chatroom in order to send messages to that chatroom
+  //
+  // @param roomJID The chatroom JID on the XMPP host; 
+  //    if not specified, the component will look for if defaultMucRoom is defined
+  // @param message The message to be sent
+  // @param fromNickname This user's nickname in the muc chatroom;
+  //    this name is also used for css class and the name of the dialogue character
+  //    if not specified, the component will look for if defaultMucNickName is defined
+  
+  var componentObject = new window.ComponentObject(document, window);
+  
+  function onCreate(createdElement) {
+    var characterElement = createdElement.shadowRoot.querySelector('#muc-character');
+    var dialogueElement = createdElement.shadowRoot.querySelector('#muc-dialogue');
     
-    // chat-control-muc: Chat control component for observatory is an XMPP client
-    //   that connects to a chatroom on a given XMPP host, and talks to it
-    //   
-    // @dependency: Strophe.js, Strophe.muc.js, jquery
-    //
-    // @env connection XMPP connection should be established to use this component
-    // @env chatroom connection This user should join the chatroom in order to send messages to that chatroom
-    //
-    // @param roomJID The chatroom JID on the XMPP host; 
-    //    if not specified, the component will look for if defaultMucRoom is defined
-    // @param message The message to be sent
-    // @param fromNickname This user's nickname in the muc chatroom;
-    //    this name is also used for css class and the name of the dialogue character
-    //    if not specified, the component will look for if defaultMucNickName is defined
+    var roomJID = createdElement.getAttributeByListName(['roomJID'], window.defaultMucRoom);
+    var fromNickname = createdElement.getAttributeByListName(['fromNickname'], window.defaultMucNickName);
+    var message = createdElement.getAttributeByListName(['message'], '');
     
-    (function(window, document, undefined) {
-        var thatDoc = document;
-        var thisDoc =  (thatDoc._currentScript || thatDoc.currentScript).ownerDocument;
-        var template = thisDoc.querySelector('template').content;
-        
-        var ChatControlMucElement = Object.create(HTMLElement.prototype);
-        
-        ChatControlMucElement.createdCallback = function() {
-            var shadowRoot = this.createShadowRoot();
-            var clone = thatDoc.importNode(template, true);
-            shadowRoot.appendChild(clone);
-            
-            // We may not want to contain these in a paragraph at some point
-            this.characterElement = shadowRoot.querySelector('#muc-character');
-            this.dialogueElement = shadowRoot.querySelector('#muc-dialogue');
-            
-            this.componentObject = new window.ComponentObject(this, window);
-            
-            if (this.hasAttribute('style')) {
-                var style = this.getAttribute('style');
-                this.characterElement.setAttribute("style", style);
-            }
-            else {
-                
-            }
-            
-            this.roomJID = '';
-            if (this.hasAttribute('roomJID')) {
-                this.roomJID = this.getAttribute('roomJID');
-            } else {
-                if (window.defaultMucRoom == undefined || window.defaultMucRoom == null || window.defaultMucRoom == '') {
-                    console.log('Room JID not specified; defaultMucRoom definition not found, either');
-                    return;
-                } else {
-                    this.roomJID = window.defaultMucRoom;
-                }
-            }
-            
-            this.fromNickname = ''
-            if (this.hasAttribute('fromNickname')) {
-                fromNickname = this.getAttribute('fromNickname');
-            } else {
-                if (window.defaultMucNickName == undefined || window.defaultMucNickName == null || window.defaultMucNickName == '') {
-                    console.log('Default nickname not specified; defaultMucNickName definition not found, either');
-                    return;
-                } else {
-                    this.fromNickname = window.defaultMucNickName;
-                }
-            }
-            
-            this.content = '';
-            
-            if (this.hasAttribute('message')) {
-                this.content = this.getAttribute('message');
-            } else {
-                console.log('Message content should not be empty');
-                return;
-            }
-            
-            // Apply class names (dynamically) for the specific character that said this line
-            this.characterElement.setAttribute("class", this.characterElement.getAttribute("class") + " " + this.componentObject.htmlClassFromName(this.fromNickname));
-            this.dialogueElement.setAttribute("class", this.dialogueElement.getAttribute("class") + " " + this.componentObject.htmlClassFromName(this.fromNickname) + "-dialogue");
-            
-            this.characterElement.textContent = this.fromNickname.toUpperCase();
-            this.dialogueElement.textContent = this.content;
-            
-            var self = this;
-            
-            this.componentObject.applyStyleFromParentDocument(this.characterElement);
-            this.componentObject.applyStyleFromParentDocument(this.dialogueElement);
-            
-            // We trace up the CSS styles in the parent documents that created this component
-            // This is used for handling potential dual dialogues of the guide and observatory
-            
-            // TODO: This does not treat inheritance correctly yet: generic definition for element type, such as 'p', 
-            // and element type belonging to a class, such as '.dual-dialogue p' are not treated correctly
-            var tempNode = this.parentNode;
-            while (tempNode) {
-                if (tempNode.className && tempNode.className.indexOf("dual-dialogue") >= 0) {
-                    var dualDialogueStyle = this.componentObject.getStyle('.dual-dialogue p');
-                    this.componentObject.copyStyleToElement(dualDialogueStyle.style, this.characterElement);
-                    this.componentObject.copyStyleToElement(dualDialogueStyle.style, this.dialogueElement);
-                    
-                    var dualDialogueCharacterStyle = this.componentObject.getStyle('.dual-dialogue .character');
-                    this.componentObject.copyStyleToElement(dualDialogueCharacterStyle.style, this.characterElement);
-                    
-                    break;
-                }
-                tempNode = tempNode.parentNode;
-            }
-            
-            this.dialogueElement.addEventListener('click', function(){
-                if (connection == undefined || connection == null) {
-                    console.log('XMPP connection not established');
-                    return;
-                }
-                
-                // Looks like desanitize here does not help
-                var message = $msg({
-                  "to" : self.roomJID,
-                  "type" : 'groupchat',
-                  "from_nickname" : self.fromNickname,
-                }).c("body").t(self.content);
-                connection.send(message.tree());
-            });
-        };
-        ChatControlMucElement.attributeChangedCallback = function(attr, oldVal, newVal) {
-            console.log('chatControlMuc onAttributeChanged stub');
-        };
-        window.chatControlMucElement = thatDoc.registerElement('com-chat-control-muc', {
-            prototype: ChatControlMucElement
-        });
-    })(window, document);
+    characterElement.textContent = fromNickname.toUpperCase();
+    dialogueElement.textContent = message;
+    
+    characterElement.setAttribute("class", characterElement.getAttribute("class") + " " + createdElement.componentObject.htmlClassFromName(fromNickname));
+    dialogueElement.setAttribute("class", dialogueElement.getAttribute("class") + " " + createdElement.componentObject.htmlClassFromName(fromNickname) + "-dialogue");
+    
+    dialogueElement.addEventListener('click', function(){
+      if (connection == undefined || connection == null) {
+		console.log('XMPP connection not established');
+		return;
+	  }
+	 
+	  // Looks like desanitize here does not help
+	  var chatMsg = $msg({
+		"to" : roomJID,
+		"type" : 'groupchat',
+		"from_nickname" : fromNickname,
+	  }).c("body").t(message);
+	  connection.send(chatMsg.tree());
+	});
+	
+	componentObject.applyStyleFromParentDocumentAll(createdElement);
+    
+    // TODO: This does not treat inheritance correctly yet: generic definition for element type, such as 'p', 
+    // and element type belonging to a class, such as '.dual-dialogue p' are not treated correctly
+    // Chat dual dialogue is the reason why applyStyleFromParentDocumentAll is not in the generalized create function
+    var tempNode = createdElement.parentNode;
+    while (tempNode) {
+      if (tempNode.className && tempNode.className.indexOf("dual-dialogue") >= 0) {
+        var dualDialogueStyle = componentObject.getStyle('.dual-dialogue p');
+        componentObject.copyStyleToElement(dualDialogueStyle.style, characterElement);
+        componentObject.copyStyleToElement(dualDialogueStyle.style, dialogueElement);
+      
+        var dualDialogueCharacterStyle = componentObject.getStyle('.dual-dialogue .character');
+        componentObject.copyStyleToElement(dualDialogueCharacterStyle.style, characterElement);
+      
+        break;
+      }
+      tempNode = tempNode.parentNode;
+    }
+  }
+    
+  componentObject.createComponent('com-chat-control-muc', onCreate);
 </script>

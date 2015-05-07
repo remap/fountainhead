@@ -6,165 +6,115 @@
 </template>
 
 <script>
-    // TODO: This seems to only work in Chrome, verifying.
-    // TODO: We'll want more extensive formatting to the clickable dialogue, as an ordinary <a href>; or use <a href directly>
+  // TODO: This seems to only work in Chrome, verifying.
+  // TODO: We'll want more extensive formatting to the clickable dialogue, as an ordinary <a href>; or use <a href directly>
+  
+  // chat-control-guide: Chat control component for the guide is an XMPP client
+  //   that talks to specific JIDs
+  //   
+  // @dependency: Strophe.js, jquery
+  //
+  // @env connection XMPP connection should be established to use this component
+  // @env db_session A session with Cassandra database should have been established on the server side
+  //
+  // @param userJID The chatroom JID on the XMPP host; 
+  //    if not specified, the component will talk to all users
+  // @param message The message to be sent
+  // @param fromNickname This user's nickname in the muc chatroom;
+  //    if not specified, the component will look for if defaultChatNickName is defined
+  var componentObject = new window.ComponentObject(document, window);
+  
+  function onCreate(createdElement) {
+    var characterElement = createdElement.shadowRoot.querySelector('#guide-character');
+    var dialogueElement = createdElement.shadowRoot.querySelector('#guide-dialogue');
     
-    // chat-control-guide: Chat control component for the guide is an XMPP client
-    //   that talks to specific JIDs
-    //   
-    // @dependency: Strophe.js, jquery
-    //
-    // @env connection XMPP connection should be established to use this component
-    // @env db_session A session with Cassandra database should have been established on the server side
-    //
-    // @param userJID The chatroom JID on the XMPP host; 
-    //    if not specified, the component will talk to all users
-    // @param message The message to be sent
-    // @param fromNickname This user's nickname in the muc chatroom;
-    //    if not specified, the component will look for if defaultChatNickName is defined
+    var userJID = createdElement.getAttributeByListName(['userJID'], '');
+    var fromNickname = createdElement.getAttributeByListName(['fromNickname'], window.defaultChatNickName);
+    var message = createdElement.getAttributeByListName(['message'], '');
     
-    (function(window, document, undefined) {
-        var thatDoc = document;
-        var thisDoc =  (thatDoc._currentScript || thatDoc.currentScript).ownerDocument;
-        var template = thisDoc.querySelector('template').content;
+    characterElement.textContent = fromNickname.toUpperCase();
+    dialogueElement.textContent = message;
+    
+    characterElement.setAttribute("class", characterElement.getAttribute("class") + " " + createdElement.componentObject.htmlClassFromName(fromNickname));
+    dialogueElement.setAttribute("class", dialogueElement.getAttribute("class") + " " + createdElement.componentObject.htmlClassFromName(fromNickname) + "-dialogue");
+    
+    dialogueElement.addEventListener('click', function(){
+      if (connection == undefined || connection == null) {
+        console.log('XMPP connection not established');
+        return;
+      }
+      
+      // Probably should move {{ user_name }} interpretation to client side; left on server side for now.
+      if (self.content != '') {
+        /*
+        var matchedResult = content.match(/{{\s+(\w+)\s+}}?/g);
         
-        var ChatControlGuideElement = Object.create(HTMLElement.prototype);
+        // result contains the field names that we should query in 'users' table
+        var fieldArray = [];
+        for (var i = 0; i < matchedResult.length; i++) {
+            fieldArray.push(matchedResult[i].replace(/{{\s+(\w+)\s+}}?/, '$1'));
+        }
+        */
         
-        ChatControlGuideElement.createdCallback = function() {
-            var shadowRoot = this.createShadowRoot();
-            var clone = thatDoc.importNode(template, true);
-            shadowRoot.appendChild(clone);
-            
-            this.componentObject = new window.ComponentObject(this, window);
-            
-            // We may not want to contain these in a paragraph at some point
-            this.characterElement = shadowRoot.querySelector('#guide-character');
-            this.dialogueElement = shadowRoot.querySelector('#guide-dialogue');
-            
-            this.userJID = '';
-            if (this.hasAttribute('userJID')) {
-                this.userJID = this.getAttribute('userJID');
-                console.log('To UserJID is specified, unexpected behavior.');
-                return;
-            } else {
-                
-            }
-            
-            this.fromNickname = '';
-            if (this.hasAttribute('fromNickname')) {
-                fromNickname = this.getAttribute('fromNickname');
-            } else {
-                if (window.defaultChatNickName == undefined || window.defaultChatNickName == null || window.defaultChatNickName == '') {
-                    console.log('Default nickname not specified; defaultChatNickName definition not found, either');
-                    return;
-                } else {
-                    this.fromNickname = window.defaultChatNickName;
-                }
-            }
-            
-            this.content = '';
-            
-            if (this.hasAttribute('message')) {
-                this.content = this.getAttribute('message');
-            } else {
-                console.log('Message content should not be empty');
-                return;
-            }
-            
-            // Apply class names (dynamically) for the specific character that said this line, in this example, it's always 'the-guide'; left here for extendibility
-            this.characterElement.setAttribute("class", this.characterElement.getAttribute("class") + " " + this.componentObject.htmlClassFromName(this.fromNickname));
-            this.dialogueElement.setAttribute("class", this.dialogueElement.getAttribute("class") + " " + this.componentObject.htmlClassFromName(this.fromNickname) + "-dialogue");
-            
-            this.characterElement.textContent = this.fromNickname.toUpperCase();
-            this.dialogueElement.textContent = this.content;
-            
-            this.componentObject.applyStyleFromParentDocument(this.characterElement);
-            this.componentObject.applyStyleFromParentDocument(this.dialogueElement);
-            
-            // We trace up the CSS styles in the parent documents that created this component
-            // This is used for handling potential dual dialogues of the guide and observatory
-            
-            // TODO: This does not treat inheritance correctly yet: generic definition for element type, such as 'p', 
-            // and element type belonging to a class, such as '.dual-dialogue p' are not treated correctly
-            var tempNode = this.parentNode;
-            while (tempNode) {
-                if (tempNode.className && tempNode.className.indexOf("dual-dialogue") >= 0) {
-                    var dualDialogueStyle = this.componentObject.getStyle('.dual-dialogue p');
-                    this.componentObject.copyStyleToElement(dualDialogueStyle.style, this.characterElement);
-                    this.componentObject.copyStyleToElement(dualDialogueStyle.style, this.dialogueElement);
-                    
-                    var dualDialogueCharacterStyle = this.componentObject.getStyle('.dual-dialogue .character');
-                    this.componentObject.copyStyleToElement(dualDialogueCharacterStyle.style, this.characterElement);
-                    
-                    break;
-                }
-                tempNode = tempNode.parentNode;
-            }
-            
-            var self = this;
-            
-            this.dialogueElement.addEventListener('click', function(){
-                if (connection == undefined || connection == null) {
-                    console.log('XMPP connection not established');
-                    return;
-                }
-                
-                // Probably should move {{ user_name }} interpretation to client side; left on server side for now.
-                if (self.content != '') {
-                    /*
-                    var matchedResult = content.match(/{{\s+(\w+)\s+}}?/g);
-                    
-                    // result contains the field names that we should query in 'users' table
-                    var fieldArray = [];
-                    for (var i = 0; i < matchedResult.length; i++) {
-                        fieldArray.push(matchedResult[i].replace(/{{\s+(\w+)\s+}}?/, '$1'));
-                    }
-                    */
-                    
-                    var data = new FormData();
-                    // Query hard-coded for basic implementation
-                    data.append('query', 'select email, user_name, type from users;');
+        var data = new FormData();
+        // Query hard-coded for basic implementation
+        data.append('query', 'select email, user_name, type from users;');
 
-                    var xhr = new XMLHttpRequest();
-                    // Note: POST is using hardcoded URL with my test server; server currently set to accept request originated from all.
-                    // Note: seems that right now the random video URL should be chosen onLoad, instead of onClick; need to confirm
-                    xhr.open('POST', 'http://archive-dev.remap.ucla.edu:5004/query', true);
-                    xhr.onload = function () {
-                        var result = JSON.parse(this.responseText);
-                        if (result !== undefined && result !== null && result.length > 0) {
-                            // Note: we'll probably want a model class that reflects the users table schema
-                            for (var i = 0; i < result.length; i++) {
-                                // The guide only talks to tourists
-                                if (result[i][2] == 1) {
-                                    var contentSent = self.content.replace(/{{\s+(email)\s+}}?/g, result[i][0])
-                                                          .replace(/{{\s+(user_name)\s+}}?/g, result[i][1])
-                                                          .replace(/{{\s+(type)\s+}}?/g, result[i][2]);
-                            
-                                    var message = $msg({
-                                        // Note: here we also use the jabber account name inference
-                                        "to" : result[i][0].replace('@', '.') + '@archive-dev.remap.ucla.edu',
-                                        "type" : "chat",
-                                        "from_nickname" : self.fromNickname
-                                    }).c("body").t(contentSent);
-                                
-                                    connection.send(message.tree()); 
-                                }
-                            }
-                        }
-                    };
-                    xhr.send(data);
-                    
-                } else {
-                    console.log('Message content should not be empty');
-                    return;
-                }
-            });
+        var xhr = new XMLHttpRequest();
+        // Note: POST is using hardcoded URL with my test server; server currently set to accept request originated from all.
+        // Note: seems that right now the random video URL should be chosen onLoad, instead of onClick; need to confirm
+        xhr.open('POST', 'http://archive-dev.remap.ucla.edu:5004/query', true);
+        xhr.onload = function () {
+          var result = JSON.parse(this.responseText);
+          if (result !== undefined && result !== null && result.length > 0) {
+            // Note: we'll probably want a model class that reflects the users table schema
+            for (var i = 0; i < result.length; i++) {
+              // The guide only talks to tourists
+              if (result[i][2] == 1) {
+                var contentSent = self.content.replace(/{{\s+(email)\s+}}?/g, result[i][0])
+                                      .replace(/{{\s+(user_name)\s+}}?/g, result[i][1])
+                                      .replace(/{{\s+(type)\s+}}?/g, result[i][2]);
+        
+                var message = $msg({
+                    // Note: here we also use the jabber account name inference
+                    "to" : result[i][0].replace('@', '.') + '@archive-dev.remap.ucla.edu',
+                    "type" : "chat",
+                    "from_nickname" : self.fromNickname
+                }).c("body").t(contentSent);
+            
+                connection.send(message.tree()); 
+              }
+            }
+          }
         };
-        ChatControlGuideElement.attributeChangedCallback = function(attr, oldVal, newVal) {
-            console.log('chatControlMuc onAttributeChanged stub');
-        };
-        window.chatControlGuideElement = thatDoc.registerElement('com-chat-control-guide', {
-            prototype: ChatControlGuideElement
-        });
-    })(window, document);
+        xhr.send(data);
+        
+      } else {
+        console.log('Message content should not be empty');
+        return;
+      }
+    });
+    
+    componentObject.applyStyleFromParentDocumentAll(createdElement);
+    
+    // TODO: This does not treat inheritance correctly yet: generic definition for element type, such as 'p', 
+    // and element type belonging to a class, such as '.dual-dialogue p' are not treated correctly
+    // Chat dual dialogue is the reason why applyStyleFromParentDocumentAll is not in the generalized create function
+    var tempNode = createdElement.parentNode;
+    while (tempNode) {
+      if (tempNode.className && tempNode.className.indexOf("dual-dialogue") >= 0) {
+        var dualDialogueStyle = componentObject.getStyle('.dual-dialogue p');
+        componentObject.copyStyleToElement(dualDialogueStyle.style, characterElement);
+        componentObject.copyStyleToElement(dualDialogueStyle.style, dialogueElement);
+      
+        var dualDialogueCharacterStyle = componentObject.getStyle('.dual-dialogue .character');
+        componentObject.copyStyleToElement(dualDialogueCharacterStyle.style, characterElement);
+      
+        break;
+      }
+      tempNode = tempNode.parentNode;
+    }
+  }
+    
+  componentObject.createComponent('com-chat-control-guide', onCreate);  
 </script>
