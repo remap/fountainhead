@@ -55,8 +55,11 @@
           
           var content = 'https://www.youtube.com/watch?v=' + createdElement.videoLinks[randIndex];
           ndnPublisherComponentObject.publishContent(dataName, content, false);
-    
-          setTimeout(createdElement.publishRandom(targetName, suffix), createdElement.getRandomTimeout(4000, 2000));
+          
+          // Hardcoded for known namespace on container + one digit
+          var controlNumber = parseInt(suffix[suffix.indexOf('container') + 9]);
+          suffix = 'door_comp/container' + ((controlNumber + 1) % 4 + 1).toString() + '/serviceUrl.text';
+          setTimeout(createdElement.publishRandom(targetName, suffix), createdElement.getRandomTimeout(2000, 2000));
         } else {
           console.log('Scheduled event: currently stopped; or youtube videoID loading not finished.');
         }
@@ -67,9 +70,7 @@
       if (!createdElement.running) {
         titleElement.textContent = 'Stop: ' + cueTitle;
         // Hardcoded for door controlling
-        for (var i = 1; i < 5; i ++) {
-          setTimeout(createdElement.publishRandom('nodes/node4', 'door_comp/container' + i.toString() + '/serviceUrl.text'), createdElement.getRandomTimeout(0, 0));
-        }
+        setTimeout(createdElement.publishRandom('nodes/node4', 'door_comp/container1/serviceUrl.text'), createdElement.getRandomTimeout(0, 0));
         createdElement.running = true;
       } else {
         titleElement.textContent = 'Start: ' + cueTitle;
