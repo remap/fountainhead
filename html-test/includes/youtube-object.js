@@ -66,8 +66,6 @@ YoutubeObject.prototype.requestYoutubeItem = function(options, nextPageToken, vi
 	url += '&pageToken=' + nextPageToken;
   }
   
-  console.log(url);
-  
   listRequest.open('GET', url, true);
   listRequest.send();
 };

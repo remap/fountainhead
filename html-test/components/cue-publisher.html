@@ -58,7 +58,7 @@
       // Note: for now, the names are hard-coded, since namespace design is not fully discussed
       var cueComponent = new Name('cues');
       var nameSuffix = new Name(cueId);
-      dataName.append(self.showid).append(cueComponent).appendVersion((new Date).getTime()).append(nameSuffix);
+      dataName.append(showid).append(cueComponent).appendVersion((new Date).getTime()).append(nameSuffix);
 
       createdElement.ndnPublisherComponentObject.publishContent(dataName, content, false);
     });

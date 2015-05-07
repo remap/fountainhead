@@ -27,104 +27,104 @@
     descElement.textContent = description;
     
     if (createdElement.hasAttribute('state')) {
-	  var jsExpression = componentObject.desanitizeText(createdElement.getAttribute('state'));
-	  // TODO: This way of passing arbitrary JS is not ideal; even if we keep this, we should catch the expection
-	  eval("var states = " + jsExpression);
-	  
-	  // For not playing the same one twice
-	  createdElement.lastUrl = '';
-	  createdElement.thisUrl = '';
-	  
-	  if (states !== undefined) {
-		createdElement.cueObject = new window.CueObject(states);
-		
-		for (key in states) {
-		  var triggerPara = document.createElement("p");
-		  var triggerNode = document.createTextNode(key);
-		  triggerPara.id = 'state-' + key;
-		  triggerPara.className += 'video-control-text';
-		  triggerPara.appendChild(triggerNode);
-		  
-		  // TODO: This specific function should be generalized
-		  triggerPara.addEventListener('click', function(cmd) {
-			return function() {
-			  var dataName = new Name(ndnPublisherComponentObject.namePrefix);
-			  var cueComponent = new Name('cues');
-			  var nameSuffix = new Name(cueId);
-			  
-			  nameSuffix.append(cmd);
-			  dataName.append(self.showid).append(cueComponent).appendVersion((new Date).getTime()).append(nameSuffix);
-			  
-			  // Try load a different url each time, expected a list of more than 1 videos
-			  var randIndex = Math.floor(Math.random() * createdElement.videoLinks.length);
-			  while (self.thisUrl != '' && self.lastUrl == self.thisUrl) {
-				randIndex = Math.floor(Math.random() * createdElement.videoLinks.length);
-				self.thisUrl = createdElement.videoLinks[randIndex];
-			  }
-			  createdElement.thisUrl = createdElement.videoLinks[randIndex];
-			  createdElement.lastUrl = createdElement.thisUrl;
-			  
-			  var content = '{\"yt1\": {\"URL\": \"https://www.youtube.com/watch?v=' + createdElement.lastUrl + '\"}, \"postproc1\": {\"reset\": true}}';
-			  ndnPublisherComponentObject.publishContent(dataName, content, false);
-			}
-		  }(key));
-		  
-		  createdElement.shadowRoot.appendChild(triggerPara);
-		}
-		
-		if (states['pause'] == undefined && states['resume'] == undefined) {
-		  createdElement.paused = false;
-		  
-		  var triggerPara = document.createElement("p");
-		  var triggerNode = document.createTextNode('pause');
-		  triggerPara.id = 'state-pause-resume';
-		  triggerPara.className += 'video-control-text';
-		  triggerPara.appendChild(triggerNode);
-		  
-		  triggerPara.addEventListener('click', function(para) {
-			return function() {
-			  if (!createdElement.paused) {
-				createdElement.cueObject.pause();
-				para.innerText = 'resume';
-				createdElement.paused = true;
-			  } else {
-				createdElement.cueObject.resume();
-				para.innerText = 'pause';
-				createdElement.paused = false;
-			  }
-			}
-		  }(triggerPara));
+      var jsExpression = componentObject.desanitizeText(createdElement.getAttribute('state'));
+      // TODO: This way of passing arbitrary JS is not ideal; even if we keep this, we should catch the expection
+      eval("var states = " + jsExpression);
+      
+      // For not playing the same one twice
+      createdElement.lastUrl = '';
+      createdElement.thisUrl = '';
+      
+      if (states !== undefined) {
+        createdElement.cueObject = new window.CueObject(states);
+        
+        for (key in states) {
+          var triggerPara = document.createElement("p");
+          var triggerNode = document.createTextNode(key);
+          triggerPara.id = 'state-' + key;
+          triggerPara.className += 'video-control-text';
+          triggerPara.appendChild(triggerNode);
+          
+          // TODO: This specific function should be generalized
+          triggerPara.addEventListener('click', function(cmd) {
+            return function() {
+              var dataName = new Name(ndnPublisherComponentObject.namePrefix);
+              var cueComponent = new Name('cues');
+              var nameSuffix = new Name(cueId);
+              
+              nameSuffix.append(cmd);
+              dataName.append(showid).append(cueComponent).appendVersion((new Date).getTime()).append(nameSuffix);
+              
+              // Try load a different url each time, expected a list of more than 1 videos
+              var randIndex = Math.floor(Math.random() * createdElement.videoLinks.length);
+              while (createdElement.thisUrl != '' && createdElement.lastUrl == createdElement.thisUrl) {
+                randIndex = Math.floor(Math.random() * createdElement.videoLinks.length);
+                createdElement.thisUrl = createdElement.videoLinks[randIndex];
+              }
+              createdElement.thisUrl = createdElement.videoLinks[randIndex];
+              createdElement.lastUrl = createdElement.thisUrl;
+              
+              var content = '{\"yt1\": {\"URL\": \"https://www.youtube.com/watch?v=' + createdElement.lastUrl + '\"}, \"postproc1\": {\"reset\": true}}';
+              ndnPublisherComponentObject.publishContent(dataName, content, false);
+            }
+          }(key));
+          
+          createdElement.shadowRoot.appendChild(triggerPara);
+        }
+        
+        if (states['pause'] == undefined && states['resume'] == undefined) {
+          createdElement.paused = false;
+          
+          var triggerPara = document.createElement("p");
+          var triggerNode = document.createTextNode('pause');
+          triggerPara.id = 'state-pause-resume';
+          triggerPara.className += 'video-control-text';
+          triggerPara.appendChild(triggerNode);
+          
+          triggerPara.addEventListener('click', function(para) {
+            return function() {
+              if (!createdElement.paused) {
+                createdElement.cueObject.pause();
+                para.innerText = 'resume';
+                createdElement.paused = true;
+              } else {
+                createdElement.cueObject.resume();
+                para.innerText = 'pause';
+                createdElement.paused = false;
+              }
+            }
+          }(triggerPara));
 
-		  createdElement.shadowRoot.appendChild(triggerPara);
-		}
-		
-		if (states['stop'] == undefined) {
-		  var triggerPara = document.createElement("p");
-		  var triggerNode = document.createTextNode('stop');
-		  triggerPara.className += 'video-control-text';
-		  triggerPara.appendChild(triggerNode);
-		  triggerPara.id = 'state-stop';
-		  triggerPara.addEventListener('click', function() {
-			createdElement.cueObject.stop();
-		  });
+          createdElement.shadowRoot.appendChild(triggerPara);
+        }
+        
+        if (states['stop'] == undefined) {
+          var triggerPara = document.createElement("p");
+          var triggerNode = document.createTextNode('stop');
+          triggerPara.className += 'video-control-text';
+          triggerPara.appendChild(triggerNode);
+          triggerPara.id = 'state-stop';
+          triggerPara.addEventListener('click', function() {
+            createdElement.cueObject.stop();
+          });
 
-		  createdElement.shadowRoot.appendChild(triggerPara);
-		}
-	  }
-	  
-	  titleElement.addEventListener('click', function() {
-		createdElement.cueObject.run();
-	  });
-	  
-	  createdElement.youtubeObject = new window.YoutubeObject('AIzaSyDCjPW8n_9MgGcEAYVPMmuO_sJ3a7jLe5M');
-	  createdElement.videoLinks = [];
-	  createdElement.youtubeObject.requestYoutubeItem({
-	    'query': 'playlistItems',
-	    'part': 'contentDetails',
-	    'playlistId': 'PLjardEiAzhrqARf5iNO0SLUiC_c0XquV_',
-	    'videoIdPath': 'contentDetails.videoId'
-	  }, undefined, createdElement.videoLinks, undefined);
-	}
+          createdElement.shadowRoot.appendChild(triggerPara);
+        }
+      }
+      
+      titleElement.addEventListener('click', function() {
+        createdElement.cueObject.run();
+      });
+      
+      createdElement.youtubeObject = new window.YoutubeObject('AIzaSyDCjPW8n_9MgGcEAYVPMmuO_sJ3a7jLe5M');
+      createdElement.videoLinks = [];
+      createdElement.youtubeObject.requestYoutubeItem({
+        'query': 'playlistItems',
+        'part': 'contentDetails',
+        'playlistId': 'PLjardEiAzhrqARf5iNO0SLUiC_c0XquV_',
+        'videoIdPath': 'contentDetails.videoId'
+      }, undefined, createdElement.videoLinks, undefined);
+    }
     componentObject.applyStyleFromParentDocumentAll(createdElement);
   }
   
