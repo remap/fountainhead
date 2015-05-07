@@ -58,7 +58,7 @@
           
           // Hardcoded for known namespace on container + one digit
           var controlNumber = parseInt(suffix[suffix.indexOf('container') + 9]);
-          suffix = 'door_comp/container' + ((controlNumber + 1) % 4 + 1).toString() + '/serviceUrl.text';
+          suffix = 'door_comp/container' + (controlNumber % 4 + 1).toString() + '/serviceUrl.text';
           setTimeout(createdElement.publishRandom(targetName, suffix), createdElement.getRandomTimeout(2000, 2000));
         } else {
           console.log('Scheduled event: currently stopped; or youtube videoID loading not finished.');
