@@ -13,11 +13,12 @@
 [include] ndn-publisher-component-object.js
 [include] onload.js
 [include] cue-object.js
+[include] youtube-object.js
 
 # Body
 
 /*
-Debug: Something has to be here...fixing
+Debug: The state parameter is not ideal.
 */
 
 Test for cue state publishing
@@ -30,35 +31,35 @@ Test for cue state publishing
 	 'play1': {
 	   time: 1000,
 	   callback: function () {
-	     self.shadowRoot.querySelector('#state-play1').click();
+	     createdElement.shadowRoot.querySelector('#state-play1').click();
 	   }, 
 	   state: 'playing1'
 	 },
 	 'play2': {
 	   time: 10000,
 	   callback: function () {
-		 self.shadowRoot.querySelector('#state-play2').click();
+		 createdElement.shadowRoot.querySelector('#state-play2').click();
 	   },
 	   state: 'playing2'
 	 },
 	 'play3': {
 	   time: 20000,
 	   callback: function () {
-		 self.shadowRoot.querySelector('#state-play3').click();
+		 createdElement.shadowRoot.querySelector('#state-play3').click();
 	   }, 
 	   state: 'playing3'
 	 },
 	 'play4': {
 	   time: 30000,
 	   callback: function () {
-		 self.shadowRoot.querySelector('#state-play4').click();
+		 createdElement.shadowRoot.querySelector('#state-play4').click();
 	   }, 
 	   state: 'playing4'
 	 },
 	 'play5': {
 	   time: 40000,
 	   callback: function () {
-		 self.shadowRoot.querySelector('#state-play5').click();
+		 createdElement.shadowRoot.querySelector('#state-play5').click();
 	   }, 
 	   state: 'playing5'
 	 }
