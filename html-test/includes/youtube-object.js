@@ -33,8 +33,10 @@ YoutubeObject.prototype.requestYoutubeItem = function(options, nextPageToken, vi
 	if (listRequest.readyState == 4 && listRequest.status==200) {
 	  var result = JSON.parse(listRequest.responseText);
 	  for (var i = 0; i < result.items.length; i++) {
-	    
-	    eval('videoLinks.push(result.items[i].' + options.videoIdPath + ')');
+	    eval('var videoId = result.items[i].' + options.videoIdPath);
+	    if (videoId !== undefined) {
+	      videoLinks.push(videoId);
+	    }
 	  }
   
 	  if (result.nextPageToken !== undefined && result.nextPageToken !== null) {

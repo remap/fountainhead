@@ -46,12 +46,15 @@ var face = new Face({host: "archive-dev.remap.ucla.edu"});
   </script>
   <link rel="import" href="components/cue-publisher-state.html" onerror="onImportError(event)">
   <link rel="import" href="components/cue-publisher-intercut-random.html" onerror="onImportError(event)">
+  <link rel="import" href="components/door-publisher.html" onerror="onImportError(event)">
   <div id="scriptbody">
     <p class='action'>Test for cue state publishing</p>
 <com-cue-publisher-state state={&#32;&#39;play1&#39;:&#32;{&#32;time:&#32;1000,&#32;callback:&#32;function&#32;()&#32;{&#32;createdElement.shadowRoot.querySelector(&#39;#state-play1&#39;).click();&#32;},&#32;state:&#32;&#39;playing1&#39;&#32;},&#32;&#39;play2&#39;:&#32;{&#32;time:&#32;10000,&#32;callback:&#32;function&#32;()&#32;{&#32;createdElement.shadowRoot.querySelector(&#39;#state-play2&#39;).click();&#32;},&#32;state:&#32;&#39;playing2&#39;&#32;},&#32;&#39;play3&#39;:&#32;{&#32;time:&#32;20000,&#32;callback:&#32;function&#32;()&#32;{&#32;createdElement.shadowRoot.querySelector(&#39;#state-play3&#39;).click();&#32;},&#32;state:&#32;&#39;playing3&#39;&#32;},&#32;&#39;play4&#39;:&#32;{&#32;time:&#32;30000,&#32;callback:&#32;function&#32;()&#32;{&#32;createdElement.shadowRoot.querySelector(&#39;#state-play4&#39;).click();&#32;},&#32;state:&#32;&#39;playing4&#39;&#32;},&#32;&#39;play5&#39;:&#32;{&#32;time:&#32;40000,&#32;callback:&#32;function&#32;()&#32;{&#32;createdElement.shadowRoot.querySelector(&#39;#state-play5&#39;).click();&#32;},&#32;state:&#32;&#39;playing5&#39;&#32;}&#32;} desc=&#34;This&#32;is&#32;a&#32;cue&#32;which&#32;uses&#32;JS&#32;cue&#32;states;&#32;it&#32;triggers&#32;a&#32;random&#32;video&#32;play&#32;from&#32;a&#32;playlist&#32;every&#32;10&#32;seconds;&#32;replacing&#32;the&#32;events&#32;with&#32;load,&#32;wait_in,&#32;fade_in&#32;and&#32;run&#32;for&#32;actual&#32;cues.&#34; t=&#34;Series&#32;publishing&#32;cue&#34; cid=-1></com-cue-publisher-state>
     <a target="_blank" href="components/cue-publisher-state.html" class="xref-code">cue-publisher-state</a>
 <com-cue-publisher-intercut-random desc=&#34;This&#32;is&#32;a&#32;cue&#32;which&#32;triggers&#32;random&#32;intercutting&#32;between&#32;5-10&#32;seconds.&#34; t=&#34;Random&#32;intercutting&#32;cue&#34; cid=-1></com-cue-publisher-intercut-random>
     <a target="_blank" href="components/cue-publisher-intercut-random.html" class="xref-code">cue-publisher-intercut-random</a>
+<com-door-publisher t=&#34;Door&#32;publishing&#34; desc=&#34;This&#32;push&#32;random&#32;video&#32;from&#32;our&#32;channel&#32;to&#32;4&#32;doors&#32;on&#32;node4&#32;every&#32;4&#32;~&#32;6&#32;seconds.&#32;Parameters&#32;are&#32;hardcoded&#32;into&#32;the&#32;JS&#32;component.&#34;></com-door-publisher>
+    <a target="_blank" href="components/door-publisher.html" class="xref-code">door-publisher</a>
   </div></section>
 </body>
 </html>
