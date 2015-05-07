@@ -47,6 +47,7 @@ Author: Future of Storytelling Studio 2015
 [include] script-control.js
 [include] component-object.js
 [include] ndn-publisher-component-object.js
+[include] youtube-interaction-object.js
 [include] onload.js
 
 # CharacterTypes

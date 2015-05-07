@@ -45,7 +45,7 @@
       }
       
       // Probably should move {{ user_name }} interpretation to client side; left on server side for now.
-      if (self.content != '') {
+      if (message != '') {
         /*
         var matchedResult = content.match(/{{\s+(\w+)\s+}}?/g);
         
@@ -71,18 +71,18 @@
             for (var i = 0; i < result.length; i++) {
               // The guide only talks to tourists
               if (result[i][2] == 1) {
-                var contentSent = self.content.replace(/{{\s+(email)\s+}}?/g, result[i][0])
+                var contentSent = message.replace(/{{\s+(email)\s+}}?/g, result[i][0])
                                       .replace(/{{\s+(user_name)\s+}}?/g, result[i][1])
                                       .replace(/{{\s+(type)\s+}}?/g, result[i][2]);
         
-                var message = $msg({
+                var chatMsg = $msg({
                     // Note: here we also use the jabber account name inference
                     "to" : result[i][0].replace('@', '.') + '@archive-dev.remap.ucla.edu',
                     "type" : "chat",
-                    "from_nickname" : self.fromNickname
+                    "from_nickname" : fromNickname
                 }).c("body").t(contentSent);
             
-                connection.send(message.tree()); 
+                connection.send(chatMsg.tree()); 
               }
             }
           }

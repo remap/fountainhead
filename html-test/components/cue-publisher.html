@@ -5,150 +5,64 @@
 </template>
 
 <script>
-  (function(window, document, undefined) {
-    var thatDoc = document;
-    var thisDoc =  (thatDoc._currentScript || thatDoc.currentScript).ownerDocument;
-    var template = thisDoc.querySelector('template').content;
-     
-    var componentName = 'com-cue-publisher';
+  var componentObject = new window.ComponentObject(document, window);
+  var componentName = 'com-cue-publisher';
+  
+  function onCreate(createdElement) {
+    createdElement.ndnPublisherComponentObject = new window.NDNPublisherComponentObject(createdElement, window);
+    createdElement.ndnPublisherComponentObject.parseParameters();
     
-    var element = Object.create(HTMLElement.prototype);
+    createdElement.youtubeObject = new window.YoutubeObject();
     
-    element.createdCallback = function() {
-      this.shadowRoot = this.createShadowRoot();
-      var clone = thatDoc.importNode(template, true);
-      this.shadowRoot.appendChild(clone);
-      
-      this.componentObject = new window.ComponentObject(this, window);
-      this.ndnPublisherComponentObject = new window.NDNPublisherComponentObject(this, window);
-      
-      // Append thisDoc to parent's importedDocs:
-      // Note: This assumes the knowledge of window's scriptControl element name
-      if (window.scriptControl.importedElements != undefined) {
-        window.scriptControl.importedElements.push(this);
-      }
-      
-      /**
-       * Duplicate of code from ndn-url-publisher-component.js: 
-       * ndn environment parameter processing 
-       */
-      this.ndnPublisherComponentObject.parseParameters();
-      
-      if (this.hasAttribute('showid')) {
-        this.showid = this.getAttribute('showid');
-      } else if (window.showid !== undefined && window.showid !== null) {
-        this.showid = window.showid;
-      } else {
-        console.log(componentName + ': showid is not defined for sunset URL publishing, creating default for window');
-        window.showid = 'default';
-        this.showid = window.showid;
-      }
-      
-      /**
-       * Unique code for cue publishing
-       *
-       * Using youtube's video key, video details can be fetched:
-       * https://www.googleapis.com/youtube/v3/videos?part=snippet,contentDetails,statistics,status&key=AIzaSyDCjPW8n_9MgGcEAYVPMmuO_sJ3a7jLe5M&id=QEb6ANksXCs
-       */
-      // this.title is reserved for something else
-      this.cueTitle = '';
-      
-      this.titleElement = this.shadowRoot.querySelector('#cue-title');
-      this.descElement = this.shadowRoot.querySelector('#cue-description');
-      this.chunkElement = this.shadowRoot.querySelector('#cue-chunk');
-      
-      /**
-       * TODO: generalize this to put apply style for all web components with one call.
-       */
-      this.componentObject.applyStyleFromParentDocument(this.titleElement);
-      this.componentObject.applyStyleFromParentDocument(this.descElement);
-      this.componentObject.applyStyleFromParentDocument(this.chunkElement);
-
-      if (this.hasAttribute('cueTitle')) {
-        this.cueTitle = this.getAttribute('cueTitle');
-      } else if (this.hasAttribute('t')) {
-        this.cueTitle = this.getAttribute('t');
-      }
-      
-      if (this.cueTitle != '') {
-        this.titleElement.textContent = this.cueTitle;
-      } else {
-        console.log(componentName + ' : cueTitle(clickable link) empty');
-        return;
-      }
-      
-      this.description = '';
-      
-      if (this.hasAttribute('description')) {
-        this.description = this.getAttribute('description');
-      } else if (this.hasAttribute('desc')) {
-        this.description = this.getAttribute('desc');
-      }
-      
-      this.descElement.textContent = this.description;
-      
-      var self = this;
-      
-      if (this.hasAttribute('content')) {
-        this.content = this.getAttribute('content');
-        
-        try{
-          var cueContent = JSON.parse(this.content);
-          
-          this.youtubeKeyParser = function (url) {
-            var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
-            var match = url.match(regExp);
-            if (match && match[7].length == 11){
-              return match[7];
-            } else {
-              alert("Youtube video url incorrect");
-            }
-          }
-
-          this.titleElement.addEventListener('mouseover', function() {
-            // Note: after the cue publishing discussion, it's possible that URL's not exposed here; 
-            // getting rid of the preview temporarily
-            if (cueContent.yt1 != undefined && cueContent.yt1.URL != undefined) {
-              self.chunkElement.innerHTML = '<img src=\"http://img.youtube.com/vi/' + self.youtubeKeyParser(cueContent.yt1.URL) + '/0.jpg\"></img>';
-            } else {
-              console.log(componentName + ': no video url provided for this cue');
-            }
-          });
+    var showid = createdElement.getAttributeByListName(['showid'], window.showid);
+    var cueTitle = createdElement.getAttributeByListName(['cueTitle', 't'], '');
+    var description = createdElement.getAttributeByListName(['description', 'desc'], '');
+    var content = createdElement.getAttributeByListName(['content'], '');
+    var cueId = createdElement.getAttributeByListName(['cid'], '-1');
     
-          this.titleElement.addEventListener('mouseout', function() {
-            self.chunkElement.innerHTML = '';
-          });
-
-          this.titleElement.addEventListener('click', function() {
-            self.cueId = '0';
-            if (self.hasAttribute('cid')) {
-              self.cueId = self.getAttribute('cid');
-            }
-            
-            // TODO: referencing namePrefix like this is not ideal
-            var dataName = new Name(self.ndnPublisherComponentObject.namePrefix);
-            // Note: for now, the names are hard-coded, since namespace design is not fully discussed
-            var cueComponent = new Name('cues');
-            var nameSuffix = new Name(self.cueId);
-            dataName.append(self.showid).append(cueComponent).appendVersion((new Date).getTime()).append(nameSuffix);
-
-            self.ndnPublisherComponentObject.publishContent(dataName, self.content, false);
-          });
-          
-        } catch (error) {
-          console.log(componentName + ' ' + error);
+    var titleElement = createdElement.shadowRoot.querySelector('#cue-title');
+    var descElement = createdElement.shadowRoot.querySelector('#cue-description');
+    var chunkElement = createdElement.shadowRoot.querySelector('#cue-chunk');
+    
+    titleElement.textContent = cueTitle;
+    descElement.textContent = description;
+    
+    componentObject.applyStyleFromParentDocumentAll(createdElement);
+    
+    // Preview display is disabled because most of the cues don't have the old JSON format url1
+    /*
+    try {
+      var cueContent = JSON.parse(this.content);
+    
+      titleElement.addEventListener('mouseover', function() {
+        // Note: after the cue publishing discussion, it's possible that URL's not exposed here; 
+        // getting rid of the preview temporarily
+        if (cueContent.yt1 != undefined && cueContent.yt1.URL != undefined) {
+          chunkElement.innerHTML = '<img src=\"http://img.youtube.com/vi/' + createdElement.youtubeObject.youtubeKeyParser(cueContent.yt1.URL) + '/0.jpg\"></img>';
+        } else {
+          console.log(componentName + ': no video url provided for this cue');
         }
-
-      } else {
-        // We accept empty content after discussion on cue publishing.
-        console.log(componentName + ': content empty');
-        
-        return;
-      }
-    };
+      });
     
-    thatDoc.registerElement(componentName, {
-      prototype: element
+      titleElement.addEventListener('mouseout', function() {
+        chunkElement.innerHTML = '';
+      });
+    } catch (error) {
+      console.log(componentName + ' : ' + error);
+    }
+    */
+    
+    titleElement.addEventListener('click', function() {
+      // TODO: referencing namePrefix like this is not ideal
+      var dataName = new Name(createdElement.ndnPublisherComponentObject.namePrefix);
+      // Note: for now, the names are hard-coded, since namespace design is not fully discussed
+      var cueComponent = new Name('cues');
+      var nameSuffix = new Name(cueId);
+      dataName.append(self.showid).append(cueComponent).appendVersion((new Date).getTime()).append(nameSuffix);
+
+      createdElement.ndnPublisherComponentObject.publishContent(dataName, content, false);
     });
-  })(window, document);
+  }
+  
+  componentObject.createComponent(componentName, onCreate);
 </script>
