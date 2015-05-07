@@ -53,7 +53,7 @@
           // Try load a different url each time, expected a list of more than 1 videos
           var randIndex = Math.floor(Math.random() * createdElement.videoLinks.length);
           
-          var content = '{\"yt1\": {\"URL\": \"https://www.youtube.com/watch?v=' + createdElement.videoLinks[randIndex] + '\"}}';
+          var content = 'https://www.youtube.com/watch?v=' + createdElement.videoLinks[randIndex];
           ndnPublisherComponentObject.publishContent(dataName, content, false);
     
           setTimeout(createdElement.publishRandom(targetName, suffix), createdElement.getRandomTimeout(4000, 2000));

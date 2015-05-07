@@ -34,6 +34,7 @@ YoutubeObject.prototype.requestYoutubeItem = function(options, nextPageToken, vi
 	  var result = JSON.parse(listRequest.responseText);
 	  for (var i = 0; i < result.items.length; i++) {
 	    eval('var videoId = result.items[i].' + options.videoIdPath);
+	    // For query: search, we can get channelId and playlistId, too
 	    if (videoId !== undefined) {
 	      videoLinks.push(videoId);
 	    }
