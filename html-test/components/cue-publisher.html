@@ -30,9 +30,8 @@
     componentObject.applyStyleFromParentDocumentAll(createdElement);
     
     // Preview display is disabled because most of the cues don't have the old JSON format url1
-    /*
     try {
-      var cueContent = JSON.parse(this.content);
+      var cueContent = JSON.parse(content);
     
       titleElement.addEventListener('mouseover', function() {
         // Note: after the cue publishing discussion, it's possible that URL's not exposed here; 
@@ -50,7 +49,6 @@
     } catch (error) {
       console.log(componentName + ' : ' + error);
     }
-    */
     
     titleElement.addEventListener('click', function() {
       // TODO: referencing namePrefix like this is not ideal

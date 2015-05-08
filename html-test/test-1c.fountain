@@ -12,6 +12,7 @@
 [include] component-object.js
 [include] ndn-publisher-component-object.js
 [include] onload.js
+[include] youtube-object.js
 
 # Body
 

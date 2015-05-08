@@ -62,7 +62,7 @@
             if (result.items[0].contentDetails.duration != 'PT0S') {
 			  var content = 'https://www.youtube.com/watch?v=' + createdElement.videoLinks[randIndex];
 			  ndnPublisherComponentObject.publishContent(dataName, content, false);
-		  
+		      
 			  // Hardcoded for known namespace on container + one digit
 			  var controlNumber = parseInt(suffix[suffix.indexOf('container') + 9]);
 			  suffix = 'door_comp/container' + (controlNumber % 4 + 1).toString() + '/serviceUrl.text';
