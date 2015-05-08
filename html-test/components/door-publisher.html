@@ -15,6 +15,7 @@
     var description = createdElement.getAttributeByListName(['description', 'desc'], '');
     var content = createdElement.getAttributeByListName(['content'], '');
     var cueId = createdElement.getAttributeByListName(['cid'], '-1');
+    var nodeName = createdElement.getAttributeByListName(['node'], 'node3');
     
     var titleElement = createdElement.shadowRoot.querySelector('#cue-title');
     var descElement = createdElement.shadowRoot.querySelector('#cue-description');
@@ -80,7 +81,7 @@
       if (!createdElement.running) {
         titleElement.textContent = 'Stop: ' + cueTitle;
         // Hardcoded for door controlling
-        setTimeout(createdElement.publishRandom('nodes/node4', 'door_comp/container1/serviceUrl.text'), createdElement.getRandomTimeout(0, 0));
+        setTimeout(createdElement.publishRandom('nodes/' + nodeName, 'door_comp/container1/serviceUrl.text'), createdElement.getRandomTimeout(0, 0));
         createdElement.running = true;
       } else {
         titleElement.textContent = 'Start: ' + cueTitle;

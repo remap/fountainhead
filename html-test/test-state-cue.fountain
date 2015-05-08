@@ -71,5 +71,11 @@ Test for cue state publishing
    desc    = "This is a cue which triggers random intercutting between 5-10 seconds.")>>
 
 <<@door-publisher
-  (t       = "Door publishing",
-   desc    = "This push random video from our channel to 4 doors on node4 every 4 ~ 6 seconds. Parameters are hardcoded into the JS component.")>>
+  (t       = "Door publishing node 3",
+   node    = node3,
+   desc    = "This push random video from our channel to 4 doors on a node every 2 ~ 4 seconds. Parameters are hardcoded into the JS component.")>>
+
+<<@door-publisher
+  (t       = "Door publishing node 4",
+   node    = node4,
+   desc    = "This push random video from our channel to 4 doors on a node every 2 ~ 4 seconds. Parameters are hardcoded into the JS component.")>>
