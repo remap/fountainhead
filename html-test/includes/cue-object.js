@@ -9,22 +9,7 @@
  *
  * Right now can we assume only one instance of the active script being loaded to control the show?
  */
- 
-/**
- * States: STOPPED, ACTIVE, PAUSED
- * Timeline position: UNLOADED, READY, WAIT_IN, FADE_IN, RUN, WAIT_OUT, FADE_OUT, WAIT_AF, COMPLETE
- * Cue command messages in NDN name: LOAD, GO, PAUSE, RESET, UNLOAD
- 
-    def trans_READY(self):    pass # UNLOADED/COMPLETE => READY  (PREP GOES HERE)
-    def trans_GO(self):       pass # READY => WAIT_IN  (GO-SYNC AUTOFOLLOW HERE)
-    def trans_FADE_IN(self):  pass # WAIT_IN => FADE_IN
-    def trans_RUN(self):      pass # FADE_IN => RUN
-    def trans_WAIT_OUT(self): pass # RUN => WAIT_OUT
-    def trans_FADE_OUT(self): pass # WAIT_OUT => FADE_OUT
-    def trans_WAIT_AF(self):  pass # FADE_OUT => WAIT_AF
-    def trans_COMPLETE(self): pass # WAIT_AF => COMPLETE  (POST-CUE AUTOFOLLOW HERE)
- */
- 
+
 // Do we want to make cue states and cue commands customizable on child classes?
 //var cueCmds = ['LOAD', 'GO', 'PAUSE', 'RESET', 'UNLOAD']
 

@@ -63,7 +63,7 @@
         var xhr = new XMLHttpRequest();
         // Note: POST is using hardcoded URL with my test server; server currently set to accept request originated from all.
         // Note: seems that right now the random video URL should be chosen onLoad, instead of onClick; need to confirm
-        xhr.open('POST', 'http://archive-dev.remap.ucla.edu:5004/query', true);
+        xhr.open('POST', 'http://archive-dev.remap.ucla.edu/app/query', true);
         xhr.onload = function () {
           var result = JSON.parse(this.responseText);
           if (result !== undefined && result !== null && result.length > 0) {

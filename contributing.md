@@ -50,25 +50,27 @@ References:
 
 ### Existing helper prototypes
 
-Many of our web components may share similar purposes. To avoid (over) duplicate of code, objects of two prototypes can be created in the web component to access their functions.
+Many of our web components share similar purposes. To avoid (over) duplicate of code, objects of two prototypes can be created in the web component to access their functions.
 
 These prototypes are currently included once in the parent HTML document.
 
 **ComponentObject**
 
-Component object contains common functions such as applying styles of CSS classes from parent. They are created with:
+Component object offers an easy way to create web components, and copy their styles from what's defined in parent window. This object offers an alternative to the sample code above for creating web components.
+
+Sample code
 
 ```html
-element.componentObject = new parentWindow.ComponentObject(parentWindow, window);
+var componentObject = new window.ComponentObject(document, window);
+  
+function onCreate(createdElement) {
+  ...
+  componentObject.applyStyleFromParentDocumentAll(createdElement);
+}
+  
+componentObject.createComponent('com-name', onCreate);
 ```
-
-And by calling
-
-```html
-element.componentObject.applyStyleFromParentDocument(childElement);
-```
-
-The CSS style classes that you've assigned to childElement will try to inherit from the parent window's CSS. (Alternatively, you can include the parent's CSS file in the web component, though that would assume knowledge of the location of the CSS file.)
+createComponent call will register this component, and call onCreate when the component is referenced in parent window. onCreate has the created element as its parameter, which has attribute shadowRoot for the created shadow dom. applyStyleFromParentDocumentAll will apply the CSS styles in parent window.
 
 **NDNPublisherComponentObject**
 
@@ -83,6 +85,10 @@ element.ndnPublisherComponentObject.publishContent(dataName, content, false);
 ```
 
 creates such a object, tries to parse the parameters passed to this element, and publishes NDN data.
+
+**YoutubeObject**
+
+Youtube object contains methods which uses Data API v3 to fetch youtube videos/playlists/channels, etc.
 
 _More prototype functions are being generalized._
 
