@@ -1,0 +1,62 @@
+<template>
+  <p id="cue-title" class="video-control-text"></p>
+  <p id="cue-description" class="video-control-desc"></p>
+  <p id="cue-chunk" class="video-control-chunk"></p>
+</template>
+
+<script>
+  var componentObject = new window.ComponentObject(document, window);
+  var componentName = 'com-random-video-publisher';
+  
+  function onCreate(createdElement) {
+    createdElement.ndnPublisherComponentObject = new window.NDNPublisherComponentObject(createdElement, window);
+    createdElement.ndnPublisherComponentObject.parseParameters();
+    
+    createdElement.youtubeObject = new window.YoutubeObject('AIzaSyDCjPW8n_9MgGcEAYVPMmuO_sJ3a7jLe5M');
+    
+    var showid = createdElement.getAttributeByListName(['showid'], window.showid);
+    var cueTitle = createdElement.getAttributeByListName(['cueTitle', 't'], '');
+    var description = createdElement.getAttributeByListName(['description', 'desc'], '');
+    var cueId = createdElement.getAttributeByListName(['cid'], '-1');
+    
+    var titleElement = createdElement.shadowRoot.querySelector('#cue-title');
+    var descElement = createdElement.shadowRoot.querySelector('#cue-description');
+    var chunkElement = createdElement.shadowRoot.querySelector('#cue-chunk');
+    
+    var containerUrl = createdElement.getAttributeByListName(['containerId'], '1');
+    
+    titleElement.textContent = cueTitle;
+    descElement.textContent = description;
+    createdElement.videoLinks = [];
+	
+	var content = '';
+	createdElement.youtubeObject.requestYoutubeItem({
+	  'query': 'search',
+	  'part': 'snippet,id',
+	  'channelId': 'UCdHYVYRpXuWedoj71N2TcQg',
+	  'videoIdPath': 'id.videoId',
+	  'maxResults': '20'
+	}, undefined, createdElement.videoLinks, function () {
+	  createdElement.finishedFetching = true;
+	});
+	
+    titleElement.addEventListener('click', function() {
+      // TODO: referencing namePrefix like this is not ideal
+      var dataName = new Name(createdElement.ndnPublisherComponentObject.namePrefix);
+      // Note: for now, the names are hard-coded, since namespace design is not fully discussed
+      var nodeComponent = new Name('nodes/node4');
+      suffix = 'door_comp/container' + containerUrl + '/serviceUrl.text';
+      var nameSuffix = new Name(suffix);
+      
+      var randIndex = Math.floor(Math.random() * createdElement.videoLinks.length);
+      var content = 'https://www.youtube.com/watch?v=' + createdElement.videoLinks[randIndex];
+          
+      dataName.append(showid).append(nodeComponent).appendVersion((new Date).getTime()).append(nameSuffix);
+      createdElement.ndnPublisherComponentObject.publishContent(dataName, content, false);
+    });
+    
+    componentObject.applyStyleFromParentDocumentAll(createdElement);
+  }
+  
+  componentObject.createComponent(componentName, onCreate);
+</script>

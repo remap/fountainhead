@@ -79,3 +79,8 @@ Test for cue state publishing
   (t       = "Door publishing node 4",
    node    = node4,
    desc    = "This push random video from our channel to 4 doors on a node every 2 ~ 4 seconds. Parameters are hardcoded into the JS component.")>>
+
+<<@random-video-publisher
+  (t       = "random video publisher",
+   containerId    = 1,
+   desc    = "Test for crash.")>>
