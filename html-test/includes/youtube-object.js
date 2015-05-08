@@ -17,26 +17,23 @@ YoutubeObject.prototype.youtubeKeyParser = function (url) {
 }
 
 YoutubeObject.prototype.requestYoutubeItem = function(options, nextPageToken, videoLinks, onDone) {
-  var listRequest = new XMLHttpRequest();
-  
   if (!options.hasOwnProperty('query')) {
     console.log('Request word not specified, returned.');
     return;
   }
   
-  if (!options.hasOwnProperty('videoIdPath')) {
-    console.log('Option object does not have videoId JSON path for the fetched results.');
-    return;
-  }
   var self = this;
+  var listRequest = new XMLHttpRequest();
   listRequest.onreadystatechange = function() {
 	if (listRequest.readyState == 4 && listRequest.status==200) {
 	  var result = JSON.parse(listRequest.responseText);
 	  for (var i = 0; i < result.items.length; i++) {
-	    eval('var videoId = result.items[i].' + options.videoIdPath);
-	    // For query: search, we can get channelId and playlistId, too
-	    if (videoId !== undefined) {
-	      videoLinks.push(videoId);
+	    if (options.hasOwnProperty('videoIdPath')) {
+	      eval('var videoId = result.items[i].' + options.videoIdPath);
+	      // For query: search, we can get channelId and playlistId, too
+	      if (videoId !== undefined) {
+	        videoLinks.push(videoId);
+	      }
 	    }
 	  }
   
@@ -44,7 +41,8 @@ YoutubeObject.prototype.requestYoutubeItem = function(options, nextPageToken, vi
 		self.requestYoutubeItem(options, result.nextPageToken, videoLinks, onDone);
 	  } else {
 	    if (onDone !== undefined) {
-	      onDone(videoLinks);
+	      // we return the last result only, so for list/channel fetching, videoLinks can be relied upon while result cannot
+	      onDone(result);
 	    }
 	  }
 	}
