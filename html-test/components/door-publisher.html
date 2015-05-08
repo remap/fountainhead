@@ -68,7 +68,7 @@
 			  suffix = 'door_comp/container' + (controlNumber % 4 + 1).toString() + '/serviceUrl.text';
 			  setTimeout(createdElement.publishRandom(targetName, suffix), createdElement.getRandomTimeout(2000, 2000));
 			} else {
-			  createdElement.publishRandom(targetName, suffix);
+			  createdElement.publishRandom(targetName, suffix)();
 			}
           });
         } else {
