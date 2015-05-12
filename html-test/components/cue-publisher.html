@@ -35,12 +35,10 @@
     if (createdElement.content === undefined || createdElement.content == '') {
       var xhr = new XMLHttpRequest();
       xhr.open('GET', cueFolder + createdElement.cueId + '.json', true);
-      xhr.onload = function (thisElement) {
+      xhr.onload = function () {
         createdElement.content = this.responseText;
-        return function() {
-          registerEvents(thisElement);
-        };
-      } (createdElement);
+        registerEvents(createdElement);
+      };
       xhr.send();
     }
   }
