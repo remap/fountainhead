@@ -24,6 +24,7 @@
     var chunkElement = createdElement.shadowRoot.querySelector('#cue-chunk');
     
     var containerUrl = createdElement.getAttributeByListName(['containerId'], '1');
+    var nodeName = createdElement.getAttributeByListName(['nodeName'], 'node4');
     
     titleElement.textContent = cueTitle;
     descElement.textContent = description;
@@ -44,7 +45,7 @@
       // TODO: referencing namePrefix like this is not ideal
       var dataName = new Name(createdElement.ndnPublisherComponentObject.namePrefix);
       // Note: for now, the names are hard-coded, since namespace design is not fully discussed
-      var nodeComponent = new Name('nodes/node4');
+      var nodeComponent = new Name('nodes/' + nodeName);
       suffix = 'door_comp/container' + containerUrl + '/serviceUrl.text';
       var nameSuffix = new Name(suffix);
       

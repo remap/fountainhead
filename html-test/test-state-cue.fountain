@@ -5,6 +5,9 @@
 [include] ndn.js
 [prefix] new Name("/ndn/edu/ucla/remap/losatlantis")
 [face] new Face({host: "archive-dev.remap.ucla.edu"})
+
+[cueFolder] "../../cues/"
+
 [include] ndn-init.js
 [include] ndn-url-publisher-component.js
 
@@ -83,4 +86,12 @@ Test for cue state publishing
 <<@random-video-publisher
   (t       = "random video publisher",
    containerId    = 1,
-   desc    = "Test for crash.")>>
+   nodeName       = node4,
+   desc    = "Test for crash, publisheres to node4, container 1 onclick.")>>
+
+Test for publishing by fetching from JSON file
+
+<<@cue-publisher
+  (t       = "Load cue No. 24601",
+   cid     = 24601,
+   desc    = Load cue 24601 JSON file)>>

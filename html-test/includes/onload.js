@@ -1,10 +1,3 @@
-// Deprecated method
-/*
-if (URLPublisherFactory !== undefined) {
-  var ndnURLPublisherFactory = new URLPublisherFactory(window, document);
-}
-*/
-
 var scriptControl = new ScriptControl(document);
 
 // Firefox does not give an import error if web component's not enabled.
@@ -14,8 +7,6 @@ function onImportError(event) {
 }
 
 window.onload = function() {
-  //scriptControl.toggleClassVisibility('dialogue');
-  
   // Pressing t to toggle the visibility of the ugly floating menu
   var floatingMenuDiv = 'floating-menu';
   document.addEventListener('keydown', function (event) {

@@ -25,6 +25,9 @@ Author: Future of Storytelling Studio 2015
 [include] ndn.js
 [prefix] new Name("/ndn/edu/ucla/remap/losatlantis")
 [face] new Face({host: "archive-dev.remap.ucla.edu"})
+
+[cueFolder] "../../cues/"
+
 [include] ndn-init.js
 [include] ndn-url-publisher-component.js
 

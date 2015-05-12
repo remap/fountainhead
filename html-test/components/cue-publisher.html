@@ -14,51 +14,68 @@
     
     createdElement.youtubeObject = new window.YoutubeObject();
     
-    var showid = createdElement.getAttributeByListName(['showid'], window.showid);
+    createdElement.showid = createdElement.getAttributeByListName(['showid'], window.showid);
     var cueTitle = createdElement.getAttributeByListName(['cueTitle', 't'], '');
     var description = createdElement.getAttributeByListName(['description', 'desc'], '');
-    var content = createdElement.getAttributeByListName(['content'], '');
-    var cueId = createdElement.getAttributeByListName(['cid'], '-1');
+    var cueFolder = createdElement.getAttributeByListName(['cueFolder'], window.cueFolder);
     
-    var titleElement = createdElement.shadowRoot.querySelector('#cue-title');
-    var descElement = createdElement.shadowRoot.querySelector('#cue-description');
-    var chunkElement = createdElement.shadowRoot.querySelector('#cue-chunk');
+    createdElement.content = createdElement.getAttributeByListName(['content'], '');
+    createdElement.cueId = createdElement.getAttributeByListName(['cid'], '-1');
     
-    titleElement.textContent = cueTitle;
-    descElement.textContent = description;
+    createdElement.titleElement = createdElement.shadowRoot.querySelector('#cue-title');
+    createdElement.descElement = createdElement.shadowRoot.querySelector('#cue-description');
+    createdElement.chunkElement = createdElement.shadowRoot.querySelector('#cue-chunk');
+    
+    createdElement.titleElement.textContent = cueTitle;
+    createdElement.descElement.textContent = description;
     
     componentObject.applyStyleFromParentDocumentAll(createdElement);
     
+    // If content is not defined explicitly in the script, we try to load the content JSON from a certain spot on serverside.
+    if (createdElement.content === undefined || createdElement.content == '') {
+      var xhr = new XMLHttpRequest();
+      xhr.open('GET', cueFolder + createdElement.cueId + '.json', true);
+      xhr.onload = function (thisElement) {
+        createdElement.content = this.responseText;
+        return function() {
+          registerEvents(thisElement);
+        };
+      } (createdElement);
+      xhr.send();
+    }
+  }
+  
+  function registerEvents(createdElement) {
     // Preview display is disabled because most of the cues don't have the old JSON format url1
     try {
-      var cueContent = JSON.parse(content);
-    
-      titleElement.addEventListener('mouseover', function() {
+      var cueContent = JSON.parse(createdElement.content);
+      
+      createdElement.titleElement.addEventListener('mouseover', function() {
         // Note: after the cue publishing discussion, it's possible that URL's not exposed here; 
         // getting rid of the preview temporarily
         if (cueContent.yt1 != undefined && cueContent.yt1.URL != undefined) {
-          chunkElement.innerHTML = '<img src=\"http://img.youtube.com/vi/' + createdElement.youtubeObject.youtubeKeyParser(cueContent.yt1.URL) + '/0.jpg\"></img>';
+          createdElement.chunkElement.innerHTML = '<img src=\"http://img.youtube.com/vi/' + createdElement.youtubeObject.youtubeKeyParser(cueContent.yt1.URL) + '/0.jpg\"></img>';
         } else {
           console.log(componentName + ': no video url provided for this cue');
         }
       });
     
-      titleElement.addEventListener('mouseout', function() {
-        chunkElement.innerHTML = '';
+      createdElement.titleElement.addEventListener('mouseout', function() {
+        createdElement.chunkElement.innerHTML = '';
       });
     } catch (error) {
       console.log(componentName + ' : ' + error);
     }
     
-    titleElement.addEventListener('click', function() {
+    createdElement.titleElement.addEventListener('click', function() {
       // TODO: referencing namePrefix like this is not ideal
       var dataName = new Name(createdElement.ndnPublisherComponentObject.namePrefix);
       // Note: for now, the names are hard-coded, since namespace design is not fully discussed
       var cueComponent = new Name('cues');
-      var nameSuffix = new Name(cueId);
-      dataName.append(showid).append(cueComponent).appendVersion((new Date).getTime()).append(nameSuffix);
+      var nameSuffix = new Name(createdElement.cueId);
+      dataName.append(createdElement.showid).append(cueComponent).appendVersion((new Date).getTime()).append(nameSuffix);
 
-      createdElement.ndnPublisherComponentObject.publishContent(dataName, content, false);
+      createdElement.ndnPublisherComponentObject.publishContent(dataName, createdElement.content, false);
     });
   }
   
