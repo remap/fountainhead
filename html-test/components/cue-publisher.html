@@ -14,10 +14,20 @@
     
     createdElement.youtubeObject = new window.YoutubeObject();
     
-    createdElement.showid = createdElement.getAttributeByListName(['showid'], window.showid);
+    var defaultShowId = 'default-show';
+    if (window.hasAttribute('showid')) {
+      defaultShowId = window.showid;
+    }
+    
+    createdElement.showid = createdElement.getAttributeByListName(['showid'], defaultShowId);
     var cueTitle = createdElement.getAttributeByListName(['cueTitle', 't'], '');
     var description = createdElement.getAttributeByListName(['description', 'desc'], '');
-    var cueFolder = createdElement.getAttributeByListName(['cueFolder'], window.cueFolder);
+    
+    var defaultCueFolder = 'cues/';
+    if (window.hasAttribute('cueFolder')) {
+      defaultCueFolder = window.cueFolder;
+    }
+    var cueFolder = createdElement.getAttributeByListName(['cueFolder'], defaultCueFolder);
     
     createdElement.content = createdElement.getAttributeByListName(['content'], '');
     createdElement.cueId = createdElement.getAttributeByListName(['cid'], '-1');
