@@ -109,6 +109,7 @@
     });
     
     // This is a quick modification for test on May 12, as the patch expects commands to be published for cues.
+    // TODO: update this with state publisher to make state publisher take 0 or -1 time
     createdElement.loadElement.addEventListener('click', function() {
       // TODO: referencing namePrefix like this is not ideal
       var dataName = new Name(createdElement.ndnPublisherComponentObject.namePrefix);
@@ -128,7 +129,7 @@
       var nameSuffix = new Name(createdElement.cueId + '/go');
       dataName.append(createdElement.showid).append(cueComponent).appendVersion((new Date).getTime()).append(nameSuffix);
 
-      createdElement.ndnPublisherComponentObject.publishContent(dataName, '', false);
+      createdElement.ndnPublisherComponentObject.publishContent(dataName, '{}', false);
     });
     
     createdElement.unloadElement.addEventListener('click', function() {
@@ -139,7 +140,7 @@
       var nameSuffix = new Name(createdElement.cueId + '/unload');
       dataName.append(createdElement.showid).append(cueComponent).appendVersion((new Date).getTime()).append(nameSuffix);
 
-      createdElement.ndnPublisherComponentObject.publishContent(dataName, '', false);
+      createdElement.ndnPublisherComponentObject.publishContent(dataName, '{}', false);
     });
   }
   
