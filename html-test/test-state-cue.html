@@ -11,6 +11,9 @@
     <a id="floating-menu-toggle-olf" href="#" onclick="scriptControl.toggleClassVisibility('olf');return false;">Show/hide OLF</a>
     <br><hr>
     <h3>Table of Contents</h3>
+    <a href="#toc0">Earlier samples</a>
+    <a href="#toc1">2/A Cues</a>
+    <a href="#toc2">2/B Cues</a>
   </div>
   <script>
 var showid = "chocolate_cookie_show";
@@ -51,6 +54,7 @@ var cueFolder = "../../cues/";
   <link rel="import" href="components/random-video-publisher.html" onerror="onImportError(event)">
   <link rel="import" href="components/cue-publisher.html" onerror="onImportError(event)">
   <div id="scriptbody">
+    <p id='toc0' class='scene-heading'>Earlier samples</p>
     <p class='action'>Test for cue state publishing</p>
 <com-cue-publisher-state state={&#32;&#39;play1&#39;:&#32;{&#32;time:&#32;1000,&#32;callback:&#32;function&#32;()&#32;{&#32;createdElement.shadowRoot.querySelector(&#39;#state-play1&#39;).click();&#32;},&#32;state:&#32;&#39;playing1&#39;&#32;},&#32;&#39;play2&#39;:&#32;{&#32;time:&#32;10000,&#32;callback:&#32;function&#32;()&#32;{&#32;createdElement.shadowRoot.querySelector(&#39;#state-play2&#39;).click();&#32;},&#32;state:&#32;&#39;playing2&#39;&#32;},&#32;&#39;play3&#39;:&#32;{&#32;time:&#32;20000,&#32;callback:&#32;function&#32;()&#32;{&#32;createdElement.shadowRoot.querySelector(&#39;#state-play3&#39;).click();&#32;},&#32;state:&#32;&#39;playing3&#39;&#32;},&#32;&#39;play4&#39;:&#32;{&#32;time:&#32;30000,&#32;callback:&#32;function&#32;()&#32;{&#32;createdElement.shadowRoot.querySelector(&#39;#state-play4&#39;).click();&#32;},&#32;state:&#32;&#39;playing4&#39;&#32;},&#32;&#39;play5&#39;:&#32;{&#32;time:&#32;40000,&#32;callback:&#32;function&#32;()&#32;{&#32;createdElement.shadowRoot.querySelector(&#39;#state-play5&#39;).click();&#32;},&#32;state:&#32;&#39;playing5&#39;&#32;}&#32;} desc=&#34;This&#32;is&#32;a&#32;cue&#32;which&#32;uses&#32;JS&#32;cue&#32;states;&#32;it&#32;triggers&#32;a&#32;random&#32;video&#32;play&#32;from&#32;a&#32;playlist&#32;every&#32;10&#32;seconds;&#32;replacing&#32;the&#32;events&#32;with&#32;load,&#32;wait_in,&#32;fade_in&#32;and&#32;run&#32;for&#32;actual&#32;cues.&#34; t=&#34;Series&#32;publishing&#32;cue&#34; cid=-1></com-cue-publisher-state>
     <a target="_blank" href="components/cue-publisher-state.html" class="xref-code">cue-publisher-state</a>
@@ -62,46 +66,56 @@ var cueFolder = "../../cues/";
     <a target="_blank" href="components/door-publisher.html" class="xref-code">door-publisher</a>
 <com-random-video-publisher desc=&#34;Test&#32;for&#32;crash,&#32;publisheres&#32;to&#32;node4,&#32;container&#32;1&#32;onclick.&#34; nodeName=node4 t=&#34;random&#32;video&#32;publisher&#34; containerId=1></com-random-video-publisher>
     <a target="_blank" href="components/random-video-publisher.html" class="xref-code">random-video-publisher</a>
+    <p id='toc1' class='scene-heading'>2/A Cues</p>
     <p class='action'>Test for publishing by fetching from JSON file on May 12. 2/A cues.</p>
 <com-cue-publisher desc=Blackout t=Establish&#32;ritual cid=410></com-cue-publisher>
     <a target="_blank" href="components/cue-publisher.html" class="xref-code">cue-publisher</a>
 <com-cue-publisher desc=Load&#32;cue&#32;420 t=Ocean cid=420></com-cue-publisher>
     <a target="_blank" href="components/cue-publisher.html" class="xref-code">cue-publisher</a>
-<com-cue-publisher desc=Load&#32;cue&#32;24601&#32;JSON&#32;file t=Raul&#32;&&#32;Ocean cid=440></com-cue-publisher>
+<com-cue-publisher desc=Load&#32;cue&#32;440&#32;JSON&#32;file t=Raul&#32;&&#32;Ocean cid=440></com-cue-publisher>
     <a target="_blank" href="components/cue-publisher.html" class="xref-code">cue-publisher</a>
-<com-cue-publisher desc=Load&#32;cue&#32;24601&#32;JSON&#32;file t=Amongst&#32;bikes cid=460></com-cue-publisher>
+<com-cue-publisher desc=Load&#32;cue&#32;460&#32;JSON&#32;file t=Amongst&#32;bikes cid=460></com-cue-publisher>
     <a target="_blank" href="components/cue-publisher.html" class="xref-code">cue-publisher</a>
-<com-cue-publisher desc=Load&#32;cue&#32;24601&#32;JSON&#32;file t=Raul&#32;on&#32;bike.1 cid=470.1></com-cue-publisher>
+<com-cue-publisher desc=Load&#32;cue&#32;470.1&#32;JSON&#32;file t=Raul&#32;on&#32;bike.1 cid=470.1></com-cue-publisher>
     <a target="_blank" href="components/cue-publisher.html" class="xref-code">cue-publisher</a>
-<com-cue-publisher desc=Load&#32;cue&#32;24601&#32;JSON&#32;file t=Raul&#32;on&#32;bike.1 cid=470.1></com-cue-publisher>
+<com-cue-publisher desc=Load&#32;cue&#32;470.2&#32;JSON&#32;file t=Raul&#32;on&#32;bike.2 cid=470.2></com-cue-publisher>
     <a target="_blank" href="components/cue-publisher.html" class="xref-code">cue-publisher</a>
-<com-cue-publisher desc=Load&#32;cue&#32;24601&#32;JSON&#32;file t=Raul&#32;on&#32;bike.2 cid=470.2></com-cue-publisher>
+<com-cue-publisher desc=Load&#32;cue&#32;470.3&#32;JSON&#32;file t=Raul&#32;on&#32;bike.3 cid=470.3></com-cue-publisher>
     <a target="_blank" href="components/cue-publisher.html" class="xref-code">cue-publisher</a>
-<com-cue-publisher desc=Load&#32;cue&#32;24601&#32;JSON&#32;file t=Raul&#32;on&#32;bike.3 cid=470.3></com-cue-publisher>
+<com-cue-publisher desc=Load&#32;cue&#32;470.4&#32;JSON&#32;file t=Raul&#32;on&#32;bike.4 cid=470.4></com-cue-publisher>
     <a target="_blank" href="components/cue-publisher.html" class="xref-code">cue-publisher</a>
-<com-cue-publisher desc=Load&#32;cue&#32;24601&#32;JSON&#32;file t=Raul&#32;on&#32;bike.4 cid=470.4></com-cue-publisher>
+<com-cue-publisher desc=Load&#32;cue&#32;475&#32;JSON&#32;file t=Selfie cid=475></com-cue-publisher>
     <a target="_blank" href="components/cue-publisher.html" class="xref-code">cue-publisher</a>
-<com-cue-publisher desc=Load&#32;cue&#32;24601&#32;JSON&#32;file t=Selfie cid=475></com-cue-publisher>
+<com-cue-publisher desc=Load&#32;cue&#32;480.1&#32;JSON&#32;file t=LB.1 cid=480.1></com-cue-publisher>
     <a target="_blank" href="components/cue-publisher.html" class="xref-code">cue-publisher</a>
-<com-cue-publisher desc=Load&#32;cue&#32;24601&#32;JSON&#32;file t=LB.1 cid=480.1></com-cue-publisher>
+<com-cue-publisher desc=Load&#32;cue&#32;480.2&#32;JSON&#32;file t=LB.2 cid=480.2></com-cue-publisher>
     <a target="_blank" href="components/cue-publisher.html" class="xref-code">cue-publisher</a>
-<com-cue-publisher desc=Load&#32;cue&#32;24601&#32;JSON&#32;file t=LB.2 cid=480.2></com-cue-publisher>
+<com-cue-publisher desc=Load&#32;cue&#32;482&#32;JSON&#32;file t=Bike&#32;riding&#32;/&#32;danger cid=482></com-cue-publisher>
     <a target="_blank" href="components/cue-publisher.html" class="xref-code">cue-publisher</a>
-<com-cue-publisher desc=Load&#32;cue&#32;24601&#32;JSON&#32;file t=Bike&#32;riding&#32;/&#32;danger cid=482></com-cue-publisher>
+<com-cue-publisher desc=Load&#32;cue&#32;485.1&#32;JSON&#32;file t=Bus.1 cid=485.1></com-cue-publisher>
     <a target="_blank" href="components/cue-publisher.html" class="xref-code">cue-publisher</a>
-<com-cue-publisher desc=Load&#32;cue&#32;24601&#32;JSON&#32;file t=Bus.1 cid=485.1></com-cue-publisher>
+<com-cue-publisher desc=Load&#32;cue&#32;485.2&#32;JSON&#32;file t=Bus.2 cid=485.2></com-cue-publisher>
     <a target="_blank" href="components/cue-publisher.html" class="xref-code">cue-publisher</a>
-<com-cue-publisher desc=Load&#32;cue&#32;24601&#32;JSON&#32;file t=Bus.2 cid=485.2></com-cue-publisher>
+<com-cue-publisher desc=Load&#32;cue&#32;485.3&#32;JSON&#32;file t=Bus.3 cid=485.3></com-cue-publisher>
     <a target="_blank" href="components/cue-publisher.html" class="xref-code">cue-publisher</a>
-<com-cue-publisher desc=Load&#32;cue&#32;24601&#32;JSON&#32;file t=Bus.3 cid=485.3></com-cue-publisher>
+<com-cue-publisher desc=Load&#32;cue&#32;487.1&#32;JSON&#32;file t=Running&#32;away.1 cid=487.1></com-cue-publisher>
     <a target="_blank" href="components/cue-publisher.html" class="xref-code">cue-publisher</a>
-<com-cue-publisher desc=Load&#32;cue&#32;24601&#32;JSON&#32;file t=Running&#32;away.1 cid=487.1></com-cue-publisher>
+<com-cue-publisher desc=Load&#32;cue&#32;487.2&#32;JSON&#32;file t=Running&#32;away.2 cid=487.2></com-cue-publisher>
     <a target="_blank" href="components/cue-publisher.html" class="xref-code">cue-publisher</a>
-<com-cue-publisher desc=Load&#32;cue&#32;24601&#32;JSON&#32;file t=Running&#32;away.2 cid=487.2></com-cue-publisher>
+<com-cue-publisher desc=Load&#32;cue&#32;490&#32;JSON&#32;file t=Fade&#32;to&#32;black cid=490></com-cue-publisher>
     <a target="_blank" href="components/cue-publisher.html" class="xref-code">cue-publisher</a>
-<com-cue-publisher desc=Load&#32;cue&#32;24601&#32;JSON&#32;file t=Fade&#32;to&#32;black cid=490></com-cue-publisher>
-    <a target="_blank" href="components/cue-publisher.html" class="xref-code">cue-publisher</a>
+    <p id='toc2' class='scene-heading'>2/B Cues</p>
     <p class='action'>Test cues for 2/B, not here yet.</p>
+<com-cue-publisher desc=Load&#32;cue&#32;510&#32;JSON&#32;file t=Establish&#32;ritual cid=510></com-cue-publisher>
+    <a target="_blank" href="components/cue-publisher.html" class="xref-code">cue-publisher</a>
+<com-cue-publisher desc=Load&#32;cue&#32;520&#32;JSON&#32;file t=Sample&#32;lectures cid=520></com-cue-publisher>
+    <a target="_blank" href="components/cue-publisher.html" class="xref-code">cue-publisher</a>
+<com-cue-publisher desc=Load&#32;cue&#32;522&#32;JSON&#32;file t=Cue&#32;522 cid=522></com-cue-publisher>
+    <a target="_blank" href="components/cue-publisher.html" class="xref-code">cue-publisher</a>
+<com-cue-publisher desc=Load&#32;cue&#32;523&#32;JSON&#32;file t=Cue&#32;523 cid=523></com-cue-publisher>
+    <a target="_blank" href="components/cue-publisher.html" class="xref-code">cue-publisher</a>
+<com-cue-publisher desc=Load&#32;cue&#32;540&#32;JSON&#32;file t=Blackout cid=540></com-cue-publisher>
+    <a target="_blank" href="components/cue-publisher.html" class="xref-code">cue-publisher</a>
   </div></section>
 </body>
 </html>

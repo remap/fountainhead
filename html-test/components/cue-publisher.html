@@ -1,5 +1,12 @@
 <template>
   <p id="cue-title" class="video-control-text"></p>
+  
+  <p style="margin:1.3em auto; width: 400px">
+  <a id="cue-load" class="video-control-text"></a>
+  <a id="cue-go" class="video-control-text"></a>
+  <a id="cue-unload" class="video-control-text"></a>
+  </p>
+  
   <p id="cue-description" class="video-control-desc"></p>
   <p id="cue-chunk" class="video-control-chunk"></p>
 </template>
@@ -36,8 +43,16 @@
     createdElement.descElement = createdElement.shadowRoot.querySelector('#cue-description');
     createdElement.chunkElement = createdElement.shadowRoot.querySelector('#cue-chunk');
     
+    createdElement.loadElement = createdElement.shadowRoot.querySelector('#cue-load');
+    createdElement.goElement = createdElement.shadowRoot.querySelector('#cue-go');
+    createdElement.unloadElement = createdElement.shadowRoot.querySelector('#cue-unload');
+    
     createdElement.titleElement.textContent = cueTitle;
     createdElement.descElement.textContent = description;
+    
+    createdElement.loadElement.textContent = 'load';
+    createdElement.goElement.textContent = 'go';
+    createdElement.unloadElement.textContent = 'unload';
     
     componentObject.applyStyleFromParentDocumentAll(createdElement);
     
@@ -81,6 +96,7 @@
     }
     */
     
+    // This is the old publisher function
     createdElement.titleElement.addEventListener('click', function() {
       // TODO: referencing namePrefix like this is not ideal
       var dataName = new Name(createdElement.ndnPublisherComponentObject.namePrefix);
@@ -90,6 +106,40 @@
       dataName.append(createdElement.showid).append(cueComponent).appendVersion((new Date).getTime()).append(nameSuffix);
 
       createdElement.ndnPublisherComponentObject.publishContent(dataName, createdElement.content, false);
+    });
+    
+    // This is a quick modification for test on May 12, as the patch expects commands to be published for cues.
+    createdElement.loadElement.addEventListener('click', function() {
+      // TODO: referencing namePrefix like this is not ideal
+      var dataName = new Name(createdElement.ndnPublisherComponentObject.namePrefix);
+      // Note: for now, the names are hard-coded, since namespace design is not fully discussed
+      var cueComponent = new Name('cues');
+      var nameSuffix = new Name(createdElement.cueId + '/load');
+      dataName.append(createdElement.showid).append(cueComponent).appendVersion((new Date).getTime()).append(nameSuffix);
+
+      createdElement.ndnPublisherComponentObject.publishContent(dataName, createdElement.content, false);
+    });
+    
+    createdElement.goElement.addEventListener('click', function() {
+      // TODO: referencing namePrefix like this is not ideal
+      var dataName = new Name(createdElement.ndnPublisherComponentObject.namePrefix);
+      // Note: for now, the names are hard-coded, since namespace design is not fully discussed
+      var cueComponent = new Name('cues');
+      var nameSuffix = new Name(createdElement.cueId + '/go');
+      dataName.append(createdElement.showid).append(cueComponent).appendVersion((new Date).getTime()).append(nameSuffix);
+
+      createdElement.ndnPublisherComponentObject.publishContent(dataName, '', false);
+    });
+    
+    createdElement.unloadElement.addEventListener('click', function() {
+      // TODO: referencing namePrefix like this is not ideal
+      var dataName = new Name(createdElement.ndnPublisherComponentObject.namePrefix);
+      // Note: for now, the names are hard-coded, since namespace design is not fully discussed
+      var cueComponent = new Name('cues');
+      var nameSuffix = new Name(createdElement.cueId + '/unload');
+      dataName.append(createdElement.showid).append(cueComponent).appendVersion((new Date).getTime()).append(nameSuffix);
+
+      createdElement.ndnPublisherComponentObject.publishContent(dataName, '', false);
     });
   }
   
