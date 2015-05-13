@@ -45,18 +45,21 @@
     if (createdElement.content === undefined || createdElement.content == '') {
       var xhr = new XMLHttpRequest();
       xhr.open('GET', cueFolder + createdElement.cueId + '.json', true);
-      xhr.onload = function () {
-        createdElement.content = this.responseText;
-        registerEvents(createdElement);
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+          createdElement.content = xhr.responseText;
+          //registerEvents(createdElement);
+        }
       };
       xhr.send();
-    } else {
-      registerEvents(createdElement);
     }
+    
+    registerEvents(createdElement);
   }
   
   function registerEvents(createdElement) {
     // Preview display is disabled because most of the cues don't have the old JSON format url1
+    /*
     try {
       var cueContent = JSON.parse(createdElement.content);
       
@@ -76,6 +79,7 @@
     } catch (error) {
       console.log(componentName + ' : ' + error);
     }
+    */
     
     createdElement.titleElement.addEventListener('click', function() {
       // TODO: referencing namePrefix like this is not ideal
