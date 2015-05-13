@@ -70,6 +70,36 @@ Test for cue state publishing
 	 }
    })>>
 
+Test cue publisher with load, go, and unload with minus scheduled time
+
+<<@cue-publisher-state
+  (t       = Manually triggered cue publisher load/go, 
+   cid     = -1, 
+   desc    = "This is a cue which uses JS cue states; it triggers a random video play from a playlist every 10 seconds; replacing the events with load, wait_in, fade_in and run for actual cues.", 
+   state   = {
+	 'load': {
+	   time: -1,
+	   callback: function () {
+	     createdElement.shadowRoot.querySelector('#state-load').click();
+	   }, 
+	   state: 'loaded'
+	 },
+	 'go': {
+	   time: -1,
+	   callback: function () {
+		 createdElement.shadowRoot.querySelector('#state-go').click();
+	   },
+	   state: 'going'
+	 },
+	 'unload': {
+	   time: -1,
+	   callback: function () {
+		 createdElement.shadowRoot.querySelector('#state-unload').click();
+	   }, 
+	   state: 'unloaded'
+	 }
+   })>>
+
 <<@cue-publisher-intercut-random
   (t       = "Random intercutting cue", 
    cid     = -1,
@@ -218,3 +248,53 @@ Test cues for 2/B, not here yet.
   (t       = Blackout,
    cid     = 540,
    desc    = Load cue 540 JSON file)>>
+
+<<@cue-publisher
+  (t       = Fade up to new environment,
+   cid     = 550,
+   desc    = Load cue 550 JSON file)>>
+
+<<@cue-publisher
+  (t       = Cue 560,
+   cid     = 560,
+   desc    = Load cue 560 JSON file)>>
+
+<<@cue-publisher
+  (t       = Blackout,
+   cid     = 570,
+   desc    = Load cue 570 JSON file)>>
+
+<<@cue-publisher
+  (t       = Fade up to new environment,
+   cid     = 580,
+   desc    = Load cue 580 JSON file)>>
+
+<<@cue-publisher
+  (t       = Cue 590.1 50% opacity each of the following,
+   cid     = 590.1,
+   desc    = Load cue 590.1 JSON file)>>
+
+<<@cue-publisher
+  (t       = Cue 590.2 50% opacity each of the following,
+   cid     = 590.2,
+   desc    = Load cue 590.2 JSON file)>>
+
+<<@cue-publisher
+  (t       = Blackout,
+   cid     = 600,
+   desc    = Load cue 600 JSON file)>>
+
+<<@cue-publisher
+  (t       = Fade up to new environment,
+   cid     = 610,
+   desc    = Load cue 610 JSON file)>>
+
+<<@cue-publisher
+  (t       = Cue 620,
+   cid     = 620,
+   desc    = Load cue 620 JSON file)>>
+
+<<@cue-publisher
+  (t       = Blackout,
+   cid     = 630,
+   desc    = Load cue 630 JSON file)>>
