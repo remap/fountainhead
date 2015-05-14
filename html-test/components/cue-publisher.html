@@ -30,6 +30,13 @@
     var cueTitle = createdElement.getAttributeByListName(['cueTitle', 't'], '');
     var description = createdElement.getAttributeByListName(['description', 'desc'], '');
     
+    var sendServiceUrl = createdElement.getAttributeByListName(['sendServiceUrl'], 'false');
+    if (sendServiceUrl === 'true') {
+      createdElement.sendServiceUrl = true;
+    } else {
+      createdElement.sendServiceUrl = false;
+    }
+    
     var defaultCueFolder = 'cues/';
     if (window.hasOwnProperty('cueFolder')) {
       defaultCueFolder = window.cueFolder;
@@ -38,6 +45,7 @@
     
     createdElement.content = createdElement.getAttributeByListName(['content'], '');
     createdElement.cueId = createdElement.getAttributeByListName(['cid'], '-1');
+    createdElement.cueReady = false;
     
     createdElement.titleElement = createdElement.shadowRoot.querySelector('#cue-title');
     createdElement.descElement = createdElement.shadowRoot.querySelector('#cue-description');
@@ -57,19 +65,74 @@
     componentObject.applyStyleFromParentDocumentAll(createdElement);
     
     // If content is not defined explicitly in the script, we try to load the content JSON from a certain spot on serverside.
+    // Note: The cue will not be ready if 1. no explicit content given and 2. json file does not exist.
     if (createdElement.content === undefined || createdElement.content == '') {
       var xhr = new XMLHttpRequest();
       xhr.open('GET', cueFolder + createdElement.cueId + '.json', true);
       xhr.onreadystatechange = function () {
         if (xhr.readyState == 4 && xhr.status == 200) {
-          createdElement.content = xhr.responseText;
-          //registerEvents(createdElement);
+          if (!createdElement.sendServiceUrl) {
+            try {
+              if (xhr.responseText != '') {
+                createdElement.cueContent = JSON.parse(xhr.responseText);
+                createdElement.videoUrlCallbackCnt = 0;
+                createdElement.traverseDone = false;
+                jsonTraverse(createdElement.cueContent, replaceVideoUrl, createdElement);
+              } else {
+                createdElement.content = xhr.responseText;
+                createdElement.cueReady = true;
+              }
+            } catch (error) {
+              console.log(componentName + ' : ' + error + ' ');
+            }
+          } else {
+            createdElement.content = xhr.responseText;
+            createdElement.cueReady = true;
+          }
         }
       };
       xhr.send();
+    } else {
+      createdElement.cueReady = true;
+      if (!createdElement.sendServiceUrl) {
+        console.log('Warning: ' + componentName + ' : explicit content overrides sendServiceUrl flag to true');
+      }
     }
     
     registerEvents(createdElement);
+  }
+  
+  function jsonTraverse(obj, func, createdElement) {
+    for (var i in obj) {
+      func.apply(this, [i, obj, createdElement]);  
+      if (obj[i] !== null && typeof(obj[i]) == "object") {
+        jsonTraverse(obj[i], func, createdElement);
+      }
+    }
+    createdElement.traverseDone = true;
+  }
+  
+  // TODO: first valid entry for 'url' should provide basis for preview image generation; conform with explicit content parameter?
+  function replaceVideoUrl(key, obj, createdElement) {
+    if (key === 'url') {
+      if (obj[key] !== '') {
+        createdElement.videoUrlCallbackCnt ++;
+        var urlGroups = (/.*t=([0-9]+).*/g).exec(obj[key]);
+        if (urlGroups) {
+          obj['startTime'] = parseInt(urlGroups[1]);
+        }
+        createdElement.youtubeObject.getYoutubeVideoUrl(obj[key], true, function (xhr) {
+          obj['videoUrl'] = xhr.responseText;
+          delete obj[key];
+          createdElement.videoUrlCallbackCnt --;
+          
+          if (createdElement.traverseDone && createdElement.videoUrlCallbackCnt == 0) {
+            createdElement.content = JSON.stringify(createdElement.cueContent);
+            createdElement.cueReady = true;
+          }
+        });
+      }
+    }
   }
   
   function registerEvents(createdElement) {
@@ -99,26 +162,35 @@
     // This is the old publisher function
     createdElement.titleElement.addEventListener('click', function() {
       // TODO: referencing namePrefix like this is not ideal
-      var dataName = new Name(createdElement.ndnPublisherComponentObject.namePrefix);
-      // Note: for now, the names are hard-coded, since namespace design is not fully discussed
-      var cueComponent = new Name('cues');
-      var nameSuffix = new Name(createdElement.cueId);
-      dataName.append(createdElement.showid).append(cueComponent).appendVersion((new Date).getTime()).append(nameSuffix);
+      if (createdElement.cueReady) {
+        var dataName = new Name(createdElement.ndnPublisherComponentObject.namePrefix);
+        // Note: for now, the names are hard-coded, since namespace design is not fully discussed
+        var cueComponent = new Name('cues');
+        var nameSuffix = new Name(createdElement.cueId);
+        dataName.append(createdElement.showid).append(cueComponent).appendVersion((new Date).getTime()).append(nameSuffix);
 
-      createdElement.ndnPublisherComponentObject.publishContent(dataName, createdElement.content, false);
+        createdElement.ndnPublisherComponentObject.publishContent(dataName, createdElement.content, false);
+      } else {
+        console.log('Warning: Cue content still being loaded');
+      }
     });
     
     // This is a quick modification for test on May 12, as the patch expects commands to be published for cues.
     // TODO: update this with state publisher to make state publisher take 0 or -1 time
     createdElement.loadElement.addEventListener('click', function() {
       // TODO: referencing namePrefix like this is not ideal
-      var dataName = new Name(createdElement.ndnPublisherComponentObject.namePrefix);
-      // Note: for now, the names are hard-coded, since namespace design is not fully discussed
-      var cueComponent = new Name('cues');
-      var nameSuffix = new Name(createdElement.cueId + '/load');
-      dataName.append(createdElement.showid).append(cueComponent).appendVersion((new Date).getTime()).append(nameSuffix);
+      if (createdElement.cueReady) {
+    
+        var dataName = new Name(createdElement.ndnPublisherComponentObject.namePrefix);
+        // Note: for now, the names are hard-coded, since namespace design is not fully discussed
+        var cueComponent = new Name('cues');
+        var nameSuffix = new Name(createdElement.cueId + '/load');
+        dataName.append(createdElement.showid).append(cueComponent).appendVersion((new Date).getTime()).append(nameSuffix);
 
-      createdElement.ndnPublisherComponentObject.publishContent(dataName, createdElement.content, false);
+        createdElement.ndnPublisherComponentObject.publishContent(dataName, createdElement.content, false);
+      } else {
+        console.log('Warning: Cue content still being loaded');
+      }
     });
     
     createdElement.goElement.addEventListener('click', function() {
