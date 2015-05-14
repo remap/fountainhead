@@ -76,8 +76,20 @@
               if (xhr.responseText != '') {
                 createdElement.cueContent = JSON.parse(xhr.responseText);
                 createdElement.videoUrlCallbackCnt = 0;
+                
                 createdElement.traverseDone = false;
+                createdElement.firstUrl = '';
+                
                 jsonTraverse(createdElement.cueContent, replaceVideoUrl, createdElement);
+                if (createdElement.firstUrl === '') {
+                  // if we have the cue file, but the cue file does not have valid url, we don't have anything
+                  // to replace in the JSON, and the cue is ready to go as-is.
+                  createdElement.cueReady = true;
+                  createdElement.content = xhr.responseText;
+                } else {
+                  // TODO: register preview onmouseover function
+                }
+                createdElement.traverseDone = true;
               } else {
                 createdElement.content = xhr.responseText;
                 createdElement.cueReady = true;
@@ -109,13 +121,15 @@
         jsonTraverse(obj[i], func, createdElement);
       }
     }
-    createdElement.traverseDone = true;
   }
   
   // TODO: first valid entry for 'url' should provide basis for preview image generation; conform with explicit content parameter?
   function replaceVideoUrl(key, obj, createdElement) {
     if (key === 'url') {
       if (obj[key] !== '') {
+        if (createdElement.firstUrl === '') {
+          createdElement.firstUrl = obj[key];
+        }
         createdElement.videoUrlCallbackCnt ++;
         var urlGroups = (/.*t=([0-9]+).*/g).exec(obj[key]);
         if (urlGroups) {
