@@ -1,1 +1,0 @@
-/Users/zhehaowang/projects/fos/losatlantis-web/contrib/strophejs-plugins/muc/strophe.muc.js
