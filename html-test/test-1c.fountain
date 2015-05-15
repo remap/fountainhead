@@ -52,51 +52,6 @@
    cid     = 112,
    desc    = Dusk to night (200% speed, rectangular vignette) )>>
 
-<<@cue-publisher
-  (t       = We used to take the I-5 down to Disneyland every year,
-   cid     = 115,
-   desc    = Disneyland 1967 (50% speed, circular vignette on telescope, rectangular vignette on YT video) )>>
-
-<<@cue-publisher
-  (t       = August 1976: Skateboarders in Venice beach.,
-   cid     = 120,
-   desc    = Skateboarders 2 (50% speed, circular vignette on telescope, rectangular vignette on YT video) )>>
-
-<<@cue-publisher
-  (t       = May 2010: a quinceañera of a girl from Sinaloa.,
-   cid     = 130,
-   desc    = Highlights Mis 16  (50% speed, circular vignette on telescope, rectangular vignette on YT video) )>>
-
-<<@cue-publisher
-  (t       = January 2012: an Ethiopian baptism in Dodger Stadium. Everyone wore white. We were dancing.,
-   cid     = 131,
-   desc    = Timket 1 (50% speed, circular vignette on telescope, rectangular vignette on YT video) )>>
-
-<<@cue-publisher
-  (t       = July 2014: Danza Pukllay Chuko. A magical Peruvian dance. ,
-   cid     = 132,
-   desc    = Danza Pukklay (50% speed, circular vignette on telescope, rectangular vignette on YT video) )>>
-
-<<@cue-publisher
-  (t       = June 2001: Belmont High School.,
-   cid     = 135,
-   desc    = Belmont High (50% speed, circular vignette on telescope, rectangular vignette on YT video) )>>
-
-<<@cue-publisher
-  (t       = ANDI: Look! It’s you at the Santa Monica Pier!,
-   cid     = 141,
-   desc    = Beach 1 (50% speed, circular vignette on telescope, rectangular vignette on YT video))>>
-
-<<@cue-publisher
-  (t       = "CONNECTION!",
-   cid     = 142,
-   desc    = Greek Wedding (120% speed, circular vignette))>>
-
-<<@cue-publisher
-  (t       = END Scene,
-   cid     = 150)>>
-
-
 **# RITUAL 1/C: “POLAROIDS” (@ FELIX)**
 
 .RITUAL 1/C: "POLAROIDS" (@FELIX)
@@ -138,6 +93,11 @@ ANDI picks up the telescope and points it at a picture of Disneyland hanging on 
 ANDI 
 <<We used to take the I-5 down to Disneyland every year.>> 
 
+<<@cue-publisher
+  (t       = We used to take the I-5 down to Disneyland every year,
+   cid     = 115,
+   desc    = Disneyland 1967 (50% speed, circular vignette on telescope, rectangular vignette on YT video) )>>
+
 ANDI V.O.
 Mom was obsessed with the happiest place on earth. That was the only time of year we could eat anything, anything we wanted. Funnel cakes. Ice cream. Churros. But we weren't allowed to talk during the fireworks. Mom looked at them as if they were made of magic. My favorite spot was Tomorrowland because that's where I decided I wanted to be an astronaut. This was just before Cassie was born. She was so little. So, so little. Cassiopeia 6lbs 3 oz. She had a birthmark the shape of a W on her shoulder. Born off the 10 freeway at Kaiser Permanente in 1983.  
 
@@ -153,6 +113,11 @@ Could you please read one? You. Yeah, you. Out loud? Share it with everyone. ***
 FELIX 
 (holding up the picture to ANDI's telescope)
 <<August 1976: Skateboarders in Venice beach.>>
+
+<<@cue-publisher
+  (t       = August 1976: Skateboarders in Venice beach.,
+   cid     = 120,
+   desc    = Skateboarders 2 (50% speed, circular vignette on telescope, rectangular vignette on YT video) )>>
 
 ANDI V.O.
 Venice is a residential, commercial, and recreational beachfront neighborhood founded in 1905 as a seaside resort town. It was an independent city until 1926, when it merged with Los Angeles. The 2000 U.S. census counted 37,705 residents in the 3.17-square-mile Venice neighborhood--an average of 11,891 people per square mile, about the norm for Los Angeles; in 2008, the city estimated that the population had increased to 40,885.
@@ -171,6 +136,11 @@ Read the pictures! Take a photo! Remember to say thank you!
 TOURIST 1
 <<May 2010: a quinceañera of a girl from Sinaloa.>>
 
+<<@cue-publisher
+  (t       = May 2010: a quinceañera of a girl from Sinaloa.,
+   cid     = 130,
+   desc    = Highlights Mis 16  (50% speed, circular vignette on telescope, rectangular vignette on YT video) )>>
+
 ANDI V.O.
 I always wanted to have a quinceanera. All the girls at school got to where to those awesome fluffy dresses. They were pinks and turquoise and orange and blue. They got SO many presents. Best of all they got to wear a tiara. Like a princess. This was their rite of passage.
 
@@ -180,11 +150,21 @@ ANDI
 TOURIST 2
 <<January 2012: an Ethiopian baptism in Dodger Stadium.>>
 
+<<@cue-publisher
+  (t       = January 2012: an Ethiopian baptism in Dodger Stadium. Everyone wore white. We were dancing.,
+   cid     = 131,
+   desc    = Timket 1 (50% speed, circular vignette on telescope, rectangular vignette on YT video) )>>
+
 ANDI V.O.
 Baptism comes from the greek word Baptisma. Váptisma. Derived from the noun Baptizo which means "I wash." We were driving around Echo park when we saw the commotion. It wasn't a Dodger game. Everyone was wearing white. There were pools of water everywhere. Tears. Dancing. Chorós. Celebration. Eortasmós. It was a baptism!
 
 TOURIST 3
 <<July 2014: a magical Peruvian dance.>>
+
+<<@cue-publisher
+  (t       = July 2014: Danza Pukllay Chuko. A magical Peruvian dance. ,
+   cid     = 132,
+   desc    = Danza Pukklay (50% speed, circular vignette on telescope, rectangular vignette on YT video) )>>
 
 ANDI V.O.
 The oldest proof of existence of dancing comes from the 9000 year old cave paintings that were found in India. In most ancient civilizations, dancing before the god is an important element in temple ritual. Danza Pukklay is a dance to celebrate play. The stomping represents the formations of clouds in that year's harvest.
@@ -193,6 +173,11 @@ ANDI bounces around the space until she finds one of her memories.
 
 ANDI
 <<June 2001: Belmont High School. This was going to be my sister's graduation.>> 
+
+<<@cue-publisher
+  (t       = June 2001: Belmont High School.,
+   cid     = 135,
+   desc    = Belmont High (50% speed, circular vignette on telescope, rectangular vignette on YT video) )>>
 
 ANDI V.O.
 2002. Belmont High School Graduation. There were six-hundred and sixty-seven people graduating that year. Cassie should have been one of them.  They read her name anyway. A special posthumous degree. 336 girls. 331 boys. 67.9% of high school students in Los Angeles graduate. Doctors. Writers. Actors. Musicians. Scientists. Firefighters. Cassie wanted to be a teacher. She was on UA flight 175. 1+7+5. 13. I remember when we were 13
@@ -206,6 +191,11 @@ You can have those, but not this one... Here, can you read this? ***Please.***
 ANDI looks through the stack of pictures in her hands and finds one of FELIX.
 
 Look! It's you at the Santa Monica Pier! Hey! ***Can you hear me? Feel it.*** Maybe then you'll remember?
+
+<<@cue-publisher
+  (t       = ANDI: Look! It’s you at the Santa Monica Pier!,
+   cid     = 141,
+   desc    = Beach 1 (50% speed, circular vignette on telescope, rectangular vignette on YT video))>>
 
 Felix walks over to the photo and looks at it (if he still has the telescope he points it at the picture.)
 
@@ -247,6 +237,11 @@ Geez! Does she have to spell it out for you??
 THE GUIDE
 CONNECTION!
 
+<<@cue-publisher
+  (t       = "CONNECTION!",
+   cid     = 142,
+   desc    = Greek Wedding (120% speed, circular vignette))>>
+
 She arranges people around the circle and then pulls FELIX into the middle of the circle on the floor.
 
 A video of a <<greek wedding>> starts playing.
@@ -276,3 +271,6 @@ Keep the memories! Take them with you by!
 
 The Transfer fades and the TOURISTS exit back to the Agora with the telescopes in their hands.
 
+<<@cue-publisher
+  (t       = END Scene,
+   cid     = 150)>>
