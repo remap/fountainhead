@@ -36,14 +36,9 @@ specialGenerationTags = {
     'the-observatory':'chat-control-muc'
 }
 
-# This is used for special action generation
-# specialGenerationComponentNames describes the corresponding web component name
-specialGenerationComponentNames = [
-    'olf', 'cue-publisher'
-]
 specialGenerationPatterns = {
-    '\\*olf:(.*)\\*': r'description="OLF: \1"',
-    '\\*[Vv][Qq] *\\#([^ ]*) *- *([^\\n]*)\\*': r'content="{}" t="VQ #\1" cid="\1" desc="\2"'
+    r'\*[oO][lL][fF]:(.*)\*': [r'description="OLF: \1"', 'olf'],
+    r'\*[Vv][Qq] *\#([^ ]*) *- *([^\n]*)\*': [r'content="{}" t="VQ #\1" cid="\1" desc="\2"', 'cue-publisher']
 }
 
 class FountainHTMLGenerator(object):
@@ -500,21 +495,19 @@ class FountainHTMLGenerator(object):
                     # Note: for now, we've only tested with one 'special' pattern treatment, which is olf
                     if (element._elementType == self._fountainRegex.ACTION_TAG_PATTERN):
                         if (self._parseSpecial):
-                            specialGenerationKeyCnt = 0
-                            matchFound = False
+                            matchKey = None
                             for key in specialGenerationPatterns:
                                 if re.match(key, element._elementText):
-                                    matchFound = True
-                                    bodyText += '\n' + self.prependIndentLevel() + '<' + self.componentNameToTag(specialGenerationComponentNames[specialGenerationKeyCnt])
-                                    bodyText += ' ' + re.sub(key, specialGenerationPatterns[key], element._elementText) + '>'
-                                    bodyText += '\n' + self.prependIndentLevel() + '</' + self.componentNameToTag(specialGenerationComponentNames[specialGenerationKeyCnt]) + '>'
+                                    matchKey = key
+                                    bodyText += '\n' + self.prependIndentLevel() + '<' + self.componentNameToTag(specialGenerationPatterns[key][1])
+                                    bodyText += ' ' + re.sub(key, specialGenerationPatterns[key][0], element._elementText) + '>'
+                                    bodyText += '\n' + self.prependIndentLevel() + '</' + self.componentNameToTag(specialGenerationPatterns[key][1]) + '>'
                                     # Note: We only try for one potential special pattern matches now
                                     break
-                                specialGenerationKeyCnt += 1
                                 
-                            if matchFound:
-                                if (not specialGenerationComponentNames[specialGenerationKeyCnt] in self._componentList):
-                                    self._componentList.append(specialGenerationComponentNames[specialGenerationKeyCnt])
+                            if matchKey:
+                                if (not specialGenerationPatterns[matchKey][1] in self._componentList):
+                                    self._componentList.append(specialGenerationPatterns[matchKey][1])
                                 
                                 continue
                     
