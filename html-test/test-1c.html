@@ -76,6 +76,9 @@ var connection = new Strophe.Connection(hostXMPPHttpBind);;
   <link rel="import" href="components/chat-control-guide.html" onerror="onImportError(event)">
   <link rel="import" href="components/chat-control-guide.html" onerror="onImportError(event)">
   <link rel="import" href="components/chat-control-guide.html" onerror="onImportError(event)">
+  <link rel="import" href="components/chat-control-guide.html" onerror="onImportError(event)">
+  <link rel="import" href="components/chat-control-guide.html" onerror="onImportError(event)">
+  <link rel="import" href="components/chat-control-guide.html" onerror="onImportError(event)">
   <div id="scriptbody">
     <p id='toc0' class='scene-heading'>RITUAL 1/C: Cues</p>
 <com-cue-publisher desc=(ADD)&#32;LIVE&#32;CAMERA&#32;IN&#32;TELESCOPE;&#32;Dusk&#32;to&#32;night&#32;(100%&#32;speed,&#32;rectangular&#32;vignette) t=Establishing&#32;-&gt;&#32;night&#32;in&#32;DTLA cid=110></com-cue-publisher>
@@ -91,7 +94,7 @@ var connection = new Strophe.Connection(hostXMPPHttpBind);;
     <com-chat-control-muc message="Which&#32;places&#32;will&#32;connect&#32;with&#32;your&#32;visitors?">
     </com-chat-control-muc>    <p class='action'>A group of TOURISTS follow Felix. They hear sounds coming from behind a dark curtain. FELIX approaches slowly and opens the curtain, he enters with TOURISTS trailing in behind him.</p>
     <p class='action'>From the ceiling hang small pictures twinkling metallic and other random objects. There is a box with little silver telescopes. A circular diagram is illuminated on the floor in front of them. In the corner, a printer periodically outputs new stills from THE ARCHIVE that have been selected by the WATCHERS.</p>
-    <p class='action'>ANDI, a CITIZEN, is rearranging things along the perimeter of the diagram. Like the other CITIZENS, her clothing looks out of place. She begins to speak to the group in American Sign Language. THE THE GUIDE translates roughly. <strong><em>Bolded text is in ASL, red is also spoken</strong></em> <strong>aloud.</strong></p>
+    <p class='action'>ANDI, a CITIZEN, is rearranging things along the perimeter of the diagram. Like the other CITIZENS, her clothing looks out of place. She begins to speak to the group in American Sign Language. THE GUIDE translates roughly. <strong><em>Bolded text is in ASL, red is also spoken</strong></em> <strong>aloud.</strong></p>
     <p class='character andi'>ANDI</p>
     <p class='dialogue '><strong><em>I look out the window and see memories. Lots of memories. I'm a stargazer<strong><em>**,** ***looking into the lives of other celestial beings.*** </em></strong>I hover above them and watch</strong></em>.</p>
 
@@ -134,9 +137,9 @@ Venice is a residential, commercial, and recreational beachfront neighborhood fo
     <p class='dialogue '>Here, share the memories.</p>
     <p class='parenthetical '>(giving the Tourist another picture)</p>
     <p class='dialogue '>Now YOU! <strong><em>Please?<strong><em> </em></strong>Read one.</strong></em></p>
-    <p class='character the-the-guide'>THE THE GUIDE</p>
-    <p class='dialogue '>Read the pictures! Take a photo! Remember to say thank you!</p>
-    <p class='character tourist-1'>TOURIST 1</p>
+
+    <com-chat-control-guide message="Read&#32;the&#32;pictures!&#32;Take&#32;a&#32;photo!&#32;Remember&#32;to&#32;say&#32;thank&#32;you!">
+    </com-chat-control-guide>    <p class='character tourist-1'>TOURIST 1</p>
     <p class='dialogue '>&lt;&lt;May 2010: a quinceañera of a girl from Sinaloa.&gt;&gt;</p>
 <com-cue-publisher desc=Highlights&#32;Mis&#32;16&#32;(50%&#32;speed,&#32;circular&#32;vignette&#32;on&#32;telescope,&#32;rectangular&#32;vignette&#32;on&#32;YT&#32;video) t=May&#32;2010:&#32;a&#32;quinceañera&#32;of&#32;a&#32;girl&#32;from&#32;Sinaloa. cid=130></com-cue-publisher>
     <a target="_blank" href="components/cue-publisher.html" class="xref-code">cue-publisher</a>
@@ -163,9 +166,9 @@ The oldest proof of existence of dancing comes from the 9000 year old cave paint
     <a target="_blank" href="components/cue-publisher.html" class="xref-code">cue-publisher</a>
     <p class='action'>ANDI V.O.
 2002. Belmont High School Graduation. There were six-hundred and sixty-seven people graduating that year. Cassie should have been one of them.  They read her name anyway. A special posthumous degree. 336 girls. 331 boys. 67.9% of high school students in Los Angeles graduate. Doctors. Writers. Actors. Musicians. Scientists. Firefighters. Cassie wanted to be a teacher. She was on UA flight 175. 1+7+5. 13. I remember when we were 13</p>
-    <p class='character the-the-guide'>THE THE GUIDE</p>
-    <p class='dialogue '>Listen to her. Imagine for her. Thank her!</p>
-    <p class='character andi'>ANDI</p>
+
+    <com-chat-control-guide message="Listen&#32;to&#32;her.&#32;Imagine&#32;for&#32;her.&#32;Thank&#32;her!">
+    </com-chat-control-guide>    <p class='character andi'>ANDI</p>
     <p class='dialogue '>You can have those, but not this one... Here, can you read this? <strong><em>Please.</strong></em></p>
     <p class='action'>ANDI looks through the stack of pictures in her hands and finds one of FELIX.</p>
     <p class='action'>Look! It's you at the Santa Monica Pier! Hey! <strong><em>Can you hear me? Feel it.</strong></em> Maybe then you'll remember?</p>
@@ -189,10 +192,9 @@ Sunday afternoon in Venice. We walked the canals and I held my skateboard. We we
     <p class='dialogue '><strong><em>Sure.</strong></em> Let's help him. Let's help him never forget.</p>
     <p class='action'>ANDI starts dancing around the space excited about making the constellation.</p>
     <p class='action'>Let's help him. Can you hand me some pictures that printed over there? Memories. Those pictures over there. Let's help him. Let's help him never forget.</p>
-    <p class='character the-the-guide'>THE THE GUIDE</p>
-    <p class='parenthetical '>(vibrating)</p>
-    <p class='dialogue '>Help make the constellation! Say thank you!</p>
-    <p class='character andi'>ANDI</p>
+
+    <com-chat-control-guide message="Help&#32;make&#32;the&#32;constellation!&#32;Say&#32;thank&#32;you!">
+    </com-chat-control-guide>    <p class='character andi'>ANDI</p>
     <p class='dialogue '>Find the right memory. Let's help him. Let's help him never forget. We need <strong><em>connection.<strong><em> </em></strong>Connection. Connection.</strong></em></p>
 
     <com-chat-control-guide message="Geez!&#32;Does&#32;she&#32;have&#32;to&#32;spell&#32;it&#32;out&#32;for&#32;you??">
