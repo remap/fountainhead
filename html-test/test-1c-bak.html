@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="ScriptCSS.css">
+</head>
+<body>
+<section>
+  <div id="floating-menu">
+    <h3>Menu (Press 't' to show/hide)</h3>
+    <a id="floating-menu-toggle-olf" href="#" onclick="scriptControl.toggleClassVisibility('olf');return false;">Show/hide OLF</a>
+    <br><hr>
+    <h3>Table of Contents</h3>
+  </div>
+  <script>
+var showid = "chocolate_cookie_show";
+  </script>
+  <script src="includes/ndn.js"></script>
+  <script>
+var prefix = new Name("/ndn/edu/ucla/remap/losatlantis");
+var face = new Face({host: "archive-dev.remap.ucla.edu"});
+  </script>
+  <script src="includes/ndn-init.js"></script>
+  <script>
+  </script>
+  <script src="includes/ndn-url-publisher-component.js"></script>
+  <script>
+  </script>
+  <script src="includes/script-control.js"></script>
+  <script>
+  </script>
+  <script src="includes/component-object.js"></script>
+  <script>
+  </script>
+  <script src="includes/ndn-publisher-component-object.js"></script>
+  <script>
+  </script>
+  <script src="includes/onload.js"></script>
+  <script>
+  </script>
+  <script src="includes/youtube-object.js"></script>
+  <script>
+  </script>
+  <link rel="import" href="components/cue-publisher.html" onerror="onImportError(event)">
+  <div id="scriptbody">
+<com-cue-publisher content={&#32;&#34;yt1&#34;:&#32;{&#32;&#34;URL&#34;:&#32;&#34;https://www.youtube.com/watch?v=QEb6ANksXCs&#34;,&#32;&#34;reset&#34;:&#32;true,&#32;&#34;Playback&#32;speed&#34;:&#32;[0.5,&#32;1]&#32;},&#32;&#34;postproc1&#34;:&#32;{&#32;&#34;reset&#34;:&#32;true,&#32;&#34;Crop&#32;left&#34;:&#32;0.25,&#32;&#34;Crop&#32;bottom&#34;:&#32;0,&#32;&#34;Crop&#32;right&#34;:&#32;0.75,&#32;&#34;Crop&#32;top&#34;:&#32;1,&#32;&#34;Vignette&#32;edge&#34;:&#32;0.05,&#32;&#34;Circle&#32;crop&#34;:&#32;1&#32;},&#32;&#34;postproc_video1&#34;:&#32;{&#32;&#34;reset&#34;:&#32;true,&#32;&#34;Crop&#32;left&#34;:&#32;0.25,&#32;&#34;Crop&#32;bottom&#34;:&#32;0,&#32;&#34;Crop&#32;right&#34;:&#32;0.75,&#32;&#34;Crop&#32;top&#34;:&#32;1,&#32;&#34;Vignette&#32;edge&#34;:&#32;0.05,&#32;&#34;Circle&#32;crop&#34;:&#32;1&#32;}&#32;} desc=&#34;Assyrian&#32;food&#32;fest&#32;(50%&#32;speed,&#32;circular&#32;vignette)&#34; t=&#34;ANDI:&#32;&lt;&lt;1995:&#32;An&#32;Assyrian&#32;food&#32;festival.&#32;We&#32;were&#32;really&#32;cute&#32;as&#32;a&#32;kids!&gt;&gt;&#34; cid=115></com-cue-publisher>
+    <a target="_blank" href="components/cue-publisher.html" class="xref-code">cue-publisher</a>
+<com-cue-publisher content={&#32;&#34;yt1&#34;:&#32;{&#32;&#34;URL&#34;:&#32;&#34;https://www.youtube.com/watch?v=KwDuj2T8HqA&#34;,&#32;&#34;reset&#34;:&#32;true,&#32;&#34;Playback&#32;speed&#34;:&#32;[0.5,&#32;1]&#32;},&#32;&#34;postproc1&#34;:&#32;{&#32;&#34;reset&#34;:&#32;true,&#32;&#34;Crop&#32;left&#34;:&#32;0.25,&#32;&#34;Crop&#32;bottom&#34;:&#32;0,&#32;&#34;Crop&#32;right&#34;:&#32;0.75,&#32;&#34;Crop&#32;top&#34;:&#32;1,&#32;&#34;Vignette&#32;edge&#34;:&#32;0.05,&#32;&#34;Circle&#32;crop&#34;:&#32;1&#32;},&#32;&#34;postproc_video1&#34;:&#32;{&#32;&#34;reset&#34;:&#32;true,&#32;&#34;Crop&#32;left&#34;:&#32;0.25,&#32;&#34;Crop&#32;bottom&#34;:&#32;0,&#32;&#34;Crop&#32;right&#34;:&#32;0.75,&#32;&#34;Crop&#32;top&#34;:&#32;1,&#32;&#34;Vignette&#32;edge&#34;:&#32;0.05,&#32;&#34;Circle&#32;crop&#34;:&#32;1&#32;}&#32;} desc=&#34;Skateboarders&#32;2&#32;(50%&#32;speed,&#32;circular&#32;vignette)&#34; t=&#34;FELIX:&#32;&lt;&lt;March&#32;2008:&#32;the&#32;skateboard&#32;park&#32;in&#32;Venice&#32;Beach.&gt;&gt;&#34; cid=120></com-cue-publisher>
+    <a target="_blank" href="components/cue-publisher.html" class="xref-code">cue-publisher</a>
+<com-cue-publisher content={&#32;&#34;yt1&#34;:&#32;{&#32;&#34;URL&#34;:&#32;&#34;https://www.youtube.com/watch?v=EhxRf1-uZUA&#34;,&#32;&#34;reset&#34;:&#32;true,&#32;&#34;Playback&#32;speed&#34;:&#32;[0.5,&#32;1]&#32;},&#32;&#34;postproc1&#34;:&#32;{&#32;&#34;reset&#34;:&#32;true,&#32;&#34;Crop&#32;left&#34;:&#32;0.25,&#32;&#34;Crop&#32;bottom&#34;:&#32;0,&#32;&#34;Crop&#32;right&#34;:&#32;0.75,&#32;&#34;Crop&#32;top&#34;:&#32;1,&#32;&#34;Vignette&#32;edge&#34;:&#32;0.05,&#32;&#34;Circle&#32;crop&#34;:&#32;1&#32;},&#32;&#34;postproc_video1&#34;:&#32;{&#32;&#34;reset&#34;:&#32;true,&#32;&#34;Crop&#32;left&#34;:&#32;0.25,&#32;&#34;Crop&#32;bottom&#34;:&#32;0,&#32;&#34;Crop&#32;right&#34;:&#32;0.75,&#32;&#34;Crop&#32;top&#34;:&#32;1,&#32;&#34;Vignette&#32;edge&#34;:&#32;0.05,&#32;&#34;Circle&#32;crop&#34;:&#32;1&#32;}&#32;} desc=&#34;Timket&#32;1&#32;(50%&#32;speed,&#32;circular&#32;vignette)&#34; t=&#34;T1:&#32;&lt;&lt;January&#32;2012:&#32;an&#32;Ethiopian&#32;baptism&#32;in&#32;Dodger&#32;Stadium.&#32;Everyone&#32;wore&#32;white.&#32;We&#32;were&#32;dancing.&gt;&gt;&#34; cid=130></com-cue-publisher>
+    <a target="_blank" href="components/cue-publisher.html" class="xref-code">cue-publisher</a>
+<com-cue-publisher content={&#32;&#34;yt1&#34;:&#32;{&#32;&#34;URL&#34;:&#32;&#34;https://www.youtube.com/watch?v=4VniyvaOVc0&#34;,&#32;&#34;reset&#34;:&#32;true,&#32;&#34;Playback&#32;speed&#34;:&#32;[0.5,&#32;1]&#32;},&#32;&#34;postproc1&#34;:&#32;{&#32;&#34;reset&#34;:&#32;true,&#32;&#34;Crop&#32;left&#34;:&#32;0.25,&#32;&#34;Crop&#32;bottom&#34;:&#32;0,&#32;&#34;Crop&#32;right&#34;:&#32;0.75,&#32;&#34;Crop&#32;top&#34;:&#32;1,&#32;&#34;Vignette&#32;edge&#34;:&#32;0.05,&#32;&#34;Circle&#32;crop&#34;:&#32;1&#32;},&#32;&#34;postproc_video1&#34;:&#32;{&#32;&#34;reset&#34;:&#32;true,&#32;&#34;Crop&#32;left&#34;:&#32;0.25,&#32;&#34;Crop&#32;bottom&#34;:&#32;0,&#32;&#34;Crop&#32;right&#34;:&#32;0.75,&#32;&#34;Crop&#32;top&#34;:&#32;1,&#32;&#34;Vignette&#32;edge&#34;:&#32;0.05,&#32;&#34;Circle&#32;crop&#34;:&#32;1&#32;}&#32;} desc=&#34;Danza&#32;Pukklay&#32;(50%&#32;speed,&#32;circular&#32;vignette)&#34; t=&#34;T2:&#32;&lt;&lt;July&#32;2014:&#32;Danza&#32;Pukllay&#32;Chuko.&#32;A&#32;magical&#32;Peruvian&#32;dance.&gt;&gt;&#34; cid=131></com-cue-publisher>
+    <a target="_blank" href="components/cue-publisher.html" class="xref-code">cue-publisher</a>
+<com-cue-publisher content={&#32;&#34;yt1&#34;:&#32;{&#32;&#34;URL&#34;:&#32;&#34;https://www.youtube.com/watch?v=vOd38aQjd3o&#34;,&#32;&#34;reset&#34;:&#32;true,&#32;&#34;Playback&#32;speed&#34;:&#32;[0.5,&#32;1]&#32;},&#32;&#34;postproc1&#34;:&#32;{&#32;&#34;reset&#34;:&#32;true,&#32;&#34;Crop&#32;left&#34;:&#32;0.25,&#32;&#34;Crop&#32;bottom&#34;:&#32;0,&#32;&#34;Crop&#32;right&#34;:&#32;0.75,&#32;&#34;Crop&#32;top&#34;:&#32;1,&#32;&#34;Vignette&#32;edge&#34;:&#32;0.05,&#32;&#34;Circle&#32;crop&#34;:&#32;1&#32;},&#32;&#34;postproc_video1&#34;:&#32;{&#32;&#34;reset&#34;:&#32;true,&#32;&#34;Crop&#32;left&#34;:&#32;0.25,&#32;&#34;Crop&#32;bottom&#34;:&#32;0,&#32;&#34;Crop&#32;right&#34;:&#32;0.75,&#32;&#34;Crop&#32;top&#34;:&#32;1,&#32;&#34;Vignette&#32;edge&#34;:&#32;0.05,&#32;&#34;Circle&#32;crop&#34;:&#32;1&#32;}&#32;} desc=&#34;Mural&#32;in&#32;Echo&#32;Park&#32;(50%&#32;speed,&#32;circular&#32;vignette)&#32;&#34; t=&#34;T3:&#32;&lt;&lt;August&#32;1997:&#32;A&#32;mural&#32;in&#32;Echo&#32;Park.&#32;We&#32;call&#32;her&#32;the&#32;woman&#32;who&#32;watches.&gt;&gt;&#34; cid=132></com-cue-publisher>
+    <a target="_blank" href="components/cue-publisher.html" class="xref-code">cue-publisher</a>
+<com-cue-publisher content={&#32;&#34;yt1&#34;:&#32;{&#32;&#34;URL&#34;:&#32;&#34;https://www.youtube.com/watch?v=0t8lsQLK1vM&#34;,&#32;&#34;reset&#34;:&#32;true,&#32;&#34;Playback&#32;speed&#34;:&#32;[0.5,&#32;1]&#32;},&#32;&#34;postproc1&#34;:&#32;{&#32;&#34;reset&#34;:&#32;true,&#32;&#34;Crop&#32;left&#34;:&#32;0.25,&#32;&#34;Crop&#32;bottom&#34;:&#32;0,&#32;&#34;Crop&#32;right&#34;:&#32;0.75,&#32;&#34;Crop&#32;top&#34;:&#32;1,&#32;&#34;Vignette&#32;edge&#34;:&#32;0.05,&#32;&#34;Circle&#32;crop&#34;:&#32;1&#32;},&#32;&#34;postproc_video1&#34;:&#32;{&#32;&#34;reset&#34;:&#32;true,&#32;&#34;Crop&#32;left&#34;:&#32;0.25,&#32;&#34;Crop&#32;bottom&#34;:&#32;0,&#32;&#34;Crop&#32;right&#34;:&#32;0.75,&#32;&#34;Crop&#32;top&#34;:&#32;1,&#32;&#34;Vignette&#32;edge&#34;:&#32;0.05,&#32;&#34;Circle&#32;crop&#34;:&#32;1&#32;}&#32;} desc=&#34;Belmont&#32;High&#32;(50%&#32;speed,&#32;circular)&#34; t=&#34;ANDI:&#32;&lt;&lt;June&#32;2001:&#32;Belmont&#32;High&#32;School.&gt;&gt;&#34; cid=140></com-cue-publisher>
+    <a target="_blank" href="components/cue-publisher.html" class="xref-code">cue-publisher</a>
+<com-cue-publisher content={&#32;&#34;yt1&#34;:&#32;{&#32;&#34;URL&#34;:&#34;https://www.youtube.com/watch?v=dnxfcdhkel8&#34;,&#32;&#34;reset&#34;:&#32;true,&#32;&#34;Playback&#32;speed&#34;:&#32;[0.5,&#32;1]&#32;},&#32;&#34;postproc1&#34;:&#32;{&#32;&#34;reset&#34;:&#32;true,&#32;&#34;Vignette&#32;edge&#34;:&#32;0.05&#32;},&#32;&#34;postproc_video1&#34;:&#32;{&#32;&#34;reset&#34;:&#32;true,&#32;&#34;Vignette&#32;edge&#34;:&#32;0.05&#32;}&#32;} desc=&#34;Rollercoaster&#32;+&#32;wheel&#32;(50%&#32;speed,&#32;rectangular&#32;vignette,&#32;ADD&#32;w/&#32;Beach&#32;1)&#32;(TBC)&#34; t=&#34;ANDI:&#32;Look!&#32;It’s&#32;you&#32;at&#32;the&#32;Santa&#32;Monica&#32;Pier!&#34; cid=141></com-cue-publisher>
+    <a target="_blank" href="components/cue-publisher.html" class="xref-code">cue-publisher</a>
+<com-cue-publisher content={&#32;&#34;yt1&#34;:&#32;{&#32;&#34;URL&#34;:&#32;&#34;https://www.youtube.com/watch?v=6WfElPMvf80&#34;,&#32;&#34;reset&#34;:&#32;true,&#32;&#34;Playback&#32;speed&#34;:&#32;[0.5,&#32;1]&#32;},&#32;&#34;postproc1&#34;:&#32;{&#32;&#34;reset&#34;:&#32;true,&#32;&#34;Vignette&#32;edge&#34;:&#32;0.05&#32;},&#32;&#34;postproc_video1&#34;:&#32;{&#32;&#34;reset&#34;:&#32;true,&#32;&#34;Vignette&#32;edge&#34;:&#32;0.05&#32;}&#32;} desc=&#34;Sunrise&#32;attempt&#32;1&#32;(Fade&#32;in,&#32;rectangular&#32;vignette)&#34; t=&#34;ANDI:&#32;I&#32;can&#39;t&#32;really&#32;get&#32;around&#32;here...&#34; cid=142></com-cue-publisher>
+    <a target="_blank" href="components/cue-publisher.html" class="xref-code">cue-publisher</a>
+<com-cue-publisher content={&#32;&#34;blackout&#34;:&#32;true&#32;} desc=&#34;Fade&#32;to&#32;black&#34; t=&#34;Blackout&#34; cid=150></com-cue-publisher>
+    <a target="_blank" href="components/cue-publisher.html" class="xref-code">cue-publisher</a>
+<com-cue-publisher content={&#32;&#34;renderText.text&#34;:&#32;&#34;quick&#34;,&#32;&#34;postproc_text&#34;:&#32;{&#32;&#34;Blackout&#34;:&#32;true&#32;}&#32;} desc=&#34;Cue&#32;3000:&#32;test&#32;for&#32;text&#32;publisher&#34; t=&#34;Test&#32;text&#32;publisher&#34; cid=3000></com-cue-publisher>
+    <a target="_blank" href="components/cue-publisher.html" class="xref-code">cue-publisher</a>
+  </div></section>
+</body>
+</html>

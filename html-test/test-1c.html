@@ -11,6 +11,8 @@
     <a id="floating-menu-toggle-olf" href="#" onclick="scriptControl.toggleClassVisibility('olf');return false;">Show/hide OLF</a>
     <br><hr>
     <h3>Table of Contents</h3>
+    <a href="#toc0">RITUAL 1/C: Cues</a>
+    <a href="#toc1">RITUAL 1/C: "POLAROIDS" (@FELIX)</a>
   </div>
   <script>
 var showid = "chocolate_cookie_show";
@@ -25,6 +27,26 @@ var face = new Face({host: "archive-dev.remap.ucla.edu"});
   </script>
   <script src="includes/ndn-url-publisher-component.js"></script>
   <script>
+var defaultChatNickName = "The guide";
+var chatJID = "admin.admin@archive-dev.remap.ucla.edu";
+var chatPasswd = "admin@admin";
+var defaultMucNickName = "The observatory" ;
+var defaultMucRoom = "observatory@conference.archive-dev.remap.ucla.edu";
+var hostXMPP = "archive-dev.remap.ucla.edu" ;
+var hostXMPPHttpBind = "http://archive-dev.remap.ucla.edu:5280/http-bind";
+  </script>
+  <script src="includes/jquery-1.2.6.min.js"></script>
+  <script>
+  </script>
+  <script src="includes/strophe.js"></script>
+  <script>
+  </script>
+  <script src="includes/strophe.muc.js"></script>
+  <script>
+var connection = new Strophe.Connection(hostXMPPHttpBind);;
+  </script>
+  <script src="includes/strophe-init.js"></script>
+  <script>
   </script>
   <script src="includes/script-control.js"></script>
   <script>
@@ -38,31 +60,165 @@ var face = new Face({host: "archive-dev.remap.ucla.edu"});
   <script src="includes/onload.js"></script>
   <script>
   </script>
+  <script src="includes/cue-object.js"></script>
+  <script>
+  </script>
   <script src="includes/youtube-object.js"></script>
   <script>
   </script>
   <link rel="import" href="components/cue-publisher.html" onerror="onImportError(event)">
+  <link rel="import" href="components/olf.html" onerror="onImportError(event)">
+  <link rel="import" href="components/chat-control-muc.html" onerror="onImportError(event)">
+  <link rel="import" href="components/chat-control-guide.html" onerror="onImportError(event)">
+  <link rel="import" href="components/chat-control-guide.html" onerror="onImportError(event)">
+  <link rel="import" href="components/chat-control-guide.html" onerror="onImportError(event)">
+  <link rel="import" href="components/chat-control-guide.html" onerror="onImportError(event)">
+  <link rel="import" href="components/chat-control-guide.html" onerror="onImportError(event)">
+  <link rel="import" href="components/chat-control-guide.html" onerror="onImportError(event)">
   <div id="scriptbody">
-<com-cue-publisher content={&#32;&#34;yt1&#34;:&#32;{&#32;&#34;URL&#34;:&#32;&#34;https://www.youtube.com/watch?v=QEb6ANksXCs&#34;,&#32;&#34;reset&#34;:&#32;true,&#32;&#34;Playback&#32;speed&#34;:&#32;[0.5,&#32;1]&#32;},&#32;&#34;postproc1&#34;:&#32;{&#32;&#34;reset&#34;:&#32;true,&#32;&#34;Crop&#32;left&#34;:&#32;0.25,&#32;&#34;Crop&#32;bottom&#34;:&#32;0,&#32;&#34;Crop&#32;right&#34;:&#32;0.75,&#32;&#34;Crop&#32;top&#34;:&#32;1,&#32;&#34;Vignette&#32;edge&#34;:&#32;0.05,&#32;&#34;Circle&#32;crop&#34;:&#32;1&#32;},&#32;&#34;postproc_video1&#34;:&#32;{&#32;&#34;reset&#34;:&#32;true,&#32;&#34;Crop&#32;left&#34;:&#32;0.25,&#32;&#34;Crop&#32;bottom&#34;:&#32;0,&#32;&#34;Crop&#32;right&#34;:&#32;0.75,&#32;&#34;Crop&#32;top&#34;:&#32;1,&#32;&#34;Vignette&#32;edge&#34;:&#32;0.05,&#32;&#34;Circle&#32;crop&#34;:&#32;1&#32;}&#32;} desc=&#34;Assyrian&#32;food&#32;fest&#32;(50%&#32;speed,&#32;circular&#32;vignette)&#34; t=&#34;ANDI:&#32;&lt;&lt;1995:&#32;An&#32;Assyrian&#32;food&#32;festival.&#32;We&#32;were&#32;really&#32;cute&#32;as&#32;a&#32;kids!&gt;&gt;&#34; cid=115></com-cue-publisher>
+    <p id='toc0' class='scene-heading'>RITUAL 1/C: Cues</p>
+<com-cue-publisher desc=(ADD)&#32;LIVE&#32;CAMERA&#32;IN&#32;TELESCOPE;&#32;Dusk&#32;to&#32;night&#32;(100%&#32;speed,&#32;rectangular&#32;vignette) t=Establishing&#32;-&gt;&#32;night&#32;in&#32;DTLA cid=110></com-cue-publisher>
     <a target="_blank" href="components/cue-publisher.html" class="xref-code">cue-publisher</a>
-<com-cue-publisher content={&#32;&#34;yt1&#34;:&#32;{&#32;&#34;URL&#34;:&#32;&#34;https://www.youtube.com/watch?v=KwDuj2T8HqA&#34;,&#32;&#34;reset&#34;:&#32;true,&#32;&#34;Playback&#32;speed&#34;:&#32;[0.5,&#32;1]&#32;},&#32;&#34;postproc1&#34;:&#32;{&#32;&#34;reset&#34;:&#32;true,&#32;&#34;Crop&#32;left&#34;:&#32;0.25,&#32;&#34;Crop&#32;bottom&#34;:&#32;0,&#32;&#34;Crop&#32;right&#34;:&#32;0.75,&#32;&#34;Crop&#32;top&#34;:&#32;1,&#32;&#34;Vignette&#32;edge&#34;:&#32;0.05,&#32;&#34;Circle&#32;crop&#34;:&#32;1&#32;},&#32;&#34;postproc_video1&#34;:&#32;{&#32;&#34;reset&#34;:&#32;true,&#32;&#34;Crop&#32;left&#34;:&#32;0.25,&#32;&#34;Crop&#32;bottom&#34;:&#32;0,&#32;&#34;Crop&#32;right&#34;:&#32;0.75,&#32;&#34;Crop&#32;top&#34;:&#32;1,&#32;&#34;Vignette&#32;edge&#34;:&#32;0.05,&#32;&#34;Circle&#32;crop&#34;:&#32;1&#32;}&#32;} desc=&#34;Skateboarders&#32;2&#32;(50%&#32;speed,&#32;circular&#32;vignette)&#34; t=&#34;FELIX:&#32;&lt;&lt;March&#32;2008:&#32;the&#32;skateboard&#32;park&#32;in&#32;Venice&#32;Beach.&gt;&gt;&#34; cid=120></com-cue-publisher>
+<com-cue-publisher desc=Dusk&#32;to&#32;night&#32;(150%&#32;speed,&#32;rectangular&#32;vignette) t=DTLA&#32;@&#32;night&#32;ramp&#32;1 cid=111></com-cue-publisher>
     <a target="_blank" href="components/cue-publisher.html" class="xref-code">cue-publisher</a>
-<com-cue-publisher content={&#32;&#34;yt1&#34;:&#32;{&#32;&#34;URL&#34;:&#32;&#34;https://www.youtube.com/watch?v=EhxRf1-uZUA&#34;,&#32;&#34;reset&#34;:&#32;true,&#32;&#34;Playback&#32;speed&#34;:&#32;[0.5,&#32;1]&#32;},&#32;&#34;postproc1&#34;:&#32;{&#32;&#34;reset&#34;:&#32;true,&#32;&#34;Crop&#32;left&#34;:&#32;0.25,&#32;&#34;Crop&#32;bottom&#34;:&#32;0,&#32;&#34;Crop&#32;right&#34;:&#32;0.75,&#32;&#34;Crop&#32;top&#34;:&#32;1,&#32;&#34;Vignette&#32;edge&#34;:&#32;0.05,&#32;&#34;Circle&#32;crop&#34;:&#32;1&#32;},&#32;&#34;postproc_video1&#34;:&#32;{&#32;&#34;reset&#34;:&#32;true,&#32;&#34;Crop&#32;left&#34;:&#32;0.25,&#32;&#34;Crop&#32;bottom&#34;:&#32;0,&#32;&#34;Crop&#32;right&#34;:&#32;0.75,&#32;&#34;Crop&#32;top&#34;:&#32;1,&#32;&#34;Vignette&#32;edge&#34;:&#32;0.05,&#32;&#34;Circle&#32;crop&#34;:&#32;1&#32;}&#32;} desc=&#34;Timket&#32;1&#32;(50%&#32;speed,&#32;circular&#32;vignette)&#34; t=&#34;T1:&#32;&lt;&lt;January&#32;2012:&#32;an&#32;Ethiopian&#32;baptism&#32;in&#32;Dodger&#32;Stadium.&#32;Everyone&#32;wore&#32;white.&#32;We&#32;were&#32;dancing.&gt;&gt;&#34; cid=130></com-cue-publisher>
+<com-cue-publisher desc=Dusk&#32;to&#32;night&#32;(200%&#32;speed,&#32;rectangular&#32;vignette) t=DTLA&#32;@&#32;night&#32;ramp&#32;2 cid=112></com-cue-publisher>
     <a target="_blank" href="components/cue-publisher.html" class="xref-code">cue-publisher</a>
-<com-cue-publisher content={&#32;&#34;yt1&#34;:&#32;{&#32;&#34;URL&#34;:&#32;&#34;https://www.youtube.com/watch?v=4VniyvaOVc0&#34;,&#32;&#34;reset&#34;:&#32;true,&#32;&#34;Playback&#32;speed&#34;:&#32;[0.5,&#32;1]&#32;},&#32;&#34;postproc1&#34;:&#32;{&#32;&#34;reset&#34;:&#32;true,&#32;&#34;Crop&#32;left&#34;:&#32;0.25,&#32;&#34;Crop&#32;bottom&#34;:&#32;0,&#32;&#34;Crop&#32;right&#34;:&#32;0.75,&#32;&#34;Crop&#32;top&#34;:&#32;1,&#32;&#34;Vignette&#32;edge&#34;:&#32;0.05,&#32;&#34;Circle&#32;crop&#34;:&#32;1&#32;},&#32;&#34;postproc_video1&#34;:&#32;{&#32;&#34;reset&#34;:&#32;true,&#32;&#34;Crop&#32;left&#34;:&#32;0.25,&#32;&#34;Crop&#32;bottom&#34;:&#32;0,&#32;&#34;Crop&#32;right&#34;:&#32;0.75,&#32;&#34;Crop&#32;top&#34;:&#32;1,&#32;&#34;Vignette&#32;edge&#34;:&#32;0.05,&#32;&#34;Circle&#32;crop&#34;:&#32;1&#32;}&#32;} desc=&#34;Danza&#32;Pukklay&#32;(50%&#32;speed,&#32;circular&#32;vignette)&#34; t=&#34;T2:&#32;&lt;&lt;July&#32;2014:&#32;Danza&#32;Pukllay&#32;Chuko.&#32;A&#32;magical&#32;Peruvian&#32;dance.&gt;&gt;&#34; cid=131></com-cue-publisher>
+<com-cue-publisher desc=Disneyland&#32;1967&#32;(50%&#32;speed,&#32;circular&#32;vignette&#32;on&#32;telescope,&#32;rectangular&#32;vignette&#32;on&#32;YT&#32;video) t=We&#32;used&#32;to&#32;take&#32;the&#32;I-5&#32;down&#32;to&#32;Disneyland&#32;every&#32;year cid=115></com-cue-publisher>
     <a target="_blank" href="components/cue-publisher.html" class="xref-code">cue-publisher</a>
-<com-cue-publisher content={&#32;&#34;yt1&#34;:&#32;{&#32;&#34;URL&#34;:&#32;&#34;https://www.youtube.com/watch?v=vOd38aQjd3o&#34;,&#32;&#34;reset&#34;:&#32;true,&#32;&#34;Playback&#32;speed&#34;:&#32;[0.5,&#32;1]&#32;},&#32;&#34;postproc1&#34;:&#32;{&#32;&#34;reset&#34;:&#32;true,&#32;&#34;Crop&#32;left&#34;:&#32;0.25,&#32;&#34;Crop&#32;bottom&#34;:&#32;0,&#32;&#34;Crop&#32;right&#34;:&#32;0.75,&#32;&#34;Crop&#32;top&#34;:&#32;1,&#32;&#34;Vignette&#32;edge&#34;:&#32;0.05,&#32;&#34;Circle&#32;crop&#34;:&#32;1&#32;},&#32;&#34;postproc_video1&#34;:&#32;{&#32;&#34;reset&#34;:&#32;true,&#32;&#34;Crop&#32;left&#34;:&#32;0.25,&#32;&#34;Crop&#32;bottom&#34;:&#32;0,&#32;&#34;Crop&#32;right&#34;:&#32;0.75,&#32;&#34;Crop&#32;top&#34;:&#32;1,&#32;&#34;Vignette&#32;edge&#34;:&#32;0.05,&#32;&#34;Circle&#32;crop&#34;:&#32;1&#32;}&#32;} desc=&#34;Mural&#32;in&#32;Echo&#32;Park&#32;(50%&#32;speed,&#32;circular&#32;vignette)&#32;&#34; t=&#34;T3:&#32;&lt;&lt;August&#32;1997:&#32;A&#32;mural&#32;in&#32;Echo&#32;Park.&#32;We&#32;call&#32;her&#32;the&#32;woman&#32;who&#32;watches.&gt;&gt;&#34; cid=132></com-cue-publisher>
+<com-cue-publisher desc=Skateboarders&#32;2&#32;(50%&#32;speed,&#32;circular&#32;vignette&#32;on&#32;telescope,&#32;rectangular&#32;vignette&#32;on&#32;YT&#32;video) t=August&#32;1976:&#32;Skateboarders&#32;in&#32;Venice&#32;beach. cid=120></com-cue-publisher>
     <a target="_blank" href="components/cue-publisher.html" class="xref-code">cue-publisher</a>
-<com-cue-publisher content={&#32;&#34;yt1&#34;:&#32;{&#32;&#34;URL&#34;:&#32;&#34;https://www.youtube.com/watch?v=0t8lsQLK1vM&#34;,&#32;&#34;reset&#34;:&#32;true,&#32;&#34;Playback&#32;speed&#34;:&#32;[0.5,&#32;1]&#32;},&#32;&#34;postproc1&#34;:&#32;{&#32;&#34;reset&#34;:&#32;true,&#32;&#34;Crop&#32;left&#34;:&#32;0.25,&#32;&#34;Crop&#32;bottom&#34;:&#32;0,&#32;&#34;Crop&#32;right&#34;:&#32;0.75,&#32;&#34;Crop&#32;top&#34;:&#32;1,&#32;&#34;Vignette&#32;edge&#34;:&#32;0.05,&#32;&#34;Circle&#32;crop&#34;:&#32;1&#32;},&#32;&#34;postproc_video1&#34;:&#32;{&#32;&#34;reset&#34;:&#32;true,&#32;&#34;Crop&#32;left&#34;:&#32;0.25,&#32;&#34;Crop&#32;bottom&#34;:&#32;0,&#32;&#34;Crop&#32;right&#34;:&#32;0.75,&#32;&#34;Crop&#32;top&#34;:&#32;1,&#32;&#34;Vignette&#32;edge&#34;:&#32;0.05,&#32;&#34;Circle&#32;crop&#34;:&#32;1&#32;}&#32;} desc=&#34;Belmont&#32;High&#32;(50%&#32;speed,&#32;circular)&#34; t=&#34;ANDI:&#32;&lt;&lt;June&#32;2001:&#32;Belmont&#32;High&#32;School.&gt;&gt;&#34; cid=140></com-cue-publisher>
+<com-cue-publisher desc=Highlights&#32;Mis&#32;16&#32;(50%&#32;speed,&#32;circular&#32;vignette&#32;on&#32;telescope,&#32;rectangular&#32;vignette&#32;on&#32;YT&#32;video) t=May&#32;2010:&#32;a&#32;quinceañera&#32;of&#32;a&#32;girl&#32;from&#32;Sinaloa. cid=130></com-cue-publisher>
     <a target="_blank" href="components/cue-publisher.html" class="xref-code">cue-publisher</a>
-<com-cue-publisher content={&#32;&#34;yt1&#34;:&#32;{&#32;&#34;URL&#34;:&#34;https://www.youtube.com/watch?v=dnxfcdhkel8&#34;,&#32;&#34;reset&#34;:&#32;true,&#32;&#34;Playback&#32;speed&#34;:&#32;[0.5,&#32;1]&#32;},&#32;&#34;postproc1&#34;:&#32;{&#32;&#34;reset&#34;:&#32;true,&#32;&#34;Vignette&#32;edge&#34;:&#32;0.05&#32;},&#32;&#34;postproc_video1&#34;:&#32;{&#32;&#34;reset&#34;:&#32;true,&#32;&#34;Vignette&#32;edge&#34;:&#32;0.05&#32;}&#32;} desc=&#34;Rollercoaster&#32;+&#32;wheel&#32;(50%&#32;speed,&#32;rectangular&#32;vignette,&#32;ADD&#32;w/&#32;Beach&#32;1)&#32;(TBC)&#34; t=&#34;ANDI:&#32;Look!&#32;It’s&#32;you&#32;at&#32;the&#32;Santa&#32;Monica&#32;Pier!&#34; cid=141></com-cue-publisher>
+<com-cue-publisher desc=Timket&#32;1&#32;(50%&#32;speed,&#32;circular&#32;vignette&#32;on&#32;telescope,&#32;rectangular&#32;vignette&#32;on&#32;YT&#32;video) t=January&#32;2012:&#32;an&#32;Ethiopian&#32;baptism&#32;in&#32;Dodger&#32;Stadium.&#32;Everyone&#32;wore&#32;white.&#32;We&#32;were&#32;dancing. cid=131></com-cue-publisher>
     <a target="_blank" href="components/cue-publisher.html" class="xref-code">cue-publisher</a>
-<com-cue-publisher content={&#32;&#34;yt1&#34;:&#32;{&#32;&#34;URL&#34;:&#32;&#34;https://www.youtube.com/watch?v=6WfElPMvf80&#34;,&#32;&#34;reset&#34;:&#32;true,&#32;&#34;Playback&#32;speed&#34;:&#32;[0.5,&#32;1]&#32;},&#32;&#34;postproc1&#34;:&#32;{&#32;&#34;reset&#34;:&#32;true,&#32;&#34;Vignette&#32;edge&#34;:&#32;0.05&#32;},&#32;&#34;postproc_video1&#34;:&#32;{&#32;&#34;reset&#34;:&#32;true,&#32;&#34;Vignette&#32;edge&#34;:&#32;0.05&#32;}&#32;} desc=&#34;Sunrise&#32;attempt&#32;1&#32;(Fade&#32;in,&#32;rectangular&#32;vignette)&#34; t=&#34;ANDI:&#32;I&#32;can&#39;t&#32;really&#32;get&#32;around&#32;here...&#34; cid=142></com-cue-publisher>
+<com-cue-publisher desc=Danza&#32;Pukklay&#32;(50%&#32;speed,&#32;circular&#32;vignette&#32;on&#32;telescope,&#32;rectangular&#32;vignette&#32;on&#32;YT&#32;video) t=July&#32;2014:&#32;Danza&#32;Pukllay&#32;Chuko.&#32;A&#32;magical&#32;Peruvian&#32;dance. cid=132></com-cue-publisher>
     <a target="_blank" href="components/cue-publisher.html" class="xref-code">cue-publisher</a>
-<com-cue-publisher content={&#32;&#34;blackout&#34;:&#32;true&#32;} desc=&#34;Fade&#32;to&#32;black&#34; t=&#34;Blackout&#34; cid=150></com-cue-publisher>
+<com-cue-publisher desc=Belmont&#32;High&#32;(50%&#32;speed,&#32;circular&#32;vignette&#32;on&#32;telescope,&#32;rectangular&#32;vignette&#32;on&#32;YT&#32;video) t=June&#32;2001:&#32;Belmont&#32;High&#32;School. cid=135></com-cue-publisher>
     <a target="_blank" href="components/cue-publisher.html" class="xref-code">cue-publisher</a>
-<com-cue-publisher content={&#32;&#34;renderText.text&#34;:&#32;&#34;quick&#34;,&#32;&#34;postproc_text&#34;:&#32;{&#32;&#34;Blackout&#34;:&#32;true&#32;}&#32;} desc=&#34;Cue&#32;3000:&#32;test&#32;for&#32;text&#32;publisher&#34; t=&#34;Test&#32;text&#32;publisher&#34; cid=3000></com-cue-publisher>
+<com-cue-publisher desc=Beach&#32;1&#32;(50%&#32;speed,&#32;circular&#32;vignette&#32;on&#32;telescope,&#32;rectangular&#32;vignette&#32;on&#32;YT&#32;video) t=ANDI:&#32;Look!&#32;It’s&#32;you&#32;at&#32;the&#32;Santa&#32;Monica&#32;Pier! cid=141></com-cue-publisher>
     <a target="_blank" href="components/cue-publisher.html" class="xref-code">cue-publisher</a>
+<com-cue-publisher desc=Greek&#32;Wedding&#32;(120%&#32;speed,&#32;circular&#32;vignette) t=&#34;CONNECTION!&#34; cid=142></com-cue-publisher>
+    <a target="_blank" href="components/cue-publisher.html" class="xref-code">cue-publisher</a>
+<com-cue-publisher t=END&#32;Scene cid=150></com-cue-publisher>
+    <a target="_blank" href="components/cue-publisher.html" class="xref-code">cue-publisher</a>
+    <p id='toc1' class='scene-heading'>RITUAL 1/C: "POLAROIDS" (@FELIX)</p>
+
+    <com-olf description="OLF:  Wide shot at entry gives way to alternating close ups of each TOURIST and TRAVELER within the ritual. As needed, the feed can cut to direct input from the projection video source, before returning to close ups.">
+    </com-olf>
+    <com-chat-control-muc message="Which&#32;places&#32;will&#32;connect&#32;with&#32;your&#32;visitors?">
+    </com-chat-control-muc>    <p class='action'>A group of TOURISTS follow Felix. They hear sounds coming from behind a dark curtain. FELIX approaches slowly and opens the curtain, he enters with TOURISTS trailing in behind him.</p>
+    <p class='action'>From the ceiling hang small pictures twinkling metallic and other random objects. There is a box with little silver telescopes. A circular diagram is illuminated on the floor in front of them. In the corner, a printer periodically outputs new stills from THE ARCHIVE that have been selected by the WATCHERS.</p>
+    <p class='action'>ANDI, a CITIZEN, is rearranging things along the perimeter of the diagram. Like the other CITIZENS, her clothing looks out of place. She begins to speak to the group in American Sign Language. THE THE GUIDE translates roughly. <strong><em>Bolded text is in ASL, red is also spoken</strong></em> <strong>aloud.</strong></p>
+    <p class='character andi'>ANDI</p>
+    <p class='dialogue '><strong><em>I look out the window and see memories. Lots of memories. I'm a stargazer<strong><em>**,** ***looking into the lives of other celestial beings.*** </em></strong>I hover above them and watch</strong></em>.</p>
+
+    <com-chat-control-guide message="I&#32;look&#32;out&#32;the&#32;window&#32;and&#32;see&#32;memories.">
+    </com-chat-control-guide>
+    <com-chat-control-guide message="I&#39;m&#32;a&#32;stargazer,&#32;looking&#32;into&#32;the&#32;lives&#32;of&#32;other&#32;celestial&#32;beings.">
+    </com-chat-control-guide>
+    <com-chat-control-guide message="I&#32;hover&#32;above&#32;them&#32;and&#32;watch.">
+    </com-chat-control-guide>    <p class='action'>My window faces north, at the end of a row of small houses, inside a cul de sac, at the edge of a dusty neighborhood overlooking a cemented river in Chavez Ravine. <strong><em>That's where we grew up.</strong></em></p>
+
+    <com-chat-control-guide message="That&#39;s&#32;where&#32;we&#32;grew&#32;up.">
+    </com-chat-control-guide>    <p class='action'>Where the telephone wires hung low. <strong><em>Like electricity!<strong><em> About to touch the Earth. We've written stories about this place. So close and yet so far. </em></strong>I dream of being an astronaut!</strong></em> Like Ellen Ochoa.</p>
+    <p class='parenthetical'>(putting on jumpsuit)</p>
+    <p class='dialogue'>You have to be good at math, but I'm pretty terrible at it. You have to physically fit, but I can't run very fast. We make up stories about all kinds of things. Like these things! <strong><em>Look! Read! Share!</strong></em></p>
+    <p class='action'>ANDI picks up the telescope and points it at a picture of Disneyland hanging on a strings around her. The video associated with that picture is projected in the space.</p>
+    <p class='character andi'>ANDI</p>
+    <p class='dialogue '>&lt;&lt;We used to take the I-5 down to Disneyland every year.&gt;&gt;</p>
+    <p class='action'>ANDI V.O.
+Mom was obsessed with the happiest place on earth. That was the only time of year we could eat anything, anything we wanted. Funnel cakes. Ice cream. Churros. But we weren't allowed to talk during the fireworks. Mom looked at them as if they were made of magic. My favorite spot was Tomorrowland because that's where I decided I wanted to be an astronaut. This was just before Cassie was born. She was so little. So, so little. Cassiopeia 6lbs 3 oz. She had a birthmark the shape of a W on her shoulder. Born off the 10 freeway at Kaiser Permanente in 1983.  </p>
+    <p class='action'>FELIX picks up a little silver telescope from the box. He looks through it and shows the TOURISTS.</p>
+    <p class='character andi'>ANDI</p>
+    <p class='dialogue '>Do I know you?</p>
+    <p class='parenthetical '>(whispering to FELIX)</p>
+    <p class='dialogue '>Did you know that Polaris, the north star, is a Cepheid star?? That means it contracts and expands in brightness. <strong><em>Like it's talking!</strong></em></p>
+    <p class='parenthetical '>(giving FELIX a picture)</p>
+    <p class='dialogue '>Could you please read one? You. Yeah, you. Out loud? Share it with everyone. <strong><em>Please?<strong><em> </em></strong>Thank you!</strong></em></p>
+    <p class='character felix'>FELIX</p>
+    <p class='parenthetical '>(holding up the picture to ANDI's telescope)</p>
+    <p class='dialogue '>&lt;&lt;August 1976: Skateboarders in Venice beach.&gt;&gt;</p>
+    <p class='action'>ANDI V.O.
+Venice is a residential, commercial, and recreational beachfront neighborhood founded in 1905 as a seaside resort town. It was an independent city until 1926, when it merged with Los Angeles. The 2000 U.S. census counted 37,705 residents in the 3.17-square-mile Venice neighborhood--an average of 11,891 people per square mile, about the norm for Los Angeles; in 2008, the city estimated that the population had increased to 40,885.</p>
+    <p class='character andi'>ANDI</p>
+    <p class='parenthetical '>(taping the picture to FELIX's chest)</p>
+    <p class='dialogue '><strong><em>Thank you!</strong></em> <em>Y*ou can keep the memory if you want. *H</em></p>
+    <p class='parenthetical '>(handing Felix the telescope)</p>
+    <p class='dialogue '>Here, share the memories.</p>
+    <p class='parenthetical '>(giving the Tourist another picture)</p>
+    <p class='dialogue '>Now YOU! <strong><em>Please?<strong><em> </em></strong>Read one.</strong></em></p>
+    <p class='character the-the-guide'>THE THE GUIDE</p>
+    <p class='dialogue '>Read the pictures! Take a photo! Remember to say thank you!</p>
+    <p class='character tourist-1'>TOURIST 1</p>
+    <p class='dialogue '>&lt;&lt;May 2010: a quinceañera of a girl from Sinaloa.&gt;&gt;</p>
+    <p class='action'>ANDI V.O.
+I always wanted to have a quinceanera. All the girls at school got to where to those awesome fluffy dresses. They were pinks and turquoise and orange and blue. They got SO many presents. Best of all they got to wear a tiara. Like a princess. This was their rite of passage.</p>
+    <p class='character andi'>ANDI</p>
+    <p class='dialogue '><strong><em>Thank you!<strong><em> Now YOU! ***Please?*** </em></strong>Read one.</strong></em></p>
+    <p class='character tourist-2'>TOURIST 2</p>
+    <p class='dialogue '>&lt;&lt;January 2012: an Ethiopian baptism in Dodger Stadium.&gt;&gt;</p>
+    <p class='action'>ANDI V.O.
+Baptism comes from the greek word Baptisma. Váptisma. Derived from the noun Baptizo which means "I wash." We were driving around Echo park when we saw the commotion. It wasn't a Dodger game. Everyone was wearing white. There were pools of water everywhere. Tears. Dancing. Chorós. Celebration. Eortasmós. It was a baptism!</p>
+    <p class='character tourist-3'>TOURIST 3</p>
+    <p class='dialogue '>&lt;&lt;July 2014: a magical Peruvian dance.&gt;&gt;</p>
+    <p class='action'>ANDI V.O.
+The oldest proof of existence of dancing comes from the 9000 year old cave paintings that were found in India. In most ancient civilizations, dancing before the god is an important element in temple ritual. Danza Pukklay is a dance to celebrate play. The stomping represents the formations of clouds in that year's harvest.</p>
+    <p class='action'>ANDI bounces around the space until she finds one of her memories.</p>
+    <p class='character andi'>ANDI</p>
+    <p class='dialogue '>&lt;&lt;June 2001: Belmont High School. This was going to be my sister's graduation.&gt;&gt;</p>
+    <p class='action'>ANDI V.O.
+2002. Belmont High School Graduation. There were six-hundred and sixty-seven people graduating that year. Cassie should have been one of them.  They read her name anyway. A special posthumous degree. 336 girls. 331 boys. 67.9% of high school students in Los Angeles graduate. Doctors. Writers. Actors. Musicians. Scientists. Firefighters. Cassie wanted to be a teacher. She was on UA flight 175. 1+7+5. 13. I remember when we were 13</p>
+    <p class='character the-the-guide'>THE THE GUIDE</p>
+    <p class='dialogue '>Listen to her. Imagine for her. Thank her!</p>
+    <p class='character andi'>ANDI</p>
+    <p class='dialogue '>You can have those, but not this one... Here, can you read this? <strong><em>Please.</strong></em></p>
+    <p class='action'>ANDI looks through the stack of pictures in her hands and finds one of FELIX.</p>
+    <p class='action'>Look! It's you at the Santa Monica Pier! Hey! <strong><em>Can you hear me? Feel it.</strong></em> Maybe then you'll remember?</p>
+    <p class='action'>(if he still has the telescope he points it at the picture.)</p>
+    <p class='character felix'>FELIX</p>
+    <p class='dialogue '>I touched her sun kissed face...</p>
+    <p class='action'>A video of &lt;&lt;Santa Monica&gt;&gt; starts playing.</p>
+    <p class='character andi'>ANDI</p>
+    <p class='dialogue '>Who is she?</p>
+    <p class='character felix-v.o'>FELIX V.O</p>
+    <p class='dialogue '>I touched her sun-kissed face and it was warm. It was a
+Sunday afternoon in Venice. We walked the canals and I held my skateboard. We were barefoot. The sand stuck to our bodies and slowly drifted off with every step. She didn't care that I was always angry at the world. She made me coolout and just relax...</p>
+    <p class='character andi'>ANDI</p>
+    <p class='dialogue '>I can make a <strong><em>constellation</strong></em> for you. That way you won't forget.</p>
+    <p class='character felix'>FELIX</p>
+    <p class='dialogue '>Please. <strong><em>Please.</strong></em> Please.</p>
+    <p class='character andi'>ANDI</p>
+    <p class='dialogue '><strong><em>Sure.</strong></em> Let's help him. Let's help him never forget.</p>
+    <p class='action'>ANDI starts dancing around the space excited about making the constellation.</p>
+    <p class='action'>Let's help him. Can you hand me some pictures that printed over there? Memories. Those pictures over there. Let's help him. Let's help him never forget.</p>
+    <p class='character the-the-guide'>THE THE GUIDE</p>
+    <p class='parenthetical '>(vibrating)</p>
+    <p class='dialogue '>Help make the constellation! Say thank you!</p>
+    <p class='character andi'>ANDI</p>
+    <p class='dialogue '>Find the right memory. Let's help him. Let's help him never forget. We need <strong><em>connection.<strong><em> </em></strong>Connection. Connection.</strong></em></p>
+
+    <com-chat-control-guide message="Geez!&#32;Does&#32;she&#32;have&#32;to&#32;spell&#32;it&#32;out&#32;for&#32;you??">
+    </com-chat-control-guide>
+    <com-chat-control-guide message="CONNECTION!">
+    </com-chat-control-guide>    <p class='action'>She arranges people around the circle and then pulls FELIX into the middle of the circle on the floor.</p>
+    <p class='action'>A video of a &lt;&lt;greek wedding&gt;&gt; starts playing.</p>
+    <p class='action'>ANDI V.O.
+It is a joyous and festive dance; its musical beat is 7/8, subdivided into of three parts of 3+2+2 beats, corresponding to 3 steps per bar. There are 12 steps in the dance corresponding to 4 bars of music. These steps include 10 steps counterclockwise ("forward") followed by 2 steps clockwise ("backwards").</p>
+    <p class='action'>ANDI then stands to the right of them, grabbing the hand of the person closest to her.</p>
+    <p class='character andi'>ANDI</p>
+    <p class='dialogue '>I'm the head of the constellation and you're the tail. Follow after me: right, being, right, kick kick. Right, being, right, kick kick.
+I can't really get around here, but one day I'll bounce up to that big bad moon. I'll bounce without gravity. Up there, where there are no laws of communication or allergies or taxes or hospital bills or towers that fall. Up there, where everything is understood because everything is silent in the cosmos, and no language is sacred.
+I can't really get around here, but one day I'll bounce up to that big bad moon. I'll bounce without gravity. I'll plant my flag in that crater.  Up there, where there are no laws of communication or allergies or taxes or hospital bills or towers that fall. Where there is no acne, or GPAs, or riots or sexual harassment or brussel sprouts or alarm clocks or bullying or dimentia.</p>
+    <p class='action'>(FELIX interjects his own personal memories )</p>
+    <p class='action'>V/O repeats and overlaps creating a symphony of sound. ANDI goes to FELIX in the center.</p>
+    <p class='character andi'>ANDI</p>
+    <p class='parenthetical '>(To FELIX)</p>
+    <p class='dialogue '><strong><em>Up there, where everything is understood.</strong></em> Up there, where everything is understood because everything is silent in the cosmos, and no language is sacred. Up there where everything is understood. Everything is understood. Everything is understood. Everything. Everything. Everything.</p>
+    <p class='action'>At an appointed time a cue (via PRJ-RC*) signals that Ritual 1 is over. The printer continues to print the WATCHERS' selections.</p>
+    <p class='character andi'>ANDI</p>
+    <p class='dialogue '>Keep the memories! Take them with you by!</p>
+    <p class='action'>(Repeat as necessary)</p>
+    <p class='action'>The Transfer fades and the TOURISTS exit back to the Agora with the telescopes in their hands.</p>
   </div></section>
 </body>
 </html>
