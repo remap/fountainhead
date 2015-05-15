@@ -57,8 +57,9 @@
         */
         
         var data = new FormData();
-        // Query hard-coded for basic implementation
-        data.append('query', 'select email, user_name, type from users;');
+        // Query hard-coded for basic implementation; 
+        // Note: role won't work yet
+        data.append('query', 'select email, username, role from participant;');
 
         var xhr = new XMLHttpRequest();
         // Note: POST is using hardcoded URL with my test server; server currently set to accept request originated from all.
@@ -69,11 +70,12 @@
           if (result !== undefined && result !== null && result.length > 0) {
             // Note: we'll probably want a model class that reflects the users table schema
             for (var i = 0; i < result.length; i++) {
-              // The guide only talks to tourists
-              if (result[i][2] == 1) {
+              // The guide only talks to tourists;
+              // Note: This is overrided for rehearsal May 14, since the new db does per show role decision
+              //if (result[i][2] == 1) {
                 var contentSent = message.replace(/{{\s+(email)\s+}}?/g, result[i][0])
-                                      .replace(/{{\s+(user_name)\s+}}?/g, result[i][1])
-                                      .replace(/{{\s+(type)\s+}}?/g, result[i][2]);
+                                      .replace(/{{\s+(username)\s+}}?/g, result[i][1])
+                                      .replace(/{{\s+(role)\s+}}?/g, result[i][2]);
         
                 var chatMsg = $msg({
                     // Note: here we also use the jabber account name inference
@@ -83,7 +85,7 @@
                 }).c("body").t(contentSent);
             
                 connection.send(chatMsg.tree()); 
-              }
+              //}
             }
           }
         };
