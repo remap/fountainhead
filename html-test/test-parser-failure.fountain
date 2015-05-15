@@ -1,0 +1,199 @@
+# Environment
+
+[showid] "chocolate_cookie_show"
+
+[include] ndn.js
+[prefix] new Name("/ndn/edu/ucla/remap/losatlantis")
+[face] new Face({host: "archive-dev.remap.ucla.edu"})
+[include] ndn-init.js
+[include] ndn-url-publisher-component.js
+
+[defaultChatNickName] "The guide"
+[chatJID] "admin.admin@archive-dev.remap.ucla.edu"
+[chatPasswd] "admin@admin"
+
+[defaultMucNickName] "The observatory" 
+[defaultMucRoom] "observatory@conference.archive-dev.remap.ucla.edu"
+
+[hostXMPP] "archive-dev.remap.ucla.edu" 
+[hostXMPPHttpBind] "http://archive-dev.remap.ucla.edu:5280/http-bind"
+
+[cueFolder] "../../cues/"
+
+[include] jquery-1.2.6.min.js
+[include] strophe.js
+[include] strophe.muc.js
+[connection] new Strophe.Connection(hostXMPPHttpBind);
+[include] strophe-init.js
+
+[include] script-control.js
+[include] component-object.js
+[include] ndn-publisher-component-object.js
+[include] onload.js
+[include] cue-object.js
+[include] youtube-object.js
+
+# Body
+
+.PARENTHETICAL TEST
+
+<<@cue-publisher
+  (t       = Lifetime realization,
+   cid     = 141,
+   desc    = Beach 1)>>
+
+<<@cue-publisher
+  (t       = ANDI: Look! It’s you at the Santa Monica Pier!,
+   cid     = 141,
+   desc    = Beach 1)>>
+
+Felix walks over to the photo and looks at it (if he still has the telescope he points it at the picture.)
+
+(lonely parenthetical)
+
+THE GUIDE
+Confirmed, <<Randy Illum>>.  (Photo of Rachel.) (Barcode.) 
+
+RACHEL proceeds to show the barcode to the door's access control unit. 
+
+THE ARCHIVE
+(on projection by the door)
+Confirmed, <<Randy Illum>>.  (Photo of Rachel.)
+
+.STOP IT TEST
+
+RACHEL
+(to <<RANDY>>, ignoring the mismatch)
+It worked. Come with me. It's OK... I think. You were invited right?
+One more line.
+STOP IT
+One more line.
+
+.DUALDIALOGUE TEST
+
+RACHEL
+Where are you? You're late 
+I don't wanna be here alone  
+Where are you?
+I don't wanna remember anymore
+Why am I here- where are you!
+I have dreams. Strange dreams. I have so many things I don't want to think about that my mind wanders when I shut my eyelids. I dream of colors and animals and newborn babies crawling. I dream of big sky and highways and family vacations. Dreams about old flames and new fire. I dream of Rottweilers in heat catching bicycles. I have dreams. Good and bad. I'm able to remember some. Others I can't forget. I guess everyone had dreams. Something to dream about. 
+Someone
+But then you wake up
+To events .
+Where are you damnit 
+Why am I here in this-
+
+A louder ping, closer. 
+
+THE GUIDE
+(to each TOURIST)
+Time to your Transfer: << - 00 Days, 00 Hours, 00 Minutes>>. 
+
+RACHEL
+Did you hear that?
+
+*olf: Title overlaid - Provide Identification Image*
+
+A digital sign appears: "PROVIDE IDENTIFICATION IMAGE" 
+
+THE GUIDE
+(in a businesslike tone)
+Image capture and authentication ready. 
+
+THE OBSERVATORY ^
+(in a status bar, regardless of what the WATCHERS are viewing)
+Visitor arrival underway. [Link to view.] 
+
+RACHEL tries to open the door. It's locked.
+
+THE GUIDE
+Please use your guide.
+
+RACHEL ^
+Damnit  I know he's in there. I got in yesterday!
+
+Her phone is also dead. 
+
+THE GUIDE
+Alright, now it's time, <<Yuki Izumihara>>. Take your picture to authorize entry.
+
+RACHEL ^
+(seeing what the TOURISTS' GUIDES say)
+Shit it's dead. Everything is  dead  or dying. I need.... I need your help... Please take my picture yeah? Someone- anyone? 
+
+RACHEL takes a photo of herself using a TOURIST'S phone.
+
+THE GUIDE
+Confirmed, <<Randy Illum>>.  (Photo of Rachel.) (Barcode.) 
+
+RACHEL proceeds to show the barcode to the door's access control unit. 
+
+THE ARCHIVE
+(on projection by the door)
+Confirmed, <<Randy Illum>>.  (Photo of Rachel.)
+
+RACHEL
+(to <<RANDY>>, ignoring the mismatch)
+It worked. Come with me. It's OK... I think. You were invited right?
+
+RACHEL gently grabs the hand of her new friend and enters.
+
+The remaining TOURISTS take and upload a picture of themselves in order to enter, each showing the name+face+barcode combination on the GUIDE to the door access control unit (AC-A*).  
+
+*olf: MCU of hands and phones doing the access scanning, cut with WS of other TOURISTS and TRAVELERS.* 
+
+As the photos are scanned, THE OBSERVATORY is populated with the pictures of the TOURISTS (and the TRAVELERS) entering THE ARCHIVE. 
+
+For each WATCHER, one TOURIST's photo is overlaid with the text "MEET". Clicking on it allows them to learn a bit about the TOURIST and "follow" them.
+
+Like RACHEL, the other TRAVELERS borrow TOURISTS' phones and identities.  They do this throughout the performance, as needed.
+
+# SCENE 4: DOWN THE RABBIT HOLE
+
+= Rachel and her Tourists travel  down a dark passage way. They learn more about each other- so we need to try and add s some smple interaction. Some way to start to teach the aud. to interact and  participate.
+
+.ACT 1
+
+.SCENE 1: ADMISSION
+
+*olf: Wide shot of the Lobby, occasionally zooming to medium shots of groups of TOURISTS and TRAVELERS.*
+
+The TOURISTS filter into the Lobby of THE ARCHIVE. A sign reminds them to log in to the GUIDE on their mobile phones.
+
+THE GUIDE
+(to each TOURIST, after they log in on their phone, with a Clippy-like icon popping up)
+Hello, {{ user_name }}!  Where do you want to go today? Just kidding... Welcome.  -Virgil. 
+
+The TOURISTS browse their GUIDE. 
+
+Gradually  the audience congregates  in the lobby. 
+
+The WATCHERS logged into the OBSERVATORY are greeted. They can watch the live feed streaming to the OBSERVATORY. They can still browse THE ARCHIVE. 
+
+THE GUIDE
+Time to your Transfer: << - 00 Days, 00 Hours, 7 Minutes>>. 
+
+THE OBSERVATORY ^
+Time to the Transfer: << - 00 Days, 00 Hours, 7 Minutes>>. 
+
+THE GUIDE
+Time to your Transfer: << - 00 Days, 00 Hours, 5 Minutes>>. 
+
+THE OBSERVATORY ^
+Time to the Transfer: << - 00 Days, 00 Hours, 5 Minutes>>. 
+
+THE GUIDE
+Time to your Transfer: << - 00 Days, 00 Hours, 3 Minutes>>. 
+
+THE OBSERVATORY ^
+Time to the Transfer: << - 00 Days, 00 Hours, 3 Minutes>>. 
+
+THE GUIDE
+Please connect to the ARCHIVE-LOS_ANGELES WiFi network.  The GUIDE will activate (hello!) when needed during the Transfer event.  The Transference may be challenging. Be calm and observant.
+
+
+THE OBSERVATORY
+Rain. 
+
+*olf: Dark, noisy image. Could be black.*

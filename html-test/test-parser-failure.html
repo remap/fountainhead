@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="ScriptCSS.css">
+</head>
+<body>
+<section>
+  <div id="floating-menu">
+    <h3>Menu (Press 't' to show/hide)</h3>
+    <a id="floating-menu-toggle-olf" href="#" onclick="scriptControl.toggleClassVisibility('olf');return false;">Show/hide OLF</a>
+    <br><hr>
+    <h3>Table of Contents</h3>
+    <a href="#toc0">PARENTHETICAL TEST</a>
+    <a href="#toc1">STOP IT TEST</a>
+    <a href="#toc2">DUALDIALOGUE TEST</a>
+    <a href="#toc3">ACT 1</a>
+    <a href="#toc4">SCENE 1: ADMISSION</a>
+  </div>
+  <script>
+var showid = "chocolate_cookie_show";
+  </script>
+  <script src="includes/ndn.js"></script>
+  <script>
+var prefix = new Name("/ndn/edu/ucla/remap/losatlantis");
+var face = new Face({host: "archive-dev.remap.ucla.edu"});
+  </script>
+  <script src="includes/ndn-init.js"></script>
+  <script>
+  </script>
+  <script src="includes/ndn-url-publisher-component.js"></script>
+  <script>
+var defaultChatNickName = "The guide";
+var chatJID = "admin.admin@archive-dev.remap.ucla.edu";
+var chatPasswd = "admin@admin";
+var defaultMucNickName = "The observatory" ;
+var defaultMucRoom = "observatory@conference.archive-dev.remap.ucla.edu";
+var hostXMPP = "archive-dev.remap.ucla.edu" ;
+var hostXMPPHttpBind = "http://archive-dev.remap.ucla.edu:5280/http-bind";
+var cueFolder = "../../cues/";
+  </script>
+  <script src="includes/jquery-1.2.6.min.js"></script>
+  <script>
+  </script>
+  <script src="includes/strophe.js"></script>
+  <script>
+  </script>
+  <script src="includes/strophe.muc.js"></script>
+  <script>
+var connection = new Strophe.Connection(hostXMPPHttpBind);;
+  </script>
+  <script src="includes/strophe-init.js"></script>
+  <script>
+  </script>
+  <script src="includes/script-control.js"></script>
+  <script>
+  </script>
+  <script src="includes/component-object.js"></script>
+  <script>
+  </script>
+  <script src="includes/ndn-publisher-component-object.js"></script>
+  <script>
+  </script>
+  <script src="includes/onload.js"></script>
+  <script>
+  </script>
+  <script src="includes/cue-object.js"></script>
+  <script>
+  </script>
+  <script src="includes/youtube-object.js"></script>
+  <script>
+  </script>
+  <link rel="import" href="components/cue-publisher.html" onerror="onImportError(event)">
+  <link rel="import" href="components/chat-control-guide.html" onerror="onImportError(event)">
+  <link rel="import" href="components/chat-control-guide.html" onerror="onImportError(event)">
+  <link rel="import" href="components/olf.html" onerror="onImportError(event)">
+  <link rel="import" href="components/chat-control-guide.html" onerror="onImportError(event)">
+  <link rel="import" href="components/chat-control-muc.html" onerror="onImportError(event)">
+  <link rel="import" href="components/chat-control-guide.html" onerror="onImportError(event)">
+  <link rel="import" href="components/chat-control-guide.html" onerror="onImportError(event)">
+  <link rel="import" href="components/chat-control-guide.html" onerror="onImportError(event)">
+  <link rel="import" href="components/chat-control-guide.html" onerror="onImportError(event)">
+  <link rel="import" href="components/chat-control-guide.html" onerror="onImportError(event)">
+  <link rel="import" href="components/chat-control-muc.html" onerror="onImportError(event)">
+  <link rel="import" href="components/chat-control-guide.html" onerror="onImportError(event)">
+  <link rel="import" href="components/chat-control-muc.html" onerror="onImportError(event)">
+  <link rel="import" href="components/chat-control-guide.html" onerror="onImportError(event)">
+  <link rel="import" href="components/chat-control-muc.html" onerror="onImportError(event)">
+  <link rel="import" href="components/chat-control-guide.html" onerror="onImportError(event)">
+  <link rel="import" href="components/chat-control-muc.html" onerror="onImportError(event)">
+  <div id="scriptbody">
+    <p id='toc0' class='scene-heading'>PARENTHETICAL TEST</p>
+<com-cue-publisher desc=Beach&#32;1 t=Lifetime&#32;realization cid=141></com-cue-publisher>
+    <a target="_blank" href="components/cue-publisher.html" class="xref-code">cue-publisher</a>
+<com-cue-publisher desc=Beach&#32;1 t=ANDI:&#32;Look!&#32;It’s&#32;you&#32;at&#32;the&#32;Santa&#32;Monica&#32;Pier! cid=141></com-cue-publisher>
+    <a target="_blank" href="components/cue-publisher.html" class="xref-code">cue-publisher</a>
+    <p class='action'>Felix walks over to the photo and looks at it (if he still has the telescope he points it at the picture.)</p>
+    <p class='parenthetical'>(lonely parenthetical)</p>
+
+    <com-chat-control-guide message="Confirmed,&#32;&lt;&lt;Randy&#32;Illum&gt;&gt;.&#32;(Photo&#32;of&#32;Rachel.)&#32;(Barcode.)">
+    </com-chat-control-guide>    <p class='action'>RACHEL proceeds to show the barcode to the door's access control unit.</p>
+    <p class='character the-archive'>THE ARCHIVE</p>
+    <p class='parenthetical '>(on projection by the door)</p>
+    <p class='dialogue '>Confirmed, &lt;&lt;Randy Illum&gt;&gt;.  (Photo of Rachel.)</p>
+    <p id='toc1' class='scene-heading'>STOP IT TEST</p>
+    <p class='character rachel'>RACHEL</p>
+    <p class='parenthetical '>(to &lt;&lt;RANDY&gt;&gt;, ignoring the mismatch)</p>
+    <p class='dialogue '>It worked. Come with me. It's OK... I think. You were invited right?
+One more line.
+STOP IT
+One more line.</p>
+    <p id='toc2' class='scene-heading'>DUALDIALOGUE TEST</p>
+    <p class='character rachel'>RACHEL</p>
+    <p class='dialogue '>Where are you? You're late 
+I don't wanna be here alone  
+Where are you?
+I don't wanna remember anymore
+Why am I here- where are you!
+I have dreams. Strange dreams. I have so many things I don't want to think about that my mind wanders when I shut my eyelids. I dream of colors and animals and newborn babies crawling. I dream of big sky and highways and family vacations. Dreams about old flames and new fire. I dream of Rottweilers in heat catching bicycles. I have dreams. Good and bad. I'm able to remember some. Others I can't forget. I guess everyone had dreams. Something to dream about. 
+Someone
+But then you wake up
+To events .
+Where are you damnit 
+Why am I here in this-</p>
+    <p class='action'>A louder ping, closer.</p>
+
+    <com-chat-control-guide message="Time&#32;to&#32;your&#32;Transfer:&#32;&lt;&lt;&#32;-&#32;00&#32;Days,&#32;00&#32;Hours,&#32;00&#32;Minutes&gt;&gt;.">
+    </com-chat-control-guide>    <p class='character rachel'>RACHEL</p>
+    <p class='dialogue '>Did you hear that?</p>
+
+    <com-olf description="OLF:  Title overlaid - Provide Identification Image">
+    </com-olf>    <p class='action'>A digital sign appears: "PROVIDE IDENTIFICATION IMAGE"</p>
+    <div class='dual-dialogue'>
+      <div class='dual-dialogue-left'>
+
+        <com-chat-control-guide message="Image&#32;capture&#32;and&#32;authentication&#32;ready.">
+        </com-chat-control-guide>      </div>
+      <div class='dual-dialogue-right'>
+
+        <com-chat-control-muc message="Visitor&#32;arrival&#32;underway.&#32;[Link&#32;to&#32;view.]">
+        </com-chat-control-muc>      </div>
+    </div>
+    <p class='action'>RACHEL tries to open the door. It's locked.</p>
+    <div class='dual-dialogue'>
+      <div class='dual-dialogue-left'>
+
+        <com-chat-control-guide message="Please&#32;use&#32;your&#32;guide.">
+        </com-chat-control-guide>      </div>
+      <div class='dual-dialogue-right'>
+        <p class='character rachel'>RACHEL</p>
+        <p class='dialogue '>Damnit  I know he's in there. I got in yesterday!</p>
+      </div>
+    </div>
+    <p class='action'>Her phone is also dead.</p>
+    <div class='dual-dialogue'>
+      <div class='dual-dialogue-left'>
+
+        <com-chat-control-guide message="Alright,&#32;now&#32;it&#39;s&#32;time,&#32;&lt;&lt;Yuki&#32;Izumihara&gt;&gt;.&#32;Take&#32;your&#32;picture&#32;to&#32;authorize&#32;entry.">
+        </com-chat-control-guide>      </div>
+      <div class='dual-dialogue-right'>
+        <p class='character rachel'>RACHEL</p>
+        <p class='parenthetical '>(seeing what the TOURISTS' GUIDES say)</p>
+        <p class='dialogue '>Shit it's dead. Everything is  dead  or dying. I need.... I need your help... Please take my picture yeah? Someone- anyone?</p>
+      </div>
+    </div>
+    <p class='action'>RACHEL takes a photo of herself using a TOURIST'S phone.</p>
+
+    <com-chat-control-guide message="Confirmed,&#32;&lt;&lt;Randy&#32;Illum&gt;&gt;.&#32;(Photo&#32;of&#32;Rachel.)&#32;(Barcode.)">
+    </com-chat-control-guide>    <p class='action'>RACHEL proceeds to show the barcode to the door's access control unit.</p>
+    <p class='character the-archive'>THE ARCHIVE</p>
+    <p class='parenthetical '>(on projection by the door)</p>
+    <p class='dialogue '>Confirmed, &lt;&lt;Randy Illum&gt;&gt;.  (Photo of Rachel.)</p>
+    <p class='character rachel'>RACHEL</p>
+    <p class='parenthetical '>(to &lt;&lt;RANDY&gt;&gt;, ignoring the mismatch)</p>
+    <p class='dialogue '>It worked. Come with me. It's OK... I think. You were invited right?</p>
+    <p class='action'>RACHEL gently grabs the hand of her new friend and enters.</p>
+    <p class='action'>The remaining TOURISTS take and upload a picture of themselves in order to enter, each showing the name+face+barcode combination on the GUIDE to the door access control unit (AC-A*).</p>
+
+    <com-olf description="OLF:  MCU of hands and phones doing the access scanning, cut with WS of other TOURISTS and TRAVELERS.">
+    </com-olf>    <p class='action'>As the photos are scanned, THE OBSERVATORY is populated with the pictures of the TOURISTS (and the TRAVELERS) entering THE ARCHIVE.</p>
+    <p class='action'>For each WATCHER, one TOURIST's photo is overlaid with the text "MEET". Clicking on it allows them to learn a bit about the TOURIST and "follow" them.</p>
+    <p class='action'>Like RACHEL, the other TRAVELERS borrow TOURISTS' phones and identities.  They do this throughout the performance, as needed.</p>
+    <p id='toc3' class='scene-heading'>ACT 1</p>
+    <p id='toc4' class='scene-heading'>SCENE 1: ADMISSION</p>
+
+    <com-olf description="OLF:  Wide shot of the Lobby, occasionally zooming to medium shots of groups of TOURISTS and TRAVELERS.">
+    </com-olf>    <p class='action'>The TOURISTS filter into the Lobby of THE ARCHIVE. A sign reminds them to log in to the GUIDE on their mobile phones.</p>
+
+    <com-chat-control-guide message="Hello,&#32;{{&#32;user_name&#32;}}!&#32;Where&#32;do&#32;you&#32;want&#32;to&#32;go&#32;today?&#32;Just&#32;kidding...&#32;Welcome.&#32;-Virgil.">
+    </com-chat-control-guide>    <p class='action'>The TOURISTS browse their GUIDE.</p>
+    <p class='action'>Gradually  the audience congregates  in the lobby.</p>
+    <p class='action'>The WATCHERS logged into the OBSERVATORY are greeted. They can watch the live feed streaming to the OBSERVATORY. They can still browse THE ARCHIVE.</p>
+    <div class='dual-dialogue'>
+      <div class='dual-dialogue-left'>
+
+        <com-chat-control-guide message="Time&#32;to&#32;your&#32;Transfer:&#32;&lt;&lt;&#32;-&#32;00&#32;Days,&#32;00&#32;Hours,&#32;7&#32;Minutes&gt;&gt;.">
+        </com-chat-control-guide>      </div>
+      <div class='dual-dialogue-right'>
+
+        <com-chat-control-muc message="Time&#32;to&#32;the&#32;Transfer:&#32;&lt;&lt;&#32;-&#32;00&#32;Days,&#32;00&#32;Hours,&#32;7&#32;Minutes&gt;&gt;.">
+        </com-chat-control-muc>      </div>
+    </div>
+    <div class='dual-dialogue'>
+      <div class='dual-dialogue-left'>
+
+        <com-chat-control-guide message="Time&#32;to&#32;your&#32;Transfer:&#32;&lt;&lt;&#32;-&#32;00&#32;Days,&#32;00&#32;Hours,&#32;5&#32;Minutes&gt;&gt;.">
+        </com-chat-control-guide>      </div>
+      <div class='dual-dialogue-right'>
+
+        <com-chat-control-muc message="Time&#32;to&#32;the&#32;Transfer:&#32;&lt;&lt;&#32;-&#32;00&#32;Days,&#32;00&#32;Hours,&#32;5&#32;Minutes&gt;&gt;.">
+        </com-chat-control-muc>      </div>
+    </div>
+    <div class='dual-dialogue'>
+      <div class='dual-dialogue-left'>
+
+        <com-chat-control-guide message="Time&#32;to&#32;your&#32;Transfer:&#32;&lt;&lt;&#32;-&#32;00&#32;Days,&#32;00&#32;Hours,&#32;3&#32;Minutes&gt;&gt;.">
+        </com-chat-control-guide>      </div>
+      <div class='dual-dialogue-right'>
+
+        <com-chat-control-muc message="Time&#32;to&#32;the&#32;Transfer:&#32;&lt;&lt;&#32;-&#32;00&#32;Days,&#32;00&#32;Hours,&#32;3&#32;Minutes&gt;&gt;.">
+        </com-chat-control-muc>      </div>
+    </div>
+
+    <com-chat-control-guide message="Please&#32;connect&#32;to&#32;the&#32;ARCHIVE-LOS_ANGELES&#32;WiFi&#32;network.&#32;The&#32;GUIDE&#32;will&#32;activate&#32;(hello!)&#32;when&#32;needed&#32;during&#32;the&#32;Transfer&#32;event.&#32;The&#32;Transference&#32;may&#32;be&#32;challenging.&#32;Be&#32;calm&#32;and&#32;observant.">
+    </com-chat-control-guide>
+    <com-chat-control-muc message="Rain.">
+    </com-chat-control-muc>
+    <com-olf description="OLF:  Dark, noisy image. Could be black.">
+    </com-olf>  </div></section>
+</body>
+</html>

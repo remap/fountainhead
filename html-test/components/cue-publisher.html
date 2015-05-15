@@ -66,6 +66,8 @@
     
     // If content is not defined explicitly in the script, we try to load the content JSON from a certain spot on serverside.
     // Note: The cue will not be ready if 1. no explicit content given and 2. json file does not exist.
+    
+    // TODO: Load the JSON file on 'load' click
     if (createdElement.content === undefined || createdElement.content == '') {
       var xhr = new XMLHttpRequest();
       xhr.open('GET', cueFolder + createdElement.cueId + '.json', true);

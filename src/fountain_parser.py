@@ -232,7 +232,8 @@ class Parser(object):
                 print(str(i) + ' ' + patterns[i])
                 if match:
                     print('Body: match found for ' + patterns[i] + '\n')
-            scriptContent = re.sub(patterns[i], templates[i], scriptContent)
+            # Added multiline for ^$ parenthetical to work
+            scriptContent = re.sub(re.compile(patterns[i], re.MULTILINE), templates[i], scriptContent)
             
         # For debug only: make the intermediate content human readable
         # TODO: Make sure this creates a copy of the string 'scriptContent'

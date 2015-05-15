@@ -56,21 +56,23 @@ class FountainRegexBase(object):
     ACTION_PATTERN             = '([^<>]*?)(\\n{2}|\\n<)'
     MULTI_LINE_ACTION_PATTERN  = '\n{2}(([^a-z\\n:]+?[\\.\\?,\\s!\\*_]*?)\n{2}){1,2}'
     
-    # Note: This is different from the sample, for lines like "STOP IT"
-    CHARACTER_CUE_PATTERN      = '(?<=\\n\\n)([ \\t]*[^<>a-z\\s\\/\\n][^<>a-z:!\\?\\n]*[^<>a-z\\(!\\?:,\\n\\.][ \\t]?)\\n(?!\\n)'
-    DIALOGUE_PATTERN           = '(<(Character|Parenthetical)>[^<>\\n]+<\\/(Character|Parenthetical)>)([^<>]*?)(?=\\n{2}|\\n{1}<Parenthetical>)'
+    # Note: This is different from the sample, for lines like "STOP IT"; and for recognizing parentheticals correctly, the ending pattern is modified
+    CHARACTER_CUE_PATTERN      = r'(?<=\n{2})([ \t]*[^<>a-z:!\?\n#]+[ \t]*)(?=\n)'
+    DIALOGUE_PATTERN           = r'(<(Character|Parenthetical)>[^<>\n]+<\/(Character|Parenthetical)>)([^<>]*?)(?=\n{2}|\n{1}<Parenthetical>)'
     
-    PARENTHETICAL_PATTERN      = '(\\([^<>]*?\\)[\\s]?)\\n'
+    # Note: parenthetical is different from the sample; parentheticals should not take line breaks in them, and the lazy pattern does not seem to work.
+    PARENTHETICAL_PATTERN      = '(^\\([^<>\\n]*\\)$)'
     TRANSITION_PATTERN         = '\\n([\\*_]*([^<>\\na-z]*TO:|FADE TO BLACK\\.|FADE OUT\\.|CUT TO BLACK\\.)[\\*_]*)\\n'
 
-    FORCED_TRANSITION_PATTERN  = '\\n((&gt|>)\\s*[^<>\\n]+)\\n'     
+    FORCED_TRANSITION_PATTERN  = '\\n((&gt|>)\\s*[^<>\\n]+)\\n'
     # need to look for &gt pattern because we run this regex against marked up content
     FALSE_TRANSITION_PATTERN   = '\\n((&gt|>)\\s*[^<>\\n]+(&lt\\s*))\\n'     
     # need to look for &gt pattern because we run this regex against marked up content
 
     PAGE_BREAK_PATTERN         = '(?<=\\n)(\\s*[\\=\\-\\_]{3,8}\\s*)\\n{1}'
     CLEANUP_PATTERN            = '<Action>\\s*<\\/Action>'
-    FIRST_LINE_ACTION_PATTERN  = '^\\n\\n([^<>\\n#]*?)\\n'
+    # Note: First line action pattern is disabled
+    FIRST_LINE_ACTION_PATTERN  = 'Diasbled: ^\\n\\n([^<>\\n#]*?)\\n'
     SCENE_NUMBER_PATTERN       = '(\\#([0-9A-Za-z\\.\\)-]+)\\#)'
     # Note: In order to make #{something} work in other parts of the script, 
     #       for example, the argument passed 
