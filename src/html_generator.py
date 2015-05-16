@@ -446,6 +446,7 @@ class FountainHTMLGenerator(object):
                             else:
                                 print('WARNING: no equal sign found for web component argument; Parsing result may be unexpected')
                                 print('Related element text: ' + element._elementText)
+                                print('arg: ' + arg)
                                 
                 if (element._elementType == self._fountainRegex.COMPONENT_DESCRIPTION_PATTERN):
                     if (inComponent):

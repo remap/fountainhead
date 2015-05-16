@@ -5,11 +5,26 @@
 [include] ndn.js
 [prefix] new Name("/ndn/edu/ucla/remap/losatlantis")
 [face] new Face({host: "archive-dev.remap.ucla.edu"})
+[include] ndn-init.js
+[include] ndn-url-publisher-component.js
+
+[defaultChatNickName] "The guide"
+[chatJID] "admin.admin@archive-dev.remap.ucla.edu"
+[chatPasswd] "admin@admin"
+
+[defaultMucNickName] "The observatory" 
+[defaultMucRoom] "observatory@conference.archive-dev.remap.ucla.edu"
+
+[hostXMPP] "archive-dev.remap.ucla.edu" 
+[hostXMPPHttpBind] "http://archive-dev.remap.ucla.edu:5280/http-bind"
 
 [cueFolder] "../../cues/"
 
-[include] ndn-init.js
-[include] ndn-url-publisher-component.js
+[include] jquery-1.2.6.min.js
+[include] strophe.js
+[include] strophe.muc.js
+[connection] new Strophe.Connection(hostXMPPHttpBind);
+[include] strophe-init.js
 
 [include] script-control.js
 [include] component-object.js
@@ -70,8 +85,6 @@ Test for cue state publishing
 	 }
    })>>
 
-Test cue publisher with load, go, and unload with minus scheduled time
-
 <<@cue-publisher-state
   (t       = Manually triggered cue publisher load/go, 
    cid     = -1, 
@@ -99,6 +112,7 @@ Test cue publisher with load, go, and unload with minus scheduled time
 	   state: 'unloaded'
 	 }
    })>>
+
 
 <<@cue-publisher-intercut-random
   (t       = "Random intercutting cue", 
@@ -232,7 +246,7 @@ Test cues for 2/B, not here yet.
 <<@cue-publisher
   (t       = Sample lectures,
    cid     = 520,
-   desc    = Load cue 520 JSON file, play 2x speed )>>
+   desc    = "Load cue 520 JSON file, play 2x speed" )>>
 
 <<@cue-publisher
   (t       = Cue 522,

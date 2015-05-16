@@ -22,12 +22,32 @@ var showid = "chocolate_cookie_show";
   <script>
 var prefix = new Name("/ndn/edu/ucla/remap/losatlantis");
 var face = new Face({host: "archive-dev.remap.ucla.edu"});
-var cueFolder = "../../cues/";
   </script>
   <script src="includes/ndn-init.js"></script>
   <script>
   </script>
   <script src="includes/ndn-url-publisher-component.js"></script>
+  <script>
+var defaultChatNickName = "The guide";
+var chatJID = "admin.admin@archive-dev.remap.ucla.edu";
+var chatPasswd = "admin@admin";
+var defaultMucNickName = "The observatory" ;
+var defaultMucRoom = "observatory@conference.archive-dev.remap.ucla.edu";
+var hostXMPP = "archive-dev.remap.ucla.edu" ;
+var hostXMPPHttpBind = "http://archive-dev.remap.ucla.edu:5280/http-bind";
+var cueFolder = "../../cues/";
+  </script>
+  <script src="includes/jquery-1.2.6.min.js"></script>
+  <script>
+  </script>
+  <script src="includes/strophe.js"></script>
+  <script>
+  </script>
+  <script src="includes/strophe.muc.js"></script>
+  <script>
+var connection = new Strophe.Connection(hostXMPPHttpBind);;
+  </script>
+  <script src="includes/strophe-init.js"></script>
   <script>
   </script>
   <script src="includes/script-control.js"></script>
@@ -58,7 +78,6 @@ var cueFolder = "../../cues/";
     <p class='action'>Test for cue state publishing</p>
 <com-cue-publisher-state state={&#32;&#39;play1&#39;:&#32;{&#32;time:&#32;1000,&#32;callback:&#32;function&#32;()&#32;{&#32;createdElement.shadowRoot.querySelector(&#39;#state-play1&#39;).click();&#32;},&#32;state:&#32;&#39;playing1&#39;&#32;},&#32;&#39;play2&#39;:&#32;{&#32;time:&#32;10000,&#32;callback:&#32;function&#32;()&#32;{&#32;createdElement.shadowRoot.querySelector(&#39;#state-play2&#39;).click();&#32;},&#32;state:&#32;&#39;playing2&#39;&#32;},&#32;&#39;play3&#39;:&#32;{&#32;time:&#32;20000,&#32;callback:&#32;function&#32;()&#32;{&#32;createdElement.shadowRoot.querySelector(&#39;#state-play3&#39;).click();&#32;},&#32;state:&#32;&#39;playing3&#39;&#32;},&#32;&#39;play4&#39;:&#32;{&#32;time:&#32;30000,&#32;callback:&#32;function&#32;()&#32;{&#32;createdElement.shadowRoot.querySelector(&#39;#state-play4&#39;).click();&#32;},&#32;state:&#32;&#39;playing4&#39;&#32;},&#32;&#39;play5&#39;:&#32;{&#32;time:&#32;40000,&#32;callback:&#32;function&#32;()&#32;{&#32;createdElement.shadowRoot.querySelector(&#39;#state-play5&#39;).click();&#32;},&#32;state:&#32;&#39;playing5&#39;&#32;}&#32;} desc=&#34;This&#32;is&#32;a&#32;cue&#32;which&#32;uses&#32;JS&#32;cue&#32;states;&#32;it&#32;triggers&#32;a&#32;random&#32;video&#32;play&#32;from&#32;a&#32;playlist&#32;every&#32;10&#32;seconds;&#32;replacing&#32;the&#32;events&#32;with&#32;load,&#32;wait_in,&#32;fade_in&#32;and&#32;run&#32;for&#32;actual&#32;cues.&#34; t=&#34;Series&#32;publishing&#32;cue&#34; cid=-1></com-cue-publisher-state>
     <a target="_blank" href="components/cue-publisher-state.html" class="xref-code">cue-publisher-state</a>
-    <p class='action'>Test cue publisher with load, go, and unload with minus scheduled time</p>
 <com-cue-publisher-state state={&#32;&#39;load&#39;:&#32;{&#32;time:&#32;-1,&#32;callback:&#32;function&#32;()&#32;{&#32;createdElement.shadowRoot.querySelector(&#39;#state-load&#39;).click();&#32;},&#32;state:&#32;&#39;loaded&#39;&#32;},&#32;&#39;go&#39;:&#32;{&#32;time:&#32;-1,&#32;callback:&#32;function&#32;()&#32;{&#32;createdElement.shadowRoot.querySelector(&#39;#state-go&#39;).click();&#32;},&#32;state:&#32;&#39;going&#39;&#32;},&#32;&#39;unload&#39;:&#32;{&#32;time:&#32;-1,&#32;callback:&#32;function&#32;()&#32;{&#32;createdElement.shadowRoot.querySelector(&#39;#state-unload&#39;).click();&#32;},&#32;state:&#32;&#39;unloaded&#39;&#32;}&#32;} desc=&#34;This&#32;is&#32;a&#32;cue&#32;which&#32;uses&#32;JS&#32;cue&#32;states;&#32;it&#32;triggers&#32;a&#32;random&#32;video&#32;play&#32;from&#32;a&#32;playlist&#32;every&#32;10&#32;seconds;&#32;replacing&#32;the&#32;events&#32;with&#32;load,&#32;wait_in,&#32;fade_in&#32;and&#32;run&#32;for&#32;actual&#32;cues.&#34; t=Manually&#32;triggered&#32;cue&#32;publisher&#32;load/go cid=-1></com-cue-publisher-state>
     <a target="_blank" href="components/cue-publisher-state.html" class="xref-code">cue-publisher-state</a>
 <com-cue-publisher-intercut-random desc=&#34;This&#32;is&#32;a&#32;cue&#32;which&#32;triggers&#32;random&#32;intercutting&#32;between&#32;5-10&#32;seconds.&#34; t=&#34;Random&#32;intercutting&#32;cue&#34; cid=-1></com-cue-publisher-intercut-random>
@@ -111,7 +130,7 @@ var cueFolder = "../../cues/";
     <p class='action'>Test cues for 2/B, not here yet.</p>
 <com-cue-publisher desc=Load&#32;cue&#32;510&#32;JSON&#32;file t=Establish&#32;ritual cid=510></com-cue-publisher>
     <a target="_blank" href="components/cue-publisher.html" class="xref-code">cue-publisher</a>
-<com-cue-publisher desc=Load&#32;cue&#32;520&#32;JSON&#32;file t=Sample&#32;lectures cid=520></com-cue-publisher>
+<com-cue-publisher desc=&#34;Load&#32;cue&#32;520&#32;JSON&#32;file,&#32;play&#32;2x&#32;speed&#34; t=Sample&#32;lectures cid=520></com-cue-publisher>
     <a target="_blank" href="components/cue-publisher.html" class="xref-code">cue-publisher</a>
 <com-cue-publisher desc=Load&#32;cue&#32;522&#32;JSON&#32;file t=Cue&#32;522 cid=522></com-cue-publisher>
     <a target="_blank" href="components/cue-publisher.html" class="xref-code">cue-publisher</a>
