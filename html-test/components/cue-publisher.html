@@ -217,7 +217,7 @@
       var nameSuffix = new Name(createdElement.cueId + '/go');
       dataName.append(createdElement.showid).append(cueComponent).appendVersion((new Date).getTime()).append(nameSuffix);
 
-      createdElement.ndnPublisherComponentObject.publishContent(dataName, '{}', false);
+      createdElement.ndnPublisherComponentObject.publishContent(dataName, createdElement.content, false);
     });
     
     createdElement.unloadElement.addEventListener('click', function() {
