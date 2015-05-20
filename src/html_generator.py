@@ -38,7 +38,7 @@ specialGenerationTags = {
 
 specialGenerationPatterns = {
     r'\*[oO][lL][fF]:(.*)\*': [r'description="OLF: \1"', 'olf'],
-    r'\*[Vv][Qq] *\#([^ ]*) *- *([^\n]*)\*': [r'content="{}" t="VQ #\1" cid="\1" desc="\2"', 'cue-publisher']
+    r'\*[Vv][Qq] *\#([^ ]*) *- *([^\n]*)\*': [r't="VQ #\1" cid="\1" desc="\2"', 'cue-publisher']
 }
 
 class FountainHTMLGenerator(object):
