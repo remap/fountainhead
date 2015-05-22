@@ -163,26 +163,11 @@ Test for publishing by fetching from JSON file on May 12. 2/A cues.
   (t       = Bike riding / danger,
    cid     = 465,
    desc    = Load cue 465 JSON file)>>
-   
-<<@cue-publisher
-  (t       = Raul on bike.1,
-   cid     = 470.1,
-   desc    = Load cue 470.1 JSON file)>>
 
 <<@cue-publisher
-  (t       = Raul on bike.2,
-   cid     = 470.2,
-   desc    = Load cue 470.2 JSON file)>>
-
-<<@cue-publisher
-  (t       = Raul on bike.3,
-   cid     = 470.3,
-   desc    = Load cue 470.3 JSON file)>>
-
-<<@cue-publisher
-  (t       = Raul on bike.4,
-   cid     = 470.4,
-   desc    = Load cue 470.4 JSON file)>>
+  (t       = Raul on bike, all,
+   cid     = 470,
+   desc    = Load cue 470 JSON file)>>
 
 <<@cue-publisher
   (t       = Selfie,
@@ -190,14 +175,19 @@ Test for publishing by fetching from JSON file on May 12. 2/A cues.
    desc    = Load cue 475 JSON file)>>
 
 <<@cue-publisher
-  (t       = LB.1,
-   cid     = 480.1,
-   desc    = Load cue 480.1 JSON file)>>
+  (t       = Fireflies (as Rachel walks to Raul),
+   cid     = 476,
+   desc    = Load cue 476 JSON file)>>
 
 <<@cue-publisher
-  (t       = LB.2,
-   cid     = 480.2,
-   desc    = Load cue 480.2 JSON file)>>
+  (t       = Diagonal fire,
+   cid     = 477,
+   desc    = Load cue 477 JSON file)>>
+
+<<@cue-publisher
+  (t       = LB,
+   cid     = 480,
+   desc    = Load cue 480 JSON file)>>
 
 <<@cue-publisher
   (t       = Bike riding / danger,
@@ -205,29 +195,14 @@ Test for publishing by fetching from JSON file on May 12. 2/A cues.
    desc    = Load cue 482 JSON file)>>
 
 <<@cue-publisher
-  (t       = Bus.1,
-   cid     = 485.1,
-   desc    = Load cue 485.1 JSON file)>>
+  (t       = Bus,
+   cid     = 485,
+   desc    = Load cue 485 JSON file)>>
 
 <<@cue-publisher
-  (t       = Bus.2,
-   cid     = 485.2,
-   desc    = Load cue 485.2 JSON file)>>
-
-<<@cue-publisher
-  (t       = Bus.3,
-   cid     = 485.3,
-   desc    = Load cue 485.3 JSON file)>>
-
-<<@cue-publisher
-  (t       = Running away.1,
-   cid     = 487.1,
-   desc    = Load cue 487.1 JSON file)>>
-
-<<@cue-publisher
-  (t       = Running away.2,
-   cid     = 487.2,
-   desc    = Load cue 487.2 JSON file)>>
+  (t       = Running away,
+   cid     = 487,
+   desc    = Load cue 487 JSON file)>>
 
 <<@cue-publisher
   (t       = Fade to black,
@@ -235,8 +210,6 @@ Test for publishing by fetching from JSON file on May 12. 2/A cues.
    desc    = Load cue 490 JSON file)>>
 
 .2/B Cues
-
-Test cues for 2/B, not here yet.
 
 <<@cue-publisher
   (t       = Establish ritual,
@@ -259,16 +232,6 @@ Test cues for 2/B, not here yet.
    desc    = Load cue 523 JSON file)>>
 
 <<@cue-publisher
-  (t       = Blackout,
-   cid     = 540,
-   desc    = Load cue 540 JSON file)>>
-
-<<@cue-publisher
-  (t       = Fade up to new environment,
-   cid     = 550,
-   desc    = Load cue 550 JSON file)>>
-
-<<@cue-publisher
   (t       = Cue 560,
    cid     = 560,
    desc    = Load cue 560 JSON file)>>
@@ -285,23 +248,8 @@ Test cues for 2/B, not here yet.
 
 <<@cue-publisher
   (t       = Cue 590.1 50% opacity each of the following,
-   cid     = 590.1,
-   desc    = Load cue 590.1 JSON file)>>
-
-<<@cue-publisher
-  (t       = Cue 590.2 50% opacity each of the following,
-   cid     = 590.2,
-   desc    = Load cue 590.2 JSON file)>>
-
-<<@cue-publisher
-  (t       = Blackout,
-   cid     = 600,
-   desc    = Load cue 600 JSON file)>>
-
-<<@cue-publisher
-  (t       = Fade up to new environment,
-   cid     = 610,
-   desc    = Load cue 610 JSON file)>>
+   cid     = 590,
+   desc    = Load cue 590 JSON file)>>
 
 <<@cue-publisher
   (t       = Cue 620,
@@ -312,3 +260,8 @@ Test cues for 2/B, not here yet.
   (t       = Blackout,
    cid     = 630,
    desc    = Load cue 630 JSON file)>>
+
+<<@cue-publisher
+  (t       = Archive speakers TRANSFER FAILURE, REJOIN the ARCHIVE,
+   cid     = 640,
+   desc    = Load cue 640 JSON file)>>
