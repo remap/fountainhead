@@ -20,7 +20,7 @@
 
 [cueFolder] "../../cues/"
 
-[include] jquery-1.2.6.min.js
+[include] jquery-2.1.4.min.js
 [include] strophe.js
 [include] strophe.muc.js
 [connection] new Strophe.Connection(hostXMPPHttpBind);

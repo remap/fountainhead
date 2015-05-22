@@ -74,4 +74,4 @@ losatlantis-scripts/
 /html-test/includes/strophe.js
 /html-test/includes/strophe.muc.js
 /html-test/includes/ndn.js
-/html-test/includes/jquery-1.2.6.min.js
+/html-test/includes/jquery*

@@ -41,7 +41,7 @@ Author: Future of Storytelling Studio 2015
 [hostXMPP] "archive-dev.remap.ucla.edu" 
 [hostXMPPHttpBind] "http://archive-dev.remap.ucla.edu:5280/http-bind"
 
-[include] jquery-1.2.6.min.js
+[include] jquery-2.1.4.min.js
 [include] strophe.js
 [include] strophe.muc.js
 [connection] new Strophe.Connection(hostXMPPHttpBind);

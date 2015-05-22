@@ -20,7 +20,7 @@
 
 [cueFolder] "../../cues/"
 
-[include] jquery-1.2.6.min.js
+[include] jquery-2.1.4.min.js
 [include] strophe.js
 [include] strophe.muc.js
 [connection] new Strophe.Connection(hostXMPPHttpBind);
@@ -120,13 +120,13 @@ Test for cue state publishing
    desc    = "This is a cue which triggers random intercutting between 5-10 seconds.")>>
 
 <<@door-publisher
-  (t       = "Door publishing node 3",
-   node    = node3,
+  (t       = "Door publishing node A",
+   node    = nodeA,
    desc    = "This push random video from our channel to 4 doors on a node every 2 ~ 4 seconds. Parameters are hardcoded into the JS component.")>>
 
 <<@door-publisher
-  (t       = "Door publishing node 4",
-   node    = node4,
+  (t       = "Door publishing node B",
+   node    = nodeB,
    desc    = "This push random video from our channel to 4 doors on a node every 2 ~ 4 seconds. Parameters are hardcoded into the JS component.")>>
 
 <<@random-video-publisher

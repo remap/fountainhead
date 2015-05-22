@@ -37,7 +37,7 @@ var hostXMPP = "archive-dev.remap.ucla.edu" ;
 var hostXMPPHttpBind = "http://archive-dev.remap.ucla.edu:5280/http-bind";
 var cueFolder = "../../cues/";
   </script>
-  <script src="includes/jquery-1.2.6.min.js"></script>
+  <script src="includes/jquery-2.1.4.min.js"></script>
   <script>
   </script>
   <script src="includes/strophe.js"></script>
@@ -82,9 +82,9 @@ var connection = new Strophe.Connection(hostXMPPHttpBind);;
     <a target="_blank" href="components/cue-publisher-state.html" class="xref-code">cue-publisher-state</a>
 <com-cue-publisher-intercut-random desc=&#34;This&#32;is&#32;a&#32;cue&#32;which&#32;triggers&#32;random&#32;intercutting&#32;between&#32;5-10&#32;seconds.&#34; t=&#34;Random&#32;intercutting&#32;cue&#34; cid=-1></com-cue-publisher-intercut-random>
     <a target="_blank" href="components/cue-publisher-intercut-random.html" class="xref-code">cue-publisher-intercut-random</a>
-<com-door-publisher node=node3 t=&#34;Door&#32;publishing&#32;node&#32;3&#34; desc=&#34;This&#32;push&#32;random&#32;video&#32;from&#32;our&#32;channel&#32;to&#32;4&#32;doors&#32;on&#32;a&#32;node&#32;every&#32;2&#32;~&#32;4&#32;seconds.&#32;Parameters&#32;are&#32;hardcoded&#32;into&#32;the&#32;JS&#32;component.&#34;></com-door-publisher>
+<com-door-publisher node=nodeA t=&#34;Door&#32;publishing&#32;node&#32;A&#34; desc=&#34;This&#32;push&#32;random&#32;video&#32;from&#32;our&#32;channel&#32;to&#32;4&#32;doors&#32;on&#32;a&#32;node&#32;every&#32;2&#32;~&#32;4&#32;seconds.&#32;Parameters&#32;are&#32;hardcoded&#32;into&#32;the&#32;JS&#32;component.&#34;></com-door-publisher>
     <a target="_blank" href="components/door-publisher.html" class="xref-code">door-publisher</a>
-<com-door-publisher node=node4 t=&#34;Door&#32;publishing&#32;node&#32;4&#34; desc=&#34;This&#32;push&#32;random&#32;video&#32;from&#32;our&#32;channel&#32;to&#32;4&#32;doors&#32;on&#32;a&#32;node&#32;every&#32;2&#32;~&#32;4&#32;seconds.&#32;Parameters&#32;are&#32;hardcoded&#32;into&#32;the&#32;JS&#32;component.&#34;></com-door-publisher>
+<com-door-publisher node=nodeB t=&#34;Door&#32;publishing&#32;node&#32;B&#34; desc=&#34;This&#32;push&#32;random&#32;video&#32;from&#32;our&#32;channel&#32;to&#32;4&#32;doors&#32;on&#32;a&#32;node&#32;every&#32;2&#32;~&#32;4&#32;seconds.&#32;Parameters&#32;are&#32;hardcoded&#32;into&#32;the&#32;JS&#32;component.&#34;></com-door-publisher>
     <a target="_blank" href="components/door-publisher.html" class="xref-code">door-publisher</a>
 <com-random-video-publisher desc=&#34;Test&#32;for&#32;crash,&#32;publisheres&#32;to&#32;node4,&#32;container&#32;1&#32;onclick.&#34; nodeName=node4 t=&#34;random&#32;video&#32;publisher&#34; containerId=1></com-random-video-publisher>
     <a target="_blank" href="components/random-video-publisher.html" class="xref-code">random-video-publisher</a>

@@ -14,8 +14,8 @@
     var cueTitle = createdElement.getAttributeByListName(['cueTitle', 't'], '');
     var description = createdElement.getAttributeByListName(['description', 'desc'], '');
     var content = createdElement.getAttributeByListName(['content'], '');
-    var cueId = createdElement.getAttributeByListName(['cid'], '-1');
-    var nodeName = createdElement.getAttributeByListName(['node'], 'node3');
+    var cueId = createdElement.getAttributeByListName(['cid'], '0');
+    var nodeName = createdElement.getAttributeByListName(['node'], 'nodeA');
     
     var titleElement = createdElement.shadowRoot.querySelector('#cue-title');
     var descElement = createdElement.shadowRoot.querySelector('#cue-description');
@@ -42,7 +42,7 @@
     
     createdElement.finishedFetching = false;
     
-    createdElement.publishRandom = function(targetName, suffix) {
+    createdElement.publishRandom = function(targetName, suffix, controlNumber) {
       return function () {
         if (createdElement.running && createdElement.finishedFetching) {
           var dataName = new Name(ndnPublisherComponentObject.namePrefix);
@@ -60,17 +60,26 @@
           }, undefined, undefined, function (result) {
             // Skip 0 seconds videos
             if (result.items[0].contentDetails.duration != 'PT0S') {
-			  var content = 'https://www.youtube.com/watch?v=' + createdElement.videoLinks[randIndex];
-			  ndnPublisherComponentObject.publishContent(dataName, content, false);
-		      
-			  // Hardcoded for known namespace on container + one digit
-			  var controlNumber = parseInt(suffix[suffix.indexOf('container') + 9]);
-			  suffix = 'door_comp/container' + (controlNumber % 4 + 1).toString() + '/serviceUrl.text';
-			  
-			  setTimeout(createdElement.publishRandom(targetName, suffix), createdElement.getRandomTimeout(2000, 2000));
-			} else {
-			  createdElement.publishRandom(targetName, suffix)();
-			}
+              // Hardcoded for known namespace on container + one digit
+              console.log(controlNumber);
+              controlNumber = controlNumber % 4 + 1;
+              
+              var content = 'https://www.youtube.com/watch?v=' + createdElement.videoLinks[randIndex];
+              
+              createdElement.youtubeObject.getYoutubeVideoUrl(content, true, function (xhr) {
+                var videoUrl = xhr.responseText;
+                var jsonStr = '{ \
+                  "nodes": [\"' + nodeName + '\"], \
+                  "touch": { \
+                    "/project1/door_comp/container' + controlNumber.toString() + '/videoUrl.text":"' + videoUrl + '" \
+                  } \
+                }';
+                ndnPublisherComponentObject.publishContent(dataName, jsonStr, false);
+                setTimeout(createdElement.publishRandom(targetName, cueId + '/load', controlNumber), createdElement.getRandomTimeout(1000, 2000));
+              });
+            } else {
+              createdElement.publishRandom(targetName, suffix, controlNumber)();
+            }
           });
         } else {
           console.log('Scheduled event: currently stopped; or youtube videoID loading not finished.');
@@ -82,7 +91,7 @@
       if (!createdElement.running) {
         titleElement.textContent = 'Stop: ' + cueTitle;
         // Hardcoded for door controlling
-        setTimeout(createdElement.publishRandom('nodes/' + nodeName, 'door_comp/container1/serviceUrl.text'), createdElement.getRandomTimeout(0, 0));
+        setTimeout(createdElement.publishRandom('nodes/' + nodeName, cueId + '/load', 0), createdElement.getRandomTimeout(0, 0));
         createdElement.running = true;
       } else {
         titleElement.textContent = 'Start: ' + cueTitle;
@@ -90,7 +99,7 @@
       }
     });
     
-    createdElement.youtubeObject = new window.YoutubeObject('AIzaSyDCjPW8n_9MgGcEAYVPMmuO_sJ3a7jLe5M');
+    createdElement.youtubeObject = new window.YoutubeObject('AIzaSyCe8t7PnmWjMKZ1gBouhP1zARpqNwHAs0s');
     createdElement.videoLinks = [];
     createdElement.youtubeObject.requestYoutubeItem({
       'query': 'search',
