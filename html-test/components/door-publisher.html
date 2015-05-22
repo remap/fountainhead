@@ -91,7 +91,7 @@
       if (!createdElement.running) {
         titleElement.textContent = 'Stop: ' + cueTitle;
         // Hardcoded for door controlling
-        setTimeout(createdElement.publishRandom('nodes/' + nodeName, cueId + '/load', 0), createdElement.getRandomTimeout(0, 0));
+        setTimeout(createdElement.publishRandom('cues', cueId + '/load', 0), createdElement.getRandomTimeout(0, 0));
         createdElement.running = true;
       } else {
         titleElement.textContent = 'Start: ' + cueTitle;
