@@ -4,7 +4,7 @@
 
 [include] ndn.js
 [prefix] new Name("/ndn/edu/ucla/remap/losatlantis")
-[face] new Face({host: "archive-dev.remap.ucla.edu"})
+[face] new Face({host: "localhost"})
 [include] ndn-init.js
 [include] ndn-url-publisher-component.js
 
