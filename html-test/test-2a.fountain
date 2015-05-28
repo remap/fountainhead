@@ -1,0 +1,111 @@
+# Environment
+
+[showid] "chocolate_cookie_show"
+
+[include] ndn.js
+[prefix] new Name("/ndn/edu/ucla/remap/losatlantis")
+[face] new Face({host: "archive-dev.remap.ucla.edu"})
+[include] ndn-init.js
+[include] ndn-url-publisher-component.js
+
+[defaultChatNickName] "The guide"
+[chatJID] "admin.admin@archive-dev.remap.ucla.edu"
+[chatPasswd] "admin@admin"
+
+[defaultMucNickName] "The observatory" 
+[defaultMucRoom] "observatory@conference.archive-dev.remap.ucla.edu"
+
+[hostXMPP] "archive-dev.remap.ucla.edu" 
+[hostXMPPHttpBind] "http://archive-dev.remap.ucla.edu:5280/http-bind"
+
+[cueFolder] "../../cues/"
+
+[include] jquery-2.1.4.min.js
+[include] strophe.js
+[include] strophe.muc.js
+[connection] new Strophe.Connection(hostXMPPHttpBind);
+[include] strophe-init.js
+
+[include] script-control.js
+[include] component-object.js
+[include] ndn-publisher-component-object.js
+[include] onload.js
+[include] cue-object.js
+[include] youtube-object.js
+
+# Body
+
+<<@cue-publisher
+  (t       = Establish ritual,
+   cid     = 410,
+   desc    = Blackout)>>
+
+<<@cue-publisher
+  (t       = Mirror node,
+   cid     = 411,
+   desc    = Load cue 411 )>>
+
+<<@cue-publisher
+  (t       = Fireflies (as Rachel walks to Raul) ,
+   cid     = 420,
+   desc    = Load cue 420 )>>
+
+<<@cue-publisher
+  (t       = Ocean - wood burning drowning Thunder,
+   cid     = 425,
+   desc    = "Saturated colors, remember its on mylar" )>>
+
+<<@cue-publisher
+  (t       = Raul & Ocean (Miebaka cross) ,
+   cid     = 430,
+   desc    = No not see Raul until this moment)>>   
+
+<<@cue-publisher
+  (t       = Amongst bikes Put on your helmet (Start earlier with Tango) ,
+   cid     = 460,
+   desc    = 460: Should go earlier)>>   
+
+<<@cue-publisher
+  (t       = Bike riding / danger (She turns away from the image) ,
+   cid     = 465,
+   desc    = 50% speed)>>
+
+<<@cue-publisher
+  (t       = Amongst bikes Put on your helmet (Start earlier with Tango) ,
+   cid     = 470,
+   desc    = Should go earlier)>>
+
+<<@cue-publisher
+  (t       = Selfie (Thunder) ,
+   cid     = 475,
+   desc    = Should go in sequence w/ Raul)>>
+
+<<@cue-publisher
+  (t       = Bus? ,
+   cid     = 476,
+   desc    = Check with bus)>>
+
+<<@cue-publisher
+  (t       = Fireflies (as Rachel walks to Raul)  - center cross ,
+   cid     = 478,
+   desc    = cue)>>
+
+<<@cue-publisher
+  (t       = "I don't want to remember... STOP"  ,
+   cid     = 480,
+   desc    = cue)>>
+
+<<@cue-publisher
+  (t       = 485: Running away ,
+   cid     = 485,
+   desc    = cue)>>
+
+<<@cue-publisher
+  (t       = 490: "Archive speak TRANSFER FAILURE, REJOIN the ARCHIVE" ,
+   cid     = 490,
+   desc    = cue)>>
+
+<<@cue-publisher
+  (t       = 500: Fade to black ,
+   cid     = 500,
+   desc    = cue)>>

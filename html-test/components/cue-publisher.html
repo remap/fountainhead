@@ -55,7 +55,7 @@
     createdElement.goElement = createdElement.shadowRoot.querySelector('#cue-go');
     createdElement.unloadElement = createdElement.shadowRoot.querySelector('#cue-unload');
     
-    createdElement.titleElement.textContent = cueTitle;
+    createdElement.titleElement.textContent = createdElement.cueId + ' : ' + cueTitle;
     createdElement.descElement.textContent = description;
     
     createdElement.loadElement.textContent = 'load';

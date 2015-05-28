@@ -1,0 +1,100 @@
+# Environment
+
+[showid] "chocolate_cookie_show"
+
+[include] ndn.js
+[prefix] new Name("/ndn/edu/ucla/remap/losatlantis")
+[face] new Face({host: "archive-dev.remap.ucla.edu"})
+[include] ndn-init.js
+[include] ndn-url-publisher-component.js
+
+[defaultChatNickName] "The guide"
+[chatJID] "admin.admin@archive-dev.remap.ucla.edu"
+[chatPasswd] "admin@admin"
+
+[defaultMucNickName] "The observatory" 
+[defaultMucRoom] "observatory@conference.archive-dev.remap.ucla.edu"
+
+[hostXMPP] "archive-dev.remap.ucla.edu" 
+[hostXMPPHttpBind] "http://archive-dev.remap.ucla.edu:5280/http-bind"
+
+[cueFolder] "../../cues/"
+
+[include] jquery-2.1.4.min.js
+[include] strophe.js
+[include] strophe.muc.js
+[connection] new Strophe.Connection(hostXMPPHttpBind);
+[include] strophe-init.js
+
+[include] script-control.js
+[include] component-object.js
+[include] ndn-publisher-component-object.js
+[include] onload.js
+[include] cue-object.js
+[include] youtube-object.js
+
+# Body
+
+<<@cue-publisher
+  (t       = Sample lectures (play 2x speed, high contrast)  on both projectors,
+   cid     = 520)>>
+
+<<@cue-publisher
+  (t       = More lecture,
+   cid     = 522)>>
+
+<<@cue-publisher
+  (t       = More lecture,
+   cid     = 523)>>
+
+<<@cue-publisher
+  (t       = Start 2001 sequence,
+   cid     = 560)>>
+
+<<@cue-publisher
+  (t       = EMPTY,
+   cid     = 565)>>
+
+<<@cue-publisher
+  (t       = "SEND" - Add the waviness gradually to both projectors,
+   cid     = 570)>>
+
+<<@cue-publisher
+  (t       = One projector w/ psychedelic music,
+   cid     = 580)>>
+
+<<@cue-publisher
+  (t       = Change physical location of projectors,
+   cid     = 585)>>
+
+<<@cue-publisher
+  (t       = 50% opacity each of the following (cheeto raised),
+   cid     = 590)>>
+
+<<@cue-publisher
+  (t       = "Videos from 590 slowed down, after what happened",
+   cid     = 600)>>
+
+<<@cue-publisher
+  (t       = Move projectors,
+   cid     = 610)>>
+
+<<@cue-publisher
+  (t       = Speed up w/ Katy Perry SQ,
+   cid     = 615)>>
+
+<<@cue-publisher
+  (t       = "Blackout of psychedelic. Keep wavy chalkboard, with tire screech",
+   cid     = 630)>>
+
+<<@cue-publisher
+  (t       = Final car video,
+   cid     = 635)>>
+
+<<@cue-publisher
+  (t       = "Archive speak TRANSFER FAILURE, REJOIN the ARCHIVE",
+   cid     = 640)>>
+
+<<@cue-publisher
+  (t       = Fade to black,
+   cid     = 645)>>

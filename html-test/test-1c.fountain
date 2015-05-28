@@ -40,236 +40,57 @@
 <<@cue-publisher
   (t       = Establishing -> night in DTLA ,
    cid     = 110,
-   desc    = (ADD) LIVE CAMERA IN TELESCOPE; Dusk to night (100% speed, rectangular vignette) )>>
+   desc    = Dusk to night (300% speed, rectangular vignette) )>>
 
 <<@cue-publisher
   (t       = DTLA @ night ramp 1 ,
    cid     = 111,
-   desc    = Dusk to night (150% speed, rectangular vignette) )>>
+   desc    = Dusk to night (800% speed, rectangular vignette) )>>
 
 <<@cue-publisher
   (t       = DTLA @ night ramp 2 ,
    cid     = 112,
    desc    = Dusk to night (200% speed, rectangular vignette) )>>
 
-**# RITUAL 1/C: “POLAROIDS” (@ FELIX)**
-
-.RITUAL 1/C: "POLAROIDS" (@FELIX)
-
-*olf: Wide shot at entry gives way to alternating close ups of each TOURIST and TRAVELER within the ritual. As needed, the feed can cut to direct input from the projection video source, before returning to close ups.* 
-
-THE OBSERVATORY
-Which places will connect with your visitors?
-
-A group of TOURISTS follow Felix. They hear sounds coming from behind a dark curtain. FELIX approaches slowly and opens the curtain, he enters with TOURISTS trailing in behind him. 
-
-From the ceiling hang small pictures twinkling metallic and other random objects. There is a box with little silver telescopes. A circular diagram is illuminated on the floor in front of them. In the corner, a printer periodically outputs new stills from THE ARCHIVE that have been selected by the WATCHERS. 
-
-ANDI, a CITIZEN, is rearranging things along the perimeter of the diagram. Like the other CITIZENS, her clothing looks out of place. She begins to speak to the group in American Sign Language. THE GUIDE translates roughly. ***Bolded text is in ASL, red is also spoken*** **aloud.**
-
-ANDI
-***I look out the window and see memories. Lots of memories. I'm a stargazer*****,** ***looking into the lives of other celestial beings.*** ***I hover above them and watch***. 
-
-THE GUIDE
-I look out the window and see memories.
-
-THE GUIDE
-I'm a stargazer, looking into the lives of other celestial beings.
-
-THE GUIDE
-I hover above them and watch. 
-
-My window faces north, at the end of a row of small houses, inside a cul de sac, at the edge of a dusty neighborhood overlooking a cemented river in Chavez Ravine. ***That's where we grew up.*** 
-
-THE GUIDE
-That's where we grew up. 
-
-Where the telephone wires hung low. ***Like electricity!*** About to touch the Earth. We've written stories about this place. So close and yet so far. ***I dream of being an astronaut!*** Like Ellen Ochoa.
-(putting on jumpsuit)
-You have to be good at math, but I'm pretty terrible at it. You have to physically fit, but I can't run very fast. We make up stories about all kinds of things. Like these things! ***Look! Read! Share!*** 
-
-ANDI picks up the telescope and points it at a picture of Disneyland hanging on a strings around her. The video associated with that picture is projected in the space.
-
-ANDI 
-<<We used to take the I-5 down to Disneyland every year.>> 
-
 <<@cue-publisher
   (t       = We used to take the I-5 down to Disneyland every year,
    cid     = 115,
    desc    = Disneyland 1967 (50% speed, circular vignette on telescope, rectangular vignette on YT video) )>>
-
-ANDI V.O.
-Mom was obsessed with the happiest place on earth. That was the only time of year we could eat anything, anything we wanted. Funnel cakes. Ice cream. Churros. But we weren't allowed to talk during the fireworks. Mom looked at them as if they were made of magic. My favorite spot was Tomorrowland because that's where I decided I wanted to be an astronaut. This was just before Cassie was born. She was so little. So, so little. Cassiopeia 6lbs 3 oz. She had a birthmark the shape of a W on her shoulder. Born off the 10 freeway at Kaiser Permanente in 1983.  
-
-FELIX picks up a little silver telescope from the box. He looks through it and shows the TOURISTS.
-
-ANDI
-Do I know you? 
-(whispering to FELIX)
-Did you know that Polaris, the north star, is a Cepheid star?? That means it contracts and expands in brightness. ***Like it's talking!*** 
-(giving FELIX a picture)
-Could you please read one? You. Yeah, you. Out loud? Share it with everyone. ***Please?*** ***Thank you!***
-
-FELIX 
-(holding up the picture to ANDI's telescope)
-<<August 1976: Skateboarders in Venice beach.>>
 
 <<@cue-publisher
   (t       = August 1976: Skateboarders in Venice beach.,
    cid     = 120,
    desc    = Skateboarders 2 (50% speed, circular vignette on telescope, rectangular vignette on YT video) )>>
 
-ANDI V.O.
-Venice is a residential, commercial, and recreational beachfront neighborhood founded in 1905 as a seaside resort town. It was an independent city until 1926, when it merged with Los Angeles. The 2000 U.S. census counted 37,705 residents in the 3.17-square-mile Venice neighborhood--an average of 11,891 people per square mile, about the norm for Los Angeles; in 2008, the city estimated that the population had increased to 40,885.
-
-ANDI  
-(taping the picture to FELIX's chest)
-***Thank you!*** *Y*ou can keep the memory if you want. *H*
-(handing Felix the telescope)
-Here, share the memories. 
-(giving the Tourist another picture)
-Now YOU! ***Please?*** ***Read one.***
-
-THE GUIDE
-Read the pictures! Take a photo! Remember to say thank you! 
-
-TOURIST 1
-<<May 2010: a quinceañera of a girl from Sinaloa.>>
-
 <<@cue-publisher
   (t       = May 2010: a quinceañera of a girl from Sinaloa.,
    cid     = 130,
    desc    = Highlights Mis 16  (50% speed, circular vignette on telescope, rectangular vignette on YT video) )>>
-
-ANDI V.O.
-I always wanted to have a quinceanera. All the girls at school got to where to those awesome fluffy dresses. They were pinks and turquoise and orange and blue. They got SO many presents. Best of all they got to wear a tiara. Like a princess. This was their rite of passage.
-
-ANDI 
-***Thank you!*** Now YOU! ***Please?*** ***Read one.*** 
-
-TOURIST 2
-<<January 2012: an Ethiopian baptism in Dodger Stadium.>>
 
 <<@cue-publisher
   (t       = January 2012: an Ethiopian baptism in Dodger Stadium. Everyone wore white. We were dancing.,
    cid     = 131,
    desc    = Timket 1 (50% speed, circular vignette on telescope, rectangular vignette on YT video) )>>
 
-ANDI V.O.
-Baptism comes from the greek word Baptisma. Váptisma. Derived from the noun Baptizo which means "I wash." We were driving around Echo park when we saw the commotion. It wasn't a Dodger game. Everyone was wearing white. There were pools of water everywhere. Tears. Dancing. Chorós. Celebration. Eortasmós. It was a baptism!
-
-TOURIST 3
-<<July 2014: a magical Peruvian dance.>>
-
 <<@cue-publisher
   (t       = July 2014: Danza Pukllay Chuko. A magical Peruvian dance. ,
    cid     = 132,
    desc    = Danza Pukklay (50% speed, circular vignette on telescope, rectangular vignette on YT video) )>>
-
-ANDI V.O.
-The oldest proof of existence of dancing comes from the 9000 year old cave paintings that were found in India. In most ancient civilizations, dancing before the god is an important element in temple ritual. Danza Pukklay is a dance to celebrate play. The stomping represents the formations of clouds in that year's harvest.
-
-ANDI bounces around the space until she finds one of her memories.
-
-ANDI
-<<June 2001: Belmont High School. This was going to be my sister's graduation.>> 
 
 <<@cue-publisher
   (t       = June 2001: Belmont High School.,
    cid     = 135,
    desc    = Belmont High (50% speed, circular vignette on telescope, rectangular vignette on YT video) )>>
 
-ANDI V.O.
-2002. Belmont High School Graduation. There were six-hundred and sixty-seven people graduating that year. Cassie should have been one of them.  They read her name anyway. A special posthumous degree. 336 girls. 331 boys. 67.9% of high school students in Los Angeles graduate. Doctors. Writers. Actors. Musicians. Scientists. Firefighters. Cassie wanted to be a teacher. She was on UA flight 175. 1+7+5. 13. I remember when we were 13
-
-THE GUIDE
-Listen to her. Imagine for her. Thank her!
-
-ANDI
-You can have those, but not this one... Here, can you read this? ***Please.*** 
-
-ANDI looks through the stack of pictures in her hands and finds one of FELIX.
-
-Look! It's you at the Santa Monica Pier! Hey! ***Can you hear me? Feel it.*** Maybe then you'll remember?
-
 <<@cue-publisher
   (t       = ANDI: Look! It’s you at the Santa Monica Pier!,
    cid     = 141,
-   desc    = Beach 1 (50% speed, circular vignette on telescope, rectangular vignette on YT video))>>
-
-Felix walks over to the photo and looks at it (if he still has the telescope he points it at the picture.)
-
-FELIX 
-I touched her sun kissed face...
-
-A video of <<Santa Monica>> starts playing. 
-
-ANDI
-Who is she?
-
-FELIX V.O
-I touched her sun-kissed face and it was warm. It was a
-Sunday afternoon in Venice. We walked the canals and I held my skateboard. We were barefoot. The sand stuck to our bodies and slowly drifted off with every step. She didn't care that I was always angry at the world. She made me coolout and just relax...
-
-ANDI
-I can make a ***constellation*** for you. That way you won't forget.
-
-FELIX 
-Please. ***Please.*** Please.
-
-ANDI
-***Sure.*** Let's help him. Let's help him never forget. 
-
-ANDI starts dancing around the space excited about making the constellation.
-
-Let's help him. Can you hand me some pictures that printed over there? Memories. Those pictures over there. Let's help him. Let's help him never forget. 
-
-THE GUIDE
-(vibrating)
-Help make the constellation! Say thank you! 
-
-ANDI
-Find the right memory. Let's help him. Let's help him never forget. We need ***connection.*** ***Connection. Connection.*** 
-
-THE GUIDE
-Geez! Does she have to spell it out for you??
-
-THE GUIDE
-CONNECTION!
+   desc    = Beach 1 (50% speed, circular vignette on telescope, rectangular vignette on YT video) )>>
 
 <<@cue-publisher
   (t       = "CONNECTION!",
    cid     = 142,
-   desc    = Greek Wedding (120% speed, circular vignette))>>
-
-She arranges people around the circle and then pulls FELIX into the middle of the circle on the floor.
-
-A video of a <<greek wedding>> starts playing.
-
-ANDI V.O.
-It is a joyous and festive dance; its musical beat is 7/8, subdivided into of three parts of 3+2+2 beats, corresponding to 3 steps per bar. There are 12 steps in the dance corresponding to 4 bars of music. These steps include 10 steps counterclockwise ("forward") followed by 2 steps clockwise ("backwards").
-
-ANDI then stands to the right of them, grabbing the hand of the person closest to her.
-
-ANDI
-I'm the head of the constellation and you're the tail. Follow after me: right, being, right, kick kick. Right, being, right, kick kick.
-I can't really get around here, but one day I'll bounce up to that big bad moon. I'll bounce without gravity. Up there, where there are no laws of communication or allergies or taxes or hospital bills or towers that fall. Up there, where everything is understood because everything is silent in the cosmos, and no language is sacred.
-I can't really get around here, but one day I'll bounce up to that big bad moon. I'll bounce without gravity. I'll plant my flag in that crater.  Up there, where there are no laws of communication or allergies or taxes or hospital bills or towers that fall. Where there is no acne, or GPAs, or riots or sexual harassment or brussel sprouts or alarm clocks or bullying or dimentia. 
-(FELIX interjects his own personal memories )
-
-V/O repeats and overlaps creating a symphony of sound. ANDI goes to FELIX in the center.
-
-ANDI
-(To FELIX)
-***Up there, where everything is understood.*** Up there, where everything is understood because everything is silent in the cosmos, and no language is sacred. Up there where everything is understood. Everything is understood. Everything is understood. Everything. Everything. Everything. 
-
-At an appointed time a cue (via PRJ-RC*) signals that Ritual 1 is over. The printer continues to print the WATCHERS' selections. 
-
-ANDI
-Keep the memories! Take them with you by!
-(Repeat as necessary)
-
-The Transfer fades and the TOURISTS exit back to the Agora with the telescopes in their hands.
+   desc    = Greek Wedding (120% speed, circular vignette) )>>
 
 <<@cue-publisher
   (t       = END Scene,
