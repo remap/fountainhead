@@ -4,33 +4,16 @@
 
 [include] ndn.js
 [prefix] new Name("/ndn/edu/ucla/remap/losatlantis")
-[face] new Face({host: "localhost"})
+[face] new Face({host: "archive-dev.remap.ucla.edu"})
 [include] ndn-init.js
 [include] ndn-url-publisher-component.js
 
-[defaultChatNickName] "The guide"
-[chatJID] "admin.admin@archive-dev.remap.ucla.edu"
-[chatPasswd] "admin@admin"
-
-[defaultMucNickName] "The observatory" 
-[defaultMucRoom] "observatory@conference.archive-dev.remap.ucla.edu"
-
-[hostXMPP] "archive-dev.remap.ucla.edu" 
-[hostXMPPHttpBind] "http://archive-dev.remap.ucla.edu:5280/http-bind"
-
 [cueFolder] "../../cues/"
-
-[include] jquery-2.1.4.min.js
-[include] strophe.js
-[include] strophe.muc.js
-[connection] new Strophe.Connection(hostXMPPHttpBind);
-[include] strophe-init.js
 
 [include] script-control.js
 [include] component-object.js
 [include] ndn-publisher-component-object.js
 [include] onload.js
-[include] cue-object.js
 [include] youtube-object.js
 
 # Body
