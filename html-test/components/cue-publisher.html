@@ -4,7 +4,9 @@
   <p style="margin:1.3em auto; width: 400px">
   <a id="cue-load" class="video-control-text"></a>
   <a id="cue-go" class="video-control-text"></a>
+  <!--
   <a id="cue-unload" class="video-control-text"></a>
+  -->
   </p>
   
   <p id="cue-description" class="video-control-desc"></p>
@@ -53,14 +55,14 @@
     
     createdElement.loadElement = createdElement.shadowRoot.querySelector('#cue-load');
     createdElement.goElement = createdElement.shadowRoot.querySelector('#cue-go');
-    createdElement.unloadElement = createdElement.shadowRoot.querySelector('#cue-unload');
+    //createdElement.unloadElement = createdElement.shadowRoot.querySelector('#cue-unload');
     
     createdElement.titleElement.textContent = createdElement.cueId + ' : ' + cueTitle;
     createdElement.descElement.textContent = description;
     
     createdElement.loadElement.textContent = 'load';
     createdElement.goElement.textContent = 'go';
-    createdElement.unloadElement.textContent = 'unload';
+    //createdElement.unloadElement.textContent = 'unload';
     
     componentObject.applyStyleFromParentDocumentAll(createdElement);
     
@@ -220,6 +222,7 @@
       createdElement.ndnPublisherComponentObject.publishContent(dataName, createdElement.content, false);
     });
     
+    /*
     createdElement.unloadElement.addEventListener('click', function() {
       // TODO: referencing namePrefix like this is not ideal
       var dataName = new Name(createdElement.ndnPublisherComponentObject.namePrefix);
@@ -230,6 +233,7 @@
 
       createdElement.ndnPublisherComponentObject.publishContent(dataName, '{}', false);
     });
+    */
   }
   
   componentObject.createComponent(componentName, onCreate);
