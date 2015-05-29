@@ -11,11 +11,16 @@
     createdElement.shadowRoot.querySelector('#description').textContent = createdElement.getAttributeByListName(['default', 'message', 'description', 'desc'], '');
     
     // Audience names querying and outputing
-    var participants = {};
-    dbObject.queryParticipant(participants, undefined, undefined, function(response) {
-      console.log(response);
-      for (var i = 0; i < participants.length; i++) {
-        console.log(participants[i]);
+    dbObject.queryParticipant(undefined, undefined, undefined, function(response) {
+      var participantObject = {};
+      try {
+        participantObject = JSON.parse(response);
+      } catch (e) {
+        console.log(e);
+      }
+      for (var i = 0; i < participantObject.length; i++) {
+        console.log(participantObject[i]);
+        
       }
     });
     

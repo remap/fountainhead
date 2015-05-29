@@ -40,11 +40,6 @@ DBObject.prototype.queryParticipant = function (participantObject, parts, whereC
     queryStr += ' where ' + whereClause;
   }
   this.postToDB(queryStr, function(response) {
-    try {
-      participantObject = JSON.parse(response);
-    } catch (e) {
-      console.log(e);
-    }
     successCallback(response);
   });
 };
