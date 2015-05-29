@@ -1,0 +1,26 @@
+<template>
+    <p id="description" class="video-control-desc"></p>
+    <div id="audience-names" class="video-control-text"></div>
+</template>
+
+<script>
+  var componentObject = new window.ComponentObject(document, window);
+  var dbObject = new window.DBObject('http://archive-dev.remap.ucla.edu/app');
+  
+  function onCreate(createdElement) {
+    createdElement.shadowRoot.querySelector('#description').textContent = createdElement.getAttributeByListName(['default', 'message', 'description', 'desc'], '');
+    
+    // Audience names querying and outputing
+    var participants = {};
+    dbObject.queryParticipant(participants, undefined, undefined, function(response) {
+      console.log(response);
+      for (var i = 0; i < participants.length; i++) {
+        console.log(participants[i]);
+      }
+    });
+    
+    componentObject.applyStyleFromParentDocumentAll(createdElement);
+  }
+    
+  componentObject.createComponent('com-agora-1', onCreate);
+</script>

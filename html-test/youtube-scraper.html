@@ -43,7 +43,11 @@
           dbObject.postToDB(queryStr, function() {
             console.log('entry added');
           });
-          console.log(queryStr);
+          /*
+          if (key !== undefined) {
+            document.getElementById('thumnail-output').innerHTML += 'http://img.youtube.com/vi/' + key + '/0.jpg' + '<br>'
+          }
+          */
           // This is a bad idea for tags querying
           // select * from media where tags contains 'Angels' and tags contains 'skyline' allow filtering;
         }
@@ -55,6 +59,7 @@
 <body>
   <input id='dbHostUrl' type='text' value='http://localhost:5000'></input><br><br>
   <button id='scrapeButton' onclick='scrapeClick()'>scrap and write to db</button>
+  <div id='thumnail-output'></div>
   <br>
   <br>
 CREATE TABLE IF NOT EXISTS media (

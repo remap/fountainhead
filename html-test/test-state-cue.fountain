@@ -129,139 +129,18 @@ Test for cue state publishing
    node    = nodeB,
    desc    = "This push random video from our channel to 4 doors on a node every 2 ~ 4 seconds. Parameters are hardcoded into the JS component.")>>
 
+<<@door-publisher
+  (t       = "Door publishing node C",
+   node    = nodeC,
+   desc    = "This push random video from our channel to 4 doors on a node every 2 ~ 4 seconds. Parameters are hardcoded into the JS component.")>>
+
+<<@door-publisher
+  (t       = "Door publishing node D",
+   node    = nodeD,
+   desc    = "This push random video from our channel to 4 doors on a node every 2 ~ 4 seconds. Parameters are hardcoded into the JS component.")>>
+
 <<@random-video-publisher
   (t       = "random video publisher",
    containerId    = 1,
    nodeName       = node4,
    desc    = "Test for crash, publisheres to node4, container 1 onclick.")>>
-
-.2/A Cues
-
-Test for publishing by fetching from JSON file on May 12. 2/A cues.
-
-<<@cue-publisher
-  (t       = Establish ritual,
-   cid     = 410,
-   desc    = Blackout)>>
-
-<<@cue-publisher
-  (t       = Ocean,
-   cid     = 420,
-   desc    = Load cue 420)>>
-
-<<@cue-publisher
-  (t       = Raul & Ocean,
-   cid     = 440,
-   desc    = Load cue 440 JSON file)>>
-
-<<@cue-publisher
-  (t       = Amongst bikes,
-   cid     = 460,
-   desc    = Load cue 460 JSON file)>>   
-
-<<@cue-publisher
-  (t       = Bike riding / danger,
-   cid     = 465,
-   desc    = Load cue 465 JSON file)>>
-
-<<@cue-publisher
-  (t       = Raul on bike, all,
-   cid     = 470,
-   desc    = Load cue 470 JSON file)>>
-
-<<@cue-publisher
-  (t       = Selfie,
-   cid     = 475,
-   desc    = Load cue 475 JSON file)>>
-
-<<@cue-publisher
-  (t       = Fireflies (as Rachel walks to Raul),
-   cid     = 476,
-   desc    = Load cue 476 JSON file)>>
-
-<<@cue-publisher
-  (t       = Diagonal fire,
-   cid     = 477,
-   desc    = Load cue 477 JSON file)>>
-
-<<@cue-publisher
-  (t       = LB,
-   cid     = 480,
-   desc    = Load cue 480 JSON file)>>
-
-<<@cue-publisher
-  (t       = Bike riding / danger,
-   cid     = 482,
-   desc    = Load cue 482 JSON file)>>
-
-<<@cue-publisher
-  (t       = Bus,
-   cid     = 485,
-   desc    = Load cue 485 JSON file)>>
-
-<<@cue-publisher
-  (t       = Running away,
-   cid     = 487,
-   desc    = Load cue 487 JSON file)>>
-
-<<@cue-publisher
-  (t       = Fade to black,
-   cid     = 490,
-   desc    = Load cue 490 JSON file)>>
-
-.2/B Cues
-
-<<@cue-publisher
-  (t       = Establish ritual,
-   cid     = 510,
-   desc    = Load cue 510 JSON file)>>
-
-<<@cue-publisher
-  (t       = Sample lectures,
-   cid     = 520,
-   desc    = "Load cue 520 JSON file, play 2x speed" )>>
-
-<<@cue-publisher
-  (t       = Cue 522,
-   cid     = 522,
-   desc    = Load cue 522 JSON file)>>
-
-<<@cue-publisher
-  (t       = Cue 523,
-   cid     = 523,
-   desc    = Load cue 523 JSON file)>>
-
-<<@cue-publisher
-  (t       = Cue 560,
-   cid     = 560,
-   desc    = Load cue 560 JSON file)>>
-
-<<@cue-publisher
-  (t       = Blackout,
-   cid     = 570,
-   desc    = Load cue 570 JSON file)>>
-
-<<@cue-publisher
-  (t       = Fade up to new environment,
-   cid     = 580,
-   desc    = Load cue 580 JSON file)>>
-
-<<@cue-publisher
-  (t       = Cue 590.1 50% opacity each of the following,
-   cid     = 590,
-   desc    = Load cue 590 JSON file)>>
-
-<<@cue-publisher
-  (t       = Cue 620,
-   cid     = 620,
-   desc    = Load cue 620 JSON file)>>
-
-<<@cue-publisher
-  (t       = Blackout,
-   cid     = 630,
-   desc    = Load cue 630 JSON file)>>
-
-<<@cue-publisher
-  (t       = Archive speakers TRANSFER FAILURE, REJOIN the ARCHIVE,
-   cid     = 640,
-   desc    = Load cue 640 JSON file)>>
