@@ -330,6 +330,13 @@ a:hover {
     cursor: pointer; 
 }
 
+.cue-title {
+    margin: 1.3em auto;
+    width: 400px;
+    font-weight: bold;
+    font-size: 100%;
+}
+
 .video-control-desc {
     color: white;
     margin: 0 auto;
