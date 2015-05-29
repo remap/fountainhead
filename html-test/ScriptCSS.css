@@ -140,6 +140,10 @@ section {
     position: relative;
     padding-right: 40px;
     background-color: #2D0027-;
+    
+    /* added per Jeff's email on May 28 */
+    font-size: 18px;
+    font-family: "Courier New", Courier, monospace;
 }
 .scene-number-left {
     float: left;

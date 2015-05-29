@@ -1,0 +1,25 @@
+{
+	"class": "FadeInCue",
+	"nodes": ["nodeC"],
+	"times": [0.0, 10.0, 0.0, 0.0, 0.0, 0.0],
+	"args": { 
+		"tReady": {
+			"preview":{
+				"url":"https://www.youtube.com/watch?v=pY54WU0C3i4", 
+				"playbackSpeed":0.5,
+				"pause":1,
+				"cropLeft": 0,
+				"cropRight": 1,
+				"cropTop": 1,
+				"cropBottom": 0,
+				"circleCrop": 0
+			}
+		},
+		"tGo": {
+			"preview":{
+				"pause":0, 
+				"blackout":0
+			}
+		}
+	}
+}

@@ -1,0 +1,13 @@
+{
+	"class": "GenericCue",
+	"times": [0.0, 0.1, 0.0, 0.0, 0.0, 0.0],
+	"nodes": ["nodeD"],
+	"args":{
+		"tReady":{
+			"active":{
+				"pause": 1,
+				"blackout": 1
+			}
+		}
+	}
+}

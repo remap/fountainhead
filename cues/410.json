@@ -1,0 +1,31 @@
+{
+	"class": "GenericCue",
+	"nodes": ["nodeA", "nodeB"],
+	"times": [0.0, 0.1, 0.1, 0.0, 0.0, 0.0],
+	"args": {
+		"tReady":{
+			"preview":{
+				"url":"",
+				"pause": 1,
+				"blackout": 1
+			},
+			"active":{
+				"url":"",
+				"pause":1,
+				"blackout": 1
+			},
+			"final":{
+				"cropTop":0.99,
+				"cropBottom":0.01,
+				"vignetteEdge":0.05
+			}
+		},
+		"tRun":{
+			"touch": {
+				"/project1/generic.allowCooking": 0,
+				"/project1/polaroids.allowCooking": 0,
+				"/project1/senses.allowCooking": 0
+			}
+		}
+	}
+}

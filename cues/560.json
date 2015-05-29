@@ -1,0 +1,18 @@
+{
+	"class": "FadeInCue",
+	"times": [0.0, 1.0, 0.0, 0.0, 0.0, 0.0],
+	"nodes": ["nodeC", "nodeD"],
+	"args": {
+		"tReady": {
+			"preview": {
+				"url": "https://www.youtube.com/watch?v=FQvAVyVR91w&index=5&list=PLjardEiAzhrqz9Om8AoAlE2Q1GIIQgJlH",
+				"reset":true
+			}
+		},
+		"tGo": {
+			"preview": {
+				"pause":0
+			}
+		}
+	}
+}

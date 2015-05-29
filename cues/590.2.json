@@ -1,0 +1,19 @@
+{
+	"class": "FadeInCue",
+	"times": [0.0, 1.0, 0.0, 0.0, 0.0, 0.0],
+	"args": {
+		"tReady": {
+			"preview": {
+				"url": "https://www.youtube.com/watch?v=xvTYUnqn2wY&list=PLUl4u3cNGP63w3DE9izYp_3fpAdi0Wkga",
+				"blackout":0,
+				"pause": 1,
+				"playbackSpeed": 2
+			}
+		},
+		"tGo": {
+			"preview": {
+				"pause":0
+			}
+		}
+	}
+}

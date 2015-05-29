@@ -1,0 +1,12 @@
+{
+	"class": "GenericCue",
+	"nodes":["nodeB"],
+	"times": [0.0, 0.1, 0.1, 0.0, 0.0, 0.0],
+	"args": {
+		"tReady":{
+			"final":{
+				"mirrorX":1
+			}
+		}
+	}
+}

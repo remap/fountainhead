@@ -1,0 +1,30 @@
+{
+	"class": "LiveFeedCue",
+	"times": [0.0, 0.0, 0.1, 0.0, 0.0, 0.0],
+	"nodes": ["nodeC"],
+	"args": {
+		"tReady":{
+			"preview":{
+				"reset":true,
+				"url": "https://www.youtube.com/watch?v=R_lf34OAc74",
+				"url": "https://www.youtube.com/watch?v=jGfy5VV__1s&feature=youtu.be",
+				"playbackSpeed": 1.2,
+				"circleCrop":1,
+				"opacity": 0.6,
+				"pause":1
+			}
+		},
+		"tGo":{
+			"switch":1,
+			"active":{
+				"pause":0
+			},
+			"preview":{
+				"pause":1
+			},
+			"feed":{
+				"blackout":1
+			}
+		}
+	}
+}

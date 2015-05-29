@@ -1,0 +1,19 @@
+{
+	"class": "FadeInCue",
+	"times": [0.0, 1.0, 0.0, 0.0, 0.0, 0.0],
+	"nodes": ["nodeC"],
+	"args": {
+		"tReady": {
+			"preview": {
+				"url": "https://www.youtube.com/watch?v=xvTYUnqn2wY&list=PLUl4u3cNGP63w3DE9izYp_3fpAdi0Wkga",
+				"playbackSpeed": 2,
+				"opacity": 0.5,
+				"startTime": 33,
+				"blackLevel": 0.26,
+				"contrast": 1.25,
+				"brightness": 1.3,
+				"playbackSpeed": 2
+			}
+		}
+	}
+}

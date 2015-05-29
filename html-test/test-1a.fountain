@@ -1,0 +1,45 @@
+# Environment
+
+[showid] "chocolate_cookie_show"
+
+[include] ndn.js
+[prefix] new Name("/ndn/edu/ucla/remap/losatlantis")
+[face] new Face({host: "archive-dev.remap.ucla.edu"})
+[include] ndn-init.js
+[include] ndn-url-publisher-component.js
+
+[include] script-control.js
+[include] component-object.js
+[include] ndn-publisher-component-object.js
+[include] onload.js
+[include] youtube-object.js
+
+# Body
+
+.RITUAL 1/A: Departure (@ Sheena)
+
+<<@cue-publisher
+  (t       = "Establish scene - airport images, composite.", 
+   cid     = 80)>>
+
+<<@cue-publisher
+  (t       = "Gate announcement Number 304 to Brea, CA", 
+   cid     = 81)>>
+
+<<@cue-publisher
+  (t       = Second glitch "i love you babe", 
+   cid     = 82)>>
+
+<<@cue-publisher
+  (t       = Third "It's going to be the best trip ever", 
+   cid     = 83)>>
+
+<<@cue-publisher
+  (t       = "Because you love me right?", 
+   cid     = 84, 
+   desc    = "Sunrise over an undercast  (50% speed, oval vignette)")>>
+
+<<@cue-publisher
+  (t       = Fade to black (RITUAL IS OVER) - needs to stop any active cue, 
+   cid     = 85)>>
+

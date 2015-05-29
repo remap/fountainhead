@@ -1,0 +1,19 @@
+{
+	"class": "FadeInCue",
+	"times": [0.0, 5.0, 0.1, 0.0, 0.0, 0.0],
+	"nodes": ["nodeA"],
+	"args": {
+		"tReady": {
+			"preview": {
+				"reset": true,
+				"url": "https://www.youtube.com/watch?v=FZBr9xWwT30",
+				"blackout":0,
+				"playbackSpeed": 1,
+				"vignetteEdge":0
+			},
+			"touch":{
+				"/project1/generic.allowCooking": 1
+			}
+		}
+	}
+}

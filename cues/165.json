@@ -1,0 +1,25 @@
+{
+   "class":"GenericCue",
+   "nodes":["nodeD" ],
+   "times":[0.0, 1.0, 0.0, 0.0, 0.0, 0.0],
+   "args":{
+      "tReady":{
+         "preview":{
+            "reset":true,
+            "url":"https://www.youtube.com/watch?v=IpXth5vIFdE",
+            "playbackSpeed":0.5,
+            "pause":1,
+            "blackout":0
+         },
+         "touch":{
+            "/project1/generic.allowCooking": 1
+         }
+      },
+      "tGo":{
+         "switch":1,
+         "active":{
+            "pause":0
+         }
+      }
+   }
+}

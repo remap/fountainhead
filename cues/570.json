@@ -1,0 +1,8 @@
+{
+	"class": "RippleFadeIn",
+	"times": [0.0, 0.0, 10.0, 0.0, 0.0, 0.0],
+	"nodes": ["nodeC", "nodeD"],
+	"args": {
+		"rippleK":4
+	}
+}

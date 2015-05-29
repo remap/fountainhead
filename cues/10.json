@@ -1,0 +1,30 @@
+{
+	"class": "SunsetFadeUp",
+	"times": [0.0, 30.0, 0.0, 0.0, 0.0, 0.0],
+	"nodes": ["nodeC"],
+	"args": {
+		"tReady":{
+			"preview":{
+				"url":"https://www.youtube.com/watch?v=77rHEjXj-b8", 
+				"playbackSpeed":0.5,
+				"pause":1, 
+				"cropLeft":0.5, 
+				"cropRight":0.5, 
+				"cropTop":0.5, 
+				"cropBottom":0.5,
+				"circleCrop":1,
+				"vignetteEdge": 0.1
+			},
+			"touch":{
+				"/project1/generic.allowCooking": 1
+			}
+		},
+		"tGo":{
+			"switch":1,
+			"active":{
+				"pause":0, 
+				"blackout":0
+			}
+		}
+	}
+}

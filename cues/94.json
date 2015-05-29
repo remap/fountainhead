@@ -1,0 +1,12 @@
+{
+	"class": "GenericCue",
+	"times": [0.0, 0.1, 0.1, 0.0, 0.0, 0.0],
+	"nodes": ["nodeB"],
+	"args": {
+		"tReady": {
+			"active": {
+				"monochrome":1
+			}
+		}
+	}
+}

@@ -1,0 +1,12 @@
+{
+	"class": "LiveFeedCue",
+	"times": [0.0, 0.0, 0.1, 0.0, 0.0, 0.0],
+	"nodes": ["nodeC"],
+	"args": {
+		"tGo":{
+			"active":{
+				"playbackSpeed":2
+			}
+		}
+	}
+}

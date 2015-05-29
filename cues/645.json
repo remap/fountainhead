@@ -1,0 +1,19 @@
+{
+	"class": "FadeInCue",
+	"times": [0.0, 5.0, 0.0, 0.0, 0.0, 0.0],
+	"nodes": ["nodeC", "nodeD"],
+	"args": {
+		"tReady": {
+			"preview":{
+				"url":"",
+				"reset":true,
+				"blackout":1
+			},
+			"active": {
+				"url": "",
+				"reset":true,
+				"blackout":1
+			}
+		}
+	}
+}
