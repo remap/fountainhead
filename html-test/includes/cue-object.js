@@ -129,4 +129,6 @@ CueObject.prototype.resume = function() {
   }
 };
 
-exports.CueObject = CueObject;
+if (typeof exports !== 'undefined') {
+  exports.CueObject = CueObject;
+}

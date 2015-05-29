@@ -171,4 +171,6 @@ ComponentObject.prototype.desanitizeText = function (text) {
   return text.replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&#32;/g, ' ').replace(/&#34;/g, '\"').replace(/&#39;/g, '\'');
 };
 
-exports.ComponentObject = ComponentObject;
+if (typeof exports !== 'undefined') {
+  exports.ComponentObject = ComponentObject;
+}

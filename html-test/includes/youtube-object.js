@@ -107,4 +107,6 @@ YoutubeObject.prototype.requestYoutubeItem = function(options, nextPageToken, vi
   listRequest.send();
 };
 
-exports.YoutubeObject = YoutubeObject;
+if (typeof exports !== 'undefined') {
+  exports.YoutubeObject = YoutubeObject;
+}

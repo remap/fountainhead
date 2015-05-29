@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<html>
+
+<head>
+  <script src="includes/db-object.js"></script>
+  <script src="includes/youtube-object.js"></script>
+  <script src="includes/component-object.js"></script>
+  <script>
+    function scrapeClick()
+    {
+      var ytObject = new YoutubeObject('AIzaSyCe8t7PnmWjMKZ1gBouhP1zARpqNwHAs0s');
+      var dbObject = new DBObject(document.getElementById('dbHostUrl').value);
+
+      var videoData = [];
+
+      ytObject.requestYoutubeItem({
+        'query': 'search',
+        'part': 'snippet,id',
+        'channelId': 'UCdHYVYRpXuWedoj71N2TcQg',
+        'maxResults': '20'
+      }, undefined, videoData, function (obj) {
+        console.log('Finished fetching; write query to DB');
+        var queryStr = '';
+        for (var i = 0; i < videoData.length; i++) {
+          var desc = videoData[i].snippet.description.trim();
+          var key = videoData[i].id.videoId;
+          var title = videoData[i].snippet.title;
+          
+          if (desc[desc.length - 1] == '.') {
+            desc = desc.substr(0, desc.length - 1);
+          }
+          
+          var tags = desc.split(',');
+          var tagStr = '';
+          for (var j = 0; j < tags.length; j++) {
+            tagStr += '\'' + tags[j].trim().toLowerCase() + '\',';
+          }
+          tagStr = tagStr.substr(0, tagStr.length - 1);
+          
+          // This overrides the conflicting fields of existing entry, if any
+          queryStr = 'insert into media (key, description, tags, title) values (\'' + key + '\', \'' + desc + '\', {' + tagStr + '}, \'' + title + '\')';
+          dbObject.postToDB(queryStr, function() {
+            console.log('entry added');
+          });
+          console.log(queryStr);
+          // This is a bad idea for tags querying
+          // select * from media where tags contains 'Angels' and tags contains 'skyline' allow filtering;
+        }
+      }, false);
+    }
+  </script>
+</head>
+
+<body>
+  <input id='dbHostUrl' type='text' value='http://localhost:5000'></input><br><br>
+  <button id='scrapeButton' onclick='scrapeClick()'>scrap and write to db</button>
+  <br>
+  <br>
+CREATE TABLE IF NOT EXISTS media (
+  key text,
+  approved boolean,
+  categoryid text,
+  description text,
+  duration text,
+  in_show set<int>,
+  private boolean,
+  tags set<text>,
+  title text,
+  uploaded_by text,
+  PRIMARY KEY (key)
+);
+  <br>
+</body>
+
+</html>
