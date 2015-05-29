@@ -16,47 +16,52 @@
 
 # Body
 
-.RITUAL 1/D: Cues
+.RITUAL 1/B: "Long way from Home" (@ Eddie)
 
 <<@cue-publisher
-  (t       = Establish scene, 
-   cid     = 160)>>
+  (t       = Establishing -> Black out, 
+   cid     = 90)>>
 
 <<@cue-publisher
-  (t       = Match strike 1, 
-   cid     = 165, 
-   desc    = Hollywood @ night (50% speed, not inverted. slight rectangular vignette) )>>
+  (t       = "Raul first line FUUUUUUCKKK!", 
+   cid     = 91, 
+   desc    = "MLK and Long Beach Blvd. (50% speed, rectangular vignette)" )>>
 
 <<@cue-publisher
-  (t       = Match strike 2, 
-   cid     = 167, 
-   desc    = "Pentagonal lights, same settings as last")>>
+  (t       = "Hey Beautiful" - talking in cell phone, 
+   cid     = 92, 
+   desc    = Shopping carts  (50% speed, rectangular vignette))>>
 
 <<@cue-publisher
-  (t       = Match strike 3, 
-   cid     = 169, 
-   desc    = "Alley (50% speed, inverted, with HSV adjust (default params), slight rect vignette after inversion)")>>
+  (t       = "This place used to be something pretty - before zipper backup, big change", 
+   cid     = 93, 
+   desc    = "Driving in Silverlake (50% speed, rectangular vignette)")>>
 
 <<@cue-publisher
-  (t       = Arrival, 
-   cid     = 171, 
-   desc    = "LAPL pigeons (same as above but no rotation, scaled/pushed into pigeons in upper part of the image)")>>
+  (t       = "Let me take you back", 
+   cid     = 94, 
+   desc    = "Driving in Silverlake  (50% speed, rectangular vignette, black and white)")>>
 
 <<@cue-publisher
-  (t       = Opera, 
-   cid     = 180, 
-   desc    = "Tunnel empty (same as above but rotate source image 90-deg CCW and scale just enough to fill window, losing some of the stone wall on the left of the original image)")>>
+  (t       = "Real nice", 
+   cid     = 95, 
+   desc    = "Barbershop  (50% speed, rectangular vignette)")>>
 
 <<@cue-publisher
-  (t       = End of opera, 
-   cid     = 185, 
-   desc    = "Construction pedestrian (same as above but no rotation, no scaling, 25% speed)")>>
+  (t       = "You know. We could do that. If you want", 
+   cid     = 96, 
+   desc    = "Downtown LA mini mart (50% speed, rectangular vignette)")>>
 
 <<@cue-publisher
-  (t       = Butterflies, 
-   cid     = 190, 
-   desc    = "Pentagonal lights (50% speed, not inverted, slight rectangular vignette)")>>
+  (t       = "Now repeat after me", 
+   cid     = 97, 
+   desc    = "RE-MENT collectables #2 - Cooking  (50% speed, rectangular vignette, start @ 14s)")>>
 
 <<@cue-publisher
-  (t       = Fade to black (RITUAL IS OVER) - needs to stop any other cue, 
-   cid     = 200)>>
+  (t       = SIREN SOUND, 
+   cid     = 98,
+   desc    = "long beach police car  (50% speed, rectangular vignette, red tint)")>>
+
+<<@cue-publisher
+  (t       = Fade to black (RITUAL IS OVER) - Needs to stop any active cue, 
+   cid     = 105)>>
