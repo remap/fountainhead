@@ -75,3 +75,6 @@ losatlantis-scripts/
 /html-test/includes/strophe.muc.js
 /html-test/includes/ndn.js
 /html-test/includes/jquery*
+
+# Ignore cues folder
+/cues

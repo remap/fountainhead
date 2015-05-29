@@ -1,9 +1,0 @@
-{
-	"class":"TouchCue",
-	"nodes":["nodeB","nodeC"],
-	"touch":{
-		"/project1/generic.allowCooking":0,
-		"/project1/senses.allowCooking":1,
-		"/project1/envSwitch.par.index.val": 1
-	}
-}
