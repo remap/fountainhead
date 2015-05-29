@@ -507,9 +507,8 @@ class FountainHTMLGenerator(object):
                                     break
                                 
                             if matchKey:
-                                if (not specialGenerationPatterns[matchKey][1] in self._componentList):
+                                if not (specialGenerationPatterns[matchKey][1] in self._componentList):
                                     self._componentList.append(specialGenerationPatterns[matchKey][1])
-                                
                                 continue
                     
                     if (element._elementType == self._fountainRegex.CHARACTER_TAG_PATTERN):
@@ -529,7 +528,7 @@ class FountainHTMLGenerator(object):
                                 prevType = characterName
                                 # skipOrdinaryGeneration = True
                                 # Do not forget to add this web component to the imported list
-                                if (not characterName in self._componentList):
+                                if (not specialGenerationTags[characterName] in self._componentList):
                                     self._componentList.append(specialGenerationTags[characterName])
                                 continue
                         

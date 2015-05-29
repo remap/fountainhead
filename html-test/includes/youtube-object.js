@@ -106,3 +106,5 @@ YoutubeObject.prototype.requestYoutubeItem = function(options, nextPageToken, vi
   listRequest.open('GET', url, true);
   listRequest.send();
 };
+
+exports.YoutubeObject = YoutubeObject;
