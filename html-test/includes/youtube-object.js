@@ -45,32 +45,39 @@ YoutubeObject.prototype.loadYoutubeVideoUrls = function (serviceUrls, callback) 
   xhr.send(data);
 }
 
-YoutubeObject.prototype.requestYoutubeItem = function(options, nextPageToken, videoLinks, onDone) {
+YoutubeObject.prototype.requestYoutubeItem = function(options, nextPageToken, videoData, onDone, linkOnly) {
+  var storeLinkOnly = typeof linkOnly !== 'undefined' ? linkOnly : true;
+  
   if (!options.hasOwnProperty('query')) {
     console.log('Request word not specified, returned.');
     return;
   }
-  
   var self = this;
   var listRequest = new XMLHttpRequest();
   listRequest.onreadystatechange = function() {
-	if (listRequest.readyState == 4 && listRequest.status==200) {
+	if (listRequest.readyState == 4 && listRequest.status == 200) {
 	  var result = JSON.parse(listRequest.responseText);
 	  for (var i = 0; i < result.items.length; i++) {
-	    if (options.hasOwnProperty('videoIdPath')) {
-	      eval('var videoId = result.items[i].' + options.videoIdPath);
-	      // For query: search, we can get channelId and playlistId, too
-	      if (videoId !== undefined) {
-	        videoLinks.push(videoId);
+	    if (linkOnly) {
+	      if (options.hasOwnProperty('videoIdPath')) {
+	        eval('var videoId = result.items[i].' + options.videoIdPath);
+	        // For query: search, we can get channelId and playlistId, too
+	        if (videoId !== undefined) {
+	          videoData.push(videoId);
+	        }
 	      }
+	    } else {
+	      if (result.items[i].snippet.description[result.items[i].snippet.description.length-1] == ".")	      
+            result.items[i].snippet.description = result.items[i].snippet.description.substring(0, result.items[i].snippet.description.length - 1);
+          videoData.push(result.items[i]);
 	    }
 	  }
   
 	  if (result.nextPageToken !== undefined && result.nextPageToken !== null) {
-		self.requestYoutubeItem(options, result.nextPageToken, videoLinks, onDone);
+		self.requestYoutubeItem(options, result.nextPageToken, videoData, onDone, storeLinkOnly);
 	  } else {
 	    if (onDone !== undefined) {
-	      // we return the last result only, so for list/channel fetching, videoLinks can be relied upon while result cannot
+	      // we return the last result only, so for list/channel fetching, videoData can be relied upon while result cannot
 	      onDone(result);
 	    }
 	  }
