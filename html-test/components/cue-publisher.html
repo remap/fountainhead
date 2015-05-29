@@ -1,5 +1,6 @@
 <template>
-  <p id="cue-title" class="video-control-text"></p>
+  <!-- <p id="cue-title" class="video-control-text"></p> -->
+  <p id="cue-title"></p>
   
   <p style="margin:1.3em auto; width: 400px">
   <a id="cue-load" class="video-control-text"></a>
@@ -178,6 +179,7 @@
     */
     
     // This is the old publisher function
+    /*
     createdElement.titleElement.addEventListener('click', function() {
       // TODO: referencing namePrefix like this is not ideal
       if (createdElement.cueReady) {
@@ -192,6 +194,7 @@
         console.log('Warning: Cue content still being loaded');
       }
     });
+    */
     
     // This is a quick modification for test on May 12, as the patch expects commands to be published for cues.
     // TODO: update this with state publisher to make state publisher take 0 or -1 time
