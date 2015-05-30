@@ -353,16 +353,36 @@ a:hover {
     Do we autogenerate CSS? 
     
     */
-.sheena, .sheena-def {
+.sheena {
 }
 
-.rachel, .rachel-def {
+.sheena-def {
+    display: none;
 }
 
-.eddie, .eddie-def {
+.rachel {
 }
 
-.felix, .felix-def {
+.rachel-def {
+    display: none;
+}
+
+.eddie {
+}
+
+.eddie-def {
+    display: none;
+}
+
+.felix {
+}
+
+.felix-def {
+    display: none;
+}
+
+.charactercontent-desc {
+    display: none;
 }
 
 /**

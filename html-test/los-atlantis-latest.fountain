@@ -10,9 +10,9 @@ Author: Future of Storytelling Studio 2015
 
 > UCLA Future of Storytelling Studio 2015 <
 
-> DRAFT 4.6 <
+> DRAFT 5.3 <
 
-> 4/21/2015 <
+> 5/27/2015 <
 
 > (ZS) <
 
@@ -82,6 +82,8 @@ Eddie [TRAVELERS] Stub
 
 Felix [TRAVELERS] Stub
 
+===
+
 # Setting
 
 [Offline] A large space, the Agora, branching out into smaller rooms, the Ritual Chambers, arranged to allow the projectors and cameras necessary. 
@@ -90,15 +92,17 @@ Felix [TRAVELERS] Stub
 
 # Body
 
-> **The Contents of THE ARCHIVE** <
+> _CONTENTS OF THE ARCHIVE_ <
 
 THE ARCHIVE contains real and fictional memories of <<Los Angeles>> - images, audio, video, text, and other media gathered by the company and supplemented by the WATCHERS. 
 
-> 	 <
+===
 
 # Code
 
-> **Code** <
+> _CODE_ <
+
+
 
 LOS ATLANTIS incorporates software code that dynamically updates the script based on the context of the performance: where it is performed, what media is in THE ARCHIVE, who is attending, etc. 
 
@@ -110,7 +114,9 @@ Double angle brackets, <<>> are used to indicate sections in the script that are
 
 In this version of the script, the rules by which the replacement occurs is suggested by the example text inside the brackets but not explicitly described. 
 
-> **Quote** <
+
+
+===
 
 # Quote
 
@@ -126,15 +132,17 @@ In this version of the script, the rules by which the replacement occurs is sugg
 
 
 
+===
+
 # Prologue  
 
 # PROLOGUE: INVITATION (ONLINE)
 
 =  Pre performance The problems of Time and Space have been solved.(what does this mean)
 
-.PROLOGUE: INVITATION (ONLINE)
+**PROLOGUE: INVITATION (ONLINE)**
 
-The Potential Audience first encounters THE ARCHIVE via the LOS ATLANTIS Website. 
+The Potential Audience first encounters THE ARCHIVE via the LOS ATLANTIS Website.   
 
 THE OBSERVATORY
 No time? No space? No worries! THE ARCHIVE of <<Los Angeles>> has more than enough room for everyone's memories. Learn what it's like today!   
@@ -149,40 +157,40 @@ In the time leading up to the performance, the Potential Audience divides into e
 Going forward, WATCHERS will interact via the OBSERVATORY.  TOURISTS will interact via their GUIDE.
 
 THE OBSERVATORY
+(to the TOURISTS before the performance)
 You've elected to participate in the Transfer. Come to <<location of the performance>> at <<date and time of the performance>>.  Bring yourself, an open mind and your mobile device  Etc.     
 
 THE OBSERVATORY
+(to the WATCHERS before the performance)
 Feel at home to browse the records and memories of <<Los Angeles>>, free of the constraints of time and space. From the comfort of your home or computer you can witness the live Transfer at <<date and time of the performance>>.  
 
 The WATCHERS are free to explore the records of THE ARCHIVE via the website. Each record has a title, such as "Silent sunrise", a location in the city, "Venice", keywords "#beach #silent #beauty", etc. 
 
-/*
-Link to tasks that request uploads matching the needs of the Rituals, plus some options to upload anything they would like.
-*/
+THE OBSERVATORY
+(to the WATCHERS)
+Please share your own memories of <<Los Angeles>> to THE ARCHIVE, to be remembered, and to be shared with the participants. [Link to tasks that request uploads matching the needs of the Rituals, plus some options to upload anything they would like.] 
 
 THE OBSERVATORY
-Please share your own memories of <<Los Angeles>> to THE ARCHIVE, to be remembered, and to be shared with the participants. 
-
-THE OBSERVATORY 
+(to the WATCHERS and TOURISTS,and by email, and text)
 Date of Transfer: <<Thursday, June 2, 2026>>. 
 Time:  << - 02 Days, 12 Hours, 05 Minutes>>
 
+THE OBSERVATORY
 (to the TOURISTS)
 Your personal Transfer Guide: <<http://the-archive.org/losangeles/219010>>
 
 The GUIDE,Virgil, is accessed from the TOURISTS' smartphones.
 
 THE GUIDE
-Hi, I'm really looking forward to this. You are very special to me.
+Hi, I'm really looking forward to this. You are very  special to me.
 
 In the days leading up to the event, its content is mostly a countdown timer. 
 
 It may occasionally spout memes drawn from THE ARCHIVE to pique the Interest of the TOURISTS.
 
 THE OBSERVATORY
-(to WATCHERS who have successfully uploaded content)
-Thank you for contributing to the ARCHIVE, please consider using this media in the Transfer. Do you think these tags will resonate with our visitors, #sunset #seabreeze. 
-Click <br><button onclick="send({bool:true})">yes</button> or <button onclick="send({bool:false})">no</button>?
+(to WATCHERS who have uploaded content)
+Thank you for contributing to the ARCHIVE, please consider using this media in the Transfer.  Do you think these tags will resonate with our visitors, <<"#sunset #seabreeze">>?
 
 WATCHERS can change the metadata associated with their uploaded media.
 
@@ -194,17 +202,17 @@ WATCHERS can change the metadata associated with their uploaded media.
 
 = The audience gacves entrance to the archive via their mobile devise E-Pass
 
-.ACT 1
+**ACT 1**
 
-.SCENE 1: ADMISSION
+**SCENE 1: ADMISSION**  
 
-*olf: Wide shot of the Lobby, occasionally zooming to medium shots of groups of TOURISTS and TRAVELERS.*
+*Observatory Live Feed (OLF): Wide shot of the Lobby, occasionally zooming to medium shots of groups of TOURISTS and TRAVELERS.*  
 
 The TOURISTS filter into the Lobby of THE ARCHIVE. A sign reminds them to log in to the GUIDE on their mobile phones.
 
 THE GUIDE
 (to each TOURIST, after they log in on their phone, with a Clippy-like icon popping up)
-Hello, {{ user_name }}!  Where do you want to go today? Just kidding... Welcome.  -Virgil. 
+Hello, <<Manasi>>!  Where do you want to go today? Just kidding... Welcome.  -Virgil. 
 
 The TOURISTS browse their GUIDE. 
 
@@ -213,93 +221,73 @@ Gradually  the audience congregates  in the lobby.
 The WATCHERS logged into the OBSERVATORY are greeted. They can watch the live feed streaming to the OBSERVATORY. They can still browse THE ARCHIVE. 
 
 THE GUIDE
+(to each TOURIST)
 Time to your Transfer: << - 00 Days, 00 Hours, 7 Minutes>>. 
 
 THE OBSERVATORY ^
+(via a status bar)
 Time to the Transfer: << - 00 Days, 00 Hours, 7 Minutes>>. 
 
-THE GUIDE
-Time to your Transfer: << - 00 Days, 00 Hours, 5 Minutes>>. 
+THE ARCHIVE
 
-THE OBSERVATORY ^
-Time to the Transfer: << - 00 Days, 00 Hours, 5 Minutes>>. 
-
-THE GUIDE
-Time to your Transfer: << - 00 Days, 00 Hours, 3 Minutes>>. 
-
-THE OBSERVATORY ^
-Time to the Transfer: << - 00 Days, 00 Hours, 3 Minutes>>. 
-
-THE GUIDE
-Please connect to the ARCHIVE-<<LOS_ANGELES>> WiFi network.  The GUIDE will activate (hello!) when needed during the Transfer event.  The Transference may be challenging. Be calm and observant.
+(VOICE/OVER AND ON EACH GUIDE)[[PRINTED ON THE TICKETS?]]
+Please connect to the ARCHIVE-<<LOS ANGELES>> WiFi network.  The GUIDE will activate (hello!) when needed during the Transfer event.  The Transfer may be challenging. Be calm and observant.
 
 # ARCHIVE INSTALLATION: WHAT’S SHOWING NEXT WEEK
 
-.ARCHIVE INSTALLATION: WHAT'S SHOWING NEXT WEEK
+**ARCHIVE INSTALLATION: WHAT'S SHOWING NEXT WEEK**  
 
-*VQ #10 - Sunset on the beach (50% speed, play for 30s).*  
+*VQ #5 - Initial state.*  
 
-*VQ #11 - Sunlight through branches (50% speed)*  
+*VQ #10 - Sunset installation fade up.* 
 
-*VQ #12 - Ocean sunset 1 (50% speed)*  
-
-*VQ #13 - Sunset fence  (50% speed)*  
-
-While the audience enters and mills around in one corner there is a  soft ambient display. It is simple and inviting. A gentle installation of dusk in Los Angeles
-
-/*
-WATCHERS vote, and their choices are taken into account.
-*/
+The audience enters and mills around a courtyard where there is a soft ambient display. It is simple and inviting. A gentle installation of dusk in Los Angeles
 
 THE OBSERVATORY
-(showing a library of sunsets from different vistas in <<LOS ANGELES>>, including the WATCHER'S own relevant uploads)
-Which sunsets resonate with you
+(showing a library of sunsets from different vistas in <<LOS ANGELES>>)
+Which sunsets resonate with you?
 
-As the WATCHERS look on from the OBSERVATORY, 
+WATCHERS vote, and their choices are taken into account. 
 
-The space fills with sunlight from projections on the walls of <<iconic vistas of the sun setting over the city>>, with (approved) uploads selected by the WATCHERS of this performance used if available. 
+As the WATCHERS look on from the OBSERVATORY, the space fills with sunlight from projections on the walls of <<iconic vistas of the sun setting over the city>>, with (approved) uploads selected by the WATCHERS of this performance used if available. 
 
 We hear the sounds of nature and in the distance, children, cars and the city. 
 
-A pin lite comes up on two backpacks. Perhaps one is labeled "OPEN ME", the other says" GUESS WHAT'S INSIDE?". Inside is a map of a particular <<Los Angeles>> park, a radio, and other items needed for a hike. Perhaps other blankets are scattered and spread out
+A pin light comes up on two backpacks. Perhaps one is labeled "OPEN ME", the other says" GUESS WHAT'S INSIDE?". Inside is a map of a particular <<Los Angeles>> park, a radio, and other items needed for a hike. Other blankets are scattered and spread out.
 
 The WATCHERS who are browsing receive additional instructions on how to use the OBSERVATORY interface. 
 
 THE OBSERVATORY
-Each Transfer takes advantage of crowdsourcing, so thank you for being willing to participate.  It is through the wisdom of the Village that we gain insight into individuals.  As the Transfer proceeds, you will watch and, if you wish, help curate the memories chosen for the participants.   Our sponsor tonight is <<Johnson & Johnson>> - click on any product to purchase. Etc...
+Each Transfer takes advantage of crowdsourcing, so thank you for being willing to participate.  It is through the wisdom of the Village that we gain insight into individuals.  As the Transfer proceeds, you will watch and, if you wish, help curate the memories chosen for the participants.   Our sponsor tonight is <<Johnson & Johnson>> - click on any product to purchase. Etc...[[Do we want to have this?]] 
 
- A projection of a woman,"Sheena" in silhouette She stands still facing the sunlight, her eyes closed in the warmth of the sun. 
-
-VOICEOVER
-(an unseen voice with a soft accent[Raul?}; spoken live)
+VOICEOVER 1
 
 It's been a long day. Tired, we needed a break. We had climbed up the windy hill through an empty obstacle course left by previous hikers... Why do people trash such beautiful places? When we reached the summit of the hill, we rested. 
 
-SHEENA
-We rested
-
-VOICEOVER
+SHEENA V.O.
+We rested.
 
 Long pause. More sounds, the light slowly changes. 
 
+VOICEOVER 1
 We sat watching the horizon through the leafless branches of the trees. Look... 
 
-SHEENA
+*VQ #11 - Sunlight through branches.* 
+
+SHEENA V.O.
 The sun was setting.
 
-VOICEOVER
+VOICEOVER 1
 
-Watch that big orange fiery ball in the sky. 
+Watch that big orange fiery ball in the sky. It's nice here in L.A. ain' it? Damn we're lucky huh.
 
-It's nice here in L.A. ain' it? 
-
-Damn we're lucky huh.
+*VQ #12 - Sunset on the beach.*
 
 THE GUIDE
 (vibrating the TOURISTS' phones)
 Watch this memory. Be completely still. Be quiet. You can take a photo if you like but pay attention to the sun, it sets quickly.
 
-VOICEOVER
+VOICEOVER 1
 Feel that breeze? Can you see the Hollywood sign?  
 
 The image shifts to another sunset, in a different <<Los Angeles>> location.
@@ -307,64 +295,54 @@ The image shifts to another sunset, in a different <<Los Angeles>> location.
 THE GUIDE
 Use your imagination. It's Ok to move to a better viewpoint if needed. 
 
-VOICEOVER ^
+VOICEOVER 1 ^
 Look at the sky painted in  orange, red, and yellow. Look at the clouds colored with a bright disguise. I've never seen this sunset before... And I never will again 
+
+*VQ #13 - Sunset fence.*
 
 The image shifts to another sunset, in a different <<Los Angeles>> location.
 
 THE GUIDE
-What do you think it felt like to be there? Choose: {{ tags }} How would you TAG this memory. How does the sunset make you feel?
+What do you think it felt like to be there? [Enter words...]How would you TAG this memory. How does the sunset make you feel?
 
 VOICEOVER ^
 It's almost gone, behind the hills and the shadows of black tree branches.  It was a close to a long day. We took this moment to remember all that has happened during the day. 
-
-Sheena's silhouette becomes clearer in the sunset with each detail the TOURISTS provide to the GUIDE.
 
 # SCENE 2: RACHEL ENTERS
 
 =  The group discovers and meet Rachel, a traveler. She teels her  group and tells them something about herself.  she uses a  Tourists  cell ph to take ehr phot nd gain entry to the  Passage inside.
 
-.SCENE 2: RACHEL ENTERS
+**SCENE 2: RACHEL ENTERS**
 
-The follow happens during the sunset installation.
+The follow happens during the sunset installation.  
 
-*olf: Medium shot of RACHEL amidst the other TRAVELERS and TOURISTS, possibly intercut with CU of their reactions.*
+*OLF: Medium shot of RACHEL amidst the other TRAVELERS and TOURISTS, possibly intercut with CU of their reactions.* 
 
 A young woman enters along with the  audience, the Tourists, she is carrying a large purse or backpack distractedly and using her  mobile device. She moves slowly thru the space  stopping  to  punch fiercely at her device and whisper to herself. She seems to be expecting someone, ("Where are you, it's gonna start. You're gonna be late") It begins subtlely and grows in  intensity as the time to enter grows close, at first she  should appear to just be part of the audience. Eventually she stops in the center of the space and drops her bag. A light slowly comes up on this  woman. She is RACHEL a TRAVELER, in the Lobby with the TOURISTS. She appears to be texting or playing or on her mobile device obsessively. The WATCHERS are...watching.
 
 Electromechanical sounds are heard off-stage. They could be related to Rachel's obsessive activity.  She pauses and then hits a button hard - the sound of rain  begins nearby. A LONG BEAT and then a distant pinging sound off-stage. 
 
-(Back in the SUNSET installation)The radio clicks on, <<music plays, selected by the sentiments supplied by the TOURISTS to the GUIDE>>. Sheena responds to the music.
+(Back in the SUNSET installation)The radio clicks on, <<music plays, selected by the sentiments supplied by the TOURISTS to the GUIDE>>. 
 
-*VQ #15 - Sunset beach 1 (50% speed)*
+*VQ #15 - Sunset final image.*
 
-The image shifts to a final sunset, in a different <<Los Angeles>> location.  
-
-THE GUIDE
-Command: {{ clear }}
-
-THE OBSERVATORY ^
-Command: {{ clear }}
+The image shifts to a final sunset, in a different <<Los Angeles>> location.
 
 THE GUIDE
 The cycle of renewal is complete every evening when the sun sets to deep sleep. Take a picture. You can create a new memory from this one.  
 
 VOICEOVER ^
-All that is left now is the smear of red in the sky.
-
-Quick take my picture now! Capture the Kodak moment.
-
-These memories are what keep us alive. How magnificent each moment, each sunset. It was a great day, remember!
+All that is left now is the smear of red in the sky.Quick take my picture now! Capture the Kodak moment.These memories are what keep us alive. How magnificent each moment, each sunset. It was a great day, remember!
 
 Music continues, then fades replace by pinging as the lights rise  on RACHEL.
 
-# SCENE 3: SHE SPEAKS - FIRST INTRODUCTION
+*VQ #20 - Sunset fade out.*
 
-.SCENE 3: SHE SPEAKS - FIRST INTRODUCTION
+*# SCENE 3: SHE SPEAKS - FIRST INTRODUCTION*
 
-*VQ #20 - sunset out.* 
+**SCENE 3: SHE SPEAKS - FIRST INTRODUCTION**  
 
-Rachel looks up seemingly in a daze. She speaks slowly at first as if trying to remember something. Perhaps there are  projections/images that elicit her  speaking  but these  should be faded, blurry, hard to see. 
+Rachel looks up seemingly in a daze. She speaks slowly at first as if trying to remember something. Perhaps there are  projections/images that elicit her  speaking  but these  should be faded, blurry, hard to see.   
 
 RACHEL
 Where are you? You're late 
@@ -376,28 +354,26 @@ I have dreams. Strange dreams. I have so many things I don't want to think about
 Someone
 But then you wake up
 To events .
-Where are you damnit 
+Where are you damn it? 
 Why am I here in this-
 
 A louder ping, closer. 
 
 THE GUIDE
-(to each TOURIST)
 Time to your Transfer: << - 00 Days, 00 Hours, 00 Minutes>>. 
 
 RACHEL
 Did you hear that?
 
-*olf: Title overlaid - Provide Identification Image*
+*OLF: Title overlaid - "Provide Identification Image"* 
 
 A digital sign appears: "PROVIDE IDENTIFICATION IMAGE" 
 
 THE GUIDE
-(in a businesslike tone)
 Image capture and authentication ready. 
 
 THE OBSERVATORY ^
-(in a status bar, regardless of what the WATCHERS are viewing)
+(in a status bar)
 Visitor arrival underway. [Link to view.] 
 
 RACHEL tries to open the door. It's locked.
@@ -408,7 +384,7 @@ Please use your guide.
 RACHEL ^
 Damnit  I know he's in there. I got in yesterday!
 
-Her phone is also dead. 
+Her phone is dead. 
 
 THE GUIDE
 Alright, now it's time, <<Yuki Izumihara>>. Take your picture to authorize entry.
@@ -419,7 +395,8 @@ Shit it's dead. Everything is  dead  or dying. I need.... I need your help... Pl
 
 RACHEL takes a photo of herself using a TOURIST'S phone.
 
-THE GUIDE
+THE ARCHIVE
+(on the Guide used by Rachel)
 Confirmed, <<Randy Illum>>.  (Photo of Rachel.) (Barcode.) 
 
 RACHEL proceeds to show the barcode to the door's access control unit. 
@@ -436,7 +413,7 @@ RACHEL gently grabs the hand of her new friend and enters.
 
 The remaining TOURISTS take and upload a picture of themselves in order to enter, each showing the name+face+barcode combination on the GUIDE to the door access control unit (AC-A*).  
 
-*olf: MCU of hands and phones doing the access scanning, cut with WS of other TOURISTS and TRAVELERS.* 
+*OLF: MCU of hands and phones doing the access scanning, cut with WS of other TOURISTS and TRAVELERS.* 
 
 As the photos are scanned, THE OBSERVATORY is populated with the pictures of the TOURISTS (and the TRAVELERS) entering THE ARCHIVE. 
 
@@ -448,17 +425,16 @@ Like RACHEL, the other TRAVELERS borrow TOURISTS' phones and identities.  They d
 
 = Rachel and her Tourists travel  down a dark passage way. They learn more about each other- so we need to try and add s some smple interaction. Some way to start to teach the aud. to interact and  participate.
 
-.SCENE 4: DOWN THE RABBIT HOLE
-
+**SCENE 4: DOWN THE RABBIT HOLE**
 
 THE OBSERVATORY
 Rain. 
 
-*olf: Dark, noisy image. Could be black.*
+*OLF: Dark, noisy image. Could be black.* 
 
 Rain sounds drift in from THE ARCHIVE. Rachel walks down a passage way and then stops, she picks up an umbrella and opens it. The sound of rain grows more present, the memory of rain. Rachel continues walking through the tunnel and addressing her new friend.
 
-*VQ #30 - first memory of LA*
+*VQ #30 - First memory of LA*
 
 RACHEL
 Once upon a time. (she laughs softly)
@@ -472,17 +448,15 @@ There is barely enough light to see. RACHEL stops suddenly and points.
 
 A TOURIST finds a small flashlight labeled "TURN ME ON". The tourist turns it on and the walls flicker a bit brighter and seem to quiver. 
 
-*olf: Gain up to see noisy image of medium shot with RACHEL in the middle.* 
+*OLF: Gain up to see noisy image of medium shot with RACHEL in the middle.* 
 
-In the distance is a faint buzzing sound of machinery. They move towards it. As they get closer, it resolves into thousands of overlapping recordings of the CITIZENS, phone calls. Including several of people ordering take food delivery. Rachel hears something, she turns her head toward it
-
-The following should be personalized by the actor. 
+In the distance is a faint buzzing sound of machinery. They move towards it. As they get closer, it resolves into thousands of overlapping recordings of the CITIZENS, phone calls. Including several of people ordering take food delivery. Rachel hears something, she turns her head toward it. 
 
 RACHEL
 (speaking fast, growing excited)
 Pizza. Pasta. Salad with bread. Tortillas. Mole. Arroz con Leche. Cookies. Candy. Lots of candy. Cereal and Cranberry Juice. Pan Dulce. I'm hungry. I'm so hungry I could eat a Horse or a goat...yeah  cabrito! I feel like a dead dog without meat on its bones. I'm hungry  but I don't eat  much anymore.I haven't had meat in ages... It's disgusting. I haven't had anything green in years it seems like. Everything kinda withered or disappeared...like my life- but now? Now I want it. I feel my tongue get wet and start to shiver. It needs to taste something. Real food. Maybe an apple or a carrot or a.... (She tries to describe it.) ...A mango. Yeah. A fucking mango! I'll eat fruit and then get healthy enough to remember to forget and then I'll go back to my life. If I can remember where it is? I'M STARVING! I'm hungry. Hungry for the sensation in my throat when I speak certain words loud, the feeling of warmth I get when I read, the short lived bliss I'm in when I fuck and we fall asleep together- but with who?  I forget. I don't wanna remember anymore. I can sense it but I've forgotten what it tastes like. What's it like to be human? 
 
-She asks her friend
+She asks her friend.
 
 RACHEL
 Do you know? Can you remember?
@@ -490,15 +464,17 @@ I've got the anatomy but I've forgotten how to connect. I've got sensation but n
 
 The rain builds then stops. Fog. Electromechanical sounds. 
 
-*VQ #40 - archive leaks through.*
+*VQ #40 - Archive leaks through.*
 
 In the distance, THE ARCHIVE leaks through. Dim lights become photos, video, brief archival records from <<Los Angeles>> seen on a "door" at the end of the passageway. 
 
 PING! A welcoming sound. The group moves towards it. The walls seems to disappear. PING! The sound is louder and closer.  
 
-*olf: The WATCHERS see the same images, intercut with MCU of the TOURISTS as well as another group in another space(the other travelers)they emerge through the passageway, led by RACHEL.* 
+*OLF: The WATCHERS see the same images, intercut with MCU of the TOURISTS as well as another group in another space(the other travelers)they emerge through the passageway, led by RACHEL*. 
 
 The TOURISTS and RACHEL reach the Agora.
+
+*VQ #45 - Fade out.*
 
 ===
 
@@ -510,19 +486,19 @@ The TOURISTS and RACHEL reach the Agora.
 
 
 
-.ACT 2:  THE AGORA
+**ACT 2:  THE AGORA**
 
-.SCENE 1:  FINDING THE OTHERS
+**SCENE 1:  FINDING THE OTHERS**  
 
-*olf: Widen out to show as much of the Agora as possible.* 
+*OLF: Widen out to show as much of the Agora as possible.*   
 
-*VQ #50 - establish agora.* 
+*VQ #50 - Establish agora.*
 
 THE OBSERVATORY
 (on the status bar)
 Acclimating our visitors to records of <<Los Angeles>>.
 
-The WATCHERS see a menu of media about Los Angeles, with links to follow deeper into the memory of THE ARCHIVE. They may "favorite" media to use later. At the same time, they view a live cameras of the Agora and instructions to keep track of the TOURIST they "followed".  
+The WATCHERS see a menu of media about Los Angeles, with links to follow deeper into the memory of THE ARCHIVE. They may "favorite" media to use later. At the same time, they view a live cameras of the Agora and instructions to keep track of the TOURIST they "followed."  
 
 The TOURISTS enter The Agora, an open space bathed in warm and friendly light wit four facing doors. The space is surrounded by soft fog drifting through shafts of light. Faint flickering images from THE ARCHIVE move around the space.
 
@@ -549,8 +525,7 @@ SHEENA
 What?
 
 RACHEL
-I tried to call you but you wouldn't answer and  then  he died... my phone died.
-Look-I was thinking maybe I shouldn't... 
+I tried to call you but you wouldn't answer and  then... my phone died. Look-I was thinking maybe I shouldn't... 
 
 SHEENA
 We've been here.. waiting for you.
@@ -566,10 +541,10 @@ Rachel are you hungry?
 
 RACHEL
 STARVING! 
-Hi Felix
+Hi Felix.
 
 FELIX
-Hey Rachel. You're late
+Hey Rachel. You're late?
 
 SHEENA ^
 Not now  Felix- for god's-
@@ -577,22 +552,25 @@ Not now  Felix- for god's-
 RACHEL
 Yeah I know, I couldn't... my phone- I'm sorry
 
-SHEENA
-Felix don't
 
-EDDIE ^
+> EDDIE <
+
 It's cool Rachel
 
 FELIX
-It's ok. You're here now, we're all here. I'm not sure whye I'm here. So I guess we'll try it one more time. Ok,ok I think it's this way (he turns to go)
+It's ok. You're here now, we're all here. I'm not sure why I'm here. So I guess we'll try it one more time. Ok,ok I think it's this way.
+
 
 IMAGES start to appear fading in and out on the walls
+
+*VQ #55 - 1**st* *Instance.*
 
 RACHEL 
 Hey... Look. I know that place!
 
-THE GUIDE
-Here, your memories are safe TO REMEMBER
+ THE ARCHIVE
+(via the Guides and aloud)
+Here, your memories are safe TO REMEMBER.
 
 EDDIE
 Yeah! It's ... it's-
@@ -601,6 +579,8 @@ RACHEL
 Yeah right it's.. Look over there that's-
 
 She moves towards the image. It fades, she sees and moves towards another. 
+
+*VQ #56 - Agora greets*
 
 THE ARCHIVE
 (as a voice in the Agora)
@@ -617,9 +597,12 @@ Welcome! Hei! Annyeonghaseyo! Hola! Czesc! Marhaba, Hello Yuki. Jeff welcome. Ho
 THE GUIDE
 This is your ARCHIVE. Take a look before the Transfer starts. 
 
+THE ARCHIVE
+This is your ARCHIVE. Take a look before the Transfer starts. 
+
 The TRAVELERS see a collage/montage of memories of <<Los Angeles>>.
 
-*olf: Four independent feeds, distributed evenly across the WATCHERS, each with a CU of one TRAVELER.* 
+*OLF: Four independent feeds, distributed evenly across the WATCHERS, each with a CU of one TRAVELER.* 
 
 FELIX
 I don't know why I'm here.
@@ -639,38 +622,82 @@ Rachel check it out!
 RACHEL
 Do I have a choice?
 
-*VQ #60 - Agora becomes more active.* 
+*VQ #60 - Agora becomes more personal leading to sense memories.*
 
 
 
-The travelers begin to spread out and explore the images throughout the space. These are NOT random images... Altho' they might seem to be at this point. Later it will become clear to most that they are seeing imagery connected to someone there that night,. The audience, encouraged by the Travelers,  might also explore the Agora. THE IMAGES BEGIN TO MOVE ABOUT THE SPACE. The images they encounter seem to speed up and slow down according to the visitors proximity to the walls. The TRAVELERS move around the space, point to, comment on, engage the images, mixing with the TOURISTS and encouraging them to explore, speaking quietly and individually to them of smell, sound, taste, and touch - again, personalized by the performer. 
+The TRAVELERS begin to spread out and explore the images throughout the space. These are NOT random images... Altho' they might seem to be at this point. Later it will become clear to most that they are seeing imagery connected to someone there that night,. The audience, encouraged by the Travelers,  might also explore the Agora. THE IMAGES BEGIN TO MOVE ABOUT THE SPACE. The images they encounter seem to speed up and slow down according to the visitors proximity to the walls. The TRAVELERS move around the space, point to, comment on, engage the images, mixing with the TOURISTS and encouraging them to explore, speaking quietly and individually to them of smell, sound, taste, and touch - again, personalized by the performer. 
 
 RACHEL 
 (aside speaking to those tourists close to her)
-When I was a little I could EAT. I ate for days. Ice-cream, soda, broccoli, caulifower, he was so surprised I LOVED CAULIFLOWER and toast. Eggs, bacon, oatmeal, cereal and soup- tomato soup... from a CAN!
-(ALL THESE FOODS SHOULD BE  PERSONAL AND IDIOSYNCRATIC? It should create and tell us who this person is)  I don't eat so much anymore but I eat when I dream. For days. Ice-cream, soda, broccoli- quesadillas- nachos, chicken mole  taco truck burritos. 
-
-It's still perfect... in my dreams. The heat, the spice, the sticky, the sweet, the sharing of it. Being full. Whole.  I think that's why I'm hungry, why I need to eat.  I want to fill the emptiness. 
-
-The other Travelers also speak to those tourist close to them, each speaks about and in the metaphore of the senses. These are all lyrical and mnemonic they are intimate momments shared but not too easily and not perhaps without cost.
+When I was a little I could EAT. I ate for days. Ice-cream, soda, broccoli, cauliflower. 
 
 EDDIE
-[Speaks of  sound, music, lyrics and languages in his dreams: "The first thing I remember hearing in my  mother singing in the kitchen and the  smell of frijoles. Music always seems to fill me joy memories. It's like the sound of water flowing, it gives life. The sounds of words matters to me etc"] 
-First thing I remember is my momma singing in the kitchen and the smell of bacon. Saturday morning cartoons. Speed Racer and GI Joe followed by some Soul Train. Marvin Gaye baby. (He sings,) Music always seems to fill me with joyous memories. It's like the sound of water flowing it gives me life. Water balloon fights on the blacktop afterschool. Running after the ice cream man. Quenching our thirst at the water fountain cuz it belonged to us. The sound of water matters to me. Bigtime. I remember one day, my mom and I went down to the community pool over on Rosecrans. I asked my mom to look at me. "Look at me mom! Look at me! Look!" I bounced on the board and did a canonball. That thing was off the hook! Floating through the air and then...splash. Everything was in slow motion and distant, like an echoing field-(Eddie cups his ears)  
-
-The TRAVELERS move about the room as they speak trying to follow the images that elicit their memories 
-
-SHEENA
-[Speaks of smells of the outdoors, of a room she remembers:  "I used to smoke but now the smell of it..esp. in my hair makes me want to- But ther are other smells, earlier smells No but me can smell them, like the memories of before my father died, before that... Picnics in Griffith Park, the smell of grass, a hotdog in the park - my father teaching me to swim,  smell of sunblock and the chorine at the Glassell Park public pool etc." ]
-I used to smoke but now the smell of it makes me gag. That stuff just wouldn't come off my fingernails. I do other things now. I count the cracks on the sidewalk. I talk to myself. I wander the street and listen to Black Flag and drink six packs with hobos in Hollywood. But I don't smoke, like ever. I would die before having to smell that stuff on my fingernails again. God I hated that smell. It made me feel like a kid. Like when I used to eat crayons. I used to eat crayons. That's so fucking weird. I'm so fucking weird. This place is So. Fucking. Weird! My dad used to smoke, but he always smelled good. Like man. Like what a guy is supposed to smell like. Smoke and sweat. Like Kentucky Bourbon. Like...a ball park franks on the grill at Griffith Park. Vapor is stupid, but smoke, real smoke dissapears into thin air, but the smell always stains your clothes, and even water can't wash it off- (Sheena smells her shirt) 
-
-They recognize some of the images, perhaps others are images uploaded by Tourists and Fans.
+First thing I remember is my momma singing in the kitchen and the smell of bacon.
 
 FELIX
-[Speaks of reliving a day in his dreams, just by touch: "I touched her face in was warm, as we sat on Venice Beach, the sun making her squint, I brushed her hair and then saw I had left sandy fingerprints there. We walked to the pier in barefeet the sand hot and then cooler as neared the water etc."]
-I touched her sun-kissed face and it was warm. It was a Sunday afternoon in Venice. We walked the canals and I held my skateboard. We were barefoot. The sand stuck to our bodies and slowly drifted off with every step. She didn't care that I was always angry at the world. She made me cool out and just relax and enjoy things without the guilt I was so accustomed to. We sat down and she got a splinter on her foot. Alluva sudden there was glass all around us. I tried to take the thing out of her foot but I needed a sharp object. I couldn't find one so I started asking for help. She started bleeding. I started becoming angry and then some guys showed up and took her away. She wanted to go. She was happy with them. My arm was broken and I couldn't carry her...so I walked back to the beach and threw my deck into the Pacific. The ocean swallowed it whole- the whole damn thing- (Felix cradles his arm)
+And it was warm. It was a Sunday afternoon in Venice.
 
-THE travelers have been moving through each other's group trying to follow the images, Felix grows frustrated as he tries to follow his memory and hold on to it .
+SHEENA
+I used to smoke but now the smell of it makes me gag. 
+ 
+
+The TRAVELERS move about the room as they speak trying to follow the images that elicit their memories.
+
+EDDIE
+Saturday morning cartoons. Speed Racer and GI Joe followed by some Soul Train. Marvin Gaye baby!
+(He sings)
+
+The TRAVELERS move about the room as they speak trying to follow the images that elicit their memories.
+
+SHEENA
+I count the cracks on the sidewalk. I talk to myself. I wander the street and listen to Deaftones and drink six packs with hobos in Hollywood. 
+
+RACHEL
+He was so surprised I LOVED CAULIFLOWER and toast. Eggs, bacon, oatmeal, cereal and soup- tomato soup... from a CAN! I don't eat so much anymore but I eat when I dream. For days. Ice-cream, soda, broccoli- quesadillas- nachos, chicken mole  taco truck burritos. It's still perfect... in my dreams. The heat, the spice, the the sticky, the sweet, the sharing of it. Being full. Whole.
+
+The TRAVELERS move about the room as they speak trying to follow the images that elicit their memories.
+
+EDDIE
+Music always seems to fill me with joyous memories. It's like the sound of water flowing it gives me life. Water balloon fights on the blacktop after school. Running after the ice cream man. Quenching our thirst at the water fountain cuz it belonged to us. The sound of water matters to me. Big time. I remember one day, my mom and I went down to the community pool over on Rosecrans. 
+
+FELIX
+She didn't care that I was always angry at the world. She made me cool out and just relax and enjoy things without the guilt I was so accustomed to. We sat down and she got a splinter on her foot. Alluva sudden there was glass all around us. I tried to take the thing out of her foot but I needed a sharp object. I couldn't find one so I started asking for help. She started bleeding. 
+
+SHEENA
+But I don't smoke, like ever. I would die before having to smell that stuff on my fingernails again. God I hated that smell. It made me feel like a kid. Like when I used to eat crayons. I used to eat crayons.
+
+The TRAVELERS move about the room as they speak trying to follow the images that elicit their memories. 
+
+
+That's so fucking weird. I'm so fucking weird. This place is So. Fucking. Weird! 
+
+RACHEL
+I think that's why I'm hungry, why I need to eat.  I want to fill the emptiness. 
+
+EDDIE
+I asked my mom to look at me. "Look at me mom! Look at me! Look!" I bounced on the board and did a canon ball. That thing was off the hook! Floating through the air and then...splash. Everything was in slow motion and distant, like an echoing field-
+(Eddie cups his ears)  )
+
+The TRAVELERS move about the room as they speak trying to follow the images that elicit their memories.
+
+FELIX
+I started becoming angry and then some guys showed up and took her away. She wanted to go. She was happy with them. My arm was broken and I couldn't carry her...so I walked back to the beach and threw my deck into the Pacific. The ocean swallowed it whole- the whole damn thing- (Felix cradles his arm)
+
+They recognize some of the images, perhaps others are images uploaded by Tourists and Watchers.
+
+SHEENA
+My dad used to smoke, but he always smelled good. 
+
+The TRAVELERS move about the room as they speak trying to follow the images that elicit their memories.
+
+
+Like man. Like what a guy is supposed to smell like. Smoke and sweat. Like Kentucky Bourbon. Like...a ball park franks on the grill at Griffith Park. Vapor is stupid, but smoke, real smoke disappears into thin air, but the smell always stains your clothes, and even water can't wash it off- 
+(Sheena smells her shirt) )
+
+The TRAVELERS have been moving through each other's group trying to follow the images, Felix grows frustrated as he tries to follow his memory and hold on to it.
+
+*VQ #62 - Dancing doors*
 
 FELIX
 Wait, 
@@ -699,10 +726,7 @@ You're staying
 FELIX ^
 Why am I here?
 
-RACHEL
 SHEENA
-
-EDDIE
 You gotta stay Rachel
 
 FELIX
@@ -711,24 +735,24 @@ Why should she what's the point?
 RACHEL
 Fuck this I'm leaving.
 
-She looks thru her bag
+She looks through her bag.
 
 # SCENE 2: THE ARCHIVE INTERVENES
 
-.SCENE 2: THE ARCHIVE INTERVENES
+**SCENE 2: THE ARCHIVE INTERVENES**  
 
-Each Candidate's Guide lets out a PING sound
-
-Each TOURIST'S GUIDE emits a ping sound.
+Each TOURIST'S GUIDE emits a ping sound.  
 
 THE OBSERVATORY
 First Transfer options. 
+
+*VQ #64 - Doors settle.*
 
 CITIZENS (V/O)
 We are your City. We are you. Come remember with us.
 
 
-*olf: Return to wide shot.* 
+*OLF: Return to wide shot.* 
 
  
 
@@ -742,12 +766,14 @@ Another PING sound from the GUIDE in the TOURISTS' hands, pockets, purses, etc. 
 
 THE GUIDE
 (to each TOURIST, options distributed evenly)
-Enter {{ tags }}, or well, maybe one of the other ones. 
+Enter <<"#urban nitescape #airport #album, #longbeach">>, or well, maybe one of the other ones. 
 
 CITIZENS (V/O)
 Remember.
 
-*olf: Medium wide of the four TRAVELERS, cut with TOURIST reaction closeups if possible.* 
+*OLF: Medium wide of the four TRAVELERS, cut with TOURIST reaction closeups if possible.* 
+
+
 
 EDDIE
 Look, you see that?
@@ -806,27 +832,29 @@ SHEENA
 But which way? What's the right one
 
 EDDIE
-Who know
+Who knows?
 
 FELIX
-Who knows what behind door number 1.
+Who knows what behind door number 1?
 
 SHEENA
 Lets all pick a different door
 
 EDDIE
-What? We should all-
+What? We all should-
 
 FELIX
 No she's right... it's time to split up.
 
 EDDIE
-You  sure?
+You sure?
 
 Felix shrugs, Rachel pauses
 
 RACHEL
-Fine. I'll go. (To TOURISTS.) Just in case you need my help.
+Fine. I'll go. 
+(To TOURISTS.)
+Just in case you need my help.
 
 The TRAVELERS, making sure the TOURISTS follow them, split up pass thru the doors exiting the Agora behind the images and below the signs, stepping into the Ritual Chambers.
 
@@ -839,21 +867,23 @@ This first one is always pretty easy. Just enjoy it.
 
 As far as possible, THE OBSERVATORY shifts the view of each WATCHER to the TOURIST they have previously agreed to "follow". 
 
-*olf: Switches to one of the four Ritual Chambers to be viewed by the WATCHERS.* 
+*OLF: Switches to one of the four Ritual Chambers to be viewed by the WATCHERS.* 
 
 THE OBSERVATORY
 (to the WATCHERS)
 Full screen mode is recommended.
 
-# SCENE 3: FOREPLAY (1ST RITUAL)
+*VQ #67 - Fade out both projectors.*
 
-= Four versions of Ritual 1 play out simultaneously - one for each TRAVELER and their group of  TOURISTS.  
+*# SCENE 3: FOREPLAY (1ST RITUAL)*
+
+*= Four versions of Ritual 1 play out simultaneously - one for each TRAVELER and their group of  TOURISTS.*  
 
 
 
-.SCENE 3: FOREPLAY (1ST RITUAL)
+**SCENE 3: FOREPLAY (1ST RITUAL)**
 
-*Four versions of Ritual 1 play out simultaneously - one for each TRAVELER and their group of  TOURISTS.*  
+*Four versions of Ritual 1 play out simultaneously - one for each TRAVELER and their group of  TOURISTS.*    
 
 Ritual 1 contains "surface" memories, mostly pleasurable and iconic. 
 
@@ -862,7 +892,7 @@ During the Rituals, the Travelers  and willing Tourists might get involved in th
 THE OBSERVATORY
 The visitors undergo the first Transfer.  
 
-*olf: THE OBSERVATORY presents four possible views to the WATCHERS, one for each Ritual, which they can switch between at any time.* 
+*OLF: THE OBSERVATORY presents four possible views to the WATCHERS, one for each Ritual, which they can switch between at any time.* 
 
 If possible, the OBSERVATORY's view into each ritual should show the previously captured faces of the TOURISTS above the live stream. 
 
@@ -878,21 +908,11 @@ Hometown of your visitor, <<Jeff Burke>> is <<Brea, California>>.
 
 # RITUAL 1/A: “DEPARTURE” (@ SHEENA)
 
-.RITUAL 1/A: "DEPARTURE" (@ SHEENA)
+**RITUAL 1/A: "DEPARTURE" (@SHEENA)**  
 
-*VQ #80 - Establish Departure.* 
+*VQ #80 - Establish "Departure".*   
 
-*VQ #81 - Gate announcement Number 304 to <<Brea, CA>>.* 
-
-*VQ #82 - Second glitch i love you babe.* 
-
-*VQ #83 - Third It's going to be the best trip ever.* 
-
-*VQ #84 - Because you love me right?.* 
-
-*VQ #85 - Fade to black.* 
-
-*olf: Wide shot at entry gives way to alternating closeups of each and every TOURIST and TRAVELER within the ritual. As needed, the feed can cut to direct input from the projection video source, before returning to closeups.* 
+*OLF: Wide shot at entry gives way to alternating closeups of each and every TOURIST and TRAVELER within the ritual. As needed, the feed can cut to direct input from the projection video source, before returning to closeups.* 
 
 A group of TOURISTS follow Sheena, passing luggage,  shoes, and images of people waiting in line. The sound of departure announcements. 
 
@@ -902,127 +922,133 @@ The sounds of people chatting, a gate announcement "Number 304 to <<Brea, Califo
 
 In the distance, the <<Beatles' "Back in the USSR">> plays. Sheena stands and listens. 
 
-Tony and Tina (Two CITIZENS, portray a couple) sit surrounded by luggage, their crystalline dress out of place for the scene. They kiss each other. The kiss is a long and happy one.  After they kiss they fall back into their seats and get comfortable.
+THOMAS and Tina (Two CITIZENS, portray a couple) sit surrounded by luggage, their crystalline dress out of place for the scene. They kiss each other. The kiss is a long and happy one.  After they kiss they fall back into their seats and get comfortable.
 
 THE GUIDE
 Explore this record from all angles. [Buttons: A, B] 
 
 Their actions are repeated in video projections behind them. They are composited against a waiting room. 
 
-TONY
+THOMAS
 I love you, babe.
 
 TINA
 I love you too, babe.
 
-TONY
+THOMAS
 I'm so glad we're going on this trip together.
 
 TINA
-Me too... Finally. OMG  WE'RE  GOING TO THE PHILLIPINES!
+Me too... Finally. OMG  WE'RE  GOING TO THE CARIBBEAN!
 
-TONY
+THOMAS
 It's gonna to be the best trip ever.
 
 TINA
 A week at the Thunderbird Resort RAUL with the man of my dreams; what could be better than that?
 
-TONY
+THOMAS
 Two weeks.
 
 They kiss again passionately. They fall back and get comfortable, touching occasionally. 
 
-A gate announcement " Flight Number 304 to <<Brea>> boarding gate 27." (pause) Flight 102 to Manila is delayed.
+A gate announcement " Flight Number 304 to <<Brea>> boarding gate 27." (pause) Flight 102 to Jamaica is delayed.
 
 Sheena moves closer.
 
-TONY
+*VQ #82 - Airport*
+
+THOMAS
 I love you, babe.
 
 TINA
 I love you too, babe.
 
-TONY
+THOMAS
 I'm so glad we're going on this trip together.
 
 TINA
-Me too... Finally. WE'RE GOING TO THE PHILLIPINES!
+Me too... Finally. WE'RE GOING TO THE CARIBBEAN!
 
-TONY
+THOMAS
 It's gonna to be the best trip ever.
 
 TINA
 A week at the Thunderbird Resort RIZA with the man of my dreams; what could be better than that?
 
-TONY
+THOMAS
 Two weeks.
 
 TINA
-I'm glad I'll have a chance to spend time with you.  This is exactly what our relationship needs... time
+I'm glad I'll have a chance to spend time with you.  This is exactly what our relationship needs... Time.
 
-TONY
+THOMAS
 I just want to have some fun.
 
 TINA
 Time, so we can work on our relationship, right?
 
-TONY
+THOMAS
 Can we make a deal right now?
 
 TINA
 What kind of deal?
 
-TONY
+THOMAS
 Let's promise that no matter what- we won't get into any arguments.  Do you think that we can do that?
 
 TINA
 Of course I can do that, because I love you. 
 
-They kiss passionately. A gate announcement " Flight Number 304 to <<Brea>> departing gate 27." (pause) Flight 102 to Manila is cancelled.
+They kiss passionately. A gate announcement " Flight Number 304 to <<Brea>> departing gate 27." (pause) Flight 102 to Jamaica is cancelled.
 
 SHEENA runs her hand along the plastic seat back. She sits down in a second set of seats, mirroring the position of TINA.
 
-TONY
+*VQ #83 - Aeroloft*
+
+THOMAS
 It's gonna to be the best trip ever.
 
 TINA
 A week at the Thunderbird Resort RIZA with the man of my dreams; what could be better than that?
 
-TONY
+THOMAS
 Two weeks.
 
 TINA
 I'm glad I'll have a chance to spend time with you.  This is exactly what our relationship needs... time
 
-TONY
+THOMAS
 I just want to have some fun.
 
 TINA
 Time, so we can work on our relationship, right?
 
-TONY
+THOMAS
 Sweetheart, can we make a deal right now?
 
 TINA
 What kind of deal?
 
-TONY
+THOMAS
 Let's promise that we won't get into any arguments.  Do you think that we can do that?
 
 TINA
 Of course I can do that, because I love you. but... Can you do that?
 
-TONY
+THOMAS
 Of course.
+
+*VQ #84 - Undercast sunrise*
 
 TINA
 
 Because you love me right? 
 
-TONY
+THOMAS
 (pause) Right.
 
-*olf: Shot progression interrupted by CU on FELIX.* 
+*OLF: Shot progression interrupted by CU on FELIX.* 
 
 They kiss briefly and then settle back into their chairs looking straight ahead.  They sit there for a moment without saying a word. Then TINA turns to Sheena.	
 
@@ -1031,6 +1057,10 @@ He promised
 
 SHEENA
 He did-
+
+TINA EXITS. THOMAS EXITS. 
+
+
 
 *VQ #85 - Fade to black.* 
 
@@ -1136,127 +1166,163 @@ At an appointed time (no matter where the scene is) a cue (via PRJ-RC*) signals 
 
 
 
-.RITUAL 1/B:  "LONG WAY FROM HOME" (@ EDDIE)
+**RITUAL 1/B:  "LONG WAY FROM HOME" (@EDDIE)**
 
-*olf: Wide shot at entry gives way to alternating closeups of each and every TOURIST and TRAVELER within the ritual. As needed, the feed can cut to direct input from the projection video source, before returning to closeups.* 
+*OLF: Wide shot at entry gives way to alternating closeups of each and every TOURIST and TRAVELER within the ritual. As needed, the feed can cut to direct input from the projection video source, before returning to closeups.*   
 
-*VQ #90 - Establishing > Black out.* 
+*VQ #90 - Establish*
 
-EDDIE walks down a passage way. On The walls is projected  scenes of  driving on the harbor  freeway, pass DTLA, pass USC, pass LAX ,  405,   we see Palms trees,  a beach - Suddenly a loud crackly boombox  snaps to life behind the audience, it is playing BANDA music. 
+EDDIE walks down a passage way. On The walls is projected scenes of driving on the harbor freeway, pass DTLA, pass USC, pass LAX , 405, we see Palms trees, a beach - Suddenly a loud crackly boombox snaps to life behind the audience, it is playing BANDA music. BLACKOUT the audience turns to the music and a harsh sunlit space is revealed.
 
-BLACKOUT the audience turns to the music and  a harsh sunlit space is revealed
+Eddie enters a space containing an installation of restaurant items and tools including a broom, dishes and dish towels. He looks around carefully. He picks up a restaurant cap and suddenly BANDA MUSIC plays he looks at the audience playfully and puts on the  white HAT. He dries dishes in time to the music. He picks up a  broom and dances to the beat with it.
 
-Jesus, wearing a bandana or busboy's cap walks in with a tray of wet bowls. He whistles to the music as he drys the bowls and lines them up on the tray set on a box
+RAUL enters with two large trash bags and sits on a crate. He speaks.
 
-Raul runs in with a bag of Hawaiian bread. He speaks. 
-
-*VQ #91 - Raul's first line "FUUUUUUCKKK!"*
+*VQ #91 - MlK and long beach*
 
 RAUL
-FUUUUUUUUUUUUUUUUUUUUUUUUUUUUUCK!!!! (He puts his hands on his knees and catches his breath. He breathes.) Man paisa, my boss is a real cabron. You know? Like this place? I hate this place. But break time right now bro.
+Man Jesus, I hate this cheap ass burger joint.  
 
-Jesus keeps working
+EDDIE
+What? (who me?)
 
+RAUL
+Dude, the people here be racking up like a hundred dollars worth of hot wings and leaving like five bucks in tips. How am I supposed to take my girl out with five bucks bro?    
 
-It's break time Jesus. Vamonos! Ey dawg, don't work so hard people will know you're illegal.
+EDDIE
+Carl's Jr.! Love is blind. !!
+
+RAUL
+Nah bro. I gotta hustle , I gotta start my own business! 
+
+EDDIE
+Yeah?
+
+RAUL
+YES! Dude, WATCHA! I'ma save my cash and be like...*Anthony Bourdain.*
+
+Beat.
+
+EDDIE
+(Reverently) ......Damn  he's cool.. IS he Mexican?
+
+RAUL
+No, but he loves us. I'm gonna be my own chef and have a little place called LONG BEACH BISTRO*, Mexican Seafood and Cuisine*. People are gonna have to get dressed UP and make *reservations* to eat at Raul's. El Tony will roll up whenever and get a table by the window  and like ..and like you'll bring out Fine Mexican wine and ceviche with Hutichole mushrooms and soy sauce, and arroz con pollo and mole and 
+
+Beat.
+
+EDDIE
+Ceviche con *soy sauce*? That's Peruvian ain't it.
+
+RAUL
+I know that. But Rachel loves that stuff. Look man, I'm  gonna like make you day shift manager or maybe sou chef. Yeah dawg, you an me Jesus. We're gonna bring some LBC Mexican flavor to fine dining in SoCal. You in? 
+
+EDDIE
+Uhh  sure  but my name's Eddie.
+
+Fis tbump. Eddie picks up the broom.
+
+RAUL
+Cool. Break time right now paisa. *Break time* Jesus. Vamonos! Ey don't wash so many dishes people will know you're illegal.
 
 JESUS
-Indocumentado..buey!
+I think you mean undocumented.
 
 RAUL
-Same shit!
+Same shit! Paisa.
 
-He keeps working. Raul takes a mobile device out of his pocket and hands it to Jesus.
-
-RAUL
-Hey Jesus man, take my picture...no better un video buey. 
-
-JESUS
-Un video? Come en el Facebook? Estamos en break. Pa que!?
+He keeps working. Raul takes a mobile device out of his pocket and hands it to EDDIE.
 
 RAUL
-For my girlfriend stupid! Don't pretend like you don't know technology bro. Come on Jesus-
+Hey Jesus man, take my picture...no better un video buey.
+
+EDDIE
+A video? cool?.what for!?
+
+RAUL
+For my girlfriend stupid! Don't pretend like you don't know technology bro. Come on Jesus- 
 
 Looking at phone.
 
-JESUS
-Cual es tu novia?
+EDDIE
+Your girlfriend?
 
-Raul shows him a pic. Jesus stares for a good while.
-
-JESUS
-No pues...esta bien guapa. Ahora si te aventaste buey.
+Raul shows him a pic. Eddie stares for a good while. He starts to realize who's memory this is.
 
 RAUL
-Alright don't stare. The video, come on bro.
+Orale, primo apurate. The video, muchacho..
 
+EDDIE
 
-JESUS
-...Pues.
-
-RAUL
-Cool.
-
-Jesus looks thru the viewer and gives Raul the thumbs up. Raul slicks back his hair and give his killer smile.
-
-*VQ #92 - Hey Beautiful talking in cell phone*
-
-*VQ #93 - This place used to be something pretty*
-
-*VQ #94 - Let me take you back*
-
-*VQ #95 - Real nice*
-
-*VQ #96 - You know. We could do that. If you want*
-
-*VQ #97 - Now repeat after me*
-
-*VQ #98 - SIREN SOUND*
-
-*VQ #100 - Raul's video*
-
-Hey  beautiful. Just a little video from Long Beach... Taking a break from work. You know hustling and making them tips right? (We hear Jesus say something like mandilon or pendejo)Okay okay so you say, "Hola papi te extraño...muchisimo, and te queiro guapo" REALLY NO WAY!? OK  sabrosa you gotta come on down and check out the LBC sooner or later... cuz' I got sumthing to show you- Ok? Alright then LATER GUAPA!" Gracias bruther. You ever wanna switch shifts I got you dawg.
-
-Jesus tosses his phone back.
-
-JESUS
-Tiene hermana?
+She has red hair.. 
 
 RAUL
-Shut up foo-
 
-Jesus picks up the dishes and exits. This next section needs to change to more of a "my neighborhood ain't so bad  so come see me in it"
+Cool...lero
 
+Eddie looks thru the viewer and gives Raul the thumbs up. Raul slicks back his hair and give his killer smile.
 
-This place used to be something pretty. Shit, people think of gangs creeping all around here and stuff. Stupid shit like that. Pyrus and Crips and alla that bullshit. But let me tell you okay? There's always been more to this place than just gang riffs and g-funk. That's not what changed this place. It was real estate. You know? All that gentrifying stuff. Anyway, before I get all political let me take you back. Babe I'd wake up and look out the window and be like daaaaaaaaaamn, Long Beach is pretty ey. The ocean? Real pretty. But we real poor now, you know? We real lost. Like looking out to the Pacific Ocean we real confused cuz the island of Catalina blocks out the rest of the world. Like before, I could walk out and hear Spanish all over the damn place you know? Man boy, we used to have picnics and barbecues over at El Dorado Park with all the Black and Pinoy and them big ass Samoan peoples and it was all real cool. You know? Real nice! Boy I used to cruise down 7th Street all the way down to Cal State just to stop by Fingerprints and buy some records. I used to play ball in Cambodia Town. I used to chow down with some tasty pho at Happy Bowl, and then hop on my Schwinn and go chill with the honeys at the Aquarium, but the best part, was when I smoked that sticky stuff over at the lifeguard tent at midnight. Yeah chula, you and me are gonna hit the Red Room Bar over on 4th Street, it's a place with all these punk rockers and they play soul music. And then we'll walk all crooked to the beach and cool out. We'll just sit there, all drunk and happy staring at the Queen Mary and the Pacific Ocean, and just talk and think about stuff. You know? We could do that. If you want-   
+*VQ #92 - Shopping carts.*
+
+RAUL
+Hey beautiful. Just a little video from Long Beach... Taking a break from work. You know hustling and making them tips right? Ok so I know you want to learn some more Spanish so you say, "Hola Raul"... (smiles  even more) then you say Papi te extraño...muchisimo, and te queiro guapo" then I say REALLY NO WAY!? OK sabrosa work on that for later cuz you need to come down to the LBC cuz...I wanna talk to you about something special. Ok? Alright then LATER GUAPA!" Gracias bruther. Remember Jesus, you gonna be my mail sou chef dawg.
+
+EDDIE
+
+You're a nice guy... I can see the  attraction? 
+
+Eddie tosses his phone back.
+
+RAUL
+
+Callate menso. OK gracias Jesus, you better get back to work now.
+
+Eddie  seems to exits but continues watching
+
+*VQ #93 - Driving.*
+
+RAUL
+*LONG BEACH*... this place? This place has always been something pretty. Shit, people think of gangs creeping all around here and stuff. Gang riffs, g-funk, crime rates, police chases. Nah fuck that. There's always been more to this place than just violence and food stamps, government cheese and milk from the WIC. That's not what defines this place . It's the people, it's their work, their music and language. The *food*, the *flavor,* and the sensation it leaves on your tongue. I always thought this was the best place any kid could run around in. Every block had a different beat, rhythm, and stench of faraway places. Every street had its own flash of graffitti, it's own style and codes of conduct. I didn't think of any of the bad stuff, just the good stuff, and there is a TON of good stuff here chula. Back in the day, I was in tune with all the good things-
+
+When I was a kid I'd wake up and look out the window and be like "Damn, Long Beach is beautiful. The Ocean? The Boulevards? The People? Just *beautiful*!
+But sometimes I'd think of how poor we were you know? How broke we were. Like looking out to the Pacific Ocean I'd get real confused cuz Catalina Island blocked out the rest of the world. Blocked out any hope and potential I though I had. 
+
+Like before, I could walk out and hear Spanish all over the damn place you know? My family used to have picnics and barbecues over at El Dorado Park with all the Black guys and Filipino homeboys and them big ass Samoan dudes and it was real cool. You know? *Real nice*. I wanna show you that part of Long Beach. The old part that sticks inside me forever.   
+
+Look guapa, you an me are gonna cruise down 7th Street all the way down to Cal State and then chow down with some tasty pho at Happy Bowl. AND I don't care that I don't gotta car, you can hop on the handle bars of my banging Bianchi, or we can buy a buss pass with LB Transit, but after we eat we can head over to the Aquarium and stare at the jellyfish-
+
+AND THEN! After that we'll buy a bottle of Rosé and hit up the Sunken City in San Pedro cuz...I don't really dig Rosé but you do and...I like San Pedro.  
+Then we'll just sit there, all drunk and happy staring at the Pacific Ocean with the Sun rising up and seagulls passing by...You know? We could do that. If you want-
 
 Raul speaks to the Tourists.
 
 RAUL
-Please. Grab a bowl and get in line. Alright? Alright! There you go. One straight line. Alright. Cool. Real cool! 
+Please. Grab a bowl and get in line. Alright? Alright! There you go. One straight line. Alright. Cool. Real cool!
 
-Raul begins to put pieces of bread in each bowl. As he does this he begins teaching the Tourists one specific word at a time. He teaches them.
+Raul begins to put pieces of bread in each bowl. As he does this he begins teaching the Audience one specific word at a time. He teaches them.
+
+VQ #97 - Food.
 
 RAUL
-Now, repeat after me. Alright? Ok. Repeat after me...sobaco.
+Now, repeat after me. Alright? Ok. Repeat after me...????
 
-TOURISTS
-SOBACO.
+AUDIENCE
+????
 
 DING!
 
 RAUL
-DAAAAAMN. Thasss like body odor you know? Like uuuhhh, that is some stinky shit! Now repeat after me ok? Ok...MaLINDA.  
+ALRIGHT! That's like ????? you know? Now repeat after me ok? Ok...MaLINDA.
 
-TOURISTS
+AUDIENCE
 MaLINDA.
 
 DING!
 
 RAUL
-Good! Thass like my  beautiful mother you know? Like oh thass nice she like brings you to school an stuff gives you lunch money you know? Ok. Now repeat after me. Ok? Ok...Memoria. 
+Good! That's like my beautiful mother you know? Like the kind that brings you to school an gives you lunch money you know? Ok. Now repeat after me. Ok? Ok...Memoria.
 
-TOURISTS
+AUDIENCE
 MEMORIA.
 
 DING!
@@ -1264,9 +1330,11 @@ DING!
 RAUL
 THERE YOU GO! DAAAAAAAMN. Thass like memory. That sounds real pretty. Like those distant islands in the Pacific or a badass brand new Honda Civic with leather interior. Love man. Real pretty. Ok, alright. Last one. Repeat after me. Ok? Ok...
 
-DING! A bell, a whistle, a siren! Raul calls off stage. 
+DING! A bell, a whistle, a siren! Raul calls off stage.
 
-RAUL
+*VQ #98 - Cops.*
+
+RAUL 
 Jesus! Que pasa bruther?
 
 Jesus yelling as he runs across and exits.
@@ -1275,7 +1343,7 @@ JESUS
 El Hielo, buey! El ICE! ..LA MIGRAAAAA CABRON!
 
 RAUL
-AW SHIT! Esperate cabron! Gotta run now. Ok, beautiful see you this weekend.
+AW SHIT! Esperate cabron! Gotta run now. Ok, beautiful...see you this weekend.
 
 Raul runs out.
 
@@ -1285,199 +1353,223 @@ Raul runs out.
 
 # RITUAL 1/C: “POLAROIDS” (@ FELIX)
 
-.RITUAL 1/C: "POLAROIDS" (@ FELIX)
+**RITUAL 1/C: "POLAROIDS" (@FELIX)**  
 
-*olf: Wide shot at entry gives way to alternating closeups of each TOURIST and TRAVELER within the ritual. As needed, the feed can cut to direct input from the projection video source, before returning to closeups.*   
+*OLF: Wide shot at entry gives way to alternating close ups of each TOURIST and TRAVELER within the ritual. As needed, the feed can cut to direct input from the projection video source, before returning to close ups.*   
+
+*VQ #110 - Establish*
 
 THE OBSERVATORY
-What places will connect with your visitors? [WATCHERS vote on videos and their choices are taken into account and printed as pictures in the space.]  
+Which places will connect with your visitors?
 
+A group of TOURISTS follow Felix. They hear sounds coming from behind a dark curtain. FELIX approaches slowly and opens the curtain, he enters with TOURISTS trailing in behind him. 
 
+From the ceiling hang small pictures twinkling metallic and other random objects. There is a box with little silver telescopes. A circular diagram is illuminated on the floor in front of them. In the corner, a printer periodically outputs new stills from THE ARCHIVE that have been selected by the WATCHERS. 
 
-**BEAT 1 of RITUAL BEGIN – ARRANGE PHOTOS ON GROUND
+ANDI, a CITIZEN, is rearranging things along the perimeter of the diagram. Like the other CITIZENS, her clothing looks out of place. She begins to speak to the group in American Sign Language. THE GUIDE translates roughly. ***Bolded text is in ASL, red is also spoken*** **aloud.**
 
-A group of TOURISTS follow Felix down a hallway; they pass a bulletin board with pictures pinned to it. They approach a bedroom door, slightly ajar, and FELIX enters with TOURISTS trailing behind him. 
-
-Criss-crossing the space are hundreds of strings with random objects hanging amongst them. From the ceiling hang small pictures twinkling metallic. There is a box with little silver telescopes. In the corner, a printer periodically outputs new stills from THE ARCHIVE that have been selected by the WATCHERS. FELIX pauses as a diagram illuminates on the floor of the space.
-
-ANDI, a CITIZEN, sits staring up at the ceiling through a telescope that has a live camera inside (projected in the space and viewed by the WATCHERS). Like the other CITIZENS, her clothes look out of place. She begins to speak to the group in American Sign Language. THE GUIDE translates, roughly.
-
-
-
-**BEAT 1 of RITUAL END – INTERLUDE OF NARRATION AND ASL
+*VQ #111 - DTLA fast*
 
 ANDI
-**(*****Bolded text is in ASL, red is also spoken*****)**
-***I look out the window and see memories. Lots of memories. I'm a stargazer*****,** ***looking into the lives of other celestial beings.*** ***I hover above them and watch***. My window faces north, at the end of a row of small houses, inside a cul de sac, at the edge of a dusty neighborhood overlooking a cemented river in Chavez Ravine. ***That's where we grew up.*** Where the telephone wires hung low. ***Like electricity!*** About to touch the Earth. Sparks sometimes fly. 
+***I look out the window and see memories. Lots of memories. I'm a stargazer*****,** ***looking into the lives of other celestial beings.*** ***I hover above them and watch***.
 
 THE GUIDE
 I look out the window and see memories. 
-
-THE GUIDE
-Lots of memories. 
-
-THE GUIDE
-I'm a stargazer, looking into the lives of other celestial beings. 
-
-THE GUIDE
+Lots of memories.
+I'm stargazer, looking into the lives of other celestial beings.
 I hover above them and watch.
 
-THE GUIDE
-That's where we grew up. 
+ANDI
+I'm a stargaz-
 
-THE GUIDE
-Where the telephone wires hung low. 
+ANDI covers her mouth, surprised she can speak.
 
-THE GUIDE
-Like electricity!
 
-THE GUIDE 
-About to touch the Earth. 
+***Can you hear me?***
 
-THE GUIDE
-Sparks sometimes fly.
+I'm a stargazer, looking into the lives of other celestial beings. My window faces north, at the end of a row of small houses, inside a cul de sac, at the edge of a dusty neighborhood overlooking a cemented river in Chavez Ravine. ***That's where we grew up.*** Where the telephone wires hung low. ***Like electricity!*** About to touch the Earth. We've written stories about this place. So close and yet so far. ***I dream of being an astronaut!*** Like Ellen Ochoa.
+(putting on jumpsuit)
+
+*VQ #112 - DTLA faster*
 
 ANDI
-We've written stories about this place. So close and yet so far. ***I dream of being an astronaut!*** Like Ellen Ochoa. You have to be good at math, but I'm pretty terrible at it. You have to physically fit, but I can't run very fast. We make up stories about all kinds of things. Like these things! ***Look! Read! Share!*** 
+You have to be good at math, but I'm pretty terrible at it. You have to physically fit, but I can't run very fast. We make up stories about all kinds of things. Like these things! ***Look! Read! Share!*** 
 
 THE GUIDE
-We've written stories about this place.
+Looks, read, share!
 
-THE GUIDE
-So close and yet so far.
+ANDI picks up the telescope and points it at a picture of Disneyland hanging on a strings around her. The video associated with that picture is projected in the space. FELIX picks up a little silver telescope from the box. He looks through it and shows the TOURISTS.
 
-THE GUIDE
-I dream of being an astronaut!
-
-THE GUIDE
-Like Ellen Ochoa.
-
-THE GUIDE
-You have to be good at math... 
-
-THE GUIDE
-But I'm pretty terrible at it.
-
-THE GUIDE
-You have to be physically fit.
-
-THE GUIDE
-But I can't run very fast.
-
-THE GUIDE 
-We make up stories about all kinds of things.
-
-THE GUIDE
-Like these things!
-
-THE GUIDE
-Look! 
-
-THE GUIDE
-Read!
-
-THE GUIDE
-Share!
-
-THE GUIDE
-Command : {{ clear }}
-
-**BEAT 2 of RITUAL BEGIN – HANG PHOTOS IN CIRCLE ON STRINGS 
-
-ANDI picks up the telescope and points it at the web of strings around her.
+*VQ #115 - Disney*
 
 ANDI 
-<<1995: An Assyrian food festival. We were really cute as a kids!>>
+<<We used to take the I-5 down to Disneyland every year.>> 
 
-The video associated with that picture is projected in the space for the rest of the TOURISTS and WATCHERS to see.
+ANDI V.O.
+Mom was obsessed with the happiest place on earth. That was the only time of year we could eat anything, anything we wanted. Funnel cakes. Ice cream. Churros. But we weren't allowed to talk during the fireworks. Mom looked at them as if they were made of magic. My favorite spot was Tomorrowland because that's where I decided I wanted to be an astronaut. This was just before Cassie was born. She was so little. So, so little. Cassiopeia 6lbs 3 oz. She had a birthmark the shape of a W on her shoulder. Born off the 10 freeway at Kaiser Permanente in 1983.  
 
-FELIX picks up a little silver telescope from the box and ANDI notices him.
+FELIX picks up a little silver telescope from the box. He looks through it and shows the TOURISTS. ANDI sees FELIX through telescope.
 
-(putting the telescope down)
-Do I know you? Did you know that Polaris, the north star, is a Cepheid star?? That means it contracts and expands in brightness. ***Like it's talking!*** 
-(Addressing FELIX)
+ANDI
+Do I know you? 
+(whispering to FELIX)
+Did you know that Polaris, the north star, is a Cepheid star?? That means it contracts and expands in brightness. ***Like it's talking!*** 
+
+THE GUIDE
+Like it's talking!
+
+ANDI
+(giving FELIX a picture)
 Could you please read one? You. Yeah, you. Out loud? Share it with everyone. ***Please?*** ***Thank you!***
 
-FELIX 
-(holding up the postcard to ANDI's telescope)
-<<March 2008: Skateboarders in Venice beach. They almost ran into us.>>
+*VQ #120 - Skateboarders*
 
-THE GUIDE
-Read the pictures! Take a photo! Remember to say thank you! If you're nice maybe you can have a telescope...
+FELIX 
+(holding up the picture to ANDI's telescope)
+<<August 1976: Skateboarders in Venice beach.>>
+
+ANDI V.O.
+Venice is a residential, commercial, and recreational beachfront neighborhood founded in 1905 as a seaside resort town. It was an independent city until 1926, when it merged with Los Angeles. The 2000 U.S. census counted 37,705 residents in the 3.17-square-mile Venice neighborhood--an average of 11,891 people per square mile, about the norm for Los Angeles; in 2008, the city estimated that the population had increased to 40,885.
 
 ANDI  
-***Thank you!*** Now YOU! ***Please?*** ***Read it*** to the others? 
+(taping the picture to FELIX's chest)
+***Thank you!*** *Y*ou can keep the memory if you want. Here.
 
-TOURIST 1
-<<January 2012: an Ethiopian baptism in Dodger Stadium. Everyone wore white. We were dancing.>>
+Handing FELIX the telescope, ANDI tapes the memory to FELIX.
 
-ANDI 
-***Thank you!*** Can you hand me the new stack of photos that printed over there? You can grab a telescope too if you want.
-(she hands some pictures back to the TOURIST)
-Go on ***read one.***
-
-TOURIST 2
-<<July 2014: Danza Pukllay Chuko. A magical Peruvian dance.>>
+(giving the Tourist another picture)
+Now YOU! ***Please?*** ***Read one.***
 
 THE GUIDE
-Say thank you! Don't be rude. Share the memories!
+Read the pictures! Take a photo! Remember to say thank you! 
 
-ANDI picks up the telescope and looks around at the TOURISTS.  
+*VQ #130 - Quince*
+
+TOURIST 1
+<<May 2010: a quinceañera of a girl from Sinaloa.>>
+
+ANDI V.O.
+I always wanted to have a quinceanera. All the girls at school got to where to those awesome fluffy dresses. They were pinks and turquoise and orange and blue. They got SO many presents. Best of all they got to wear a tiara. Like a princess. This was their rite of passage. Where was my rite of passage? All I got was my period and a box of pads.
 
 ANDI 
-Now YOU! ***Please?*** ***Thank you!***
+***Thank you!*** Now YOU! ***Please?*** ***Read one.*** 
+
+*VQ #131 - Baptism*
+
+TOURIST 2
+<<January 2012: an Ethiopian baptism in Dodger Stadium.>>
+
+ANDI V.O.
+Baptism comes from the greek word Baptisma. Váptisma. Derived from the noun Baptizo which means "I wash." We were driving around Echo park when we saw the commotion. It wasn't a Dodger game. Everyone was wearing white. There were pools of water everywhere. Tears. Dancing. Chorós. Celebration. Eortasmós. It was a baptism!
+
+ANDI 
+***Thank you!*** Now YOU! ***Please?*** ***Read one.*** 
+
+THE GUIDE
+Listen to her. Imagine for her. Thank her.
+
+*VQ #132 - Danza Pukklay*
 
 TOURIST 3
-<<August 1997: A mural in Echo Park. We call her the woman who watches.>>
+<<July 2014: a magical Peruvian dance.>>
+
+ANDI V.O.
+The oldest proof of existence of dancing comes from the 9000 year old cave paintings that were found in India. In most ancient civilizations, dancing before the god is an important element in temple ritual. Danza Pukklay is a dance to celebrate play. The stomping represents the formations of clouds in that year's harvest.
+
+ANDI skips around the circle until she sees the GRAD PICTURE. She screams and all the sounds and video stop.
+
+ANDI
+STOP! 
+
+ANDI slowly walks towards the photo and removes it. She turns to the VISITORS.
+
+
+You can have any of those, but not this one...  I think it's time for new memories. What do you think? Let's find some more memories. Lots more memories. Can you grab those memories that printed over there? Let's find some new memories. Some more memories. 
 
 THE GUIDE
 Listen to her. Imagine for her. Thank her.
 
 ANDI
-<<June 2001: Belmont High School. This was going to be my sister's graduation.>> You can have those, but not this one...
+You can have those, but not this one... Here, can you read this? ***Please.*** 
 
-ANDI points her telescope at a memory of FELIX and shows it to him. 
 
-I knew I knew you from somewhere. Look! It's you at the Santa Monica Pier! 
+ANDI looks through the stack of pictures in her hands and finds one of FELIX. She gasps, and lifts it to the ceiling. 
 
-Felix ignores her. A video of <<Santa Monica>> starts playing. 
+Look! It's you at the Pier! 
 
-Hey! ***Can you hear me?*** Feel it. Maybe then you'll remember?
+FELIX recognizes the photo and distracts himself with the telescope. 
 
-Felix walks over to the photo and looks at it.
+
+Helllooooo! ***Can you hear me? Feel it.*** Maybe then you'll remember?
+
+Felix walks over to the photo and hesitantly grabs it.
+
+*VQ #141 - Santa Monica*
 
 FELIX 
-Daisy.
+I touched her sun kissed face...
+
+A video of <<Santa Monica>> starts playing. 
 
 ANDI
 Who is she?
 
-FELIX 
-I touched her sun-kissed face and it was warm. I had left sandy fingerprints there...
+FELIX V.O
+I touched her sun-kissed face and it was warm. It was a
+Sunday afternoon in Venice. We walked the canals and I held my skateboard. We were barefoot. The sand stuck to our bodies and slowly drifted off with every step. She didn't care that I was always angry at the world. She made me coolout and just relax...
 
 ANDI
-I can make a ***constellation*** for you. That way you won't forget! Hurry! Can you hand me some pictures that printed over there? Memories. Those pictures over there. 
+I can make a ***constellation*** for you. That way you won't forget.
 
-ANDI begins re-arranging the photos around her. 
+FELIX 
+Please. ***Please.*** Please.
 
+ANDI
+***Sure.*** Let's help him. Let's help him never forget. Let's help him. Let's help him never forget. 
 
-I can't really get around here, but one day I'll bounce up to that big bad moon. I'll bounce without gravity. Where there are no laws of communication or allergies or taxes or hospital bills or towers that fall. Up there, ***where everything is understood*** because everything is silent in the cosmos, and no language is ***sacred.***
-
-
-**BEAT 3 of RITUAL – HANG CRISS CROSSING WEB OF STRINGS BETWEEN PHOTOS
-
-
-***REPEAT ABOVE PARAGRAPH AS NECESSARY...***
-
-I can't really get around here, but one day I'll bounce up to that big bad moon...... ETC....
+ANDI starts placing VISITORS in a circle. 
 
 THE GUIDE
 (vibrating)
-Read! Help make the constellation! Remember to say thank you! 
+Help make the constellation! Say thank you! 
 
-At an appointed time a cue (via PRJ-RC*) signals that Ritual 1 is over. The printer continues to print the WATCHERS' selections. ANDI sits in the middle of the diagram on the floor and goes back to the original position she was in when the ritual began.
+ANDI guides FELIX to the center of the circle.  
+
+ANDI
+Let's help him. Let's help him never forget. We need connection. Connection. Connection. 
+
+ANDI holds hands with the person next to her and encourages others to do the same. She slowly starts the steps of the DANCE, encouraging others to follow her.
+
+*VQ #142 - Greek wedding*
+
+A video of a <<greek wedding>> starts playing.
+
+ANDI
+
+I can't really get around here, but one day I'll bounce up to that big bad moon. I'll bounce without gravity. Up there, where there are no laws of communication or allergies or taxes or hospital bills or towers that fall. Up there, where everything is understood because everything is silent in the cosmos, and no language is sacred.
+
+I can't really get around here, but one day I'll bounce up to that big bad moon. I'll bounce without gravity. I'll plant my flag in that crater.  Up there, where there are no laws of communication or allergies or taxes or hospital bills or towers that fall. Where there is no acne, or GPAs, or riots or sexual harassment or brussel sprouts or alarm clocks or bullying or dimentia. 
+
+FELIX interjects his own personal memories 
+
+V/O repeats and overlaps creating a symphony of sound. ANDI leads the line of dancers into a tight spiral and once she is near FELIX she stops the dance.  
+
+ANDI
+(To FELIX)
+***Up there, where everything is understood. Up there, where everything is understood.*** 
+
+FELIX interprets word by word until he gets the translation and ANDI hugs him. V/O of final monologue continues under the activity. 
+
+At an appointed time a cue (via PRJ-RC*) signals that Ritual 1 is over.
+
+ANDI
+Keep the memories! Take them with you by!
+(Repeat as necessary)
+
+*VQ #150 - Fade out*
 
 The Transfer fades and the TOURISTS exit back to the Agora with the telescopes in their hands.
+
 
 
 
@@ -1485,43 +1577,50 @@ The Transfer fades and the TOURISTS exit back to the Agora with the telescopes i
 
 # RITUAL 1/D: “UNDERPASS” (@ RACHEL) 
 
-.RITUAL 1/D: "UNDERPASS" (@ RACHEL) 
+**RITUAL 1/D: "UNDERPASS" (@RACHEL)**   
 
-*olf: Wide shot at entry gives way to alternating closeups of each and every TOURIST and TRAVELER within the ritual. As needed, the feed can cut to direct input from the projection video source, before returning to closeups.*
+*OLF: Wide shot at entry gives way to alternating closeups of each and every TOURIST and TRAVELER within the ritual. As needed, the feed can cut to direct input from the projection video source, before returning to closeups.*  
 
 THE OBSERVATORY
 (showing a library of lonely streets from <<LOS ANGELES>>, including the WATCHER'S own relevant uploads)
-What late night locations might resonate with your visitor? 
-[WATCHERS vote, and their choices are taken into account.] 
+What late night locations might resonate with your visitor? [WATCHERS vote, and their choices are taken into account.] 
 
 The fourth group of TOURISTS follows Rachel past projections of a dark, wet, slick street into a space observed by the WATCHERS. Dog sounds in the distance. 
 
 *VQ #160 - Establish scene.* 
 
-Rachel spots and bends down to pick up a crumbled pack of cigarettes.
-
-(FILM) A car stereo, headlights pass by tires screech, a crumbled beer can clatters by joining the street detritus they pass.(note: an actual beer can lands on stage as if thrown from the car in the films)
-
-Rachel still bent over pauses looking after the car, perhaps humming the fading song. Pauses, she pulls a cigarette out of the pack. 
+Rachel spots and bends down to pick up a crumbled pack of cigarettes. She pulls a cigarette out of the pack.
 
 RACHEL
 (to the TOURISTS)
 Hey do you..... nahhhh.
 
-She squats down and picks up a book of matches with two lonely matches left. 
+(FILM) A car stereo, headlights pass by tires screech, a crumbled beer can clatters by joining the street detritus they pass.(note: an actual beer can lands on stage as if thrown from the car in the films)
 
-*olf: Medium wide of sleeping bags, then returning to alternating closeups.*
+She squats down and picks up the beer can, attached to the underside is a book of matches with THREE lonely matches left. 
 
-She strikes one, the match dimmly reveals a dark underpass (projected). The sound of waves ebbing and falling. Dim lights pulse. Two rows of sleeping bags on the ground, about eight feet between the rows. From the sleeping bags come murmurred sounds of sleeping (perhaps the voices of the WATCHERS).
+*OLF: Medium wide of sleeping bags, then returning to alternating closeups.*
+
+*VQ #165 - Match strike 1.* 
+
+She strikes one, the match dimly reveals a dark underpass (projected). The sound of waves ebbing and falling. 
+
+*VQ #167 - Match strike 2.* 
+
+She strikes the second, the space becomes more well illuminated. Dim lights pulse. 
+
+*VQ #169 - Match strike 3.* 
+
+She strikes a third, lights up on FOUR SLEEPING BAGS From the sleeping bags come murmured sounds of sleeping (perhaps the voices of the WATCHERS). LUCY rises from among the bags and observes Rachel.
+
+*VQ #171 - Arrival.* 
 
 LUCY
 Welcome. Como estan? Please, come in. Find a spot. Anywhere. Go ahead, sit down, Lie down, chillax. Mi casa es su casa.
 
-Lucy (a Citizen) laughs softly. Rachel and the TOURISTS settle on the sleeping bags.
+Rachel hesitates, Lucy pacifies her until she rushes to the sleeping bags. When she arrives, all the other sleeping CITIZENS sit up and stare at Rachel, they rattle in their sleeping bags. The balance has been upset.
 
 The waves grow louder, but they are not waves they are cars passing. The pulsing lights are headlights passing. Video of headlights passing through a metal tunnel is projected on the ceiling and on the floor in between the rows of sleeping bags.
-
-One of the sleeping bags stirs. Lucy hums a lullaby to comfort them, accompanied by the sound of traffic and the murmuring sleeping bag. She stops and looks at the TOURISTS.
 
 LUCY
 Come on now sing with me? What's something everybody knows? Don't be shy now... come on now Sheena, I know  you got a harp in your dirty red bandana.
@@ -1532,40 +1631,57 @@ What?
 LUCY
 In your jacket pocket. No the other side. Yeah... right there.
 
-*olf: Shot progression interrupted by CU on RACHEL, with CITIZEN'S dialogue as V/O.* 
+*OLF: Shot progression interrupted by CU on RACHEL, with CITIZEN'S dialogue as V/O.* 
 
 
 
-RACHEL surprises herself by finding a harmonica and even more by trying to play it. 
+RACHEL surprises herself by finding a harmonica and even more by trying to play it. No sound comes out.
+
+LIGHTS OUT. This sequence repeats a second time.
 
 LUCY
-So... Rachel right?  So  how are you.
+
+In your jacket pocket. No the other side. Yeah... right there.  
+
+RACHEL surprises herself by finding a harmonica and even more by trying to play it. A sound cue plays instead of harmonica sound.
+
+LIGHTS OUT. this sequence repeats a THIRD time
+
+LUCY
+
+In your jacket pocket. No the other side. Yeah... right there.  
+
+RACHEL surprises herself by finding a harmonica and even more by trying to play it. The harmonica makes a beautiful drone. The CITIZENS drone as well.
+
+*VQ #180 - Opera.* 
+
+LUCY
+So... Rachel, right? So how are you.
 
 Lucy plays a sad old favorite.
 
 LUCY
 Not ready to talk yet... that's ok girl, just play the blues.
 
-And Lucy joins in encouraging the TOURISTS to hum or sing along as well. 
+*VQ #185 - End of Opera.* 
 
-She continues until someone sings. The sound of a bicycle begins. One of THE ARCHIVE's videos of <<a person on a bicycle> plays. 
+LUCY walks downstage toward the audience, then turns upstage. She begins to conduct the 'chorus' (Rachel and the CITIZENS). She gives a strong beat and spins quickly, [SOUND CUE for O MIO BABBINO CARO]. 
 
-CITIZEN
-¡Que bueno! That's so pretty!
+The CITIZENS pelt LUCY with six beer cans each from their sleeping bags, THEN the CITIZENS pelt her with two roses each. Two of the citizens then turn into CATERPILLARS and begin to scoot downstage toward the audience. One CATERPILLAR scoots in front of RACHEL.
 
-The bike rides around, up and down the walls of the chamber.
+LUCY continues to sing and works her way upstage of RACHEL. The two downstage citizens pass musical instruments to the audience and cue them to play them. They turn into butterflies.
 
-CITIZEN
-Now follow that bike! Follow it!
+*VQ #190 - Butterflies.* 
+
+RACHEL signals the end of this segment with a strong intake of breath. She looks down to the "CATERPILLAR" in front of her and opens the sleeping bag like a body bag. She and the CITIZEN inside hug. 
+
+Lights out, then lights up. The CITIZENS have disappeared. LUCY exits on a bicycle.
 
 The bicyclist rides along the ceiling getting smaller. She rides down the wall and approaches the light at the end of the tunnel.
 
 At an appointed time (no matter where the scene is) a cue (via PRJ-RC*) signals that Ritual 1 is over. The Transfer fades and the TOURISTS exit back to the Agora.
 
-CITIZEN
-I have to go- and so do you.  Follow the music now... Keep playing Rachel. You got to keep playing.
-
-RACHEL gets up from the sleeping bag and goes to the small tunnel still playing. The TOURISTS follow. The bicyclist, now tiny, enters the tunnel and disappears into light
+RACHEL gets up from the sleeping bag and goes to the small tunnel still playing. The TOURISTS follow. The bicyclist, now tiny, enters the tunnel and disappears into light.
 
 The light fades. The traffic softens into the sound of waves.
 
@@ -1573,9 +1689,9 @@ The light fades. The traffic softens into the sound of waves.
 
 *# SCENE 3A: IN THE OBSERVATORY (ONLINE)*
 
-.SCENE 3A: IN THE OBSERVATORY (ONLINE)
+**SCENE 3A: IN THE OBSERVATORY (ONLINE)**  
 
-*olf: The view of all WATCHERS returns to the cameras of the Agora as soon as the Ritual ends.* 
+*OLF: The view of all WATCHERS returns to the cameras of the Agora as soon as the Ritual ends.*   
 
 The WATCHERS' view into the website has switched from four possible feeds to only the Agora (CAM-AG*), and the interface has changed, so that they feel that they are also in the Agora, through the OBSERVATORY.
 
@@ -1587,20 +1703,15 @@ Just as with the TOURISTS, it constantly makes odd, self-referential quotes abou
 
 The scene plays out simultaneously with Scene 3B in the Agora, which is also visible to the WATCHERS.
 
-THE GUIDE
-(in the OBSERVATORY chat window)
+THE OBSERVATORY
 Do you want to play Global Thermonuclear War?  
 Shit. Sorry, wrong program...  
 
-THE GUIDE
-(continuing)
 For reasons lost on me, THE ARCHIVE's program doesn't have my sense of humor, or my deep understanding of the human condition.  
 
 So instead it's trying to get you to make the Transfer meaningful.  LOL. 
 
 Well, they seemed to like sunsets... Do you like sunsets? 
-
-Etc.  
 
 Official notices from THE ARCHIVE continue in the status bar.  
 
@@ -1613,9 +1724,9 @@ Options of the four TRAVELERS are presented, and the WATCHER must select one.  T
 
 = everyone returns to the Agora and relays what they saw
 
-.SCENE 3B: REUNION IN THE AGORA
+**SCENE 3B: REUNION IN THE AGORA**
 
-*olf: Wide shot of Agora on entrance, then alternating between medium wides on the TRAVELER groups and CU of each and every TOURIST.* 
+*OLF: Wide shot of Agora on entrance, then alternating between medium wides on the TRAVELER groups and CU of each and every TOURIST.*   
 
 *VQ #220 - Establish Agora.* 
 
@@ -1675,7 +1786,7 @@ Almost could touch it.
 EDDIE
 Long Beach!
 
-(A long beat.)
+(A long beat.) 
 
 RACHEL
 (fingering the cigarette)
@@ -1693,7 +1804,7 @@ FELIX
 I dunno. 
 
 SHEENA
-Like traveling... and relationships- and some good things too. Like swiming on family vacations, Christmas in Ojai-things like that.
+Like traveling... and relationships- and some good things too. Like swimming on family vacations, Christmas in Ojai-things like that.
 
 RACHEL
 could you taste them?
@@ -1745,7 +1856,7 @@ No, noooo I  just  meant-
 
 PING! 
 
-*VQ #230 - Door signs appear.*   
+*VQ #230 - Door signs appear.*  
 
 On the walls, two projected signs appear.  
 
@@ -1774,7 +1885,7 @@ Ok then satisfied. Lets take these nice memories and get out of here.
 RACHEL
 Maybe  he's right.  I think so, do you?
 
-*VQ #240 - Faces appear.* 
+*VQ #240 - Faces appear.*
 
 Below each sign the corresponding TRAVELER'S face appears.   
 
@@ -1787,7 +1898,7 @@ Do I... Rachel?.... Rachel... are you still hungry?
 RACHEL
 I don't know?
 
-*VQ #250 - Images replace tags.* 
+*VQ #250 - Videos on door.*
 
 They all look at her. IMAGES instead of words appear over the doors, fading in and out. They appear on the walls.
 
@@ -1812,9 +1923,11 @@ Long Beach-
 
 An image appears of a smiling dark skinned man with a bike
 
-*olf: Slow zoom out to wide shot.* 
+*OLF: Slow zoom out to wide shot.* 
 
-RACHEL moves towards the image. The        man mounts his bike and smiling rides off. The image riding across the walls. Rachel tries to follow it
+RACHEL moves towards the image. The man mounts his bike and smiling rides off. The image riding across the walls. Rachel tries to follow it
+
+*VQ #260 - Double vision.*
 
 RACHEL
 Raul.. Wait... put on your helmet!
@@ -1832,7 +1945,7 @@ Slow down, Raul.
 FELIX
 Rachel.. Wait.
 
-The man Raul rides by the image of a bus
+The man Raul rides by the image of a bus.
 
 RACHEL
 STOP IT
@@ -1844,7 +1957,99 @@ There is the sounds of a LOUD  needle scratching on an old school Record album o
 
 *VQ #270 - Images freeze/stop.*
 
-*olf: Medium wide shot of four TRAVELERS.* 
+*OLF: Medium wide shot of four TRAVELERS.* 
+
+RACHEL
+I'm leaving.
+
+SHEENA
+We have to stay this time
+
+FELIX
+She's right I'm leaving
+
+SHEENA
+You have to-
+
+RACHEL
+Sheena, please I gotta go- I can't-
+
+EDDIE
+You gotta stay, girl.
+
+EDDIE
+We all gotta stay this time. They need us.
+
+RACHEL
+Felix! I can't- I... Fuck this. I'm leaving.
+
+Rachel doesn't move. No one moves. A LONG BEAT. A whisper
+
+RACHEL
+Felix...Sheena... help me
+
+*VQ #275 - Long beach duplicate of 250.*
+
+THE ARCHIVE
+(voiceover)
+Please try again.
+
+SHEENA 
+Hey Look. Rachel there's that place again! I swear I think we've been there?
+
+EDDIE
+Yeah! It's ... it's
+
+THE GUIDE ^
+(aside, chatting with the WATCHERS in the OBSERVATORY)
+Right, back to work. 
+
+RACHEL
+Yeah right it's..  I went there once with- Raul.
+
+EDDIE
+Yeah it's in-
+
+SHEENA
+Long Beach-
+
+*VQ #280 - Duplicate 260.*
+
+An image appears of a smiling dark skinned man with a bike
+
+*OLF: Slow zoom out to wide shot.* 
+
+RACHEL moves towards the image. The man mounts his bike and smiling rides off. The image riding across the walls. Rachel tries to follow it
+
+RACHEL
+Raul.. Wait... put on your helmet!
+
+The  others TRAVELERS  also move about the room trying to follow images that resonate with them. The images stay  ahead of them, they cant keep up and lose sight of them. Lost they encourage the TOURISTS to join them in the  search. Perhaps it become a game, a sort of scavenger hunt. They are somehow  rewarded when they find  certain images. Maybe its a giant CONCENTRATION game? Some  images may have been uploaded by the WATCHERS. 
+
+THE ARCHIVE
+(via the GUIDES and aloud)
+Here, your memories are safe, Do you remember them? 
+
+RACHEL
+Wait, 
+Slow down, Raul. 
+
+FELIX
+Rachel.. Wait.
+
+The man Raul rides by the image of a bus.
+
+RACHEL
+STOP IT
+I don't remember it like that 
+Please  ..not yet
+LET ME REMEMBER the before!
+
+There is the sounds of a LOUD  needle scratching on an old school Record album or perhaps the squealing of air brakes- of both. SHEENA and EDDIE have been  laughing, bumping into each other trying to follow the images -stop
+
+*VQ #285 -  Duplicate of 270, Images freeze/stop.*
+
+*OLF: Medium wide shot of four TRAVELERS.* 
 
 RACHEL
 I'm leaving.
@@ -1876,13 +2081,15 @@ RACHEL
 Felix...Sheena... help me
 
 THE ARCHIVE
-(voiceover)
-Please try again. 
+ 
 You are here. You are all here for a reason
 This is your City, <<Los Angeles>>. 
 Your Archive. Celebrate your memories.
 
-THE GUIDE ^
+*VQ #290 - Distress to party.*
+
+THE GUIDE
+
 And now for something entirely different. BREAK TIME BRAD!
 
 DING! A new sound, it comes out of the  GUIDES. A song fades in, a memory from a long ago, far away place
@@ -1896,94 +2103,6 @@ Like all time- it's gone, in the past but we remember it.
 EDDIE
 we just have to remember ...all of it.
 
-# SCENE 4A: MUSIC MAKES ME HAPPY
-
-= A tourist  TONI speaks and plays  Memories of  party, dancing and fun MUSIC
-
-.SCENE 4A: MUSIC MAKES ME HAPPY
-
-*VQ #280 - setup music scene.* 
-
-The melody plays in the background, it slowly fades up. It is folklike, a slow but happy tune from a distant land like...Glendale. It starts to come from the wall... and then the wall moves to reveal a table 
-
-GUIDE 
-Do you remember this melody? Please feel free to pick an instrument.
-
-Instruments are on display on the table: tambourine, cowbell, harmonica. A guitar an.... wait for it... an accordian. Simple instruments that fit the tune. Eddie picks up the  accordian, it wheezes.
-
-EDDIE 
-Whoa, check this out..Can someone join me? Rachel pick up the harp... come on.
-
-GUIDE
-Do you remember this melody? Its slow and sweet.
-
-A Tourist who has never spoken before, speaks quietly in a soft and lovely accent
-
-TONI 
-I remember something like it from my hometown.
-
-Everyone turns to look at him
-
-FELIX
-Where are you from?
-
-TONI
-Glendale. (pause)
-But I came from Bulgaria
-
-Someone new, perhaps a candidate from a previous episode appears as an image on the wall.
-
-TINA
-Toni, Listen to the drum and play along
-
-TONI 
-This song is called "Izlel je Delyo Hajdutin" (pause) How do you know my name?
-
-Another CITIZEN appears  besides 1 as the music gets louder
-
-NIKOLAI
-I love this music. Toni, we miss you back home.
-
-TINA
-One, two, three. One, two, One two.
-One, two, three. One, two, One two.
-
-Travelers, Tourists and citizens try to accompany the melody using the instruments in the room. The more people play the happier the citizens get, the wall starts to vibrate and move
-
-Suddenly, the music stops. 
-
-TONI
-What happened? Please can we hear just one more song
-
-SHEENA
-How. Who do we ask?
-
-PING! The GUIDES spring to life
-
-GUIDE
-HELLO!!! I thought you'd never ask.
-
-GUIDE ^
-Can I help you? You want another song?
-
-
-Someone from the audience texts a response and another song starts playing. The tempo is slower and sadder
-
-TONI
-Oh.... This one is called "The Forest is Crying"
-
-He listens for a few moments  then speaks softly.
-
-TONI
-I love LA but I miss my village, Life is hard there but the people are happy.. there in the evening (he speaks in Bulgarian for  30 seconds)
-
-The music fades.
-
-TONI
-Thank you, this memory made me happy.
-
-DING!
-
 RACHEL
 I was happy once, what happened to that time?
 
@@ -1996,10 +2115,9 @@ DING! A new sound, a song, a dance track fades in, a memory from a long ago part
 
 *VQ #300 - Dance party.*
 
+How good it was and can be.. 
 
-How good it was and can be 
-
-*olf: Medium shots of dancers, covering the reaction of each TRAVELER and TOURIST.* 
+*OLF: Medium shots of dancers, covering the reaction of each TRAVELER and TOURIST.* 
 
 The music start to crank up , on the walls are videos, home movies of parties ALL OVER the city all race, and ethnicities. Sheena grabs Rachel and pulls her into a memory of a dance long ago.
 
@@ -2030,6 +2148,8 @@ The space is alive with  multiple parties. Nirvana to Outkast,  Beyonce, the Bea
 
 On the walls are projected images of <<parties from all over the city>>. Different time periods, geographic areas, races and ethnicities, selected based on the audience's neighborhoods.
 
+*VQ #350 - Party gives way to memories.*
+
 Shadows of CITIZENS appear and move around the space, watching. 
 
 The TRAVELERS' bodies know the dances already. They join in, pulling in the TOURISTS. 
@@ -2038,15 +2158,15 @@ The TRAVELERS' dance in and through each other follow the changing media on the 
 
 After a time, certain images that the TRAVELERS move to most deliberately slow down to a stop. 
 
-*VQ #350 - Party gives way to memories.*
-
 Eventually, RACHEL stops in front of an image of a smiling man wearing a bike helmet. Eddie stand close to her. Felix stands looking at an image of smiling grad students at an IN n OUT burger. Sheena is close by.
 
- *olf: Two live feeds, evenly distributed between the WATCHERS, one MWS of EDDIE and SHEENA, another MWS of RACHEL and FELIX.* 
+*OLF: Two live feeds, evenly distributed between the WATCHERS, one MWS of EDDIE and SHEENA, another MWS of RACHEL and FELIX.* 
 
 The shadows of the CITIZENS disappear. 
 
 PING!
+
+*VQ #360 - 2 Door signs.*  
 
 THE ARCHIVE
 (voiceover)
@@ -2055,13 +2175,13 @@ Commence Transfer.
 THE GUIDE ^
 That was fun but it's time to go. Commence Transfer for <<Yuki>>
 
-*VQ #360 - Door signs re-establish.*
+*VQ #380 - Fade out.*
 
-*# SCENE 4B: IN THE OBSERVATORY (ONLINE)* 
+*# SCENE 4: IN THE OBSERVATORY (ONLINE)* 
 
-.SCENE 4B: IN THE OBSERVATORY (ONLINE) 
+**SCENE 4B: IN THE OBSERVATORY (ONLINE)**   
 
-During the party above, the chat continues among the WATCHERS as they desire.  
+During the party above, the chat continues among the WATCHERS as they desire.    
 
 THE GUIDE may drop off or continue as needed to maintain their engagement. 
 
@@ -2080,11 +2200,11 @@ This process should complete roughly when the dancing in the Agora finishes and 
 
 = The travelers encounter difficulites trying to reenact  emmories they no longer remember. But that MIGHT actually be theirs of a deep personal failure?
 
-.SCENE 5: PRIMAL UPLOAD (2ND RITUAL) 
+**SCENE 5: PRIMAL UPLOAD (2ND RITUAL)** 
 
-*There are two versions of Ritual 2, each with half of the TOURISTS and half of the TRAVELERS.* 
+*There are two versions of Ritual 2, each with half of the TOURISTS and half of the TRAVELERS.*   
 
-*olf: The MWS of each pair of TRAVELERS cut to two live feeds from inside each of the two Ritual Chambers.* 
+*OLF: The MWS of each pair of TRAVELERS cut to two live feeds from inside each of the two Ritual Chambers.* 
 
 The shadows of the CITIZENS disappear. 
 
@@ -2122,11 +2242,7 @@ The first four WATCHERS should be assigned to the four TRAVELERS.
 
 Depending on the number of WATCHERS, each TOURIST may have one, many, or no assigned WATCHERS. 
 
-Somehow the CODE  should separate the tourists into two larger groups
-
-
-
-participate. 
+CODE should separate the tourists into two larger groups participate. [[Is this going to happen?]]
 
 Just before exiting to the RACHEL turns to FELIX
 
@@ -2149,29 +2265,37 @@ They exit to the next Ritual
 
 ===
 
-# RITUAL 2/A: “BIKE MAN” (@ RACHEL, EDDIE) 
+# RITUAL 2/A: “BIKE MAN” (@ RACHEL, EDDIE)
 
 = We meet Rachel;s partner. who we have seen before
 
-.RITUAL 2/A: "BIKE MAN" (@ RACHEL, EDDIE) 
+**RITUAL 2/A: "BIKE MAN" (@ RACHEL, EDDIE)** 
 
-*VQ #400 - Establish ritual.* 
+*VQ #410 - Establish ritual.*   
 
-RACHEL and EDDIE enter together with half the TOURISTS who were selected by CODE to join them, they turn a corner and hear the sounds of rain, Rachel opens her umbrella which causes Lightening, a CLAP of thunder, followed by a BLACKOUT.
+RACHEL and EDDIE enter together with half the TOURISTS who were selected by CODE to join them, they turn a corner and hear the sounds of rain.
 
-*olf: Cut to video of ocean. V/O of RACHEL breathing.* 
+*VQ #420 - Fireflies.*
+
+*OLF: Cut to video of ocean. V/O of RACHEL breathing.* 
 
 RACHEL
-Eddie?
+Eddie? ...... Eddie?
+
+*VQ #425 - Wood burning.*
 
 EDDIE
 I'm right here.
 
-Another Thunderclap! It morphs into a car horn, a final thunderclap morphs into the screeching of tires
+RACHEL collapses. We hear her gasping for air. We hear the loud pounding of a heart pound until the  gasping breathing stops. Silence - the sound of being underwater. It goes on long enough to the point of discomfort. 
 
-RACHEL breathes heavily in the darkness, we hear her gasping for air. We hear the loud pounding of a heart pound until the  gasping breathing stops. Silence - the sound of being underwater. It goes on long enough to the point of discomfort. 
+*VQ #430 - Ocean.*
+
+EDDIE attempts to help, but is guided toward the notecards extended by the CITIZENS behind the mylar.
 
 Then, the walls fade into projections of the ocean. The sound continues.
+
+
 
 The WATCHERS observe. 
 
@@ -2180,13 +2304,11 @@ Observe your visitors and adjust the Transfer to engage them. [Photo of visitor 
 
 THE OBSERVATORY presents a series of dials that can be adjusted by the WATCHERS and have an impact after a short delay. 
 
-
-
-In the following sequence, the Raul's voiceover should be done live by CITIZEN.
+In the following sequence, the Raul's text is read off of many notecards by EDDIE.
 
 EXT. UNDERWATER 
 
-*olf: Cut between medium shots of RACHEL, FELIX, and the TOURISTS, cutting to film sequences as projected when appropriate.*   
+*OLF: Cut between medium shots of RACHEL, FELIX, and the TOURISTS, cutting to film sequences as projected when appropriate.*   
 
 
 
@@ -2214,8 +2336,6 @@ RACHEL begins to breathe loudly again.
 
 (FILM) The man gets off his bike and walks to a bus stop. As he waits we see him slip his headphones on. 
 
-Music. Reggeton 
-
 RAUL
 You told me you wanted to see the place I come from. 
 I was proud and a little embarrassed. You're not like me. You were from another galaxy... And the metro bus don't go there. 
@@ -2228,22 +2348,45 @@ VARIOUS W.S.
 
 Raul gets off and changes buses  perhaps he gets on the Metro chain to LA/westwood or Culver City The music shifts, changes and modulate to fit or contrast the  images we see him passing. The image shudders to a static shot as the bike abruptly screeches its brakes. Sound of a car horn and a thud. 
 
-RACHEL screams.
+EDDIE kneels and scoops up RACHEL and she stirs.
 
-> BLACK OUT. 
-
-RACHEL runs in circles on the perimeter of the chamber around the TOURISTS. EDDIE watches as she begins to mutter a mantra.  
+*VQ #460 - Amongst bikes*
 
 RACHEL
-Put on your helmet wear your helmet Put on your helmet wear your helmet Put on your helmet wear your helmet
 
-She runs as if looking for a way out. She breathes heavily but she could run forever. The running is all that keeps the panic at bay.
+Put on your helmet  
+
+
+
+	EDDIE
+
+	 What?  
+
+[SOUND CUE: Thunderclap. SOUND CUE: Gnossienne #1 by Seth Ford-Young.]
+
+EDDIE is frozen in time, RACHEL stands. 
+
+*VQ #465 - Bike POV*
+
+She continues to mutter "put on your helmet" as she (1) examines the images projected on the wall (2) begins to dance (3) dance becomes frenetic and desperate. 
+
+*VQ #470 - Bike sequence*
+
+RACHEL
+
+Put on your helmet.
+
+RACHEL runs through Ritual 2B. When she returns, she collapses back into EDDIE'S arms. 
+
+SOUND CUE: Thunderclap.
+
+*VQ #475 - Selfie.*
 
 (FILM) RAUL is running towards the camera from far away. Every time he gets close, it cuts to him  running  towards her but even further away. Rachel prays louder as RAUL gets further away. RACHEL finally runs towards his image and he stops in front of her. Eddie moves as if to protect her.
 
-*olf: CU of RACHEL.* 
+*OLF: CU of RACHEL.* 
 
-
+RACHEL sees RAUL, there is a long moment.
 
 RACHEL
 You.
@@ -2253,9 +2396,7 @@ You.
 RAUL
 Me.
 
-*olf: CU of RAUL*
-
-
+*OLF: CU of RAUL*
 
 RACHEL
 Yo
@@ -2270,7 +2411,7 @@ RACHEL
 I don't know. I've been searching- traveling but I didn't know why... searching but I don't remember what for... it doesn't matter...
 
 (LIVE SHADOW)
-I was on my bike coming to see  you and- 
+I was on my bike coming to see  you and-  
 
 RACHEL
 Wait!
@@ -2278,14 +2419,16 @@ Wait!
  (LIVE SHADOW)
 I have something to show you.
 
+*VQ #476 - Bus.* 
+
 (FILM) The 720 Metro bus heading  east.
 
 RACHEL
 No Wait. NOT YET!
 
-*olf: MWS of Rachel* 
+*OLF: MWS of Rachel* 
 
-RACHEL reaches for the shadow, fighting the image of the bus. She pulls at the screen and projections of the Bus, EDDIE tries to pull her back.
+RACHEL reaches for the shadow, fighting the image of the bus. She pulls at the screen and projections of the Bus, EDDIE sends her forward.
 
 EDDIE
 Rachel, he's not there
@@ -2294,7 +2437,9 @@ RACHEL
 Let me go!
 
 
-pushing away from EDDIE  into the projection surface, she is trying to reach Raul's shadow behind it. 
+Pushing away from EDDIE  into the projection surface, she is trying to reach Raul's shadow behind it. 
+
+*VQ #478 - Cross.*
 
 RACHEL
 He's still there, he's on that bus. He wont wear his helmet- it's too small, he bought it too small cuz' it was on sale
@@ -2303,21 +2448,28 @@ He's still there, he's on that bus. He wont wear his helmet- it's too small, he 
 You always wanted to see where I came from. I never got a chance to show it to you so I decided to make this and come bring it to you-
 
 RACHEL
-NO! I don't want to think about that.
+NO! I don't want to think about that. I don't want to remember that. I'm not ready. Not yet it's too soon. I don't want to remember! STOP!
 
-RACHEL breaks away from EDDIE and begins to  run thru the Tourists
+*VQ #480 - Running.* 
 
-I don't want to remember that. I'm not ready. Not yet it's too soon. I don't want to remember! STOP!
+RACHEL approaches and reaches out to RAUL, the CITIZENS grab her and she swoons and feints. EDDIE picks her up and carries her away. 
 
 The video abruptly stops - BLACKOUT- The sound of a bus departing.
 
-*olf: Blackout and cut to Agora wide shot, which should be empty.* 
+*OLF: Blackout and cut to Agora wide shot, which should be empty.* 
+
+*VQ #490 - Archive speaks.*
 
 THE ARCHIVE 
-(aloud, via the OBSERVATORY, and on GUIDE)
 Transfer failure. Contacting administrator.
 
-*VQ #490 - Fade to black.* 
+THE OBSERVATORY
+Transfer failure. Contacting administrator.
+
+THE GUIDE
+Transfer failure. Contacting administrator.
+
+*VQ #500 - Fade to black.* 
 
 ===
 
@@ -2325,13 +2477,13 @@ Transfer failure. Contacting administrator.
 
 = In an  RA dorm room late night homework.
 
-.RITUAL 2/B.1: "WHATS THE PROBLEM" (@ FELIX, SHEENA)
+**RITUAL 2/B.1: "WHATS THE PROBLEM" (@ FELIX, SHEENA)**
 
-*olf: Medium shot of TRAVELERS, cutting to various reactions of TOURISTS.* 
+*OLF: Medium shot of TRAVELERS, cutting to various reactions of TOURISTS.*   
 
-*VQ #510 - Establish ritual*
+FELIX and SHEENA  walk down a long hallway of doors some are open, some partially shut, others closed. WE hear laughter, whispers, music- dorm hallways ambience. SHEENA and the Tourist crowd into a small room lit with a single light. Felix hangs back.
 
-FELIX and SHEENA  walk down a long hallway of doors some are open, some partially shut, others closed. WE hear laughter, whispers, music- dorm hallways ambience. SHEENA and the Tourist crowd into a small room lit with a single light. Felix hangs back
+*VQ #520 - Math lecture.*
 
 SHEENA
 Felix you have to
@@ -2346,29 +2498,26 @@ Four grad students sitting huddled together in a corner with only a ratty sofa a
 MATT 
 Did you get the curve? Did you run the script? Damnit this is wrong again. FUCK! What do your results say? 
 
-YUKI
+NATALIE
 Oh Gosh. Not again I told you please don't curse. 
 I just started running the code! It's going to take at least another hour!! 
 
 DAISY 
-(mumbling in a South Asian language).... forget about the code already! It's 11:07! We are less than one hour away from submission. Awwww Fuck it! I am just going to fabricate them. 
+Forget about the code already! It's 11:07! We are less than one hour away from submission. Awwww Fuck it! I am just going to fabricate them. 
 
-YUKI
+NATALIE
 Buy guys, why are we here? To learn, not to make up stuff! 
 
 DAISY 
-You have Come here to invent things (mumbles in another language)and that's what I am doing! (she hits a key) 
+You have Come here to invent things and that's what I am doing! 
 
 MATT
-Shit man! I cant deal with your reflective thinking again! Either fabricate and help us or shut the fuck up!.. uh sorry Yuki- or be quiet. 
+Shit man! I cant deal with your reflective thinking again! Either fabricate and help us or shut the fuck up!.. uh sorry Natalie- or be quiet. 
 
 DAISY
-(she makes a geeky math/code joke and then laughs loudly in exhaustion
+Argghhhh! This is 4a fixed axis.Fuck , fuck , FUCK!!! Precision vs recall. NATALIE!! 3 curves sent in. Replace them  (noises in background : baek baek..(tamil) beda beda (kannada).... ahyoooooo!) 
 
-MATT
- Argghhhh! This is 4a fixed axis.Fuck , fuck , FUCK!!! Precision vs recall. Yuki!! 3 curves sent in. Replace them  (noises in background : baek baek..(tamil) beda beda (kannada).... ahyoooooo!) 
-
-YUKI
+NATALIE
 Guys! Guys! Calm down. "For deadlines may come and deadlines may go, but well.. life does NOT go on forever." It's grad school! So Live it! Love it!
 
 DAISY
@@ -2377,11 +2526,14 @@ Shut the fuck up!
 MATTE ^
 Shut the fuck it!
 
-YUKI
+FELIX ^
+Shut the fuck it!
+
+NATALIE
 Oh my gosh stop cursing!
 
 FELIX
-Screw this shit! I'm dropping the course 
+Screw this shit! I'm dropping the course. 
 
 They all suddenly turn to Felix
 
@@ -2391,12 +2543,12 @@ Bullshit... are you IN or OUT
 FELIX
 I'm out (he exits)
 
-YUKI
+NATALIE
 There goes our designated driver. FUCK!
 
-Yuki, Matt and Daisy howl with laughter BEAT .YUKI makes a stupid  MATH SEX joke. NO one laughs BEAT-they get back to work. BLACK
+*VQ #560 - 2001 Space.*
 
-*VQ #540 - Blackout.* 
+MONKEY TRANSITION.
 
 ===
 
@@ -2404,45 +2556,39 @@ Yuki, Matt and Daisy howl with laughter BEAT .YUKI makes a stupid  MATH SEX joke
 
 =  50 minutes later, meeting  a deadline
 
-.RITUAL 2/B.2: "UPLOADING"
+**RITUAL 2/B.2: "UPLOADING"**
 
-*VQ #550 - Fade up to new environment.*
+*VQ #565 - Blackboard sequence.*  
 
 Lights back up immediately. They are all in different positions and frantically banging on their computers.
 
 DAISY
 11:59!
 
-YUKI screams! Matt mutters and then yells out a math equation. The answer appears as a projection. Yuki meows like a cat-Daisy barks like a dog-Matt prays.
-
 DAISY
 30 seconds and counting! LAST ONE!
-
-YUKI yells out the final equation. MATT and Daisy yell out different solutions. They all look at each other BEAT  they scream YES!! They bend to their computers and pound frantically.
 
 DAISY
 13,12,11, 10, 9, 8 ,7, 6...SEND!
 
-YUKI
-... gombate. SEND!
+NATALIE
+SEND!
 
 MATT
 SEND!
 
-BEAT- Noble prize PANDEMONIUM!
+*VQ #570 - Waviness.* 
 
-YUKI
-GOMBATE!!! Otscharisamdesta!
+NATALIE
+Otscharisamdesta!
 
 MATT
 Thank you Mrs. Einstein I love you too.
 
 DAISY
-(singing in Tamil) Wonderwoman uh uh I'm Wonderwoman
+I'm Wonderwoman!
 
-BLACKOUT!
-
-*VQ #570 - Blackout.*   
+DANCE TRANSITION.
 
 ===
 
@@ -2450,17 +2596,15 @@ BLACKOUT!
 
 =  chillaxing  for once
 
-.RITUAL 2/B.3:  "TANGARINE AND CHEETOS"
+**RITUAL 2/B.3:  "TANGARINE AND CHEETOS"**
 
-*VQ #580 - Fade up to new environment.* 
-
-Lights up immediately. They are different position. Chillaxing. Yuki is singing "TANGARINE" quietly with the stereo. The Dorm room is filled with smoke. Windows are closed so that they don't get caught by the RA... no wait DAISY is the RA!. A tequila bottle is on the table. Daisy is smoking, she passes it to Matt
+*VQ #580 - Psychedelic.*   
 
 MATT
 Are you sure this is not addictive?
 
-YUKI
-Only if you live in Venice.(sings) does she still remember times like these..to think of us again.
+NATALIE
+Only if you live in Venice.
 
 DAISY
 Where do you "score it... DUDE"
@@ -2468,16 +2612,19 @@ Where do you "score it... DUDE"
 MATT
 I found it in Fecalix's desk.
 
-Felix returns, Yuk laughs, the music gets louder
+They all turn to FELIX in the audience.
 
 MATT
-DUCK FUZZY!
+Fuzzy Duck!
 
-YUKI 
-duck fuzzy!
+NATALIE 
+FUZZY DUCK!
 
 DAISY 
-FUK DUZZY? Opps! (she takes a shoot)  this is fun! 
+FUZZY DUCK! (X3)
+FUCK DUZZY? Oops. 
+(She takes a shot)
+This is fun.
 
 MATT 
 DUCK FUZZY DUCK
@@ -2485,38 +2632,28 @@ DUCK FUZZY DUCK
 DAISY 
 Fuzzy Duck fuzzy
 
-YUKI 
+NATALIE 
 Duck fuzzy duck
 
 MATTE 
 fuzzy duck fuzzy
 
-PING!
-
 GUIDE
 WHO THE FUCK IS FUZZY?
 
-YUKI
+NATALIE
 FUZZY FUCK DUCK!
 
-LAUGHTER 
-
 MATTE 
-SO YUKI IS THIS IS YOUR 11TH... OR 12TH SHOT?
+SO NATALIE IS THIS IS YOUR 11TH... OR 12TH SHOT?
 
-Proudly she shouts!
-
-YUKI
+NATALIE
 My third!
-
-(MATT pours Tequila into the shot glass. droplets fall on the floor.) 
 
 DAISY 
 REALLY? FUCK!
 
-YUKI DOWNS IT AND SHOUTS
-
-YUKI 
+NATALIE 
 FUZZY DUCK!
 
 MATT 
@@ -2525,9 +2662,11 @@ who is he?
 DAISY 
 oh man this game is so much fun.
 
-YUKI picks up a small object from the floor. It is red in color. It is as few centimeters long. It has some powdery coating, and its greasy. Its porous.
+MATT dances to FELIX. NATALIE picks up a small object from the floor. It is red in color. It is as few centimeters long. It has some powdery coating, and its greasy. Its porous.
 
-YUKI 
+*VQ #590 - Two videos.*
+
+NATALIE 
 This is beautiful. Who designed this?
 
 MATT looks at it closely. He rotates it. He is staring at it. Its the color of the sun
@@ -2535,97 +2674,114 @@ MATT looks at it closely. He rotates it. He is staring at it. Its the color of t
 MATT 
 THIS IS COOOL!
 
-DAISY
-FELIX? What happened to FELIX
-
-YUKI 
+NATALIE 
 ISN'T IT BEAUTIFUL?
 
-MATTE 
-WAY.! This is just like a kaleidoscope. I want to look into it.
+MATT
+This is just like a kaleidoscope. I want to look into it.
 
 Sheena turns to FELIX who starts to laugh. 
 
 FELIX
 They studied all day, they worked so hard. They got stoned ONCE and discovered Cheetos.
 
-Eddie staring into the space laughing. There were tears in his eyes. He tries to  enter their space. Shenna grabs his hand and shakes her head. Felix does not respond. He starts to hyperventilate. Sheena shouts
+MATT
+We should get more.
 
-SHEENA 
-Felix! You can't. It's to late.
+They all begin to look and call for FELIX.
 
-FELIX looks at her.
+DAISY
+I'm hungry.
 
- What happened?
+*VQ #600 - Video slowed down.*
 
-He looks back into the room BLACKOUT!
+TIGHTROPE TRANSITION TO CAR .
 
-*VQ #600 - Blackout*
+
 
 ===
 
 # RITUAL 2/B.4: “IN AND OUT”
 
-.RITUAL 2/B.4: "IN AND OUT"
+**RITUAL 2/B.4: "IN AND OUT"**  
 
-*VQ #610 - Fade up to new environment.* 
+*VQ #610 - Car.*  
 
-Lites up immediately. They are in a car. Daisy is driving.
+Lights up immediately. They are in a car. DAISY is driving.
 
 MATT
 Are you guys  hungry? I'm hungry?
 
-YUKI
+NATALIE
 Staving.
 
 DAISY
 You're always hungry
 
-YUKI
-HEY! Lets got to the Cat and the Fiddle
+*VQ #615 - Speed up w/ Katy Perry.* 
+
+NATALIE turns on the radio. "Firework" by Katy Perry plays.
+
+NATALIE
+HEY! Lets got to the Cat and the Fiddle.
 
 DAISY
-That closed 3 years ago. Lets go to IN N Out!
+That closed 3 years ago. Lets go to IN-N-Out!
 
-YUKI
+NATALIE
 Yes please!  Don't curse.
 
-MATT ^
+MATT
 Fuzzy Fuckin' A!
 
 FELIX looks at Sheena.
 
+NATALIE
+Watch out!
+
+They stop suddenly and look out front. We  hear the same loud sound of tires, brakes and  a needle scratch we heard before.
+
+BLACKOUT. 
+
+*VQ #630 - Wavy chalk.*  
+
 SHEENA
  Felix what happened?
-
-He can't answer. The 3 students are laughing and singing loudly! They stop suddenly and look out front. We  hear the same loud sound of tires, brakes and  a needle scratch we heard before. BLACKOUT
-
-*VQ #630 - Blackout*
 
 FELIX
 I'm here... because I wasn't there
 
-The needle continue to skip in the darkness
+*VQ #635 - Car.*
+
+The needle continue to skip in the darkness.
+
+*VQ #640 - Archive speaks.*
 
 THE ARCHIVE 
-(aloud, via the OBSERVATORY, and on GUIDE)
 Transfer failure. Contacting administrator.
 
-# SCENE 6A: IN THE OBSERVATORY (ONLINE) 
-
-.SCENE 6A: IN THE OBSERVATORY (ONLINE) 
+THE OBSERVATORY
+Transfer failure. Contacting administrator.
 
 THE GUIDE
-(in the OBSERVATORY chat window)
+Transfer failure. Contacting administrator.
+
+*VQ #645 - Fade to black.* 
+
+*# SCENE 6A: IN THE OBSERVATORY (ONLINE)* 
+
+**SCENE 6A: IN THE OBSERVATORY (ONLINE) ;**  
+
+THE OBSERVATORY
 I bet Siri doesn't have to deal with stuff like this.   What happened in there?  
 
 Etc.
 
 # SCENE 6B: CONFUSION IN THE AGORA 
 
-.SCENE 6B: CONFUSION IN THE AGORA 
+**SCENE 6B: CONFUSION IN THE AGORA**   
 
-*VQ #660 - Establish Agora.* 
+*VQ #660 - Establish Agora (doors)*  
 
 The TRAVELERS are stunned
 
@@ -2644,27 +2800,24 @@ Minutes to customer service response: 5.  Then you'll probably be on hold again.
 RACHEL
 I think I'm gonna-
 
-Does she faint-or just sink to the floor?
+She faints/sinks to the floor and FELIX catches her.
 
-SHEENA
+FELIX
 (quietly) Hey girl... are you OK?
 
-EDDIE
+SHEENA
 What happened to you guys!?
 
-SHEENA
-Some memory.... I guess. 
-Some painful memory .. Rachel
-
 EDDIE
-Pain? That was, I felt like I was torturing her
+Some memory.... I guess. 
+Some painful memory .. That was... I felt
 ... more like a ritual than a memory.
 
 SHEENA
-This was a mistake- a ritual... that's what it felt like, a ritual mistake
+This was a mistake- I'm sorry Felix... that's what it felt like, a ritual mistake
 
 FELIX
-What did she see... what did you do
+What did she see... what did you do?
 
 The interior walls of the Agora disappear. 
 
@@ -2672,9 +2825,7 @@ The interior walls of the Agora disappear.
 
 The CITIZENS appear as shadows surrounding the Agora, via PRJ-AG*. They move quietly, carefully. Perhaps the CITIZENS' shadows bear more of a resemblance to the TRAVELERS than before. 
 
-
-
-CITIZEN
+CITIZEN 1
 (softly)
 RACHEL. 
 
@@ -2687,18 +2838,17 @@ THE ARCHIVE
 Customer service reset, completing cycle. 
 
 THE GUIDE ^
-Commence transfer <<Yuki>>, final attempt, collective transfer.  
+Commence transfer <<NATALIE>>, final attempt, collective transfer.  
 
 THE OBSERVATORY ^
 (in the WATCHER status bar)
 Commencing collective transfer. 
 
-THE GUIDE ^
+THE GUIDE
 (aside in the OBSERVATORY chat)
 Ah, pulling out all the stops. 
 
-
-CITIZEN
+CITIZEN 1
 They're exhausted, they need to rest-
 
 CITIZEN 2
@@ -2713,33 +2863,33 @@ overwhelmed, but we can try to...
 SHEENA ^
 STOP IT!
 
-CITIZEN 3 ^
+CITIZEN 1 ^
 Stop it.
 
 SHEENA
 And who the fuck are you?  
 
-CITIZEN 3 
+CITIZEN 2 
 
 I'm intended to help
 
 EDDIE
 What?
 
-CITIZEN
+CITIZEN 1 
 (gently)
-Rachel... Try to go in again. Imagine you know what you are doing. Pretend you know where you are. 
+Rachel, Felix.....Try to go in again. Imagine you know what you are doing. Pretend you know where you are. 
 
 SHEENA
 Where are you assholes?!
 
 FELIX
-I can't-I don'tthink she should do that again.
+I can't-I don't think she should do that again.
 
 RACHEL
 No..
 
-CITIZEN
+CITIZEN 1
 Please you must try.
 
 RACHEL
@@ -2757,7 +2907,7 @@ FELIX
 SHEENA ^
 Fuck off.
 
-CITIZEN 3
+CITIZEN 1
 Sheena-
 
 PING! 
@@ -2785,51 +2935,50 @@ EDDIE
 What's wrong with you, why are you so angry?
 
 SHEENA
-Because someone or something is manipu-What the - 
+Because someone or something is manipu- 
+What the...
 
-Someone we have not noticed before, a TOURIST tries to hide his hand at his side.
-
-SHEENA
-(to the TOURIST)
-Hey you! Gimme that!
-
-TOURIST ^
-I wasn't doing-.
+SHEENA yells at the unseen Citizen.
 
 SHEENA
-YOU FREAK!! What are we  - your private dancers?
+Hey YOU! YOU SCI-FI FREAKS!! What are we  - your private dancers?
 
-TOURIST
-NO, it's just my ti
+CITIZEN 2
+NO, we are you Archive.
 
 SHEENA
-FUCK!  Gimme that you perverted freak! 
+FUCK! Hey You, lemme see your phone.... please! 
 
-*olf: Closeup on the GUIDE.* 
-
-
-
-SHEENA takes his device and examines it, reading the GUIDE text.
+SHEENA takes a tourist's phone and examines it, reading the GUIDE text.
 
 SHEENA
 "It's your memory now. You make up the story." What the fuck is that?
 
-TOURIST
-It's just my phone - my ticket's in there. Please, I was invited too. I just signed up online for this...
+CITIZEN
+It's just a phone - their ticket's in there. Please, you were invited too. You signed up online for this...
 
-SHEENA tosses it back to him
+SHEENA
+Aw shuttup....  Here...sorry
+
+SHEENA tosses the phone back to the tourist.
 
 EDDIE
 Jeeze. Sheena... Sorry man, you alright?
+I hope she didn't scare you
 
-TOURIST
-You scared me.
+FELIX
+Sheena, please  stop cursing...
 
-THE GUIDE ^
+They all turn to look at him
+
+FELIX
+Please...
+
+THE GUIDE
 You're not the one being thrown around. I'm dizzy!
 
 SHEENA
-Shit you scared me too.
+Shit I'm too.... sorry.
 I'm leaving.
 
 FELIX
@@ -2838,7 +2987,7 @@ What? After you dragged us-
 RACHEL
 I'm staying.
 
-They all look at her, she stands slowly
+They all look at her, she stands slowly.
 
 RACHEL
 I gotta go back in.
@@ -2847,7 +2996,9 @@ FELIX
 You gotta stay Sheena. I might need your help.
 
 SHEENA
-Why? This is crazy. I'm serious, it's dangerous IN here.(SHE TURNS TO A TOURIST)Look around you do you really know what we're doing here?  "What's the story?" what story? Ever since the - 
+Why? This is crazy. I'm serious, it's dangerous IN here.
+(SHE TURNS TO A TOURIST)
+Look around you do you really know what we're doing here?  "What's the story?" what story? Ever since the - 
 
 FELIX
 It's ok Sheena, say it
@@ -2855,17 +3006,14 @@ It's ok Sheena, say it
 SHEENA
 Jesus Felix, ever since it happened. It's like Rachel's been living in a desert. But in here- it like a swamp of emotions and quicksand memories ready to drag you down. Why are we even in this place anyway?  
 
-TOURIST
-Cuz' we were invited. (BEAT) They said it's ABOUT Time and Space.
+CITIZEN 2
+Because you signed up online and were invited. (BEAT) Actually it's about Time and Space.
 
-THE GUIDE
-Right. Thanks, Stephen Hawking.
+SHENNA
+Right. Thanks, Stephen Hawking. What's that supposed to mean? Can you say something helpful and stop being so weird?
 
-SHEENA
-What's that supposed to mean? Can you say something helpful and stop being so weird?
-
-TOURIST
-Okay. Uhm. This place is like the ocean.
+CITIZEN 1
+This place is like the ocean.
 
 SHEENA
 What the hell does that even mean. This is bullshit. I came here, I was INVITED here to  help my friends. I was fine in my own little personal bubble of bullshit and technology, but something dragged me out here and for what? To stare at some bullshit memories I CAN'T REMEMBER, some wasteland of technology garbage? Hey. Hey all of you. Listen up and stop taking pictures... remember this - in your minds, not just on your phones- Somebody should fucking remember this
@@ -2876,8 +3024,8 @@ Like the ocean.
 SHEENA
 Ok.. And...
 
-TOURIST ^
-This place is like the ocean. It's like a frontier, an edge
+CITIZEN 2 ^
+THIS PLACE IS LIKE THE OCEAN. IT'S LIKE A FRONTIER, AN EDGE ^
 
 FELIX
 It's beautiful and terrifying-
@@ -2888,14 +3036,14 @@ And so deep you can get lost
 RACHEL
 Like being in love.
 
-CITIZEN
+CITIZEN 1
 It's a place to come and remember. A place to share memories that remind us of who we are.
 
 Either a VOICEOVER or a projection
 
 Where we've been ... and where we are going.
 
-CITIZEN 3
+CITIZEN 2
 Sheena -- Can you feel the breeze? Look at the sky. 
 
 THE GUIDE ^
@@ -2903,7 +3051,7 @@ I'm not sure this is allowed.
 
 Images are  projected everywhere, moving and static
 
-CITIZEN
+CITIZEN 1
 The sunset, the beach, your first grade teacher, your last memory
 
 CITIZEN 2 ^
@@ -2928,7 +3076,7 @@ What photograph will engage them?
 Which record will reach them?
 
 RACHEL
-but not for food?
+but not for anything to eat?
 
 CITIZEN 2
 You are not lost. Look at the sky. You are never lost. 
@@ -2946,9 +3094,9 @@ PING!
 
 = Something changes, The SPACE change- TIME changes- EVERYTHING changes.
 
-.TRANSITION : THE CITIZENS EMERGE. 
+**TRANSITION : THE CITIZENS EMERGE.** 
 
-*VQ #710 - Environment changes.* 
+*VQ #710 - Environment changes.*   
 
 Something changes, The SPACE change- TIME changes- EVERYTHING changes. it might be huge or simple but everything is finally revealed. The revelation of technology is  presented simply and so is more beautiful and moving. Somehow the rules have changed so that the CITIZENS can join us  both in reenacting and observing as equals. CODE switches on EVERYWHERE
 
@@ -2969,13 +3117,11 @@ In the Agora, THE ARCHIVE reiterates the Rituals according to the WATCHERS' vote
 
 = RACHEL and FELIX’s painful memories are at the center, but branches out to become and encompass all of their stories - fact and fiction, remixing themselves with media of both the previous and yet unseen rituals.
 
-.SCENE 1: RITUAL OF STORYTELLING
+**SCENE 1: RITUAL OF STORYTELLING**
 
-There is only a single version of Ritual 3, for everyone. 
+There is only a single version of Ritual 3, for everyone.   
 
-*olf: Live feed shots to be determined. *
-
-
+*OLF: Live feed shots to be determined.* 
 
 *VQ #750 - Establish ritual in agora.* 
 
@@ -2983,13 +3129,13 @@ The CITIZENS enact records from within THE ARCHIVE. RACHEL and FELIX's painful m
 
 ===
 
-# RITUAL 3/A:  “RAUL’S REVELATION”
+# RITUAL 3/A: “RAUL’S REVELATION”
 
 = We and RACHEL finally get to see RAUL homemade video
 
-.RITUAL 3/A:  "RAUL'S REVELATION"
+**RITUAL 3/A:  "RAUL'S REVELATION"**
 
-*VQ #800 - Start ritual 3/A.* 
+*VQ #800 - Start ritual 3/A.*   
 
 The Bike rider on the walls of the  UNDERPASS reappears. The Rider gets both closer and further  as it did in  Rachel's Primal memory. The memory gets closer and closer. It's RACHEL's boyfriend RAUL he rides up  and smiles his killer smile.
 
@@ -3008,7 +3154,7 @@ So I decided one day to make this and come bring it to you.
 
 Rachel this is whom I am and where I come from.
 
-Projections, reenactments, video, sound  a kalaidoscope of LONG BEACH and RAUL. It should be beautiful  but it the way of homemade, handheld videos- ALTHO one made by an ARTIST!
+Projections, reenactments, video, sound  a kaleidoscope of LONG BEACH and RAUL. It should be beautiful  but it the way of homemade, handheld videos- ALTHO one made by an ARTIST!
 
 At the same time RAUL is SPEAKING to RACHEL another story begins nearby. The two RITUALS do not compete or conflict but rather symbiotically support and underline the other
 
@@ -3020,32 +3166,30 @@ At the same time RAUL is SPEAKING to RACHEL another story begins nearby. The two
 
 = Felix's   friends and their journey to  UCLA
 
-.RITUAL 3/B: "DRIVING DAISY"
+**RITUAL 3/B: "DRIVING DAISY"**
 
-*VQ #900 - Start ritual 3/B.* 
+*VQ #900 - Start ritual 3/B.*   
 
-A montage, a collage, an homage to  to the  culture of hard work and  comradeship in a  high level gradate school program. It starts again the sound of an airplance landing it, we hear the noise of the airplanes tires squeal upon landing. BACK IN THE USSR plays. Perhaps we  see TONY and TINA  kissing at LAX. YUKI walks by with a  LARGE backpack and a rolling carryon. She looks down at her phone confused- maybe she bumps into Matt.  A line of  people walking for the FYLAWAY back to Westwood. FELIX, YUKI, MATT and Daisy are in line, they do not know each other. Perhaps we see  Daisy and Felix sitting next to each other on the bus but facing away.
+A montage, a collage, an homage to  to the  culture of hard work and  comradeship in a  high level gradate school program. It starts again the sound of an airplane landing it, we hear the noise of the airplanes tires squeal upon landing. BACK IN THE USSR plays. Perhaps we  see TONY and TINA  kissing at LAX. NATALIE walks by with a  LARGE backpack and a rolling carryon. She looks down at her phone confused- maybe she bumps into Matt.  A line of  people walking for the FYL-AWAY back to Westwood. FELIX, NATALIE, MATT and Daisy are in line, they do not know each other. Perhaps we see  Daisy and Felix sitting next to each other on the bus but facing away.
 
-Campus life, study groups. A football game YUKI looks on comfused. Video snippets of "MY WEEK AT GRAD SCHOOL" pop up at the same time on different screens. They talk about their journeys to LA. YUKI and MATT seem nervous DAISY is radiant The four are studying together only Felix has a beer in his hand. WE see and hear the four grad students all over Westwood and LA. Perhas we see FELIX's Asking "doesn't it EVER rain here?"
-
-Perhas we don't see any video of the students just their voices from the previous scene
+Campus life, study groups. A football game NATALIE looks on confused. Video snippets of "MY WEEK AT GRAD SCHOOL" pop up at the same time on different screens. They talk about their journeys to LA. NATALIE and MATT seem nervous DAISY is radiant The four are studying together only Felix has a beer in his hand. WE see and hear the four grad students all over Westwood and LA. Perhaps we see FELIX's Asking "doesn't it EVER rain here?"
 
 MATT
 Are you guys  hungry? I'm hungry?
 
-Interwoven thru all this are  renactments and memories we have seen earlier as well as images and memories upload by the Tourists and Watchers online. 
+Interwoven through all this are  reenactments and memories we have seen earlier as well as images and memories upload by the Tourists and Watchers online. 
 
-YUKI
+NATALIE
 Staving.
 
-Its a kalaidoscope of  college life in Westwood and LA. 
+Its a kaleidoscope of  college life in Westwood and LA. 
 
 DAISY
 You're always hungry
 
 There is music and sound and lots of driving... 'cuz its LA!
 
-YUKI
+NATALIE
 HEY! Lets got to the Cat and the Fiddle
 
 DAISY
@@ -3058,7 +3202,7 @@ DAISY
 
 Rachel opens an umbrella it starts to rain
 
-YUKI
+NATALIE
 ... gombate. SEND!
 
 MATT ^
@@ -3066,18 +3210,16 @@ SEND!
 
 The TRAVELERS (and TOURISTS, if they wish) weave a new story. They have the freedom of a past once completely known but is each time enacted anew.  
 
-
-
 The WATCHERS, still "following" a TOURIST and A TRAVELER help influence media selection from THE ARCHIVE in a way that they believe will connect with their assigned TOURIST or TRAVELER. 
 
 In addition to specifying media, the WATCHER'S choices generates text projected on the walls that represents their votes.   
 
 DAISY
-(singing in Tamil) Wonderwoman uh uh I'm Wonderwoman
+Wonderwoman uh uh I'm Wonderwoman
 
 Video, sound, lighting are all brought to bear. The entire ARCHIVE is at the disposal of building a new story in the Agora.
 
-YUKI
+NATALIE
 Guys! Guys! Calm down. "For deadlines may come and deadlines may go, but well.. life does NOT go on forever." It's grad school! So Live it! Love it!
 
 DAISY
@@ -3086,14 +3228,14 @@ Shut the fuck up!
 MATTE ^
 Shut the fuck it!
 
-Music,  projections, the walls move and shift changing the space
+Music,  projections, the walls move and shift changing the space.
 
 FELIX
 They studied all day, they worked so hard. They got stoned ONCE. for  God's sake. They found my stash when I left.
 
-The rain gets louder. Yuki sings TANGARINE. Thunderclap!
+The rain gets louder. NATALIE sings TANGERINE. Thunderclap!
 
-YUKI
+NATALIE
 IN N OUT!!!
 
 MATT ^
@@ -3105,7 +3247,52 @@ WAIT! Not yet please...  let me just tell them I love them .. that I'm sorry I w
 RACHEL
 Put on your helmet! It's gonna rain today. WAIT  let me say it , let me say it just one more time!
 
-The music gets louder the rain storms down.YUKI and MATT sing. RAUL laughs as he turn his face up to the sky. LIGHTING! THUNDERCLAP, A needle scratches an old album BLACKOUT!  We sit in the darkeness as long as we can, there is only the sound of  RACHEL breathing , gasping loudly. FELIX whispering "I wasn't there" and a record skipping over and over.
+The music gets louder the rain storms down.NATALIE and MATT sing. RAUL laughs as he turn his face up to the sky. LIGHTING! THUNDERCLAP, A needle scratches an old album BLACKOUT!  We sit in the darkness as long as we can, there is only the sound of  RACHEL breathing , gasping loudly. FELIX whispering "I wasn't there" and a record skipping over and over.
+
+RACHEL 
+I Love you!! 
+(long ass beat...)
+Raul was so surprised that I love cauliflower,, toast, and tomato soup from a can. He laughs and I eat when I dream that we're still together, cooking and laughing. It's still perfect... in my dreams. The the spice, the heat, the sticky sweet bliss when we fell asleep together.
+
+I know I need to fill the emptiness and get healthy enough to stop worrying about forgetting Raul- I need to go back to my life.
+I don't wanna forget anything ... or anyone- like all of you.
+(She asks Eddie)
+Do you know? I want to feel ... full again
+
+EDDIE
+Music always fills me with memories. It's like the sound of water flowing, memories give us life. 
+Running after the ice cream man. Saturday morning cartoons, my momma singing in the kitchen, the smell of bacon. I remember one day, my mom and I went down to the community pool on Rosecrans. She held my hand and it kinda embarrassed me, now I wish I could hold her again. Her name was (______)
+(He tells  Sheena)
+I remember the music of her laughter and her singing "I heard it thru the Grapevine."
+
+SHEENA
+My father, His name was(________) always smelled good. Like a working man. Like what guys used to smell like. Smoke, sweat... and Aqua Velva. 
+
+Like..Like... a Memorial Day ball park frank on the grill at Griffith Park. Memories are like smoke they can disappear into thin air, but the smell, the memories will always stay in your hair and in your heart and all the water in the ocean can't wash it off- (Sheena smells her shirt)
+(She talks to  Felix)
+I'm kinda weird... I know it - and I think it's OK.
+
+FELIX[[I STARTED BECOMING ANGRY AND THEN SOME GUYS SHOWED UP AND TOOK HER AWAY. SHE WANTED TO GO. SHE WAS HAPPY WITH THEM. 
+My arm was broken and I couldn’t carry her...so I walked back to the beach and threw my deck into the Pacific]]
+In high school I was a math nerd with a skate board. Then I met Daisy. She made me chill out and just relax and enjoy things. We would walk to the pier in our bare feet, the sand hot and then cooler as  we neared the water. Daisy always said that salt water was cleansing. Like tears, like the ocean- tears can just swallow us whole- all our memories and it cleanses us.
+
+One Sunday afternoon in Venice Beach, we walked the canals and I held her hand... with my skateboard in the other. We were barefoot. The sand stuck to our bodies, like our memories and even the ocean can't wash those away.  They're with me forever ...like you all. I'm grateful
+
+SHEENA
+
+I'm grateful  
+
+FELIX
+
+Thank you  
+
+EDDIE
+
+I'm grateful  
+
+RACHEL
+
+Thank you  
 
 
 
@@ -3121,9 +3308,9 @@ The music gets louder the rain storms down.YUKI and MATT sing. RAUL laughs as he
 
 = Architect and TED  Talk
 
-.EPILOGUE
+**EPILOGUE**
 
-*olf: Pre-recorded video of the CITIZEN. The source of the Voiceover.* 
+*OLF: Pre-recorded video of the CITIZEN. The source of the Voiceover.*   
 
 *VQ #1000 - Archive resets*
 
@@ -3150,16 +3337,16 @@ If it knew how to receive as well as transmit, how to let the listener speak as 
 
 <<Images from Ritual 3, along with its source material.>>
 
-CITIZEN
+CITIZENS 1 & 2
 Not a catalog to get lost in. Not an archive to hide things, but a place to find yourself. 
 To remember where you came from. 
-To imagine where yu're going 
+To imagine where you're going 
 
 THE ARCHIVE
 Resetting for next Transfer Event. 
 
 THE GUIDE ^
-Don't Panic. It's over in 60seconds... so thanks
+Don't Panic. It's over in 60 seconds... so thanks
 
 CITIZENS
 We are here when you need to remember. 
@@ -3177,6 +3364,6 @@ The audience and the Travelers EXIT. The CITIZENS remain inside. They wave to th
 
 *# POSTSHOW POST ITS*
 
-.POSTSHOW POST ITS
+**POSTSHOW POST ITS**  
 
-The experience of the performance continues to be available - to the TOURISTS, through their GUIDE, and the WATCHERS, through the OBSERVATORY.
+The experience of the performance continues to be available - to the TOURISTS, through their GUIDE, and the WATCHERS, through the OBSERVATORY.  
