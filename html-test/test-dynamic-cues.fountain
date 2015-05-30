@@ -21,5 +21,4 @@
 
 .Agora 1: Sense memories
 
-<<@agora-1(desc = "The combination of tourist names, door tags selected from Archive")>>
-
+<<@dynamic-cue(desc = "The combination of tourist names, door tags selected from Archive")>>

@@ -1,16 +1,19 @@
 <template>
     <p id="description" class="video-control-desc"></p>
     <div id="audience-names" class="video-control-text"></div>
+    <div id="audience-data-chunk" class="video-control-chunk" style="max-width: 400px; height: auto;"></div>
+    
     <div id="video-tags" class="video-control-text"></div>
-    <div id="data-chunk" class="video-control-chunk"></div>
+    <div id="video-data-chunk" class="video-control-chunk"></div>
 </template>
 
 <script>
   var componentObject = new window.ComponentObject(document, window);
+  var hostAddr = 'http://archive-dev.remap.ucla.edu/app';
   
   function onCreate(createdElement) {
     createdElement.shadowRoot.querySelector('#description').textContent = createdElement.getAttributeByListName(['default', 'message', 'description', 'desc'], '');
-    createdElement.dbObject = new window.DBObject('http://archive-dev.remap.ucla.edu/app');
+    createdElement.dbObject = new window.DBObject(hostAddr);
     createdElement.youtubeObject = new window.YoutubeObject('AIzaSyDdbyta6fatuU80f_eBHZHMlPd7kbqYV1c');
   
     // Audience names query and output
@@ -29,6 +32,11 @@
           createdElement.shadowRoot.querySelector('#audience-names').textContent = 'Welcome, ' + participantObject[randIdx][1];
         } else {
           createdElement.shadowRoot.querySelector('#audience-names').textContent = 'Welcome, ' + participantObject[randIdx][0];
+        }
+        
+        // User profile image output
+        if (participantObject[randIdx][4] != null && participantObject[randIdx][4] != '') {
+          createdElement.shadowRoot.querySelector('#audience-data-chunk').innerHTML = '<img src="' + hostAddr + '/querystatic/get-user-avatar?filename=' + participantObject[randIdx][4] + '"></img>';
         }
       }, 2000);
     });
@@ -61,7 +69,7 @@
             'maxResults': '1'
           }, undefined, undefined, function (searchResponse) {
             if (searchResponse.items.length > 0) {
-              createdElement.shadowRoot.querySelector('#data-chunk').innerHTML = '<img src=\"http://img.youtube.com/vi/' + searchResponse.items[0].id.videoId + '/0.jpg\"></img>';
+              createdElement.shadowRoot.querySelector('#video-data-chunk').innerHTML = '<img src=\"http://img.youtube.com/vi/' + searchResponse.items[0].id.videoId + '/0.jpg\"></img>';
             }
           }, undefined, true);
         }
@@ -71,5 +79,5 @@
     componentObject.applyStyleFromParentDocumentAll(createdElement);
   }
     
-  componentObject.createComponent('com-agora-1', onCreate);
+  componentObject.createComponent('com-dynamic-cue', onCreate);
 </script>
