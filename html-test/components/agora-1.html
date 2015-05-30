@@ -1,27 +1,71 @@
 <template>
     <p id="description" class="video-control-desc"></p>
     <div id="audience-names" class="video-control-text"></div>
+    <div id="video-tags" class="video-control-text"></div>
+    <div id="data-chunk" class="video-control-chunk"></div>
 </template>
 
 <script>
   var componentObject = new window.ComponentObject(document, window);
-  var dbObject = new window.DBObject('http://archive-dev.remap.ucla.edu/app');
   
   function onCreate(createdElement) {
     createdElement.shadowRoot.querySelector('#description').textContent = createdElement.getAttributeByListName(['default', 'message', 'description', 'desc'], '');
-    
-    // Audience names querying and outputing
-    dbObject.queryParticipant(undefined, undefined, undefined, function(response) {
+    createdElement.dbObject = new window.DBObject('http://archive-dev.remap.ucla.edu/app');
+    createdElement.youtubeObject = new window.YoutubeObject('AIzaSyDdbyta6fatuU80f_eBHZHMlPd7kbqYV1c');
+  
+    // Audience names query and output
+    createdElement.dbObject.queryParticipant(undefined, undefined, undefined, function(response) {
       var participantObject = {};
       try {
         participantObject = JSON.parse(response);
       } catch (e) {
         console.log(e);
       }
-      for (var i = 0; i < participantObject.length; i++) {
-        console.log(participantObject[i]);
-        
+      
+      setInterval( function () {
+        var randIdx = Math.floor(Math.random() * participantObject.length);
+        // username, first_name, last_name, hashtags, photo_file, favorite_angeleno, favorite_time_of_day, neighborhood
+        if (participantObject[randIdx][1] != null && participantObject[randIdx][1] != '') {
+          createdElement.shadowRoot.querySelector('#audience-names').textContent = 'Welcome, ' + participantObject[randIdx][1];
+        } else {
+          createdElement.shadowRoot.querySelector('#audience-names').textContent = 'Welcome, ' + participantObject[randIdx][0];
+        }
+      }, 2000);
+    });
+    
+    var selectedTag = '';
+    
+    // Video tags query and output
+    createdElement.dbObject.postToDB('select type, tag from tagset', function(response) {
+      var tagObject = {};
+      try {
+        tagObject = JSON.parse(response);
+      } catch (e) {
+        console.log(e);
       }
+      
+      setInterval( function () {
+        var randIdx = Math.floor(Math.random() * tagObject.length);
+        // username, first_name, last_name, hashtags, photo_file, favorite_angeleno, favorite_time_of_day, neighborhood
+        createdElement.shadowRoot.querySelector('#video-tags').textContent = 'Tag: ' + tagObject[randIdx][0] + ' -> ' + tagObject[randIdx][1];
+        selectedTag = tagObject[randIdx][1];
+        
+        // Youtube query and output
+        // Note: this seems slightly slower than directly writing get.
+        if (selectedTag != '') {
+          var url = createdElement.youtubeObject.requestYoutubeItem({
+            'query': 'search',
+            'part': 'snippet',
+            'q': selectedTag,
+            'type': 'video',
+            'maxResults': '1'
+          }, undefined, undefined, function (searchResponse) {
+            if (searchResponse.items.length > 0) {
+              createdElement.shadowRoot.querySelector('#data-chunk').innerHTML = '<img src=\"http://img.youtube.com/vi/' + searchResponse.items[0].id.videoId + '/0.jpg\"></img>';
+            }
+          }, undefined, true);
+        }
+      }, 2000);
     });
     
     componentObject.applyStyleFromParentDocumentAll(createdElement);

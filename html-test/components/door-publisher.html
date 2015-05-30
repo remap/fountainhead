@@ -52,7 +52,6 @@
           dataName.append(showid).append(nodeComponent).appendVersion((new Date).getTime()).append(nameSuffix);
   
           var randIndex = Math.floor(Math.random() * createdElement.videoLinks.length);
-          
           var details = createdElement.youtubeObject.requestYoutubeItem({
             'query': 'videos',
             'part': 'contentDetails',
@@ -61,7 +60,6 @@
             // Skip 0 seconds videos
             if (result.items[0].contentDetails.duration != 'PT0S') {
               // Hardcoded for known namespace on container + one digit
-              console.log(controlNumber);
               controlNumber = controlNumber % 4 + 1;
               
               var content = 'https://www.youtube.com/watch?v=' + createdElement.videoLinks[randIndex];

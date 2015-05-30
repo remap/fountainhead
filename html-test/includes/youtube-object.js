@@ -45,8 +45,9 @@ YoutubeObject.prototype.loadYoutubeVideoUrls = function (serviceUrls, callback) 
   xhr.send(data);
 }
 
-YoutubeObject.prototype.requestYoutubeItem = function(options, nextPageToken, videoData, onDone, linkOnly) {
+YoutubeObject.prototype.requestYoutubeItem = function(options, nextPageToken, videoData, onDone, linkOnly, onePage) {
   var storeLinkOnly = typeof linkOnly !== 'undefined' ? linkOnly : true;
+  var requestOnePage = typeof onePage !== 'undefined' ? onePage : false;
   
   if (!options.hasOwnProperty('query')) {
     console.log('Request word not specified, returned.');
@@ -60,6 +61,7 @@ YoutubeObject.prototype.requestYoutubeItem = function(options, nextPageToken, vi
 	  for (var i = 0; i < result.items.length; i++) {
 	    if (storeLinkOnly) {
 	      if (options.hasOwnProperty('videoIdPath')) {
+	        // TODO: performance note: youtubeObject slows things down by eval
 	        eval('var videoId = result.items[i].' + options.videoIdPath);
 	        // For query: search, we can get channelId and playlistId, too
 	        if (videoId !== undefined) {
@@ -73,8 +75,8 @@ YoutubeObject.prototype.requestYoutubeItem = function(options, nextPageToken, vi
 	    }
 	  }
   
-	  if (result.nextPageToken !== undefined && result.nextPageToken !== null) {
-		self.requestYoutubeItem(options, result.nextPageToken, videoData, onDone, storeLinkOnly);
+	  if ((result.nextPageToken !== undefined && result.nextPageToken !== null) && !requestOnePage) {
+		self.requestYoutubeItem(options, result.nextPageToken, videoData, onDone, storeLinkOnly, requestOnePage);
 	  } else {
 	    if (onDone !== undefined) {
 	      // we return the last result only, so for list/channel fetching, videoData can be relied upon while result cannot
@@ -105,6 +107,8 @@ YoutubeObject.prototype.requestYoutubeItem = function(options, nextPageToken, vi
   
   listRequest.open('GET', url, true);
   listRequest.send();
+  
+  return url;
 };
 
 if (typeof exports !== 'undefined') {
