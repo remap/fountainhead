@@ -1,0 +1,151 @@
+# Environment
+
+[showid] "chocolate_cookie_show"
+
+[include] ndn.js
+[prefix] new Name("/ndn/edu/ucla/remap/losatlantis")
+[face] new Face({host: "archive-dev.remap.ucla.edu"})
+[include] ndn-init.js
+[include] ndn-url-publisher-component.js
+
+[cueFolder] "../../cues/"
+
+[include] script-control.js
+[include] component-object.js
+[include] ndn-publisher-component-object.js
+[include] onload.js
+[include] youtube-object.js
+
+# Body
+
+.AGORA 1: Finding the Others 
+
+<<@cue-publisher
+  (t       = "Establish Agora", 
+   cid     = 50)>>
+
+<<@cue-publisher
+  (t       = "1st Instance: Rachel Hey I know that place", 
+   cid     = 55)>>
+
+<<@cue-publisher
+  (t       = Doors blink to alternately black and cycle	On all walls (diff languages, instanced?), 
+   cid     = 56)>>
+
+<<@cue-publisher
+  (t       = Agora becomes more personal, 
+   cid     = 60)>>
+
+<<@cue-publisher
+  (t       = "Stop moving projectors Deftones start", 
+   cid     = 60.5)>>
+
+<<@cue-publisher
+  (t       = "Move to big walls on downbeat	Deftones downbeat", 
+   cid     = 61)>>
+
+<<@cue-publisher
+  (t       = "Dancing doors	C: Rachel instancing, B: Felix instancing - on big walls ONLY", 
+   cid     = 62)>>
+
+.THE ARCHIVE INTERVENES
+
+<<@cue-publisher
+  (t       = "Doors settle", 
+   cid     = 64)>>
+
+<<@cue-publisher
+  (t       = "Establish", 
+   cid     = 65)>>
+
+<<@cue-publisher
+  (t       = Door labels (have to come from the database), 
+   cid     = 65.1)>>
+
+<<@cue-publisher
+  (t       = Door 2 appears w/ tag SL (narrow), 
+   cid     = 65.2)>>
+
+<<@cue-publisher
+  (t       = Door 3 appears w/ tag US (wide wall), 
+   cid     = 65.3)>>
+
+<<@cue-publisher
+  (t       = "Door 4 appears w/ tag (DS wide)", 
+   cid     = 65.4)>>
+
+<<@cue-publisher
+  (t       = "Fade out after everyone has left", 
+   cid     = 67)>>
+
+.AGORA 2: Reunion in the Agora
+
+<<@cue-publisher
+  (t       = "MOVE PROJECTORS TO AGORA", 
+   cid     = 210)>>
+
+<<@cue-publisher
+  (t       = "Establish Agora", 
+   cid     = 220)>>
+
+<<@cue-publisher
+  (t       = Longbeach, 
+   cid     = 225)>>
+
+<<@cue-publisher
+  (t       = 4 Doors appear w/ hashtags, 
+   cid     = 230)>>
+
+<<@cue-publisher
+  (t       = Travelers faces appear as door image (img urls from Zhehao, pulled from the-archive.la), 
+   cid     = 240)>>
+
+<<@cue-publisher
+  (t       = "Video replace faces in all 4 doors (on ding)", 
+   cid     = 250)>>
+
+<<@cue-publisher
+  (t       = "Cycle new videos into existing door locations", 
+   cid     = 260)>>
+
+<<@cue-publisher
+  (t       = Video freeze/stop all doors, 
+   cid     = 270)>>
+
+<<@cue-publisher
+  (t       = "Duplicate of 250 but with long beach, Raul - Fade in doors/ long beach + raul", 
+   cid     = 275)>>
+
+<<@cue-publisher
+  (t       = "Rotate doors clockwise around the space (short blanking in between?)", 
+   cid     = 280)>>
+
+<<@cue-publisher
+  (t       = "Pause and autofollow to faces, then back to original cues", 
+   cid     = 285)>>
+
+.Dance party
+
+<<@cue-publisher
+  (t       = "Move projectors A, D while 16:9 images related to Sarah?", 
+   cid     = 290)>>
+
+<<@cue-publisher
+  (t       = Dance party (with Celebration sound cue), 
+   cid     = 300)>>
+
+<<@cue-publisher
+  (t       = Playlist of dancing in LA via Zhehao full Youtube search "los angeles dancing" + neighborhoods of audienced, 
+   cid     = 305)>>
+
+<<@cue-publisher
+  (t       = Party gives way to memories; come back down to earth, 
+   cid     = 350)>>
+
+<<@cue-publisher
+  (t       = "TWO Door signs and images re-establish (mom turns on the lights)", 
+   cid     = 360)>>
+
+<<@cue-publisher
+  (t       = "Fade to black", 
+   cid     = 380)>>
