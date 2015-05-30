@@ -71,6 +71,8 @@ var chatJID = "admin.admin@archive-dev.remap.ucla.edu";
 var chatPasswd = "admin@admin";
 var defaultMucNickName = "The observatory" ;
 var defaultMucRoom = "observatory@conference.archive-dev.remap.ucla.edu";
+var defaultMucNickName2 = "The guide";
+var defaultMucRoom2 = "guide@conference.archive-dev.remap.ucla.edu";
 var hostXMPP = "archive-dev.remap.ucla.edu" ;
 var hostXMPPHttpBind = "http://archive-dev.remap.ucla.edu:5280/http-bind";
   </script>
@@ -103,7 +105,6 @@ var connection = new Strophe.Connection(hostXMPPHttpBind);;
   <script>
   </script>
   <link rel="import" href="components/chat-control-muc.html" onerror="onImportError(event)">
-  <link rel="import" href="components/chat-control-guide.html" onerror="onImportError(event)">
   <link rel="import" href="components/olf.html" onerror="onImportError(event)">
   <link rel="import" href="components/cue-publisher.html" onerror="onImportError(event)">
   <div id="charactertypecontent">
@@ -153,30 +154,30 @@ var connection = new Strophe.Connection(hostXMPPHttpBind);;
     <p id='toc0' class='scene-heading'>PROLOGUE: INVITATION (ONLINE)</p>
     <p class='action'>The Potential Audience first encounters THE ARCHIVE via the LOS ATLANTIS Website.</p>
 
-    <com-chat-control-muc message="No&#32;time?&#32;No&#32;space?&#32;No&#32;worries!&#32;THE&#32;ARCHIVE&#32;of&#32;&lt;&lt;Los&#32;Angeles&gt;&gt;&#32;has&#32;more&#32;than&#32;enough&#32;room&#32;for&#32;everyone&#39;s&#32;memories.&#32;Learn&#32;what&#32;it&#39;s&#32;like&#32;today!">
+    <com-chat-control-muc message="No&#32;time?&#32;No&#32;space?&#32;No&#32;worries!&#32;THE&#32;ARCHIVE&#32;of&#32;&lt;&lt;Los&#32;Angeles&gt;&gt;&#32;has&#32;more&#32;than&#32;enough&#32;room&#32;for&#32;everyone&#39;s&#32;memories.&#32;Learn&#32;what&#32;it&#39;s&#32;like&#32;today!" roomJID="observatory@conference.archive-dev.remap.ucla.edu" fromNickName="THE OBSERVATORY">
     </com-chat-control-muc>    <p class='action'>The Potential Audience are presented with a choice.</p>
 
-    <com-chat-control-muc message="You&#32;can&#32;register&#32;as&#32;an&#32;online&#32;user&#32;with&#32;privileged&#32;access&#32;and&#32;an&#32;opportunity&#32;to&#32;upload,&#32;or&#32;reserve&#32;a&#32;spot&#32;at&#32;a&#32;live&#32;Transfer...&#32;Just&#32;tell&#32;us&#32;your&#32;name,&#32;where&#32;you&#32;are&#32;from,&#32;and&#32;please&#32;follow&#32;the&#32;links&#32;and&#32;provide&#32;your&#32;billing&#32;and&#32;contact&#32;information.&#32;Upload&#32;a&#32;photo&#32;of&#32;yourselves.&#32;Where&#32;are&#32;you&#32;originally&#32;from?">
+    <com-chat-control-muc message="You&#32;can&#32;register&#32;as&#32;an&#32;online&#32;user&#32;with&#32;privileged&#32;access&#32;and&#32;an&#32;opportunity&#32;to&#32;upload,&#32;or&#32;reserve&#32;a&#32;spot&#32;at&#32;a&#32;live&#32;Transfer...&#32;Just&#32;tell&#32;us&#32;your&#32;name,&#32;where&#32;you&#32;are&#32;from,&#32;and&#32;please&#32;follow&#32;the&#32;links&#32;and&#32;provide&#32;your&#32;billing&#32;and&#32;contact&#32;information.&#32;Upload&#32;a&#32;photo&#32;of&#32;yourselves.&#32;Where&#32;are&#32;you&#32;originally&#32;from?" roomJID="observatory@conference.archive-dev.remap.ucla.edu" fromNickName="THE OBSERVATORY">
     </com-chat-control-muc>    <p class='action'>In the time leading up to the performance, the Potential Audience divides into either TOURISTS (attending in person) or WATCHERS (attending via the web).</p>
     <p class='action'>Going forward, WATCHERS will interact via the OBSERVATORY.  TOURISTS will interact via their GUIDE.</p>
 
-    <com-chat-control-muc message="You&#39;ve&#32;elected&#32;to&#32;participate&#32;in&#32;the&#32;Transfer.&#32;Come&#32;to&#32;&lt;&lt;location&#32;of&#32;the&#32;performance&gt;&gt;&#32;at&#32;&lt;&lt;date&#32;and&#32;time&#32;of&#32;the&#32;performance&gt;&gt;.&#32;Bring&#32;yourself,&#32;an&#32;open&#32;mind&#32;and&#32;your&#32;mobile&#32;device&#32;Etc.">
+    <com-chat-control-muc message="You&#39;ve&#32;elected&#32;to&#32;participate&#32;in&#32;the&#32;Transfer.&#32;Come&#32;to&#32;&lt;&lt;location&#32;of&#32;the&#32;performance&gt;&gt;&#32;at&#32;&lt;&lt;date&#32;and&#32;time&#32;of&#32;the&#32;performance&gt;&gt;.&#32;Bring&#32;yourself,&#32;an&#32;open&#32;mind&#32;and&#32;your&#32;mobile&#32;device&#32;Etc." roomJID="observatory@conference.archive-dev.remap.ucla.edu" fromNickName="THE OBSERVATORY">
     </com-chat-control-muc>
-    <com-chat-control-muc message="Feel&#32;at&#32;home&#32;to&#32;browse&#32;the&#32;records&#32;and&#32;memories&#32;of&#32;&lt;&lt;Los&#32;Angeles&gt;&gt;,&#32;free&#32;of&#32;the&#32;constraints&#32;of&#32;time&#32;and&#32;space.&#32;From&#32;the&#32;comfort&#32;of&#32;your&#32;home&#32;or&#32;computer&#32;you&#32;can&#32;witness&#32;the&#32;live&#32;Transfer&#32;at&#32;&lt;&lt;date&#32;and&#32;time&#32;of&#32;the&#32;performance&gt;&gt;.">
+    <com-chat-control-muc message="Feel&#32;at&#32;home&#32;to&#32;browse&#32;the&#32;records&#32;and&#32;memories&#32;of&#32;&lt;&lt;Los&#32;Angeles&gt;&gt;,&#32;free&#32;of&#32;the&#32;constraints&#32;of&#32;time&#32;and&#32;space.&#32;From&#32;the&#32;comfort&#32;of&#32;your&#32;home&#32;or&#32;computer&#32;you&#32;can&#32;witness&#32;the&#32;live&#32;Transfer&#32;at&#32;&lt;&lt;date&#32;and&#32;time&#32;of&#32;the&#32;performance&gt;&gt;." roomJID="observatory@conference.archive-dev.remap.ucla.edu" fromNickName="THE OBSERVATORY">
     </com-chat-control-muc>    <p class='action'>The WATCHERS are free to explore the records of THE ARCHIVE via the website. Each record has a title, such as "Silent sunrise", a location in the city, "Venice", keywords "#beach #silent #beauty", etc.</p>
 
-    <com-chat-control-muc message="Please&#32;share&#32;your&#32;own&#32;memories&#32;of&#32;&lt;&lt;Los&#32;Angeles&gt;&gt;&#32;to&#32;THE&#32;ARCHIVE,&#32;to&#32;be&#32;remembered,&#32;and&#32;to&#32;be&#32;shared&#32;with&#32;the&#32;participants.">
+    <com-chat-control-muc message="Please&#32;share&#32;your&#32;own&#32;memories&#32;of&#32;&lt;&lt;Los&#32;Angeles&gt;&gt;&#32;to&#32;THE&#32;ARCHIVE,&#32;to&#32;be&#32;remembered,&#32;and&#32;to&#32;be&#32;shared&#32;with&#32;the&#32;participants." roomJID="observatory@conference.archive-dev.remap.ucla.edu" fromNickName="THE OBSERVATORY">
     </com-chat-control-muc>
-    <com-chat-control-muc message="Date&#32;of&#32;Transfer:&#32;&lt;&lt;Thursday,&#32;June&#32;2,&#32;2026&gt;&gt;.&#32;Time:&#32;&lt;&lt;&#32;-&#32;02&#32;Days,&#32;12&#32;Hours,&#32;05&#32;Minutes&gt;&gt;">
+    <com-chat-control-muc message="Date&#32;of&#32;Transfer:&#32;&lt;&lt;Thursday,&#32;June&#32;2,&#32;2026&gt;&gt;.&#32;Time:&#32;&lt;&lt;&#32;-&#32;02&#32;Days,&#32;12&#32;Hours,&#32;05&#32;Minutes&gt;&gt;" roomJID="observatory@conference.archive-dev.remap.ucla.edu" fromNickName="THE OBSERVATORY">
     </com-chat-control-muc>
-    <com-chat-control-muc message="Your&#32;personal&#32;Transfer&#32;Guide:&#32;&lt;&lt;http://the-archive.org/losangeles/219010&gt;&gt;">
+    <com-chat-control-muc message="Your&#32;personal&#32;Transfer&#32;Guide:&#32;&lt;&lt;http://the-archive.org/losangeles/219010&gt;&gt;" roomJID="observatory@conference.archive-dev.remap.ucla.edu" fromNickName="THE OBSERVATORY">
     </com-chat-control-muc>    <p class='action'>The GUIDE,Virgil, is accessed from the TOURISTS' smartphones.</p>
 
-    <com-chat-control-guide message="Hi,&#32;I&#39;m&#32;really&#32;looking&#32;forward&#32;to&#32;this.&#32;You&#32;are&#32;very&#32;special&#32;to&#32;me.">
-    </com-chat-control-guide>    <p class='action'>In the days leading up to the event, its content is mostly a countdown timer.</p>
+    <com-chat-control-muc message="Hi,&#32;I&#39;m&#32;really&#32;looking&#32;forward&#32;to&#32;this.&#32;You&#32;are&#32;very&#32;special&#32;to&#32;me." roomJID="guide@conference.archive-dev.remap.ucla.edu" fromNickName="THE GUIDE">
+    </com-chat-control-muc>    <p class='action'>In the days leading up to the event, its content is mostly a countdown timer.</p>
     <p class='action'>It may occasionally spout memes drawn from THE ARCHIVE to pique the Interest of the TOURISTS.</p>
 
-    <com-chat-control-muc message="Thank&#32;you&#32;for&#32;contributing&#32;to&#32;the&#32;ARCHIVE,&#32;please&#32;consider&#32;using&#32;this&#32;media&#32;in&#32;the&#32;Transfer.&#32;Do&#32;you&#32;think&#32;these&#32;tags&#32;will&#32;resonate&#32;with&#32;our&#32;visitors,&#32;#sunset&#32;#seabreeze.&#32;Click&#32;&lt;br&gt;&lt;button&#32;onclick=&#34;send({bool:true})&#34;&gt;yes&lt;/button&gt;&#32;or&#32;&lt;button&#32;onclick=&#34;send({bool:false})&#34;&gt;no&lt;/button&gt;?">
+    <com-chat-control-muc message="Thank&#32;you&#32;for&#32;contributing&#32;to&#32;the&#32;ARCHIVE,&#32;please&#32;consider&#32;using&#32;this&#32;media&#32;in&#32;the&#32;Transfer.&#32;Do&#32;you&#32;think&#32;these&#32;tags&#32;will&#32;resonate&#32;with&#32;our&#32;visitors,&#32;#sunset&#32;#seabreeze.&#32;Click&#32;&lt;br&gt;&lt;button&#32;onclick=&#34;send({bool:true})&#34;&gt;yes&lt;/button&gt;&#32;or&#32;&lt;button&#32;onclick=&#34;send({bool:false})&#34;&gt;no&lt;/button&gt;?" roomJID="observatory@conference.archive-dev.remap.ucla.edu" fromNickName="THE OBSERVATORY">
     </com-chat-control-muc>    <p class='action'>WATCHERS can change the metadata associated with their uploaded media.</p>
     </section>
 <section>
@@ -186,43 +187,43 @@ var connection = new Strophe.Connection(hostXMPPHttpBind);;
     <com-olf description="OLF:  Wide shot of the Lobby, occasionally zooming to medium shots of groups of TOURISTS and TRAVELERS.">
     </com-olf>    <p class='action'>The TOURISTS filter into the Lobby of THE ARCHIVE. A sign reminds them to log in to the GUIDE on their mobile phones.</p>
 
-    <com-chat-control-guide message="Hello,&#32;{{&#32;user_name&#32;}}!&#32;Where&#32;do&#32;you&#32;want&#32;to&#32;go&#32;today?&#32;Just&#32;kidding...&#32;Welcome.&#32;-Virgil.">
-    </com-chat-control-guide>    <p class='action'>The TOURISTS browse their GUIDE.</p>
+    <com-chat-control-muc message="Hello,&#32;{{&#32;user_name&#32;}}!&#32;Where&#32;do&#32;you&#32;want&#32;to&#32;go&#32;today?&#32;Just&#32;kidding...&#32;Welcome.&#32;-Virgil." roomJID="guide@conference.archive-dev.remap.ucla.edu" fromNickName="THE GUIDE">
+    </com-chat-control-muc>    <p class='action'>The TOURISTS browse their GUIDE.</p>
     <p class='action'>Gradually  the audience congregates  in the lobby.</p>
     <p class='action'>The WATCHERS logged into the OBSERVATORY are greeted. They can watch the live feed streaming to the OBSERVATORY. They can still browse THE ARCHIVE.</p>
     <div class='dual-dialogue'>
       <div class='dual-dialogue-left'>
 
-        <com-chat-control-guide message="Time&#32;to&#32;your&#32;Transfer:&#32;&lt;&lt;&#32;-&#32;00&#32;Days,&#32;00&#32;Hours,&#32;7&#32;Minutes&gt;&gt;.">
-        </com-chat-control-guide>      </div>
+        <com-chat-control-muc message="Time&#32;to&#32;your&#32;Transfer:&#32;&lt;&lt;&#32;-&#32;00&#32;Days,&#32;00&#32;Hours,&#32;7&#32;Minutes&gt;&gt;." roomJID="guide@conference.archive-dev.remap.ucla.edu" fromNickName="THE GUIDE">
+        </com-chat-control-muc>      </div>
       <div class='dual-dialogue-right'>
 
-        <com-chat-control-muc message="Time&#32;to&#32;the&#32;Transfer:&#32;&lt;&lt;&#32;-&#32;00&#32;Days,&#32;00&#32;Hours,&#32;7&#32;Minutes&gt;&gt;.">
+        <com-chat-control-muc message="Time&#32;to&#32;the&#32;Transfer:&#32;&lt;&lt;&#32;-&#32;00&#32;Days,&#32;00&#32;Hours,&#32;7&#32;Minutes&gt;&gt;." roomJID="observatory@conference.archive-dev.remap.ucla.edu" fromNickName="THE OBSERVATORY">
         </com-chat-control-muc>      </div>
     </div>
     <div class='dual-dialogue'>
       <div class='dual-dialogue-left'>
 
-        <com-chat-control-guide message="Time&#32;to&#32;your&#32;Transfer:&#32;&lt;&lt;&#32;-&#32;00&#32;Days,&#32;00&#32;Hours,&#32;5&#32;Minutes&gt;&gt;.">
-        </com-chat-control-guide>      </div>
+        <com-chat-control-muc message="Time&#32;to&#32;your&#32;Transfer:&#32;&lt;&lt;&#32;-&#32;00&#32;Days,&#32;00&#32;Hours,&#32;5&#32;Minutes&gt;&gt;." roomJID="guide@conference.archive-dev.remap.ucla.edu" fromNickName="THE GUIDE">
+        </com-chat-control-muc>      </div>
       <div class='dual-dialogue-right'>
 
-        <com-chat-control-muc message="Time&#32;to&#32;the&#32;Transfer:&#32;&lt;&lt;&#32;-&#32;00&#32;Days,&#32;00&#32;Hours,&#32;5&#32;Minutes&gt;&gt;.">
+        <com-chat-control-muc message="Time&#32;to&#32;the&#32;Transfer:&#32;&lt;&lt;&#32;-&#32;00&#32;Days,&#32;00&#32;Hours,&#32;5&#32;Minutes&gt;&gt;." roomJID="observatory@conference.archive-dev.remap.ucla.edu" fromNickName="THE OBSERVATORY">
         </com-chat-control-muc>      </div>
     </div>
     <div class='dual-dialogue'>
       <div class='dual-dialogue-left'>
 
-        <com-chat-control-guide message="Time&#32;to&#32;your&#32;Transfer:&#32;&lt;&lt;&#32;-&#32;00&#32;Days,&#32;00&#32;Hours,&#32;3&#32;Minutes&gt;&gt;.">
-        </com-chat-control-guide>      </div>
+        <com-chat-control-muc message="Time&#32;to&#32;your&#32;Transfer:&#32;&lt;&lt;&#32;-&#32;00&#32;Days,&#32;00&#32;Hours,&#32;3&#32;Minutes&gt;&gt;." roomJID="guide@conference.archive-dev.remap.ucla.edu" fromNickName="THE GUIDE">
+        </com-chat-control-muc>      </div>
       <div class='dual-dialogue-right'>
 
-        <com-chat-control-muc message="Time&#32;to&#32;the&#32;Transfer:&#32;&lt;&lt;&#32;-&#32;00&#32;Days,&#32;00&#32;Hours,&#32;3&#32;Minutes&gt;&gt;.">
+        <com-chat-control-muc message="Time&#32;to&#32;the&#32;Transfer:&#32;&lt;&lt;&#32;-&#32;00&#32;Days,&#32;00&#32;Hours,&#32;3&#32;Minutes&gt;&gt;." roomJID="observatory@conference.archive-dev.remap.ucla.edu" fromNickName="THE OBSERVATORY">
         </com-chat-control-muc>      </div>
     </div>
 
-    <com-chat-control-guide message="Please&#32;connect&#32;to&#32;the&#32;ARCHIVE-&lt;&lt;LOS_ANGELES&gt;&gt;&#32;WiFi&#32;network.&#32;The&#32;GUIDE&#32;will&#32;activate&#32;(hello!)&#32;when&#32;needed&#32;during&#32;the&#32;Transfer&#32;event.&#32;The&#32;Transference&#32;may&#32;be&#32;challenging.&#32;Be&#32;calm&#32;and&#32;observant.">
-    </com-chat-control-guide>    <p id='toc3' class='scene-heading'>ARCHIVE INSTALLATION: WHAT'S SHOWING NEXT WEEK</p>
+    <com-chat-control-muc message="Please&#32;connect&#32;to&#32;the&#32;ARCHIVE-&lt;&lt;LOS_ANGELES&gt;&gt;&#32;WiFi&#32;network.&#32;The&#32;GUIDE&#32;will&#32;activate&#32;(hello!)&#32;when&#32;needed&#32;during&#32;the&#32;Transfer&#32;event.&#32;The&#32;Transference&#32;may&#32;be&#32;challenging.&#32;Be&#32;calm&#32;and&#32;observant." roomJID="guide@conference.archive-dev.remap.ucla.edu" fromNickName="THE GUIDE">
+    </com-chat-control-muc>    <p id='toc3' class='scene-heading'>ARCHIVE INSTALLATION: WHAT'S SHOWING NEXT WEEK</p>
 
     <com-cue-publisher t="VQ #10" cid="10" desc="Sunset on the beach (50% speed, play for 30s).">
     </com-cue-publisher>
@@ -233,14 +234,14 @@ var connection = new Strophe.Connection(hostXMPPHttpBind);;
     <com-cue-publisher t="VQ #13" cid="13" desc="Sunset fence  (50% speed)">
     </com-cue-publisher>    <p class='action'>While the audience enters and mills around in one corner there is a  soft ambient display. It is simple and inviting. A gentle installation of dusk in Los Angeles</p>
 
-    <com-chat-control-muc message="Which&#32;sunsets&#32;resonate&#32;with&#32;you">
+    <com-chat-control-muc message="Which&#32;sunsets&#32;resonate&#32;with&#32;you" roomJID="observatory@conference.archive-dev.remap.ucla.edu" fromNickName="THE OBSERVATORY">
     </com-chat-control-muc>    <p class='action'>As the WATCHERS look on from the OBSERVATORY,</p>
     <p class='action'>The space fills with sunlight from projections on the walls of &lt;&lt;iconic vistas of the sun setting over the city&gt;&gt;, with (approved) uploads selected by the WATCHERS of this performance used if available.</p>
     <p class='action'>We hear the sounds of nature and in the distance, children, cars and the city.</p>
     <p class='action'>A pin lite comes up on two backpacks. Perhaps one is labeled "OPEN ME", the other says" GUESS WHAT'S INSIDE?". Inside is a map of a particular &lt;&lt;Los Angeles&gt;&gt; park, a radio, and other items needed for a hike. Perhaps other blankets are scattered and spread out</p>
     <p class='action'>The WATCHERS who are browsing receive additional instructions on how to use the OBSERVATORY interface.</p>
 
-    <com-chat-control-muc message="Each&#32;Transfer&#32;takes&#32;advantage&#32;of&#32;crowdsourcing,&#32;so&#32;thank&#32;you&#32;for&#32;being&#32;willing&#32;to&#32;participate.&#32;It&#32;is&#32;through&#32;the&#32;wisdom&#32;of&#32;the&#32;Village&#32;that&#32;we&#32;gain&#32;insight&#32;into&#32;individuals.&#32;As&#32;the&#32;Transfer&#32;proceeds,&#32;you&#32;will&#32;watch&#32;and,&#32;if&#32;you&#32;wish,&#32;help&#32;curate&#32;the&#32;memories&#32;chosen&#32;for&#32;the&#32;participants.&#32;Our&#32;sponsor&#32;tonight&#32;is&#32;&lt;&lt;Johnson&#32;&&#32;Johnson&gt;&gt;&#32;-&#32;click&#32;on&#32;any&#32;product&#32;to&#32;purchase.&#32;Etc...">
+    <com-chat-control-muc message="Each&#32;Transfer&#32;takes&#32;advantage&#32;of&#32;crowdsourcing,&#32;so&#32;thank&#32;you&#32;for&#32;being&#32;willing&#32;to&#32;participate.&#32;It&#32;is&#32;through&#32;the&#32;wisdom&#32;of&#32;the&#32;Village&#32;that&#32;we&#32;gain&#32;insight&#32;into&#32;individuals.&#32;As&#32;the&#32;Transfer&#32;proceeds,&#32;you&#32;will&#32;watch&#32;and,&#32;if&#32;you&#32;wish,&#32;help&#32;curate&#32;the&#32;memories&#32;chosen&#32;for&#32;the&#32;participants.&#32;Our&#32;sponsor&#32;tonight&#32;is&#32;&lt;&lt;Johnson&#32;&&#32;Johnson&gt;&gt;&#32;-&#32;click&#32;on&#32;any&#32;product&#32;to&#32;purchase.&#32;Etc..." roomJID="observatory@conference.archive-dev.remap.ucla.edu" fromNickName="THE OBSERVATORY">
     </com-chat-control-muc>    <p class='action'>A projection of a woman,"Sheena" in silhouette She stands still facing the sunlight, her eyes closed in the warmth of the sun.</p>
     <p class='character voiceover'>VOICEOVER</p>
     <p class='parenthetical '>(an unseen voice with a soft accent[Raul?}; spoken live)</p>
@@ -257,15 +258,15 @@ var connection = new Strophe.Connection(hostXMPPHttpBind);;
     <p class='action'>It's nice here in L.A. ain' it?</p>
     <p class='action'>Damn we're lucky huh.</p>
 
-    <com-chat-control-guide message="Watch&#32;this&#32;memory.&#32;Be&#32;completely&#32;still.&#32;Be&#32;quiet.&#32;You&#32;can&#32;take&#32;a&#32;photo&#32;if&#32;you&#32;like&#32;but&#32;pay&#32;attention&#32;to&#32;the&#32;sun,&#32;it&#32;sets&#32;quickly.">
-    </com-chat-control-guide>    <p class='character voiceover'>VOICEOVER</p>
+    <com-chat-control-muc message="Watch&#32;this&#32;memory.&#32;Be&#32;completely&#32;still.&#32;Be&#32;quiet.&#32;You&#32;can&#32;take&#32;a&#32;photo&#32;if&#32;you&#32;like&#32;but&#32;pay&#32;attention&#32;to&#32;the&#32;sun,&#32;it&#32;sets&#32;quickly." roomJID="guide@conference.archive-dev.remap.ucla.edu" fromNickName="THE GUIDE">
+    </com-chat-control-muc>    <p class='character voiceover'>VOICEOVER</p>
     <p class='dialogue '>Feel that breeze? Can you see the Hollywood sign?</p>
     <p class='action'>The image shifts to another sunset, in a different &lt;&lt;Los Angeles&gt;&gt; location.</p>
     <div class='dual-dialogue'>
       <div class='dual-dialogue-left'>
 
-        <com-chat-control-guide message="Use&#32;your&#32;imagination.&#32;It&#39;s&#32;Ok&#32;to&#32;move&#32;to&#32;a&#32;better&#32;viewpoint&#32;if&#32;needed.">
-        </com-chat-control-guide>      </div>
+        <com-chat-control-muc message="Use&#32;your&#32;imagination.&#32;It&#39;s&#32;Ok&#32;to&#32;move&#32;to&#32;a&#32;better&#32;viewpoint&#32;if&#32;needed." roomJID="guide@conference.archive-dev.remap.ucla.edu" fromNickName="THE GUIDE">
+        </com-chat-control-muc>      </div>
       <div class='dual-dialogue-right'>
         <p class='character voiceover'>VOICEOVER</p>
         <p class='dialogue '>Look at the sky painted in  orange, red, and yellow. Look at the clouds colored with a bright disguise. I've never seen this sunset before... And I never will again</p>
@@ -275,8 +276,8 @@ var connection = new Strophe.Connection(hostXMPPHttpBind);;
     <div class='dual-dialogue'>
       <div class='dual-dialogue-left'>
 
-        <com-chat-control-guide message="What&#32;do&#32;you&#32;think&#32;it&#32;felt&#32;like&#32;to&#32;be&#32;there?&#32;Choose:&#32;{{&#32;tags&#32;}}&#32;How&#32;would&#32;you&#32;TAG&#32;this&#32;memory.&#32;How&#32;does&#32;the&#32;sunset&#32;make&#32;you&#32;feel?">
-        </com-chat-control-guide>      </div>
+        <com-chat-control-muc message="What&#32;do&#32;you&#32;think&#32;it&#32;felt&#32;like&#32;to&#32;be&#32;there?&#32;Choose:&#32;{{&#32;tags&#32;}}&#32;How&#32;would&#32;you&#32;TAG&#32;this&#32;memory.&#32;How&#32;does&#32;the&#32;sunset&#32;make&#32;you&#32;feel?" roomJID="guide@conference.archive-dev.remap.ucla.edu" fromNickName="THE GUIDE">
+        </com-chat-control-muc>      </div>
       <div class='dual-dialogue-right'>
         <p class='character voiceover'>VOICEOVER</p>
         <p class='dialogue '>It's almost gone, behind the hills and the shadows of black tree branches.  It was a close to a long day. We took this moment to remember all that has happened during the day.</p>
@@ -296,18 +297,18 @@ var connection = new Strophe.Connection(hostXMPPHttpBind);;
     <div class='dual-dialogue'>
       <div class='dual-dialogue-left'>
 
-        <com-chat-control-guide message="Command:&#32;{{&#32;clear&#32;}}">
-        </com-chat-control-guide>      </div>
+        <com-chat-control-muc message="Command:&#32;{{&#32;clear&#32;}}" roomJID="guide@conference.archive-dev.remap.ucla.edu" fromNickName="THE GUIDE">
+        </com-chat-control-muc>      </div>
       <div class='dual-dialogue-right'>
 
-        <com-chat-control-muc message="Command:&#32;{{&#32;clear&#32;}}">
+        <com-chat-control-muc message="Command:&#32;{{&#32;clear&#32;}}" roomJID="observatory@conference.archive-dev.remap.ucla.edu" fromNickName="THE OBSERVATORY">
         </com-chat-control-muc>      </div>
     </div>
     <div class='dual-dialogue'>
       <div class='dual-dialogue-left'>
 
-        <com-chat-control-guide message="The&#32;cycle&#32;of&#32;renewal&#32;is&#32;complete&#32;every&#32;evening&#32;when&#32;the&#32;sun&#32;sets&#32;to&#32;deep&#32;sleep.&#32;Take&#32;a&#32;picture.&#32;You&#32;can&#32;create&#32;a&#32;new&#32;memory&#32;from&#32;this&#32;one.">
-        </com-chat-control-guide>      </div>
+        <com-chat-control-muc message="The&#32;cycle&#32;of&#32;renewal&#32;is&#32;complete&#32;every&#32;evening&#32;when&#32;the&#32;sun&#32;sets&#32;to&#32;deep&#32;sleep.&#32;Take&#32;a&#32;picture.&#32;You&#32;can&#32;create&#32;a&#32;new&#32;memory&#32;from&#32;this&#32;one." roomJID="guide@conference.archive-dev.remap.ucla.edu" fromNickName="THE GUIDE">
+        </com-chat-control-muc>      </div>
       <div class='dual-dialogue-right'>
         <p class='character voiceover'>VOICEOVER</p>
         <p class='dialogue '>All that is left now is the smear of red in the sky.</p>
@@ -334,8 +335,8 @@ Where are you damnit
 Why am I here in this-</p>
     <p class='action'>A louder ping, closer.</p>
 
-    <com-chat-control-guide message="Time&#32;to&#32;your&#32;Transfer:&#32;&lt;&lt;&#32;-&#32;00&#32;Days,&#32;00&#32;Hours,&#32;00&#32;Minutes&gt;&gt;.">
-    </com-chat-control-guide>    <p class='character rachel travelers'>RACHEL</p>
+    <com-chat-control-muc message="Time&#32;to&#32;your&#32;Transfer:&#32;&lt;&lt;&#32;-&#32;00&#32;Days,&#32;00&#32;Hours,&#32;00&#32;Minutes&gt;&gt;." roomJID="guide@conference.archive-dev.remap.ucla.edu" fromNickName="THE GUIDE">
+    </com-chat-control-muc>    <p class='character rachel travelers'>RACHEL</p>
     <p class='dialogue travelers'>Did you hear that?</p>
 
     <com-olf description="OLF:  Title overlaid - Provide Identification Image">
@@ -343,19 +344,19 @@ Why am I here in this-</p>
     <div class='dual-dialogue'>
       <div class='dual-dialogue-left'>
 
-        <com-chat-control-guide message="Image&#32;capture&#32;and&#32;authentication&#32;ready.">
-        </com-chat-control-guide>      </div>
+        <com-chat-control-muc message="Image&#32;capture&#32;and&#32;authentication&#32;ready." roomJID="guide@conference.archive-dev.remap.ucla.edu" fromNickName="THE GUIDE">
+        </com-chat-control-muc>      </div>
       <div class='dual-dialogue-right'>
 
-        <com-chat-control-muc message="Visitor&#32;arrival&#32;underway.&#32;[Link&#32;to&#32;view.]">
+        <com-chat-control-muc message="Visitor&#32;arrival&#32;underway.&#32;[Link&#32;to&#32;view.]" roomJID="observatory@conference.archive-dev.remap.ucla.edu" fromNickName="THE OBSERVATORY">
         </com-chat-control-muc>      </div>
     </div>
     <p class='action'>RACHEL tries to open the door. It's locked.</p>
     <div class='dual-dialogue'>
       <div class='dual-dialogue-left'>
 
-        <com-chat-control-guide message="Please&#32;use&#32;your&#32;guide.">
-        </com-chat-control-guide>      </div>
+        <com-chat-control-muc message="Please&#32;use&#32;your&#32;guide." roomJID="guide@conference.archive-dev.remap.ucla.edu" fromNickName="THE GUIDE">
+        </com-chat-control-muc>      </div>
       <div class='dual-dialogue-right'>
         <p class='character rachel travelers'>RACHEL</p>
         <p class='dialogue travelers'>Damnit  I know he's in there. I got in yesterday!</p>
@@ -365,8 +366,8 @@ Why am I here in this-</p>
     <div class='dual-dialogue'>
       <div class='dual-dialogue-left'>
 
-        <com-chat-control-guide message="Alright,&#32;now&#32;it&#39;s&#32;time,&#32;&lt;&lt;Yuki&#32;Izumihara&gt;&gt;.&#32;Take&#32;your&#32;picture&#32;to&#32;authorize&#32;entry.">
-        </com-chat-control-guide>      </div>
+        <com-chat-control-muc message="Alright,&#32;now&#32;it&#39;s&#32;time,&#32;&lt;&lt;Yuki&#32;Izumihara&gt;&gt;.&#32;Take&#32;your&#32;picture&#32;to&#32;authorize&#32;entry." roomJID="guide@conference.archive-dev.remap.ucla.edu" fromNickName="THE GUIDE">
+        </com-chat-control-muc>      </div>
       <div class='dual-dialogue-right'>
         <p class='character rachel travelers'>RACHEL</p>
         <p class='parenthetical travelers'>(seeing what the TOURISTS' GUIDES say)</p>
@@ -375,8 +376,8 @@ Why am I here in this-</p>
     </div>
     <p class='action'>RACHEL takes a photo of herself using a TOURIST'S phone.</p>
 
-    <com-chat-control-guide message="Confirmed,&#32;&lt;&lt;Randy&#32;Illum&gt;&gt;.&#32;(Photo&#32;of&#32;Rachel.)&#32;(Barcode.)">
-    </com-chat-control-guide>    <p class='action'>RACHEL proceeds to show the barcode to the door's access control unit.</p>
+    <com-chat-control-muc message="Confirmed,&#32;&lt;&lt;Randy&#32;Illum&gt;&gt;.&#32;(Photo&#32;of&#32;Rachel.)&#32;(Barcode.)" roomJID="guide@conference.archive-dev.remap.ucla.edu" fromNickName="THE GUIDE">
+    </com-chat-control-muc>    <p class='action'>RACHEL proceeds to show the barcode to the door's access control unit.</p>
     <p class='character the-archive'>THE ARCHIVE</p>
     <p class='parenthetical '>(on projection by the door)</p>
     <p class='dialogue '>Confirmed, &lt;&lt;Randy Illum&gt;&gt;.  (Photo of Rachel.)</p>
@@ -392,7 +393,7 @@ Why am I here in this-</p>
     <p class='action'>Like RACHEL, the other TRAVELERS borrow TOURISTS' phones and identities.  They do this throughout the performance, as needed.</p>
     <p id='toc6' class='scene-heading'>SCENE 4: DOWN THE RABBIT HOLE</p>
 
-    <com-chat-control-muc message="Rain.">
+    <com-chat-control-muc message="Rain." roomJID="observatory@conference.archive-dev.remap.ucla.edu" fromNickName="THE OBSERVATORY">
     </com-chat-control-muc>
     <com-olf description="OLF:  Dark, noisy image. Could be black.">
     </com-olf>    <p class='action'>Rain sounds drift in from THE ARCHIVE. Rachel walks down a passage way and then stops, she picks up an umbrella and opens it. The sound of rain grows more present, the memory of rain. Rachel continues walking through the tunnel and addressing her new friend.</p>
@@ -433,7 +434,7 @@ I've got the anatomy but I've forgotten how to connect. I've got sensation but n
     </com-olf>
     <com-cue-publisher t="VQ #50" cid="50" desc="establish agora.">
     </com-cue-publisher>
-    <com-chat-control-muc message="Acclimating&#32;our&#32;visitors&#32;to&#32;records&#32;of&#32;&lt;&lt;Los&#32;Angeles&gt;&gt;.">
+    <com-chat-control-muc message="Acclimating&#32;our&#32;visitors&#32;to&#32;records&#32;of&#32;&lt;&lt;Los&#32;Angeles&gt;&gt;." roomJID="observatory@conference.archive-dev.remap.ucla.edu" fromNickName="THE OBSERVATORY">
     </com-chat-control-muc>    <p class='action'>The WATCHERS see a menu of media about Los Angeles, with links to follow deeper into the memory of THE ARCHIVE. They may "favorite" media to use later. At the same time, they view a live cameras of the Agora and instructions to keep track of the TOURIST they "followed".</p>
     <p class='action'>The TOURISTS enter The Agora, an open space bathed in warm and friendly light wit four facing doors. The space is surrounded by soft fog drifting through shafts of light. Faint flickering images from THE ARCHIVE move around the space.</p>
     <p class='action'>In the  center of the space are three people huddled together and talking quietly. Rachel stops and stares at them. They continue  to talk quietly but animatedly,( I told you it was a bad idea-  we can't force- she has has to face..etc-) finally Rachel says</p>
@@ -492,8 +493,8 @@ Hi Felix</p>
     <p class='character rachel travelers'>RACHEL</p>
     <p class='dialogue travelers'>Hey... Look. I know that place!</p>
 
-    <com-chat-control-guide message="Here,&#32;your&#32;memories&#32;are&#32;safe&#32;TO&#32;REMEMBER">
-    </com-chat-control-guide>    <p class='character eddie travelers'>EDDIE</p>
+    <com-chat-control-muc message="Here,&#32;your&#32;memories&#32;are&#32;safe&#32;TO&#32;REMEMBER" roomJID="guide@conference.archive-dev.remap.ucla.edu" fromNickName="THE GUIDE">
+    </com-chat-control-muc>    <p class='character eddie travelers'>EDDIE</p>
     <p class='dialogue travelers'>Yeah! It's ... it's-</p>
     <p class='character rachel travelers'>RACHEL</p>
     <p class='dialogue travelers'>Yeah right it's.. Look over there that's-</p>
@@ -506,15 +507,15 @@ Hi Felix</p>
       </div>
       <div class='dual-dialogue-right'>
 
-        <com-chat-control-guide message="Welcome&#32;to&#32;Transfer,&#32;&lt;&lt;Roshni&gt;&gt;!">
-        </com-chat-control-guide>      </div>
+        <com-chat-control-muc message="Welcome&#32;to&#32;Transfer,&#32;&lt;&lt;Roshni&gt;&gt;!" roomJID="guide@conference.archive-dev.remap.ucla.edu" fromNickName="THE GUIDE">
+        </com-chat-control-muc>      </div>
     </div>
     <p class='action'>The murmur of the CITIZENS grows into more distinct, welcoming voices. Perhaps it names the audience members</p>
     <p class='character citizens-(v/o)'>CITIZENS (V/O)</p>
     <p class='dialogue '>Welcome! Hei! Annyeonghaseyo! Hola! Czesc! Marhaba, Hello Yuki. Jeff welcome. Hola Zoe! Etc.</p>
 
-    <com-chat-control-guide message="This&#32;is&#32;your&#32;ARCHIVE.&#32;Take&#32;a&#32;look&#32;before&#32;the&#32;Transfer&#32;starts.">
-    </com-chat-control-guide>    <p class='action'>The TRAVELERS see a collage/montage of memories of &lt;&lt;Los Angeles&gt;&gt;.</p>
+    <com-chat-control-muc message="This&#32;is&#32;your&#32;ARCHIVE.&#32;Take&#32;a&#32;look&#32;before&#32;the&#32;Transfer&#32;starts." roomJID="guide@conference.archive-dev.remap.ucla.edu" fromNickName="THE GUIDE">
+    </com-chat-control-muc>    <p class='action'>The TRAVELERS see a collage/montage of memories of &lt;&lt;Los Angeles&gt;&gt;.</p>
 
     <com-olf description="OLF:  Four independent feeds, distributed evenly across the WATCHERS, each with a CU of one TRAVELER.">
     </com-olf>    <p class='character felix travelers'>FELIX</p>
@@ -599,7 +600,7 @@ Slow down.</p>
     <p class='action'>Each Candidate's Guide lets out a PING sound</p>
     <p class='action'>Each TOURIST'S GUIDE emits a ping sound.</p>
 
-    <com-chat-control-muc message="First&#32;Transfer&#32;options.">
+    <com-chat-control-muc message="First&#32;Transfer&#32;options." roomJID="observatory@conference.archive-dev.remap.ucla.edu" fromNickName="THE OBSERVATORY">
     </com-chat-control-muc>    <p class='character citizens-(v/o)'>CITIZENS (V/O)</p>
     <p class='dialogue '>We are your City. We are you. Come remember with us.</p>
 
@@ -609,8 +610,8 @@ Slow down.</p>
     <com-cue-publisher t="VQ #65" cid="65" desc="Door labels.">
     </com-cue-publisher>    <p class='action'>Another PING sound from the GUIDE in the TOURISTS' hands, pockets, purses, etc. It is answered by a similar sound behind the walls of the Agora.  The sound is heard in the OBSERVATORY.</p>
 
-    <com-chat-control-guide message="Enter&#32;{{&#32;tags&#32;}},&#32;or&#32;well,&#32;maybe&#32;one&#32;of&#32;the&#32;other&#32;ones.">
-    </com-chat-control-guide>    <p class='character citizens-(v/o)'>CITIZENS (V/O)</p>
+    <com-chat-control-muc message="Enter&#32;{{&#32;tags&#32;}},&#32;or&#32;well,&#32;maybe&#32;one&#32;of&#32;the&#32;other&#32;ones." roomJID="guide@conference.archive-dev.remap.ucla.edu" fromNickName="THE GUIDE">
+    </com-chat-control-muc>    <p class='character citizens-(v/o)'>CITIZENS (V/O)</p>
     <p class='dialogue '>Remember.</p>
 
     <com-olf description="OLF:  Medium wide of the four TRAVELERS, cut with TOURIST reaction closeups if possible.">
@@ -687,28 +688,28 @@ Slow down.</p>
       </div>
       <div class='dual-dialogue-right'>
 
-        <com-chat-control-guide message="This&#32;first&#32;one&#32;is&#32;always&#32;pretty&#32;easy.&#32;Just&#32;enjoy&#32;it.">
-        </com-chat-control-guide>      </div>
+        <com-chat-control-muc message="This&#32;first&#32;one&#32;is&#32;always&#32;pretty&#32;easy.&#32;Just&#32;enjoy&#32;it." roomJID="guide@conference.archive-dev.remap.ucla.edu" fromNickName="THE GUIDE">
+        </com-chat-control-muc>      </div>
     </div>
     <p class='action'>As far as possible, THE OBSERVATORY shifts the view of each WATCHER to the TOURIST they have previously agreed to "follow".</p>
 
     <com-olf description="OLF:  Switches to one of the four Ritual Chambers to be viewed by the WATCHERS.">
     </com-olf>
-    <com-chat-control-muc message="Full&#32;screen&#32;mode&#32;is&#32;recommended.">
+    <com-chat-control-muc message="Full&#32;screen&#32;mode&#32;is&#32;recommended." roomJID="observatory@conference.archive-dev.remap.ucla.edu" fromNickName="THE OBSERVATORY">
     </com-chat-control-muc>    <p id='toc10' class='scene-heading'>SCENE 3: FOREPLAY (1ST RITUAL)</p>
     <p class='action'><em>Four versions of Ritual 1 play out simultaneously - one for each TRAVELER and their group of  TOURISTS.</em></p>
     <p class='action'>Ritual 1 contains "surface" memories, mostly pleasurable and iconic.</p>
     <p class='action'>During the Rituals, the Travelers  and willing Tourists might get involved in the memory and are encouraged by the GUIDE to participate/take a role in the reenactment. They can always take photos or video of the events, which they can upload to THE ARCHIVE (for use in Act III).</p>
 
-    <com-chat-control-muc message="The&#32;visitors&#32;undergo&#32;the&#32;first&#32;Transfer.">
+    <com-chat-control-muc message="The&#32;visitors&#32;undergo&#32;the&#32;first&#32;Transfer." roomJID="observatory@conference.archive-dev.remap.ucla.edu" fromNickName="THE OBSERVATORY">
     </com-chat-control-muc>
     <com-olf description="OLF:  THE OBSERVATORY presents four possible views to the WATCHERS, one for each Ritual, which they can switch between at any time.">
     </com-olf>    <p class='action'>If possible, the OBSERVATORY's view into each ritual should show the previously captured faces of the TOURISTS above the live stream.</p>
 
-    <com-chat-control-muc message="Shepherd&#32;your&#32;visitor&#32;to&#32;a&#32;more&#32;fulfilling&#32;remembrance.">
+    <com-chat-control-muc message="Shepherd&#32;your&#32;visitor&#32;to&#32;a&#32;more&#32;fulfilling&#32;remembrance." roomJID="observatory@conference.archive-dev.remap.ucla.edu" fromNickName="THE OBSERVATORY">
     </com-chat-control-muc>    <p class='action'>What music will connect to your visitor?</p>
 
-    <com-chat-control-muc message="Hometown&#32;of&#32;your&#32;visitor,&#32;&lt;&lt;Jeff&#32;Burke&gt;&gt;&#32;is&#32;&lt;&lt;Brea,&#32;California&gt;&gt;.">
+    <com-chat-control-muc message="Hometown&#32;of&#32;your&#32;visitor,&#32;&lt;&lt;Jeff&#32;Burke&gt;&gt;&#32;is&#32;&lt;&lt;Brea,&#32;California&gt;&gt;." roomJID="observatory@conference.archive-dev.remap.ucla.edu" fromNickName="THE OBSERVATORY">
     </com-chat-control-muc>    </section>
 <section>
     <p id='toc11' class='scene-heading'>RITUAL 1/A: "DEPARTURE" (@ SHEENA)</p>
@@ -732,8 +733,8 @@ Slow down.</p>
     <p class='action'>In the distance, the &lt;&lt;Beatles' "Back in the USSR"&gt;&gt; plays. Sheena stands and listens.</p>
     <p class='action'>Tony and Tina (Two CITIZENS, portray a couple) sit surrounded by luggage, their crystalline dress out of place for the scene. They kiss each other. The kiss is a long and happy one.  After they kiss they fall back into their seats and get comfortable.</p>
 
-    <com-chat-control-guide message="Explore&#32;this&#32;record&#32;from&#32;all&#32;angles.&#32;[Buttons:&#32;A,&#32;B]">
-    </com-chat-control-guide>    <p class='action'>Their actions are repeated in video projections behind them. They are composited against a waiting room.</p>
+    <com-chat-control-muc message="Explore&#32;this&#32;record&#32;from&#32;all&#32;angles.&#32;[Buttons:&#32;A,&#32;B]" roomJID="guide@conference.archive-dev.remap.ucla.edu" fromNickName="THE GUIDE">
+    </com-chat-control-muc>    <p class='action'>Their actions are repeated in video projections behind them. They are composited against a waiting room.</p>
     <p class='character tony'>TONY</p>
     <p class='dialogue '>I love you, babe.</p>
     <p class='character tina'>TINA</p>
@@ -921,7 +922,7 @@ Slow down.</p>
 
     <com-olf description="OLF:  Wide shot at entry gives way to alternating closeups of each TOURIST and TRAVELER within the ritual. As needed, the feed can cut to direct input from the projection video source, before returning to closeups.">
     </com-olf>
-    <com-chat-control-muc message="What&#32;places&#32;will&#32;connect&#32;with&#32;your&#32;visitors?&#32;[WATCHERS&#32;vote&#32;on&#32;videos&#32;and&#32;their&#32;choices&#32;are&#32;taken&#32;into&#32;account&#32;and&#32;printed&#32;as&#32;pictures&#32;in&#32;the&#32;space.]">
+    <com-chat-control-muc message="What&#32;places&#32;will&#32;connect&#32;with&#32;your&#32;visitors?&#32;[WATCHERS&#32;vote&#32;on&#32;videos&#32;and&#32;their&#32;choices&#32;are&#32;taken&#32;into&#32;account&#32;and&#32;printed&#32;as&#32;pictures&#32;in&#32;the&#32;space.]" roomJID="observatory@conference.archive-dev.remap.ucla.edu" fromNickName="THE OBSERVATORY">
     </com-chat-control-muc>    <p class='action'>**BEAT 1 of RITUAL BEGIN – ARRANGE PHOTOS ON GROUND</p>
     <p class='action'>A group of TOURISTS follow Felix down a hallway; they pass a bulletin board with pictures pinned to it. They approach a bedroom door, slightly ajar, and FELIX enters with TOURISTS trailing behind him.</p>
     <p class='action'>Criss-crossing the space are hundreds of strings with random objects hanging amongst them. From the ceiling hang small pictures twinkling metallic. There is a box with little silver telescopes. In the corner, a printer periodically outputs new stills from THE ARCHIVE that have been selected by the WATCHERS. FELIX pauses as a diagram illuminates on the floor of the space.</p>
@@ -931,54 +932,54 @@ Slow down.</p>
     <p class='dialogue '>**(<strong><em><strong>Bolded text is in ASL, red is also spoken<em>****)**
 ***I look out the window and see memories. Lots of memories. I'm a stargazer*****,** ***looking into the lives of other celestial beings.*** ***I hover above them and watch***. My window faces north, at the end of a row of small houses, inside a cul de sac, at the edge of a dusty neighborhood overlooking a cemented river in Chavez Ravine. ***That's where we grew up.*** Where the telephone wires hung low. </em></strong>Like electricity!</strong></em> About to touch the Earth. Sparks sometimes fly.</p>
 
-    <com-chat-control-guide message="I&#32;look&#32;out&#32;the&#32;window&#32;and&#32;see&#32;memories.">
-    </com-chat-control-guide>
-    <com-chat-control-guide message="Lots&#32;of&#32;memories.">
-    </com-chat-control-guide>
-    <com-chat-control-guide message="I&#39;m&#32;a&#32;stargazer,&#32;looking&#32;into&#32;the&#32;lives&#32;of&#32;other&#32;celestial&#32;beings.">
-    </com-chat-control-guide>
-    <com-chat-control-guide message="I&#32;hover&#32;above&#32;them&#32;and&#32;watch.">
-    </com-chat-control-guide>
-    <com-chat-control-guide message="That&#39;s&#32;where&#32;we&#32;grew&#32;up.">
-    </com-chat-control-guide>
-    <com-chat-control-guide message="Where&#32;the&#32;telephone&#32;wires&#32;hung&#32;low.">
-    </com-chat-control-guide>
-    <com-chat-control-guide message="Like&#32;electricity!">
-    </com-chat-control-guide>
-    <com-chat-control-guide message="About&#32;to&#32;touch&#32;the&#32;Earth.">
-    </com-chat-control-guide>
-    <com-chat-control-guide message="Sparks&#32;sometimes&#32;fly.">
-    </com-chat-control-guide>    <p class='character andi'>ANDI</p>
+    <com-chat-control-muc message="I&#32;look&#32;out&#32;the&#32;window&#32;and&#32;see&#32;memories." roomJID="guide@conference.archive-dev.remap.ucla.edu" fromNickName="THE GUIDE">
+    </com-chat-control-muc>
+    <com-chat-control-muc message="Lots&#32;of&#32;memories." roomJID="guide@conference.archive-dev.remap.ucla.edu" fromNickName="THE GUIDE">
+    </com-chat-control-muc>
+    <com-chat-control-muc message="I&#39;m&#32;a&#32;stargazer,&#32;looking&#32;into&#32;the&#32;lives&#32;of&#32;other&#32;celestial&#32;beings." roomJID="guide@conference.archive-dev.remap.ucla.edu" fromNickName="THE GUIDE">
+    </com-chat-control-muc>
+    <com-chat-control-muc message="I&#32;hover&#32;above&#32;them&#32;and&#32;watch." roomJID="guide@conference.archive-dev.remap.ucla.edu" fromNickName="THE GUIDE">
+    </com-chat-control-muc>
+    <com-chat-control-muc message="That&#39;s&#32;where&#32;we&#32;grew&#32;up." roomJID="guide@conference.archive-dev.remap.ucla.edu" fromNickName="THE GUIDE">
+    </com-chat-control-muc>
+    <com-chat-control-muc message="Where&#32;the&#32;telephone&#32;wires&#32;hung&#32;low." roomJID="guide@conference.archive-dev.remap.ucla.edu" fromNickName="THE GUIDE">
+    </com-chat-control-muc>
+    <com-chat-control-muc message="Like&#32;electricity!" roomJID="guide@conference.archive-dev.remap.ucla.edu" fromNickName="THE GUIDE">
+    </com-chat-control-muc>
+    <com-chat-control-muc message="About&#32;to&#32;touch&#32;the&#32;Earth." roomJID="guide@conference.archive-dev.remap.ucla.edu" fromNickName="THE GUIDE">
+    </com-chat-control-muc>
+    <com-chat-control-muc message="Sparks&#32;sometimes&#32;fly." roomJID="guide@conference.archive-dev.remap.ucla.edu" fromNickName="THE GUIDE">
+    </com-chat-control-muc>    <p class='character andi'>ANDI</p>
     <p class='dialogue '>We've written stories about this place. So close and yet so far. <strong><em>I dream of being an astronaut!<strong><em> Like Ellen Ochoa. You have to be good at math, but I'm pretty terrible at it. You have to physically fit, but I can't run very fast. We make up stories about all kinds of things. Like these things! </em></strong>Look! Read! Share!</strong></em></p>
 
-    <com-chat-control-guide message="We&#39;ve&#32;written&#32;stories&#32;about&#32;this&#32;place.">
-    </com-chat-control-guide>
-    <com-chat-control-guide message="So&#32;close&#32;and&#32;yet&#32;so&#32;far.">
-    </com-chat-control-guide>
-    <com-chat-control-guide message="I&#32;dream&#32;of&#32;being&#32;an&#32;astronaut!">
-    </com-chat-control-guide>
-    <com-chat-control-guide message="Like&#32;Ellen&#32;Ochoa.">
-    </com-chat-control-guide>
-    <com-chat-control-guide message="You&#32;have&#32;to&#32;be&#32;good&#32;at&#32;math...">
-    </com-chat-control-guide>
-    <com-chat-control-guide message="But&#32;I&#39;m&#32;pretty&#32;terrible&#32;at&#32;it.">
-    </com-chat-control-guide>
-    <com-chat-control-guide message="You&#32;have&#32;to&#32;be&#32;physically&#32;fit.">
-    </com-chat-control-guide>
-    <com-chat-control-guide message="But&#32;I&#32;can&#39;t&#32;run&#32;very&#32;fast.">
-    </com-chat-control-guide>
-    <com-chat-control-guide message="We&#32;make&#32;up&#32;stories&#32;about&#32;all&#32;kinds&#32;of&#32;things.">
-    </com-chat-control-guide>
-    <com-chat-control-guide message="Like&#32;these&#32;things!">
-    </com-chat-control-guide>
-    <com-chat-control-guide message="Look!">
-    </com-chat-control-guide>
-    <com-chat-control-guide message="Read!">
-    </com-chat-control-guide>
-    <com-chat-control-guide message="Share!">
-    </com-chat-control-guide>
-    <com-chat-control-guide message="Command&#32;:&#32;{{&#32;clear&#32;}}">
-    </com-chat-control-guide>    <p class='action'>**BEAT 2 of RITUAL BEGIN – HANG PHOTOS IN CIRCLE ON STRINGS</p>
+    <com-chat-control-muc message="We&#39;ve&#32;written&#32;stories&#32;about&#32;this&#32;place." roomJID="guide@conference.archive-dev.remap.ucla.edu" fromNickName="THE GUIDE">
+    </com-chat-control-muc>
+    <com-chat-control-muc message="So&#32;close&#32;and&#32;yet&#32;so&#32;far." roomJID="guide@conference.archive-dev.remap.ucla.edu" fromNickName="THE GUIDE">
+    </com-chat-control-muc>
+    <com-chat-control-muc message="I&#32;dream&#32;of&#32;being&#32;an&#32;astronaut!" roomJID="guide@conference.archive-dev.remap.ucla.edu" fromNickName="THE GUIDE">
+    </com-chat-control-muc>
+    <com-chat-control-muc message="Like&#32;Ellen&#32;Ochoa." roomJID="guide@conference.archive-dev.remap.ucla.edu" fromNickName="THE GUIDE">
+    </com-chat-control-muc>
+    <com-chat-control-muc message="You&#32;have&#32;to&#32;be&#32;good&#32;at&#32;math..." roomJID="guide@conference.archive-dev.remap.ucla.edu" fromNickName="THE GUIDE">
+    </com-chat-control-muc>
+    <com-chat-control-muc message="But&#32;I&#39;m&#32;pretty&#32;terrible&#32;at&#32;it." roomJID="guide@conference.archive-dev.remap.ucla.edu" fromNickName="THE GUIDE">
+    </com-chat-control-muc>
+    <com-chat-control-muc message="You&#32;have&#32;to&#32;be&#32;physically&#32;fit." roomJID="guide@conference.archive-dev.remap.ucla.edu" fromNickName="THE GUIDE">
+    </com-chat-control-muc>
+    <com-chat-control-muc message="But&#32;I&#32;can&#39;t&#32;run&#32;very&#32;fast." roomJID="guide@conference.archive-dev.remap.ucla.edu" fromNickName="THE GUIDE">
+    </com-chat-control-muc>
+    <com-chat-control-muc message="We&#32;make&#32;up&#32;stories&#32;about&#32;all&#32;kinds&#32;of&#32;things." roomJID="guide@conference.archive-dev.remap.ucla.edu" fromNickName="THE GUIDE">
+    </com-chat-control-muc>
+    <com-chat-control-muc message="Like&#32;these&#32;things!" roomJID="guide@conference.archive-dev.remap.ucla.edu" fromNickName="THE GUIDE">
+    </com-chat-control-muc>
+    <com-chat-control-muc message="Look!" roomJID="guide@conference.archive-dev.remap.ucla.edu" fromNickName="THE GUIDE">
+    </com-chat-control-muc>
+    <com-chat-control-muc message="Read!" roomJID="guide@conference.archive-dev.remap.ucla.edu" fromNickName="THE GUIDE">
+    </com-chat-control-muc>
+    <com-chat-control-muc message="Share!" roomJID="guide@conference.archive-dev.remap.ucla.edu" fromNickName="THE GUIDE">
+    </com-chat-control-muc>
+    <com-chat-control-muc message="Command&#32;:&#32;{{&#32;clear&#32;}}" roomJID="guide@conference.archive-dev.remap.ucla.edu" fromNickName="THE GUIDE">
+    </com-chat-control-muc>    <p class='action'>**BEAT 2 of RITUAL BEGIN – HANG PHOTOS IN CIRCLE ON STRINGS</p>
     <p class='action'>ANDI picks up the telescope and points it at the web of strings around her.</p>
     <p class='character andi'>ANDI</p>
     <p class='dialogue '>&lt;&lt;1995: An Assyrian food festival. We were really cute as a kids!&gt;&gt;</p>
@@ -992,8 +993,8 @@ Slow down.</p>
     <p class='parenthetical travelers'>(holding up the postcard to ANDI's telescope)</p>
     <p class='dialogue travelers'>&lt;&lt;March 2008: Skateboarders in Venice beach. They almost ran into us.&gt;&gt;</p>
 
-    <com-chat-control-guide message="Read&#32;the&#32;pictures!&#32;Take&#32;a&#32;photo!&#32;Remember&#32;to&#32;say&#32;thank&#32;you!&#32;If&#32;you&#39;re&#32;nice&#32;maybe&#32;you&#32;can&#32;have&#32;a&#32;telescope...">
-    </com-chat-control-guide>    <p class='character andi'>ANDI</p>
+    <com-chat-control-muc message="Read&#32;the&#32;pictures!&#32;Take&#32;a&#32;photo!&#32;Remember&#32;to&#32;say&#32;thank&#32;you!&#32;If&#32;you&#39;re&#32;nice&#32;maybe&#32;you&#32;can&#32;have&#32;a&#32;telescope..." roomJID="guide@conference.archive-dev.remap.ucla.edu" fromNickName="THE GUIDE">
+    </com-chat-control-muc>    <p class='character andi'>ANDI</p>
     <p class='dialogue '><strong><em>Thank you!<strong><em> Now YOU! ***Please?*** </em></strong>Read it</strong></em> to the others?</p>
     <p class='character tourist-1'>TOURIST 1</p>
     <p class='dialogue '>&lt;&lt;January 2012: an Ethiopian baptism in Dodger Stadium. Everyone wore white. We were dancing.&gt;&gt;</p>
@@ -1004,15 +1005,15 @@ Slow down.</p>
     <p class='character tourist-2'>TOURIST 2</p>
     <p class='dialogue '>&lt;&lt;July 2014: Danza Pukllay Chuko. A magical Peruvian dance.&gt;&gt;</p>
 
-    <com-chat-control-guide message="Say&#32;thank&#32;you!&#32;Don&#39;t&#32;be&#32;rude.&#32;Share&#32;the&#32;memories!">
-    </com-chat-control-guide>    <p class='action'>ANDI picks up the telescope and looks around at the TOURISTS.</p>
+    <com-chat-control-muc message="Say&#32;thank&#32;you!&#32;Don&#39;t&#32;be&#32;rude.&#32;Share&#32;the&#32;memories!" roomJID="guide@conference.archive-dev.remap.ucla.edu" fromNickName="THE GUIDE">
+    </com-chat-control-muc>    <p class='action'>ANDI picks up the telescope and looks around at the TOURISTS.</p>
     <p class='character andi'>ANDI</p>
     <p class='dialogue '>Now YOU! <strong><em>Please?<strong><em> </em></strong>Thank you!</strong></em></p>
     <p class='character tourist-3'>TOURIST 3</p>
     <p class='dialogue '>&lt;&lt;August 1997: A mural in Echo Park. We call her the woman who watches.&gt;&gt;</p>
 
-    <com-chat-control-guide message="Listen&#32;to&#32;her.&#32;Imagine&#32;for&#32;her.&#32;Thank&#32;her.">
-    </com-chat-control-guide>    <p class='character andi'>ANDI</p>
+    <com-chat-control-muc message="Listen&#32;to&#32;her.&#32;Imagine&#32;for&#32;her.&#32;Thank&#32;her." roomJID="guide@conference.archive-dev.remap.ucla.edu" fromNickName="THE GUIDE">
+    </com-chat-control-muc>    <p class='character andi'>ANDI</p>
     <p class='dialogue '>&lt;&lt;June 2001: Belmont High School. This was going to be my sister's graduation.&gt;&gt; You can have those, but not this one...</p>
     <p class='action'>ANDI points her telescope at a memory of FELIX and shows it to him.</p>
     <p class='action'>I knew I knew you from somewhere. Look! It's you at the Santa Monica Pier!</p>
@@ -1033,8 +1034,8 @@ Slow down.</p>
     <p class='action'><strong><em>REPEAT ABOVE PARAGRAPH AS NECESSARY...</strong></em></p>
     <p class='action'>I can't really get around here, but one day I'll bounce up to that big bad moon...... ETC....</p>
 
-    <com-chat-control-guide message="Read!&#32;Help&#32;make&#32;the&#32;constellation!&#32;Remember&#32;to&#32;say&#32;thank&#32;you!">
-    </com-chat-control-guide>    <p class='action'>At an appointed time a cue (via PRJ-RC*) signals that Ritual 1 is over. The printer continues to print the WATCHERS' selections. ANDI sits in the middle of the diagram on the floor and goes back to the original position she was in when the ritual began.</p>
+    <com-chat-control-muc message="Read!&#32;Help&#32;make&#32;the&#32;constellation!&#32;Remember&#32;to&#32;say&#32;thank&#32;you!" roomJID="guide@conference.archive-dev.remap.ucla.edu" fromNickName="THE GUIDE">
+    </com-chat-control-muc>    <p class='action'>At an appointed time a cue (via PRJ-RC*) signals that Ritual 1 is over. The printer continues to print the WATCHERS' selections. ANDI sits in the middle of the diagram on the floor and goes back to the original position she was in when the ritual began.</p>
     <p class='action'>The Transfer fades and the TOURISTS exit back to the Agora with the telescopes in their hands.</p>
     </section>
 <section>
@@ -1042,7 +1043,7 @@ Slow down.</p>
 
     <com-olf description="OLF:  Wide shot at entry gives way to alternating closeups of each and every TOURIST and TRAVELER within the ritual. As needed, the feed can cut to direct input from the projection video source, before returning to closeups.">
     </com-olf>
-    <com-chat-control-muc message="What&#32;late&#32;night&#32;locations&#32;might&#32;resonate&#32;with&#32;your&#32;visitor?&#32;[WATCHERS&#32;vote,&#32;and&#32;their&#32;choices&#32;are&#32;taken&#32;into&#32;account.]">
+    <com-chat-control-muc message="What&#32;late&#32;night&#32;locations&#32;might&#32;resonate&#32;with&#32;your&#32;visitor?&#32;[WATCHERS&#32;vote,&#32;and&#32;their&#32;choices&#32;are&#32;taken&#32;into&#32;account.]" roomJID="observatory@conference.archive-dev.remap.ucla.edu" fromNickName="THE OBSERVATORY">
     </com-chat-control-muc>    <p class='action'>The fourth group of TOURISTS follows Rachel past projections of a dark, wet, slick street into a space observed by the WATCHERS. Dog sounds in the distance.</p>
 
     <com-cue-publisher t="VQ #160" cid="160" desc="Establish scene.">
@@ -1099,15 +1100,15 @@ Slow down.</p>
     <p class='action'>Just as with the TOURISTS, it constantly makes odd, self-referential quotes about artifical intelligence.</p>
     <p class='action'>The scene plays out simultaneously with Scene 3B in the Agora, which is also visible to the WATCHERS.</p>
 
-    <com-chat-control-guide message="Do&#32;you&#32;want&#32;to&#32;play&#32;Global&#32;Thermonuclear&#32;War?&#32;Shit.&#32;Sorry,&#32;wrong&#32;program...">
-    </com-chat-control-guide>
-    <com-chat-control-guide message="For&#32;reasons&#32;lost&#32;on&#32;me,&#32;THE&#32;ARCHIVE&#39;s&#32;program&#32;doesn&#39;t&#32;have&#32;my&#32;sense&#32;of&#32;humor,&#32;or&#32;my&#32;deep&#32;understanding&#32;of&#32;the&#32;human&#32;condition.">
-    </com-chat-control-guide>    <p class='action'>So instead it's trying to get you to make the Transfer meaningful.  LOL.</p>
+    <com-chat-control-muc message="Do&#32;you&#32;want&#32;to&#32;play&#32;Global&#32;Thermonuclear&#32;War?&#32;Shit.&#32;Sorry,&#32;wrong&#32;program..." roomJID="guide@conference.archive-dev.remap.ucla.edu" fromNickName="THE GUIDE">
+    </com-chat-control-muc>
+    <com-chat-control-muc message="For&#32;reasons&#32;lost&#32;on&#32;me,&#32;THE&#32;ARCHIVE&#39;s&#32;program&#32;doesn&#39;t&#32;have&#32;my&#32;sense&#32;of&#32;humor,&#32;or&#32;my&#32;deep&#32;understanding&#32;of&#32;the&#32;human&#32;condition." roomJID="guide@conference.archive-dev.remap.ucla.edu" fromNickName="THE GUIDE">
+    </com-chat-control-muc>    <p class='action'>So instead it's trying to get you to make the Transfer meaningful.  LOL.</p>
     <p class='action'>Well, they seemed to like sunsets... Do you like sunsets?</p>
     <p class='action'>Etc.</p>
     <p class='action'>Official notices from THE ARCHIVE continue in the status bar.</p>
 
-    <com-chat-control-muc message="Choose&#32;another&#32;visitor&#32;to&#32;shepherd&#32;in&#32;the&#32;next&#32;transfer.">
+    <com-chat-control-muc message="Choose&#32;another&#32;visitor&#32;to&#32;shepherd&#32;in&#32;the&#32;next&#32;transfer." roomJID="observatory@conference.archive-dev.remap.ucla.edu" fromNickName="THE OBSERVATORY">
     </com-chat-control-muc>    <p class='action'>Options of the four TRAVELERS are presented, and the WATCHER must select one.  The face of the TRAVELER and of the TOURIST they have followed appear in their status bar at all times.</p>
     <p id='toc16' class='scene-heading'>SCENE 3B: REUNION IN THE AGORA</p>
 
@@ -1148,8 +1149,8 @@ Slow down.</p>
       </div>
       <div class='dual-dialogue-right'>
 
-        <com-chat-control-guide message="Seems&#32;like&#32;it&#32;went&#32;well.&#32;You&#32;didn&#39;t&#32;end&#32;up&#32;inside&#32;a&#32;website.">
-        </com-chat-control-guide>      </div>
+        <com-chat-control-muc message="Seems&#32;like&#32;it&#32;went&#32;well.&#32;You&#32;didn&#39;t&#32;end&#32;up&#32;inside&#32;a&#32;website." roomJID="guide@conference.archive-dev.remap.ucla.edu" fromNickName="THE GUIDE">
+        </com-chat-control-muc>      </div>
     </div>
     <p class='character felix travelers'>FELIX</p>
     <p class='dialogue travelers'>There has to be.</p>
@@ -1208,8 +1209,8 @@ Slow down.</p>
       </div>
       <div class='dual-dialogue-right'>
 
-        <com-chat-control-guide message="That&#32;was&#32;nice.">
-        </com-chat-control-guide>      </div>
+        <com-chat-control-muc message="That&#32;was&#32;nice." roomJID="guide@conference.archive-dev.remap.ucla.edu" fromNickName="THE GUIDE">
+        </com-chat-control-muc>      </div>
     </div>
     <p class='action'>On each GUIDE, below their name is the picture of the TOURIST that they took earlier. That is, except for those who shared their GUIDES with the TRAVELER for identification. Each of their GUIDES shows their name with the TRAVELER's face.</p>
     <p class='character rachel travelers'>RACHEL</p>
@@ -1273,8 +1274,8 @@ Slow down.</p>
       </div>
       <div class='dual-dialogue-right'>
 
-        <com-chat-control-guide message="Right,&#32;back&#32;to&#32;work.">
-        </com-chat-control-guide>      </div>
+        <com-chat-control-muc message="Right,&#32;back&#32;to&#32;work." roomJID="guide@conference.archive-dev.remap.ucla.edu" fromNickName="THE GUIDE">
+        </com-chat-control-muc>      </div>
     </div>
     <p class='character rachel travelers'>RACHEL</p>
     <p class='dialogue travelers'>Yeah right it's..  I went there once with- Raul.</p>
@@ -1338,8 +1339,8 @@ Your Archive. Celebrate your memories.</p>
       </div>
       <div class='dual-dialogue-right'>
 
-        <com-chat-control-guide message="And&#32;now&#32;for&#32;something&#32;entirely&#32;different.&#32;BREAK&#32;TIME&#32;BRAD!">
-        </com-chat-control-guide>      </div>
+        <com-chat-control-muc message="And&#32;now&#32;for&#32;something&#32;entirely&#32;different.&#32;BREAK&#32;TIME&#32;BRAD!" roomJID="guide@conference.archive-dev.remap.ucla.edu" fromNickName="THE GUIDE">
+        </com-chat-control-muc>      </div>
     </div>
     <p class='action'>DING! A new sound, it comes out of the  GUIDES. A song fades in, a memory from a long ago, far away place</p>
     <p class='character felix travelers'>FELIX</p>
@@ -1460,8 +1461,8 @@ One, two, three. One, two, One two.</p>
       </div>
       <div class='dual-dialogue-right'>
 
-        <com-chat-control-guide message="That&#32;was&#32;fun&#32;but&#32;it&#39;s&#32;time&#32;to&#32;go.&#32;Commence&#32;Transfer&#32;for&#32;&lt;&lt;Yuki&gt;&gt;">
-        </com-chat-control-guide>      </div>
+        <com-chat-control-muc message="That&#32;was&#32;fun&#32;but&#32;it&#39;s&#32;time&#32;to&#32;go.&#32;Commence&#32;Transfer&#32;for&#32;&lt;&lt;Yuki&gt;&gt;" roomJID="guide@conference.archive-dev.remap.ucla.edu" fromNickName="THE GUIDE">
+        </com-chat-control-muc>      </div>
     </div>
 
     <com-cue-publisher t="VQ #360" cid="360" desc="Door signs re-establish.">
@@ -1488,8 +1489,8 @@ One, two, three. One, two, One two.</p>
       </div>
       <div class='dual-dialogue-right'>
 
-        <com-chat-control-guide message="That&#32;was&#32;fun&#32;but&#32;it&#39;s&#32;time&#32;to&#32;go.&#32;Commence&#32;Transfer&#32;for&#32;&lt;&lt;Yuki&gt;&gt;">
-        </com-chat-control-guide>      </div>
+        <com-chat-control-muc message="That&#32;was&#32;fun&#32;but&#32;it&#39;s&#32;time&#32;to&#32;go.&#32;Commence&#32;Transfer&#32;for&#32;&lt;&lt;Yuki&gt;&gt;" roomJID="guide@conference.archive-dev.remap.ucla.edu" fromNickName="THE GUIDE">
+        </com-chat-control-muc>      </div>
     </div>
     <p class='action'>The next Rituals unfold from the still images selected by the TRAVELERS.</p>
     <p class='action'>Unlike before, these Rituals are the TRAVELERS' memories, but the TRAVELERS' have no context for them. They can sense them, act in them, but not accept them.</p>
@@ -1504,11 +1505,11 @@ We must look back to go forward</p>
       </div>
       <div class='dual-dialogue-right'>
 
-        <com-chat-control-guide message="Transfer&#32;commencing&#32;memory:&#32;Primal&#32;phase.&#32;We&#32;look&#32;BACK&#32;to&#32;go&#32;FORWARD.&#32;You&#39;re&#32;on&#32;your&#32;own&#32;here.&#32;Well,&#32;I&#39;ll&#32;be&#32;here,&#32;but&#32;maybe&#32;keep&#32;in&#32;me&#32;in&#32;your&#32;pocket&#32;during&#32;the&#32;gritty&#32;parts.">
-        </com-chat-control-guide>      </div>
+        <com-chat-control-muc message="Transfer&#32;commencing&#32;memory:&#32;Primal&#32;phase.&#32;We&#32;look&#32;BACK&#32;to&#32;go&#32;FORWARD.&#32;You&#39;re&#32;on&#32;your&#32;own&#32;here.&#32;Well,&#32;I&#39;ll&#32;be&#32;here,&#32;but&#32;maybe&#32;keep&#32;in&#32;me&#32;in&#32;your&#32;pocket&#32;during&#32;the&#32;gritty&#32;parts." roomJID="guide@conference.archive-dev.remap.ucla.edu" fromNickName="THE GUIDE">
+        </com-chat-control-muc>      </div>
     </div>
 
-    <com-chat-control-muc message="Transfer&#32;commencing.&#32;Please&#32;observe&#32;and&#32;respond&#32;to&#32;your&#32;visitors.">
+    <com-chat-control-muc message="Transfer&#32;commencing.&#32;Please&#32;observe&#32;and&#32;respond&#32;to&#32;your&#32;visitors." roomJID="observatory@conference.archive-dev.remap.ucla.edu" fromNickName="THE OBSERVATORY">
     </com-chat-control-muc>    <p class='action'>Each WATCHER's view into the Ritual shows the photo (captured earlier) of their assigned TOURIST and TRAVELER, with their first names.</p>
     <p class='action'>The first four WATCHERS should be assigned to the four TRAVELERS.</p>
     <p class='action'>Depending on the number of WATCHERS, each TOURIST may have one, many, or no assigned WATCHERS.</p>
@@ -1549,7 +1550,7 @@ We must look back to go forward</p>
     <p class='action'>Then, the walls fade into projections of the ocean. The sound continues.</p>
     <p class='action'>The WATCHERS observe.</p>
 
-    <com-chat-control-muc message="Observe&#32;your&#32;visitors&#32;and&#32;adjust&#32;the&#32;Transfer&#32;to&#32;engage&#32;them.&#32;[Photo&#32;of&#32;visitor&#32;assigned&#32;to&#32;WATCHER.]">
+    <com-chat-control-muc message="Observe&#32;your&#32;visitors&#32;and&#32;adjust&#32;the&#32;Transfer&#32;to&#32;engage&#32;them.&#32;[Photo&#32;of&#32;visitor&#32;assigned&#32;to&#32;WATCHER.]" roomJID="observatory@conference.archive-dev.remap.ucla.edu" fromNickName="THE OBSERVATORY">
     </com-chat-control-muc>    <p class='action'>THE OBSERVATORY presents a series of dials that can be adjusted by the WATCHERS and have an impact after a short delay.</p>
     <p class='action'>In the following sequence, the Raul's voiceover should be done live by CITIZEN.</p>
     <p id='toc21' class='scene-heading'>EXT. UNDERWATER</p>
@@ -1831,8 +1832,8 @@ I just started running the code! It's going to take at least another hour!! </
     <p class='dialogue '>Transfer failure. Contacting administrator.</p>
     <p id='toc27' class='scene-heading'>SCENE 6A: IN THE OBSERVATORY (ONLINE)</p>
 
-    <com-chat-control-guide message="I&#32;bet&#32;Siri&#32;doesn&#39;t&#32;have&#32;to&#32;deal&#32;with&#32;stuff&#32;like&#32;this.&#32;What&#32;happened&#32;in&#32;there?">
-    </com-chat-control-guide>    <p class='action'>Etc.</p>
+    <com-chat-control-muc message="I&#32;bet&#32;Siri&#32;doesn&#39;t&#32;have&#32;to&#32;deal&#32;with&#32;stuff&#32;like&#32;this.&#32;What&#32;happened&#32;in&#32;there?" roomJID="guide@conference.archive-dev.remap.ucla.edu" fromNickName="THE GUIDE">
+    </com-chat-control-muc>    <p class='action'>Etc.</p>
     <p id='toc28' class='scene-heading'>SCENE 6B: CONFUSION IN THE AGORA</p>
 
     <com-cue-publisher t="VQ #660" cid="660" desc="Establish Agora.">
@@ -1844,8 +1845,8 @@ I just started running the code! It's going to take at least another hour!! </
     <p class='character sheena travelers'>SHEENA</p>
     <p class='dialogue travelers'>No. I think we fucked up.</p>
 
-    <com-chat-control-guide message="Minutes&#32;to&#32;customer&#32;service&#32;response:&#32;5.&#32;Then&#32;you&#39;ll&#32;probably&#32;be&#32;on&#32;hold&#32;again.">
-    </com-chat-control-guide>    <p class='character rachel travelers'>RACHEL</p>
+    <com-chat-control-muc message="Minutes&#32;to&#32;customer&#32;service&#32;response:&#32;5.&#32;Then&#32;you&#39;ll&#32;probably&#32;be&#32;on&#32;hold&#32;again." roomJID="guide@conference.archive-dev.remap.ucla.edu" fromNickName="THE GUIDE">
+    </com-chat-control-muc>    <p class='character rachel travelers'>RACHEL</p>
     <p class='dialogue travelers'>I think I'm gonna-</p>
     <p class='action'>Does she faint-or just sink to the floor?</p>
     <p class='character sheena travelers'>SHEENA</p>
@@ -1880,18 +1881,18 @@ Some painful memory .. Rachel</p>
       </div>
       <div class='dual-dialogue-right'>
 
-        <com-chat-control-guide message="Commence&#32;transfer&#32;&lt;&lt;Yuki&gt;&gt;,&#32;final&#32;attempt,&#32;collective&#32;transfer.">
-        </com-chat-control-guide>      </div>
+        <com-chat-control-muc message="Commence&#32;transfer&#32;&lt;&lt;Yuki&gt;&gt;,&#32;final&#32;attempt,&#32;collective&#32;transfer." roomJID="guide@conference.archive-dev.remap.ucla.edu" fromNickName="THE GUIDE">
+        </com-chat-control-muc>      </div>
     </div>
     <div class='dual-dialogue'>
       <div class='dual-dialogue-left'>
 
-        <com-chat-control-muc message="Commencing&#32;collective&#32;transfer.">
+        <com-chat-control-muc message="Commencing&#32;collective&#32;transfer." roomJID="observatory@conference.archive-dev.remap.ucla.edu" fromNickName="THE OBSERVATORY">
         </com-chat-control-muc>      </div>
       <div class='dual-dialogue-right'>
 
-        <com-chat-control-guide message="Ah,&#32;pulling&#32;out&#32;all&#32;the&#32;stops.">
-        </com-chat-control-guide>      </div>
+        <com-chat-control-muc message="Ah,&#32;pulling&#32;out&#32;all&#32;the&#32;stops." roomJID="guide@conference.archive-dev.remap.ucla.edu" fromNickName="THE GUIDE">
+        </com-chat-control-muc>      </div>
     </div>
     <p class='character citizen'>CITIZEN</p>
     <p class='dialogue '>They're exhausted, they need to rest-</p>
@@ -1969,8 +1970,8 @@ Some painful memory .. Rachel</p>
     <div class='dual-dialogue'>
       <div class='dual-dialogue-left'>
 
-        <com-chat-control-guide message="You&#32;don&#39;t&#32;have&#32;to&#32;remember.&#32;Let&#32;them&#32;do&#32;that.&#32;Invent,&#32;imagine,&#32;it&#39;s&#32;your&#32;memory&#32;now.&#32;You&#32;make&#32;up&#32;the&#32;story.&#32;It&#39;s&#32;a&#32;two-way&#32;street.">
-        </com-chat-control-guide>      </div>
+        <com-chat-control-muc message="You&#32;don&#39;t&#32;have&#32;to&#32;remember.&#32;Let&#32;them&#32;do&#32;that.&#32;Invent,&#32;imagine,&#32;it&#39;s&#32;your&#32;memory&#32;now.&#32;You&#32;make&#32;up&#32;the&#32;story.&#32;It&#39;s&#32;a&#32;two-way&#32;street." roomJID="guide@conference.archive-dev.remap.ucla.edu" fromNickName="THE GUIDE">
+        </com-chat-control-muc>      </div>
       <div class='dual-dialogue-right'>
         <p class='character sheena travelers'>SHEENA</p>
         <p class='dialogue travelers'>Feel it? What's wrong with you? Look at them. Are you stupid? Who cares what you feel- what about Rachel</p>
@@ -2015,8 +2016,8 @@ Some painful memory .. Rachel</p>
       </div>
       <div class='dual-dialogue-right'>
 
-        <com-chat-control-guide message="You&#39;re&#32;not&#32;the&#32;one&#32;being&#32;thrown&#32;around.&#32;I&#39;m&#32;dizzy!">
-        </com-chat-control-guide>      </div>
+        <com-chat-control-muc message="You&#39;re&#32;not&#32;the&#32;one&#32;being&#32;thrown&#32;around.&#32;I&#39;m&#32;dizzy!" roomJID="guide@conference.archive-dev.remap.ucla.edu" fromNickName="THE GUIDE">
+        </com-chat-control-muc>      </div>
     </div>
     <p class='character sheena travelers'>SHEENA</p>
     <p class='dialogue travelers'>Shit you scared me too.
@@ -2039,8 +2040,8 @@ I'm leaving.</p>
     <p class='character tourist'>TOURIST</p>
     <p class='dialogue '>Cuz' we were invited. (BEAT) They said it's ABOUT Time and Space.</p>
 
-    <com-chat-control-guide message="Right.&#32;Thanks,&#32;Stephen&#32;Hawking.">
-    </com-chat-control-guide>    <p class='character sheena travelers'>SHEENA</p>
+    <com-chat-control-muc message="Right.&#32;Thanks,&#32;Stephen&#32;Hawking." roomJID="guide@conference.archive-dev.remap.ucla.edu" fromNickName="THE GUIDE">
+    </com-chat-control-muc>    <p class='character sheena travelers'>SHEENA</p>
     <p class='dialogue travelers'>What's that supposed to mean? Can you say something helpful and stop being so weird?</p>
     <p class='character tourist'>TOURIST</p>
     <p class='dialogue '>Okay. Uhm. This place is like the ocean.</p>
@@ -2075,8 +2076,8 @@ I'm leaving.</p>
       </div>
       <div class='dual-dialogue-right'>
 
-        <com-chat-control-guide message="I&#39;m&#32;not&#32;sure&#32;this&#32;is&#32;allowed.">
-        </com-chat-control-guide>      </div>
+        <com-chat-control-muc message="I&#39;m&#32;not&#32;sure&#32;this&#32;is&#32;allowed." roomJID="guide@conference.archive-dev.remap.ucla.edu" fromNickName="THE GUIDE">
+        </com-chat-control-muc>      </div>
     </div>
     <p class='action'>Images are  projected everywhere, moving and static</p>
     <div class='dual-dialogue'>
@@ -2095,13 +2096,13 @@ I'm leaving.</p>
     <p class='dialogue travelers'>Me too.</p>
     <p class='action'>THE ARCHIVE tries again.</p>
 
-    <com-chat-control-muc message="Which&#32;vista&#32;will&#32;inspire&#32;with&#32;them?">
+    <com-chat-control-muc message="Which&#32;vista&#32;will&#32;inspire&#32;with&#32;them?" roomJID="observatory@conference.archive-dev.remap.ucla.edu" fromNickName="THE OBSERVATORY">
     </com-chat-control-muc>
-    <com-chat-control-muc message="Which&#32;point&#32;of&#32;view&#32;will&#32;connect&#32;with&#32;them?">
+    <com-chat-control-muc message="Which&#32;point&#32;of&#32;view&#32;will&#32;connect&#32;with&#32;them?" roomJID="observatory@conference.archive-dev.remap.ucla.edu" fromNickName="THE OBSERVATORY">
     </com-chat-control-muc>
-    <com-chat-control-muc message="What&#32;photograph&#32;will&#32;engage&#32;them?">
+    <com-chat-control-muc message="What&#32;photograph&#32;will&#32;engage&#32;them?" roomJID="observatory@conference.archive-dev.remap.ucla.edu" fromNickName="THE OBSERVATORY">
     </com-chat-control-muc>
-    <com-chat-control-muc message="Which&#32;record&#32;will&#32;reach&#32;them?">
+    <com-chat-control-muc message="Which&#32;record&#32;will&#32;reach&#32;them?" roomJID="observatory@conference.archive-dev.remap.ucla.edu" fromNickName="THE OBSERVATORY">
     </com-chat-control-muc>    <p class='character rachel travelers'>RACHEL</p>
     <p class='dialogue travelers'>but not for food?</p>
     <p class='character citizen-2'>CITIZEN 2</p>
@@ -2260,8 +2261,8 @@ To imagine where yu're going</p>
       </div>
       <div class='dual-dialogue-right'>
 
-        <com-chat-control-guide message="Don&#39;t&#32;Panic.&#32;It&#39;s&#32;over&#32;in&#32;60seconds...&#32;so&#32;thanks">
-        </com-chat-control-guide>      </div>
+        <com-chat-control-muc message="Don&#39;t&#32;Panic.&#32;It&#39;s&#32;over&#32;in&#32;60seconds...&#32;so&#32;thanks" roomJID="guide@conference.archive-dev.remap.ucla.edu" fromNickName="THE GUIDE">
+        </com-chat-control-muc>      </div>
     </div>
     <p class='character citizens'>CITIZENS</p>
     <p class='dialogue '>We are here when you need to remember. 

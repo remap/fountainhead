@@ -29,11 +29,11 @@ from fountain_parser import ParserVersion
 from regex_rules import *
 
 # This is used for special character and dialogue generation
-# 'the-guide': chat-control-guide
+# 'the-guide': chat-control-muc
 # 'the-observatory': chat-control-muc                            
 specialGenerationTags = {
-    'the-guide':'chat-control-guide', 
-    'the-observatory':'chat-control-muc'
+    'the-guide': ['chat-control-muc', 'guide@conference.archive-dev.remap.ucla.edu', 'THE GUIDE'],
+    'the-observatory': ['chat-control-muc', 'observatory@conference.archive-dev.remap.ucla.edu', 'THE OBSERVATORY']
 }
 
 specialGenerationPatterns = {
@@ -481,10 +481,10 @@ class FountainHTMLGenerator(object):
                                 # For Parentheticals that come after a specially treated character, we ignore it
                                 if (element._elementType == self._fountainRegex.PARENTHETICAL_TAG_PATTERN):
                                     continue
-                                bodyText += '\n' + self.prependIndentLevel() + '<' + self.componentNameToTag(specialGenerationTags[prevType])
+                                bodyText += '\n' + self.prependIndentLevel() + '<' + self.componentNameToTag(specialGenerationTags[prevType][0])
                                 # TODO: for this type of special generation, we need to decide whether to sanitize the parameters here or not.
-                                bodyText += ' message=\"' + self.sanitizeElementText(element._elementText) + '\">'
-                                bodyText += '\n' + self.prependIndentLevel() + '</' + self.componentNameToTag(specialGenerationTags[prevType]) + '>'
+                                bodyText += ' message=\"' + self.sanitizeElementText(element._elementText) + '\" roomJID=\"' + specialGenerationTags[prevType][1] + '\" fromNickName=\"' + specialGenerationTags[prevType][2] + '\">'
+                                bodyText += '\n' + self.prependIndentLevel() + '</' + self.componentNameToTag(specialGenerationTags[prevType][0]) + '>'
                                 # Commented out intentionally because of the potential dual-dialogue link generation confusion
                                 # bodyText += self.prependIndentLevel() + '<a target=\"_blank\" href=\"' + self._componentParent + specialGenerationTags[prevType] + '.html\" class=\"' + self._fountainRegex.COMPONENT_LINK_CLASS + '\">' + specialGenerationTags[prevType] + '</a>\n'
                                 continue
@@ -528,8 +528,8 @@ class FountainHTMLGenerator(object):
                                 prevType = characterName
                                 # skipOrdinaryGeneration = True
                                 # Do not forget to add this web component to the imported list
-                                if (not specialGenerationTags[characterName] in self._componentList):
-                                    self._componentList.append(specialGenerationTags[characterName])
+                                if (not specialGenerationTags[characterName][0] in self._componentList):
+                                    self._componentList.append(specialGenerationTags[characterName][0])
                                 continue
                         
                     # Special generation step for text marked with specific classes

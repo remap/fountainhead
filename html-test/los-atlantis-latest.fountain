@@ -38,6 +38,9 @@ Author: Future of Storytelling Studio 2015
 [defaultMucNickName] "The observatory" 
 [defaultMucRoom] "observatory@conference.archive-dev.remap.ucla.edu"
 
+[defaultMucNickName2] "The guide"
+[defaultMucRoom2] "guide@conference.archive-dev.remap.ucla.edu"
+
 [hostXMPP] "archive-dev.remap.ucla.edu" 
 [hostXMPPHttpBind] "http://archive-dev.remap.ucla.edu:5280/http-bind"
 

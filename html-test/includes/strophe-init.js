@@ -18,7 +18,14 @@ function onConnect(status) {
     // using the other account won't allow me to receive onMessage either...
     // Instead of using defaultMucNickName, we can try with a random string, 
     // since from the point of view of a user, the nickname is always overwritten
-    connection.muc.join(defaultMucRoom, defaultMucNickName, onMessage, onPresence, onRoster);
+    
+    if (defaultMucRoom !== undefined && defaultMucRoom != '' && defaultMucNickName !== undefined && defaultMucNickName != '') {
+      connection.muc.join(defaultMucRoom, defaultMucNickName, onMessage, onPresence, onRoster);
+    }
+    
+    if (defaultMucRoom2 !== undefined && defaultMucRoom2 != '' && defaultMucNickName2 !== undefined && defaultMucNickName2 != '') {
+      connection.muc.join(defaultMucRoom2, defaultMucNickName2, onMessage, onPresence, onRoster);
+    }
   }
 }
 
