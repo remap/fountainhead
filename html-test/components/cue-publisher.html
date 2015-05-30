@@ -209,6 +209,9 @@
         dataName.append(createdElement.showid).append(cueComponent).appendVersion((new Date).getTime()).append(nameSuffix);
 
         createdElement.ndnPublisherComponentObject.publishContent(dataName, createdElement.content, false);
+        
+        createdElement.loadElement.className += ' video-control-clicked';
+        componentObject.applyStyleFromParentDocument(createdElement.loadElement);
       } else {
         console.log('Warning: Cue content still being loaded');
       }
@@ -223,6 +226,9 @@
       dataName.append(createdElement.showid).append(cueComponent).appendVersion((new Date).getTime()).append(nameSuffix);
 
       createdElement.ndnPublisherComponentObject.publishContent(dataName, createdElement.content, false);
+      
+      createdElement.goElement.className += ' video-control-clicked';
+      componentObject.applyStyleFromParentDocument(createdElement.goElement);
     });
     
     /*

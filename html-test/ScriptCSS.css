@@ -328,6 +328,13 @@ a:hover {
     width: 400px;
     text-decoration: underline;    
     cursor: pointer; 
+    
+    font-size: 120%;
+    font-weight: bold;
+}
+
+.video-control-clicked {
+    color: #7788CC;
 }
 
 .cue-title {
