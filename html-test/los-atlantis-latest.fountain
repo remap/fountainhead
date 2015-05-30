@@ -212,7 +212,7 @@ The TOURISTS filter into the Lobby of THE ARCHIVE. A sign reminds them to log in
 
 THE GUIDE
 (to each TOURIST, after they log in on their phone, with a Clippy-like icon popping up)
-Hello, <<Manasi>>!  Where do you want to go today? Just kidding... Welcome.  -Virgil. 
+Hello, {{ name }}!  Where do you want to go today? Just kidding... Welcome.  -Virgil. 
 
 The TOURISTS browse their GUIDE. 
 
