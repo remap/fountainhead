@@ -303,7 +303,7 @@ Look at the sky painted in  orange, red, and yellow. Look at the clouds colored 
 The image shifts to another sunset, in a different <<Los Angeles>> location.
 
 THE GUIDE
-What do you think it felt like to be there? [Enter words...]How would you TAG this memory. How does the sunset make you feel?
+What do you think it felt like to be there? {{ sunset_feeling_tag }} How would you TAG this memory. How does the sunset make you feel?
 
 VOICEOVER ^
 It's almost gone, behind the hills and the shadows of black tree branches.  It was a close to a long day. We took this moment to remember all that has happened during the day. 
@@ -387,7 +387,8 @@ Damnit  I know he's in there. I got in yesterday!
 Her phone is dead. 
 
 THE GUIDE
-Alright, now it's time, <<Yuki Izumihara>>. Take your picture to authorize entry.
+Alright, now it's time, {{ name }}. Take your picture to authorize entry. 
+{{ entry_picture }}
 
 RACHEL ^
 (seeing what the TOURISTS' GUIDES say)
@@ -587,7 +588,7 @@ THE ARCHIVE
 Welcome to Transfer. 
 
 THE GUIDE ^
-Welcome to Transfer, <<Roshni>>!
+Welcome to Transfer, {{ name }}!
 
 The murmur of the CITIZENS grows into more distinct, welcoming voices. Perhaps it names the audience members
 
