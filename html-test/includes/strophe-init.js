@@ -34,7 +34,7 @@ function onMessage(message) {
 }
 
 function onPresence(presence) {
-  //console.log(presence);
+  console.log(presence);
 }
 
 function onRoster(roster) {

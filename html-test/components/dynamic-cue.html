@@ -39,6 +39,40 @@
           createdElement.shadowRoot.querySelector('#audience-data-chunk').innerHTML = '<img src="' + hostAddr + '/querystatic/get-user-avatar?filename=' + participantObject[randIdx][4] + '"></img>';
         }
       }, 2000);
+      
+      // User neighborhood fetching and counts
+      var neighborhoods = {};
+      // To randomize with a weight, we append all items to a new array
+      var neighborhoodWeight = [];
+      
+      for (var i = 0; i < participantObject.length; i++) {
+        if (participantObject[i][7] && participantObject[i][7] !== '') {
+          if (neighborhoods.hasOwnProperty(participantObject[i][7])) {
+            neighborhoods[participantObject[i][7]] ++;
+          } else {
+            neighborhoods[participantObject[i][7]] = 1;
+          }
+          neighborhoodWeight.push(participantObject[i][7]);
+        }
+      }
+      
+      // Select a random sunset in user's neighborhood, with weight considered
+      if (neighborhoodWeight.length > 0) {
+      var randIdx = Math.floor(Math.random() * neighborhoodWeight.length);
+		console.log('Selected neighborhood: ' + neighborhoodWeight[randIdx]);
+	  
+		var url = createdElement.youtubeObject.requestYoutubeItem({
+		  'query': 'search',
+		  'part': 'snippet',
+		  'q': neighborhoodWeight[randIdx] + ' los angeles sunset',
+		  'type': 'video',
+		  'maxResults': '1'
+		}, undefined, undefined, function (searchResponse) {
+		  if (searchResponse.items.length > 0) {
+			console.log('<img src=\"http://img.youtube.com/vi/' + searchResponse.items[0].id.videoId + '/0.jpg\"></img>');
+		  }
+		}, undefined, true);
+      }
     });
     
     var selectedTag = '';
