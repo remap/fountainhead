@@ -184,6 +184,9 @@ The GUIDE,Virgil, is accessed from the TOURISTS' smartphones.
 THE GUIDE
 Hi, I'm really looking forward to this. You are very  special to me.
 
+THE GUIDE
+Please choose who you are following from the {{ open_nav }}.
+
 In the days leading up to the event, its content is mostly a countdown timer. 
 
 It may occasionally spout memes drawn from THE ARCHIVE to pique the Interest of the TOURISTS.
@@ -1378,7 +1381,7 @@ THE GUIDE
 I look out the window and see memories. 
 Lots of memories.
 I'm stargazer, looking into the lives of other celestial beings.
-I hover above them and watch.
+I hover above them and watch. {{ filter:c }}
 
 ANDI
 I'm a stargaz-
