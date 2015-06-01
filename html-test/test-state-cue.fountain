@@ -32,12 +32,20 @@
 [include] onload.js
 [include] cue-object.js
 [include] youtube-object.js
+[include] db-object.js
 
 # Body
 
 /*
 Debug: The state parameter is not ideal.
 */
+
+.Dynamic cues
+
+<<@sunset-installation-dynamic-cue
+  (t      = "Sunset installation cue",
+   cid    = -1,
+   desc   = "Specifically made for sunset installation, include YT query and such")>>
 
 .Earlier samples
 

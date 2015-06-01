@@ -1,5 +1,8 @@
 var YoutubeObject = function YoutubeObject(apiKey, baseUrl) {
   this.apiKey = apiKey;
+  if (this.apiKey === undefined) {
+    this.apiKey = 'AIzaSyCe8t7PnmWjMKZ1gBouhP1zARpqNwHAs0s';
+  }
   this.baseUrl = 'https://www.googleapis.com/youtube/v3/';
   if (baseUrl !== undefined) {
     this.baseUrl = baseUrl;

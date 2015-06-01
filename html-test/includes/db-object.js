@@ -44,6 +44,31 @@ DBObject.prototype.queryParticipant = function (participantObject, parts, whereC
   });
 };
 
+// Queries the DB for specific event names in a specific show, and pass the filtered results to callback.
+DBObject.prototype.queryShowEvents = function (showId, eventName, callback) {
+  var queryStr = 'select unixTimestampOf(event_id), act, params, participants, show_id from events_log where name = \'' + eventName + '\'';
+  
+  this.postToDB(queryStr, function (responseText) {
+    if (responseText != '') {
+      try {
+        var resultObj = JSON.parse(responseText);
+        var filteredObj = [];
+        
+        if (resultObj.length > 0) {
+          for (var i = 0; i < resultObj.length; i++) {
+            if (resultObj[i][4] === showId || showId === undefined) {
+              filteredObj.append(resultObj[i]);
+            }
+          }
+        }
+        callback(filteredObj);
+      } catch (e) {
+        console.log(e);
+      }
+    }
+  }, 'json');
+}
+
 if (typeof exports !== 'undefined') {
   exports.DBObject = DBObject;
 }
