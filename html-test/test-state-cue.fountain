@@ -45,7 +45,17 @@ Debug: The state parameter is not ideal.
 <<@sunset-installation-dynamic-cue
   (t      = "Sunset installation cue",
    cid    = -1,
-   desc   = "Specifically made for sunset installation, include YT query and such")>>
+   desc   = "Specifically made for sunset installation, include YT neighborhood query and such")>>
+
+<<@sense-memories-dynamic-cue
+  (t      = "Sense memories cue",
+   cid    = -1,
+   desc   = "Specifically made for agora 1, include supplied tag (when registration) query from our channel and such")>>
+
+<<@agora-two-dynamic-cue
+  (t      = "Agora two cue",
+   cid    = -1,
+   desc   = "Specifically made for agora 2, include supplied tag (runtime) query from our channel and such")>>
 
 .Earlier samples
 

@@ -12,7 +12,7 @@
 
 <script>
   var componentObject = new window.ComponentObject(document, window);
-  var componentName = 'com-sunset-installation-dynamic-cue';
+  var componentName = 'com-agora-two-dynamic-cue';
   
   function onCreate(createdElement) {
     createdElement.ndnPublisherComponentObject = new window.NDNPublisherComponentObject(createdElement, window);
@@ -31,9 +31,6 @@
     var cueTitle = createdElement.getAttributeByListName(['cueTitle', 't'], '');
     var description = createdElement.getAttributeByListName(['description', 'desc'], '');
     
-    // The number of videos we pick from each neighborhood query to form the playlist
-    var resultLength = createdElement.getAttributeByListName(['playlistLength', 'l'], '3');
-    
     createdElement.content = createdElement.getAttributeByListName(['content'], '');
     if (createdElement.content !== '') {
       console.log(componentName + ': content definition exists for dynamic cue.');
@@ -48,7 +45,6 @@
     
     createdElement.loadElement = createdElement.shadowRoot.querySelector('#cue-load');
     createdElement.goElement = createdElement.shadowRoot.querySelector('#cue-go');
-    //createdElement.unloadElement = createdElement.shadowRoot.querySelector('#cue-unload');
     
     createdElement.titleElement.textContent = createdElement.cueId + ' : ' + cueTitle;
     createdElement.descElement.textContent = description;
@@ -58,71 +54,28 @@
     
     componentObject.applyStyleFromParentDocumentAll(createdElement);
     
-    // For sunset installation, we query youtube + neighborhood tags
-    createdElement.dbObject.queryParticipant(undefined, undefined, undefined, function(response) {
-      var participantObject = {};
-      try {
-        participantObject = JSON.parse(response);
-      } catch (e) {
-        console.log(e);
-      }
-      
-      // username, first_name, last_name, hashtags, photo_file, favorite_angeleno, favorite_time_of_day, neighborhood
-      
-      // User neighborhood fetching and counts
-      var neighborhoods = [];
-      
-      for (var i = 0; i < participantObject.length; i++) {
-        if (neighborhoods.indexOf(participantObject[i][7]) === -1 && participantObject[i][7] !== null) {
-          neighborhoods.push(participantObject[i][7]);
-        }
-      }
-      
-      // Function: Use the neighborhoods in our db to query youtube, for each query select first 3 results from youtube,
-      // interleave the results (0: 1 of neighborhood1, 1 of neighborhood 2...), construct json based on interleaved results,
-      // ask for the videoUrls of all those serviceUrls in the json, and be ready.
-      
-      createdElement.cueContent = [];
-      neighborhoodVideoLinks = {};
-      var responseCnt = 0;
-      
-      // TODO: This would fail if one of the responses did not get through/call callback.
-      for (var j = 0; j < neighborhoods.length; j++) {
-        neighborhoodVideoLinks[neighborhoods[j]] = [];
-        var url = createdElement.youtubeObject.requestYoutubeItem({
-          'query': 'search',
-          'part': 'snippet',
-          'q': neighborhoods[j] + ' los angeles sunset',
-          'type': 'video',
-          'maxResults': resultLength
-        }, undefined, undefined, function (idx) {
-          return function (searchResponse) {
-            if (searchResponse.items.length > 0) {
-              var jsonElement = {};
-              for (var i = 0; i < searchResponse.items.length; i++) {
-                jsonElement['url'] = 'https://www.youtube.com/watch?v=' + searchResponse.items[i].id.videoId;
-                neighborhoodVideoLinks[neighborhoods[idx]].push(jsonElement);
-              }
-              //console.log('<img src=\"http://img.youtube.com/vi/' + searchResponse.items[0].id.videoId + '/0.jpg\"></img>'); 
-            }
-            responseCnt ++;
-          
-            if (responseCnt === neighborhoods.length) {
-              // Interleave the playlist results
-              for (var i = 0; i < resultLength; i++) {
-                for (item in neighborhoodVideoLinks) {
-                  if (neighborhoodVideoLinks[item][i] !== undefined) {
-                    createdElement.cueContent.push(neighborhoodVideoLinks[item][i]);
-                  }
-                }
-              }
-              
-              createdElement.videoUrlCallbackCnt = 0;
-              jsonTraverse(createdElement.cueContent, replaceVideoUrl, createdElement);
-            }
+    // Spec: Jeff's gdoc, Agora 2
+    // TODO: This is performance-show-id dependent, need to find a way to supply ongoing show.
+    // TODO: This should happen onclick, or periodically
+    //select unixTimestampOf(event_id), act, params, participants, show_id from events_log
+    createdElement.userTags = {};
+    createdElement.weightedTags = [];
+    
+    createdElement.dbObject.queryShowEvents('performance-1', 'senses_tags', function (filteredObj) {
+      if (filteredObj !== null && filteredObj !== undefined && filteredObj.length > 0) {
+        try {
+          for (var i = 0; i < filteredObj.length; i++) {
+            var paramsObj = JSON.parse(filteredObj[i][2]);
+            var participantsObj = JSON.parse(filteredObj[i][3]);
+            createdElement.userTags[participantsObj[0]] = paramsObj.selected[0]; 
           }
-        } (j), 
-        undefined, true);
+          for (participant in createdElement.userTags) {
+            createdElement.weightedTags.push(createdElement.userTags[participant]);
+          }
+          console.log(createdElement.weightedTags);
+        } catch (e) {
+          console.log(e);
+        }
       }
     });
     
@@ -159,9 +112,6 @@
             createdElement.content = JSON.stringify(createdElement.cueContent);
             createdElement.cueReady = true;
             
-            console.log(componentName + ': Cue ready');
-            //console.log(createdElement.content);
-            // TODO: Construct JSON payload based on urls and descriptions
           }
         });
       }

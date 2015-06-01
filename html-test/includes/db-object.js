@@ -57,7 +57,7 @@ DBObject.prototype.queryShowEvents = function (showId, eventName, callback) {
         if (resultObj.length > 0) {
           for (var i = 0; i < resultObj.length; i++) {
             if (resultObj[i][4] === showId || showId === undefined) {
-              filteredObj.append(resultObj[i]);
+              filteredObj.push(resultObj[i]);
             }
           }
         }
