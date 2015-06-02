@@ -1,0 +1,69 @@
+# Environment
+
+[showid] "chocolate_cookie_show"
+
+[include] ndn.js
+[prefix] new Name("/ndn/edu/ucla/remap/losatlantis")
+[face] new Face({host: "archive-dev.remap.ucla.edu"})
+[include] ndn-init.js
+[include] ndn-url-publisher-component.js
+
+[cueFolder] "../../cues/"
+
+[include] script-control.js
+[include] component-object.js
+[include] ndn-publisher-component-object.js
+[include] onload.js
+[include] youtube-object.js
+
+# Body
+
+.Admissions: Sunset
+
+<<@cue-publisher
+  (t       = PRESET PROJECTOR LOCATIONS AND TEST,
+   cid     = 0)>>
+
+<<@cue-publisher
+  (t       = PRESET - SET ALL PROJECTION TO INITIAL STATE,
+   cid     = 5)>>
+
+<<@cue-publisher
+  (t       = Sunset images,
+   cid     = 7)>>
+
+<<@cue-publisher
+  (t       = "Sunset on the beach (50% speed, play for 30s)",
+   cid     = 10)>>
+
+<<@cue-publisher
+  (t       = Sunlight through branches (50% speed),
+   cid     = 11)>>
+
+<<@cue-publisher
+  (t       = Ocean sunset 1 (50% speed),
+   cid     = 12)>>
+
+<<@cue-publisher
+  (t       = Sunset fence  (50% speed),
+   cid     = 13)>>
+
+<<@cue-publisher
+  (t       = Sunset beach 1 (50% speed),
+   cid     = 15)>>
+
+.Rachel enters
+
+<<@cue-publisher
+  (t       = Sunset images turns black & white,
+   cid     = 20)>>
+
+.Down the Rabbit Hole
+
+<<@cue-publisher
+  (t       = "Rachel projection fade in (first memory of LA) - Bike 05, Loop",
+   cid     = 30)>>
+
+<<@cue-publisher
+  (t       = "Archive leaks through; Grand Central",
+   cid     = 40)>>
