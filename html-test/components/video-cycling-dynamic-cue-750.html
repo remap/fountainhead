@@ -12,7 +12,7 @@
 
 <script>
   var componentObject = new window.ComponentObject(document, window);
-  var componentName = 'com-video-thumbnail-cycling-dynamic-cue';
+  var componentName = 'com-video-cycling-dynamic-cue-750';
   
   function onCreate(createdElement) {
     createdElement.ndnPublisherComponentObject = new window.NDNPublisherComponentObject(createdElement, window);
@@ -60,24 +60,18 @@
     componentObject.applyStyleFromParentDocumentAll(createdElement);
     
     // Hardcoded tags and projector door numbers
-    var doorMapping = {
-      'felix': 'natural',    // c1
-      'eddie': 'bold',       // c2
-      'rachel': 'longbeach', // b1
-      'sheena': 'freeway'    // b2
-    }
     
     createdElement.videoMapping = {
-      'felix': [],    // c1
-      'eddie': [],       // c2
-      'rachel': [], // b1
-      'sheena': []    // b2
-    }
+      'longbeach': [],    // c1
+      'bold': [],       // c2
+      'lovers': []    
+    };
     
     var receivedCnt = 0;
+    createdElement.videoLinks = [];
     
-    for (item in doorMapping) {
-      var queryStr = 'select key, tags, description from media where tags contains \'' + doorMapping[item] + '\'';
+    for (item in createdElement.videoMapping) {
+      var queryStr = 'select key, tags, description from media where tags contains \'' + item + '\'';
       createdElement.dbObject.postToDB(queryStr, function (item) {
         return function (responseText) {
           if (responseText === '[]') {
@@ -86,12 +80,15 @@
             var responseObj = JSON.parse(responseText);
             for (var i = 0; i < responseObj.length; i++) {
               createdElement.videoMapping[item].push(responseObj[i][0]);
+              createdElement.videoLinks.push({'url': 'https://www.youtube.com/watch?v=' + responseObj[i][0]});
             }
           }
           receivedCnt ++;
-          if (receivedCnt == Object.keys(doorMapping).length) {
+          if (receivedCnt == Object.keys(createdElement.videoMapping).length) {
             // TODO: both can mark cue as ready while cue actually may be loading, to be fixed
             createdElement.cueReady = true;
+            createdElement.videoUrlCallbackCnt = 0;
+            createdElement.jsonTraverse(createdElement.videoLinks, createdElement.replaceVideoUrl, createdElement);
           }
         }
       } (item));
@@ -112,45 +109,29 @@
     createdElement.publishDoors = function (jsonObj, createdElement) {
       // B1
       if (jsonObj.nodeArgs.nodeB.tGo.doors['0'].composer.pipeline1.videoUrl !== undefined) {
-        if (createdElement.videoMapping['rachel']) {
-          var randIdx = Math.floor(Math.random() * createdElement.videoMapping['rachel'].length);
-          jsonObj.nodeArgs.nodeB.tGo.doors['0'].composer.pipeline1.videoUrl = 'http://img.youtube.com/vi/' + createdElement.videoMapping['rachel'][randIdx] + '/0.jpg';
-        } else {
-          console.log('Rachel does not have an image');
-        }
+		var randIdx = Math.floor(Math.random() * createdElement.videoLinks.length);
+		jsonObj.nodeArgs.nodeB.tGo.doors['0'].composer.pipeline1.videoUrl = createdElement.videoLinks[randIdx]['videoUrl'];
       } else {
         console.log('Rachel unexpected json');
       }
       // B2
       if (jsonObj.nodeArgs.nodeB.tGo.doors['1'].composer.pipeline1.videoUrl !== undefined) {
-        if (createdElement.videoMapping['sheena']) {
-          var randIdx = Math.floor(Math.random() * createdElement.videoMapping['sheena'].length);
-          jsonObj.nodeArgs.nodeB.tGo.doors['1'].composer.pipeline1.videoUrl = 'http://img.youtube.com/vi/' + createdElement.videoMapping['sheena'][randIdx] + '/0.jpg';
-        } else {
-          console.log('Sheena does not have an image');
-        }
+		var randIdx = Math.floor(Math.random() * createdElement.videoLinks.length);
+		jsonObj.nodeArgs.nodeB.tGo.doors['1'].composer.pipeline1.videoUrl = createdElement.videoLinks[randIdx]['videoUrl'];
       } else {
         console.log('Sheena unexpected json');
       }
       // C1
       if (jsonObj.nodeArgs.nodeC.tGo.doors['0'].composer.pipeline1.videoUrl !== undefined) {
-        if (createdElement.videoMapping['felix']) {
-          var randIdx = Math.floor(Math.random() * createdElement.videoMapping['felix'].length);
-          jsonObj.nodeArgs.nodeC.tGo.doors['0'].composer.pipeline1.videoUrl = 'http://img.youtube.com/vi/' + createdElement.videoMapping['felix'][randIdx] + '/0.jpg';
-        } else {
-          console.log('Felix does not have an image');
-        }
+        var randIdx = Math.floor(Math.random() * createdElement.videoLinks.length);
+        jsonObj.nodeArgs.nodeC.tGo.doors['0'].composer.pipeline1.videoUrl = createdElement.videoLinks[randIdx]['videoUrl'];
       } else {
         console.log('Felix unexpected json');
       }
       // C2
       if (jsonObj.nodeArgs.nodeC.tGo.doors['1'].composer.pipeline1.videoUrl !== undefined) {
-        if (createdElement.videoMapping['eddie']) {
-          var randIdx = Math.floor(Math.random() * createdElement.videoMapping['eddie'].length);
-          jsonObj.nodeArgs.nodeC.tGo.doors['1'].composer.pipeline1.videoUrl = 'http://img.youtube.com/vi/' + createdElement.videoMapping['eddie'][randIdx] + '/0.jpg';
-        } else {
-          console.log('Eddie does not have an image');
-        }
+        var randIdx = Math.floor(Math.random() * createdElement.videoLinks.length);
+        jsonObj.nodeArgs.nodeC.tGo.doors['1'].composer.pipeline1.videoUrl = createdElement.videoLinks[randIdx]['videoUrl'];
       } else {
         console.log('Eddie unexpected json');
       }
@@ -213,6 +194,31 @@
         }
       }
     }
+    
+    createdElement.replaceVideoUrl = function (key, obj, createdElement) {
+      if (key === 'url') {
+        if (obj[key] !== '') {
+          if (createdElement.firstUrl === '') {
+            createdElement.firstUrl = obj[key];
+          }
+          createdElement.videoUrlCallbackCnt ++;
+          var urlGroups = (/.*t=([0-9]+).*/g).exec(obj[key]);
+          if (urlGroups) {
+            obj['startTime'] = parseInt(urlGroups[1]);
+          }
+          createdElement.youtubeObject.getYoutubeVideoUrl(obj[key], true, function (xhr) {
+            obj['videoUrl'] = xhr.responseText;
+            delete obj[key];
+            createdElement.videoUrlCallbackCnt --;
+          
+            if (createdElement.videoUrlCallbackCnt == 0) {
+              createdElement.cueReady = true;
+            }
+          });
+        }
+      }
+    }
+    
   }
   
   componentObject.createComponent(componentName, onCreate);
