@@ -5,22 +5,26 @@
 <head>
   <script src="includes/db-object.js"></script>
   <script>
-    function scrapeClick()
+    function tagSelectClick()
     {
-      var queryStr = 'select original from tagset';
-      dbObject.postToDB(queryStr, function(responseText) {
+      var dbObject = new DBObject('http://localhost:5000');
+      var queryStr = 'select original, tag from tagset';
+      dbObject.postToDB(queryStr, function (responseText) {
         var responseObj = JSON.parse(responseText);
-        var changedStr = ''
         for (var i = 0; i < responseObj.length; i++) {
-          for (var j = 0; j < responseObj.length; i++) {
-            if (responseObj[i][0].charAt(i) >= 'A' && responseObj[i][0].charAt(i) <= 'Z') {
-              changedStr += ' ' + responseObj[i][0].charAt(i).toLowerCase();
+          var changedStr = '';
+          for (var j = 0; j < responseObj.length; j++) {
+            if (j > 0 && responseObj[i][0].charAt(j) >= 'A' && responseObj[i][0].charAt(j) <= 'Z') {
+              changedStr += ' ' + responseObj[i][0].charAt(j).toLowerCase();
             } else {
-              changedStr += responseObj[i][0].charAt(i);
+              changedStr += responseObj[i][0].charAt(j).toLowerCase();
             }
           }
+          console.log('update tagset set original=\'' + changedStr + '\' where tag=\'' + responseObj[i][1] + '\'');
+          dbObject.postToDB('update tagset set original=\'' + changedStr + '\' where tag=\'' + responseObj[i][1] + '\'', function (responseText) {
+            console.log(responseText);
+          } );
         }
-        console.log(changedStr);
       });
     }
   </script>
@@ -28,7 +32,7 @@
 
 <body>
   <input id='dbHostUrl' type='text' value='http://localhost:5000'></input><br><br>
-  <button id='scrapeButton' onclick='scrapeClick()'>scrap and write to db</button>
+  <button id='selectButton' onclick='tagSelectClick()'>scrap and write to db</button>
   <div id='thumnail-output'></div>
   <br>
   <br>

@@ -7,6 +7,7 @@ var ScriptControl = function ScriptControl(doc) {
   this.links = [];
   
   this.importedElements = [];
+  this.spaceBarElement = undefined;
 };
 
 /**
@@ -85,6 +86,24 @@ ScriptControl.prototype.toggleDivIdVisibility = function(divId, visible)
   }
   
   element.style.display = flag;
+};
+
+/**
+ * One document would have one '#cue-load' green at most.
+ */
+ScriptControl.prototype.cueStandByClicked = function (createdElement)
+{
+  for (var i = 0; i < this.importedElements.length; i++) {
+    if (this.importedElements[i] === createdElement) {
+      this.spaceBarElement = createdElement;
+    } else {
+      var loadElement = this.importedElements[i].shadowRoot.querySelector("#cue-load");
+      if (loadElement !== undefined && loadElement !== null) {
+        loadElement.className = 'video-control-text';
+        this.importedElements[i].componentObject.applyStyleFromParentDocument(loadElement);
+      }
+    }
+  }
 };
 
 exports.ScriptControl = ScriptControl;

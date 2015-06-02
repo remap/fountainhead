@@ -14,6 +14,21 @@ window.onload = function() {
     if (event.keyCode == 84 || event.keyCode == 116) {
       scriptControl.toggleDivIdVisibility(floatingMenuDiv);
     }
+    if (event.keyCode == 32) {
+      if (scriptControl.spaceBarElement !== undefined) {
+        var element = scriptControl.spaceBarElement.shadowRoot.querySelector("#cue-go");
+        if (element !== undefined && element !== null && event.target == document.body) {
+          element.click();
+          var originalColor = element.style.color;
+          element.style.color = 'blue';
+          setTimeout(function () {
+            element.style.color = originalColor;
+          }, 100);
+          event.preventDefault();
+          return false;
+        }
+      }
+    }
   });
   
   if (window.DBObject !== undefined) {

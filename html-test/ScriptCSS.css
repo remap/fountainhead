@@ -331,9 +331,10 @@ a:hover {
     
     font-size: 120%;
     font-weight: bold;
+    margin-right: 4em;
 }
 
-.video-control-text-large {
+.text-large {
     font-size: 200%;
 }
 

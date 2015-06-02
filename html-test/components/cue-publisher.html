@@ -4,7 +4,7 @@
   
   <p style="margin:1.3em auto; width: 400px">
   <a id="cue-load" class="video-control-text"></a>
-  <a id="cue-go" class="video-control-text video-control-text-large"></a>
+  <a id="cue-go" class="video-control-text text-large"></a>
   <!--
   <a id="cue-unload" class="video-control-text"></a>
   -->
@@ -64,7 +64,7 @@
     createdElement.descElement.textContent = description;
     
     createdElement.loadElement.textContent = 'stand by';
-    createdElement.goElement.textContent = 'go';
+    createdElement.goElement.textContent = 'GO';
     //createdElement.unloadElement.textContent = 'unload';
     
     componentObject.applyStyleFromParentDocumentAll(createdElement);
@@ -213,6 +213,13 @@
         createdElement.ndnPublisherComponentObject.publishContent(dataName, createdElement.content, false);
         
         createdElement.loadElement.className += ' video-control-clicked';
+        
+        // Special function call for marking all standbys as yellow, and add space bar action for the next go
+        if (window.scriptControl.cueStandByClicked) {
+          //check for element id cue-id
+          window.scriptControl.cueStandByClicked(createdElement);
+        }
+        
         componentObject.applyStyleFromParentDocument(createdElement.loadElement);
       } else {
         console.log('Warning: Cue content still being loaded');
