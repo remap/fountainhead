@@ -61,9 +61,11 @@
     createdElement.userTags = {};
     createdElement.weightedTags = [];
     
+    // Doors and their tags are dynamically selected from the Archive if/when “flying around”, weighted by tags supplied by the audience. 
     createdElement.dbObject.queryShowEvents('performance-1', 'senses_tags', function (filteredObj) {
       if (filteredObj !== null && filteredObj !== undefined && filteredObj.length > 0) {
         try {
+          // loads dynamic events from events_log
           for (var i = 0; i < filteredObj.length; i++) {
             var paramsObj = JSON.parse(filteredObj[i][2]);
             var participantsObj = JSON.parse(filteredObj[i][3]);
@@ -71,6 +73,33 @@
           }
           for (participant in createdElement.userTags) {
             createdElement.weightedTags.push(createdElement.userTags[participant]);
+          }
+          if (createdElement.weightedTags.length !== 0) {
+            var randIdx = Math.floor(Math.random() * createdElement.weightedTags.length);
+            var selectedTag = createdElement.weightedTags[randIdx];
+            
+            // based on tag querying result from events_log, we select the tag and use it to query our db
+            // based on db query result, we select a random entry from matching videos
+            var queryStr = 'select key, tags, description from media where tags contains \'' + selectedTag + '\'';
+            createdElement.dbObject.postToDB(queryStr, function (responseText) {
+              try {
+                var responseObj = JSON.parse(responseText);
+                if (responseObj.length > 0) {
+                  var randIdx = Math.floor(Math.random() * responseObj.length);
+                  console.log('Selected video: https://www.youtube.com/watch?v=' + responseObj[randIdx][0]);
+                } else {
+                  // no videos matching the tag which the user selected, this should trigger another entire-random video selection
+                  var serviceUrl = window.dbObject.selectRandomFromMediaTable();
+                  if (serviceUrl == '') {
+                    console.log(componentName + ' : media table not yet loaded');
+                  } else {
+                    console.log(componentName + ' : selected ' + serviceUrl);
+                  }
+                }
+              } catch (e) {
+                console.log(e);
+              }
+            });
           }
           console.log(createdElement.weightedTags);
         } catch (e) {

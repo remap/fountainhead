@@ -16,16 +16,31 @@ window.onload = function() {
     }
   });
   
-  /*
-  // Tests for loadYoutubeVideoUrls and getYoutubeVideoUrl
-  var ytUrls = ['https://www.youtube.com/watch?v=77rHEjXj-b8', 
-                'https://www.youtube.com/watch?v=XJqm2irnYlM', 
-                'https://www.youtube.com/watch?v=pY54WU0C3i4', 
-                'https://www.youtube.com/watch?v=kr7MDoWLQ14', 
-                'https://www.youtube.com/watch?v=2od2GZg7-88'];
+  if (window.DBObject !== undefined) {
+    window.dbObject = new window.DBObject();
+
+    window.dbObject.selectRandomFromMediaTable = function () {
+      if (window.dbObject.medias !== undefined) {
+        var randIdx = Math.floor(Math.random() * window.dbObject.medias.length);
+        var serviceUrl = 'https://www.youtube.com/watch?v=' + window.dbObject.medias[randIdx][0];
+        return serviceUrl;
+      } else {
+        return '';
+      }
+    };
+
+    window.dbObject.loadMediaTable = function () {
+      var wholeQueryStr = 'select key, description from media';
+      window.dbObject.postToDB(wholeQueryStr, function (responseText) {
+        window.dbObject.medias = JSON.parse(responseText);
+      });
+    };
+
+    window.dbObject.loadParticipantTable = function () {
+
+    };
   
-  // This preloads the list of service urls, and store their corresponding video urls on server 
-  loadYoutubeVideoUrls(ytUrls);
-  */
+    window.dbObject.loadMediaTable();
+  }
   console.log("onload");
 };

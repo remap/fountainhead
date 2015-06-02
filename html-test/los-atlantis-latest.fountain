@@ -631,7 +631,8 @@ Do I have a choice?
 
 *VQ #60 - Agora becomes more personal leading to sense memories.*
 
-
+THE GUIDE
+Choose sense tags: {{ sense_tags }}
 
 The TRAVELERS begin to spread out and explore the images throughout the space. These are NOT random images... Altho' they might seem to be at this point. Later it will become clear to most that they are seeing imagery connected to someone there that night,. The audience, encouraged by the Travelers,  might also explore the Agora. THE IMAGES BEGIN TO MOVE ABOUT THE SPACE. The images they encounter seem to speed up and slow down according to the visitors proximity to the walls. The TRAVELERS move around the space, point to, comment on, engage the images, mixing with the TOURISTS and encouraging them to explore, speaking quietly and individually to them of smell, sound, taste, and touch - again, personalized by the performer. 
 
@@ -1403,7 +1404,7 @@ ANDI
 You have to be good at math, but I'm pretty terrible at it. You have to physically fit, but I can't run very fast. We make up stories about all kinds of things. Like these things! ***Look! Read! Share!*** 
 
 THE GUIDE
-Looks, read, share!
+Looks, read, share! {{ filter:c }}
 
 ANDI picks up the telescope and points it at a picture of Disneyland hanging on a strings around her. The video associated with that picture is projected in the space. FELIX picks up a little silver telescope from the box. He looks through it and shows the TOURISTS.
 
@@ -1423,7 +1424,7 @@ Do I know you?
 Did you know that Polaris, the north star, is a Cepheid star?? That means it contracts and expands in brightness. ***Like it's talking!*** 
 
 THE GUIDE
-Like it's talking!
+Like it's talking! {{ filter:c }}
 
 ANDI
 (giving FELIX a picture)
@@ -1448,7 +1449,7 @@ Handing FELIX the telescope, ANDI tapes the memory to FELIX.
 Now YOU! ***Please?*** ***Read one.***
 
 THE GUIDE
-Read the pictures! Take a photo! Remember to say thank you! 
+Read the pictures! Take a photo! Remember to say thank you! {{ filter:c }}
 
 *VQ #130 - Quince*
 
@@ -1464,7 +1465,7 @@ ANDI
 *VQ #131 - Baptism*
 
 TOURIST 2
-<<January 2012: an Ethiopian baptism in Dodger Stadium.>>
+<<January 2012: an Ethiopian baptism in Dodger Stadium.>> {{ filter:c }}
 
 ANDI V.O.
 Baptism comes from the greek word Baptisma. Váptisma. Derived from the noun Baptizo which means "I wash." We were driving around Echo park when we saw the commotion. It wasn't a Dodger game. Everyone was wearing white. There were pools of water everywhere. Tears. Dancing. Chorós. Celebration. Eortasmós. It was a baptism!
@@ -1473,7 +1474,7 @@ ANDI
 ***Thank you!*** Now YOU! ***Please?*** ***Read one.*** 
 
 THE GUIDE
-Listen to her. Imagine for her. Thank her.
+Listen to her. Imagine for her. Thank her. {{ filter:c }}
 
 *VQ #132 - Danza Pukklay*
 
@@ -1494,7 +1495,7 @@ ANDI slowly walks towards the photo and removes it. She turns to the VISITORS.
 You can have any of those, but not this one...  I think it's time for new memories. What do you think? Let's find some more memories. Lots more memories. Can you grab those memories that printed over there? Let's find some new memories. Some more memories. 
 
 THE GUIDE
-Listen to her. Imagine for her. Thank her.
+Listen to her. Imagine for her. Thank her. {{ filter:c }}
 
 ANDI
 You can have those, but not this one... Here, can you read this? ***Please.*** 
@@ -1538,7 +1539,7 @@ ANDI starts placing VISITORS in a circle.
 
 THE GUIDE
 (vibrating)
-Help make the constellation! Say thank you! 
+Help make the constellation! Say thank you! {{ filter:c }}
 
 ANDI guides FELIX to the center of the circle.  
 

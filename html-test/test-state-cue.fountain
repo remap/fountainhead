@@ -29,10 +29,11 @@
 [include] script-control.js
 [include] component-object.js
 [include] ndn-publisher-component-object.js
-[include] onload.js
 [include] cue-object.js
 [include] youtube-object.js
 [include] db-object.js
+
+[include] onload.js
 
 # Body
 

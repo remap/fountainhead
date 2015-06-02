@@ -97,20 +97,20 @@
       
       // A bad query idea
       var queryStr = 'select key, tags, description from media where tags contains \'' + randAngeleno + '\' and tags contains \'' + randTime + '\' and tags contains \'' + randNeighborhood + '\' allow filtering';
-      console.log(queryStr);
       createdElement.dbObject.postToDB(queryStr, function (responseText) {
         if (responseText === '[]') {
           // no entries found, we relax this query to a random selection from entire channel
-          // this is also a very bad entire-querying idea.
-          var wholeQueryStr = 'select key, description from media';
-          createdElement.dbObject.postToDB(wholeQueryStr, function (responseText) {
-            console.log(responseText);
-            var responseObj = JSON.parse(responseText);
-            var randIdx = Math.floor(Math.random() * responseObj.length);
-            var serviceUrl = 'https://www.youtube.com/watch?v=' + responseObj[randIdx][0];
-            console.log('Picked ' + serviceUrl + ' from random selection');
-            // TODO: Construct JSON payload based on urls and descriptions
-          });
+          
+          // TODO: remove arbitrary setTimeouts 
+          setTimeout(function () {
+            var serviceUrl = window.dbObject.selectRandomFromMediaTable();
+            if (serviceUrl == '') {
+              console.log(componentName + ' : media table not yet loaded');
+            } else {
+              console.log(componentName + ' : selected ' + serviceUrl);
+            }
+          }, 3000);
+          // TODO: Construct JSON payload based on urls and descriptions
         } else {
           var responseObj = JSON.parse(responseText);
           var randIdx = Math.floor(Math.random() * responseObj.length);
