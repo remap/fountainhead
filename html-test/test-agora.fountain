@@ -101,7 +101,7 @@
   (t       = Travelers faces appear as door image, 
    cid     = 240)>>
 
-<<@cue-publisher
+<<@video-thumbnail-cycling-dynamic-cue
   (t       = "Video replace faces in all 4 doors (on ding)", 
    cid     = 250)>>
 
@@ -113,7 +113,7 @@
   (t       = Video freeze/stop all doors, 
    cid     = 270)>>
 
-<<@cue-publisher
+<<@one-video-thumbnail-cycling-dynamic-cue
   (t       = "Duplicate of 250 but with long beach, Raul - Fade in doors/ long beach + raul", 
    cid     = 275)>>
 
@@ -135,7 +135,7 @@
   (t       = Dance party (with Celebration sound cue), 
    cid     = 300)>>
 
-<<@cue-publisher
+<<@dance-party-dynamic-cue
   (t       = Playlist of dancing in LA via Zhehao full Youtube search "los angeles dancing" + neighborhoods of audienced, 
    cid     = 305)>>
 

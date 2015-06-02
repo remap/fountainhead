@@ -12,7 +12,7 @@
 
 <script>
   var componentObject = new window.ComponentObject(document, window);
-  var componentName = 'com-face-cycling-dynamic-cue';
+  var componentName = 'com-one-video-thumbnail-cycling-dynamic-cue';
   
   function onCreate(createdElement) {
     createdElement.ndnPublisherComponentObject = new window.NDNPublisherComponentObject(createdElement, window);
@@ -59,40 +59,19 @@
     
     componentObject.applyStyleFromParentDocumentAll(createdElement);
     
-    // For sunset installation, we query youtube + neighborhood tags
-    createdElement.dbObject.queryParticipant(undefined, undefined, undefined, function(response) {
-      var participantObject = {};
-      try {
-        participantObject = JSON.parse(response);
-      } catch (e) {
-        console.log(e);
-      }
-      
-      // username, first_name, last_name, hashtags, photo_file, favorite_angeleno, favorite_time_of_day, neighborhood, email
-      
-      // TODO: Participant can be queried only once for less traffic
-      // Hardcoded actors since we don't have an actor type
-      // Nickjrapp@gmail.com - nick - felix
-      // miebaka315@hotmail.com - miebaka - eddie
-      // S.a.lyddan@gmail.com - sarah - rachel
-      // rushukla@ucla.edu - roshni - sheena
-      createdElement.finalImage = {};
-      createdElement.imgSeq = [];
-      for (var i = 0; i < participantObject.length; i++) {
-        if (participantObject[i][8].toLowerCase() === 'Nickjrapp@gmail.com'.toLowerCase()) {
-          createdElement.finalImage['felix'] = participantObject[i][4];
-        } else if (participantObject[i][8].toLowerCase() === 'miebaka315@hotmail.com'.toLowerCase()) {
-          createdElement.finalImage['eddie'] = participantObject[i][4];
-        } else if (participantObject[i][8].toLowerCase() === 'S.a.lyddan@gmail.com'.toLowerCase()) {
-          createdElement.finalImage['rachel'] = participantObject[i][4];
-        } else if (participantObject[i][8].toLowerCase() === 'rushukla@ucla.edu'.toLowerCase()) {
-          createdElement.finalImage['sheena'] = participantObject[i][4];
-        } else {
-          if (participantObject[i][4] !== null && participantObject[i][4] !== '' && participantObject[i][4] !== undefined) {
-            createdElement.imgSeq.push(participantObject[i][4]);
-          }
+    createdElement.videos = [];
+    var queryStr = 'select key, tags, description from media where tags contains \'longbeach\'';
+    createdElement.dbObject.postToDB(queryStr, function (responseText) {
+      if (responseText === '[]') {
+        console.log('No entries found');
+      } else {
+        var responseObj = JSON.parse(responseText);
+        for (var i = 0; i < responseObj.length; i++) {
+          createdElement.videos.push(responseObj[i][0]);
         }
       }
+      // TODO: both can mark cue as ready while cue actually may be loading, to be fixed
+      createdElement.cueReady = true;
     });
     
     if (createdElement.content === undefined || createdElement.content == '') {
@@ -110,84 +89,38 @@
     registerEvents(createdElement);
   }
   
-  function replaceImageUrl(key, obj, createdElement) {
-    if (key === 'videoUrl') {
-      if (obj[key] !== '' && createdElement.imgSeq[createdElement.imageIdx] !== undefined) {
-        obj['videoUrl'] = 'http://archive-dev.remap.ucla.edu/app/querystatic/get-user-avatar?filename=' + createdElement.imgSeq[createdElement.imageIdx];
-        createdElement.imageIdx ++;
-      }
-    }
-  }
-  
-  function publishNextDoors(jsonObj, createdElement) {
-    jsonTraverse(jsonObj, replaceImageUrl, createdElement);
-    createdElement.content = JSON.stringify(createdElement.cueContent);
-    
-    var dataName = new Name(createdElement.ndnPublisherComponentObject.namePrefix);
-    // Note: for now, the names are hard-coded, since namespace design is not fully discussed
-    var cueComponent = new Name('cues');
-    var nameSuffix = new Name(createdElement.cueId + '/go');
-    dataName.append(createdElement.showid).append(cueComponent).appendVersion((new Date).getTime()).append(nameSuffix);
-    
-    if (createdElement.ndnPublisherComponentObject.wsOn()) {
-      createdElement.goElement.className += ' video-control-clicked';
-    } else {
-      createdElement.goElement.className += ' video-control-problem';
+  // Hardcoded door state
+  function publishDoors(jsonObj, createdElement) {
+    var randIdx = Math.floor(Math.random() * createdElement.videos.length);
+    if (createdElement.videos.length === 0) {
+      createdElement.cueGo = false;
+      console.log('Unexpected number of videos');
+      return;
     }
     
-    componentObject.applyStyleFromParentDocument(createdElement.goElement);
-    
-    createdElement.ndnPublisherComponentObject.publishContent(dataName, createdElement.content, false);
-    if (createdElement.imageIdx < createdElement.imgSeq.length) {
-      setTimeout(function () {
-        publishNextDoors(jsonObj, createdElement);
-      }, 2000);
-    } else {
-      publishFinalDoors(jsonObj, createdElement)
-    }
-  }
-  
-  // Hardcoded final door state
-  function publishFinalDoors(jsonObj, createdElement) {
     // B1
     if (jsonObj.nodeArgs.nodeB.tGo.doors['0'].composer.pipeline1.videoUrl !== undefined) {
-      if (createdElement.finalImage['rachel']) {
-        jsonObj.nodeArgs.nodeB.tGo.doors['0'].composer.pipeline1.videoUrl = 'http://archive-dev.remap.ucla.edu/app/querystatic/get-user-avatar?filename=' + createdElement.finalImage['rachel'];
-      } else {
-        console.log('Rachel does not have an image');
-      }
+      jsonObj.nodeArgs.nodeB.tGo.doors['0'].composer.pipeline1.videoUrl = 'http://img.youtube.com/vi/' + createdElement.videos[randIdx] + '/0.jpg';
     } else {
-      console.log('Rachel unexpected json');
+      console.log('Unexpected json');
     }
     // B2
     if (jsonObj.nodeArgs.nodeB.tGo.doors['1'].composer.pipeline1.videoUrl !== undefined) {
-      if (createdElement.finalImage['sheena']) {
-        jsonObj.nodeArgs.nodeB.tGo.doors['1'].composer.pipeline1.videoUrl = 'http://archive-dev.remap.ucla.edu/app/querystatic/get-user-avatar?filename=' + createdElement.finalImage['sheena'];
-      } else {
-        console.log('Sheena does not have an image');
-      }
+      jsonObj.nodeArgs.nodeB.tGo.doors['1'].composer.pipeline1.videoUrl = 'http://img.youtube.com/vi/' + createdElement.videos[randIdx] + '/0.jpg';
     } else {
-      console.log('Sheena unexpected json');
+      console.log('Unexpected json');
     }
     // C1
     if (jsonObj.nodeArgs.nodeC.tGo.doors['0'].composer.pipeline1.videoUrl !== undefined) {
-      if (createdElement.finalImage['felix']) {
-        jsonObj.nodeArgs.nodeC.tGo.doors['0'].composer.pipeline1.videoUrl = 'http://archive-dev.remap.ucla.edu/app/querystatic/get-user-avatar?filename=' + createdElement.finalImage['felix'];
-      } else {
-        console.log('Felix does not have an image');
-      }
+      jsonObj.nodeArgs.nodeC.tGo.doors['0'].composer.pipeline1.videoUrl = 'http://img.youtube.com/vi/' + createdElement.videos[randIdx] + '/0.jpg';
     } else {
-      console.log('Felix unexpected json');
+      console.log('Unexpected json');
     }
     // C2
     if (jsonObj.nodeArgs.nodeC.tGo.doors['1'].composer.pipeline1.videoUrl !== undefined) {
-      if (createdElement.finalImage['eddie']) {
-        jsonObj.nodeArgs.nodeC.tGo.doors['1'].composer.pipeline1.videoUrl = 'http://archive-dev.remap.ucla.edu/app/querystatic/get-user-avatar?filename=' + createdElement.finalImage['eddie'];
-      } else {
-        console.log('Eddie does not have an image');
-      }
+      jsonObj.nodeArgs.nodeC.tGo.doors['1'].composer.pipeline1.videoUrl = 'http://img.youtube.com/vi/' + createdElement.videos[randIdx] + '/0.jpg';
     } else {
-      console.log('Eddie unexpected json');
+      console.log('Unexpected json');
     }
     
     var dataName = new Name(createdElement.ndnPublisherComponentObject.namePrefix);
@@ -206,6 +139,10 @@
     
     createdElement.content = JSON.stringify(jsonObj);
     createdElement.ndnPublisherComponentObject.publishContent(dataName, createdElement.content, false);
+    
+    setTimeout(function () {
+      publishDoors(jsonObj, createdElement);
+    }, 2000);
   }
   
   function jsonTraverse(obj, func, createdElement) {
@@ -226,8 +163,15 @@
     
     createdElement.goElement.addEventListener('click', function() {
       if (!createdElement.cueGoing && createdElement.cueReady) {
+        // TODO: referencing namePrefix like this is not ideal
+        var dataName = new Name(createdElement.ndnPublisherComponentObject.namePrefix);
+        // Note: for now, the names are hard-coded, since namespace design is not fully discussed
+        var cueComponent = new Name('cues');
+        var nameSuffix = new Name(createdElement.cueId + '/go');
+        dataName.append(createdElement.showid).append(cueComponent).appendVersion((new Date).getTime()).append(nameSuffix);
+      
         createdElement.imageIdx = 0;
-        publishNextDoors(createdElement.cueContent, createdElement);
+        publishDoors(createdElement.cueContent, createdElement);
         
         createdElement.goElement.className += ' video-control-clicked';
         componentObject.applyStyleFromParentDocument(createdElement.goElement);
