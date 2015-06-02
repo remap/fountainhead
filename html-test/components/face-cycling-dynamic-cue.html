@@ -107,135 +107,132 @@
       xhr.send();
     }
     
-    registerEvents(createdElement);
-  }
-  
-  function replaceImageUrl(key, obj, createdElement) {
-    if (key === 'videoUrl') {
-      if (obj[key] !== '' && createdElement.imgSeq[createdElement.imageIdx] !== undefined) {
-        obj['videoUrl'] = 'http://archive-dev.remap.ucla.edu/app/querystatic/get-user-avatar?filename=' + createdElement.imgSeq[createdElement.imageIdx];
-        createdElement.imageIdx ++;
+    createdElement.replaceImageUrl = function (key, obj, createdElement) {
+      if (key === 'videoUrl') {
+        if (obj[key] !== '' && createdElement.imgSeq[createdElement.imageIdx] !== undefined) {
+          obj['videoUrl'] = 'http://archive-dev.remap.ucla.edu/app/querystatic/get-user-avatar?filename=' + createdElement.imgSeq[createdElement.imageIdx];
+          createdElement.imageIdx ++;
+        }
       }
     }
-  }
-  
-  function publishNextDoors(jsonObj, createdElement) {
-    jsonTraverse(jsonObj, replaceImageUrl, createdElement);
-    createdElement.content = JSON.stringify(createdElement.cueContent);
     
-    var dataName = new Name(createdElement.ndnPublisherComponentObject.namePrefix);
-    // Note: for now, the names are hard-coded, since namespace design is not fully discussed
-    var cueComponent = new Name('cues');
-    var nameSuffix = new Name(createdElement.cueId + '/go');
-    dataName.append(createdElement.showid).append(cueComponent).appendVersion((new Date).getTime()).append(nameSuffix);
-    
-    if (createdElement.ndnPublisherComponentObject.wsOn()) {
-      createdElement.goElement.className += ' video-control-clicked';
-    } else {
-      createdElement.goElement.className += ' video-control-problem';
-    }
-    
-    componentObject.applyStyleFromParentDocument(createdElement.goElement);
-    
-    createdElement.ndnPublisherComponentObject.publishContent(dataName, createdElement.content, false);
-    if (createdElement.imageIdx < createdElement.imgSeq.length) {
-      setTimeout(function () {
-        publishNextDoors(jsonObj, createdElement);
-      }, 2000);
-    } else {
-      publishFinalDoors(jsonObj, createdElement)
-    }
-  }
-  
-  // Hardcoded final door state
-  function publishFinalDoors(jsonObj, createdElement) {
-    // B1
-    if (jsonObj.nodeArgs.nodeB.tGo.doors['0'].composer.pipeline1.videoUrl !== undefined) {
-      if (createdElement.finalImage['rachel']) {
-        jsonObj.nodeArgs.nodeB.tGo.doors['0'].composer.pipeline1.videoUrl = 'http://archive-dev.remap.ucla.edu/app/querystatic/get-user-avatar?filename=' + createdElement.finalImage['rachel'];
-      } else {
-        console.log('Rachel does not have an image');
-      }
-    } else {
-      console.log('Rachel unexpected json');
-    }
-    // B2
-    if (jsonObj.nodeArgs.nodeB.tGo.doors['1'].composer.pipeline1.videoUrl !== undefined) {
-      if (createdElement.finalImage['sheena']) {
-        jsonObj.nodeArgs.nodeB.tGo.doors['1'].composer.pipeline1.videoUrl = 'http://archive-dev.remap.ucla.edu/app/querystatic/get-user-avatar?filename=' + createdElement.finalImage['sheena'];
-      } else {
-        console.log('Sheena does not have an image');
-      }
-    } else {
-      console.log('Sheena unexpected json');
-    }
-    // C1
-    if (jsonObj.nodeArgs.nodeC.tGo.doors['0'].composer.pipeline1.videoUrl !== undefined) {
-      if (createdElement.finalImage['felix']) {
-        jsonObj.nodeArgs.nodeC.tGo.doors['0'].composer.pipeline1.videoUrl = 'http://archive-dev.remap.ucla.edu/app/querystatic/get-user-avatar?filename=' + createdElement.finalImage['felix'];
-      } else {
-        console.log('Felix does not have an image');
-      }
-    } else {
-      console.log('Felix unexpected json');
-    }
-    // C2
-    if (jsonObj.nodeArgs.nodeC.tGo.doors['1'].composer.pipeline1.videoUrl !== undefined) {
-      if (createdElement.finalImage['eddie']) {
-        jsonObj.nodeArgs.nodeC.tGo.doors['1'].composer.pipeline1.videoUrl = 'http://archive-dev.remap.ucla.edu/app/querystatic/get-user-avatar?filename=' + createdElement.finalImage['eddie'];
-      } else {
-        console.log('Eddie does not have an image');
-      }
-    } else {
-      console.log('Eddie unexpected json');
-    }
-    
-    var dataName = new Name(createdElement.ndnPublisherComponentObject.namePrefix);
-    // Note: for now, the names are hard-coded, since namespace design is not fully discussed
-    var cueComponent = new Name('cues');
-    var nameSuffix = new Name(createdElement.cueId + '/go');
-    dataName.append(createdElement.showid).append(cueComponent).appendVersion((new Date).getTime()).append(nameSuffix);
-    
-    if (createdElement.ndnPublisherComponentObject.wsOn()) {
-      createdElement.goElement.className += ' video-control-clicked';
-    } else {
-      createdElement.goElement.className += ' video-control-problem';
-    }
-    
-    componentObject.applyStyleFromParentDocument(createdElement.goElement);
-    
-    createdElement.content = JSON.stringify(jsonObj);
-    createdElement.ndnPublisherComponentObject.publishContent(dataName, createdElement.content, false);
-  }
-  
-  function jsonTraverse(obj, func, createdElement) {
-    for (var i in obj) {
-      func.apply(this, [i, obj, createdElement]);  
-      if (obj[i] !== null && typeof(obj[i]) == "object") {
-        jsonTraverse(obj[i], func, createdElement);
-      }
-    }
-  }
-  
-  function registerEvents(createdElement) {
-    createdElement.loadElement.addEventListener('click', function () {
-      // TODO: referencing namePrefix like this is not ideal
-      console.log('load does not do anything');
+    createdElement.registerEvents = function (createdElement) {
+      createdElement.loadElement.addEventListener('click', function () {
+        // TODO: referencing namePrefix like this is not ideal
+        console.log('load does not do anything');
       
-    });
+      });
     
-    createdElement.goElement.addEventListener('click', function() {
-      if (!createdElement.cueGoing && createdElement.cueReady) {
-        createdElement.imageIdx = 0;
-        publishNextDoors(createdElement.cueContent, createdElement);
+      createdElement.goElement.addEventListener('click', function() {
+        if (!createdElement.cueGoing && createdElement.cueReady) {
+          createdElement.imageIdx = 0;
+          createdElement.publishNextDoors(createdElement.cueContent, createdElement);
         
+          createdElement.goElement.className += ' video-control-clicked';
+          componentObject.applyStyleFromParentDocument(createdElement.goElement);
+          createdElement.cueGoing = true;
+        } else {
+          console.log('Cue is already going, or not ready yet!');
+        }
+      });
+    }(createdElement);
+    
+    createdElement.publishNextDoors = function (jsonObj, createdElement) {
+      createdElement.jsonTraverse(jsonObj, createdElement.replaceImageUrl, createdElement);
+      createdElement.content = JSON.stringify(createdElement.cueContent);
+    
+      var dataName = new Name(createdElement.ndnPublisherComponentObject.namePrefix);
+      // Note: for now, the names are hard-coded, since namespace design is not fully discussed
+      var cueComponent = new Name('cues');
+      var nameSuffix = new Name(createdElement.cueId + '/go');
+      dataName.append(createdElement.showid).append(cueComponent).appendVersion((new Date).getTime()).append(nameSuffix);
+    
+      if (createdElement.ndnPublisherComponentObject.wsOn()) {
         createdElement.goElement.className += ' video-control-clicked';
-        componentObject.applyStyleFromParentDocument(createdElement.goElement);
-        createdElement.cueGoing = true;
       } else {
-        console.log('Cue is already going, or not ready yet!');
+        createdElement.goElement.className += ' video-control-problem';
       }
-    });
+    
+      componentObject.applyStyleFromParentDocument(createdElement.goElement);
+    
+      createdElement.ndnPublisherComponentObject.publishContent(dataName, createdElement.content, false);
+      if (createdElement.imageIdx < createdElement.imgSeq.length) {
+        setTimeout(function () {
+          createdElement.publishNextDoors(jsonObj, createdElement);
+        }, 2000);
+      } else {
+        createdElement.publishFinalDoors(jsonObj, createdElement)
+      }
+    };
+    
+    createdElement.publishFinalDoors = function (jsonObj, createdElements) {
+      // B1
+      if (jsonObj.nodeArgs.nodeB.tGo.doors['0'].composer.pipeline1.videoUrl !== undefined) {
+        if (createdElement.finalImage['rachel']) {
+          jsonObj.nodeArgs.nodeB.tGo.doors['0'].composer.pipeline1.videoUrl = 'http://archive-dev.remap.ucla.edu/app/querystatic/get-user-avatar?filename=' + createdElement.finalImage['rachel'];
+        } else {
+          console.log('Rachel does not have an image');
+        }
+      } else {
+        console.log('Rachel unexpected json');
+      }
+      // B2
+      if (jsonObj.nodeArgs.nodeB.tGo.doors['1'].composer.pipeline1.videoUrl !== undefined) {
+        if (createdElement.finalImage['sheena']) {
+          jsonObj.nodeArgs.nodeB.tGo.doors['1'].composer.pipeline1.videoUrl = 'http://archive-dev.remap.ucla.edu/app/querystatic/get-user-avatar?filename=' + createdElement.finalImage['sheena'];
+        } else {
+          console.log('Sheena does not have an image');
+        }
+      } else {
+        console.log('Sheena unexpected json');
+      }
+      // C1
+      if (jsonObj.nodeArgs.nodeC.tGo.doors['0'].composer.pipeline1.videoUrl !== undefined) {
+        if (createdElement.finalImage['felix']) {
+          jsonObj.nodeArgs.nodeC.tGo.doors['0'].composer.pipeline1.videoUrl = 'http://archive-dev.remap.ucla.edu/app/querystatic/get-user-avatar?filename=' + createdElement.finalImage['felix'];
+        } else {
+          console.log('Felix does not have an image');
+        }
+      } else {
+        console.log('Felix unexpected json');
+      }
+      // C2
+      if (jsonObj.nodeArgs.nodeC.tGo.doors['1'].composer.pipeline1.videoUrl !== undefined) {
+        if (createdElement.finalImage['eddie']) {
+          jsonObj.nodeArgs.nodeC.tGo.doors['1'].composer.pipeline1.videoUrl = 'http://archive-dev.remap.ucla.edu/app/querystatic/get-user-avatar?filename=' + createdElement.finalImage['eddie'];
+        } else {
+          console.log('Eddie does not have an image');
+        }
+      } else {
+        console.log('Eddie unexpected json');
+      }
+    
+      var dataName = new Name(createdElement.ndnPublisherComponentObject.namePrefix);
+      // Note: for now, the names are hard-coded, since namespace design is not fully discussed
+      var cueComponent = new Name('cues');
+      var nameSuffix = new Name(createdElement.cueId + '/go');
+      dataName.append(createdElement.showid).append(cueComponent).appendVersion((new Date).getTime()).append(nameSuffix);
+    
+      if (createdElement.ndnPublisherComponentObject.wsOn()) {
+        createdElement.goElement.className += ' video-control-clicked';
+      } else {
+        createdElement.goElement.className += ' video-control-problem';
+      }
+    
+      componentObject.applyStyleFromParentDocument(createdElement.goElement);
+    
+      createdElement.content = JSON.stringify(jsonObj);
+      createdElement.ndnPublisherComponentObject.publishContent(dataName, createdElement.content, false);
+    }
+    
+    createdElement.jsonTraverse = function (obj, func, createdElement) {
+      for (var i in obj) {
+        func.apply(this, [i, obj, createdElement]);  
+        if (obj[i] !== null && typeof(obj[i]) == "object") {
+          createdElement.jsonTraverse(obj[i], func, createdElement);
+        }
+      }
+    }
   }
   
   componentObject.createComponent(componentName, onCreate);

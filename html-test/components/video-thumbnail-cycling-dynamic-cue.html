@@ -109,113 +109,110 @@
       xhr.send();
     }
     
-    registerEvents(createdElement);
-  }
-  
-  // Hardcoded door state
-  function publishDoors(jsonObj, createdElement) {
-    // B1
-    if (jsonObj.nodeArgs.nodeB.tGo.doors['0'].composer.pipeline1.videoUrl !== undefined) {
-      if (createdElement.videoMapping['rachel']) {
-        var randIdx = Math.floor(Math.random() * createdElement.videoMapping['rachel'].length);
-        jsonObj.nodeArgs.nodeB.tGo.doors['0'].composer.pipeline1.videoUrl = 'http://img.youtube.com/vi/' + createdElement.videoMapping['rachel'][randIdx] + '/0.jpg';
+    createdElement.publishDoors = function (jsonObj, createdElement) {
+      // B1
+      if (jsonObj.nodeArgs.nodeB.tGo.doors['0'].composer.pipeline1.videoUrl !== undefined) {
+        if (createdElement.videoMapping['rachel']) {
+          var randIdx = Math.floor(Math.random() * createdElement.videoMapping['rachel'].length);
+          jsonObj.nodeArgs.nodeB.tGo.doors['0'].composer.pipeline1.videoUrl = 'http://img.youtube.com/vi/' + createdElement.videoMapping['rachel'][randIdx] + '/0.jpg';
+        } else {
+          console.log('Rachel does not have an image');
+        }
       } else {
-        console.log('Rachel does not have an image');
+        console.log('Rachel unexpected json');
       }
-    } else {
-      console.log('Rachel unexpected json');
-    }
-    // B2
-    if (jsonObj.nodeArgs.nodeB.tGo.doors['1'].composer.pipeline1.videoUrl !== undefined) {
-      if (createdElement.videoMapping['sheena']) {
-        var randIdx = Math.floor(Math.random() * createdElement.videoMapping['sheena'].length);
-        jsonObj.nodeArgs.nodeB.tGo.doors['1'].composer.pipeline1.videoUrl = 'http://img.youtube.com/vi/' + createdElement.videoMapping['sheena'][randIdx] + '/0.jpg';
+      // B2
+      if (jsonObj.nodeArgs.nodeB.tGo.doors['1'].composer.pipeline1.videoUrl !== undefined) {
+        if (createdElement.videoMapping['sheena']) {
+          var randIdx = Math.floor(Math.random() * createdElement.videoMapping['sheena'].length);
+          jsonObj.nodeArgs.nodeB.tGo.doors['1'].composer.pipeline1.videoUrl = 'http://img.youtube.com/vi/' + createdElement.videoMapping['sheena'][randIdx] + '/0.jpg';
+        } else {
+          console.log('Sheena does not have an image');
+        }
       } else {
-        console.log('Sheena does not have an image');
+        console.log('Sheena unexpected json');
       }
-    } else {
-      console.log('Sheena unexpected json');
-    }
-    // C1
-    if (jsonObj.nodeArgs.nodeC.tGo.doors['0'].composer.pipeline1.videoUrl !== undefined) {
-      if (createdElement.videoMapping['felix']) {
-        var randIdx = Math.floor(Math.random() * createdElement.videoMapping['felix'].length);
-        jsonObj.nodeArgs.nodeC.tGo.doors['0'].composer.pipeline1.videoUrl = 'http://img.youtube.com/vi/' + createdElement.videoMapping['felix'][randIdx] + '/0.jpg';
+      // C1
+      if (jsonObj.nodeArgs.nodeC.tGo.doors['0'].composer.pipeline1.videoUrl !== undefined) {
+        if (createdElement.videoMapping['felix']) {
+          var randIdx = Math.floor(Math.random() * createdElement.videoMapping['felix'].length);
+          jsonObj.nodeArgs.nodeC.tGo.doors['0'].composer.pipeline1.videoUrl = 'http://img.youtube.com/vi/' + createdElement.videoMapping['felix'][randIdx] + '/0.jpg';
+        } else {
+          console.log('Felix does not have an image');
+        }
       } else {
-        console.log('Felix does not have an image');
+        console.log('Felix unexpected json');
       }
-    } else {
-      console.log('Felix unexpected json');
-    }
-    // C2
-    if (jsonObj.nodeArgs.nodeC.tGo.doors['1'].composer.pipeline1.videoUrl !== undefined) {
-      if (createdElement.videoMapping['eddie']) {
-        var randIdx = Math.floor(Math.random() * createdElement.videoMapping['eddie'].length);
-        jsonObj.nodeArgs.nodeC.tGo.doors['1'].composer.pipeline1.videoUrl = 'http://img.youtube.com/vi/' + createdElement.videoMapping['eddie'][randIdx] + '/0.jpg';
+      // C2
+      if (jsonObj.nodeArgs.nodeC.tGo.doors['1'].composer.pipeline1.videoUrl !== undefined) {
+        if (createdElement.videoMapping['eddie']) {
+          var randIdx = Math.floor(Math.random() * createdElement.videoMapping['eddie'].length);
+          jsonObj.nodeArgs.nodeC.tGo.doors['1'].composer.pipeline1.videoUrl = 'http://img.youtube.com/vi/' + createdElement.videoMapping['eddie'][randIdx] + '/0.jpg';
+        } else {
+          console.log('Eddie does not have an image');
+        }
       } else {
-        console.log('Eddie does not have an image');
+        console.log('Eddie unexpected json');
       }
-    } else {
-      console.log('Eddie unexpected json');
-    }
     
-    var dataName = new Name(createdElement.ndnPublisherComponentObject.namePrefix);
-    // Note: for now, the names are hard-coded, since namespace design is not fully discussed
-    var cueComponent = new Name('cues');
-    var nameSuffix = new Name(createdElement.cueId + '/go');
-    dataName.append(createdElement.showid).append(cueComponent).appendVersion((new Date).getTime()).append(nameSuffix);
+      var dataName = new Name(createdElement.ndnPublisherComponentObject.namePrefix);
+      // Note: for now, the names are hard-coded, since namespace design is not fully discussed
+      var cueComponent = new Name('cues');
+      var nameSuffix = new Name(createdElement.cueId + '/go');
+      dataName.append(createdElement.showid).append(cueComponent).appendVersion((new Date).getTime()).append(nameSuffix);
     
-    if (createdElement.ndnPublisherComponentObject.wsOn()) {
-      createdElement.goElement.className += ' video-control-clicked';
-    } else {
-      createdElement.goElement.className += ' video-control-problem';
-    }
-    
-    componentObject.applyStyleFromParentDocument(createdElement.goElement);
-    
-    createdElement.content = JSON.stringify(jsonObj);
-    createdElement.ndnPublisherComponentObject.publishContent(dataName, createdElement.content, false);
-    
-    setTimeout(function () {
-      publishDoors(jsonObj, createdElement);
-    }, 2000);
-  }
-  
-  function jsonTraverse(obj, func, createdElement) {
-    for (var i in obj) {
-      func.apply(this, [i, obj, createdElement]);  
-      if (obj[i] !== null && typeof(obj[i]) == "object") {
-        jsonTraverse(obj[i], func, createdElement);
-      }
-    }
-  }
-  
-  function registerEvents(createdElement) {
-    createdElement.loadElement.addEventListener('click', function () {
-      // TODO: referencing namePrefix like this is not ideal
-      console.log('load does not do anything');
-      
-    });
-    
-    createdElement.goElement.addEventListener('click', function() {
-      if (!createdElement.cueGoing && createdElement.cueReady) {
-        // TODO: referencing namePrefix like this is not ideal
-        var dataName = new Name(createdElement.ndnPublisherComponentObject.namePrefix);
-        // Note: for now, the names are hard-coded, since namespace design is not fully discussed
-        var cueComponent = new Name('cues');
-        var nameSuffix = new Name(createdElement.cueId + '/go');
-        dataName.append(createdElement.showid).append(cueComponent).appendVersion((new Date).getTime()).append(nameSuffix);
-      
-        createdElement.imageIdx = 0;
-        publishDoors(createdElement.cueContent, createdElement);
-        
+      if (createdElement.ndnPublisherComponentObject.wsOn()) {
         createdElement.goElement.className += ' video-control-clicked';
-        componentObject.applyStyleFromParentDocument(createdElement.goElement);
-        createdElement.cueGoing = true;
       } else {
-        console.log('Cue is already going, or not ready yet!');
+        createdElement.goElement.className += ' video-control-problem';
       }
-    });
+    
+      componentObject.applyStyleFromParentDocument(createdElement.goElement);
+    
+      createdElement.content = JSON.stringify(jsonObj);
+      createdElement.ndnPublisherComponentObject.publishContent(dataName, createdElement.content, false);
+    
+      setTimeout(function () {
+        createdElement.publishDoors(jsonObj, createdElement);
+      }, 2000);
+    };
+    
+    createdElement.registerEvents = function (createdElement) {
+      createdElement.loadElement.addEventListener('click', function () {
+        // TODO: referencing namePrefix like this is not ideal
+        console.log('load does not do anything');
+      
+      });
+    
+      createdElement.goElement.addEventListener('click', function() {
+        if (!createdElement.cueGoing && createdElement.cueReady) {
+          // TODO: referencing namePrefix like this is not ideal
+          var dataName = new Name(createdElement.ndnPublisherComponentObject.namePrefix);
+          // Note: for now, the names are hard-coded, since namespace design is not fully discussed
+          var cueComponent = new Name('cues');
+          var nameSuffix = new Name(createdElement.cueId + '/go');
+          dataName.append(createdElement.showid).append(cueComponent).appendVersion((new Date).getTime()).append(nameSuffix);
+      
+          createdElement.imageIdx = 0;
+          createdElement.publishDoors(createdElement.cueContent, createdElement);
+        
+          createdElement.goElement.className += ' video-control-clicked';
+          componentObject.applyStyleFromParentDocument(createdElement.goElement);
+          createdElement.cueGoing = true;
+        } else {
+          console.log('Cue is already going, or not ready yet!');
+        }
+      });
+    } (createdElement);
+    
+    createdElement.jsonTraverse = function (obj, func, createdElement) {
+      for (var i in obj) {
+        func.apply(this, [i, obj, createdElement]);  
+        if (obj[i] !== null && typeof(obj[i]) == "object") {
+          createdElement.jsonTraverse(obj[i], func, createdElement);
+        }
+      }
+    }
   }
   
   componentObject.createComponent(componentName, onCreate);

@@ -54,7 +54,7 @@
     createdElement.descElement.textContent = description;
     
     createdElement.loadElement.textContent = 'stand by';
-    createdElement.goElement.textContent = 'go';
+    createdElement.goElement.textContent = 'GO';
     
     componentObject.applyStyleFromParentDocumentAll(createdElement);
     
@@ -78,7 +78,7 @@
       }
       
       createdElement.videoUrlCallbackCnt = 0;
-      jsonTraverse(createdElement.videoLinks, replaceVideoUrl, createdElement);
+      createdElement.jsonTraverse(createdElement.videoLinks, createdElement.replaceVideoUrl, createdElement);
     }, undefined, true);
     
     if (createdElement.content === undefined || createdElement.content == '') {
@@ -92,86 +92,83 @@
       xhr.send();
     }
     
-    registerEvents(createdElement);
-  }
-  
-  function jsonTraverse(obj, func, createdElement) {
-    for (var i in obj) {
-      func.apply(this, [i, obj, createdElement]);  
-      if (obj[i] !== null && typeof(obj[i]) == "object") {
-        jsonTraverse(obj[i], func, createdElement);
-      }
-    }
-  }
-  
-  // TODO: This would also break if one of the responses failed to get through
-  function replaceVideoUrl(key, obj, createdElement) {
-    if (key === 'url') {
-      if (obj[key] !== '') {
-        if (createdElement.firstUrl === '') {
-          createdElement.firstUrl = obj[key];
-        }
-        createdElement.videoUrlCallbackCnt ++;
-        var urlGroups = (/.*t=([0-9]+).*/g).exec(obj[key]);
-        if (urlGroups) {
-          obj['startTime'] = parseInt(urlGroups[1]);
-        }
-        createdElement.youtubeObject.getYoutubeVideoUrl(obj[key], true, function (xhr) {
-          obj['videoUrl'] = xhr.responseText;
-          delete obj[key];
-          createdElement.videoUrlCallbackCnt --;
-          
-          if (createdElement.videoUrlCallbackCnt == 0) {
-            createdElement.cueReady = true;
-          }
-        });
-      }
-    }
-  }
-  
-  function publishRandom(createdElement) {
-    // TODO: referencing namePrefix like this is not ideal
-    var dataName = new Name(createdElement.ndnPublisherComponentObject.namePrefix);
-    // Note: for now, the names are hard-coded, since namespace design is not fully discussed
-    var cueComponent = new Name('cues');
-    var nameSuffix = new Name(createdElement.cueId + '/go');
-    dataName.append(createdElement.showid).append(cueComponent).appendVersion((new Date).getTime()).append(nameSuffix);
-    
-    
-    for (node in createdElement.cueContent.nodeArgs) {
-      if (createdElement.cueContent.nodeArgs[node].tReady.doors['0'].composer.pipeline1.url !== undefined) {
-        var randIdx = Math.floor(Math.random() * createdElement.videoLinks.length);
-        createdElement.cueContent.nodeArgs[node].tReady.doors['0'].composer.pipeline1['videoUrl'] = createdElement.videoLinks[randIdx]['videoUrl'];
-        delete createdElement.cueContent.nodeArgs[node].tReady.doors['0'].composer.pipeline1.url;
-      } else {
-        console.log('Unexpected json');
-      }
-    }
-    createdElement.content = JSON.stringify(createdElement.cueContent);
-    createdElement.ndnPublisherComponentObject.publishContent(dataName, createdElement.content, false);
-    
-    setTimeout(function () {
-      publishRandom(createdElement);
-    }, 2000);
-  }
-  
-  function registerEvents(createdElement) {
-    // This is a quick modification for test on May 12, as the patch expects commands to be published for cues.
-    // TODO: update this with state publisher to make state publisher take 0 or -1 time
-    createdElement.loadElement.addEventListener('click', function() {
+    createdElement.publishRandom = function (createdElement) {
       // TODO: referencing namePrefix like this is not ideal
-      if (createdElement.cueReady) {
-        console.log('Load does not do anything');
-      }
-    });
+      var dataName = new Name(createdElement.ndnPublisherComponentObject.namePrefix);
+      // Note: for now, the names are hard-coded, since namespace design is not fully discussed
+      var cueComponent = new Name('cues');
+      var nameSuffix = new Name(createdElement.cueId + '/go');
+      dataName.append(createdElement.showid).append(cueComponent).appendVersion((new Date).getTime()).append(nameSuffix);
     
-    createdElement.goElement.addEventListener('click', function() {
+    
+      for (node in createdElement.cueContent.nodeArgs) {
+        if (createdElement.cueContent.nodeArgs[node].tReady.doors['0'].composer.pipeline1.url !== undefined) {
+          var randIdx = Math.floor(Math.random() * createdElement.videoLinks.length);
+          createdElement.cueContent.nodeArgs[node].tReady.doors['0'].composer.pipeline1['videoUrl'] = createdElement.videoLinks[randIdx]['videoUrl'];
+          delete createdElement.cueContent.nodeArgs[node].tReady.doors['0'].composer.pipeline1.url;
+        } else {
+          console.log('Unexpected json');
+        }
+      }
+      createdElement.content = JSON.stringify(createdElement.cueContent);
+      createdElement.ndnPublisherComponentObject.publishContent(dataName, createdElement.content, false);
+    
+      setTimeout(function () {
+        createdElement.publishRandom(createdElement);
+      }, 2000);
+    }
+    
+    createdElement.registerEvents = function (createdElement) {
+      // This is a quick modification for test on May 12, as the patch expects commands to be published for cues.
+      // TODO: update this with state publisher to make state publisher take 0 or -1 time
+      createdElement.loadElement.addEventListener('click', function() {
+        // TODO: referencing namePrefix like this is not ideal
+        if (createdElement.cueReady) {
+          console.log('Load does not do anything');
+        }
+      });
+    
+      createdElement.goElement.addEventListener('click', function() {
+        createdElement.publishRandom(createdElement);
       
-      publishRandom(createdElement);
-      
-      createdElement.goElement.className += ' video-control-clicked';
-      componentObject.applyStyleFromParentDocument(createdElement.goElement);
-    });
+        createdElement.goElement.className += ' video-control-clicked';
+        componentObject.applyStyleFromParentDocument(createdElement.goElement);
+      });
+    }(createdElement);
+    
+    createdElement.jsonTraverse = function (obj, func, createdElement) {
+      for (var i in obj) {
+        func.apply(this, [i, obj, createdElement]);  
+        if (obj[i] !== null && typeof(obj[i]) == "object") {
+          createdElement.jsonTraverse(obj[i], func, createdElement);
+        }
+      }
+    }
+    
+    createdElement.replaceVideoUrl = function (key, obj, createdElement) {
+      if (key === 'url') {
+        if (obj[key] !== '') {
+          if (createdElement.firstUrl === '') {
+            createdElement.firstUrl = obj[key];
+          }
+          createdElement.videoUrlCallbackCnt ++;
+          var urlGroups = (/.*t=([0-9]+).*/g).exec(obj[key]);
+          if (urlGroups) {
+            obj['startTime'] = parseInt(urlGroups[1]);
+          }
+          createdElement.youtubeObject.getYoutubeVideoUrl(obj[key], true, function (xhr) {
+            obj['videoUrl'] = xhr.responseText;
+            delete obj[key];
+            createdElement.videoUrlCallbackCnt --;
+          
+            if (createdElement.videoUrlCallbackCnt == 0) {
+              createdElement.cueReady = true;
+            }
+          });
+        }
+      }
+    }
+
   }
   
   componentObject.createComponent(componentName, onCreate);
