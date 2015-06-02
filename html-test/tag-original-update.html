@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<html>
+
+<head>
+  <script src="includes/db-object.js"></script>
+  <script>
+    function scrapeClick()
+    {
+      var queryStr = 'select original from tagset';
+      dbObject.postToDB(queryStr, function(responseText) {
+        var responseObj = JSON.parse(responseText);
+        var changedStr = ''
+        for (var i = 0; i < responseObj.length; i++) {
+          for (var j = 0; j < responseObj.length; i++) {
+            if (responseObj[i][0].charAt(i) >= 'A' && responseObj[i][0].charAt(i) <= 'Z') {
+              changedStr += ' ' + responseObj[i][0].charAt(i).toLowerCase();
+            } else {
+              changedStr += responseObj[i][0].charAt(i);
+            }
+          }
+        }
+        console.log(changedStr);
+      });
+    }
+  </script>
+</head>
+
+<body>
+  <input id='dbHostUrl' type='text' value='http://localhost:5000'></input><br><br>
+  <button id='scrapeButton' onclick='scrapeClick()'>scrap and write to db</button>
+  <div id='thumnail-output'></div>
+  <br>
+  <br>
+CREATE TABLE IF NOT EXISTS media (
+  key text,
+  approved boolean,
+  categoryid text,
+  description text,
+  duration text,
+  in_show set<int>,
+  private boolean,
+  tags set<text>,
+  title text,
+  uploaded_by text,
+  PRIMARY KEY (key)
+);
+  <br>
+</body>
+
+</html>

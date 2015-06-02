@@ -333,6 +333,10 @@ a:hover {
     font-weight: bold;
 }
 
+.video-control-text-large {
+    font-size: 200%;
+}
+
 .video-control-clicked {
     color: #7788CC;
 }
