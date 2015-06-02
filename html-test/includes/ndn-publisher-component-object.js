@@ -14,6 +14,17 @@ var NDNPublisherComponentObject = function NDNPublisherComponentObject(self, win
   this.window = window;
 };
 
+NDNPublisherComponentObject.prototype.wsOn = function () {
+  if (this.face) {
+    if (window.face.transport !== null) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+  return true;
+};
+
 NDNPublisherComponentObject.prototype.parseParameters = function () {
   if (this.componentSelf.hasAttribute('face')) {
     this.face = this.componentSelf.getAttribute('face');

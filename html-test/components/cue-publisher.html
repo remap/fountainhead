@@ -212,8 +212,11 @@
 
         createdElement.ndnPublisherComponentObject.publishContent(dataName, createdElement.content, false);
         
-        createdElement.loadElement.className += ' video-control-clicked';
-        
+        if (createdElement.ndnPublisherComponentObject.wsOn()) {
+          createdElement.loadElement.className += ' video-control-clicked';
+        } else {
+          createdElement.loadElement.className += ' video-control-problem';
+        }
         // Special function call for marking all standbys as yellow, and add space bar action for the next go
         if (window.scriptControl.cueStandByClicked) {
           //check for element id cue-id
@@ -222,7 +225,9 @@
         
         componentObject.applyStyleFromParentDocument(createdElement.loadElement);
       } else {
+        createdElement.loadElement.className += ' video-control-problem';
         console.log('Warning: Cue content still being loaded');
+        componentObject.applyStyleFromParentDocument(createdElement.loadElement);
       }
     });
     
@@ -236,7 +241,12 @@
 
       createdElement.ndnPublisherComponentObject.publishContent(dataName, createdElement.content, false);
       
-      createdElement.goElement.className += ' video-control-clicked';
+      if (createdElement.ndnPublisherComponentObject.wsOn()) {
+        createdElement.goElement.className += ' video-control-clicked';
+      } else {
+        createdElement.goElement.className += ' video-control-problem';
+      }
+      
       componentObject.applyStyleFromParentDocument(createdElement.goElement);
     });
     

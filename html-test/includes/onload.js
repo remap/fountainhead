@@ -57,5 +57,6 @@ window.onload = function() {
   
     window.dbObject.loadMediaTable();
   }
+  
   console.log("onload");
 };

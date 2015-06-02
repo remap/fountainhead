@@ -99,7 +99,11 @@ ScriptControl.prototype.cueStandByClicked = function (createdElement)
     } else {
       var loadElement = this.importedElements[i].shadowRoot.querySelector("#cue-load");
       if (loadElement !== undefined && loadElement !== null) {
-        loadElement.className = 'video-control-text';
+        if (loadElement.className.indexOf('video-control-problem') !== -1) {
+          loadElement.className = 'video-control-text video-control-problem';
+        } else {
+          loadElement.className = 'video-control-text';
+        }
         this.importedElements[i].componentObject.applyStyleFromParentDocument(loadElement);
       }
     }

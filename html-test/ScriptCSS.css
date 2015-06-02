@@ -341,6 +341,9 @@ a:hover {
 .video-control-clicked {
     color: #00FF00;
 }
+.video-control-problem {
+    color: #EE2255;
+}
 
 .cue-title {
     margin: 1.3em auto;
