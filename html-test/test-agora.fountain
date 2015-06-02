@@ -15,13 +15,14 @@
 [include] ndn-publisher-component-object.js
 [include] onload.js
 [include] youtube-object.js
+[include] db-object.js
 
 # Body
 
 .AGORA 1: Finding the Others 
 
 <<@cue-publisher
-  (t       = "Establish Agora", 
+  (t       = "Establish Agora",
    cid     = 50)>>
 
 <<@cue-publisher
@@ -96,8 +97,8 @@
   (t       = 4 Doors appear w/ hashtags, 
    cid     = 230)>>
 
-<<@cue-publisher
-  (t       = Travelers faces appear as door image (img urls from Zhehao, pulled from the-archive.la), 
+<<@face-cycling-dynamic-cue
+  (t       = Travelers faces appear as door image, 
    cid     = 240)>>
 
 <<@cue-publisher

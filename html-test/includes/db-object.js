@@ -32,7 +32,7 @@ DBObject.prototype.postToDB = function (queryStr, successCallback, encoding) {
 DBObject.prototype.queryParticipant = function (participantObject, parts, whereClause, successCallback) {
   var queryParts = parts;
   if (parts === undefined) {
-    queryParts = 'username, first_name, last_name, hashtags, photo_file, favorite_angeleno, favorite_time_of_day, neighborhood';
+    queryParts = 'username, first_name, last_name, hashtags, photo_file, favorite_angeleno, favorite_time_of_day, neighborhood, email';
   }
   var queryStr = 'select ' + queryParts + ' from participant';
   var queryWhereClause = whereClause;
