@@ -1,0 +1,338 @@
+<template>
+  <p id="cue-title" class="cue-title"></p>
+  
+  <p style="margin:1.3em auto; width: 400px">
+    <a id="cue-load" class="video-control-text"></a>
+    <a id="cue-go" class="video-control-text text-large"></a>
+    <a id="cue-unload" class="video-control-text"></a>
+  </p>
+  
+  <p id="cue-description" class="video-control-desc"></p>
+  <p id="cue-chunk" class="video-control-chunk"></p>
+</template>
+
+<script>
+  // Dynamic: Cycle through LongBeach tagged images from the Archive: Priority for Tuesday: High
+  // Note: this selects randomly, change every 2 sec, without stopping
+  var componentObject = new window.ComponentObject(document, window);
+  var componentName = 'com-first-then-one-tag-cycle-dynamic-cue-65';
+  
+  function onCreate(createdElement) {
+    createdElement.ndnPublisherComponentObject = new window.NDNPublisherComponentObject(createdElement, window);
+    createdElement.ndnPublisherComponentObject.parseParameters();
+    
+    createdElement.youtubeObject = new window.YoutubeObject();
+    createdElement.dbObject = new window.DBObject('http://archive-dev.remap.ucla.edu/app');
+    
+    // This show-id in NDN name is different from the show-id field in database
+    var defaultShowId = 'default-show';
+    if (window.hasOwnProperty('showid')) {
+      defaultShowId = window.showid;
+    }
+    
+    createdElement.showid = createdElement.getAttributeByListName(['showid'], defaultShowId);
+    var cueTitle = createdElement.getAttributeByListName(['cueTitle', 't'], '');
+    var description = createdElement.getAttributeByListName(['description', 'desc'], '');
+    
+    createdElement.content = createdElement.getAttributeByListName(['content'], '');
+    if (createdElement.content !== '') {
+      console.log(componentName + ': content definition exists for dynamic cue.');
+    }
+    
+    createdElement.cueId = createdElement.getAttributeByListName(['cid'], '-1');
+    createdElement.cueGoing = false;
+    createdElement.cueReady = false;
+    createdElement.lastScheduledEvent = undefined;
+    var resultLength = 4;
+    createdElement.videoUrlCallbackCnt = 0;
+    
+    createdElement.titleElement = createdElement.shadowRoot.querySelector('#cue-title');
+    createdElement.descElement = createdElement.shadowRoot.querySelector('#cue-description');
+    createdElement.chunkElement = createdElement.shadowRoot.querySelector('#cue-chunk');
+    
+    createdElement.loadElement = createdElement.shadowRoot.querySelector('#cue-load');
+    createdElement.goElement = createdElement.shadowRoot.querySelector('#cue-go');
+    createdElement.unloadElement = createdElement.shadowRoot.querySelector('#cue-unload');
+    
+    createdElement.titleElement.textContent = createdElement.cueId + ' : ' + cueTitle;
+    createdElement.descElement.textContent = description;
+    
+    createdElement.loadElement.textContent = 'stand by';
+    createdElement.goElement.textContent = 'GO';
+    createdElement.unloadElement.textContent = 'unload';
+    
+    componentObject.applyStyleFromParentDocumentAll(createdElement);
+    
+    // B1 - longbeach
+    // B2 - los angeles downtown walking -art
+    // C1 - los angeles airport + angeleno
+    // C2 - https://www.youtube.com/results?filters=week%2C+short&search_query=night+sky+stars&search_sort=video_view_count
+    createdElement.videos = {
+      'B0': [],
+      'B1': [],
+      'C0': [],
+      'C1': []
+    };
+    
+    createdElement.jsonTraverse = function (obj, func, createdElement) {
+      for (var i in obj) {
+        func.apply(this, [i, obj, createdElement]);  
+        if (obj[i] !== null && typeof(obj[i]) == "object") {
+          createdElement.jsonTraverse(obj[i], func, createdElement);
+        }
+      }
+    }
+    
+    createdElement.replaceVideoUrl = function (key, obj, createdElement) {
+      if (key === 'url') {
+        if (obj[key] !== '') {
+          if (createdElement.firstUrl === '') {
+            createdElement.firstUrl = obj[key];
+          }
+          createdElement.videoUrlCallbackCnt ++;
+          var urlGroups = (/.*t=([0-9]+).*/g).exec(obj[key]);
+          if (urlGroups) {
+            obj['startTime'] = parseInt(urlGroups[1]);
+          }
+          createdElement.youtubeObject.getYoutubeVideoUrl(obj[key], true, function (xhr) {
+            obj['videoUrl'] = xhr.responseText;
+            delete obj[key];
+            createdElement.videoUrlCallbackCnt --;
+          
+            if (createdElement.videoUrlCallbackCnt == 0) {
+              createdElement.cueReady = true;
+              console.log(createdElement.videos);
+            }
+          });
+        }
+      }
+    }
+    
+    createdElement.readyFlags = [false, false, false, false];
+    
+    createdElement.allReady = function () {
+      for (var i = 0; i < 4; i++) {
+        if (createdElement.readyFlags[i] == false) {
+          return false;
+        }
+      }
+      return true;
+    }
+    
+    var queryStr = 'select key, tags, description from media where tags contains \'longbeach\'';
+    createdElement.dbObject.postToDB(queryStr, function (responseText) {
+      if (responseText === '[]') {
+        console.log('No entries found');
+      } else {
+        var responseObj = JSON.parse(responseText);
+        for (var i = 0; i < responseObj.length; i++) {
+          createdElement.videos['B0'].push({'url': 'https://www.youtube.com/watch?v=' + responseObj[i][0]});
+        }
+        createdElement.readyFlags[0] = true;
+        if (createdElement.allReady()) {
+          createdElement.jsonTraverse(createdElement.videos, createdElement.replaceVideoUrl, createdElement);
+        }
+      }
+    });
+    
+    queryStr = 'select angeleno from participant';
+    createdElement.dbObject.postToDB(queryStr, function (responseText) {
+      if (responseText === '[]') {
+        console.log('No entries found');
+      } else {
+        var responseObj = JSON.parse(responseText);
+        var angeleno = [];
+        for (var i = 0; i < responseObj.length; i++) {
+          if (angeleno.indexOf(responseObj[i][0]) === -1) {
+            angeleno.push(responseObj[i][0]);
+          }
+        }
+        for (var j = 0; j < angeleno.length; j++) {
+          angelenoVideoLinks[angeleno[j]] = [];
+          var url = createdElement.youtubeObject.requestYoutubeItem({
+            'query': 'search',
+            'part': 'snippet',
+            'q': 'los angeles airport \"' + angeleno[j] + '\"',
+            'type': 'video',
+            'maxResults': resultLength
+          }, undefined, undefined, function (idx) {
+            return function (searchResponse) {
+              if (searchResponse.items.length > 0) {
+                for (var i = 0; i < searchResponse.items.length; i++) {
+                  angelenoVideoLinks[angeleno[j][idx]].push({'url', 'https://www.youtube.com/watch?v=' + searchResponse.items[i].id.videoId});
+                }
+              }
+              responseCnt ++;
+          
+              if (responseCnt === angeleno.length) {
+                // Interleave the playlist results
+                for (var i = 0; i < resultLength; i++) {
+                  for (item in angelenoVideoLinks) {
+                    if (angelenoVideoLinks[item][i] !== undefined) {
+                      createdElement.videos['C0'].push(angelenoVideoLinks[item][i]);
+                    }
+                  }
+                }
+                createdElement.readyFlags[2] = true;
+                if (createdElement.allReady()) {
+                  createdElement.jsonTraverse(createdElement.videos, createdElement.replaceVideoUrl, createdElement);
+                }
+              }
+            }
+          } (j), undefined, true);
+        }
+      }
+    });
+    
+    var url = createdElement.youtubeObject.requestYoutubeItem({
+      'query': 'search',
+      'part': 'snippet',
+      'q': 'night sky stars',
+      'type': 'video',
+      'maxResults': 50
+    }, undefined, undefined, function (searchResponse) {
+      if (searchResponse.items.length > 0) {
+        for (var i = 0; i < searchResponse.items.length; i++) {
+          createdElement.videos['B1'].push({'url', 'https://www.youtube.com/watch?v=' + searchResponse.items[i].id.videoId});
+        }
+        createdElement.readyFlags[1] = true;
+        if (createdElement.allReady()) {
+          createdElement.jsonTraverse(createdElement.videos, createdElement.replaceVideoUrl, createdElement);
+        }
+      }
+    }, undefined, true);
+    
+    
+    var url = createdElement.youtubeObject.requestYoutubeItem({
+      'query': 'search',
+      'part': 'snippet',
+      'q': 'los angeles downtown walking -art',
+      'type': 'video',
+      'maxResults': 50,
+      'order': 'viewCount',
+      'publishedAfter': '2015-05-25T00:00:00Z',
+      'videoDuration': 'short'
+    }, undefined, undefined, function (searchResponse) {
+      if (searchResponse.items.length > 0) {
+        for (var i = 0; i < searchResponse.items.length; i++) {
+          createdElement.videos['C1'].push({'url', 'https://www.youtube.com/watch?v=' + searchResponse.items[i].id.videoId});
+        }
+        createdElement.readyFlags[3] = true;
+        if (createdElement.allReady()) {
+          createdElement.jsonTraverse(createdElement.videos, createdElement.replaceVideoUrl, createdElement);
+        }
+      }
+    }, undefined, true);
+    
+    if (createdElement.content === undefined || createdElement.content == '') {
+      var xhr = new XMLHttpRequest();
+      xhr.open('GET', cueFolder + createdElement.cueId + '.json', true);
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+          createdElement.cueContent = JSON.parse(xhr.responseText);
+        }
+      };
+      xhr.send();
+    }
+    
+    createdElement.registerEvents = function (createdElement) {
+      createdElement.loadElement.addEventListener('click', function () {
+        // TODO: referencing namePrefix like this is not ideal
+        console.log('load does not do anything');
+      
+      });
+    
+      createdElement.goElement.addEventListener('click', function() {
+        if (!createdElement.cueGoing && createdElement.cueReady) {
+          createdElement.cueGoing = true;
+          // TODO: referencing namePrefix like this is not ideal
+          var dataName = new Name(createdElement.ndnPublisherComponentObject.namePrefix);
+          // Note: for now, the names are hard-coded, since namespace design is not fully discussed
+          var cueComponent = new Name('cues');
+          var nameSuffix = new Name(createdElement.cueId + '/go');
+          dataName.append(createdElement.showid).append(cueComponent).appendVersion((new Date).getTime()).append(nameSuffix);
+      
+          createdElement.imageIdx = 0;
+          createdElement.publishDoors(createdElement.cueContent, createdElement);
+        
+          createdElement.goElement.className += ' video-control-clicked';
+          componentObject.applyStyleFromParentDocument(createdElement.goElement);
+        } else {
+          console.log('Cue is already going, or not ready yet!');
+        }
+      });
+      
+      createdElement.unloadElement.addEventListener('click', function() {
+        if (createdElement.cueGoing) {
+          createdElement.unloadElement.className += ' video-control-clicked';
+          componentObject.applyStyleFromParentDocument(createdElement.unloadElement);
+        }
+        createdElement.cueGoing = false;
+        if (createdElement.lastScheduledEvent !== undefined) {
+          clearTimeout(createdElement.lastScheduledEvent);
+          createdElement.lastScheduledEvent = undefined;
+        }
+      });
+    } (createdElement);
+    
+    createdElement.publishDoors = function (jsonObj, createdElement) {
+      var randIdx = Math.floor(Math.random() * createdElement.videos.length);
+      if (createdElement.videos.length === 0) {
+        createdElement.cueGo = false;
+        console.log('Unexpected number of videos');
+        return;
+      }
+    
+      // B1
+      if (jsonObj.nodeArgs.nodeB.tGo.doors['0'].composer.pipeline1.videoUrl !== undefined) {
+        jsonObj.nodeArgs.nodeB.tGo.doors['0'].composer.pipeline1.videoUrl = createdElement.videos[randIdx]['videoUrl'];
+      } else {
+        console.log('Unexpected json');
+      }
+      // B2
+      if (jsonObj.nodeArgs.nodeB.tGo.doors['1'].composer.pipeline1.videoUrl !== undefined) {
+        jsonObj.nodeArgs.nodeB.tGo.doors['1'].composer.pipeline1.videoUrl = createdElement.videos[randIdx]['videoUrl'];
+      } else {
+        console.log('Unexpected json');
+      }
+      // C1
+      if (jsonObj.nodeArgs.nodeC.tGo.doors['0'].composer.pipeline1.videoUrl !== undefined) {
+        jsonObj.nodeArgs.nodeC.tGo.doors['0'].composer.pipeline1.videoUrl = createdElement.videos[randIdx]['videoUrl'];
+      } else {
+        console.log('Unexpected json');
+      }
+      // C2
+      if (jsonObj.nodeArgs.nodeC.tGo.doors['1'].composer.pipeline1.videoUrl !== undefined) {
+        jsonObj.nodeArgs.nodeC.tGo.doors['1'].composer.pipeline1.videoUrl = createdElement.videos[randIdx]['videoUrl'];
+      } else {
+        console.log('Unexpected json');
+      }
+    
+      var dataName = new Name(createdElement.ndnPublisherComponentObject.namePrefix);
+      // Note: for now, the names are hard-coded, since namespace design is not fully discussed
+      var cueComponent = new Name('cues');
+      var nameSuffix = new Name(createdElement.cueId + '/go');
+      dataName.append(createdElement.showid).append(cueComponent).appendVersion((new Date).getTime()).append(nameSuffix);
+    
+      if (createdElement.ndnPublisherComponentObject.wsOn()) {
+        createdElement.goElement.className += ' video-control-clicked';
+      } else {
+        createdElement.goElement.className += ' video-control-problem';
+      }
+    
+      componentObject.applyStyleFromParentDocument(createdElement.goElement);
+    
+      createdElement.content = JSON.stringify(jsonObj);
+      createdElement.ndnPublisherComponentObject.publishContent(dataName, createdElement.content, false);
+    
+      if (createdElement.cueGoing) {
+        createdElement.lastScheduledEvent = setTimeout(function () {
+          createdElement.publishDoors(jsonObj, createdElement);
+        }, 5000);
+      }
+    };
+  }
+  
+  componentObject.createComponent(componentName, onCreate);
+</script>
+
