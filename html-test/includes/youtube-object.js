@@ -48,9 +48,10 @@ YoutubeObject.prototype.loadYoutubeVideoUrls = function (serviceUrls, callback) 
   xhr.send(data);
 }
 
-YoutubeObject.prototype.requestYoutubeItem = function(options, nextPageToken, videoData, onDone, linkOnly, onePage) {
+YoutubeObject.prototype.requestYoutubeItem = function(options, nextPageToken, videoData, onDone, linkOnly, onePage, remaining) {
   var storeLinkOnly = typeof linkOnly !== 'undefined' ? linkOnly : true;
   var requestOnePage = typeof onePage !== 'undefined' ? onePage : false;
+  var requestNum = typeof remaining !== 'undefined' ? remaining : -1;
   
   if (!options.hasOwnProperty('query')) {
     console.log('Request word not specified, returned.');
@@ -77,9 +78,10 @@ YoutubeObject.prototype.requestYoutubeItem = function(options, nextPageToken, vi
           videoData.push(result.items[i]);
 	    }
 	  }
-  
-	  if ((result.nextPageToken !== undefined && result.nextPageToken !== null) && !requestOnePage) {
-		self.requestYoutubeItem(options, result.nextPageToken, videoData, onDone, storeLinkOnly, requestOnePage);
+      requestNum -= result.items.length;
+      
+	  if ((result.nextPageToken !== undefined && result.nextPageToken !== null) && !requestOnePage && requestNum < 0) {
+		self.requestYoutubeItem(options, result.nextPageToken, videoData, onDone, storeLinkOnly, requestOnePage, requestNum);
 	  } else {
 	    if (onDone !== undefined) {
 	      // we return the last result only, so for list/channel fetching, videoData can be relied upon while result cannot

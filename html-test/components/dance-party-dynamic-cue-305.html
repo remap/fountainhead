@@ -65,7 +65,7 @@
     
     componentObject.applyStyleFromParentDocumentAll(createdElement);
     
-    var resultLength = 50;
+    var resultLength = 200;
     createdElement.videoLinks = [];
     
     var url = createdElement.youtubeObject.requestYoutubeItem({
@@ -86,7 +86,8 @@
       
       createdElement.videoUrlCallbackCnt = 0;
       createdElement.jsonTraverse(createdElement.videoLinks, createdElement.replaceVideoUrl, createdElement);
-    }, undefined, true);
+      console.log(createdElement.videoLinks.length);
+    }, undefined);
     
     if (createdElement.content === undefined || createdElement.content == '') {
       var xhr = new XMLHttpRequest();

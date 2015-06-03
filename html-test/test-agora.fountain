@@ -55,7 +55,7 @@
   (t       = "Doors settle", 
    cid     = 64)>>
 
-<<@cue-publisher
+<<@first-then-one-tag-cycle-dynamic-cue-65
   (t       = "Establish", 
    cid     = 65)>>
 
@@ -105,7 +105,7 @@
   (t       = "Duplicate of 250 but with long beach, Raul - Fade in doors/ long beach + raul", 
    cid     = 275)>>
 
-<<@cue-publisher
+<<@one-video-thumbnail-cycling-dynamic-cue-275
   (t       = "Rotate doors clockwise around the space (short blanking in between?)", 
    cid     = 280)>>
 
@@ -148,6 +148,10 @@
 <<@cue-publisher
   (t       = "MOVE PROJECTORS TO AGORA", 
    cid     = 650)>>
+
+<<@cue-publisher
+  (t       = Establish the agora, 
+   cid     = 655)>>
 
 <<@cue-publisher
   (t       = "Raul video on narrow wall", 

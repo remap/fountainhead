@@ -135,7 +135,8 @@
       }
     });
     
-    queryStr = 'select angeleno from participant';
+    queryStr = 'select favorite_angeleno from participant';
+    var angelenoVideoLinks = {};
     createdElement.dbObject.postToDB(queryStr, function (responseText) {
       if (responseText === '[]') {
         console.log('No entries found');
@@ -147,6 +148,7 @@
             angeleno.push(responseObj[i][0]);
           }
         }
+        var responseCnt = 0;
         for (var j = 0; j < angeleno.length; j++) {
           angelenoVideoLinks[angeleno[j]] = [];
           var url = createdElement.youtubeObject.requestYoutubeItem({
@@ -159,7 +161,7 @@
             return function (searchResponse) {
               if (searchResponse.items.length > 0) {
                 for (var i = 0; i < searchResponse.items.length; i++) {
-                  angelenoVideoLinks[angeleno[j][idx]].push({'url', 'https://www.youtube.com/watch?v=' + searchResponse.items[i].id.videoId});
+                  angelenoVideoLinks[angeleno[idx]].push({'url': 'https://www.youtube.com/watch?v=' + searchResponse.items[i].id.videoId});
                 }
               }
               responseCnt ++;
@@ -184,7 +186,7 @@
       }
     });
     
-    var url = createdElement.youtubeObject.requestYoutubeItem({
+    url = createdElement.youtubeObject.requestYoutubeItem({
       'query': 'search',
       'part': 'snippet',
       'q': 'night sky stars',
@@ -193,7 +195,7 @@
     }, undefined, undefined, function (searchResponse) {
       if (searchResponse.items.length > 0) {
         for (var i = 0; i < searchResponse.items.length; i++) {
-          createdElement.videos['B1'].push({'url', 'https://www.youtube.com/watch?v=' + searchResponse.items[i].id.videoId});
+          createdElement.videos['B1'].push({'url': 'https://www.youtube.com/watch?v=' + searchResponse.items[i].id.videoId});
         }
         createdElement.readyFlags[1] = true;
         if (createdElement.allReady()) {
@@ -203,19 +205,19 @@
     }, undefined, true);
     
     
-    var url = createdElement.youtubeObject.requestYoutubeItem({
+    url = createdElement.youtubeObject.requestYoutubeItem({
       'query': 'search',
       'part': 'snippet',
       'q': 'los angeles downtown walking -art',
       'type': 'video',
       'maxResults': 50,
-      'order': 'viewCount',
       'publishedAfter': '2015-05-25T00:00:00Z',
+      'order': 'viewCount',
       'videoDuration': 'short'
     }, undefined, undefined, function (searchResponse) {
       if (searchResponse.items.length > 0) {
         for (var i = 0; i < searchResponse.items.length; i++) {
-          createdElement.videos['C1'].push({'url', 'https://www.youtube.com/watch?v=' + searchResponse.items[i].id.videoId});
+          createdElement.videos['C1'].push({'url': 'https://www.youtube.com/watch?v=' + searchResponse.items[i].id.videoId});
         }
         createdElement.readyFlags[3] = true;
         if (createdElement.allReady()) {
@@ -223,6 +225,7 @@
         }
       }
     }, undefined, true);
+    console.log(url);
     
     if (createdElement.content === undefined || createdElement.content == '') {
       var xhr = new XMLHttpRequest();
