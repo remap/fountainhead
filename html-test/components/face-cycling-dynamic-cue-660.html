@@ -118,12 +118,12 @@
     
       createdElement.goElement.addEventListener('click', function() {
         if (!createdElement.cueGoing && createdElement.cueReady) {
+          createdElement.cueGoing = true;
           createdElement.imageIdx = 0;
           createdElement.publishNextDoors(createdElement.cueContent, createdElement);
         
           createdElement.goElement.className += ' video-control-clicked';
           componentObject.applyStyleFromParentDocument(createdElement.goElement);
-          createdElement.cueGoing = true;
         } else {
           console.log('Cue is already going, or not ready yet!');
         }

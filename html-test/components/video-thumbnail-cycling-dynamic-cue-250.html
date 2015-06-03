@@ -90,13 +90,14 @@
           } else {
             var responseObj = JSON.parse(responseText);
             for (var i = 0; i < responseObj.length; i++) {
-              createdElement.videoMapping[item].push(responseObj[i][0]);
+              createdElement.videoMapping[item].push({"url": "https://www.youtube.com/watch?v=" + responseObj[i][0]});
             }
           }
           receivedCnt ++;
           if (receivedCnt == Object.keys(doorMapping).length) {
             // TODO: both can mark cue as ready while cue actually may be loading, to be fixed
-            createdElement.cueReady = true;
+            createdElement.videoUrlCallbackCnt = 0;
+            createdElement.jsonTraverse(createdElement.videoMapping, createdElement.replaceVideoUrl, createdElement);
           }
         }
       } (item));
@@ -108,7 +109,6 @@
       xhr.onreadystatechange = function () {
         if (xhr.readyState == 4 && xhr.status == 200) {
           createdElement.cueContent = JSON.parse(xhr.responseText);
-          createdElement.cueReady = true;
         }
       };
       xhr.send();
@@ -119,7 +119,7 @@
       if (jsonObj.nodeArgs.nodeB.tGo.doors['0'].composer.pipeline1.videoUrl !== undefined) {
         if (createdElement.videoMapping['rachel']) {
           var randIdx = Math.floor(Math.random() * createdElement.videoMapping['rachel'].length);
-          jsonObj.nodeArgs.nodeB.tGo.doors['0'].composer.pipeline1.videoUrl = 'http://img.youtube.com/vi/' + createdElement.videoMapping['rachel'][randIdx] + '/0.jpg';
+          jsonObj.nodeArgs.nodeB.tGo.doors['0'].composer.pipeline1.videoUrl = createdElement.videoMapping['rachel'][randIdx]['videoUrl'];
         } else {
           console.log('Rachel does not have thumbnails');
         }
@@ -130,7 +130,7 @@
       if (jsonObj.nodeArgs.nodeB.tGo.doors['1'].composer.pipeline1.videoUrl !== undefined) {
         if (createdElement.videoMapping['sheena']) {
           var randIdx = Math.floor(Math.random() * createdElement.videoMapping['sheena'].length);
-          jsonObj.nodeArgs.nodeB.tGo.doors['1'].composer.pipeline1.videoUrl = 'http://img.youtube.com/vi/' + createdElement.videoMapping['sheena'][randIdx] + '/0.jpg';
+          jsonObj.nodeArgs.nodeB.tGo.doors['1'].composer.pipeline1.videoUrl = createdElement.videoMapping['sheena'][randIdx]['videoUrl'];
         } else {
           console.log('Sheena does not have thumbnails');
         }
@@ -141,7 +141,7 @@
       if (jsonObj.nodeArgs.nodeC.tGo.doors['0'].composer.pipeline1.videoUrl !== undefined) {
         if (createdElement.videoMapping['felix']) {
           var randIdx = Math.floor(Math.random() * createdElement.videoMapping['felix'].length);
-          jsonObj.nodeArgs.nodeC.tGo.doors['0'].composer.pipeline1.videoUrl = 'http://img.youtube.com/vi/' + createdElement.videoMapping['felix'][randIdx] + '/0.jpg';
+          jsonObj.nodeArgs.nodeC.tGo.doors['0'].composer.pipeline1.videoUrl = createdElement.videoMapping['felix'][randIdx]['videoUrl'];
         } else {
           console.log('Felix does not have thumbnails');
         }
@@ -152,7 +152,7 @@
       if (jsonObj.nodeArgs.nodeC.tGo.doors['1'].composer.pipeline1.videoUrl !== undefined) {
         if (createdElement.videoMapping['eddie']) {
           var randIdx = Math.floor(Math.random() * createdElement.videoMapping['eddie'].length);
-          jsonObj.nodeArgs.nodeC.tGo.doors['1'].composer.pipeline1.videoUrl = 'http://img.youtube.com/vi/' + createdElement.videoMapping['eddie'][randIdx] + '/0.jpg';
+          jsonObj.nodeArgs.nodeC.tGo.doors['1'].composer.pipeline1.videoUrl = createdElement.videoMapping['eddie'][randIdx]['videoUrl'];
         } else {
           console.log('Eddie does not have thumbnails');
         }
@@ -193,6 +193,7 @@
     
       createdElement.goElement.addEventListener('click', function() {
         if (!createdElement.cueGoing && createdElement.cueReady) {
+          createdElement.cueGoing = true;
           // TODO: referencing namePrefix like this is not ideal
           var dataName = new Name(createdElement.ndnPublisherComponentObject.namePrefix);
           // Note: for now, the names are hard-coded, since namespace design is not fully discussed
@@ -205,15 +206,21 @@
         
           createdElement.goElement.className += ' video-control-clicked';
           componentObject.applyStyleFromParentDocument(createdElement.goElement);
-          createdElement.cueGoing = true;
         } else {
           console.log('Cue is already going, or not ready yet!');
         }
       });
       
       createdElement.unloadElement.addEventListener('click', function() {
+        if (createdElement.cueGoing) {
+          createdElement.unloadElement.className += ' video-control-clicked';
+          componentObject.applyStyleFromParentDocument(createdElement.unloadElement);
+        }
         createdElement.cueGoing = false;
-        
+        if (createdElement.lastScheduledEvent !== undefined) {
+          clearTimeout(createdElement.lastScheduledEvent);
+          createdElement.lastScheduledEvent = undefined;
+        }
       });
       
     } (createdElement);
@@ -223,6 +230,30 @@
         func.apply(this, [i, obj, createdElement]);  
         if (obj[i] !== null && typeof(obj[i]) == "object") {
           createdElement.jsonTraverse(obj[i], func, createdElement);
+        }
+      }
+    }
+    
+    createdElement.replaceVideoUrl = function (key, obj, createdElement) {
+      if (key === 'url') {
+        if (obj[key] !== '') {
+          if (createdElement.firstUrl === '') {
+            createdElement.firstUrl = obj[key];
+          }
+          createdElement.videoUrlCallbackCnt ++;
+          var urlGroups = (/.*t=([0-9]+).*/g).exec(obj[key]);
+          if (urlGroups) {
+            obj['startTime'] = parseInt(urlGroups[1]);
+          }
+          createdElement.youtubeObject.getYoutubeVideoUrl(obj[key], true, function (xhr) {
+            obj['videoUrl'] = xhr.responseText;
+            delete obj[key];
+            createdElement.videoUrlCallbackCnt --;
+          
+            if (createdElement.videoUrlCallbackCnt == 0) {
+              createdElement.cueReady = true;
+            }
+          });
         }
       }
     }

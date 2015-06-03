@@ -148,6 +148,10 @@
       });
       
       createdElement.unloadElement.addEventListener('click', function() {
+        if (createdElement.cueGoing) {
+          createdElement.unloadElement.className += ' video-control-clicked';
+          componentObject.applyStyleFromParentDocument(createdElement.unloadElement);
+        }
         createdElement.cueGoing = false;
         if (createdElement.lastScheduledEvent !== undefined) {
           clearTimeout(createdElement.lastScheduledEvent);
