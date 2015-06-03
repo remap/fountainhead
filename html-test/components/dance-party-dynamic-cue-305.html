@@ -108,21 +108,21 @@
       dataName.append(createdElement.showid).append(cueComponent).appendVersion((new Date).getTime()).append(nameSuffix);
     
       for (node in createdElement.cueContent.nodeArgs) {
-        if (createdElement.cueContent.nodeArgs[node].tReady.doors['0'].composer.pipeline1.url !== undefined) {
+        if (createdElement.cueContent.nodeArgs[node].tReady.doors['0'].composer.pipeline1.videoUrl !== undefined) {
           var randIdx = Math.floor(Math.random() * createdElement.videoLinks.length);
           createdElement.cueContent.nodeArgs[node].tReady.doors['0'].composer.pipeline1['videoUrl'] = createdElement.videoLinks[randIdx]['videoUrl'];
-          delete createdElement.cueContent.nodeArgs[node].tReady.doors['0'].composer.pipeline1.url;
+          delete createdElement.cueContent.nodeArgs[node].tReady.doors['0'].composer.pipeline1.videoUrl;
         } else {
           console.log('Unexpected json');
         }
       }
       createdElement.content = JSON.stringify(createdElement.cueContent);
       createdElement.ndnPublisherComponentObject.publishContent(dataName, createdElement.content, false);
-    
+      
       if (createdElement.cueGo) {
         createdElement.lastScheduledEvent = setTimeout(function () {
           createdElement.publishRandom(createdElement);
-        }, 10000);
+        }, 1000);
       }
     }
     
@@ -138,11 +138,11 @@
     
       createdElement.goElement.addEventListener('click', function() {
         if (!createdElement.cueGo) {
+          createdElement.cueGo = true;
           createdElement.publishRandom(createdElement);
       
           createdElement.goElement.className += ' video-control-clicked';
           componentObject.applyStyleFromParentDocument(createdElement.goElement);
-          createdElement.cueGo = true;
         } else {
           console.log('Cue already going');
         }
