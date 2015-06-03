@@ -16,7 +16,7 @@
   // Start with H not yet implemented, didn't see url at H, and when to switch to cycle though?
   // This publishes every 2 seconds, without stopping
   var componentObject = new window.ComponentObject(document, window);
-  var componentName = 'com-dance-party-dynamic-cue-305';
+  var componentName = 'com-previous-videos-dynamic-cue-710';
   
   function onCreate(createdElement) {
     createdElement.ndnPublisherComponentObject = new window.NDNPublisherComponentObject(createdElement, window);
@@ -65,7 +65,7 @@
     
     componentObject.applyStyleFromParentDocumentAll(createdElement);
     
-    var resultLength = 50;
+    var resultLength = 25;
     createdElement.videoLinks = [];
     
     var url = createdElement.youtubeObject.requestYoutubeItem({
