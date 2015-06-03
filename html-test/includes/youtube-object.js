@@ -80,7 +80,7 @@ YoutubeObject.prototype.requestYoutubeItem = function(options, nextPageToken, vi
 	  }
       requestNum -= result.items.length;
       
-	  if ((result.nextPageToken !== undefined && result.nextPageToken !== null) && !requestOnePage && requestNum < 0) {
+	  if ((result.nextPageToken !== undefined && result.nextPageToken !== null) && !requestOnePage && requestNum > 0) {
 		self.requestYoutubeItem(options, result.nextPageToken, videoData, onDone, storeLinkOnly, requestOnePage, requestNum);
 	  } else {
 	    if (onDone !== undefined) {

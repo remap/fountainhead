@@ -65,7 +65,8 @@
     
     componentObject.applyStyleFromParentDocumentAll(createdElement);
     
-    var resultLength = 200;
+    var resultLength = 50;
+    createdElement.videoData = [];
     createdElement.videoLinks = [];
     
     var url = createdElement.youtubeObject.requestYoutubeItem({
@@ -76,10 +77,11 @@
       'videoDuration': 'short',
       'lclk': 'creativecommons',
       'maxResults': resultLength
-    }, undefined, undefined, function (searchResponse) {
-      if (searchResponse.items.length > 0) {
-        var jsonElement = {};
-        for (var i = 0; i < searchResponse.items.length; i++) {
+    }, undefined, createdElement.videoData, function (searchResponse) {
+      console.log(createdElement.videoData);
+      
+      if (createdElement.videoData.length > 0) {
+        for (var i = 0; i < createdElement.videoData.length; i++) {
           createdElement.videoLinks.push({'url': 'https://www.youtube.com/watch?v=' + searchResponse.items[i].id.videoId});
         }
       }
@@ -87,7 +89,7 @@
       createdElement.videoUrlCallbackCnt = 0;
       createdElement.jsonTraverse(createdElement.videoLinks, createdElement.replaceVideoUrl, createdElement);
       console.log(createdElement.videoLinks.length);
-    }, undefined);
+    }, undefined, false, 200);
     
     if (createdElement.content === undefined || createdElement.content == '') {
       var xhr = new XMLHttpRequest();
