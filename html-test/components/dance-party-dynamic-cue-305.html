@@ -45,7 +45,7 @@
     
     createdElement.cueId = createdElement.getAttributeByListName(['cid'], '-1');
     createdElement.cueReady = false;
-    createdElement.cueGo = false;
+    createdElement.cueGoing = false;
     createdElement.lastScheduledEvent = undefined;
     
     createdElement.titleElement = createdElement.shadowRoot.querySelector('#cue-title');
@@ -71,7 +71,7 @@
     var url = createdElement.youtubeObject.requestYoutubeItem({
       'query': 'search',
       'part': 'snippet',
-      'q': 'los angeles party dance',
+      'q': 'los angeles party dance -strip',
       'type': 'video',
       'videoDuration': 'short',
       'lclk': 'creativecommons',
@@ -118,10 +118,10 @@
       createdElement.content = JSON.stringify(createdElement.cueContent);
       createdElement.ndnPublisherComponentObject.publishContent(dataName, createdElement.content, false);
       
-      if (createdElement.cueGo) {
+      if (createdElement.cueGoing) {
         createdElement.lastScheduledEvent = setTimeout(function () {
           createdElement.publishRandom(createdElement);
-        }, 1000);
+        }, 5000);
       }
     }
     
@@ -136,8 +136,8 @@
       });
     
       createdElement.goElement.addEventListener('click', function() {
-        if (!createdElement.cueGo) {
-          createdElement.cueGo = true;
+        if (!createdElement.cueGoing) {
+          createdElement.cueGoing = true;
           createdElement.publishRandom(createdElement);
       
           createdElement.goElement.className += ' video-control-clicked';
@@ -148,7 +148,7 @@
       });
       
       createdElement.unloadElement.addEventListener('click', function() {
-        createdElement.cueGo = false;
+        createdElement.cueGoing = false;
         if (createdElement.lastScheduledEvent !== undefined) {
           clearTimeout(createdElement.lastScheduledEvent);
           createdElement.lastScheduledEvent = undefined;
