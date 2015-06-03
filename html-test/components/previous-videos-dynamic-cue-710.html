@@ -223,7 +223,7 @@
       if (createdElement.cueGoing) {
         createdElement.lastScheduledEvent = setTimeout(function () {
           createdElement.publishDoors(jsonObj, createdElement);
-        }, 5000);
+        }, Math.floor(Math.random() * 10000) + 5000);
       }
     };
     
