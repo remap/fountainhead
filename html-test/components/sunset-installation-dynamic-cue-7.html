@@ -1,0 +1,217 @@
+<template>
+  <p id="cue-title" class="cue-title"></p>
+  
+  <p style="margin:1.3em auto; width: 400px">
+    <a id="cue-load" class="video-control-text"></a>
+    <a id="cue-go" class="video-control-text text-large"></a>
+  </p>
+  
+  <p id="cue-description" class="video-control-desc"></p>
+  <p id="cue-chunk" class="video-control-chunk"></p>
+</template>
+
+<script>
+  var componentObject = new window.ComponentObject(document, window);
+  var componentName = 'com-sunset-installation-dynamic-cue-7';
+  
+  function onCreate(createdElement) {
+    createdElement.ndnPublisherComponentObject = new window.NDNPublisherComponentObject(createdElement, window);
+    createdElement.ndnPublisherComponentObject.parseParameters();
+    
+    createdElement.youtubeObject = new window.YoutubeObject();
+    createdElement.dbObject = new window.DBObject('http://archive-dev.remap.ucla.edu/app');
+    
+    // This show-id in NDN name is different from the show-id field in database
+    var defaultShowId = 'default-show';
+    if (window.hasOwnProperty('showid')) {
+      defaultShowId = window.showid;
+    }
+    
+    createdElement.showid = createdElement.getAttributeByListName(['showid'], defaultShowId);
+    var cueTitle = createdElement.getAttributeByListName(['cueTitle', 't'], '');
+    var description = createdElement.getAttributeByListName(['description', 'desc'], '');
+    
+    // The number of videos we pick from each neighborhood query to form the playlist
+    var resultLength = createdElement.getAttributeByListName(['playlistLength', 'l'], '3');
+    
+    createdElement.content = createdElement.getAttributeByListName(['content'], '');
+    if (createdElement.content !== '') {
+      console.log(componentName + ': content definition exists for dynamic cue.');
+    }
+    
+    createdElement.cueId = createdElement.getAttributeByListName(['cid'], '-1');
+    createdElement.cueReady = false;
+    
+    createdElement.titleElement = createdElement.shadowRoot.querySelector('#cue-title');
+    createdElement.descElement = createdElement.shadowRoot.querySelector('#cue-description');
+    createdElement.chunkElement = createdElement.shadowRoot.querySelector('#cue-chunk');
+    
+    createdElement.loadElement = createdElement.shadowRoot.querySelector('#cue-load');
+    createdElement.goElement = createdElement.shadowRoot.querySelector('#cue-go');
+    //createdElement.unloadElement = createdElement.shadowRoot.querySelector('#cue-unload');
+    
+    createdElement.titleElement.textContent = createdElement.cueId + ' : ' + cueTitle;
+    createdElement.descElement.textContent = description;
+    
+    createdElement.loadElement.textContent = 'stand by';
+    createdElement.goElement.textContent = 'GO';
+    createdElement.capLength = 50;
+    
+    componentObject.applyStyleFromParentDocumentAll(createdElement);
+    
+    // For sunset installation, we query youtube + neighborhood tags
+    createdElement.dbObject.queryParticipant(undefined, undefined, undefined, function(response) {
+      var participantObject = {};
+      try {
+        participantObject = JSON.parse(response);
+      } catch (e) {
+        console.log(e);
+      }
+      
+      // username, first_name, last_name, hashtags, photo_file, favorite_angeleno, favorite_time_of_day, neighborhood
+      
+      // User neighborhood fetching and counts
+      var neighborhoods = [];
+      
+      for (var i = 0; i < participantObject.length; i++) {
+        if (neighborhoods.indexOf(participantObject[i][7]) === -1 && participantObject[i][7] !== null) {
+          neighborhoods.push(participantObject[i][7]);
+        }
+      }
+      
+      // Function: Use the neighborhoods in our db to query youtube, for each query select first 3 results from youtube,
+      // interleave the results (0: 1 of neighborhood1, 1 of neighborhood 2...), construct json based on interleaved results,
+      // ask for the videoUrls of all those serviceUrls in the json, and be ready.
+      
+      createdElement.ytContent = [];
+      neighborhoodVideoLinks = {};
+      var responseCnt = 0;
+      
+      // TODO: This would fail if one of the responses did not get through/call callback.
+      for (var j = 0; j < neighborhoods.length; j++) {
+        neighborhoodVideoLinks[neighborhoods[j]] = [];
+        var url = createdElement.youtubeObject.requestYoutubeItem({
+          'query': 'search',
+          'part': 'snippet',
+          'q': 'los angeles sunset ' + neighborhoods[j],
+          'type': 'video',
+          'maxResults': resultLength
+        }, undefined, undefined, function (idx) {
+          return function (searchResponse) {
+            if (searchResponse.items.length > 0) {
+              var jsonElement = {};
+              for (var i = 0; i < searchResponse.items.length; i++) {
+                jsonElement['url'] = 'https://www.youtube.com/watch?v=' + searchResponse.items[i].id.videoId;
+                neighborhoodVideoLinks[neighborhoods[idx]].push(jsonElement);
+              }
+              //console.log('<img src=\"http://img.youtube.com/vi/' + searchResponse.items[0].id.videoId + '/0.jpg\"></img>'); 
+            }
+            responseCnt ++;
+          
+            if (responseCnt === neighborhoods.length) {
+              // Interleave the playlist results
+              for (var i = 0; i < resultLength; i++) {
+                for (item in neighborhoodVideoLinks) {
+                  if (neighborhoodVideoLinks[item][i] !== undefined) {
+                    createdElement.ytContent.push(neighborhoodVideoLinks[item][i]);
+                  }
+                }
+              }
+              
+              createdElement.videoUrlCallbackCnt = 0;
+              createdElement.jsonTraverse(createdElement.ytContent, createdElement.replaceVideoUrl, createdElement);
+            }
+          }
+        } (j), undefined, true);
+        console.log(url);
+      }
+    });
+    
+    if (createdElement.content === undefined || createdElement.content == '') {
+      var xhr = new XMLHttpRequest();
+      xhr.open('GET', cueFolder + createdElement.cueId + '.json', true);
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+          createdElement.cueContent = JSON.parse(xhr.responseText);
+        }
+      };
+      xhr.send();
+    }
+    
+    createdElement.jsonTraverse = function (obj, func, createdElement) {
+      for (var i in obj) {
+        func.apply(this, [i, obj, createdElement]);  
+        if (obj[i] !== null && typeof(obj[i]) == "object") {
+          createdElement.jsonTraverse(obj[i], func, createdElement);
+        }
+      }
+    }
+    
+    createdElement.replaceVideoUrl = function (key, obj, createdElement) {
+      if (key === 'url') {
+        if (obj[key] !== '') {
+          if (createdElement.firstUrl === '') {
+            createdElement.firstUrl = obj[key];
+          }
+          createdElement.videoUrlCallbackCnt ++;
+          var urlGroups = (/.*t=([0-9]+).*/g).exec(obj[key]);
+          if (urlGroups) {
+            obj['startTime'] = parseInt(urlGroups[1]);
+          }
+          createdElement.youtubeObject.getYoutubeVideoUrl(obj[key], true, function (xhr) {
+            obj['videoUrl'] = xhr.responseText;
+            delete obj[key];
+            createdElement.videoUrlCallbackCnt --;
+          
+            if (createdElement.videoUrlCallbackCnt == 0) {              
+              var length = 0;
+              if (createdElement.ytContent.length < createdElement.capLength) {
+                length = createdElement.ytContent.length;
+              } else {
+                length = createdElement.capLength;
+              }
+              
+              if (createdElement.cueContent.nodeArgs.nodeB.playlist) {
+                for (var i = 0; i < length; i++) {
+                  createdElement.cueContent.nodeArgs.nodeB.playlist.push([20, { "videoUrl": createdElement.ytContent[i]['videoUrl'] }]);
+                }
+              }
+              
+              createdElement.cueReady = true;
+            }
+          });
+        }
+      }
+    }
+    
+    createdElement.registerEvents = function (createdElement) {
+          
+      createdElement.loadElement.addEventListener('click', function() {
+        console.log('Warning: Load does not do anything');
+      });
+   
+      createdElement.goElement.addEventListener('click', function() {
+        if (createdElement.cueReady) {
+          // TODO: referencing namePrefix like this is not ideal
+          var dataName = new Name(createdElement.ndnPublisherComponentObject.namePrefix);
+          // Note: for now, the names are hard-coded, since namespace design is not fully discussed
+          var cueComponent = new Name('cues');
+          var nameSuffix = new Name(createdElement.cueId + '/go');
+          dataName.append(createdElement.showid).append(cueComponent).appendVersion((new Date).getTime()).append(nameSuffix);
+          
+          createdElement.content = JSON.stringify(createdElement.cueContent);
+          createdElement.ndnPublisherComponentObject.publishContent(dataName, createdElement.content, false);
+     
+          createdElement.goElement.className += ' video-control-clicked';
+          componentObject.applyStyleFromParentDocument(createdElement.goElement);
+        } else {
+          console.log('Cue not yet ready');
+        }
+      });
+    } (createdElement);
+    
+  }
+  
+  componentObject.createComponent(componentName, onCreate);
+</script>
+
