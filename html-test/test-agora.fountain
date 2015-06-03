@@ -181,9 +181,8 @@
   (t       = "Shadows fade, remix begins, citizens leave shadows", 
    cid     = 700)>>
 
-/* Do playlist on my side */
-<<@cue-publisher
-  (t       = "TWO Door signs and images re-establish (mom turns on the lights)", 
+<<@previous-videos-dynamic-cue-710
+  (t       = Environment changes (citizens), 
    cid     = 710)>>
 
 <<@video-cycling-dynamic-cue-750

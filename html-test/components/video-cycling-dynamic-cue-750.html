@@ -58,7 +58,7 @@
     
     createdElement.loadElement.textContent = 'stand by';
     createdElement.goElement.textContent = 'GO';
-    createdElement.unloadElement.textContent = createdElement.shadowRoot.querySelector('#cue-unload');
+    createdElement.unloadElement.textContent = 'unload';
     
     componentObject.applyStyleFromParentDocumentAll(createdElement);
     
@@ -111,6 +111,7 @@
     
     createdElement.publishDoors = function (jsonObj, createdElement) {
       // A1
+      console.log(jsonObj.nodeArgs.nodeA.tReady.doors['0'].composer.pipeline1.videoUrl);
       if (jsonObj.nodeArgs.nodeA.tReady.doors['0'].composer.pipeline1.videoUrl !== undefined) {
 		var randIdx = Math.floor(Math.random() * createdElement.videoLinks.length);
 		jsonObj.nodeArgs.nodeA.tReady.doors['0'].composer.pipeline1.videoUrl = createdElement.videoLinks[randIdx]['videoUrl'];

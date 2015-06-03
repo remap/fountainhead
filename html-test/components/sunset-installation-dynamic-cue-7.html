@@ -91,12 +91,13 @@
       var responseCnt = 0;
       
       // TODO: This would fail if one of the responses did not get through/call callback.
+      // Neighborhood query use original.
       for (var j = 0; j < neighborhoods.length; j++) {
         neighborhoodVideoLinks[neighborhoods[j]] = [];
         var url = createdElement.youtubeObject.requestYoutubeItem({
           'query': 'search',
           'part': 'snippet',
-          'q': 'los angeles sunset ' + neighborhoods[j] + ' -realestate',
+          'q': 'sunset \"' + neighborhoods[j] + '\"',
           'type': 'video',
           'maxResults': resultLength
         }, undefined, undefined, function (idx) {
@@ -126,6 +127,7 @@
             }
           }
         } (j), undefined, true);
+        console.log(url);
       }
     });
     
