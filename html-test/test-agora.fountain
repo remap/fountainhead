@@ -155,10 +155,33 @@
   (t       = "Fade to black", 
    cid     = 380)>>
 
+.Agora 3
+
+<<@cue-publisher
+  (t       = "MOVE PROJECTORS TO AGORA", 
+   cid     = 650)>>
+
+<<@cue-publisher
+  (t       = "Raul video on narrow wall", 
+   cid     = 657)>>
+
+<<@cue-publisher
+  (t       = "Felix video on narrow wall", 
+   cid     = 659)>>
+
 <<@face-cycling-dynamic-cue-660
   (t       = "Establish Agora - Doors with hashtags and photos of tourists, travelers", 
    cid     = 660)>>
 
+<<@cue-publisher
+  (t       = "Shadows of Citizens", 
+   cid     = 670)>>
+
+<<@cue-publisher
+  (t       = "Shadows fade, remix begins, citizens leave shadows", 
+   cid     = 700)>>
+
+/* Do playlist on my side */
 <<@cue-publisher
   (t       = "TWO Door signs and images re-establish (mom turns on the lights)", 
    cid     = 710)>>
@@ -166,3 +189,11 @@
 <<@video-cycling-dynamic-cue-750
   (t       = "Large 16:9 projections", 
    cid     = 750)>>
+
+<<@cue-publisher
+  (t       = "Archive resets", 
+   cid     = 1000)>>
+
+<<@cue-publisher
+  (t       = "Fade to black", 
+   cid     = 1100)>>
