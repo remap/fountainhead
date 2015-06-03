@@ -1,0 +1,14 @@
+/*
+<<@face-cycling-dynamic-cue-240
+  (t       = Travelers faces appear as door image, 
+   cid     = 240)>>
+
+<<@video-thumbnail-cycling-dynamic-cue-250
+  (t       = "Video replace faces in all 4 doors (on ding)", 
+   cid     = 250)>>
+
+<<@one-video-thumbnail-cycling-dynamic-cue-275
+  (t       = "Duplicate of 250 but with long beach, Raul - Fade in doors/ long beach + raul", 
+   cid     = 275)>>
+
+*/
