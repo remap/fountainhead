@@ -11,10 +11,9 @@
 </template>
 
 <script>
-  // Dynamic: Cycle through LongBeach tagged images from the Archive: Priority for Tuesday: High
-  // Note: this selects randomly, change every 2 sec, without stopping
+  // Note: is this door?
   var componentObject = new window.ComponentObject(document, window);
-  var componentName = 'com-one-video-thumbnail-cycling-dynamic-cue-275';
+  var componentName = 'com-face-cycling-dynamic-cue-660';
   
   function onCreate(createdElement) {
     createdElement.ndnPublisherComponentObject = new window.NDNPublisherComponentObject(createdElement, window);
@@ -61,19 +60,31 @@
     
     componentObject.applyStyleFromParentDocumentAll(createdElement);
     
-    createdElement.videos = [];
-    var queryStr = 'select key, tags, description from media where tags contains \'longbeach\'';
-    createdElement.dbObject.postToDB(queryStr, function (responseText) {
-      if (responseText === '[]') {
-        console.log('No entries found');
-      } else {
-        var responseObj = JSON.parse(responseText);
-        for (var i = 0; i < responseObj.length; i++) {
-          createdElement.videos.push(responseObj[i][0]);
+    // For sunset installation, we query youtube + neighborhood tags
+    createdElement.dbObject.queryParticipant(undefined, undefined, undefined, function(response) {
+      var participantObject = {};
+      try {
+        participantObject = JSON.parse(response);
+      } catch (e) {
+        console.log(e);
+      }
+      
+      // username, first_name, last_name, hashtags, photo_file, favorite_angeleno, favorite_time_of_day, neighborhood, email
+      
+      // TODO: Participant can be queried only once for less traffic
+      createdElement.finalImage = {};
+      
+      createdElement.profileSeq = [];
+      
+      for (var i = 0; i < participantObject.length; i++) {
+        if (participantObject[i][4] !== null && participantObject[i][4] !== '' && participantObject[i][4] !== undefined) {
+          if (participantObject[i][3] !== null && participantObject[i][3] !== undefined) {
+            createdElement.profileSeq.push({'img': participantObject[i][4], 'hastag': participantObject[i][3]});
+          } else {
+            createdElement.profileSeq.push({'img': participantObject[i][4], 'hastag': ''});
+          }
         }
       }
-      // TODO: both can mark cue as ready while cue actually may be loading, to be fixed
-      createdElement.cueReady = true;
     });
     
     if (createdElement.content === undefined || createdElement.content == '') {
@@ -88,6 +99,16 @@
       xhr.send();
     }
     
+    // TODO: fill in hashtag, where do hashtags go in json?
+    createdElement.replaceImageUrl = function (key, obj, createdElement) {
+      if (key === 'videoUrl') {
+        if (obj[key] !== '' && createdElement.profileSeq[createdElement.imageIdx].img !== undefined) {
+          obj['videoUrl'] = 'http://archive-dev.remap.ucla.edu/app/querystatic/get-user-avatar?filename=' + createdElement.profileSeq[createdElement.imageIdx].img;
+          createdElement.imageIdx ++;
+        }
+      }
+    }
+    
     createdElement.registerEvents = function (createdElement) {
       createdElement.loadElement.addEventListener('click', function () {
         // TODO: referencing namePrefix like this is not ideal
@@ -97,15 +118,8 @@
     
       createdElement.goElement.addEventListener('click', function() {
         if (!createdElement.cueGoing && createdElement.cueReady) {
-          // TODO: referencing namePrefix like this is not ideal
-          var dataName = new Name(createdElement.ndnPublisherComponentObject.namePrefix);
-          // Note: for now, the names are hard-coded, since namespace design is not fully discussed
-          var cueComponent = new Name('cues');
-          var nameSuffix = new Name(createdElement.cueId + '/go');
-          dataName.append(createdElement.showid).append(cueComponent).appendVersion((new Date).getTime()).append(nameSuffix);
-      
           createdElement.imageIdx = 0;
-          createdElement.publishDoors(createdElement.cueContent, createdElement);
+          createdElement.publishNextDoors(createdElement.cueContent, createdElement);
         
           createdElement.goElement.className += ' video-control-clicked';
           componentObject.applyStyleFromParentDocument(createdElement.goElement);
@@ -114,40 +128,11 @@
           console.log('Cue is already going, or not ready yet!');
         }
       });
-    } (createdElement);
+    }(createdElement);
     
-    createdElement.publishDoors = function (jsonObj, createdElement) {
-      var randIdx = Math.floor(Math.random() * createdElement.videos.length);
-      if (createdElement.videos.length === 0) {
-        createdElement.cueGo = false;
-        console.log('Unexpected number of videos');
-        return;
-      }
-    
-      // B1
-      if (jsonObj.nodeArgs.nodeB.tGo.doors['0'].composer.pipeline1.videoUrl !== undefined) {
-        jsonObj.nodeArgs.nodeB.tGo.doors['0'].composer.pipeline1.videoUrl = 'http://img.youtube.com/vi/' + createdElement.videos[randIdx] + '/0.jpg';
-      } else {
-        console.log('Unexpected json');
-      }
-      // B2
-      if (jsonObj.nodeArgs.nodeB.tGo.doors['1'].composer.pipeline1.videoUrl !== undefined) {
-        jsonObj.nodeArgs.nodeB.tGo.doors['1'].composer.pipeline1.videoUrl = 'http://img.youtube.com/vi/' + createdElement.videos[randIdx] + '/0.jpg';
-      } else {
-        console.log('Unexpected json');
-      }
-      // C1
-      if (jsonObj.nodeArgs.nodeC.tGo.doors['0'].composer.pipeline1.videoUrl !== undefined) {
-        jsonObj.nodeArgs.nodeC.tGo.doors['0'].composer.pipeline1.videoUrl = 'http://img.youtube.com/vi/' + createdElement.videos[randIdx] + '/0.jpg';
-      } else {
-        console.log('Unexpected json');
-      }
-      // C2
-      if (jsonObj.nodeArgs.nodeC.tGo.doors['1'].composer.pipeline1.videoUrl !== undefined) {
-        jsonObj.nodeArgs.nodeC.tGo.doors['1'].composer.pipeline1.videoUrl = 'http://img.youtube.com/vi/' + createdElement.videos[randIdx] + '/0.jpg';
-      } else {
-        console.log('Unexpected json');
-      }
+    createdElement.publishNextDoors = function (jsonObj, createdElement) {
+      createdElement.jsonTraverse(jsonObj, createdElement.replaceImageUrl, createdElement);
+      createdElement.content = JSON.stringify(createdElement.cueContent);
     
       var dataName = new Name(createdElement.ndnPublisherComponentObject.namePrefix);
       // Note: for now, the names are hard-coded, since namespace design is not fully discussed
@@ -163,12 +148,17 @@
     
       componentObject.applyStyleFromParentDocument(createdElement.goElement);
     
-      createdElement.content = JSON.stringify(jsonObj);
       createdElement.ndnPublisherComponentObject.publishContent(dataName, createdElement.content, false);
-    
-      setTimeout(function () {
-        createdElement.publishDoors(jsonObj, createdElement);
-      }, 2000);
+      if (createdElement.imageIdx < createdElement.profileSeq.length) {
+        setTimeout(function () {
+          createdElement.publishNextDoors(jsonObj, createdElement);
+        }, 2000);
+      } else {
+        createdElement.imageIdx = 0;
+        setTimeout(function () {
+          createdElement.publishNextDoors(jsonObj, createdElement);
+        }, 2000);
+      }
     };
     
     createdElement.jsonTraverse = function (obj, func, createdElement) {

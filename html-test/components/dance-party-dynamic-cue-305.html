@@ -4,6 +4,7 @@
   <p style="margin:1.3em auto; width: 400px">
     <a id="cue-load" class="video-control-text"></a>
     <a id="cue-go" class="video-control-text text-large"></a>
+    <a id="cue-unload" class="video-control-text"></a>
   </p>
   
   <p id="cue-description" class="video-control-desc"></p>
@@ -11,6 +12,9 @@
 </template>
 
 <script>
+  // Dynamic: Start with specific video in column H at right, then cycle through these video results: https://www.youtube.com/results?filters=short%2Ccreativecommons&lclk=creativecommons&search_query=los+angeles+party+dance   Priority for Tuesday: High
+  // Start with H not yet implemented, didn't see url at H, and when to switch to cycle though?
+  // This publishes every 2 seconds, without stopping
   var componentObject = new window.ComponentObject(document, window);
   var componentName = 'com-dance-party-dynamic-cue-305';
   
@@ -41,6 +45,8 @@
     
     createdElement.cueId = createdElement.getAttributeByListName(['cid'], '-1');
     createdElement.cueReady = false;
+    createdElement.cueGo = false;
+    createdElement.lastScheduledEvent = undefined;
     
     createdElement.titleElement = createdElement.shadowRoot.querySelector('#cue-title');
     createdElement.descElement = createdElement.shadowRoot.querySelector('#cue-description');
@@ -48,13 +54,14 @@
     
     createdElement.loadElement = createdElement.shadowRoot.querySelector('#cue-load');
     createdElement.goElement = createdElement.shadowRoot.querySelector('#cue-go');
-    //createdElement.unloadElement = createdElement.shadowRoot.querySelector('#cue-unload');
+    createdElement.unloadElement = createdElement.shadowRoot.querySelector('#cue-unload');
     
     createdElement.titleElement.textContent = createdElement.cueId + ' : ' + cueTitle;
     createdElement.descElement.textContent = description;
     
     createdElement.loadElement.textContent = 'stand by';
     createdElement.goElement.textContent = 'GO';
+    createdElement.unloadElement.textContent = 'unload';
     
     componentObject.applyStyleFromParentDocumentAll(createdElement);
     
@@ -100,7 +107,6 @@
       var nameSuffix = new Name(createdElement.cueId + '/go');
       dataName.append(createdElement.showid).append(cueComponent).appendVersion((new Date).getTime()).append(nameSuffix);
     
-    
       for (node in createdElement.cueContent.nodeArgs) {
         if (createdElement.cueContent.nodeArgs[node].tReady.doors['0'].composer.pipeline1.url !== undefined) {
           var randIdx = Math.floor(Math.random() * createdElement.videoLinks.length);
@@ -113,9 +119,11 @@
       createdElement.content = JSON.stringify(createdElement.cueContent);
       createdElement.ndnPublisherComponentObject.publishContent(dataName, createdElement.content, false);
     
-      setTimeout(function () {
-        createdElement.publishRandom(createdElement);
-      }, 2000);
+      if (createdElement.cueGo) {
+        createdElement.lastScheduledEvent = setTimeout(function () {
+          createdElement.publishRandom(createdElement);
+        }, 10000);
+      }
     }
     
     createdElement.registerEvents = function (createdElement) {
@@ -129,10 +137,23 @@
       });
     
       createdElement.goElement.addEventListener('click', function() {
-        createdElement.publishRandom(createdElement);
+        if (!createdElement.cueGo) {
+          createdElement.publishRandom(createdElement);
       
-        createdElement.goElement.className += ' video-control-clicked';
-        componentObject.applyStyleFromParentDocument(createdElement.goElement);
+          createdElement.goElement.className += ' video-control-clicked';
+          componentObject.applyStyleFromParentDocument(createdElement.goElement);
+          createdElement.cueGo = true;
+        } else {
+          console.log('Cue already going');
+        }
+      });
+      
+      createdElement.unloadElement.addEventListener('click', function() {
+        createdElement.cueGo = false;
+        if (createdElement.lastScheduledEvent !== undefined) {
+          clearTimeout(createdElement.lastScheduledEvent);
+          createdElement.lastScheduledEvent = undefined;
+        }
       });
     }(createdElement);
     

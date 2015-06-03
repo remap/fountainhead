@@ -11,6 +11,8 @@
 </template>
 
 <script>
+  // Dynamic: Cycle through certain tagged images from the Archive: Priority for Tuesday: High
+  // Note: This selects randomly, change every 2 sec, without stopping
   var componentObject = new window.ComponentObject(document, window);
   var componentName = 'com-video-thumbnail-cycling-dynamic-cue-250';
   
@@ -116,7 +118,7 @@
           var randIdx = Math.floor(Math.random() * createdElement.videoMapping['rachel'].length);
           jsonObj.nodeArgs.nodeB.tGo.doors['0'].composer.pipeline1.videoUrl = 'http://img.youtube.com/vi/' + createdElement.videoMapping['rachel'][randIdx] + '/0.jpg';
         } else {
-          console.log('Rachel does not have an image');
+          console.log('Rachel does not have thumbnails');
         }
       } else {
         console.log('Rachel unexpected json');
@@ -127,7 +129,7 @@
           var randIdx = Math.floor(Math.random() * createdElement.videoMapping['sheena'].length);
           jsonObj.nodeArgs.nodeB.tGo.doors['1'].composer.pipeline1.videoUrl = 'http://img.youtube.com/vi/' + createdElement.videoMapping['sheena'][randIdx] + '/0.jpg';
         } else {
-          console.log('Sheena does not have an image');
+          console.log('Sheena does not have thumbnails');
         }
       } else {
         console.log('Sheena unexpected json');
@@ -138,7 +140,7 @@
           var randIdx = Math.floor(Math.random() * createdElement.videoMapping['felix'].length);
           jsonObj.nodeArgs.nodeC.tGo.doors['0'].composer.pipeline1.videoUrl = 'http://img.youtube.com/vi/' + createdElement.videoMapping['felix'][randIdx] + '/0.jpg';
         } else {
-          console.log('Felix does not have an image');
+          console.log('Felix does not have thumbnails');
         }
       } else {
         console.log('Felix unexpected json');
@@ -149,7 +151,7 @@
           var randIdx = Math.floor(Math.random() * createdElement.videoMapping['eddie'].length);
           jsonObj.nodeArgs.nodeC.tGo.doors['1'].composer.pipeline1.videoUrl = 'http://img.youtube.com/vi/' + createdElement.videoMapping['eddie'][randIdx] + '/0.jpg';
         } else {
-          console.log('Eddie does not have an image');
+          console.log('Eddie does not have thumbnails');
         }
       } else {
         console.log('Eddie unexpected json');

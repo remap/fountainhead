@@ -151,6 +151,10 @@
   (t       = "Fade to black", 
    cid     = 380)>>
 
+<<@face-cycling-dynamic-cue-660
+  (t       = "Establish Agora - Doors with hashtags and photos of tourists, travelers", 
+   cid     = 660)>>
+
 <<@video-cycling-dynamic-cue-750
   (t       = "Large 16:9 projections", 
    cid     = 750)>>
