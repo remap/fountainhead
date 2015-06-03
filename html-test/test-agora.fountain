@@ -97,12 +97,12 @@
   (t       = 4 Doors appear w/ hashtags, 
    cid     = 230)>>
 
-<<@cue-publisher
-  (t       = "Cycle new videos into existing door locations", 
+<<@face-cycling-dynamic-cue-240
+  (t       = Travelers faces appear as door image, 
    cid     = 240)>>
 
-<<@cue-publisher
-  (t       = "Cycle new videos into existing door locations", 
+<<@video-thumbnail-cycling-dynamic-cue-250
+  (t       = "Video replace faces in all 4 doors (on ding)", 
    cid     = 250)>>
 
 <<@cue-publisher
@@ -113,8 +113,8 @@
   (t       = Video freeze/stop all doors, 
    cid     = 270)>>
 
-<<@cue-publisher
-  (t       = Duplicate of 250 but with long beach, Raul - Fade in doors/ long beach + raul, 
+<<@one-video-thumbnail-cycling-dynamic-cue-275
+  (t       = "Duplicate of 250 but with long beach, Raul - Fade in doors/ long beach + raul", 
    cid     = 275)>>
 
 <<@cue-publisher
@@ -130,6 +130,10 @@
 <<@cue-publisher
   (t       = "Move projectors A, D while 16:9 images related to Sarah?", 
    cid     = 290)>>
+
+<<@image-google-query-dynamic-cue-295
+  (t       = "Faces of ethnicities in LA (instancing door thumbnails), close to celebration beat",
+   cid     = 295)>>
 
 <<@cue-publisher
   (t       = Dance party (with Celebration sound cue), 

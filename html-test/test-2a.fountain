@@ -66,7 +66,8 @@
 <<@cue-publisher
   (t       = Bus? ,
    cid     = 476,
-   desc    = Check with bus)>>
+   desc    = Check with bus,
+   unload  = 1)>>
 
 <<@cue-publisher
   (t       = Fireflies (as Rachel walks to Raul)  - center cross ,

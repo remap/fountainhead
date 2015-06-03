@@ -2,12 +2,9 @@
   <!-- <p id="cue-title" class="video-control-text"></p> -->
   <p id="cue-title" class="cue-title"></p>
   
-  <p style="margin:1.3em auto; width: 400px">
-  <a id="cue-load" class="video-control-text"></a>
-  <a id="cue-go" class="video-control-text text-large"></a>
-  <!--
-  <a id="cue-unload" class="video-control-text"></a>
-  -->
+  <p id="cue-controls" style="margin:1.3em auto; width: 400px">
+    <a id="cue-load" class="video-control-text"></a>
+    <a id="cue-go" class="video-control-text text-large"></a>
   </p>
   
   <p id="cue-description" class="video-control-desc"></p>
@@ -50,7 +47,16 @@
     
     createdElement.content = createdElement.getAttributeByListName(['content'], '');
     createdElement.cueId = createdElement.getAttributeByListName(['cid'], '-1');
+    createdElement.hasUnload = createdElement.getAttributeByListName(['unload'], '-1');
+    
     createdElement.cueReady = false;
+    
+    if (createdElement.hasUnload === '1') {
+      createdElement.shadowRoot.querySelector('#cue-controls').innerHTML += '<a id="cue-load" class="video-control-text"></a> \
+    <a id="cue-go" class="video-control-text text-large"></a><a id=\"cue-unload\" class=\"video-control-text\"></a>';
+      createdElement.unloadElement = createdElement.shadowRoot.querySelector('#cue-unload');
+      createdElement.unloadElement.textContent = 'unload';
+    }
     
     createdElement.titleElement = createdElement.shadowRoot.querySelector('#cue-title');
     createdElement.descElement = createdElement.shadowRoot.querySelector('#cue-description');
@@ -58,14 +64,12 @@
     
     createdElement.loadElement = createdElement.shadowRoot.querySelector('#cue-load');
     createdElement.goElement = createdElement.shadowRoot.querySelector('#cue-go');
-    //createdElement.unloadElement = createdElement.shadowRoot.querySelector('#cue-unload');
     
     createdElement.titleElement.textContent = createdElement.cueId + ' : ' + cueTitle;
     createdElement.descElement.textContent = description;
     
     createdElement.loadElement.textContent = 'stand by';
     createdElement.goElement.textContent = 'GO';
-    //createdElement.unloadElement.textContent = 'unload';
     
     componentObject.applyStyleFromParentDocumentAll(createdElement);
     
@@ -212,18 +216,18 @@
         componentObject.applyStyleFromParentDocument(createdElement.goElement);
       });
     
-      /*
-      createdElement.unloadElement.addEventListener('click', function() {
-        // TODO: referencing namePrefix like this is not ideal
-        var dataName = new Name(createdElement.ndnPublisherComponentObject.namePrefix);
-        // Note: for now, the names are hard-coded, since namespace design is not fully discussed
-        var cueComponent = new Name('cues');
-        var nameSuffix = new Name(createdElement.cueId + '/unload');
-        dataName.append(createdElement.showid).append(cueComponent).appendVersion((new Date).getTime()).append(nameSuffix);
+      if (createdElement.hasUnload === '1') {
+        createdElement.unloadElement.addEventListener('click', function() {
+          // TODO: referencing namePrefix like this is not ideal
+          var dataName = new Name(createdElement.ndnPublisherComponentObject.namePrefix);
+          // Note: for now, the names are hard-coded, since namespace design is not fully discussed
+          var cueComponent = new Name('cues');
+          var nameSuffix = new Name(createdElement.cueId + '/unload');
+          dataName.append(createdElement.showid).append(cueComponent).appendVersion((new Date).getTime()).append(nameSuffix);
 
-        createdElement.ndnPublisherComponentObject.publishContent(dataName, '{}', false);
-      });
-      */
+          createdElement.ndnPublisherComponentObject.publishContent(dataName, createdElement.content, false);
+        });
+      }
     } (createdElement);
     
     createdElement.jsonTraverse = function (obj, func, createdElement) {

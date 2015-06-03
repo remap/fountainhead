@@ -15,6 +15,7 @@
 [include] ndn-publisher-component-object.js
 [include] onload.js
 [include] youtube-object.js
+[include] db-object.js
 
 # Body
 
@@ -28,7 +29,7 @@
   (t       = PRESET - SET ALL PROJECTION TO INITIAL STATE,
    cid     = 5)>>
 
-<<@cue-publisher
+<<@sunset-installation-dynamic-cue-7
   (t       = Sunset images,
    cid     = 7)>>
 
