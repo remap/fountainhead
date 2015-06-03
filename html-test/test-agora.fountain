@@ -29,8 +29,8 @@
   (t       = "1st Instance: Rachel Hey I know that place", 
    cid     = 55)>>
 
-<<@cue-publisher
-  (t       = Doors blink to alternately black and cycle	On all walls (diff languages, instanced?), 
+<<@one-tag-cycling-hashtags-dynamic-cue-56
+  (t       = Doors blink to alternately black and cycle	On all walls, 
    cid     = 56)>>
 
 <<@cue-publisher
@@ -62,18 +62,6 @@
 <<@cue-publisher
   (t       = Door labels (have to come from the database), 
    cid     = 65.1)>>
-
-<<@cue-publisher
-  (t       = Door 2 appears w/ tag SL (narrow), 
-   cid     = 65.2)>>
-
-<<@cue-publisher
-  (t       = Door 3 appears w/ tag US (wide wall), 
-   cid     = 65.3)>>
-
-<<@cue-publisher
-  (t       = "Door 4 appears w/ tag (DS wide)", 
-   cid     = 65.4)>>
 
 <<@cue-publisher
   (t       = "Fade out after everyone has left", 
