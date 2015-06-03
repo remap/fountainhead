@@ -78,7 +78,8 @@ YoutubeObject.prototype.requestYoutubeItem = function(options, nextPageToken, vi
           videoData.push(result.items[i]);
 	    }
 	  }
-      requestNum -= result.items.length;
+	  
+	  requestNum -= result.items.length;
       
 	  if ((result.nextPageToken !== undefined && result.nextPageToken !== null) && !requestOnePage && requestNum > 0) {
 		self.requestYoutubeItem(options, result.nextPageToken, videoData, onDone, storeLinkOnly, requestOnePage, requestNum);
