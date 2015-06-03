@@ -4,6 +4,7 @@
   <p style="margin:1.3em auto; width: 400px">
     <a id="cue-load" class="video-control-text"></a>
     <a id="cue-go" class="video-control-text text-large"></a>
+    <a id="cue-unload" class="video-control-text"></a>
   </p>
   
   <p id="cue-description" class="video-control-desc"></p>
@@ -48,13 +49,15 @@
     
     createdElement.loadElement = createdElement.shadowRoot.querySelector('#cue-load');
     createdElement.goElement = createdElement.shadowRoot.querySelector('#cue-go');
-    //createdElement.unloadElement = createdElement.shadowRoot.querySelector('#cue-unload');
+    createdElement.unloadElement = createdElement.shadowRoot.querySelector('#cue-unload');
     
     createdElement.titleElement.textContent = createdElement.cueId + ' : ' + cueTitle;
     createdElement.descElement.textContent = description;
     
     createdElement.loadElement.textContent = 'stand by';
     createdElement.goElement.textContent = 'GO';
+    createdElement.unloadElement.textContent = 'unload';
+    
     createdElement.capLength = 50;
     
     componentObject.applyStyleFromParentDocumentAll(createdElement);
@@ -123,7 +126,6 @@
             }
           }
         } (j), undefined, true);
-        console.log(url);
       }
     });
     
@@ -185,7 +187,18 @@
     }
     
     createdElement.registerEvents = function (createdElement) {
-          
+      createdElement.unloadElement.addEventListener('click', function() {
+        // TODO: referencing namePrefix like this is not ideal
+        var dataName = new Name(createdElement.ndnPublisherComponentObject.namePrefix);
+        // Note: for now, the names are hard-coded, since namespace design is not fully discussed
+        var cueComponent = new Name('cues');
+        var nameSuffix = new Name(createdElement.cueId + '/unload');
+        createdElement.content = JSON.stringify(createdElement.cueContent);
+        dataName.append(createdElement.showid).append(cueComponent).appendVersion((new Date).getTime()).append(nameSuffix);
+
+        createdElement.ndnPublisherComponentObject.publishContent(dataName, createdElement.content, false);
+      });
+      
       createdElement.loadElement.addEventListener('click', function() {
         console.log('Warning: Load does not do anything');
       });

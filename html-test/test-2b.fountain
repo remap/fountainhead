@@ -31,6 +31,10 @@
    cid     = 523)>>
 
 <<@cue-publisher
+  (t       = Unpause,
+   cid     = 524)>>
+
+<<@cue-publisher
   (t       = Start 2001 sequence,
    cid     = 560)>>
 

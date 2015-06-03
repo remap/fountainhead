@@ -52,7 +52,7 @@
     createdElement.cueReady = false;
     
     if (createdElement.hasUnload === '1') {
-      createdElement.shadowRoot.querySelector('#cue-controls').innerHTML += '<a id="cue-load" class="video-control-text"></a> \
+      createdElement.shadowRoot.querySelector('#cue-controls').innerHTML = '<a id="cue-load" class="video-control-text"></a> \
     <a id="cue-go" class="video-control-text text-large"></a><a id=\"cue-unload\" class=\"video-control-text\"></a>';
       createdElement.unloadElement = createdElement.shadowRoot.querySelector('#cue-unload');
       createdElement.unloadElement.textContent = 'unload';
