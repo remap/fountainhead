@@ -121,7 +121,7 @@
       if (createdElement.cueGoing) {
         createdElement.lastScheduledEvent = setTimeout(function () {
           createdElement.publishRandom(createdElement);
-        }, 5000);
+        }, Math.floor(Math.random() * 5000) + 7000);
       }
     }
     

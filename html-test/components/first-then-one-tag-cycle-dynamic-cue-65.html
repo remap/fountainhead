@@ -61,6 +61,9 @@
     createdElement.goElement.textContent = 'GO';
     createdElement.unloadElement.textContent = 'unload';
     
+    // Note: cap is only enforced in B0
+    createdElement.capLength = 15;
+    
     componentObject.applyStyleFromParentDocumentAll(createdElement);
     
     // B1 - longbeach
@@ -68,10 +71,10 @@
     // C1 - los angeles airport + angeleno
     // C2 - https://www.youtube.com/results?filters=week%2C+short&search_query=night+sky+stars&search_sort=video_view_count
     createdElement.videos = {
-      'B0': [],
-      'B1': [],
-      'C0': [],
-      'C1': []
+      'B0': [{'url': 'https://www.youtube.com/watch?v=HNU4NrQCJNA'}],
+      'B1': [{'url': 'https://www.youtube.com/watch?v=L-2fBaJUWYE'}],
+      'C0': [{'url': 'https://www.youtube.com/watch?v=fSc8TZOxwJ8&index=5&list=PLjardEiAzhrpTrzQ1bDnIgMYp8doMlzbX'}],
+      'C1': [{'url': 'https://www.youtube.com/watch?v=6WfElPMvf80&index=9&list=PLjardEiAzhrqARf5iNO0SLUiC_c0XquV_'}]
     };
     
     createdElement.jsonTraverse = function (obj, func, createdElement) {
@@ -101,7 +104,6 @@
           
             if (createdElement.videoUrlCallbackCnt == 0) {
               createdElement.cueReady = true;
-              console.log(createdElement.videos);
             }
           });
         }
@@ -128,6 +130,7 @@
         for (var i = 0; i < responseObj.length; i++) {
           createdElement.videos['B0'].push({'url': 'https://www.youtube.com/watch?v=' + responseObj[i][0]});
         }
+        
         createdElement.readyFlags[0] = true;
         if (createdElement.allReady()) {
           createdElement.jsonTraverse(createdElement.videos, createdElement.replaceVideoUrl, createdElement);
@@ -204,7 +207,7 @@
       }
     }, undefined, true);
     
-    
+    // Note: relaxed orderBy: viewcount option since adding it brought back only one result...
     url = createdElement.youtubeObject.requestYoutubeItem({
       'query': 'search',
       'part': 'snippet',
@@ -212,7 +215,6 @@
       'type': 'video',
       'maxResults': 50,
       'publishedAfter': '2015-05-25T00:00:00Z',
-      'order': 'viewCount',
       'videoDuration': 'short'
     }, undefined, undefined, function (searchResponse) {
       if (searchResponse.items.length > 0) {
@@ -222,10 +224,10 @@
         createdElement.readyFlags[3] = true;
         if (createdElement.allReady()) {
           createdElement.jsonTraverse(createdElement.videos, createdElement.replaceVideoUrl, createdElement);
+          
         }
       }
     }, undefined, true);
-    console.log(url);
     
     if (createdElement.content === undefined || createdElement.content == '') {
       var xhr = new XMLHttpRequest();
@@ -242,7 +244,6 @@
       createdElement.loadElement.addEventListener('click', function () {
         // TODO: referencing namePrefix like this is not ideal
         console.log('load does not do anything');
-      
       });
     
       createdElement.goElement.addEventListener('click', function() {
@@ -255,8 +256,7 @@
           var nameSuffix = new Name(createdElement.cueId + '/go');
           dataName.append(createdElement.showid).append(cueComponent).appendVersion((new Date).getTime()).append(nameSuffix);
       
-          createdElement.imageIdx = 0;
-          createdElement.publishDoors(createdElement.cueContent, createdElement);
+          createdElement.publishDoors(createdElement.cueContent, createdElement, true);
         
           createdElement.goElement.className += ' video-control-clicked';
           componentObject.applyStyleFromParentDocument(createdElement.goElement);
@@ -278,8 +278,10 @@
       });
     } (createdElement);
     
-    createdElement.publishDoors = function (jsonObj, createdElement) {
-      var randIdx = Math.floor(Math.random() * createdElement.videos.length);
+    createdElement.publishDoors = function (jsonObj, createdElement, initial) {
+      var randIdx = 0;
+      var initialPublish = typeof initial !== undefined ? initial : false;
+      
       if (createdElement.videos.length === 0) {
         createdElement.cueGo = false;
         console.log('Unexpected number of videos');
@@ -288,25 +290,37 @@
     
       // B1
       if (jsonObj.nodeArgs.nodeB.tGo.doors['0'].composer.pipeline1.videoUrl !== undefined) {
-        jsonObj.nodeArgs.nodeB.tGo.doors['0'].composer.pipeline1.videoUrl = createdElement.videos[randIdx]['videoUrl'];
+        if (!initialPublish) {
+		  randIdx = Math.floor(Math.random() * createdElement.videos['B0'].length)
+		}
+        jsonObj.nodeArgs.nodeB.tGo.doors['0'].composer.pipeline1.videoUrl = createdElement.videos['B0'][randIdx]['videoUrl'];
       } else {
         console.log('Unexpected json');
       }
       // B2
       if (jsonObj.nodeArgs.nodeB.tGo.doors['1'].composer.pipeline1.videoUrl !== undefined) {
-        jsonObj.nodeArgs.nodeB.tGo.doors['1'].composer.pipeline1.videoUrl = createdElement.videos[randIdx]['videoUrl'];
+        if (!initialPublish) {
+		  randIdx = Math.floor(Math.random() * createdElement.videos['B1'].length)
+		}
+        jsonObj.nodeArgs.nodeB.tGo.doors['1'].composer.pipeline1.videoUrl = createdElement.videos['B1'][randIdx]['videoUrl'];
       } else {
         console.log('Unexpected json');
       }
       // C1
       if (jsonObj.nodeArgs.nodeC.tGo.doors['0'].composer.pipeline1.videoUrl !== undefined) {
-        jsonObj.nodeArgs.nodeC.tGo.doors['0'].composer.pipeline1.videoUrl = createdElement.videos[randIdx]['videoUrl'];
+        if (!initialPublish) {
+		  randIdx = Math.floor(Math.random() * createdElement.videos['C0'].length)
+		}
+        jsonObj.nodeArgs.nodeC.tGo.doors['0'].composer.pipeline1.videoUrl = createdElement.videos['C0'][randIdx]['videoUrl'];
       } else {
         console.log('Unexpected json');
       }
       // C2
       if (jsonObj.nodeArgs.nodeC.tGo.doors['1'].composer.pipeline1.videoUrl !== undefined) {
-        jsonObj.nodeArgs.nodeC.tGo.doors['1'].composer.pipeline1.videoUrl = createdElement.videos[randIdx]['videoUrl'];
+        if (!initialPublish) {
+		  randIdx = Math.floor(Math.random() * createdElement.videos['C1'].length)
+		}
+        jsonObj.nodeArgs.nodeC.tGo.doors['1'].composer.pipeline1.videoUrl = createdElement.videos['C1'][randIdx]['videoUrl'];
       } else {
         console.log('Unexpected json');
       }

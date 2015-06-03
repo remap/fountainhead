@@ -60,10 +60,6 @@
    cid     = 65)>>
 
 <<@cue-publisher
-  (t       = Door labels (have to come from the database), 
-   cid     = 65.1)>>
-
-<<@cue-publisher
   (t       = "Fade out after everyone has left", 
    cid     = 67)>>
 
