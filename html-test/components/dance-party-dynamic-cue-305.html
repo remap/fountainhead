@@ -111,7 +111,6 @@
         if (createdElement.cueContent.nodeArgs[node].tReady.doors['0'].composer.pipeline1.videoUrl !== undefined) {
           var randIdx = Math.floor(Math.random() * createdElement.videoLinks.length);
           createdElement.cueContent.nodeArgs[node].tReady.doors['0'].composer.pipeline1['videoUrl'] = createdElement.videoLinks[randIdx]['videoUrl'];
-          delete createdElement.cueContent.nodeArgs[node].tReady.doors['0'].composer.pipeline1.videoUrl;
         } else {
           console.log('Unexpected json');
         }
