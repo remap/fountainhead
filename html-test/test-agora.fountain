@@ -155,6 +155,10 @@
   (t       = "Establish Agora - Doors with hashtags and photos of tourists, travelers", 
    cid     = 660)>>
 
+<<@cue-publisher
+  (t       = "TWO Door signs and images re-establish (mom turns on the lights)", 
+   cid     = 710)>>
+
 <<@video-cycling-dynamic-cue-750
   (t       = "Large 16:9 projections", 
    cid     = 750)>>

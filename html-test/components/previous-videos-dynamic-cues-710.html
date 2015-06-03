@@ -12,9 +12,7 @@
 </template>
 
 <script>
-  // Dynamic: Start with specific video in column H at right, then cycle through these video results: https://www.youtube.com/results?filters=short%2Ccreativecommons&lclk=creativecommons&search_query=los+angeles+party+dance   Priority for Tuesday: High
-  // Start with H not yet implemented, didn't see url at H, and when to switch to cycle though?
-  // This publishes every 2 seconds, without stopping
+  // Note: not used for now.
   var componentObject = new window.ComponentObject(document, window);
   var componentName = 'com-previous-videos-dynamic-cue-710';
   
@@ -65,64 +63,16 @@
     
     componentObject.applyStyleFromParentDocumentAll(createdElement);
     
-    var resultLength = 25;
-    createdElement.videoLinks = [];
-    
-    var url = createdElement.youtubeObject.requestYoutubeItem({
-      'query': 'search',
-      'part': 'snippet',
-      'q': 'los angeles party dance -strip',
-      'type': 'video',
-      'videoDuration': 'short',
-      'lclk': 'creativecommons',
-      'maxResults': resultLength
-    }, undefined, undefined, function (searchResponse) {
-      if (searchResponse.items.length > 0) {
-        var jsonElement = {};
-        for (var i = 0; i < searchResponse.items.length; i++) {
-          createdElement.videoLinks.push({'url': 'https://www.youtube.com/watch?v=' + searchResponse.items[i].id.videoId});
-        }
-      }
-      
-      createdElement.videoUrlCallbackCnt = 0;
-      createdElement.jsonTraverse(createdElement.videoLinks, createdElement.replaceVideoUrl, createdElement);
-    }, undefined, true);
-    
     if (createdElement.content === undefined || createdElement.content == '') {
       var xhr = new XMLHttpRequest();
       xhr.open('GET', cueFolder + createdElement.cueId + '.json', true);
       xhr.onreadystatechange = function () {
         if (xhr.readyState == 4 && xhr.status == 200) {
           createdElement.cueContent = JSON.parse(xhr.responseText);
+          createdElement.jsonTraverse(createdElement.cueContent, createdElement.replaceVideoUrl, createdElement);
         }
       };
       xhr.send();
-    }
-    
-    createdElement.publishRandom = function (createdElement) {
-      // TODO: referencing namePrefix like this is not ideal
-      var dataName = new Name(createdElement.ndnPublisherComponentObject.namePrefix);
-      // Note: for now, the names are hard-coded, since namespace design is not fully discussed
-      var cueComponent = new Name('cues');
-      var nameSuffix = new Name(createdElement.cueId + '/go');
-      dataName.append(createdElement.showid).append(cueComponent).appendVersion((new Date).getTime()).append(nameSuffix);
-    
-      for (node in createdElement.cueContent.nodeArgs) {
-        if (createdElement.cueContent.nodeArgs[node].tReady.doors['0'].composer.pipeline1.videoUrl !== undefined) {
-          var randIdx = Math.floor(Math.random() * createdElement.videoLinks.length);
-          createdElement.cueContent.nodeArgs[node].tReady.doors['0'].composer.pipeline1['videoUrl'] = createdElement.videoLinks[randIdx]['videoUrl'];
-        } else {
-          console.log('Unexpected json');
-        }
-      }
-      createdElement.content = JSON.stringify(createdElement.cueContent);
-      createdElement.ndnPublisherComponentObject.publishContent(dataName, createdElement.content, false);
-      
-      if (createdElement.cueGoing) {
-        createdElement.lastScheduledEvent = setTimeout(function () {
-          createdElement.publishRandom(createdElement);
-        }, 5000);
-      }
     }
     
     createdElement.registerEvents = function (createdElement) {
@@ -138,9 +88,19 @@
       createdElement.goElement.addEventListener('click', function() {
         if (!createdElement.cueGoing) {
           createdElement.cueGoing = true;
+          
+          // TODO: referencing namePrefix like this is not ideal
+          var dataName = new Name(createdElement.ndnPublisherComponentObject.namePrefix);
+          // Note: for now, the names are hard-coded, since namespace design is not fully discussed
+          var cueComponent = new Name('cues');
+          var nameSuffix = new Name(createdElement.cueId + '/go');
+          dataName.append(createdElement.showid).append(cueComponent).appendVersion((new Date).getTime()).append(nameSuffix);
+
           createdElement.publishRandom(createdElement);
-      
+
           createdElement.goElement.className += ' video-control-clicked';
+          
+          createdElement.ndnPublisherComponentObject.publishContent(dataName, createdElement.content, false);
           componentObject.applyStyleFromParentDocument(createdElement.goElement);
         } else {
           console.log('Cue already going');
