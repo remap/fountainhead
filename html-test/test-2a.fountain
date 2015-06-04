@@ -51,7 +51,7 @@
 <<@cue-publisher
   (t       = Amongst bikes Put on your helmet (Start earlier with Tango) ,
    cid     = 460,
-   desc    = 460: Should go earlier)>>   
+   desc    = Should go earlier)>>   
 
 <<@cue-publisher
   (t       = Bike riding / danger (She turns away from the image) ,
@@ -85,16 +85,16 @@
    desc    = cue)>>
 
 <<@cue-publisher
-  (t       = 485: Running away ,
+  (t       = Running away ,
    cid     = 485,
    desc    = cue)>>
 
 <<@cue-publisher
-  (t       = 490: "Archive speak TRANSFER FAILURE, REJOIN the ARCHIVE" ,
+  (t       = "Archive speak TRANSFER FAILURE, REJOIN the ARCHIVE" ,
    cid     = 490,
    desc    = cue)>>
 
 <<@cue-publisher
-  (t       = 500: Fade to black ,
+  (t       = Fade to black ,
    cid     = 500,
    desc    = cue)>>

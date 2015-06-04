@@ -27,7 +27,8 @@
 <<@cue-publisher
   (t       = "Raul first line FUUUUUUCKKK!", 
    cid     = 91, 
-   desc    = "MLK and Long Beach Blvd. (50% speed, rectangular vignette)" )>>
+   desc    = "MLK and Long Beach Blvd. (50% speed, rectangular vignette)",
+   unload  = 1)>>
 
 <<@cue-publisher
   (t       = "Hey Beautiful" - talking in cell phone, 
@@ -40,14 +41,16 @@
    desc    = "Driving in Silverlake (50% speed, rectangular vignette)")>>
 
 <<@cue-publisher
-  (t       = "Real nice", 
+  (t       = "Real nice" with dancer, 
    cid     = 95, 
-   desc    = "Barbershop  (50% speed, rectangular vignette)")>>
+   desc    = "Barbershop  (50% speed, rectangular vignette)",
+   unload  = 1)>>
 
 <<@cue-publisher
   (t       = "Now repeat after me", 
    cid     = 97, 
-   desc    = "RE-MENT collectables #2 - Cooking  (50% speed, rectangular vignette, start @ 14s)")>>
+   desc    = "RE-MENT collectables #2 - Cooking  (50% speed, rectangular vignette, start @ 14s)",
+   unload  = 1)>>
 
 <<@cue-publisher
   (t       = SIREN SOUND, 

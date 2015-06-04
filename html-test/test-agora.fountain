@@ -150,11 +150,11 @@
    cid     = 655)>>
 
 <<@cue-publisher
-  (t       = "Raul video on narrow wall", 
+  (t       = Raul video, 
    cid     = 657)>>
 
 <<@cue-publisher
-  (t       = "Felix video on narrow wall", 
+  (t       = Felix video, 
    cid     = 659)>>
 
 <<@face-cycling-dynamic-cue-660

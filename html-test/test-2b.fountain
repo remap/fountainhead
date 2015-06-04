@@ -39,7 +39,7 @@
    cid     = 560)>>
 
 <<@cue-publisher
-  (t       = EMPTY,
+  (t       = Lecture,
    cid     = 565)>>
 
 <<@cue-publisher
@@ -57,10 +57,6 @@
 <<@cue-publisher
   (t       = 50% opacity each of the following (cheeto raised),
    cid     = 590)>>
-
-<<@cue-publisher
-  (t       = "Videos from 590 slowed down, after what happened",
-   cid     = 600)>>
 
 <<@cue-publisher
   (t       = Move projectors,

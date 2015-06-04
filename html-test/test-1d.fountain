@@ -29,6 +29,9 @@
    cid     = 165, 
    desc    = Hollywood @ night (50% speed, not inverted. slight rectangular vignette) )>>
 
+LUCY
+Welcome. Como estan? Please come in. Find a spot. Anywhere. Go ahead, sit down, lie down, chillax. Mi casa es su casa.
+
 <<@cue-publisher
   (t       = Arrival, 
    cid     = 171, 
