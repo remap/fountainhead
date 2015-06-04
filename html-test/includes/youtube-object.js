@@ -26,7 +26,7 @@ YoutubeObject.prototype.getYoutubeVideoUrl = function (serviceUrl, fetchIfNotExi
   
   var xhr = new XMLHttpRequest();
   //xhr.open('POST', 'http://archive-dev.remap.ucla.edu/app/query', true);
-  xhr.open('POST', 'http://archive-dev.remap.ucla.edu/app/services/get-youtube-url', true);
+  xhr.open('POST', 'http://the-archive.la/losangeles/services/get-youtube-url', true);
   
   xhr.onload = function () {
     callback(this);
@@ -40,7 +40,7 @@ YoutubeObject.prototype.loadYoutubeVideoUrls = function (serviceUrls, callback) 
   
   var xhr = new XMLHttpRequest();
   //xhr.open('POST', 'http://archive-dev.remap.ucla.edu/app/query', true);
-  xhr.open('POST', 'http://archive-dev.remap.ucla.edu/app/services/load-youtube-urls', true);
+  xhr.open('POST', 'http://the-archive.la/losangeles/services/load-youtube-urls', true);
   
   xhr.onload = function () {
     callback(this);
