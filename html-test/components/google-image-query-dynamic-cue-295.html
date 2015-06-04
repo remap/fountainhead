@@ -78,39 +78,56 @@
       }
     });
     
-    // Google custom image query:
     createdElement.googleImageLinks = [];
-    var targetTotalNum = 100;
-    var remainingTargetNum = targetTotalNum;
-    var perPageNum = 10;
-    var startNum = 1;
     
-    while (remainingTargetNum > 0) {
-      // Search with my own custom search engine ID
-      var imageQueryUrl = 'https://www.googleapis.com/customsearch/v1?cx=017018307474463599316%3Asossyzps98y';
-      // Image filtering conditions
-      imageQueryUrl += '&imgColorType=color&q=los+angeles+diversity+residents&imgSize=medium&searchType=image&imgType=face&fileType=png';
-      // With my own ApiKey
-      imageQueryUrl += '&key=AIzaSyBiAPHhCV_Dh49f36hKSqw0BrsZpbI4KhE';
-      // startIdx, max results 10 per page
-      imageQueryUrl += '&start=' + startNum;
-    
-      var imageQueryXhr = new XMLHttpRequest();
-      imageQueryXhr.onload = function () {
-        var responseObj = JSON.parse(this.responseText);
-        if (responseObj.items !== undefined && responseObj.items.length > 0) {
-          for (var i = 0; i < responseObj.items.length; i++) {
-            if (responseObj.items[i].link !== undefined && responseObj.items[i].link !== null) {
-              createdElement.googleImageLinks.push(responseObj.items[i].link);
+    createdElement.loadGoogleImages = function (createdElement, onDone) {
+      // Google custom image query:
+      var targetTotalNum = 100;
+      var remainingTargetNum = targetTotalNum;
+      var perPageNum = 10;
+      var startNum = 1;
+      
+      var callbackRemaining = 0;
+      
+      while (remainingTargetNum > 0) {
+        // Search with my own custom search engine ID
+        var imageQueryUrl = 'https://www.googleapis.com/customsearch/v1?cx=017018307474463599316%3Asossyzps98y';
+        // Image filtering conditions
+        imageQueryUrl += '&imgColorType=color&q=los+angeles+diversity+residents&imgSize=medium&searchType=image&imgType=face&fileType=png';
+        // With my own ApiKey
+        imageQueryUrl += '&key=AIzaSyBiAPHhCV_Dh49f36hKSqw0BrsZpbI4KhE';
+        // startIdx, max results 10 per page
+        imageQueryUrl += '&start=' + startNum;
+        callbackRemaining ++;
+        
+        var imageQueryXhr = new XMLHttpRequest();
+        imageQueryXhr.onload = function () {
+          callbackRemaining --;
+          
+          var responseObj = JSON.parse(this.responseText);
+          if (responseObj.items !== undefined && responseObj.items.length > 0) {
+            for (var i = 0; i < responseObj.items.length; i++) {
+              if (responseObj.items[i].link !== undefined && responseObj.items[i].link !== null) {
+                createdElement.googleImageLinks.push(responseObj.items[i].link);
+              }
             }
           }
+          if (callbackRemaining === 0) {
+            onDone(createdElement);
+          }
         }
-      }
-      imageQueryXhr.open('GET', imageQueryUrl, true);
-      imageQueryXhr.send();
+        imageQueryXhr.onerror = function () {
+          callbackRemaining --;
+          if (callbackRemaining === 0) {
+            onDone(createdElement);
+          }
+        }
+        imageQueryXhr.open('GET', imageQueryUrl, true);
+        imageQueryXhr.send();
       
-      remainingTargetNum -= perPageNum;
-      startNum += perPageNum;
+        remainingTargetNum -= perPageNum;
+        startNum += perPageNum;
+      }
     }
     
     if (createdElement.content === undefined || createdElement.content == '') {
@@ -130,6 +147,38 @@
       return o;
     }
     
+    createdElement.publishContent = function (createdElement) {
+      createdElement.imgSeq = createdElement.shuffle(createdElement.imgSeq.concat(createdElement.googleImageLinks));        
+      var imageIdx = 0;
+      var cnt = 0;
+      
+      for (node in createdElement.cueContent.nodeArgs) {
+        if (createdElement.cueContent.nodeArgs[node].tGo.thumbGenerator.thumbUrls !== undefined) {
+          createdElement.cueContent.nodeArgs[node].tGo.thumbGenerator.thumbUrls = '';
+          for (cnt = 0; cnt < createdElement.imgSeq.length / 4; cnt ++) {
+            createdElement.cueContent.nodeArgs[node].tGo.thumbGenerator.thumbUrls += createdElement.imgSeq[imageIdx] + '\r\n';
+            imageIdx ++;
+          }
+        }
+      }
+      
+      if (window.scriptControl.cueGoClicked) {
+        window.scriptControl.cueGoClicked(createdElement);
+      }
+      
+      createdElement.goElement.className += ' video-control-clicked';
+      componentObject.applyStyleFromParentDocument(createdElement.goElement);
+      
+      var dataName = new Name(createdElement.ndnPublisherComponentObject.namePrefix);
+      // Note: for now, the names are hard-coded, since namespace design is not fully discussed
+      var cueComponent = new Name('cues');
+      var nameSuffix = new Name(createdElement.cueId + '/go');
+      dataName.append(createdElement.showid).append(cueComponent).appendVersion((new Date).getTime()).append(nameSuffix);
+  
+      createdElement.content = JSON.stringify(createdElement.cueContent);
+      createdElement.ndnPublisherComponentObject.publishContent(dataName, createdElement.content, false);
+    }
+    
     createdElement.registerEvents = function (createdElement) {
       /*
       createdElement.loadElement.addEventListener('click', function () {
@@ -139,36 +188,7 @@
       */
       
       createdElement.goElement.addEventListener('click', function() {
-        createdElement.imgSeq = createdElement.shuffle(createdElement.imgSeq.concat(createdElement.googleImageLinks));
-        
-        var imageIdx = 0;
-        var cnt = 0;
-        
-        for (node in createdElement.cueContent.nodeArgs) {
-          if (createdElement.cueContent.nodeArgs[node].tGo.thumbGenerator.thumbUrls !== undefined) {
-            createdElement.cueContent.nodeArgs[node].tGo.thumbGenerator.thumbUrls = '';
-            for (cnt = 0; cnt < createdElement.imgSeq.length / 4; cnt ++) {
-              createdElement.cueContent.nodeArgs[node].tGo.thumbGenerator.thumbUrls += createdElement.imgSeq[imageIdx] + '\r\n';
-              imageIdx ++;
-            }
-          }
-        }
-        
-        if (window.scriptControl.cueGoClicked) {
-          window.scriptControl.cueGoClicked(createdElement);
-        }
-        
-        createdElement.goElement.className += ' video-control-clicked';
-        componentObject.applyStyleFromParentDocument(createdElement.goElement);
-        
-        var dataName = new Name(createdElement.ndnPublisherComponentObject.namePrefix);
-        // Note: for now, the names are hard-coded, since namespace design is not fully discussed
-        var cueComponent = new Name('cues');
-        var nameSuffix = new Name(createdElement.cueId + '/go');
-        dataName.append(createdElement.showid).append(cueComponent).appendVersion((new Date).getTime()).append(nameSuffix);
-    
-        createdElement.content = JSON.stringify(createdElement.cueContent);
-        createdElement.ndnPublisherComponentObject.publishContent(dataName, createdElement.content, false);
+        createdElement.loadGoogleImages(createdElement, createdElement.publishContent);
       });
     }(createdElement);
   }
