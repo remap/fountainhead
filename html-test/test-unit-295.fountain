@@ -1,0 +1,24 @@
+# Environment
+
+[showid] "chocolate_cookie_show"
+
+[include] ndn.js
+[prefix] new Name("/ndn/edu/ucla/remap/losatlantis")
+[face] new Face({host: "archive-dev.remap.ucla.edu"})
+[include] ndn-init.js
+[include] ndn-url-publisher-component.js
+
+[cueFolder] "../../cues/"
+
+[include] script-control.js
+[include] component-object.js
+[include] ndn-publisher-component-object.js
+[include] onload.js
+[include] youtube-object.js
+[include] db-object.js
+
+# Body
+
+<<@google-image-query-dynamic-cue-295
+  (t       = "Faces of ethnicities in LA (instancing door thumbnails), close to celebration beat",
+   cid     = 295)>>

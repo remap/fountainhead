@@ -24,7 +24,8 @@
 
 <<@cue-publisher
   (t       = More lecture,
-   cid     = 522)>>
+   cid     = 522,
+   unload  = 1)>>
 
 <<@cue-publisher
   (t       = More lecture,
@@ -32,11 +33,13 @@
 
 <<@cue-publisher
   (t       = Unpause,
-   cid     = 524)>>
+   cid     = 524,
+   unload  = 1)>>
 
 <<@cue-publisher
   (t       = Start 2001 sequence,
-   cid     = 560)>>
+   cid     = 560,
+   unload  = 1)>>
 
 <<@cue-publisher
   (t       = Lecture,

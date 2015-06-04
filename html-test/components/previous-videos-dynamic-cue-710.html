@@ -157,6 +157,10 @@
           dataName.append(createdElement.showid).append(cueComponent).appendVersion((new Date).getTime()).append(nameSuffix);
 
           createdElement.goElement.className += ' video-control-clicked';
+          
+          if (window.scriptControl.cueGoClicked) {
+            window.scriptControl.cueGoClicked(createdElement);
+          }
         
           createdElement.publishDoors(createdElement.cueContent, createdElement);
         } else {

@@ -138,7 +138,11 @@
             createdElement.goElement.className += ' video-control-problem';
           }
           componentObject.applyStyleFromParentDocument(createdElement.goElement);
-    
+          
+          if (window.scriptControl.cueGoClicked) {
+            window.scriptControl.cueGoClicked(createdElement);
+          }
+          
           createdElement.goElement.className += ' video-control-clicked';
           componentObject.applyStyleFromParentDocument(createdElement.goElement);
           createdElement.cueGoing = true;
@@ -205,7 +209,6 @@
       dataName.append(createdElement.showid).append(cueComponent).appendVersion((new Date).getTime()).append(nameSuffix);
     
       createdElement.content = JSON.stringify(jsonObj);
-      createdElement.ndnPublisherComponentObject.publishContent(dataName, createdElement.content, false);
       
       createdElement.ndnPublisherComponentObject.publishContent(dataName, createdElement.content, false);
       if (createdElement.imageIdx < createdElement.imgSeq.length) {

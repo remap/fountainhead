@@ -42,6 +42,7 @@
     
     createdElement.cueId = createdElement.getAttributeByListName(['cid'], '-1');
     createdElement.cueReady = false;
+    createdElement.cueRequiresUnload = false;
     
     createdElement.titleElement = createdElement.shadowRoot.querySelector('#cue-title');
     createdElement.descElement = createdElement.shadowRoot.querySelector('#cue-description');
@@ -57,6 +58,7 @@
     //createdElement.loadElement.textContent = 'stand by';
     createdElement.goElement.textContent = 'GO';
     createdElement.unloadElement.textContent = 'unload';
+    createdElement.hasUnload = createdElement.getAttributeByListName(['unload'], '-1');
     
     createdElement.capLength = 10;
     
@@ -197,23 +199,23 @@
     
     createdElement.setCueIfReady = function (createdElement) {
       if (createdElement.videoUrlCallbackCnt == 0) {
-		var length = 0;
-		if (createdElement.ytContent.length < createdElement.capLength) {
-		  length = createdElement.ytContent.length;
-		} else {
-		  length = createdElement.capLength;
-		}
-		
-		if (createdElement.cueContent.nodeArgs.nodeB.playlist) {
-		  for (var i = 0; i < length; i++) {
-		    if (createdElement.ytContent[i]['videoUrl'] !== undefined) {
-			  createdElement.cueContent.nodeArgs.nodeB.playlist.push([20, { "videoUrl": createdElement.ytContent[i]['videoUrl'] }]);
-			}
-		  }
-		}
-		
-		createdElement.cueReady = true;
-	  }
+        var length = 0;
+        if (createdElement.ytContent.length < createdElement.capLength) {
+          length = createdElement.ytContent.length;
+        } else {
+          length = createdElement.capLength;
+        }
+        
+        if (createdElement.cueContent.nodeArgs.nodeB.playlist) {
+          for (var i = 0; i < length; i++) {
+            if (createdElement.ytContent[i]['videoUrl'] !== undefined) {
+              createdElement.cueContent.nodeArgs.nodeB.playlist.push([20, { "videoUrl": createdElement.ytContent[i]['videoUrl'] }]);
+            }
+          }
+        }
+        
+        createdElement.cueReady = true;
+      }
     };
     
     createdElement.registerEvents = function (createdElement) {
@@ -227,6 +229,7 @@
         dataName.append(createdElement.showid).append(cueComponent).appendVersion((new Date).getTime()).append(nameSuffix);
 
         createdElement.ndnPublisherComponentObject.publishContent(dataName, createdElement.content, false);
+        createdElement.cueRequiresUnload = false;
       });
       
       /*
@@ -249,6 +252,12 @@
      
           createdElement.goElement.className += ' video-control-clicked';
           componentObject.applyStyleFromParentDocument(createdElement.goElement);
+          
+          createdElement.cueRequiresUnload = true;
+          
+          if (window.scriptControl.cueGoClicked) {
+            window.scriptControl.cueGoClicked(createdElement);
+          }
         } else {
           console.log('Cue not yet ready');
         }

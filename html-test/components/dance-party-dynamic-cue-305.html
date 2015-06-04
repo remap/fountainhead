@@ -141,7 +141,11 @@
         if (!createdElement.cueGoing) {
           createdElement.cueGoing = true;
           createdElement.publishRandom(createdElement);
-      
+          
+          if (window.scriptControl.cueGoClicked) {
+            window.scriptControl.cueGoClicked(createdElement);
+          }
+          
           createdElement.goElement.className += ' video-control-clicked';
           componentObject.applyStyleFromParentDocument(createdElement.goElement);
         } else {

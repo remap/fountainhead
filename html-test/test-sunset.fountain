@@ -22,16 +22,13 @@
 .Admissions: Sunset
 
 <<@cue-publisher
-  (t       = PRESET PROJECTOR LOCATIONS AND TEST,
-   cid     = 0)>>
-
-<<@cue-publisher
   (t       = PRESET - SET ALL PROJECTION TO INITIAL STATE,
    cid     = 5)>>
 
 <<@sunset-installation-dynamic-cue-7
   (t       = Sunset images,
-   cid     = 7)>>
+   cid     = 7,
+   unload  = 1)>>
 
 <<@cue-publisher
   (t       = "Sunset on the beach (50% speed, play for 30s)",
@@ -67,4 +64,5 @@
 
 <<@cue-publisher
   (t       = "Archive leaks through; Grand Central",
-   cid     = 40)>>
+   cid     = 40,
+   unload  = 1)>>

@@ -50,6 +50,7 @@
     createdElement.hasUnload = createdElement.getAttributeByListName(['unload'], '-1');
     
     createdElement.cueReady = false;
+    createdElement.cueRequiresUnload = true;
     
     if (createdElement.hasUnload === '1') {
       createdElement.shadowRoot.querySelector('#cue-controls').innerHTML = '<a id="cue-load" class="video-control-text"></a> \
@@ -212,7 +213,12 @@
         } else {
           createdElement.goElement.className += ' video-control-problem';
         }
-      
+        
+        createdElement.cueRequiresUnload = true;
+        
+        if (window.scriptControl.cueGoClicked) {
+          window.scriptControl.cueGoClicked(createdElement);
+        }
         componentObject.applyStyleFromParentDocument(createdElement.goElement);
       });
     
@@ -224,8 +230,9 @@
           var cueComponent = new Name('cues');
           var nameSuffix = new Name(createdElement.cueId + '/unload');
           dataName.append(createdElement.showid).append(cueComponent).appendVersion((new Date).getTime()).append(nameSuffix);
-
+          
           createdElement.ndnPublisherComponentObject.publishContent(dataName, createdElement.content, false);
+          createdElement.cueRequiresUnload = false;
         });
       }
     } (createdElement);
