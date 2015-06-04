@@ -23,3 +23,7 @@
   (t       = Sunset images,
    cid     = 7,
    unload  = 1)>>
+
+<<@cue-publisher
+  (t       = Sunset images,
+   cid     = 295)>>

@@ -114,26 +114,27 @@ ScriptControl.prototype.cueStandByClicked = function (createdElement)
 ScriptControl.prototype.unloadAllNecessary = function (createdElement)
 {
   for (var i = 0; i < this.importedElements.length; i++) {
+    
     if (this.importedElements[i] === createdElement) {
-
+      
     } else {
       // Peter's playlist has unload, need to publish explicit unload ndn packet
       // cueRequiresUnload variable should decide whether the cue's in a state that needs to be unloaded
-      if (createdElement.hasUnload === '1' && createdElement.cueRequiresUnload) {
-        console.log('Unload: unloaded ' + createdElement.cueId + ' automatically');
-        var dataName = new Name(createdElement.ndnPublisherComponentObject.namePrefix);
+      if (this.importedElements[i].hasUnload === '1' && this.importedElements[i].cueRequiresUnload) {
+        console.log('Unload: unloaded ' + this.importedElements[i].cueId + ' automatically');
+        var dataName = new Name(this.importedElements[i].ndnPublisherComponentObject.namePrefix);
         // Note: for now, the names are hard-coded, since namespace design is not fully discussed
         var cueComponent = new Name('cues');
-        var nameSuffix = new Name(createdElement.cueId + '/unload');
-        createdElement.content = JSON.stringify(createdElement.cueContent);
-        dataName.append(createdElement.showid).append(cueComponent).appendVersion((new Date).getTime()).append(nameSuffix);
+        var nameSuffix = new Name(this.importedElements[i].cueId + '/unload');
+        createdElement.content = JSON.stringify(this.importedElements[i].cueContent);
+        dataName.append(this.importedElements[i].showid).append(cueComponent).appendVersion((new Date).getTime()).append(nameSuffix);
 
-        createdElement.ndnPublisherComponentObject.publishContent(dataName, createdElement.content, false);
+        createdElement.ndnPublisherComponentObject.publishContent(dataName, this.importedElements[i].content, false);
       }
       // My dynamic cues that needs unload, createdElement.cueGoing is specific for dynamic cues
-      if (createdElement.cueGoing) {
-        console.log('Unload: unloaded ' + createdElement.cueId + ' automatically');
-        createdElement.unloadElement.click();
+      if (this.importedElements[i].cueGoing) {
+        console.log('Unload: unloaded ' + this.importedElements[i].cueId + ' automatically');
+        this.importedElements[i].unloadElement.click();
       }
       // Exception being cue 7, which is a dynamic playlist cue, and follows Peter's unload pattern
     }
