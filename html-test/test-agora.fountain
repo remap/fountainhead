@@ -55,8 +55,8 @@
   (t       = "Doors settle", 
    cid     = 64)>>
 
-<<@first-then-one-tag-cycle-dynamic-cue-65
-  (t       = "Establish", 
+<<@cue-publisher
+  (t       = "Establish (currently static)", 
    cid     = 65)>>
 
 <<@cue-publisher
@@ -157,8 +157,8 @@
   (t       = Felix video, 
    cid     = 659)>>
 
-<<@face-cycling-dynamic-cue-660
-  (t       = "Establish Agora - Doors with hashtags and photos of tourists, travelers", 
+<<@cue-publisher
+  (t       = "Hashtags over 657 & 659", 
    cid     = 660)>>
 
 <<@cue-publisher

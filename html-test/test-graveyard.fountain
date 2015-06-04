@@ -10,5 +10,12 @@
 <<@one-video-thumbnail-cycling-dynamic-cue-275
   (t       = "Duplicate of 250 but with long beach, Raul - Fade in doors/ long beach + raul", 
    cid     = 275)>>
+<<@face-cycling-dynamic-cue-660
+  (t       = "Establish Agora - Doors with hashtags and photos of tourists, travelers", 
+   cid     = 660)>>
+
+<<@first-then-one-tag-cycle-dynamic-cue-65
+  (t       = "Establish", 
+   cid     = 65)>>
 
 */
