@@ -19,7 +19,7 @@ YoutubeObject.prototype.youtubeKeyParser = function (url) {
   }
 }
 
-YoutubeObject.prototype.getYoutubeVideoUrl = function (serviceUrl, fetchIfNotExist, callback) {
+YoutubeObject.prototype.getYoutubeVideoUrl = function (serviceUrl, fetchIfNotExist, callback, onerror) {
   var data = new FormData();
   data.append('url', serviceUrl);
   data.append('fetchIfNotExist', fetchIfNotExist);
@@ -34,10 +34,13 @@ YoutubeObject.prototype.getYoutubeVideoUrl = function (serviceUrl, fetchIfNotExi
   xhr.onload = function () {
     callback(this);
   };
+  xhr.onerror = function () {
+    onerror(this);
+  };
   xhr.send(data);
 }
 
-YoutubeObject.prototype.loadYoutubeVideoUrls = function (serviceUrls, callback) {
+YoutubeObject.prototype.loadYoutubeVideoUrls = function (serviceUrls, callback, onerror) {
   var data = new FormData();
   data.append('urls', JSON.stringify(serviceUrls));
   
@@ -47,6 +50,9 @@ YoutubeObject.prototype.loadYoutubeVideoUrls = function (serviceUrls, callback) 
   
   xhr.onload = function () {
     callback(this);
+  };
+  xhr.onerror = function () {
+    onerror(this);
   };
   xhr.send(data);
 }
