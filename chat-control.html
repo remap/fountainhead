@@ -132,6 +132,7 @@ function sendGuide() {
     var from_nickname = 'The guide';
     
     sendMsg(toJID, content, type, from_nickname);
+    document.getElementById('chat_display_guide').value = '';
 }
 
 function sendObservatory() {
@@ -141,6 +142,7 @@ function sendObservatory() {
     var from_nickname = 'The observatory';
     
     sendMsg(toJID, content, type, from_nickname);
+    document.getElementById('chat_display_observatory').value = '';
 }
 </script>
 
@@ -166,6 +168,18 @@ function sendObservatory() {
         
         // Jabber password is user's email account for now.
         chatConnect(jid, email);
+        
+        document.getElementById("chat_display_guide").onkeydown = function (event) {
+          if (event.keyCode == 13) {
+            sendGuide();
+          }
+        };
+        
+        document.getElementById("chat_display_observatory").onkeydown = function (event) {
+          if (event.keyCode == 13) {
+            sendObservatory();
+          }
+        }
       };
       
       window.onbeforeunload = function () {
@@ -175,15 +189,15 @@ function sendObservatory() {
       };
     </script>
     
+    <div id="chat_status" style="float: right">
+      
+    </div>
+    
     <textarea id="chat_display_guide" style="height: 200px; width: 400px;"></textarea> <br>
     <button onclick="sendGuide()">Send to Guide</button> <br>
     
     <textarea id="chat_display_observatory" style="height: 200px; width: 400px;"></textarea> <br>
     <button onclick="sendObservatory()">Send to Observatory</button> <br>
-    
-    <div id="chat_status" style="float: right">
-      
-    </div>
     </textarea>
 </body>
 </html>
