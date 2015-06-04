@@ -1,0 +1,189 @@
+<html>
+<head>
+<script>
+function onConnect(status)
+{
+    if (status == Strophe.Status.CONNECTING) {
+        console.log('Strophe is connecting.');
+    } else if (status == Strophe.Status.CONNFAIL) {
+        console.log('Strophe failed to connect.');
+    } else if (status == Strophe.Status.DISCONNECTING) {
+        console.log('Strophe is disconnecting.');
+    } else if (status == Strophe.Status.DISCONNECTED) {
+        console.log('Strophe is disconnected.');
+    } else if (status == Strophe.Status.CONNECTED) {
+        console.log('Strophe is connected.');
+        
+        connection.addHandler(onMessage, null, 'message', null, null,  null); 
+        connection.send($pres().tree());
+        
+        connection.muc.join('observatory@conference.archive-dev.remap.ucla.edu', 'admin', null, onPresence, null);
+        connection.muc.join('guide@conference.archive-dev.remap.ucla.edu', 'admin', null, onPresence, null);
+    }
+}
+
+function sendMsg(toJID, content, type, fromNickname) {
+    console.log("message sent");
+    
+    // An example of sending message
+    // $msg is a helper function. .c() sets the element name, .t() the content.
+    
+    // type needs to be groupchat when targeting room@conference;
+    var message = $msg({
+      "to" : toJID,
+      "type" : type,
+      "from_nickname" : fromNickname,
+    }).c("body").t(content);
+    
+    connection.send(message.tree()); 
+    $('#chat_status').prepend('<br>' + 'sent (' + content + ') to (' + toJID + ')');
+}
+
+function getRoster() {
+   // An example of getting roster
+   var iq = $iq({type: 'get'}).c('query', {xmlns: 'jabber:iq:roster'});
+   connection.sendIQ(iq, function(res) {
+     console.log(res);
+     
+     $(res).find('item').each(function(){
+       var jid = $(this).attr('jid');     
+       console.log(jid);
+     })
+   });
+}
+
+// Handler functions
+
+function onPresence(presence) {
+    console.log("onPresence");
+    console.log(presence);
+    
+    //$('#chat_display').append('System: chatroom roster \"' + presence.getAttribute('from') + '\"\n');
+}
+
+function onRoster(roster) {
+    console.log("onRoster");
+    console.log(roster);
+}
+
+function desanitizeText(text) {
+  // This should use off-the-shelf code instead
+  var replaced = text.replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&#32;/g, ' ').replace(/&#34;/g, '\"').replace(/&#8216;/g, '\'').replace(/&quot;/g, '\"');
+  console.log(replaced);
+  return replaced;
+};
+
+var lastMsgTimestamp = 0;
+
+function onMessage(msg) {
+    console.log("onMessage called");
+    
+    var chatDisplay = $('#chat_display');
+    var time = Date.now();
+    chatDisplay.append(time - lastMsgTimestamp);
+    chatDisplay.append(' ');
+    lastMsgTimestamp = time;
+    
+    var to = msg.getAttribute('to');
+    var from = msg.getAttribute('from');
+    var type = msg.getAttribute('type');
+    var fromNickname = msg.getAttribute('from_nickname');
+    
+    if (fromNickname == null || fromNickname == undefined) {
+        fromNickname = '';
+    }
+    
+    var elems = msg.getElementsByTagName('body');
+    
+    if (elems.length > 0) {
+        var body = elems[0];
+        if ((type == "chat" || type == "groupchat")) {
+            var text = desanitizeText(Strophe.getText(body));
+            chatDisplay.append(text + '<br>');
+            //$('#chat_display').append(fromNickname + '(' + from + ')' + ' : ' + Strophe.getText(body) + '\n');
+        } else if (type == "error") {
+            chatDisplay.append('Error sending: \"' + Strophe.getText(body) + '\"\n');
+        }
+    }
+    
+    chatDisplay.scrollTop(chatDisplay[0].scrollHeight);
+    
+    // we must return true to keep the handler alive.  
+    // returning false would remove it after it finishes.
+    return true;
+}
+
+function chatConnect(jid, passwd) {
+    connection.connect(jid, passwd, onConnect);
+}
+
+function chatDisconnect() {
+    // Switch to using synchronous requests since this is typically called onUnload.
+    connection.flush();
+    connection.disconnect();
+}
+
+// Interface interaction functions
+
+function sendGuide() {
+    var toJID = 'guide@conference.archive-dev.remap.ucla.edu';
+    var type = 'groupchat';
+    var content = $('#chat_display_guide').val();
+    var from_nickname = 'The guide';
+    
+    sendMsg(toJID, content, type, from_nickname);
+}
+
+function sendObservatory() {
+    var toJID = 'observatory@conference.archive-dev.remap.ucla.edu';
+    var type = 'groupchat';
+    var content = $('#chat_display_observatory').val();
+    var from_nickname = 'The observatory';
+    
+    sendMsg(toJID, content, type, from_nickname);
+}
+</script>
+
+</head>
+<body>
+    <script type="text/javascript" src='html-test/includes/jquery-2.1.4.min.js'></script>
+    
+    <script type="text/javascript" src='html-test/includes/strophe.js'></script>
+    <script type="text/javascript" src='html-test/includes/strophe.muc.js'></script>
+    
+    <script type="text/javascript">
+      var host = 'archive-dev.remap.ucla.edu';
+      var bosh = 'http://' + host + ':5280/http-bind';
+      
+      var connection = null;
+      // Jabber user name and password trick
+      window.onload = function () {
+        // Page initialization
+        connection = new Strophe.Connection(bosh);
+        
+        var email = 'admin@admin';
+        var jid = String(email).replace('@', '.') + '@' + host;
+        
+        // Jabber password is user's email account for now.
+        chatConnect(jid, email);
+      };
+      
+      window.onbeforeunload = function () {
+        console.log("Page unload");
+        // Note: maybe better to handle chat login and logout onSignin and onSignout
+        chatDisconnect();
+      };
+    </script>
+    
+    <textarea id="chat_display_guide" style="height: 200px; width: 400px;"></textarea> <br>
+    <button onclick="sendGuide()">Send to Guide</button> <br>
+    
+    <textarea id="chat_display_observatory" style="height: 200px; width: 400px;"></textarea> <br>
+    <button onclick="sendObservatory()">Send to Observatory</button> <br>
+    
+    <div id="chat_status" style="float: right">
+      
+    </div>
+    </textarea>
+</body>
+</html>
