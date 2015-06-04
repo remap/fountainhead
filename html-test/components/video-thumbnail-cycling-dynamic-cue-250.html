@@ -2,7 +2,7 @@
   <p id="cue-title" class="cue-title"></p>
   
   <p style="margin:1.3em auto; width: 400px">
-    <a id="cue-load" class="video-control-text"></a>
+    <!-- <a id="cue-load" class="video-control-text"></a> -->
     <a id="cue-go" class="video-control-text text-large"></a>
     <a id="cue-unload" class="video-control-text"></a>
   </p>
@@ -51,14 +51,14 @@
     createdElement.descElement = createdElement.shadowRoot.querySelector('#cue-description');
     createdElement.chunkElement = createdElement.shadowRoot.querySelector('#cue-chunk');
     
-    createdElement.loadElement = createdElement.shadowRoot.querySelector('#cue-load');
+    //createdElement.loadElement = createdElement.shadowRoot.querySelector('#cue-load');
     createdElement.goElement = createdElement.shadowRoot.querySelector('#cue-go');
     createdElement.unloadElement = createdElement.shadowRoot.querySelector('#cue-unload');
     
     createdElement.titleElement.textContent = createdElement.cueId + ' : ' + cueTitle;
     createdElement.descElement.textContent = description;
     
-    createdElement.loadElement.textContent = 'stand by';
+    //createdElement.loadElement.textContent = 'stand by';
     createdElement.goElement.textContent = 'GO';
     createdElement.unloadElement.textContent = 'unload';
     
@@ -185,12 +185,14 @@
     };
     
     createdElement.registerEvents = function (createdElement) {
+      /*
       createdElement.loadElement.addEventListener('click', function () {
         // TODO: referencing namePrefix like this is not ideal
         console.log('load does not do anything');
         
       });
-    
+      */
+      
       createdElement.goElement.addEventListener('click', function() {
         if (!createdElement.cueGoing && createdElement.cueReady) {
           createdElement.cueGoing = true;
