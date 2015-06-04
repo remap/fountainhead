@@ -188,7 +188,11 @@
       */
       
       createdElement.goElement.addEventListener('click', function() {
-        createdElement.loadGoogleImages(createdElement, createdElement.publishContent);
+        if (createdElement.googleImageLinks.length === 0) {
+          createdElement.loadGoogleImages(createdElement, createdElement.publishContent);
+        } else {
+          createdElement.publishContent(createdElement);
+        }
       });
     }(createdElement);
   }

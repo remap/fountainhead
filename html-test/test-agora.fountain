@@ -22,11 +22,12 @@
 .AGORA 1: Finding the Others 
 
 <<@cue-publisher
-  (t       = "Establish Agora",
-   cid     = 50)>>
+  (t       = Establish Agora: Called during move,
+   cid     = 50,
+   desc    = "Establish Agora: One door per small wall, no hashtags")>>
 
 <<@cue-publisher
-  (t       = "1st Instance: Rachel Hey I know that place", 
+  (t       = "Rachel Hey I know that place", 
    cid     = 55)>>
 
 <<@one-tag-cycling-hashtags-dynamic-cue-56
@@ -38,12 +39,9 @@
    cid     = 60)>>
 
 <<@cue-publisher
-  (t       = "Stop moving projectors Deftones start", 
-   cid     = 60.5)>>
-
-<<@cue-publisher
-  (t       = "Move to big walls on downbeat	Deftones downbeat", 
-   cid     = 61)>>
+  (t       = Change to LB videos, 
+   cid     = 61,
+   desc    = "Move to big walls on downbeat	Deftones downbeat")>>
 
 <<@cue-publisher
   (t       = "Dancing doors	C: Rachel instancing, B: Felix instancing - on big walls ONLY", 
