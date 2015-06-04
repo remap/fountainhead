@@ -50,7 +50,7 @@
     createdElement.hasUnload = createdElement.getAttributeByListName(['unload'], '-1');
     
     createdElement.cueReady = false;
-    createdElement.cueRequiresUnload = true;
+    createdElement.cueRequiresUnload = false;
     
     if (createdElement.hasUnload === '1') {
       createdElement.shadowRoot.querySelector('#cue-controls').innerHTML = '<a id="cue-load" class="video-control-text"></a> \
