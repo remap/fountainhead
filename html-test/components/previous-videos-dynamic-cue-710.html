@@ -147,6 +147,10 @@
       
       createdElement.goElement.addEventListener('click', function() {
         if (!createdElement.cueGoing) {
+          if (window.scriptControl.cueGoClicked) {
+            window.scriptControl.cueGoClicked(createdElement);
+          }
+        
           createdElement.cueGoing = true;
           
           // TODO: referencing namePrefix like this is not ideal
@@ -158,10 +162,7 @@
 
           createdElement.goElement.className += ' video-control-clicked';
           
-          if (window.scriptControl.cueGoClicked) {
-            window.scriptControl.cueGoClicked(createdElement);
-          }
-        
+          
           createdElement.publishDoors(createdElement.cueContent, createdElement);
         } else {
           console.log('Cue already going');

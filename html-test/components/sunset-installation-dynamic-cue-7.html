@@ -240,6 +240,10 @@
       
       createdElement.goElement.addEventListener('click', function() {
         if (createdElement.cueReady) {
+          if (window.scriptControl.cueGoClicked) {
+            window.scriptControl.cueGoClicked(createdElement);
+          }
+          
           // TODO: referencing namePrefix like this is not ideal
           var dataName = new Name(createdElement.ndnPublisherComponentObject.namePrefix);
           // Note: for now, the names are hard-coded, since namespace design is not fully discussed
@@ -254,10 +258,6 @@
           componentObject.applyStyleFromParentDocument(createdElement.goElement);
           
           createdElement.cueRequiresUnload = true;
-          
-          if (window.scriptControl.cueGoClicked) {
-            window.scriptControl.cueGoClicked(createdElement);
-          }
         } else {
           console.log('Cue not yet ready');
         }

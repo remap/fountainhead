@@ -148,6 +148,10 @@
     }
     
     createdElement.publishContent = function (createdElement) {
+      if (window.scriptControl.cueGoClicked) {
+        window.scriptControl.cueGoClicked(createdElement);
+      }
+      
       createdElement.imgSeq = createdElement.shuffle(createdElement.imgSeq.concat(createdElement.googleImageLinks));        
       var imageIdx = 0;
       var cnt = 0;
@@ -160,10 +164,6 @@
             imageIdx ++;
           }
         }
-      }
-      
-      if (window.scriptControl.cueGoClicked) {
-        window.scriptControl.cueGoClicked(createdElement);
       }
       
       createdElement.goElement.className += ' video-control-clicked';

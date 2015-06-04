@@ -177,8 +177,6 @@
           var nameSuffix = new Name(createdElement.cueId + '/load');
           dataName.append(createdElement.showid).append(cueComponent).appendVersion((new Date).getTime()).append(nameSuffix);
 
-          createdElement.ndnPublisherComponentObject.publishContent(dataName, createdElement.content, false);
-        
           if (createdElement.ndnPublisherComponentObject.wsOn()) {
             createdElement.loadElement.className += ' video-control-clicked';
           } else {
@@ -189,8 +187,10 @@
             //check for element id cue-id
             window.scriptControl.cueStandByClicked(createdElement);
           }
-        
+          
           componentObject.applyStyleFromParentDocument(createdElement.loadElement);
+          
+          createdElement.ndnPublisherComponentObject.publishContent(dataName, createdElement.content, false);
         } else {
           createdElement.loadElement.className += ' video-control-problem';
           console.log('Warning: Cue content still being loaded');
@@ -199,6 +199,10 @@
       });
     
       createdElement.goElement.addEventListener('click', function() {
+        if (window.scriptControl.cueGoClicked) {
+          window.scriptControl.cueGoClicked(createdElement);
+        }
+        
         // TODO: referencing namePrefix like this is not ideal
         var dataName = new Name(createdElement.ndnPublisherComponentObject.namePrefix);
         // Note: for now, the names are hard-coded, since namespace design is not fully discussed
@@ -216,9 +220,6 @@
         
         createdElement.cueRequiresUnload = true;
         
-        if (window.scriptControl.cueGoClicked) {
-          window.scriptControl.cueGoClicked(createdElement);
-        }
         componentObject.applyStyleFromParentDocument(createdElement.goElement);
       });
     

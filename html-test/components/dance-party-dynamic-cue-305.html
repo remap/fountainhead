@@ -139,12 +139,12 @@
       
       createdElement.goElement.addEventListener('click', function() {
         if (!createdElement.cueGoing) {
-          createdElement.cueGoing = true;
-          createdElement.publishRandom(createdElement);
-          
           if (window.scriptControl.cueGoClicked) {
             window.scriptControl.cueGoClicked(createdElement);
           }
+          
+          createdElement.cueGoing = true;
+          createdElement.publishRandom(createdElement);
           
           createdElement.goElement.className += ' video-control-clicked';
           componentObject.applyStyleFromParentDocument(createdElement.goElement);

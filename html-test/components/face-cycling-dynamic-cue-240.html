@@ -129,6 +129,10 @@
       
       createdElement.goElement.addEventListener('click', function() {
         if (!createdElement.cueGoing && createdElement.cueReady) {
+          if (window.scriptControl.cueGoClicked) {
+            window.scriptControl.cueGoClicked(createdElement);
+          }
+          
           createdElement.imageIdx = 0;
           createdElement.publishNextDoors(createdElement.cueContent, createdElement);
         
@@ -138,10 +142,6 @@
             createdElement.goElement.className += ' video-control-problem';
           }
           componentObject.applyStyleFromParentDocument(createdElement.goElement);
-          
-          if (window.scriptControl.cueGoClicked) {
-            window.scriptControl.cueGoClicked(createdElement);
-          }
           
           createdElement.goElement.className += ' video-control-clicked';
           componentObject.applyStyleFromParentDocument(createdElement.goElement);
