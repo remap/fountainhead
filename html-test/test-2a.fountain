@@ -44,6 +44,11 @@
    desc    = No not see Raul until this moment)>>   
 
 <<@cue-publisher
+  (t       = On 2001 sound cue from 2/B (Same as 485) ,
+   cid     = 455,
+   desc    = Rachel breathes)>>   
+
+<<@cue-publisher
   (t       = Amongst bikes Put on your helmet (Start earlier with Tango) ,
    cid     = 460,
    desc    = 460: Should go earlier)>>   

@@ -257,7 +257,7 @@
           dataName.append(createdElement.showid).append(cueComponent).appendVersion((new Date).getTime()).append(nameSuffix);
       
           createdElement.publishDoors(createdElement.cueContent, createdElement, true);
-        
+          
           createdElement.goElement.className += ' video-control-clicked';
           componentObject.applyStyleFromParentDocument(createdElement.goElement);
         } else {
@@ -291,8 +291,8 @@
       // B1
       if (jsonObj.nodeArgs.nodeB.tGo.doors['0'].composer.pipeline1.videoUrl !== undefined) {
         if (!initialPublish) {
-		  randIdx = Math.floor(Math.random() * createdElement.videos['B0'].length)
-		}
+          randIdx = Math.floor(Math.random() * createdElement.videos['B0'].length)
+        }
         jsonObj.nodeArgs.nodeB.tGo.doors['0'].composer.pipeline1.videoUrl = createdElement.videos['B0'][randIdx]['videoUrl'];
       } else {
         console.log('Unexpected json');
@@ -300,8 +300,8 @@
       // B2
       if (jsonObj.nodeArgs.nodeB.tGo.doors['1'].composer.pipeline1.videoUrl !== undefined) {
         if (!initialPublish) {
-		  randIdx = Math.floor(Math.random() * createdElement.videos['B1'].length)
-		}
+          randIdx = Math.floor(Math.random() * createdElement.videos['B1'].length)
+        }
         jsonObj.nodeArgs.nodeB.tGo.doors['1'].composer.pipeline1.videoUrl = createdElement.videos['B1'][randIdx]['videoUrl'];
       } else {
         console.log('Unexpected json');
@@ -309,8 +309,8 @@
       // C1
       if (jsonObj.nodeArgs.nodeC.tGo.doors['0'].composer.pipeline1.videoUrl !== undefined) {
         if (!initialPublish) {
-		  randIdx = Math.floor(Math.random() * createdElement.videos['C0'].length)
-		}
+          randIdx = Math.floor(Math.random() * createdElement.videos['C0'].length)
+        }
         jsonObj.nodeArgs.nodeC.tGo.doors['0'].composer.pipeline1.videoUrl = createdElement.videos['C0'][randIdx]['videoUrl'];
       } else {
         console.log('Unexpected json');
@@ -318,8 +318,8 @@
       // C2
       if (jsonObj.nodeArgs.nodeC.tGo.doors['1'].composer.pipeline1.videoUrl !== undefined) {
         if (!initialPublish) {
-		  randIdx = Math.floor(Math.random() * createdElement.videos['C1'].length)
-		}
+          randIdx = Math.floor(Math.random() * createdElement.videos['C1'].length)
+        }
         jsonObj.nodeArgs.nodeC.tGo.doors['1'].composer.pipeline1.videoUrl = createdElement.videos['C1'][randIdx]['videoUrl'];
       } else {
         console.log('Unexpected json');

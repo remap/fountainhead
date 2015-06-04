@@ -40,19 +40,9 @@
    desc    = "Driving in Silverlake (50% speed, rectangular vignette)")>>
 
 <<@cue-publisher
-  (t       = "Let me take you back", 
-   cid     = 94, 
-   desc    = "Driving in Silverlake  (50% speed, rectangular vignette, black and white)")>>
-
-<<@cue-publisher
   (t       = "Real nice", 
    cid     = 95, 
    desc    = "Barbershop  (50% speed, rectangular vignette)")>>
-
-<<@cue-publisher
-  (t       = "You know. We could do that. If you want", 
-   cid     = 96, 
-   desc    = "Downtown LA mini mart (50% speed, rectangular vignette)")>>
 
 <<@cue-publisher
   (t       = "Now repeat after me", 

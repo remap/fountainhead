@@ -30,16 +30,6 @@
    desc    = Hollywood @ night (50% speed, not inverted. slight rectangular vignette) )>>
 
 <<@cue-publisher
-  (t       = Used to be Match strike 2, 
-   cid     = 167, 
-   desc    = "Pentagonal lights, same settings as last")>>
-
-<<@cue-publisher
-  (t       = Used to be Match strike 3, 
-   cid     = 169, 
-   desc    = "Alley (50% speed, inverted, with HSV adjust (default params), slight rect vignette after inversion)")>>
-
-<<@cue-publisher
   (t       = Arrival, 
    cid     = 171, 
    desc    = "LAPL pigeons (same as above but no rotation, scaled/pushed into pigeons in upper part of the image)")>>
@@ -63,6 +53,11 @@
   (t       = Butterflies, 
    cid     = 190, 
    desc    = "Pentagonal lights (50% speed, not inverted, slight rectangular vignette)")>>
+
+<<@cue-publisher
+  (t       = Empty title, 
+   cid     = 195, 
+   desc    = "Driving in the rain 1  (50% speed, not inverted. slight rectangular vignette)")>>
 
 <<@cue-publisher
   (t       = Fade to black (RITUAL IS OVER) - needs to stop any other cue, 
