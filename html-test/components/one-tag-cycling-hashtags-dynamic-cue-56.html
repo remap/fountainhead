@@ -141,6 +141,7 @@
       
       // B1 - FadeIn
       var randIdx = Math.floor(Math.random() * createdElement.videos.length);
+      console.log(jsonObj);
       if (jsonObj.nodeArgs.nodeB.tFadeIn.doors['0'].composer.pipeline1.videoUrl !== undefined) {
         jsonObj.nodeArgs.nodeB.tFadeIn.doors['0'].composer.pipeline1.videoUrl = createdElement.videos[randIdx]['videoUrl'];
       } else {
@@ -148,21 +149,21 @@
       }
       // B1 - FadeIn - tag
       if (jsonObj.nodeArgs.nodeB.tFadeIn.doors['0'].door.tagText !== undefined) {
-        jsonObj.nodeArgs.nodeB.ttFadeInRun.doors['0'].door.tagText = createdElement.videos[randIdx]['description'];
+        jsonObj.nodeArgs.nodeB.tFadeIn.doors['0'].door.tagText = createdElement.videos[randIdx]['description'];
       } else {
         console.log('Unexpected json');
       }
       
       // B1 - Waitout
       randIdx = Math.floor(Math.random() * createdElement.videos.length);
-      if (jsonObj.nodeArgs.nodeB.tWaitOut.doors['0'].composer.pipeline1.videoUrl !== undefined) {
-        jsonObj.nodeArgs.nodeB.tWaitOut.doors['0'].composer.pipeline1.videoUrl = createdElement.videos[randIdx]['videoUrl'];
+      if (jsonObj.nodeArgs.nodeB.tWaitOut.doors['1'].composer.pipeline1.videoUrl !== undefined) {
+        jsonObj.nodeArgs.nodeB.tWaitOut.doors['1'].composer.pipeline1.videoUrl = createdElement.videos[randIdx]['videoUrl'];
       } else {
         console.log('Unexpected json');
       }
       // B1 - Waitout - tag
-      if (jsonObj.nodeArgs.nodeB.tWaitOut.doors['0'].door.tagText !== undefined) {
-        jsonObj.nodeArgs.nodeB.tWaitOut.doors['0'].door.tagText = createdElement.videos[randIdx]['description'];
+      if (jsonObj.nodeArgs.nodeB.tWaitOut.doors['1'].door.tagText !== undefined) {
+        jsonObj.nodeArgs.nodeB.tWaitOut.doors['1'].door.tagText = createdElement.videos[randIdx]['description'];
       } else {
         console.log('Unexpected json');
       }
@@ -183,14 +184,14 @@
       
       // C1 - WaitOut
       randIdx = Math.floor(Math.random() * createdElement.videos.length);
-      if (jsonObj.nodeArgs.nodeC.tWaitOut.doors['0'].composer.pipeline1.videoUrl !== undefined) {
-        jsonObj.nodeArgs.nodeC.tWaitOut.doors['0'].composer.pipeline1.videoUrl = createdElement.videos[randIdx]['videoUrl'];
+      if (jsonObj.nodeArgs.nodeC.tWaitOut.doors['1'].composer.pipeline1.videoUrl !== undefined) {
+        jsonObj.nodeArgs.nodeC.tWaitOut.doors['1'].composer.pipeline1.videoUrl = createdElement.videos[randIdx]['videoUrl'];
       } else {
         console.log('Unexpected json');
       }
       // C1 - WaitOut - tag
-      if (jsonObj.nodeArgs.nodeC.tWaitOut.doors['0'].door.tagText !== undefined) {
-        jsonObj.nodeArgs.nodeC.tWaitOut.doors['0'].door.tagText = createdElement.videos[randIdx]['description'];
+      if (jsonObj.nodeArgs.nodeC.tWaitOut.doors['1'].door.tagText !== undefined) {
+        jsonObj.nodeArgs.nodeC.tWaitOut.doors['1'].door.tagText = createdElement.videos[randIdx]['description'];
       } else {
         console.log('Unexpected json');
       }

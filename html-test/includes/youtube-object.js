@@ -29,7 +29,7 @@ YoutubeObject.prototype.getYoutubeVideoUrl = function (serviceUrl, fetchIfNotExi
   //xhr.open('POST', 'http://archive-dev.remap.ucla.edu/app/query', true);
   //xhr.open('POST', 'http://the-archive.la/losangeles/services/get-youtube-url', true);
   
-  console.log(serviceUrl);
+  //console.log(serviceUrl);
   
   xhr.onload = function () {
     callback(this);
