@@ -74,12 +74,26 @@
       // username, first_name, last_name, hashtags, photo_file, favorite_angeleno, favorite_time_of_day, neighborhood
       
       // User neighborhood fetching and counts
+      var tagNeighborhoods = [];
       var neighborhoods = [];
       
+      // Note: these is essentially a join, unideal
       for (var i = 0; i < participantObject.length; i++) {
-        if (neighborhoods.indexOf(participantObject[i][7]) === -1 && participantObject[i][7] !== null) {
-          neighborhoods.push(participantObject[i][7]);
+        if (tagNeighborhoods.indexOf(participantObject[i][7]) === -1 && participantObject[i][7] !== null) {
+          tagNeighborhoods.push(participantObject[i][7]);
         }
+      }
+      
+      var neighborhoodResponseCnt = 0;
+      for (var i = 0; i < tagNeighborhoods.length; i++) {
+        var queryStr = 'select original from tagset where tag=\'' + tagNeighborhoods[i] + '\'';
+        createdElement.dbObject.postToDB(queryStr, function (responseText) {
+          neighborhoodResponseCnt ++;
+          neighborhoods.push(JSON.parse(responseText));
+          if (neighborhoodResponseCnt === tagNeighborhoods.length) {
+            createdElement.assembleQueryResults(createdElement);
+          }
+        });
       }
       
       // Function: Use the neighborhoods in our db to query youtube, for each query select first 3 results from youtube,
@@ -90,43 +104,47 @@
       neighborhoodVideoLinks = {};
       var responseCnt = 0;
       
-      // TODO: This would fail if one of the responses did not get through/call callback.
-      // Neighborhood query use original.
-      for (var j = 0; j < neighborhoods.length; j++) {
-        neighborhoodVideoLinks[neighborhoods[j]] = [];
-        var url = createdElement.youtubeObject.requestYoutubeItem({
-          'query': 'search',
-          'part': 'snippet',
-          'q': 'sunset \"' + neighborhoods[j] + '\"',
-          'type': 'video',
-          'maxResults': resultLength
-        }, undefined, undefined, function (idx) {
-          return function (searchResponse) {
-            if (searchResponse.items.length > 0) {
-              var jsonElement = {};
-              for (var i = 0; i < searchResponse.items.length; i++) {
-                jsonElement['url'] = 'https://www.youtube.com/watch?v=' + searchResponse.items[i].id.videoId;
-                neighborhoodVideoLinks[neighborhoods[idx]].push(jsonElement);
+      createdElement.assembleQueryResults = function (createdElement) {
+        // TODO: This would fail if one of the responses did not get through/call callback.
+        // Neighborhood query use original.
+        for (var j = 0; j < neighborhoods.length; j++) {
+          neighborhoodVideoLinks[neighborhoods[j]] = [];
+          var url = createdElement.youtubeObject.requestYoutubeItem({
+            'query': 'search',
+            'part': 'snippet',
+            'q': 'sunset \"' + neighborhoods[j] + '\"',
+            'type': 'video',
+            'maxResults': resultLength
+          }, undefined, undefined, function (idx) {
+            return function (searchResponse) {
+              if (searchResponse.items.length > 0) {
+                var jsonElement = {};
+                for (var i = 0; i < searchResponse.items.length; i++) {
+                  jsonElement['url'] = 'https://www.youtube.com/watch?v=' + searchResponse.items[i].id.videoId;
+                  neighborhoodVideoLinks[neighborhoods[idx]].push(jsonElement);
+                }
+                //console.log('<img src=\"http://img.youtube.com/vi/' + searchResponse.items[0].id.videoId + '/0.jpg\"></img>'); 
               }
-              //console.log('<img src=\"http://img.youtube.com/vi/' + searchResponse.items[0].id.videoId + '/0.jpg\"></img>'); 
-            }
-            responseCnt ++;
+              responseCnt ++;
           
-            if (responseCnt === neighborhoods.length) {
-              // Interleave the playlist results
-              for (var i = 0; i < resultLength; i++) {
-                for (item in neighborhoodVideoLinks) {
-                  if (neighborhoodVideoLinks[item][i] !== undefined) {
-                    createdElement.ytContent.push(neighborhoodVideoLinks[item][i]);
+              if (responseCnt === neighborhoods.length) {
+                // Interleave the playlist results
+                for (var i = 0; i < resultLength; i++) {
+                  for (item in neighborhoodVideoLinks) {
+                    if (neighborhoodVideoLinks[item][i] !== undefined) {
+                      createdElement.ytContent.push(neighborhoodVideoLinks[item][i]);
+                    }
                   }
                 }
-              }
               
-              createdElement.videoUrlCallbackCnt = 0;
-              createdElement.jsonTraverse(createdElement.ytContent, createdElement.replaceVideoUrl, createdElement);
+                createdElement.videoUrlCallbackCnt = 0;
+                createdElement.jsonTraverse(createdElement.ytContent, createdElement.replaceVideoUrl, createdElement);
+              }
             }
-          }
-        } (j), undefined, true);
+          } (j), undefined, true);
+        
+          console.log(url);
+        }
       }
     });
     

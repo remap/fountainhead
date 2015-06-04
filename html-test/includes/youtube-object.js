@@ -25,8 +25,11 @@ YoutubeObject.prototype.getYoutubeVideoUrl = function (serviceUrl, fetchIfNotExi
   data.append('fetchIfNotExist', fetchIfNotExist);
   
   var xhr = new XMLHttpRequest();
+  xhr.open('POST', 'http://localhost:5000/services/get-youtube-url', true);
   //xhr.open('POST', 'http://archive-dev.remap.ucla.edu/app/query', true);
-  xhr.open('POST', 'http://the-archive.la/losangeles/services/get-youtube-url', true);
+  //xhr.open('POST', 'http://the-archive.la/losangeles/services/get-youtube-url', true);
+  
+  console.log(serviceUrl);
   
   xhr.onload = function () {
     callback(this);
