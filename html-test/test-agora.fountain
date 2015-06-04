@@ -55,8 +55,8 @@
   (t       = "Doors settle", 
    cid     = 64)>>
 
-<<@cue-publisher
-  (t       = "Establish (currently static)", 
+<<@first-then-one-tag-cycle-dynamic-cue-65
+  (t       = "Establish", 
    cid     = 65)>>
 
 <<@cue-publisher

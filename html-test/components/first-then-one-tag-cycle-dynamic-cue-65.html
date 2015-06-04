@@ -101,7 +101,7 @@
             obj['videoUrl'] = xhr.responseText;
             delete obj[key];
             createdElement.videoUrlCallbackCnt --;
-          
+            
             if (createdElement.videoUrlCallbackCnt == 0) {
               createdElement.cueReady = true;
             }
@@ -127,8 +127,12 @@
         console.log('No entries found');
       } else {
         var responseObj = JSON.parse(responseText);
-        for (var i = 0; i < responseObj.length; i++) {
-          createdElement.videos['B0'].push({'url': 'https://www.youtube.com/watch?v=' + responseObj[i][0]});
+        
+        var length = Math.min(responseObj.length, createdElement.capLength);
+        var randIdx = 0;
+        for (var i = 0; i < length; i++) {
+          randIdx = Math.floor(Math.random() * responseObj.length);
+          createdElement.videos['B0'].push({'url': 'https://www.youtube.com/watch?v=' + responseObj[randIdx][0]});
         }
         
         createdElement.readyFlags[0] = true;
@@ -152,6 +156,7 @@
           }
         }
         var responseCnt = 0;
+        var angelenoVideos = [];
         for (var j = 0; j < angeleno.length; j++) {
           angelenoVideoLinks[angeleno[j]] = [];
           var url = createdElement.youtubeObject.requestYoutubeItem({
@@ -174,10 +179,18 @@
                 for (var i = 0; i < resultLength; i++) {
                   for (item in angelenoVideoLinks) {
                     if (angelenoVideoLinks[item][i] !== undefined) {
-                      createdElement.videos['C0'].push(angelenoVideoLinks[item][i]);
+                      angelenoVideos.push(angelenoVideoLinks[item][i]);
                     }
                   }
                 }
+                
+                var length = Math.min(angelenoVideos.length, createdElement.capLength);
+                var randIdx = 0;
+                for (var i = 0; i < length; i++) {
+                  randIdx = Math.floor(Math.random() * angelenoVideos.length);
+                  createdElement.videos['C0'].push(angelenoVideos[randIdx]);
+                }
+                
                 createdElement.readyFlags[2] = true;
                 if (createdElement.allReady()) {
                   createdElement.jsonTraverse(createdElement.videos, createdElement.replaceVideoUrl, createdElement);
@@ -197,9 +210,13 @@
       'maxResults': 50
     }, undefined, undefined, function (searchResponse) {
       if (searchResponse.items.length > 0) {
-        for (var i = 0; i < searchResponse.items.length; i++) {
-          createdElement.videos['B1'].push({'url': 'https://www.youtube.com/watch?v=' + searchResponse.items[i].id.videoId});
+        var length = Math.min(searchResponse.items.length, createdElement.capLength);
+        var randIdx = 0;
+        for (var i = 0; i < length; i++) {
+          randIdx = Math.floor(Math.random() * searchResponse.items.length);
+          createdElement.videos['B1'].push({'url': 'https://www.youtube.com/watch?v=' + searchResponse.items[randIdx].id.videoId});
         }
+        
         createdElement.readyFlags[1] = true;
         if (createdElement.allReady()) {
           createdElement.jsonTraverse(createdElement.videos, createdElement.replaceVideoUrl, createdElement);
@@ -218,13 +235,16 @@
       'videoDuration': 'short'
     }, undefined, undefined, function (searchResponse) {
       if (searchResponse.items.length > 0) {
-        for (var i = 0; i < searchResponse.items.length; i++) {
-          createdElement.videos['C1'].push({'url': 'https://www.youtube.com/watch?v=' + searchResponse.items[i].id.videoId});
+        var length = Math.min(searchResponse.items.length, createdElement.capLength);
+        var randIdx = 0;
+        for (var i = 0; i < length; i++) {
+          randIdx = Math.floor(Math.random() * searchResponse.items.length);
+          createdElement.videos['C1'].push({'url': 'https://www.youtube.com/watch?v=' + searchResponse.items[randIdx].id.videoId});
         }
+        
         createdElement.readyFlags[3] = true;
         if (createdElement.allReady()) {
           createdElement.jsonTraverse(createdElement.videos, createdElement.replaceVideoUrl, createdElement);
-          
         }
       }
     }, undefined, true);
@@ -283,7 +303,7 @@
       var initialPublish = typeof initial !== undefined ? initial : false;
       
       if (createdElement.videos.length === 0) {
-        createdElement.cueGo = false;
+        createdElement.cueGoing = false;
         console.log('Unexpected number of videos');
         return;
       }
