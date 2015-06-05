@@ -252,12 +252,15 @@
           dataName.append(createdElement.showid).append(cueComponent).appendVersion((new Date).getTime()).append(nameSuffix);
           
           createdElement.content = JSON.stringify(createdElement.cueContent);
-          createdElement.ndnPublisherComponentObject.publishContent(dataName, createdElement.content, false);
-     
+          
           createdElement.goElement.className += ' video-control-clicked';
           componentObject.applyStyleFromParentDocument(createdElement.goElement);
           
           createdElement.cueRequiresUnload = true;
+          
+		  setTimeout(function () {
+			createdElement.ndnPublisherComponentObject.publishContent(dataName, createdElement.content, false);
+		  }, 200);
         } else {
           console.log('Cue not yet ready');
         }

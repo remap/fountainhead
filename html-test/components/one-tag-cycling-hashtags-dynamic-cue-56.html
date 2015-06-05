@@ -116,7 +116,10 @@
           dataName.append(createdElement.showid).append(cueComponent).appendVersion((new Date).getTime()).append(nameSuffix);
       
           createdElement.imageIdx = 0;
-          createdElement.publishDoors(createdElement.cueContent, createdElement);
+          
+          setTimeout(function () {
+            createdElement.publishDoors(createdElement.cueContent, createdElement);
+          }, 200);
           
           createdElement.goElement.className += ' video-control-clicked';
           componentObject.applyStyleFromParentDocument(createdElement.goElement);

@@ -210,7 +210,6 @@
         var nameSuffix = new Name(createdElement.cueId + '/go');
         dataName.append(createdElement.showid).append(cueComponent).appendVersion((new Date).getTime()).append(nameSuffix);
 
-        createdElement.ndnPublisherComponentObject.publishContent(dataName, createdElement.content, false);
       
         if (createdElement.ndnPublisherComponentObject.wsOn()) {
           createdElement.goElement.className += ' video-control-clicked';
@@ -219,6 +218,10 @@
         }
         
         createdElement.cueRequiresUnload = true;
+        
+        setTimeout(function () {
+          createdElement.ndnPublisherComponentObject.publishContent(dataName, createdElement.content, false);
+        }, 200);
         
         componentObject.applyStyleFromParentDocument(createdElement.goElement);
       });
