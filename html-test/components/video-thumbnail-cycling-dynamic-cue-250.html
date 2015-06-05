@@ -15,7 +15,6 @@
   // Dynamic: Cycle through certain tagged images from the Archive: Priority for Tuesday: High
   // Note: This selects randomly, change every 2 sec, without stopping
   
-  // TODO: reduce interval
   var componentObject = new window.ComponentObject(document, window);
   var componentName = 'com-video-thumbnail-cycling-dynamic-cue-250';
   
@@ -63,6 +62,10 @@
     //createdElement.loadElement.textContent = 'stand by';
     createdElement.goElement.textContent = 'GO';
     createdElement.unloadElement.textContent = 'unload';
+    
+    createdElement.currentInterval = 10000;
+    createdElement.minInterval = 3000;
+    createdElement.reduceRate = 0.9;
     
     componentObject.applyStyleFromParentDocumentAll(createdElement);
     
@@ -183,7 +186,8 @@
       if (createdElement.cueGoing) {
         createdElement.lastScheduledEvent = setTimeout(function () {
           createdElement.publishDoors(jsonObj, createdElement);
-        }, 10000);
+        }, createdElement.currentInterval);
+        createdElement.currentInterval = Math.min(Math.floor(createdElement.currentInterval * createdElement.reduceRate), createdElement.minInterval);
       }
     };
     
