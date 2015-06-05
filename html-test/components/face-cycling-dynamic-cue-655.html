@@ -71,9 +71,6 @@
       
       // username, first_name, last_name, hashtags, photo_file, favorite_angeleno, favorite_time_of_day, neighborhood, email
       
-      // TODO: Participant can be queried only once for less traffic
-      createdElement.finalImage = {};
-      
       createdElement.profileSeq = [];
       
       for (var i = 0; i < participantObject.length; i++) {
@@ -97,16 +94,6 @@
         }
       };
       xhr.send();
-    }
-    
-    // TODO: fill in hashtag, where do hashtags go in json?
-    createdElement.replaceImageUrl = function (key, obj, createdElement) {
-      if (key === 'thumbnailUrl') {
-        if (obj[key] !== '' && createdElement.profileSeq[createdElement.imageIdx].img !== undefined) {
-          obj['thumbnailUrl'] = 'http://archive-dev.remap.ucla.edu/app/querystatic/get-user-avatar?filename=' + createdElement.profileSeq[createdElement.imageIdx].img;
-          createdElement.imageIdx ++;
-        }
-      }
     }
     
     createdElement.registerEvents = function (createdElement) {
@@ -137,8 +124,54 @@
     }(createdElement);
     
     createdElement.publishNextDoors = function (jsonObj, createdElement) {
-      createdElement.jsonTraverse(jsonObj, createdElement.replaceImageUrl, createdElement);
-      createdElement.content = JSON.stringify(createdElement.cueContent);
+      // A
+      if (jsonObj.nodeArgs.nodeA.tFadeIn.doors['0'].composer.pipeline1.thumbnailUrl !== undefined) {
+        if (createdElement.profileSeq[createdElement.imageIdx]) {
+          jsonObj.nodeArgs.nodeA.tFadeIn.doors['0'].composer.pipeline1.thumbnailUrl = 'http://archive-dev.remap.ucla.edu/app/querystatic/get-user-avatar?filename=' + createdElement.profileSeq[createdElement.imageIdx]['img'];
+          jsonObj.nodeArgs.nodeA.tFadeIn.doors['0'].door.tagText = '#' + createdElement.profileSeq[createdElement.imageIdx]['tags'];
+        } else {
+          console.log('imageIdx runs out');
+        }
+      } else {
+        console.log('Unexpected json');
+      }
+      createdElement.imageIdx ++;
+      // B
+      if (jsonObj.nodeArgs.nodeB.tFadeIn.doors['0'].composer.pipeline1.thumbnailUrl !== undefined) {
+        if (createdElement.profileSeq[createdElement.imageIdx]) {
+          jsonObj.nodeArgs.nodeB.tFadeIn.doors['0'].composer.pipeline1.thumbnailUrl = 'http://archive-dev.remap.ucla.edu/app/querystatic/get-user-avatar?filename=' + createdElement.profileSeq[createdElement.imageIdx]['img'];
+          jsonObj.nodeArgs.nodeB.tFadeIn.doors['0'].door.tagText = '#' + createdElement.profileSeq[createdElement.imageIdx]['tags'];
+        } else {
+          console.log('imageIdx runs out');
+        }
+      } else {
+        console.log('Unexpected json');
+      }
+      createdElement.imageIdx ++;
+      // C
+      if (jsonObj.nodeArgs.nodeC.tFadeIn.doors['0'].composer.pipeline1.thumbnailUrl !== undefined) {
+        if (createdElement.profileSeq[createdElement.imageIdx]) {
+          jsonObj.nodeArgs.nodeC.tFadeIn.doors['0'].composer.pipeline1.thumbnailUrl = 'http://archive-dev.remap.ucla.edu/app/querystatic/get-user-avatar?filename=' + createdElement.profileSeq[createdElement.imageIdx]['img'];
+          jsonObj.nodeArgs.nodeC.tFadeIn.doors['0'].door.tagText = '#' + createdElement.profileSeq[createdElement.imageIdx]['tags'];
+        } else {
+          console.log('imageIdx runs out');
+        }
+      } else {
+        console.log('Unexpected json');
+      }
+      createdElement.imageIdx ++;
+      // D
+      if (jsonObj.nodeArgs.nodeD.tFadeIn.doors['0'].composer.pipeline1.thumbnailUrl !== undefined) {
+        if (createdElement.profileSeq[createdElement.imageIdx]) {
+          jsonObj.nodeArgs.nodeD.tFadeIn.doors['0'].composer.pipeline1.thumbnailUrl = 'http://archive-dev.remap.ucla.edu/app/querystatic/get-user-avatar?filename=' + createdElement.profileSeq[createdElement.imageIdx]['img'];
+          jsonObj.nodeArgs.nodeD.tFadeIn.doors['0'].door.tagText = '#' + createdElement.profileSeq[createdElement.imageIdx]['tags'];
+        } else {
+          console.log('imageIdx runs out');
+        }
+      } else {
+        console.log('Unexpected json');
+      }
+      createdElement.imageIdx ++;
     
       var dataName = new Name(createdElement.ndnPublisherComponentObject.namePrefix);
       // Note: for now, the names are hard-coded, since namespace design is not fully discussed
@@ -146,14 +179,8 @@
       var nameSuffix = new Name(createdElement.cueId + '/go');
       dataName.append(createdElement.showid).append(cueComponent).appendVersion((new Date).getTime()).append(nameSuffix);
     
-      if (createdElement.ndnPublisherComponentObject.wsOn()) {
-        createdElement.goElement.className += ' video-control-clicked';
-      } else {
-        createdElement.goElement.className += ' video-control-problem';
-      }
-    
-      componentObject.applyStyleFromParentDocument(createdElement.goElement);
-    
+      createdElement.content = JSON.stringify(jsonObj);
+      
       createdElement.ndnPublisherComponentObject.publishContent(dataName, createdElement.content, false);
       if (createdElement.imageIdx < createdElement.profileSeq.length) {
         setTimeout(function () {
@@ -161,15 +188,6 @@
         }, 2000);
       }
     };
-    
-    createdElement.jsonTraverse = function (obj, func, createdElement) {
-      for (var i in obj) {
-        func.apply(this, [i, obj, createdElement]);  
-        if (obj[i] !== null && typeof(obj[i]) == "object") {
-          createdElement.jsonTraverse(obj[i], func, createdElement);
-        }
-      }
-    }
   }
   
   componentObject.createComponent(componentName, onCreate);

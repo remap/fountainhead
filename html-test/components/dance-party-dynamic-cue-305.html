@@ -12,6 +12,8 @@
 </template>
 
 <script>
+  // TODO: unexpected json
+  
   // Dynamic: Start with specific video in column H at right, then cycle through these video results: https://www.youtube.com/results?filters=short%2Ccreativecommons&lclk=creativecommons&search_query=los+angeles+party+dance   Priority for Tuesday: High
   // Start with H not yet implemented, didn't see url at H, and when to switch to cycle though?
   // This publishes every 2 seconds, without stopping
@@ -108,7 +110,8 @@
       dataName.append(createdElement.showid).append(cueComponent).appendVersion((new Date).getTime()).append(nameSuffix);
     
       for (node in createdElement.cueContent.nodeArgs) {
-        if (createdElement.cueContent.nodeArgs[node].tReady.doors['0'].composer.pipeline1.videoUrl !== undefined) {
+        console.log(createdElement.cueContent);
+        if (createdElement.cueContent.nodeArgs[node].tReady.doors['0'].composer.pipeline1 !== undefined) {
           var randIdx = Math.floor(Math.random() * createdElement.videoLinks.length);
           createdElement.cueContent.nodeArgs[node].tReady.doors['0'].composer.pipeline1['videoUrl'] = createdElement.videoLinks[randIdx]['videoUrl'];
         } else {
@@ -142,12 +145,15 @@
           if (window.scriptControl.cueGoClicked) {
             window.scriptControl.cueGoClicked(createdElement);
           }
+          if (createdElement.cueReady) {
+            createdElement.cueGoing = true;
+            createdElement.publishRandom(createdElement);
           
-          createdElement.cueGoing = true;
-          createdElement.publishRandom(createdElement);
-          
-          createdElement.goElement.className += ' video-control-clicked';
-          componentObject.applyStyleFromParentDocument(createdElement.goElement);
+            createdElement.goElement.className += ' video-control-clicked';
+            componentObject.applyStyleFromParentDocument(createdElement.goElement);
+          } else {
+            console.log('Cue not yet ready.');
+          }
         } else {
           console.log('Cue already going');
         }

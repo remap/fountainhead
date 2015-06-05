@@ -113,6 +113,7 @@
               }
             }
           }
+          
           if (callbackRemaining === 0) {
             onDone(createdElement);
           }
@@ -182,13 +183,6 @@
     }
     
     createdElement.registerEvents = function (createdElement) {
-      /*
-      createdElement.loadElement.addEventListener('click', function () {
-        // TODO: referencing namePrefix like this is not ideal
-        console.log(createdElement.googleImageLinks);
-      });
-      */
-      
       createdElement.goElement.addEventListener('click', function() {
         if (createdElement.googleImageLinks.length === 0) {
           createdElement.loadGoogleImages(createdElement, createdElement.publishContent);
