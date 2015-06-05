@@ -39,6 +39,10 @@
    cid     = 60)>>
 
 <<@cue-publisher
+  (t       = Pause videos. With SQ Deftones. Sheena: "I could count the cracks in the sidewalk.", 
+   cid     = 60.5)>>
+
+<<@cue-publisher
   (t       = With SQ Deftones downbeat, 
    cid     = 61)>>
 
