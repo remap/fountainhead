@@ -1,0 +1,74 @@
+# Environment
+
+[showid] "chocolate_cookie_show"
+
+[include] ndn.js
+[prefix] new Name("/ndn/edu/ucla/remap/losatlantis")
+[face] new Face({host: "localhost"})
+[include] ndn-init.js
+[include] ndn-url-publisher-component.js
+
+[cueFolder] "../../cues/"
+
+[include] script-control.js
+[include] component-object.js
+[include] ndn-publisher-component-object.js
+[include] onload.js
+[include] youtube-object.js
+[include] db-object.js
+
+# Body
+
+<<@sunset-installation-dynamic-cue-7
+  (t       = "Test dynamic list (expect explicit unload)",
+   cid     = 7,
+   unload  = 1)>>
+
+<<@one-tag-cycling-hashtags-dynamic-cue-56
+  (t       = "Test dynamic periodical (expect stop publishing)",
+   cid     = 56)>>
+
+<<@first-then-one-tag-cycle-dynamic-cue-65
+  (t       = "Test dynamic periodical (expect stop publishing)",
+   cid     = 65)>>
+
+<<@face-cycling-dynamic-cue-240
+  (t       = "Test dynamic periodical (go through pictures, does not have unload)",
+   cid     = 240)>>
+
+<<@video-thumbnail-cycling-dynamic-cue-250
+  (t       = "Test dynamic periodical (expect stop publishing)",
+   cid     = 250)>>
+
+<<@one-video-thumbnail-cycling-dynamic-cue-275
+  (t       = "Test dynamic periodical (expect stop publishing)",
+   cid     = 275)>>
+
+<<@google-image-query-dynamic-cue-295
+  (t       = "Test dynamic periodical (publish images once)",
+   cid     = 295)>>
+
+<<@dance-party-dynamic-cue-305
+  (t       = "Test dynamic periodical (expect stop publishing)",
+   cid     = 305)>>
+
+<<@face-cycling-dynamic-cue-655
+  (t       = "Test dynamic periodical (!!not yet built!, json thumbnail urls?)",
+   cid     = 655)>>
+
+<<@previous-videos-dynamic-cue-710
+  (t       = "Test dynamic periodical (expect stop publishing)",
+   cid     = 710)>>
+
+<<@video-cycling-dynamic-cue-750
+  (t       = "Test dynamic periodical (expect stop publishing)",
+   cid     = 750)>>
+
+<<@cue-publisher
+  (t       = "Test list (expect explicit unload)",
+   cid     = 522,
+   unload  = 1)>>
+
+<<@cue-publisher
+  (t       = "Test ordinary",
+   cid     = 270)>>

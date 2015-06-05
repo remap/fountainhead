@@ -227,7 +227,8 @@
         var nameSuffix = new Name(createdElement.cueId + '/unload');
         createdElement.content = JSON.stringify(createdElement.cueContent);
         dataName.append(createdElement.showid).append(cueComponent).appendVersion((new Date).getTime()).append(nameSuffix);
-
+        
+        createdElement.goElement.className += ' video-control-clicked';
         createdElement.ndnPublisherComponentObject.publishContent(dataName, createdElement.content, false);
         createdElement.cueRequiresUnload = false;
       });

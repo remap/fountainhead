@@ -18,7 +18,7 @@ var showid = "chocolate_cookie_show";
   <script src="includes/ndn.js"></script>
   <script>
 var prefix = new Name("/ndn/edu/ucla/remap/losatlantis");
-var face = new Face({host: "archive-dev.remap.ucla.edu"});
+var face = new Face({host: "localhost"});
   </script>
   <script src="includes/ndn-init.js"></script>
   <script>
@@ -46,11 +46,43 @@ var cueFolder = "../../cues/";
   <script>
   </script>
   <link rel="import" href="components/sunset-installation-dynamic-cue-7.html" onerror="onImportError(event)">
+  <link rel="import" href="components/one-tag-cycling-hashtags-dynamic-cue-56.html" onerror="onImportError(event)">
+  <link rel="import" href="components/first-then-one-tag-cycle-dynamic-cue-65.html" onerror="onImportError(event)">
+  <link rel="import" href="components/face-cycling-dynamic-cue-240.html" onerror="onImportError(event)">
+  <link rel="import" href="components/video-thumbnail-cycling-dynamic-cue-250.html" onerror="onImportError(event)">
+  <link rel="import" href="components/one-video-thumbnail-cycling-dynamic-cue-275.html" onerror="onImportError(event)">
+  <link rel="import" href="components/google-image-query-dynamic-cue-295.html" onerror="onImportError(event)">
+  <link rel="import" href="components/dance-party-dynamic-cue-305.html" onerror="onImportError(event)">
+  <link rel="import" href="components/face-cycling-dynamic-cue-655.html" onerror="onImportError(event)">
+  <link rel="import" href="components/previous-videos-dynamic-cue-710.html" onerror="onImportError(event)">
+  <link rel="import" href="components/video-cycling-dynamic-cue-750.html" onerror="onImportError(event)">
   <link rel="import" href="components/cue-publisher.html" onerror="onImportError(event)">
   <div id="scriptbody">
-<com-sunset-installation-dynamic-cue-7 unload=1 t=Sunset&#32;images cid=7></com-sunset-installation-dynamic-cue-7>
+<com-sunset-installation-dynamic-cue-7 unload=1 t=&#34;Test&#32;dynamic&#32;list&#32;(expect&#32;explicit&#32;unload)&#34; cid=7></com-sunset-installation-dynamic-cue-7>
     <a target="_blank" href="components/sunset-installation-dynamic-cue-7.html" class="xref-code">sunset-installation-dynamic-cue-7</a>
-<com-cue-publisher t=Sunset&#32;images cid=295></com-cue-publisher>
+<com-one-tag-cycling-hashtags-dynamic-cue-56 t=&#34;Test&#32;dynamic&#32;periodical&#32;(expect&#32;stop&#32;publishing)&#34; cid=56></com-one-tag-cycling-hashtags-dynamic-cue-56>
+    <a target="_blank" href="components/one-tag-cycling-hashtags-dynamic-cue-56.html" class="xref-code">one-tag-cycling-hashtags-dynamic-cue-56</a>
+<com-first-then-one-tag-cycle-dynamic-cue-65 t=&#34;Test&#32;dynamic&#32;periodical&#32;(expect&#32;stop&#32;publishing)&#34; cid=65></com-first-then-one-tag-cycle-dynamic-cue-65>
+    <a target="_blank" href="components/first-then-one-tag-cycle-dynamic-cue-65.html" class="xref-code">first-then-one-tag-cycle-dynamic-cue-65</a>
+<com-face-cycling-dynamic-cue-240 t=&#34;Test&#32;dynamic&#32;periodical&#32;(go&#32;through&#32;pictures,&#32;does&#32;not&#32;have&#32;unload)&#34; cid=240></com-face-cycling-dynamic-cue-240>
+    <a target="_blank" href="components/face-cycling-dynamic-cue-240.html" class="xref-code">face-cycling-dynamic-cue-240</a>
+<com-video-thumbnail-cycling-dynamic-cue-250 t=&#34;Test&#32;dynamic&#32;periodical&#32;(expect&#32;stop&#32;publishing)&#34; cid=250></com-video-thumbnail-cycling-dynamic-cue-250>
+    <a target="_blank" href="components/video-thumbnail-cycling-dynamic-cue-250.html" class="xref-code">video-thumbnail-cycling-dynamic-cue-250</a>
+<com-one-video-thumbnail-cycling-dynamic-cue-275 t=&#34;Test&#32;dynamic&#32;periodical&#32;(expect&#32;stop&#32;publishing)&#34; cid=275></com-one-video-thumbnail-cycling-dynamic-cue-275>
+    <a target="_blank" href="components/one-video-thumbnail-cycling-dynamic-cue-275.html" class="xref-code">one-video-thumbnail-cycling-dynamic-cue-275</a>
+<com-google-image-query-dynamic-cue-295 t=&#34;Test&#32;dynamic&#32;periodical&#32;(publish&#32;images&#32;once)&#34; cid=295></com-google-image-query-dynamic-cue-295>
+    <a target="_blank" href="components/google-image-query-dynamic-cue-295.html" class="xref-code">google-image-query-dynamic-cue-295</a>
+<com-dance-party-dynamic-cue-305 t=&#34;Test&#32;dynamic&#32;periodical&#32;(expect&#32;stop&#32;publishing)&#34; cid=305></com-dance-party-dynamic-cue-305>
+    <a target="_blank" href="components/dance-party-dynamic-cue-305.html" class="xref-code">dance-party-dynamic-cue-305</a>
+<com-face-cycling-dynamic-cue-655 t=&#34;Test&#32;dynamic&#32;periodical&#32;(!!not&#32;yet&#32;built!,&#32;json&#32;thumbnail&#32;urls?)&#34; cid=655></com-face-cycling-dynamic-cue-655>
+    <a target="_blank" href="components/face-cycling-dynamic-cue-655.html" class="xref-code">face-cycling-dynamic-cue-655</a>
+<com-previous-videos-dynamic-cue-710 t=&#34;Test&#32;dynamic&#32;periodical&#32;(expect&#32;stop&#32;publishing)&#34; cid=710></com-previous-videos-dynamic-cue-710>
+    <a target="_blank" href="components/previous-videos-dynamic-cue-710.html" class="xref-code">previous-videos-dynamic-cue-710</a>
+<com-video-cycling-dynamic-cue-750 t=&#34;Test&#32;dynamic&#32;periodical&#32;(expect&#32;stop&#32;publishing)&#34; cid=750></com-video-cycling-dynamic-cue-750>
+    <a target="_blank" href="components/video-cycling-dynamic-cue-750.html" class="xref-code">video-cycling-dynamic-cue-750</a>
+<com-cue-publisher unload=1 t=&#34;Test&#32;list&#32;(expect&#32;explicit&#32;unload)&#34; cid=522></com-cue-publisher>
+    <a target="_blank" href="components/cue-publisher.html" class="xref-code">cue-publisher</a>
+<com-cue-publisher t=&#34;Test&#32;ordinary&#34; cid=270></com-cue-publisher>
     <a target="_blank" href="components/cue-publisher.html" class="xref-code">cue-publisher</a>
   </div></section>
 </body>
