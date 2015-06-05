@@ -53,6 +53,7 @@
     
     //createdElement.loadElement.textContent = 'stand by';
     createdElement.goElement.textContent = 'GO';
+    createdElement.capSize = 40;
     
     componentObject.applyStyleFromParentDocumentAll(createdElement);
     
@@ -82,7 +83,7 @@
     
     createdElement.loadGoogleImages = function (createdElement, onDone) {
       // Google custom image query:
-      var targetTotalNum = 36;
+      var targetTotalNum = 20;
       var remainingTargetNum = targetTotalNum;
       var perPageNum = 10;
       var startNum = 1;
@@ -155,11 +156,12 @@
       createdElement.imgSeq = createdElement.shuffle(createdElement.imgSeq.concat(createdElement.googleImageLinks));        
       var imageIdx = 0;
       var cnt = 0;
+      var length = Math.min(createdElement.imgSeq.length, createdElement.capSize);
       
       for (node in createdElement.cueContent.nodeArgs) {
         if (createdElement.cueContent.nodeArgs[node].tGo.thumbGenerator.thumbUrls !== undefined) {
           createdElement.cueContent.nodeArgs[node].tGo.thumbGenerator.thumbUrls = '';
-          for (cnt = 0; cnt < createdElement.imgSeq.length / 4; cnt ++) {
+          for (cnt = 0; cnt < length / 4; cnt ++) {
             createdElement.cueContent.nodeArgs[node].tGo.thumbGenerator.thumbUrls += createdElement.imgSeq[imageIdx] + '\r\n';
             imageIdx ++;
           }
