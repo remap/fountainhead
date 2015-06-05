@@ -78,7 +78,7 @@
   (t       = Rache: "Could you taste them?", 
    cid     = 230)>>
 
-<<@face-cycling-dynamic-cue-240
+<<@cue-publisher
   (t       = Travelers faces appear as door image, 
    cid     = 240)>>
 
