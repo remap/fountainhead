@@ -82,7 +82,7 @@
     
     createdElement.loadGoogleImages = function (createdElement, onDone) {
       // Google custom image query:
-      var targetTotalNum = 100;
+      var targetTotalNum = 36;
       var remainingTargetNum = targetTotalNum;
       var perPageNum = 10;
       var startNum = 1;
@@ -91,11 +91,11 @@
       
       while (remainingTargetNum > 0) {
         // Search with my own custom search engine ID
-        var imageQueryUrl = 'https://www.googleapis.com/customsearch/v1?cx=017018307474463599316%3Asossyzps98y';
+        var imageQueryUrl = 'https://www.googleapis.com/customsearch/v1?cx=017018307474463599316:c9iq0zebyqa';
         // Image filtering conditions
         imageQueryUrl += '&imgColorType=color&q=los+angeles+diversity+residents&imgSize=medium&searchType=image&imgType=face&fileType=png';
         // With my own ApiKey
-        imageQueryUrl += '&key=AIzaSyBiAPHhCV_Dh49f36hKSqw0BrsZpbI4KhE';
+        imageQueryUrl += '&key=AIzaSyDx57dinaM_Hj_dGtDIltSMfsxqkvePLIk';
         // startIdx, max results 10 per page
         imageQueryUrl += '&start=' + startNum;
         callbackRemaining ++;
