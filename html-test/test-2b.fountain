@@ -23,46 +23,42 @@
    cid     = 520)>>
 
 <<@cue-publisher
-  (t       = More lecture,
+  (t       = Called with Thunder,
    cid     = 522,
    unload  = 1)>>
 
 <<@cue-publisher
-  (t       = More lecture,
+  (t       = Felix "Screw this shit",
    cid     = 523)>>
 
 <<@cue-publisher
-  (t       = Unpause,
+  (t       = Felix exits the scene / Actors start moving,
    cid     = 524,
    unload  = 1)>>
 
 <<@cue-publisher
-  (t       = Start 2001 sequence,
+  (t       = Alternates overhead shot of studying with professor. Start of 2001 soundtrack. ,
    cid     = 560,
    unload  = 1)>>
 
 <<@cue-publisher
-  (t       = Lecture,
+  (t       = 2001 First Crescendo ,
    cid     = 565)>>
 
 <<@cue-publisher
-  (t       = "SEND" - Add the waviness gradually to both projectors,
+  (t       = 2001 Second Crescendo ,
    cid     = 570)>>
 
 <<@cue-publisher
-  (t       = One projector w/ psychedelic music,
+  (t       = Music: Wonder Woman,
    cid     = 580)>>
 
 <<@cue-publisher
-  (t       = Change physical location of projectors,
+  (t       = "Are you sure this is not addictive",
    cid     = 585)>>
 
 <<@cue-publisher
-  (t       = 50% opacity each of the following (cheeto raised),
-   cid     = 590)>>
-
-<<@cue-publisher
-  (t       = Move projectors,
+  (t       = Tightrope walk to the car,
    cid     = 610)>>
 
 <<@cue-publisher
@@ -70,15 +66,15 @@
    cid     = 615)>>
 
 <<@cue-publisher
-  (t       = "Blackout of psychedelic. Keep wavy chalkboard, with tire screech",
+  (t       = Blackout of psychedelic. Keep wavy chalkboard with tire screech,
    cid     = 630)>>
 
 <<@cue-publisher
-  (t       = Final car video,
+  (t       = Felix: "I'm here because I wasn't there",
    cid     = 635)>>
 
 <<@cue-publisher
-  (t       = "Archive speak TRANSFER FAILURE, REJOIN the ARCHIVE",
+  (t       = Archive speak "TRANSFER FAILURE, REJOIN the ARCHIVE",
    cid     = 640)>>
 
 <<@cue-publisher

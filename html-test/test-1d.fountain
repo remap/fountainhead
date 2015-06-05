@@ -21,11 +21,11 @@
 .RITUAL 1/D: "Underpass" (@ Rachel)
 
 <<@cue-publisher
-  (t       = Establish scene, 
+  (t       = Establish scene before arrival. Click only once. , 
    cid     = 160)>>
 
 <<@cue-publisher
-  (t       = Match strike 1, 
+  (t       = First match strike by Rachel. , 
    cid     = 165, 
    desc    = Hollywood @ night (50% speed, not inverted. slight rectangular vignette) )>>
 
@@ -53,12 +53,12 @@ Welcome. Como estan? Please come in. Find a spot. Anywhere. Go ahead, sit down, 
    desc    = "Construction pedestrian (same as above but no rotation, no scaling, 25% speed)")>>
 
 <<@cue-publisher
-  (t       = Butterflies, 
+  (t       = Driving in the rain - transformation into butterflies, 
    cid     = 190, 
    desc    = "Pentagonal lights (50% speed, not inverted, slight rectangular vignette)")>>
 
 <<@cue-publisher
-  (t       = Empty title, 
+  (t       = Restore pentagonal lights., 
    cid     = 195, 
    desc    = "Driving in the rain 1  (50% speed, not inverted. slight rectangular vignette)")>>
 

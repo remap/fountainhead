@@ -24,17 +24,7 @@
    desc    = Blackout)>>
 
 <<@cue-publisher
-  (t       = Mirror node,
-   cid     = 411,
-   desc    = Load cue 411 )>>
-
-<<@cue-publisher
-  (t       = Fireflies (as Rachel walks to Raul) ,
-   cid     = 420,
-   desc    = Load cue 420 )>>
-
-<<@cue-publisher
-  (t       = Ocean - wood burning drowning Thunder,
+  (t       = Ocean - wood burning (drowning) / Thunder,
    cid     = 425,
    desc    = "Saturated colors, remember its on mylar" )>>
 
@@ -59,7 +49,7 @@
    desc    = 50% speed)>>
 
 <<@cue-publisher
-  (t       = Amongst bikes Put on your helmet (Start earlier with Tango) ,
+  (t       = Raul on bike (Rachel talks to audience) ,
    cid     = 470,
    desc    = Should go earlier)>>
 
@@ -69,32 +59,26 @@
    desc    = Should go in sequence w/ Raul)>>
 
 <<@cue-publisher
-  (t       = Bus? ,
+  (t       = Bus ,
    cid     = 476,
-   desc    = Check with bus,
    unload  = 1)>>
 
 <<@cue-publisher
   (t       = Fireflies (as Rachel walks to Raul)  - center cross ,
-   cid     = 478,
-   desc    = cue)>>
+   cid     = 478)>>
 
 <<@cue-publisher
   (t       = "I don't want to remember... STOP"  ,
-   cid     = 480,
-   desc    = cue)>>
+   cid     = 480)>>
 
 <<@cue-publisher
   (t       = Running away ,
-   cid     = 485,
-   desc    = cue)>>
+   cid     = 485)>>
 
 <<@cue-publisher
-  (t       = "Archive speak TRANSFER FAILURE, REJOIN the ARCHIVE" ,
-   cid     = 490,
-   desc    = cue)>>
+  (t       = Archive speak "TRANSFER FAILURE, REJOIN the ARCHIVE" ,
+   cid     = 490)>>
 
 <<@cue-publisher
   (t       = Fade to black ,
-   cid     = 500,
-   desc    = cue)>>
+   cid     = 500)>>

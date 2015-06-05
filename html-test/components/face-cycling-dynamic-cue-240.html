@@ -229,44 +229,44 @@
       
       // B1
       if (jsonObj.nodeArgs.nodeB.tGo.doors['0'].composer.pipeline1.thumbnailUrl !== undefined) {
-        if (createdElement.finalImage['rachel']) {
-          jsonObj.nodeArgs.nodeB.tGo.doors['0'].composer.pipeline1.thumbnailUrl = hardcode4; //'http://archive-dev.remap.ucla.edu/app/querystatic/get-user-avatar?filename=' + createdElement.finalImage['rachel']['img'];
+        jsonObj.nodeArgs.nodeB.tGo.doors['0'].composer.pipeline1.thumbnailUrl = hardcode4; //'http://archive-dev.remap.ucla.edu/app/querystatic/get-user-avatar?filename=' + createdElement.finalImage['rachel']['img'];
+        if (createdElement.finalImage['rachel']['tags'] !== undefined && createdElement.finalImage['rachel']['tags'] !== '') {
           jsonObj.nodeArgs.nodeB.tGo.doors['0'].door.tagText = '#' + createdElement.finalImage['rachel']['tags'];
         } else {
-          console.log('Rachel does not have an image');
+          console.log('Rachel does not have tags');
         }
       } else {
         console.log('Rachel unexpected json');
       }
       // B2
       if (jsonObj.nodeArgs.nodeB.tGo.doors['1'].composer.pipeline1.thumbnailUrl !== undefined) {
-        if (createdElement.finalImage['sheena']) {
-          jsonObj.nodeArgs.nodeB.tGo.doors['1'].composer.pipeline1.thumbnailUrl = hardcode2; //'http://archive-dev.remap.ucla.edu/app/querystatic/get-user-avatar?filename=' + createdElement.finalImage['sheena']['img'];
+        jsonObj.nodeArgs.nodeB.tGo.doors['1'].composer.pipeline1.thumbnailUrl = hardcode2; //'http://archive-dev.remap.ucla.edu/app/querystatic/get-user-avatar?filename=' + createdElement.finalImage['sheena']['img'];
+        if (createdElement.finalImage['sheena']['tags'] !== undefined && createdElement.finalImage['sheena']['tags'] !== '') {
           jsonObj.nodeArgs.nodeB.tGo.doors['1'].door.tagText = '#' + createdElement.finalImage['sheena']['tags'];
         } else {
-          console.log('Sheena does not have an image');
+          console.log('Sheena does not have tags');
         }
       } else {
         console.log('Sheena unexpected json');
       }
       // C1
       if (jsonObj.nodeArgs.nodeC.tGo.doors['0'].composer.pipeline1.thumbnailUrl !== undefined) {
-        if (createdElement.finalImage['felix']) {
-          jsonObj.nodeArgs.nodeC.tGo.doors['0'].composer.pipeline1.thumbnailUrl = hardcode1; //'http://archive-dev.remap.ucla.edu/app/querystatic/get-user-avatar?filename=' + createdElement.finalImage['felix']['img'];
+        jsonObj.nodeArgs.nodeC.tGo.doors['0'].composer.pipeline1.thumbnailUrl = hardcode1; //'http://archive-dev.remap.ucla.edu/app/querystatic/get-user-avatar?filename=' + createdElement.finalImage['felix']['img'];
+        if (createdElement.finalImage['felix']['tags'] !== undefined && createdElement.finalImage['felix']['tags'] !== '') {
           jsonObj.nodeArgs.nodeC.tGo.doors['0'].door.tagText = '#' + createdElement.finalImage['felix']['tags'];
         } else {
-          console.log('Felix does not have an image');
+          console.log('Felix does not have tags');
         }
       } else {
         console.log('Felix unexpected json');
       }
       // C2
       if (jsonObj.nodeArgs.nodeC.tGo.doors['1'].composer.pipeline1.thumbnailUrl !== undefined) {
-        if (createdElement.finalImage['eddie']) {
-          jsonObj.nodeArgs.nodeC.tGo.doors['1'].composer.pipeline1.thumbnailUrl = hardcode3; //'http://archive-dev.remap.ucla.edu/app/querystatic/get-user-avatar?filename=' + createdElement.finalImage['eddie']['img'];
+        jsonObj.nodeArgs.nodeC.tGo.doors['1'].composer.pipeline1.thumbnailUrl = hardcode3; //'http://archive-dev.remap.ucla.edu/app/querystatic/get-user-avatar?filename=' + createdElement.finalImage['eddie']['img'];
+        if (createdElement.finalImage['eddie']['tags'] !== undefined && createdElement.finalImage['eddie']['tags'] !== '') {
           jsonObj.nodeArgs.nodeC.tGo.doors['1'].door.tagText = '#' + createdElement.finalImage['eddie']['tags'];
         } else {
-          console.log('Eddie does not have an image');
+          console.log('Eddie does not have tags');
         }
       } else {
         console.log('Eddie unexpected json');

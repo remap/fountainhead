@@ -192,7 +192,7 @@
           setTimeout(function () {
             dataName.append(createdElement.showid).append(cueComponent).appendVersion((new Date).getTime()).append(nameSuffix);
             createdElement.ndnPublisherComponentObject.publishContent(dataName, createdElement.content, false);
-          }, 200);
+          }, 500);
           
         } else {
           createdElement.loadElement.className += ' video-control-problem';
@@ -224,7 +224,7 @@
         setTimeout(function () {
           dataName.append(createdElement.showid).append(cueComponent).appendVersion((new Date).getTime()).append(nameSuffix);
           createdElement.ndnPublisherComponentObject.publishContent(dataName, createdElement.content, false);
-        }, 200);
+        }, 500);
         
         componentObject.applyStyleFromParentDocument(createdElement.goElement);
       });

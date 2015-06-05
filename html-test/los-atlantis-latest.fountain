@@ -2780,8 +2780,8 @@ Transfer failure. Contacting administrator.
 
 .SCENE 6A: IN THE OBSERVATORY (ONLINE) ;  
 
-THE OBSERVATORY
-I bet Siri doesn't have to deal with stuff like this.   What happened in there?  
+THE GUIDE
+I bet Siri doesn't have to deal with stuff like this. What happened in there?  
 
 Etc.
 
@@ -2846,7 +2846,7 @@ THE ARCHIVE
 Customer service reset, completing cycle. 
 
 THE GUIDE ^
-Commence transfer <<NATALIE>>, final attempt, collective transfer.  
+Commence transfer {{ name }}, final attempt, collective transfer.  
 
 THE OBSERVATORY ^
 (in the WATCHER status bar)

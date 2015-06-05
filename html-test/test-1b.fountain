@@ -25,7 +25,7 @@
    cid     = 90)>>
 
 <<@cue-publisher
-  (t       = "Raul first line FUUUUUUCKKK!", 
+  (t       = Raul first line "FUUUUUUCKKK!", 
    cid     = 91, 
    desc    = "MLK and Long Beach Blvd. (50% speed, rectangular vignette)",
    unload  = 1)>>

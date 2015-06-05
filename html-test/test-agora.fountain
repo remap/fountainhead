@@ -27,84 +27,75 @@
    desc    = "Establish Agora: One door per small wall, no hashtags")>>
 
 <<@cue-publisher
-  (t       = "Rachel Hey I know that place", 
+  (t       = Rachel: "Hey I know that place", 
    cid     = 55)>>
 
 <<@one-tag-cycling-hashtags-dynamic-cue-56
-  (t       = Doors blink to alternately black and cycle	On all walls, 
+  (t       = Archive: "Here your memories are safe to remember." Take on Rachel's response: "Yeah, right, it's...", 
    cid     = 56)>>
 
 <<@cue-publisher
-  (t       = Agora becomes more personal, 
+  (t       = Rachel: "Do I have a choice"? - Sense Memories, 
    cid     = 60)>>
 
 <<@cue-publisher
-  (t       = Change to LB videos, 
-   cid     = 61,
-   desc    = "Move to big walls on downbeat	Deftones downbeat")>>
+  (t       = With SQ Deftones downbeat, 
+   cid     = 61)>>
 
 <<@cue-publisher
-  (t       = "Dancing doors	C: Rachel instancing, B: Felix instancing - on big walls ONLY", 
+  (t       = Dancing doors. Sheena: "My dad used to smoke but he always smelled good", 
    cid     = 62)>>
 
 .THE ARCHIVE INTERVENES
 
 <<@cue-publisher
-  (t       = "Doors settle", 
+  (t       = Rachel: "Fuck this I'm leaving.", 
    cid     = 64)>>
 
 <<@first-then-one-tag-cycle-dynamic-cue-65
-  (t       = "Establish", 
+  (t       = Archive: "First Transfer Options", 
    cid     = 65)>>
 
 <<@cue-publisher
-  (t       = "Fade out after everyone has left", 
+  (t       = Take after audience exit, 
    cid     = 67)>>
 
 .AGORA 2: Reunion in the Agora
 
 <<@cue-publisher
-  (t       = "MOVE PROJECTORS TO AGORA", 
-   cid     = 210)>>
-
-<<@cue-publisher
-  (t       = "Establish Agora", 
+  (t       = Establish Agora - "Connect", 
    cid     = 220)>>
 
 <<@cue-publisher
-  (t       = Longbeach, 
+  (t       = Felix: "Almost could touch it." All four doors: LongBeach, 
    cid     = 225)>>
 
 <<@cue-publisher
-  (t       = 4 Doors appear w/ hashtags, 
+  (t       = Rache: "Could you taste them?", 
    cid     = 230)>>
 
 <<@face-cycling-dynamic-cue-240
   (t       = Travelers faces appear as door image, 
    cid     = 240)>>
 
-<<@cue-publisher
-  (t       = Ending cue on travelers, 
-   cid     = 245)>>
-
 <<@video-thumbnail-cycling-dynamic-cue-250
-  (t       = "Video replace faces in all 4 doors (on ding)", 
+  (t       = Video replace faces in all 4 doors (on ding), 
    cid     = 250)>>
 
 <<@cue-publisher
-  (t       = "Cycle new videos into existing door locations", 
+  (t       = Rachel: "Maybe he's right. I think so. Do you?", 
    cid     = 260)>>
 
 <<@cue-publisher
-  (t       = Video freeze/stop all doors, 
+  (t       = Rachel: "Fuck this I'm leaving.", 
    cid     = 270)>>
 
 <<@one-video-thumbnail-cycling-dynamic-cue-275
-  (t       = "Duplicate of 250 but with long beach, Raul - Fade in doors/ long beach + raul", 
+  (t       = The Archive: "Please try again.", 
    cid     = 275)>>
 
 <<@one-video-thumbnail-cycling-dynamic-cue-275
-  (t       = "Rotate doors clockwise around the space (short blanking in between?)", 
+  (t       = Sheena: "Long Beach", 
    cid     = 280)>>
 
 <<@cue-publisher
@@ -114,99 +105,71 @@
 .Dance party
 
 <<@cue-publisher
-  (t       = "Move projectors A, D while 16:9 images related to Sarah?", 
-   cid     = 290)>>
-
-<<@google-image-query-dynamic-cue-295
-  (t       = "Faces of ethnicities in LA (instancing door thumbnails), close to celebration beat",
-   cid     = 295)>>
-
-<<@cue-publisher
-  (t       = Dance party (with Celebration sound cue), 
+  (t       = Music: Celebration. Multicultural LA Dancing., 
    cid     = 300)>>
 
 <<@dance-party-dynamic-cue-305
-  (t       = Playlist of dancing in LA via Zhehao full Youtube search "los angeles dancing" + neighborhoods of audienced, 
+  (t       = Music: Bye Bye Bye. All of Los Angeles Dancing., 
    cid     = 305)>>
 
-<<@cue-publisher
-  (t       = Party gives way to memories; come back down to earth, 
-   cid     = 350)>>
+<<@face-cycling-dynamic-cue-240
+  (t       = Music: Love on Top. Faces of audience., 
+   cid     = 310)>>
+
+<<@google-image-query-dynamic-cue-295
+  (t       = Music: 3rd stewart. Faces of all Los Angeles.,
+   cid     = 315)>>
+
+<<@dance-party-dynamic-cue-305
+  (t       = Music: Rod Stewart. All of Los Angeles Dancing., 
+   cid     = 320)>>
 
 <<@cue-publisher
-  (t       = Blackout, 
+  (t       = End of the Rod Stewart song, 
    cid     = 355)>>
 
 <<@cue-publisher
-  (t       = "TWO Door signs and images re-establish (mom turns on the lights)", 
+  (t       = PING. Take immediately, 
    cid     = 360)>>
 
 <<@cue-publisher
-  (t       = "Fade to black", 
+  (t       = Fade to black - reset to what they enter, 
    cid     = 380)>>
 
 .Agora 3
 
 <<@cue-publisher
-  (t       = "MOVE PROJECTORS TO AGORA", 
-   cid     = 650)>>
+  (t       = Pre-establish holodeck, 
+   cid     = 652)>>
 
 <<@cue-publisher
-  (t       = "Establish Agora - Doors with hashtags and photos of tourists, travelers", 
+  (t       = Citizen: "They're exhausted, they need to rest", 
    cid     = 655)>>
 
 <<@cue-publisher
-  (t       = Raul video, 
+  (t       = With the ocean sound effect. , 
    cid     = 657)>>
 
 <<@cue-publisher
-  (t       = Felix video, 
+  (t       = It's a place to come and remember. , 
    cid     = 659)>>
 
-<<@cue-publisher
-  (t       = "Hashtags over 657 & 659", 
-   cid     = 660)>>
-
-<<@cue-publisher
-  (t       = "Shadows of Citizens", 
-   cid     = 670)>>
-
-<<@cue-publisher
-  (t       = "Shadows fade, remix begins, citizens leave shadows", 
-   cid     = 700)>>
-
 <<@previous-videos-dynamic-cue-710
-  (t       = Environment changes (citizens), 
+  (t       = Rachel: "Ok, I think I'm ready. ", 
    cid     = 710)>>
 
 <<@cue-publisher
-  (t       = Couple 1, 
+  (t       = Action of coming to the middle, 
    cid     = 720)>>
 
 <<@cue-publisher
-  (t       = Resume 710, 
+  (t       = Slow down. NO SWITCHING, 
    cid     = 721)>>
 
 <<@cue-publisher
-  (t       = Couple 2, 
+  (t       = On "Iove you", 
    cid     = 725)>>
-
-<<@cue-publisher
-  (t       = Resume 710, 
-   cid     = 726)>>
-
-<<@cue-publisher
-  (t       = Couple 3, 
-   cid     = 730)>>
-
-<<@video-cycling-dynamic-cue-750
-  (t       = "Large 16:9 projections", 
-   cid     = 750)>>
 
 <<@cue-publisher
   (t       = "Archive resets", 
    cid     = 1000)>>
-
-<<@cue-publisher
-  (t       = "Fade to black", 
-   cid     = 1100)>>

@@ -26,12 +26,12 @@
    cid     = 5)>>
 
 <<@sunset-installation-dynamic-cue-7
-  (t       = Sunset images,
+  (t       = "Beginning of Sunset Installation - YouTube videos. Call at 6:45P.",
    cid     = 7,
    unload  = 1)>>
 
 <<@cue-publisher
-  (t       = "Sunset on the beach (50% speed, play for 30s)",
+  (t       = "Begin sunset videos for transition. Take at 7:05P.",
    cid     = 10)>>
 
 <<@cue-publisher
@@ -53,16 +53,19 @@
 .Rachel enters
 
 <<@cue-publisher
-  (t       = Sunset images turns black & white,
+  (t       = Rachel Enters 1330: Sunset Installation Goes Black & White,
    cid     = 20)>>
 
 .Down the Rabbit Hole
 
 <<@cue-publisher
-  (t       = "Rachel projection fade in (first memory of LA) - Bike 05, Loop",
+  (t       = "Rachel bike memory fades in. Take when umbrella opens.",
    cid     = 30)>>
 
+NOTE
+40 has to be explicitly unloaded.
+
 <<@cue-publisher
-  (t       = "Archive leaks through; Grand Central",
+  (t       = "Film noir playlist, take on Rain and Angels.",
    cid     = 40,
    unload  = 1)>>

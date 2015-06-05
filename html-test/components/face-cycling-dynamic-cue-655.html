@@ -101,9 +101,9 @@
     
     // TODO: fill in hashtag, where do hashtags go in json?
     createdElement.replaceImageUrl = function (key, obj, createdElement) {
-      if (key === 'videoUrl') {
+      if (key === 'thumbnailUrl') {
         if (obj[key] !== '' && createdElement.profileSeq[createdElement.imageIdx].img !== undefined) {
-          obj['videoUrl'] = 'http://archive-dev.remap.ucla.edu/app/querystatic/get-user-avatar?filename=' + createdElement.profileSeq[createdElement.imageIdx].img;
+          obj['thumbnailUrl'] = 'http://archive-dev.remap.ucla.edu/app/querystatic/get-user-avatar?filename=' + createdElement.profileSeq[createdElement.imageIdx].img;
           createdElement.imageIdx ++;
         }
       }
