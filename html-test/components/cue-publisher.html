@@ -175,8 +175,7 @@
           // Note: for now, the names are hard-coded, since namespace design is not fully discussed
           var cueComponent = new Name('cues');
           var nameSuffix = new Name(createdElement.cueId + '/load');
-          dataName.append(createdElement.showid).append(cueComponent).appendVersion((new Date).getTime()).append(nameSuffix);
-
+          
           if (createdElement.ndnPublisherComponentObject.wsOn()) {
             createdElement.loadElement.className += ' video-control-clicked';
           } else {
@@ -190,7 +189,11 @@
           
           componentObject.applyStyleFromParentDocument(createdElement.loadElement);
           
-          createdElement.ndnPublisherComponentObject.publishContent(dataName, createdElement.content, false);
+          setTimeout(function () {
+            dataName.append(createdElement.showid).append(cueComponent).appendVersion((new Date).getTime()).append(nameSuffix);
+            createdElement.ndnPublisherComponentObject.publishContent(dataName, createdElement.content, false);
+          }, 200);
+          
         } else {
           createdElement.loadElement.className += ' video-control-problem';
           console.log('Warning: Cue content still being loaded');
@@ -208,8 +211,7 @@
         // Note: for now, the names are hard-coded, since namespace design is not fully discussed
         var cueComponent = new Name('cues');
         var nameSuffix = new Name(createdElement.cueId + '/go');
-        dataName.append(createdElement.showid).append(cueComponent).appendVersion((new Date).getTime()).append(nameSuffix);
-
+        
       
         if (createdElement.ndnPublisherComponentObject.wsOn()) {
           createdElement.goElement.className += ' video-control-clicked';
@@ -220,6 +222,7 @@
         createdElement.cueRequiresUnload = true;
         
         setTimeout(function () {
+          dataName.append(createdElement.showid).append(cueComponent).appendVersion((new Date).getTime()).append(nameSuffix);
           createdElement.ndnPublisherComponentObject.publishContent(dataName, createdElement.content, false);
         }, 200);
         
