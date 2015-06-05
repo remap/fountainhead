@@ -21,10 +21,6 @@
 .RITUAL 1/C: "Polaroids" (@ Felix)
 
 <<@cue-publisher
-  (t       = Blackout,
-   cid     = 108)>>
-
-<<@cue-publisher
   (t       = Establishing -> night in DTLA ,
    cid     = 110,
    desc    = Dusk to night (300% speed, rectangular vignette) )>>
