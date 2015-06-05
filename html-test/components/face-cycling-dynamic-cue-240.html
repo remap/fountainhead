@@ -216,6 +216,7 @@
           createdElement.publishNextDoors(jsonObj, createdElement);
         }, 2000);
       } else {
+        console.log('unload');
         createdElement.publishFinalDoors(jsonObj, createdElement)
       }
     };
@@ -227,9 +228,9 @@
       var hardcode4 = "http://archive-dev.remap.ucla.edu/img/traveler/rachel.jpg";
       
       // B1
-      if (jsonObj.nodeArgs.nodeB.tGo.doors['0'].composer.pipeline1.videoUrl !== undefined) {
+      if (jsonObj.nodeArgs.nodeB.tGo.doors['0'].composer.pipeline1.thumbnailUrl !== undefined) {
         if (createdElement.finalImage['rachel']) {
-          jsonObj.nodeArgs.nodeB.tGo.doors['0'].composer.pipeline1.videoUrl = hardcode4; //'http://archive-dev.remap.ucla.edu/app/querystatic/get-user-avatar?filename=' + createdElement.finalImage['rachel']['img'];
+          jsonObj.nodeArgs.nodeB.tGo.doors['0'].composer.pipeline1.thumbnailUrl = hardcode4; //'http://archive-dev.remap.ucla.edu/app/querystatic/get-user-avatar?filename=' + createdElement.finalImage['rachel']['img'];
           jsonObj.nodeArgs.nodeB.tGo.doors['0'].door.tagText = '#' + createdElement.finalImage['rachel']['tags'];
         } else {
           console.log('Rachel does not have an image');
@@ -238,9 +239,9 @@
         console.log('Rachel unexpected json');
       }
       // B2
-      if (jsonObj.nodeArgs.nodeB.tGo.doors['1'].composer.pipeline1.videoUrl !== undefined) {
+      if (jsonObj.nodeArgs.nodeB.tGo.doors['1'].composer.pipeline1.thumbnailUrl !== undefined) {
         if (createdElement.finalImage['sheena']) {
-          jsonObj.nodeArgs.nodeB.tGo.doors['1'].composer.pipeline1.videoUrl = hardcode2; //'http://archive-dev.remap.ucla.edu/app/querystatic/get-user-avatar?filename=' + createdElement.finalImage['sheena']['img'];
+          jsonObj.nodeArgs.nodeB.tGo.doors['1'].composer.pipeline1.thumbnailUrl = hardcode2; //'http://archive-dev.remap.ucla.edu/app/querystatic/get-user-avatar?filename=' + createdElement.finalImage['sheena']['img'];
           jsonObj.nodeArgs.nodeB.tGo.doors['1'].door.tagText = '#' + createdElement.finalImage['sheena']['tags'];
         } else {
           console.log('Sheena does not have an image');
@@ -249,9 +250,9 @@
         console.log('Sheena unexpected json');
       }
       // C1
-      if (jsonObj.nodeArgs.nodeC.tGo.doors['0'].composer.pipeline1.videoUrl !== undefined) {
+      if (jsonObj.nodeArgs.nodeC.tGo.doors['0'].composer.pipeline1.thumbnailUrl !== undefined) {
         if (createdElement.finalImage['felix']) {
-          jsonObj.nodeArgs.nodeC.tGo.doors['0'].composer.pipeline1.videoUrl = hardcode1; //'http://archive-dev.remap.ucla.edu/app/querystatic/get-user-avatar?filename=' + createdElement.finalImage['felix']['img'];
+          jsonObj.nodeArgs.nodeC.tGo.doors['0'].composer.pipeline1.thumbnailUrl = hardcode1; //'http://archive-dev.remap.ucla.edu/app/querystatic/get-user-avatar?filename=' + createdElement.finalImage['felix']['img'];
           jsonObj.nodeArgs.nodeC.tGo.doors['0'].door.tagText = '#' + createdElement.finalImage['felix']['tags'];
         } else {
           console.log('Felix does not have an image');
@@ -260,9 +261,9 @@
         console.log('Felix unexpected json');
       }
       // C2
-      if (jsonObj.nodeArgs.nodeC.tGo.doors['1'].composer.pipeline1.videoUrl !== undefined) {
+      if (jsonObj.nodeArgs.nodeC.tGo.doors['1'].composer.pipeline1.thumbnailUrl !== undefined) {
         if (createdElement.finalImage['eddie']) {
-          jsonObj.nodeArgs.nodeC.tGo.doors['1'].composer.pipeline1.videoUrl = hardcode3; //'http://archive-dev.remap.ucla.edu/app/querystatic/get-user-avatar?filename=' + createdElement.finalImage['eddie']['img'];
+          jsonObj.nodeArgs.nodeC.tGo.doors['1'].composer.pipeline1.thumbnailUrl = hardcode3; //'http://archive-dev.remap.ucla.edu/app/querystatic/get-user-avatar?filename=' + createdElement.finalImage['eddie']['img'];
           jsonObj.nodeArgs.nodeC.tGo.doors['1'].door.tagText = '#' + createdElement.finalImage['eddie']['tags'];
         } else {
           console.log('Eddie does not have an image');
