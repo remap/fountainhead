@@ -14,6 +14,8 @@
 <script>
   // Dynamic: Cycle through certain tagged images from the Archive: Priority for Tuesday: High
   // Note: This selects randomly, change every 2 sec, without stopping
+  
+  // TODO: reduce interval
   var componentObject = new window.ComponentObject(document, window);
   var componentName = 'com-video-thumbnail-cycling-dynamic-cue-250';
   
@@ -66,10 +68,10 @@
     
     // Hardcoded tags and projector door numbers
     var doorMapping = {
-      'felix': 'natural',    // c1
-      'eddie': 'bold',       // c2
-      'rachel': 'longbeach', // b1
-      'sheena': 'freeway'    // b2
+      'felix': 'dangerous\'',    // c1
+      'eddie': 'damp\'',       // c2
+      'rachel': 'latenight\' and tags contains \'chinatown\' allow filtering', // b1
+      'sheena': 'angels\' and tags contains \'pale\' allow filtering'    // b2
     }
     
     createdElement.videoMapping = {
@@ -82,7 +84,8 @@
     var receivedCnt = 0;
     
     for (item in doorMapping) {
-      var queryStr = 'select key, tags, description from media where tags contains \'' + doorMapping[item] + '\'';
+      var queryStr = 'select key, tags, description from media where tags contains \'' + doorMapping[item];
+      console.log(queryStr);
       createdElement.dbObject.postToDB(queryStr, function (item) {
         return function (responseText) {
           if (responseText === '[]') {
@@ -121,7 +124,7 @@
           var randIdx = Math.floor(Math.random() * createdElement.videoMapping['rachel'].length);
           jsonObj.nodeArgs.nodeB.tGo.doors['0'].composer.pipeline1.videoUrl = createdElement.videoMapping['rachel'][randIdx]['videoUrl'];
         } else {
-          console.log('Rachel does not have thumbnails');
+          console.log('Rachel does not have video mapping');
         }
       } else {
         console.log('Rachel unexpected json');
@@ -132,7 +135,7 @@
           var randIdx = Math.floor(Math.random() * createdElement.videoMapping['sheena'].length);
           jsonObj.nodeArgs.nodeB.tGo.doors['1'].composer.pipeline1.videoUrl = createdElement.videoMapping['sheena'][randIdx]['videoUrl'];
         } else {
-          console.log('Sheena does not have thumbnails');
+          console.log('Sheena does not have video mapping');
         }
       } else {
         console.log('Sheena unexpected json');
@@ -143,7 +146,7 @@
           var randIdx = Math.floor(Math.random() * createdElement.videoMapping['felix'].length);
           jsonObj.nodeArgs.nodeC.tGo.doors['0'].composer.pipeline1.videoUrl = createdElement.videoMapping['felix'][randIdx]['videoUrl'];
         } else {
-          console.log('Felix does not have thumbnails');
+          console.log('Felix does not have video mapping');
         }
       } else {
         console.log('Felix unexpected json');
@@ -154,7 +157,7 @@
           var randIdx = Math.floor(Math.random() * createdElement.videoMapping['eddie'].length);
           jsonObj.nodeArgs.nodeC.tGo.doors['1'].composer.pipeline1.videoUrl = createdElement.videoMapping['eddie'][randIdx]['videoUrl'];
         } else {
-          console.log('Eddie does not have thumbnails');
+          console.log('Eddie does not have video mapping');
         }
       } else {
         console.log('Eddie unexpected json');

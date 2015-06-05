@@ -70,5 +70,14 @@
    unload  = 1)>>
 
 <<@cue-publisher
+  (t       = "Test list 476",
+   cid     = 476,
+   unload  = 1)>>
+
+<<@cue-publisher
+  (t       = "Test list 478",
+   cid     = 478)>>
+
+<<@cue-publisher
   (t       = "Test ordinary",
    cid     = 270)>>

@@ -60,7 +60,7 @@ YoutubeObject.prototype.loadYoutubeVideoUrls = function (serviceUrls, callback, 
 YoutubeObject.prototype.requestYoutubeItem = function(options, nextPageToken, videoData, onDone, linkOnly, onePage, remaining) {
   var storeLinkOnly = typeof linkOnly !== 'undefined' ? linkOnly : true;
   var requestOnePage = typeof onePage !== 'undefined' ? onePage : false;
-  var requestNum = typeof remaining !== 'undefined' ? remaining : -1;
+  var requestNum = typeof remaining !== 'undefined' ? remaining : undefined;
   
   if (!options.hasOwnProperty('query')) {
     console.log('Request word not specified, returned.');
@@ -88,9 +88,11 @@ YoutubeObject.prototype.requestYoutubeItem = function(options, nextPageToken, vi
 	    }
 	  }
 	  
-	  requestNum -= result.items.length;
+	  if (requestNum !== undefined) {
+	    requestNum -= result.items.length;
+      }
       
-	  if ((result.nextPageToken !== undefined && result.nextPageToken !== null) && !requestOnePage && requestNum > 0) {
+	  if ((result.nextPageToken !== undefined && result.nextPageToken !== null) && !requestOnePage && (requestNum > 0 || requestNum === undefined)) {
 		self.requestYoutubeItem(options, result.nextPageToken, videoData, onDone, storeLinkOnly, requestOnePage, requestNum);
 	  } else {
 	    if (onDone !== undefined) {

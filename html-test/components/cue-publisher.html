@@ -233,7 +233,6 @@
         createdElement.unloadElement.addEventListener('click', function() {
           // TODO: referencing namePrefix like this is not ideal
           var dataName = new Name(createdElement.ndnPublisherComponentObject.namePrefix);
-          // Note: for now, the names are hard-coded, since namespace design is not fully discussed
           var cueComponent = new Name('cues');
           var nameSuffix = new Name(createdElement.cueId + '/unload');
           dataName.append(createdElement.showid).append(cueComponent).appendVersion((new Date).getTime()).append(nameSuffix);
