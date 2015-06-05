@@ -179,6 +179,26 @@
   (t       = Environment changes (citizens), 
    cid     = 710)>>
 
+<<@cue-publisher
+  (t       = Couple 1, 
+   cid     = 720)>>
+
+<<@cue-publisher
+  (t       = Resume 710, 
+   cid     = 721)>>
+
+<<@cue-publisher
+  (t       = Couple 2, 
+   cid     = 725)>>
+
+<<@cue-publisher
+  (t       = Resume 710, 
+   cid     = 726)>>
+
+<<@cue-publisher
+  (t       = Couple 3, 
+   cid     = 730)>>
+
 <<@video-cycling-dynamic-cue-750
   (t       = "Large 16:9 projections", 
    cid     = 750)>>
