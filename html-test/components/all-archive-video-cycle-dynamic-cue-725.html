@@ -95,12 +95,13 @@
     };
     
     createdElement.links = [];
-    createdElement.youtubeObject.requestYoutubeItem({
+    var url = createdElement.youtubeObject.requestYoutubeItem({
       'query': 'search',
       'part': 'snippet,id',
       'channelId': 'UCdHYVYRpXuWedoj71N2TcQg',
       'videoIdPath': 'id.videoId',
-      'maxResults': '20'
+      'maxResults': '20',
+      'type': 'video'
     }, undefined, createdElement.links, function () {
       createdElement.finishedFetching = true;
       var cnt = 0;
@@ -120,7 +121,6 @@
         createdElement.jsonTraverse(createdElement.cueContent, createdElement.replaceVideoUrl, createdElement, false);
       }
     });
-    
     
     createdElement.registerEvents = function (createdElement) {
       // This is a quick modification for test on May 12, as the patch expects commands to be published for cues.
