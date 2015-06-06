@@ -60,6 +60,10 @@
   (t       = "Test dynamic periodical (expect stop publishing)",
    cid     = 710)>>
 
+<<@all-archive-video-cycle-dynamic-cue-725
+  (t       = "Test dynamic periodical (expect stop publishing)",
+   cid     = 725)>>
+
 <<@video-cycling-dynamic-cue-750
   (t       = "Test dynamic periodical (expect stop publishing)",
    cid     = 750)>>
