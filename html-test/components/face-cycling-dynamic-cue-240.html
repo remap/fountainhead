@@ -89,6 +89,8 @@
         participantImg = participantObject[i][4];
         if (participantObject[i][3] !== '' && participantObject[i][3] !== null && participantObject[i][3] !== undefined) {
           participantTags = participantObject[i][3].replace(/\n/g, ' ');
+        } else {
+          participantTags = '';
         }
         if (participantObject[i][8].toLowerCase() === 'Nickjrapp@gmail.com'.toLowerCase()) {
           createdElement.finalImage['felix'] = {'img': participantImg, 'tags': participantTags};
