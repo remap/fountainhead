@@ -153,7 +153,7 @@ Hello {{ name }}, welcome to The Archive. Please thank the Attendant for connect
 .Mingling, and Sunset installation
 
 THE GUIDE
-How does the sunset video make you feel? Feel free to select one: {{ sunset_feeling_tag }}.
+How does the sunset video make you feel? Feel free to select one: {{ sense_tags }}.
 
 THE GUIDE
 You probably want to keep your cellphone display on. Tap {{ wakelock }} to keep your display on!
