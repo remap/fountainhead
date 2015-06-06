@@ -76,7 +76,7 @@
       for (var i = 0; i < participantObject.length; i++) {
         if (participantObject[i][4] !== null && participantObject[i][4] !== '' && participantObject[i][4] !== undefined) {
           if (participantObject[i][3] !== null && participantObject[i][3] !== undefined) {
-            createdElement.profileSeq.push({'img': participantObject[i][4], 'tags': participantObject[i][3].replace('\n', ' ')});
+            createdElement.profileSeq.push({'img': participantObject[i][4], 'tags': participantObject[i][3].replace(/\n/g, ' ')});
           } else {
             createdElement.profileSeq.push({'img': participantObject[i][4], 'tags': ''});
           }

@@ -88,7 +88,7 @@
         // TODO: change profile image, and correct hashtags for the final images
         participantImg = participantObject[i][4];
         if (participantObject[i][3] !== '' && participantObject[i][3] !== null && participantObject[i][3] !== undefined) {
-          participantTags = participantObject[i][3].replace('\n', ' ');
+          participantTags = participantObject[i][3].replace(/\n/g, ' ');
         }
         if (participantObject[i][8].toLowerCase() === 'Nickjrapp@gmail.com'.toLowerCase()) {
           createdElement.finalImage['felix'] = {'img': participantImg, 'tags': participantTags};
