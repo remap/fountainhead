@@ -98,8 +98,10 @@
           cnt ++;
         }
       }
-      console.log(createdElement.videoLinks);
-      createdElement.cueReady = true;
+      
+      createdElement.videoUrlCallbackCnt = 0;
+      createdElement.fillJsonRandomVideoLinks(createdElement.cueContent, createdElement);
+      createdElement.jsonTraverse(createdElement.cueContent, createdElement.replaceVideoUrl, createdElement, false);
     });
     
     
@@ -131,13 +133,13 @@
             dataName.append(createdElement.showid).append(cueComponent).appendVersion((new Date).getTime()).append(nameSuffix);
 
             createdElement.goElement.className += ' video-control-clicked';
-            createdElement.videoUrlCallbackCnt = 0;
-            
-            createdElement.fillJsonRandomVideoLinks(createdElement.cueContent, createdElement);
-            console.log(createdElement.cueContent);
-            createdElement.jsonTraverse(createdElement.cueContent, createdElement.replaceVideoUrl, createdElement);
+            componentObject.applyStyleFromParentDocument(createdElement.goElement);
+
+            createdElement.publishDoors(createdElement.cueContent, createdElement);
           } else {
             console.log('Cue not yet ready.');
+            createdElement.goElement.className += ' video-control-problem';            
+            componentObject.applyStyleFromParentDocument(createdElement.goElement);
           }
         } else {
           console.log('Cue already going');
@@ -158,16 +160,16 @@
     }(createdElement);
     
     
-    createdElement.jsonTraverse = function (obj, func, createdElement) {
+    createdElement.jsonTraverse = function (obj, func, createdElement, doNext) {
       for (var i in obj) {
-        func.apply(this, [i, obj, createdElement]);  
+        func.apply(this, [i, obj, createdElement, doNext]);  
         if (obj[i] !== null && typeof(obj[i]) == "object") {
-          createdElement.jsonTraverse(obj[i], func, createdElement);
+          createdElement.jsonTraverse(obj[i], func, createdElement, doNext);
         }
       }
     }
     
-    createdElement.replaceVideoUrl = function (key, obj, createdElement) {
+    createdElement.replaceVideoUrl = function (key, obj, createdElement, doNext) {
       if (key === 'videoUrl') {
         if (obj[key] !== '' && obj[key] !== undefined) {
           var urlGroups = (/.*t=([0-9]+).*/g).exec(obj[key]);
@@ -178,7 +180,12 @@
             obj['videoUrl'] = xhr.responseText;
             createdElement.videoUrlCallbackCnt ++;
             if (createdElement.videoUrlCallbackCnt % 4 == 0) {
-              createdElement.publishDoors(createdElement.cueContent, createdElement);
+              if (doNext) {
+                createdElement.publishDoors(createdElement.cueContent, createdElement);
+                createdElement.videoUrlCallbackCnt = 0;
+              } else {
+                createdElement.cueReady = true;
+              }
             }
           });
         }
@@ -229,16 +236,14 @@
         createdElement.goElement.className += ' video-control-problem';
       }
     
-      componentObject.applyStyleFromParentDocument(createdElement.goElement);
-      
       createdElement.content = JSON.stringify(jsonObj);
       createdElement.ndnPublisherComponentObject.publishContent(dataName, createdElement.content, false);
       createdElement.fillJsonRandomVideoLinks(jsonObj, createdElement);
     
       if (createdElement.cueGoing) {
         createdElement.lastScheduledEvent = setTimeout(function () {
-          createdElement.jsonTraverse(createdElement.cueContent, createdElement.replaceVideoUrl, createdElement);
-        }, 10000);
+          createdElement.jsonTraverse(createdElement.cueContent, createdElement.replaceVideoUrl, createdElement, true);
+        }, 5000);
       }
       
     };
