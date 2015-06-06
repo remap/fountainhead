@@ -237,6 +237,10 @@
           var nameSuffix = new Name(createdElement.cueId + '/unload');
           dataName.append(createdElement.showid).append(cueComponent).appendVersion((new Date).getTime()).append(nameSuffix);
           
+          if (!createdElement.cueRequiresUnload) {
+            createdElement.unloadElement.className += ' video-control-clicked';
+          }
+          
           createdElement.ndnPublisherComponentObject.publishContent(dataName, createdElement.content, false);
           createdElement.cueRequiresUnload = false;
         });
