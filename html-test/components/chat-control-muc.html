@@ -51,9 +51,9 @@
 	  }).c("body").t(message);
 	  connection.send(chatMsg.tree());
 	  
-	  if (createdElement.dialogueElement !== undefined) {
-        createdElement.dialogueElement.className += ' chat-clicked';
-        componentObject.applyStyleFromParentDocument(createdElement.dialogueElement);
+	  if (dialogueElement !== undefined) {
+        dialogueElement.className += ' chat-clicked';
+        componentObject.applyStyleFromParentDocument(dialogueElement);
 	  }
 	});
 	
