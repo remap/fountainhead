@@ -41,6 +41,10 @@
     createdElement.cueId = createdElement.getAttributeByListName(['cid'], '-1');
     createdElement.cueReady = false;
     createdElement.cueGoing = false;
+    
+    createdElement.ytReady = false;
+    createdElement.jsonReady = false;
+    
     createdElement.lastScheduledEvent = undefined;
     
     createdElement.titleElement = createdElement.shadowRoot.querySelector('#cue-title');
@@ -66,6 +70,14 @@
       xhr.onreadystatechange = function () {
         if (xhr.readyState == 4 && xhr.status == 200) {
           createdElement.cueContent = JSON.parse(xhr.responseText);
+          
+          // TODO: These operations are not unit, under a certain execution order, this could cause jsonTraverse to be called twice
+          createdElement.jsonReady = true;
+          if (createdElement.ytReady === true) {
+            createdElement.videoUrlCallbackCnt = 0;
+            createdElement.fillJsonRandomVideoLinks(createdElement.cueContent, createdElement);
+            createdElement.jsonTraverse(createdElement.cueContent, createdElement.replaceVideoUrl, createdElement, false);
+          }
         }
       };
       xhr.send();
@@ -99,9 +111,12 @@
         }
       }
       
-      createdElement.videoUrlCallbackCnt = 0;
-      createdElement.fillJsonRandomVideoLinks(createdElement.cueContent, createdElement);
-      createdElement.jsonTraverse(createdElement.cueContent, createdElement.replaceVideoUrl, createdElement, false);
+      createdElement.ytReady = true;
+      if (createdElement.jsonReady === true) {
+        createdElement.videoUrlCallbackCnt = 0;
+        createdElement.fillJsonRandomVideoLinks(createdElement.cueContent, createdElement);
+        createdElement.jsonTraverse(createdElement.cueContent, createdElement.replaceVideoUrl, createdElement, false);
+      }
     });
     
     
@@ -195,29 +210,29 @@
     createdElement.fillJsonRandomVideoLinks = function (jsonObj, createdElement) {
       // A1
       if (jsonObj.nodeArgs.nodeA.tReady.doors['0'].composer.pipeline1 !== undefined) {
-		var randIdx = Math.floor(Math.random() * createdElement.videoLinks['A'].length);
-		jsonObj.nodeArgs.nodeA.tReady.doors['0'].composer.pipeline1.videoUrl = createdElement.videoLinks['A'][randIdx];
+        var randIdx = Math.floor(Math.random() * createdElement.videoLinks['A'].length);
+        jsonObj.nodeArgs.nodeA.tReady.doors['0'].composer.pipeline1.videoUrl = createdElement.videoLinks['A'][randIdx];
       } else {
         console.log('Unexpected json');
       }
       // B1
       if (jsonObj.nodeArgs.nodeB.tReady.doors['0'].composer.pipeline1 !== undefined) {
-		var randIdx = Math.floor(Math.random() * createdElement.videoLinks['B'].length);
-		jsonObj.nodeArgs.nodeB.tReady.doors['0'].composer.pipeline1.videoUrl = createdElement.videoLinks['B'][randIdx];
+        var randIdx = Math.floor(Math.random() * createdElement.videoLinks['B'].length);
+        jsonObj.nodeArgs.nodeB.tReady.doors['0'].composer.pipeline1.videoUrl = createdElement.videoLinks['B'][randIdx];
       } else {
         console.log('Unexpected json');
       }
       // C1
       if (jsonObj.nodeArgs.nodeC.tReady.doors['0'].composer.pipeline1 !== undefined) {
-		var randIdx = Math.floor(Math.random() * createdElement.videoLinks['C'].length);
-		jsonObj.nodeArgs.nodeC.tReady.doors['0'].composer.pipeline1.videoUrl = createdElement.videoLinks['C'][randIdx];
+        var randIdx = Math.floor(Math.random() * createdElement.videoLinks['C'].length);
+        jsonObj.nodeArgs.nodeC.tReady.doors['0'].composer.pipeline1.videoUrl = createdElement.videoLinks['C'][randIdx];
       } else {
         console.log('Unexpected json');
       }
       // D1
       if (jsonObj.nodeArgs.nodeD.tReady.doors['0'].composer.pipeline1 !== undefined) {
-		var randIdx = Math.floor(Math.random() * createdElement.videoLinks['D'].length);
-		jsonObj.nodeArgs.nodeD.tReady.doors['0'].composer.pipeline1.videoUrl = createdElement.videoLinks['D'][randIdx];
+        var randIdx = Math.floor(Math.random() * createdElement.videoLinks['D'].length);
+        jsonObj.nodeArgs.nodeD.tReady.doors['0'].composer.pipeline1.videoUrl = createdElement.videoLinks['D'][randIdx];
       } else {
         console.log('Unexpected json');
       }
@@ -243,7 +258,7 @@
       if (createdElement.cueGoing) {
         createdElement.lastScheduledEvent = setTimeout(function () {
           createdElement.jsonTraverse(createdElement.cueContent, createdElement.replaceVideoUrl, createdElement, true);
-        }, 5000);
+        }, 8000);
       }
       
     };
