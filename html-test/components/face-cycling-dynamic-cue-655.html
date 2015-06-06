@@ -128,7 +128,9 @@
       if (jsonObj.nodeArgs.nodeA.tFadeIn.doors['0'].composer.pipeline1.thumbnailUrl !== undefined) {
         if (createdElement.profileSeq[createdElement.imageIdx]) {
           jsonObj.nodeArgs.nodeA.tFadeIn.doors['0'].composer.pipeline1.thumbnailUrl = 'http://archive-dev.remap.ucla.edu/app/querystatic/get-user-avatar?filename=' + createdElement.profileSeq[createdElement.imageIdx]['img'];
-          jsonObj.nodeArgs.nodeA.tFadeIn.doors['0'].door.tagText = '#' + createdElement.profileSeq[createdElement.imageIdx]['tags'];
+          if (createdElement.profileSeq[createdElement.imageIdx]['tags'] !== undefined && createdElement.profileSeq[createdElement.imageIdx]['tags'] !== null && createdElement.profileSeq[createdElement.imageIdx]['tags'] !== '') {
+            jsonObj.nodeArgs.nodeA.tFadeIn.doors['0'].door.tagText = '#' + createdElement.profileSeq[createdElement.imageIdx]['tags'];
+          }
         } else {
           console.log('imageIdx runs out');
         }
@@ -140,7 +142,9 @@
       if (jsonObj.nodeArgs.nodeA.tFadeIn.doors['1'].composer.pipeline1.thumbnailUrl !== undefined) {
         if (createdElement.profileSeq[createdElement.imageIdx]) {
           jsonObj.nodeArgs.nodeA.tFadeIn.doors['1'].composer.pipeline1.thumbnailUrl = 'http://archive-dev.remap.ucla.edu/app/querystatic/get-user-avatar?filename=' + createdElement.profileSeq[createdElement.imageIdx]['img'];
-          jsonObj.nodeArgs.nodeA.tFadeIn.doors['1'].door.tagText = '#' + createdElement.profileSeq[createdElement.imageIdx]['tags'];
+          if (createdElement.profileSeq[createdElement.imageIdx]['tags'] !== undefined && createdElement.profileSeq[createdElement.imageIdx]['tags'] !== null && createdElement.profileSeq[createdElement.imageIdx]['tags'] !== '') {
+            jsonObj.nodeArgs.nodeA.tFadeIn.doors['1'].door.tagText = '#' + createdElement.profileSeq[createdElement.imageIdx]['tags'];
+          }
         } else {
           console.log('imageIdx runs out');
         }
@@ -152,7 +156,9 @@
       if (jsonObj.nodeArgs.nodeB.tFadeIn.doors['0'].composer.pipeline1.thumbnailUrl !== undefined) {
         if (createdElement.profileSeq[createdElement.imageIdx]) {
           jsonObj.nodeArgs.nodeB.tFadeIn.doors['0'].composer.pipeline1.thumbnailUrl = 'http://archive-dev.remap.ucla.edu/app/querystatic/get-user-avatar?filename=' + createdElement.profileSeq[createdElement.imageIdx]['img'];
-          jsonObj.nodeArgs.nodeB.tFadeIn.doors['0'].door.tagText = '#' + createdElement.profileSeq[createdElement.imageIdx]['tags'];
+          if (createdElement.profileSeq[createdElement.imageIdx]['tags'] !== undefined && createdElement.profileSeq[createdElement.imageIdx]['tags'] !== null && createdElement.profileSeq[createdElement.imageIdx]['tags'] !== '') {
+            jsonObj.nodeArgs.nodeB.tFadeIn.doors['0'].door.tagText = '#' + createdElement.profileSeq[createdElement.imageIdx]['tags'];
+          }
         } else {
           console.log('imageIdx runs out');
         }
@@ -164,7 +170,9 @@
       if (jsonObj.nodeArgs.nodeB.tFadeIn.doors['1'].composer.pipeline1.thumbnailUrl !== undefined) {
         if (createdElement.profileSeq[createdElement.imageIdx]) {
           jsonObj.nodeArgs.nodeB.tFadeIn.doors['1'].composer.pipeline1.thumbnailUrl = 'http://archive-dev.remap.ucla.edu/app/querystatic/get-user-avatar?filename=' + createdElement.profileSeq[createdElement.imageIdx]['img'];
-          jsonObj.nodeArgs.nodeB.tFadeIn.doors['1'].door.tagText = '#' + createdElement.profileSeq[createdElement.imageIdx]['tags'];
+          if (createdElement.profileSeq[createdElement.imageIdx]['tags'] !== undefined && createdElement.profileSeq[createdElement.imageIdx]['tags'] !== null && createdElement.profileSeq[createdElement.imageIdx]['tags'] !== '') {
+            jsonObj.nodeArgs.nodeB.tFadeIn.doors['1'].door.tagText = '#' + createdElement.profileSeq[createdElement.imageIdx]['tags'];
+          }
         } else {
           console.log('imageIdx runs out');
         }
@@ -176,7 +184,9 @@
       if (jsonObj.nodeArgs.nodeC.tFadeIn.doors['0'].composer.pipeline1.thumbnailUrl !== undefined) {
         if (createdElement.profileSeq[createdElement.imageIdx]) {
           jsonObj.nodeArgs.nodeC.tFadeIn.doors['0'].composer.pipeline1.thumbnailUrl = 'http://archive-dev.remap.ucla.edu/app/querystatic/get-user-avatar?filename=' + createdElement.profileSeq[createdElement.imageIdx]['img'];
-          jsonObj.nodeArgs.nodeC.tFadeIn.doors['0'].door.tagText = '#' + createdElement.profileSeq[createdElement.imageIdx]['tags'];
+          if (createdElement.profileSeq[createdElement.imageIdx]['tags'] !== undefined && createdElement.profileSeq[createdElement.imageIdx]['tags'] !== null && createdElement.profileSeq[createdElement.imageIdx]['tags'] !== '') {
+            jsonObj.nodeArgs.nodeC.tFadeIn.doors['0'].door.tagText = '#' + createdElement.profileSeq[createdElement.imageIdx]['tags'];
+          }
         } else {
           console.log('imageIdx runs out');
         }
@@ -188,7 +198,9 @@
       if (jsonObj.nodeArgs.nodeC.tFadeIn.doors['1'].composer.pipeline1.thumbnailUrl !== undefined) {
         if (createdElement.profileSeq[createdElement.imageIdx]) {
           jsonObj.nodeArgs.nodeC.tFadeIn.doors['1'].composer.pipeline1.thumbnailUrl = 'http://archive-dev.remap.ucla.edu/app/querystatic/get-user-avatar?filename=' + createdElement.profileSeq[createdElement.imageIdx]['img'];
-          jsonObj.nodeArgs.nodeC.tFadeIn.doors['1'].door.tagText = '#' + createdElement.profileSeq[createdElement.imageIdx]['tags'];
+          if (createdElement.profileSeq[createdElement.imageIdx]['tags'] !== undefined && createdElement.profileSeq[createdElement.imageIdx]['tags'] !== null && createdElement.profileSeq[createdElement.imageIdx]['tags'] !== '') {
+            jsonObj.nodeArgs.nodeC.tFadeIn.doors['1'].door.tagText = '#' + createdElement.profileSeq[createdElement.imageIdx]['tags'];
+          }
         } else {
           console.log('imageIdx runs out');
         }
@@ -200,7 +212,9 @@
       if (jsonObj.nodeArgs.nodeD.tFadeIn.doors['0'].composer.pipeline1.thumbnailUrl !== undefined) {
         if (createdElement.profileSeq[createdElement.imageIdx]) {
           jsonObj.nodeArgs.nodeD.tFadeIn.doors['0'].composer.pipeline1.thumbnailUrl = 'http://archive-dev.remap.ucla.edu/app/querystatic/get-user-avatar?filename=' + createdElement.profileSeq[createdElement.imageIdx]['img'];
-          jsonObj.nodeArgs.nodeD.tFadeIn.doors['0'].door.tagText = '#' + createdElement.profileSeq[createdElement.imageIdx]['tags'];
+          if (createdElement.profileSeq[createdElement.imageIdx]['tags'] !== undefined && createdElement.profileSeq[createdElement.imageIdx]['tags'] !== null && createdElement.profileSeq[createdElement.imageIdx]['tags'] !== '') {
+            jsonObj.nodeArgs.nodeD.tFadeIn.doors['0'].door.tagText = '#' + createdElement.profileSeq[createdElement.imageIdx]['tags'];
+          }
         } else {
           console.log('imageIdx runs out');
         }
@@ -211,7 +225,9 @@
       if (jsonObj.nodeArgs.nodeD.tFadeIn.doors['1'].composer.pipeline1.thumbnailUrl !== undefined) {
         if (createdElement.profileSeq[createdElement.imageIdx]) {
           jsonObj.nodeArgs.nodeD.tFadeIn.doors['1'].composer.pipeline1.thumbnailUrl = 'http://archive-dev.remap.ucla.edu/app/querystatic/get-user-avatar?filename=' + createdElement.profileSeq[createdElement.imageIdx]['img'];
-          jsonObj.nodeArgs.nodeD.tFadeIn.doors['1'].door.tagText = '#' + createdElement.profileSeq[createdElement.imageIdx]['tags'];
+          if (createdElement.profileSeq[createdElement.imageIdx]['tags'] !== undefined && createdElement.profileSeq[createdElement.imageIdx]['tags'] !== null && createdElement.profileSeq[createdElement.imageIdx]['tags'] !== '') {
+            jsonObj.nodeArgs.nodeD.tFadeIn.doors['1'].door.tagText = '#' + createdElement.profileSeq[createdElement.imageIdx]['tags'];
+          }
         } else {
           console.log('imageIdx runs out');
         }
