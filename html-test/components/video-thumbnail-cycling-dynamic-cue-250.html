@@ -88,7 +88,6 @@
     
     for (item in doorMapping) {
       var queryStr = 'select key, tags, description from media where tags contains \'' + doorMapping[item];
-      console.log(queryStr);
       createdElement.dbObject.postToDB(queryStr, function (item) {
         return function (responseText) {
           if (responseText === '[]') {

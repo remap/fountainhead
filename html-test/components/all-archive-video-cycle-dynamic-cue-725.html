@@ -132,7 +132,9 @@
 
             createdElement.goElement.className += ' video-control-clicked';
             createdElement.videoUrlCallbackCnt = 0;
-          
+            
+            createdElement.fillJsonRandomVideoLinks(createdElement.cueContent, createdElement);
+            console.log(createdElement.cueContent);
             createdElement.jsonTraverse(createdElement.cueContent, createdElement.replaceVideoUrl, createdElement);
           } else {
             console.log('Cue not yet ready.');
@@ -167,7 +169,7 @@
     
     createdElement.replaceVideoUrl = function (key, obj, createdElement) {
       if (key === 'videoUrl') {
-        if (obj[key] !== '') {
+        if (obj[key] !== '' && obj[key] !== undefined) {
           var urlGroups = (/.*t=([0-9]+).*/g).exec(obj[key]);
           if (urlGroups) {
             obj['startTime'] = parseInt(urlGroups[1]);
@@ -180,6 +182,37 @@
             }
           });
         }
+      }
+    }
+    
+    createdElement.fillJsonRandomVideoLinks = function (jsonObj, createdElement) {
+      // A1
+      if (jsonObj.nodeArgs.nodeA.tReady.doors['0'].composer.pipeline1 !== undefined) {
+		var randIdx = Math.floor(Math.random() * createdElement.videoLinks['A'].length);
+		jsonObj.nodeArgs.nodeA.tReady.doors['0'].composer.pipeline1.videoUrl = createdElement.videoLinks['A'][randIdx];
+      } else {
+        console.log('Unexpected json');
+      }
+      // B1
+      if (jsonObj.nodeArgs.nodeB.tReady.doors['0'].composer.pipeline1 !== undefined) {
+		var randIdx = Math.floor(Math.random() * createdElement.videoLinks['B'].length);
+		jsonObj.nodeArgs.nodeB.tReady.doors['0'].composer.pipeline1.videoUrl = createdElement.videoLinks['B'][randIdx];
+      } else {
+        console.log('Unexpected json');
+      }
+      // C1
+      if (jsonObj.nodeArgs.nodeC.tReady.doors['0'].composer.pipeline1 !== undefined) {
+		var randIdx = Math.floor(Math.random() * createdElement.videoLinks['C'].length);
+		jsonObj.nodeArgs.nodeC.tReady.doors['0'].composer.pipeline1.videoUrl = createdElement.videoLinks['C'][randIdx];
+      } else {
+        console.log('Unexpected json');
+      }
+      // D1
+      if (jsonObj.nodeArgs.nodeD.tReady.doors['0'].composer.pipeline1 !== undefined) {
+		var randIdx = Math.floor(Math.random() * createdElement.videoLinks['D'].length);
+		jsonObj.nodeArgs.nodeD.tReady.doors['0'].composer.pipeline1.videoUrl = createdElement.videoLinks['D'][randIdx];
+      } else {
+        console.log('Unexpected json');
       }
     }
     
@@ -200,36 +233,7 @@
       
       createdElement.content = JSON.stringify(jsonObj);
       createdElement.ndnPublisherComponentObject.publishContent(dataName, createdElement.content, false);
-    
-    
-      // A1
-      if (jsonObj.nodeArgs.nodeA.tReady.doors['0'].composer.pipeline1.videoUrl !== undefined) {
-		var randIdx = Math.floor(Math.random() * createdElement.videolinks['A'].length);
-		jsonObj.nodeArgs.nodeA.tReady.doors['0'].composer.pipeline1.videoUrl = createdElement.videolinks['A'][randIdx]['videoUrl'];
-      } else {
-        console.log('Unexpected json');
-      }
-      // B1
-      if (jsonObj.nodeArgs.nodeB.tReady.doors['0'].composer.pipeline1.videoUrl !== undefined) {
-		var randIdx = Math.floor(Math.random() * createdElement.videolinks['B'].length);
-		jsonObj.nodeArgs.nodeB.tReady.doors['0'].composer.pipeline1.videoUrl = createdElement.videolinks['B'][randIdx]['videoUrl'];
-      } else {
-        console.log('Unexpected json');
-      }
-      // C1
-      if (jsonObj.nodeArgs.nodeC.tReady.doors['0'].composer.pipeline1.videoUrl !== undefined) {
-		var randIdx = Math.floor(Math.random() * createdElement.videolinks['C'].length);
-		jsonObj.nodeArgs.nodeC.tReady.doors['0'].composer.pipeline1.videoUrl = createdElement.videolinks['C'][randIdx]['videoUrl'];
-      } else {
-        console.log('Unexpected json');
-      }
-      // D1
-      if (jsonObj.nodeArgs.nodeD.tReady.doors['0'].composer.pipeline1.videoUrl !== undefined) {
-		var randIdx = Math.floor(Math.random() * createdElement.videolinks['D'].length);
-		jsonObj.nodeArgs.nodeD.tReady.doors['0'].composer.pipeline1.videoUrl = createdElement.videolinks['D'][randIdx]['videoUrl'];
-      } else {
-        console.log('Unexpected json');
-      }
+      createdElement.fillJsonRandomVideoLinks(jsonObj, createdElement);
     
       if (createdElement.cueGoing) {
         createdElement.lastScheduledEvent = setTimeout(function () {

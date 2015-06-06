@@ -49,10 +49,14 @@ YoutubeObject.prototype.loadYoutubeVideoUrls = function (serviceUrls, callback, 
   xhr.open('POST', 'http://the-archive.la/losangeles/services/load-youtube-urls', true);
   
   xhr.onload = function () {
-    callback(this);
+    if (callback !== undefined) {
+      callback(this);
+    }
   };
   xhr.onerror = function () {
-    onerror(this);
+    if (onerror !== undefined) {
+      onerror(this);
+    }
   };
   xhr.send(data);
 }
