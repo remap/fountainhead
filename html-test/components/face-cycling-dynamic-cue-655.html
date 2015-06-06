@@ -31,6 +31,7 @@
     createdElement.showid = createdElement.getAttributeByListName(['showid'], defaultShowId);
     var cueTitle = createdElement.getAttributeByListName(['cueTitle', 't'], '');
     var description = createdElement.getAttributeByListName(['description', 'desc'], '');
+    createdElement.performanceId = createdElement.getAttributeByListName(['performanceid', 'pid'], 'performance-2');
     
     // The number of videos we pick from each neighborhood query to form the playlist
     var resultLength = createdElement.getAttributeByListName(['playlistLength', 'l'], '3');
@@ -69,18 +70,29 @@
         console.log(e);
       }
       
-      // username, first_name, last_name, hashtags, photo_file, favorite_angeleno, favorite_time_of_day, neighborhood, email
+      // username, first_name, last_name, hashtags, photo_file, favorite_angeleno, favorite_time_of_day, neighborhood, email, role
       
       createdElement.profileSeq = [];
       
-      for (var i = 0; i < participantObject.length; i++) {
-        if (participantObject[i][4] !== null && participantObject[i][4] !== '' && participantObject[i][4] !== undefined) {
-          if (participantObject[i][3] !== null && participantObject[i][3] !== undefined) {
-            createdElement.profileSeq.push({'img': participantObject[i][4], 'tags': participantObject[i][3].replace(/\n/g, ' ')});
-          } else {
-            createdElement.profileSeq.push({'img': participantObject[i][4], 'tags': ''});
+      try {
+        for (var i = 0; i < participantObject.length; i++) {
+          var participantRole = JSON.parse(participantObject[i][9]);
+          if (participantRole !== null && participantRole !== undefined) {
+            if (participantRole[createdElement.performanceId] === 'crew' || participantRole[createdElement.performanceId] === 'tourist') {
+              if (participantObject[i][4] !== null && participantObject[i][4] !== '' && participantObject[i][4] !== undefined) {
+                if (participantObject[i][3] !== null && participantObject[i][3] !== undefined) {
+                  createdElement.profileSeq.push({'img': participantObject[i][4], 'tags': participantObject[i][3].replace(/\n/g, ' ')});
+                } else {
+                  createdElement.profileSeq.push({'img': participantObject[i][4], 'tags': ''});
+                }
+              }
+            } else {
+              //console.log(participantObject[i][8] + ' is not coming.');
+            }
           }
         }
+      } catch (e) {
+        console.log(e);
       }
     });
     
@@ -221,6 +233,7 @@
       } else {
         console.log('Unexpected json');
       }
+      createdElement.imageIdx ++;
       // D2
       if (jsonObj.nodeArgs.nodeD.tFadeIn.doors['1'].composer.pipeline1.thumbnailUrl !== undefined) {
         if (createdElement.profileSeq[createdElement.imageIdx]) {

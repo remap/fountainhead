@@ -32,10 +32,14 @@ YoutubeObject.prototype.getYoutubeVideoUrl = function (serviceUrl, fetchIfNotExi
   //console.log(serviceUrl);
   
   xhr.onload = function () {
-    callback(this);
+    if (callback !== undefined) {
+      callback(this);
+    }
   };
   xhr.onerror = function () {
-    onerror(this);
+    if (callback !== undefined) {
+      onerror(this);
+    }
   };
   xhr.send(data);
 }
