@@ -186,7 +186,7 @@
         createdElement.lastScheduledEvent = setTimeout(function () {
           createdElement.publishDoors(jsonObj, createdElement);
         }, createdElement.currentInterval);
-        createdElement.currentInterval = Math.min(Math.floor(createdElement.currentInterval * createdElement.reduceRate), createdElement.minInterval);
+        createdElement.currentInterval = Math.max(Math.floor(createdElement.currentInterval * createdElement.reduceRate), createdElement.minInterval);
       }
     };
     
