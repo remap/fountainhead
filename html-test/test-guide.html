@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="ScriptCSS.css">
+</head>
+<body>
+<section>
+  <div id="floating-menu">
+    <h3>Menu (Press 't' to show/hide)</h3>
+    <a id="floating-menu-toggle-olf" href="#" onclick="scriptControl.toggleClassVisibility('olf');return false;">Show/hide OLF</a>
+    <br><hr>
+    <h3>Table of Contents</h3>
+    <a href="#toc0">Greeting</a>
+    <a href="#toc1">Mingling, and Sunset installation</a>
+    <a href="#toc2">In 1330</a>
+    <a href="#toc3">AGORA 1</a>
+    <a href="#toc4">RITUAL 1</a>
+    <a href="#toc5">1C</a>
+  </div>
+  <script>
+var showid = "chocolate_cookie_show";
+  </script>
+  <script src="includes/ndn.js"></script>
+  <script>
+var prefix = new Name("/ndn/edu/ucla/remap/losatlantis");
+var face = new Face({host: "archive-dev.remap.ucla.edu"});
+var cueFolder = "../../cues/";
+  </script>
+  <script src="includes/ndn-init.js"></script>
+  <script>
+  </script>
+  <script src="includes/ndn-url-publisher-component.js"></script>
+  <script>
+var defaultChatNickName = "The guide";
+var chatJID = "admin.admin@archive-dev.remap.ucla.edu";
+var chatPasswd = "admin@admin";
+var defaultMucNickName = "The observatory" ;
+var defaultMucRoom = "observatory@conference.archive-dev.remap.ucla.edu";
+var defaultMucNickName2 = "The guide";
+var defaultMucRoom2 = "guide@conference.archive-dev.remap.ucla.edu";
+var hostXMPP = "archive-dev.remap.ucla.edu" ;
+var hostXMPPHttpBind = "http://archive-dev.remap.ucla.edu:5280/http-bind";
+  </script>
+  <script src="includes/jquery-2.1.4.min.js"></script>
+  <script>
+  </script>
+  <script src="includes/strophe.js"></script>
+  <script>
+  </script>
+  <script src="includes/strophe.muc.js"></script>
+  <script>
+var connection = new Strophe.Connection(hostXMPPHttpBind);;
+  </script>
+  <script src="includes/strophe-init.js"></script>
+  <script>
+  </script>
+  <script src="includes/script-control.js"></script>
+  <script>
+  </script>
+  <script src="includes/component-object.js"></script>
+  <script>
+  </script>
+  <script src="includes/ndn-publisher-component-object.js"></script>
+  <script>
+  </script>
+  <script src="includes/youtube-object.js"></script>
+  <script>
+  </script>
+  <script src="includes/onload.js"></script>
+  <script>
+  </script>
+  <link rel="import" href="components/chat-control-muc.html" onerror="onImportError(event)">
+  <div id="scriptbody">
+    <p class='character process-for-the-guide'>PROCESS FOR THE GUIDE</p>
+    <p class='action'>Zhehao will run pre-recorded and freetext guide chatter over the course show.  Zoe will supplement during the opening.</p>
+    <p class='action'>Everyone can participate in chat in The Observatory, Zoe will also do freetext to the Observatory and take those cues.</p>
+    <p class='action'>Zhehao will be THE GUIDE in The Observatory (so must be in character).</p>
+    <p class='action'>Zoe and others in the crew will be themselves as Citizens.  You can at any time in the Observatory, insert dialogue from the Citizens. 
+Zoe will also have THE OBSERVATORY up.</p>
+    <p id='toc0' class='scene-heading'>Greeting</p>
+    <p class='action'>One/Two greeters at the table plus Zhehao</p>
+    <p class='action'>Greeters refer each person to Zhehao, who helps them login or if there is a problem, sends them to the default GUIDE page.</p>
+
+    <com-chat-control-muc message="Hello&#32;{{&#32;name&#32;}},&#32;welcome&#32;to&#32;The&#32;Archive.&#32;Please&#32;thank&#32;the&#32;Attendant&#32;for&#32;connecting&#32;us.&#32;Check&#32;back&#32;on&#32;this&#32;page&#32;periodically&#32;to&#32;learn&#32;about&#32;the&#32;Transfer." roomJID="guide@conference.archive-dev.remap.ucla.edu" fromNickName="THE GUIDE">
+    </com-chat-control-muc>    <p id='toc1' class='scene-heading'>Mingling, and Sunset installation</p>
+    <p class='action'>Zhehao will take the cues in the script and then any additional related dialogue. Snarky comments on video status.</p>
+
+    <com-chat-control-muc message="You&#32;probably&#32;want&#32;to&#32;keep&#32;your&#32;cellphone&#32;display&#32;on.&#32;Tap&#32;{{&#32;wakelock&#32;}}&#32;to&#32;keep&#32;your&#32;display&#32;on!" roomJID="guide@conference.archive-dev.remap.ucla.edu" fromNickName="THE GUIDE">
+    </com-chat-control-muc>
+    <com-chat-control-muc message="If&#32;you&#32;are&#32;using&#32;an&#32;iPhone,&#32;please&#32;use&#32;Safari&#32;if&#32;possible,&#32;and&#32;tap&#32;{{&#32;wakelock&#32;}}&#32;to&#32;keep&#32;your&#32;display&#32;on." roomJID="guide@conference.archive-dev.remap.ucla.edu" fromNickName="THE GUIDE">
+    </com-chat-control-muc>
+    <com-chat-control-muc message="And&#32;feel&#32;free&#32;to&#32;reload&#32;the&#32;guide,&#32;if&#32;you&#32;suspect&#32;a&#32;transfer&#32;failure." roomJID="guide@conference.archive-dev.remap.ucla.edu" fromNickName="THE GUIDE">
+    </com-chat-control-muc>
+    <com-chat-control-muc message="Looking&#32;for&#32;the&#32;menu?&#32;It&#39;s&#32;on&#32;the&#32;top-left&#32;corner." roomJID="guide@conference.archive-dev.remap.ucla.edu" fromNickName="THE GUIDE">
+    </com-chat-control-muc>    <p class='action'>Zoe you should send ethereal updates on the status of the Transfer.</p>
+    <p class='action'>LA Noir GIFs</p>
+    <p class='action'>Rachel starts, heads to 1330</p>
+    <p class='action'>Zhehao to push picture of Rachel and say “</p>
+
+    <com-chat-control-muc message="You&#32;should&#32;probably&#32;follow&#32;her." roomJID="guide@conference.archive-dev.remap.ucla.edu" fromNickName="THE GUIDE">
+    </com-chat-control-muc>
+    <com-chat-control-muc message="That&#39;s&#32;her&#32;&lt;img&#32;src=&#34;http://archive-dev.remap.ucla.edu/img/traveler/rachel.jpg&#34;&gt;&lt;/img&gt;.&#32;Just&#32;in&#32;case&#32;:)" roomJID="guide@conference.archive-dev.remap.ucla.edu" fromNickName="THE GUIDE">
+    </com-chat-control-muc>
+    <com-chat-control-muc message="And&#32;please&#32;choose&#32;who&#32;you&#32;are&#32;following&#32;from&#32;the&#32;{{&#32;open_nav&#32;}}." roomJID="guide@conference.archive-dev.remap.ucla.edu" fromNickName="THE GUIDE">
+    </com-chat-control-muc>    <p class='action'>Make snarky comments about walking and/or film noir.</p>
+    <p class='action'>[ From here on, push all dialogue in the script at what seems to be an opportunity time. ]</p>
+    <p class='action'>[ Keep event log open to see people’s responses to the questions. ]</p>
+    <p id='toc2' class='scene-heading'>In 1330</p>
+    <p class='action'>Zhehao pushes actual dialogue,</p>
+
+    <com-chat-control-muc message="Time&#32;to&#32;Transfer" roomJID="guide@conference.archive-dev.remap.ucla.edu" fromNickName="THE GUIDE">
+    </com-chat-control-muc>    <p class='action'>THE GUIDE should get hungry when Rachel talks about food.  (Perhaps commenting on whatever the crew eating that night if you need ideas.)</p>
+    <p id='toc3' class='scene-heading'>AGORA 1</p>
+    <p class='action'>THE GUIDE says
+Acclimating our visitors to fog and party lighting.</p>
+    <p class='action'>All the existing dialogue.</p>
+    <p class='action'>NEW, “but easy”: At Welcome to Transfer, push the person’s photo to them.</p>
+    <p class='action'>Sheena says “This play is fucking weird.”</p>
+
+    <com-chat-control-muc message="You’re&#32;not&#32;so&#32;normal&#32;yourself,&#32;dear." roomJID="guide@conference.archive-dev.remap.ucla.edu" fromNickName="THE GUIDE">
+    </com-chat-control-muc>    <p class='action'>p24 make sure to use hashtags that are shown in the cue if at all possible.</p>
+    <p class='action'>p27</p>
+
+    <com-chat-control-muc message="I&#32;wish&#32;that&#32;I&#32;could&#32;be&#32;full&#32;screen,&#32;too." roomJID="guide@conference.archive-dev.remap.ucla.edu" fromNickName="THE GUIDE">
+    </com-chat-control-muc>    <p class='character transition-to-first-ritual'>TRANSITION TO FIRST RITUAL</p>
+    <p class='action'>THE GUIDE comments on long journeys and overly talkative companions.</p>
+
+    <com-chat-control-muc message="Please&#32;remember&#32;to&#32;choose&#32;who&#32;you&#32;are&#32;following&#32;from&#32;the&#32;{{&#32;open_nav&#32;}}!" roomJID="guide@conference.archive-dev.remap.ucla.edu" fromNickName="THE GUIDE">
+    </com-chat-control-muc>    <p id='toc4' class='scene-heading'>RITUAL 1</p>
+    <p class='action'>Zhehao will run the four rituals with some of the same and some specific text.</p>
+    <p class='action'>Reiterate:: THE GUIDE reminds people “Choose who to follow” and opens the menu.</p>
+    <p id='toc5' class='scene-heading'>1C</p>
+
+    <com-chat-control-muc message="I&#32;look&#32;out&#32;the&#32;window&#32;and&#32;see&#32;memories.&#32;Lots&#32;of&#32;memories.&#32;I&#39;m&#32;stargazer,&#32;looking&#32;into&#32;the&#32;lives&#32;of&#32;other&#32;celestial&#32;beings.&#32;I&#32;hover&#32;above&#32;them&#32;and&#32;watch.&#32;{{&#32;filter:c&#32;}}" roomJID="guide@conference.archive-dev.remap.ucla.edu" fromNickName="THE GUIDE">
+    </com-chat-control-muc>
+    <com-chat-control-muc message="Looks,&#32;read,&#32;share!&#32;{{&#32;filter:c&#32;}}" roomJID="guide@conference.archive-dev.remap.ucla.edu" fromNickName="THE GUIDE">
+    </com-chat-control-muc>
+    <com-chat-control-muc message="Like&#32;it&#39;s&#32;talking!&#32;{{&#32;filter:c&#32;}}" roomJID="guide@conference.archive-dev.remap.ucla.edu" fromNickName="THE GUIDE">
+    </com-chat-control-muc>
+    <com-chat-control-muc message="Read&#32;the&#32;pictures!&#32;Take&#32;a&#32;photo!&#32;Remember&#32;to&#32;say&#32;thank&#32;you!&#32;{{&#32;filter:c&#32;}}" roomJID="guide@conference.archive-dev.remap.ucla.edu" fromNickName="THE GUIDE">
+    </com-chat-control-muc>
+    <com-chat-control-muc message="Listen&#32;to&#32;her.&#32;Imagine&#32;for&#32;her.&#32;Thank&#32;her.&#32;{{&#32;filter:c&#32;}}" roomJID="guide@conference.archive-dev.remap.ucla.edu" fromNickName="THE GUIDE">
+    </com-chat-control-muc>
+    <com-chat-control-muc message="Listen&#32;to&#32;her.&#32;Imagine&#32;for&#32;her.&#32;Thank&#32;her.&#32;{{&#32;filter:c&#32;}}" roomJID="guide@conference.archive-dev.remap.ucla.edu" fromNickName="THE GUIDE">
+    </com-chat-control-muc>    <p class='action'>For example:  
+1/A. “Bah. Fitness couples.” 
+1/B. “Hungry. Again.”
+1/C. “I… am… a staaaargazer”
+	<strong> DO TRANSLATION </strong>
+1/D. “...creepy”</p>
+    <p class='character transition-back-to-agora-1'>TRANSITION BACK TO AGORA 1</p>
+    <p class='action'>Dialogue continues in the same vein, can potentially be the same for everyone for simplicity.</p>
+    <p class='character agora-2'>AGORA 2</p>
+    <p class='action'>Dialogue continues per the script and improv.</p>
+    <p class='action'>And then “DANCE PARTY”</p>
+    <p class='action'>Continues in the same vein
+Should probably avoid a comedic undercurrent during the last part of the scene when they freak out. Perhaps show some concern.</p>
+    <p class='action'>Again, bring up who to follow at the end of the scene.</p>
+    <p class='character ritual-2'>RITUAL 2</p>
+    <p class='action'>Be pretty quiet in 2/A (Eddie and Rachel)</p>
+    <p class='action'>Can be funnier in 2/B (Felix and Sheena)</p>
+    <p class='character transition-to-agora-3'>TRANSITION TO AGORA 3</p>
+    <p class='action'>Dialogue continues per the script.</p>
+    <p class='action'>Guide could express some genuine concern.</p>
+    <p class='character the-citizens-emerge-/-ritual-3'>THE CITIZENS EMERGE / RITUAL 3</p>
+    <p class='action'>THE GUIDE talks about memories of (your) own, without ritual, and without explanation.</p>
+  </div></section>
+</body>
+</html>

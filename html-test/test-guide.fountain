@@ -1,0 +1,210 @@
+# Environment
+
+[showid] "chocolate_cookie_show"
+
+[include] ndn.js
+[prefix] new Name("/ndn/edu/ucla/remap/losatlantis")
+[face] new Face({host: "archive-dev.remap.ucla.edu"})
+
+[cueFolder] "../../cues/"
+
+[include] ndn-init.js
+[include] ndn-url-publisher-component.js
+
+[defaultChatNickName] "The guide"
+[chatJID] "admin.admin@archive-dev.remap.ucla.edu"
+[chatPasswd] "admin@admin"
+
+[defaultMucNickName] "The observatory" 
+[defaultMucRoom] "observatory@conference.archive-dev.remap.ucla.edu"
+
+[defaultMucNickName2] "The guide"
+[defaultMucRoom2] "guide@conference.archive-dev.remap.ucla.edu"
+
+[hostXMPP] "archive-dev.remap.ucla.edu" 
+[hostXMPPHttpBind] "http://archive-dev.remap.ucla.edu:5280/http-bind"
+
+[include] jquery-2.1.4.min.js
+[include] strophe.js
+[include] strophe.muc.js
+[connection] new Strophe.Connection(hostXMPPHttpBind);
+[include] strophe-init.js
+
+[include] script-control.js
+[include] component-object.js
+[include] ndn-publisher-component-object.js
+[include] youtube-object.js
+[include] onload.js
+
+# Body
+
+PROCESS FOR THE GUIDE
+
+Zhehao will run pre-recorded and freetext guide chatter over the course show.  Zoe will supplement during the opening. 
+
+Everyone can participate in chat in The Observatory, Zoe will also do freetext to the Observatory and take those cues.  
+
+Zhehao will be THE GUIDE in The Observatory (so must be in character).
+
+Zoe and others in the crew will be themselves as Citizens.  You can at any time in the Observatory, insert dialogue from the Citizens. 
+Zoe will also have THE OBSERVATORY up. 
+
+.Greeting
+
+One/Two greeters at the table plus Zhehao
+
+Greeters refer each person to Zhehao, who helps them login or if there is a problem, sends them to the default GUIDE page.   
+
+THE GUIDE
+Hello {{ name }}, welcome to The Archive. Please thank the Attendant for connecting us. Check back on this page periodically to learn about the Transfer. 
+
+.Mingling, and Sunset installation
+
+Zhehao will take the cues in the script and then any additional related dialogue. Snarky comments on video status. 
+
+THE GUIDE
+You probably want to keep your cellphone display on. Tap {{ wakelock }} to keep your display on!
+
+THE GUIDE
+If you are using an iPhone, please use Safari if possible, and tap {{ wakelock }} to keep your display on.
+
+THE GUIDE
+And feel free to reload the guide, if you suspect a transfer failure.
+
+THE GUIDE
+Looking for the menu? It's on the top-left corner.
+
+Zoe you should send ethereal updates on the status of the Transfer.
+
+LA Noir GIFs
+
+Rachel starts, heads to 1330
+
+Zhehao to push picture of Rachel and say “
+
+THE GUIDE
+You should probably follow her.
+
+THE GUIDE
+That's her <img src="http://archive-dev.remap.ucla.edu/img/traveler/rachel.jpg"></img>. Just in case :)
+
+THE GUIDE
+And please choose who you are following from the {{ open_nav }}.
+
+Make snarky comments about walking and/or film noir. 
+
+[ From here on, push all dialogue in the script at what seems to be an opportunity time. ] 
+
+[ Keep event log open to see people’s responses to the questions. ] 
+
+.In 1330
+
+Zhehao pushes actual dialogue, 
+
+THE GUIDE
+Time to Transfer
+
+THE GUIDE should get hungry when Rachel talks about food.  (Perhaps commenting on whatever the crew eating that night if you need ideas.)
+
+.AGORA 1
+
+THE GUIDE says
+Acclimating our visitors to fog and party lighting.
+
+All the existing dialogue. 
+
+NEW, “but easy”: At Welcome to Transfer, push the person’s photo to them. 
+
+Sheena says “This play is fucking weird.”  
+
+THE GUIDE
+You’re not so normal yourself, dear.
+
+p24 make sure to use hashtags that are shown in the cue if at all possible. 
+
+p27 
+
+THE GUIDE
+I wish that I could be full screen, too.
+
+TRANSITION TO FIRST RITUAL
+
+THE GUIDE comments on long journeys and overly talkative companions. 
+
+THE GUIDE 
+Please remember to choose who you are following from the {{ open_nav }}!
+
+.RITUAL 1
+
+Zhehao will run the four rituals with some of the same and some specific text.
+
+Reiterate:: THE GUIDE reminds people “Choose who to follow” and opens the menu. 
+
+.1C
+
+THE GUIDE
+I look out the window and see memories. 
+Lots of memories.
+I'm stargazer, looking into the lives of other celestial beings.
+I hover above them and watch. {{ filter:c }}
+
+THE GUIDE
+Looks, read, share! {{ filter:c }}
+
+THE GUIDE
+Like it's talking! {{ filter:c }}
+
+THE GUIDE
+Read the pictures! Take a photo! Remember to say thank you! {{ filter:c }}
+
+THE GUIDE
+Listen to her. Imagine for her. Thank her. {{ filter:c }}
+
+THE GUIDE
+Listen to her. Imagine for her. Thank her. {{ filter:c }}
+
+For example:  
+1/A. “Bah. Fitness couples.” 
+1/B. “Hungry. Again.”
+1/C. “I… am… a staaaargazer”
+	** DO TRANSLATION **
+1/D. “...creepy”
+
+TRANSITION BACK TO AGORA 1
+
+Dialogue continues in the same vein, can potentially be the same for everyone for simplicity.
+
+AGORA 2
+
+Dialogue continues per the script and improv.
+
+And then “DANCE PARTY” 
+
+Continues in the same vein
+Should probably avoid a comedic undercurrent during the last part of the scene when they freak out. Perhaps show some concern. 
+
+Again, bring up who to follow at the end of the scene. 
+
+
+RITUAL 2
+
+Be pretty quiet in 2/A (Eddie and Rachel)
+
+Can be funnier in 2/B (Felix and Sheena)
+
+
+TRANSITION TO AGORA 3
+
+Dialogue continues per the script. 
+
+Guide could express some genuine concern. 
+
+THE CITIZENS EMERGE / RITUAL 3
+
+THE GUIDE talks about memories of (your) own, without ritual, and without explanation. 
+
+
+
+
+
+
