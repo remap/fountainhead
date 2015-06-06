@@ -50,6 +50,11 @@
 		"from_nickname" : fromNickname,
 	  }).c("body").t(message);
 	  connection.send(chatMsg.tree());
+	  
+	  if (createdElement.dialogueElement !== undefined) {
+        createdElement.dialogueElement.className += ' chat-clicked';
+        componentObject.applyStyleFromParentDocument(createdElement.dialogueElement);
+	  }
 	});
 	
 	componentObject.applyStyleFromParentDocumentAll(createdElement);

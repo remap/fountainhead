@@ -60,33 +60,33 @@ Hello {{ name }}, welcome to The Archive. Please thank the Attendant for connect
 
 .Mingling, and Sunset installation
 
-Zhehao will take the cues in the script and then any additional related dialogue. Snarky comments on video status. 
+THE GUIDE
+How does the sunset video make you feel? Feel free to select one: {{ sunset_feeling_tag }}.
 
 THE GUIDE
 You probably want to keep your cellphone display on. Tap {{ wakelock }} to keep your display on!
 
 THE GUIDE
-If you are using an iPhone, please use Safari if possible, and tap {{ wakelock }} to keep your display on.
-
-THE GUIDE
-And feel free to reload the guide, if you suspect a transfer failure.
+If you are using an iPhone, please use Safari if possible, and tap {{ wakelock }} to keep your display on. You can also find the option in the {{ open_nav }}.
 
 THE GUIDE
 Looking for the menu? It's on the top-left corner.
 
-Zoe you should send ethereal updates on the status of the Transfer.
+THE GUIDE
+And feel free to reload the guide, if you suspect a transfer failure.
 
 LA Noir GIFs
 
-Rachel starts, heads to 1330
+.Rachel starts, heads to 1330
 
-Zhehao to push picture of Rachel and say “
+THE OBSERVATORY
+Visitor arrival underway.
 
 THE GUIDE
 You should probably follow her.
 
 THE GUIDE
-That's her <img src="http://archive-dev.remap.ucla.edu/img/traveler/rachel.jpg"></img>. Just in case :)
+That's her <img style="width:100px;height:auto;" src="http://archive-dev.remap.ucla.edu/img/traveler/rachel.jpg"></img>. Just in case :)
 
 THE GUIDE
 And please choose who you are following from the {{ open_nav }}.
@@ -102,9 +102,12 @@ Make snarky comments about walking and/or film noir.
 Zhehao pushes actual dialogue, 
 
 THE GUIDE
-Time to Transfer
+Time to transfer
 
 THE GUIDE should get hungry when Rachel talks about food.  (Perhaps commenting on whatever the crew eating that night if you need ideas.)
+
+THE GUIDE
+A horse...eww
 
 .AGORA 1
 
@@ -113,7 +116,10 @@ Acclimating our visitors to fog and party lighting.
 
 All the existing dialogue. 
 
-NEW, “but easy”: At Welcome to Transfer, push the person’s photo to them. 
+At Welcome to Transfer, 
+
+THE GUIDE
+Welcome to transfer! {{ photo_file }}
 
 Sheena says “This play is fucking weird.”  
 
@@ -133,6 +139,21 @@ THE GUIDE comments on long journeys and overly talkative companions.
 
 THE GUIDE 
 Please remember to choose who you are following from the {{ open_nav }}!
+
+THE GUIDE
+Having trouble with names?
+
+THE GUIDE
+That's Sheena. <img style="width:100px;height:auto;" src="http://archive-dev.remap.ucla.edu/img/traveler/sheena.jpg"></img>
+
+THE GUIDE
+That's Eddie. <img style="width:100px;height:auto;" src="http://archive-dev.remap.ucla.edu/img/traveler/eddie.jpg"></img>
+
+THE GUIDE
+That's Felix. <img style="width:100px;height:auto;" src="http://archive-dev.remap.ucla.edu/img/traveler/felix.jpg"></img>
+
+THE GUIDE
+That's Rachel. <img style="width:100px;height:auto;" src="http://archive-dev.remap.ucla.edu/img/traveler/rachel.jpg"></img>
 
 .RITUAL 1
 

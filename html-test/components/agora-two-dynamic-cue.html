@@ -62,6 +62,7 @@
     createdElement.weightedTags = [];
     
     // Doors and their tags are dynamically selected from the Archive if/when “flying around”, weighted by tags supplied by the audience. 
+    // TODO: hardcoded query show events, unideal
     createdElement.dbObject.queryShowEvents('performance-1', 'senses_tags', function (filteredObj) {
       if (filteredObj !== null && filteredObj !== undefined && filteredObj.length > 0) {
         try {

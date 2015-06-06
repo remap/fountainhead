@@ -239,6 +239,7 @@
           
           if (!createdElement.cueRequiresUnload) {
             createdElement.unloadElement.className += ' video-control-clicked';
+            componentObject.applyStyleFromParentDocument(createdElement.unloadElement);
           }
           
           createdElement.ndnPublisherComponentObject.publishContent(dataName, createdElement.content, false);

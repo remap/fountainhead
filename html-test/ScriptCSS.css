@@ -338,6 +338,10 @@ a:hover {
     font-size: 200%;
 }
 
+.chat-clicked {
+    color: #33BB33;
+}
+
 .video-control-clicked {
     color: #00FF00;
 }
