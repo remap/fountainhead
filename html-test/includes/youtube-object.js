@@ -37,7 +37,7 @@ YoutubeObject.prototype.getYoutubeVideoUrl = function (serviceUrl, fetchIfNotExi
     }
   };
   xhr.onerror = function () {
-    if (callback !== undefined) {
+    if (onerror !== undefined) {
       onerror(this);
     }
   };
