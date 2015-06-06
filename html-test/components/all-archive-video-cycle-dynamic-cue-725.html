@@ -106,7 +106,9 @@
       var cnt = 0;
       for (key in createdElement.videoLinks) {
         for (var i = 0; i < createdElement.links.length / 4; i++) {
-          createdElement.videoLinks[key].push('https://www.youtube.com/watch?v=' + createdElement.links[cnt]);
+          if (createdElement.links[cnt] !== undefined) {
+            createdElement.videoLinks[key].push('https://www.youtube.com/watch?v=' + createdElement.links[cnt]);
+          }
           cnt ++;
         }
       }
