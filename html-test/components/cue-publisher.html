@@ -97,6 +97,7 @@
                   // if we have the cue file, but the cue file does not have valid url, we don't have anything
                   // to replace in the JSON, and the cue is ready to go as-is.
                   createdElement.cueReady = true;
+                  createdElement.titleElement.innerHTML = '<span style="color:green;">' + createdElement.cueId + '</span> : ' + cueTitle;
                   createdElement.content = xhr.responseText;
                 } else {
                   // TODO: register preview onmouseover function
@@ -105,6 +106,7 @@
               } else {
                 createdElement.content = xhr.responseText;
                 createdElement.cueReady = true;
+                createdElement.titleElement.innerHTML = '<span style="color:green;">' + createdElement.cueId + '</span> : ' + cueTitle;
               }
             } catch (error) {
               console.log(componentName + ' : ' + error + ' ');
@@ -112,12 +114,15 @@
           } else {
             createdElement.content = xhr.responseText;
             createdElement.cueReady = true;
+            createdElement.titleElement.innerHTML = '<span style="color:green;">' + createdElement.cueId + '</span> : ' + cueTitle;
           }
         }
       };
       xhr.send();
     } else {
       createdElement.cueReady = true;
+      createdElement.titleElement.innerHTML = '<span style="color:green;">' + createdElement.cueId + '</span> : ' + cueTitle;
+      
       if (!createdElement.sendServiceUrl) {
         console.log('Warning: ' + componentName + ' : explicit content overrides sendServiceUrl flag to true');
       }
@@ -276,6 +281,7 @@
             if (createdElement.traverseDone && createdElement.videoUrlCallbackCnt == 0) {
               createdElement.content = JSON.stringify(createdElement.cueContent);
               createdElement.cueReady = true;
+              createdElement.titleElement.innerHTML = '<span style="color:green;">' + createdElement.cueId + '</span> : ' + cueTitle;
             }
           });
         }

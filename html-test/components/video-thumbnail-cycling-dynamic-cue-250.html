@@ -264,6 +264,7 @@
           
             if (createdElement.videoUrlCallbackCnt == 0) {
               createdElement.cueReady = true;
+              createdElement.titleElement.innerHTML = '<span style="color:green;">' + createdElement.cueId + '</span> : ' + cueTitle;
             }
           });
         }

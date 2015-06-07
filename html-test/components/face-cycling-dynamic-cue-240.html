@@ -128,6 +128,7 @@
         if (xhr.readyState == 4 && xhr.status == 200) {
           createdElement.cueContent = JSON.parse(xhr.responseText);
           createdElement.cueReady = true;
+          createdElement.titleElement.innerHTML = '<span style="color:green;">' + createdElement.cueId + '</span> : ' + cueTitle;
         }
       };
       xhr.send();

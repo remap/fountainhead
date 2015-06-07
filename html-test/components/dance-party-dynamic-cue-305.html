@@ -110,7 +110,6 @@
       dataName.append(createdElement.showid).append(cueComponent).appendVersion((new Date).getTime()).append(nameSuffix);
     
       for (node in createdElement.cueContent.nodeArgs) {
-        console.log(createdElement.cueContent);
         if (createdElement.cueContent.nodeArgs[node].tReady.doors['0'].composer.pipeline1 !== undefined) {
           var randIdx = Math.floor(Math.random() * createdElement.videoLinks.length);
           createdElement.cueContent.nodeArgs[node].tReady.doors['0'].composer.pipeline1['videoUrl'] = createdElement.videoLinks[randIdx]['videoUrl'];
@@ -199,6 +198,7 @@
           
             if (createdElement.videoUrlCallbackCnt == 0) {
               createdElement.cueReady = true;
+              createdElement.titleElement.innerHTML = '<span style="color:green;">' + createdElement.cueId + '</span> : ' + cueTitle;
             }
           });
         }

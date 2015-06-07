@@ -90,6 +90,8 @@
           if (receivedCnt == Object.keys(createdElement.videoMapping).length) {
             // TODO: both can mark cue as ready while cue actually may be loading, to be fixed
             createdElement.cueReady = true;
+            createdElement.titleElement.innerHTML = '<span style="color:green;">' + createdElement.cueId + '</span> : ' + cueTitle;
+
             createdElement.videoUrlCallbackCnt = 0;
             createdElement.jsonTraverse(createdElement.videoLinks, createdElement.replaceVideoUrl, createdElement);
           }
@@ -104,6 +106,7 @@
         if (xhr.readyState == 4 && xhr.status == 200) {
           createdElement.cueContent = JSON.parse(xhr.responseText);
           createdElement.cueReady = true;
+          createdElement.titleElement.innerHTML = '<span style="color:green;">' + createdElement.cueId + '</span> : ' + cueTitle;
         }
       };
       xhr.send();
@@ -238,6 +241,7 @@
           
             if (createdElement.videoUrlCallbackCnt == 0) {
               createdElement.cueReady = true;
+              createdElement.titleElement.innerHTML = '<span style="color:green;">' + createdElement.cueId + '</span> : ' + cueTitle;
             }
           });
         }

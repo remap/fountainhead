@@ -363,7 +363,8 @@ a:hover {
 }
 
 .video-control-chunk {
-    float: right;
+    text-align: center;
+    color: #00FF00;
 }
 
 /* Classes for each character or each character definition can be the same as their type; Left here for flexibility.
