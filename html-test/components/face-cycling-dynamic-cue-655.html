@@ -78,7 +78,7 @@
         for (var i = 0; i < participantObject.length; i++) {
           var participantRole = JSON.parse(participantObject[i][9]);
           if (participantRole !== null && participantRole !== undefined) {
-            if (participantRole[createdElement.performanceId] === 'crew' || participantRole[createdElement.performanceId] === 'tourist') {
+            //if (participantRole[createdElement.performanceId] === 'crew' || participantRole[createdElement.performanceId] === 'tourist') {
               if (participantObject[i][4] !== null && participantObject[i][4] !== '' && participantObject[i][4] !== undefined) {
                 if (participantObject[i][3] !== null && participantObject[i][3] !== undefined) {
                   createdElement.profileSeq.push({'img': participantObject[i][4], 'tags': participantObject[i][3].replace(/\n/g, ' ')});
@@ -86,9 +86,9 @@
                   createdElement.profileSeq.push({'img': participantObject[i][4], 'tags': ''});
                 }
               }
-            } else {
+            //} else {
               //console.log(participantObject[i][8] + ' is not coming.');
-            }
+            //}
           }
         }
       } catch (e) {

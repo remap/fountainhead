@@ -106,13 +106,13 @@
           try {;
             var participantRole = JSON.parse(participantObject[i][9]);
             if (participantRole !== null && participantRole !== undefined) {
-              if (participantRole[createdElement.performanceId] === 'crew' || participantRole[createdElement.performanceId] === 'tourist') {
-                if (participantObject[i][4] !== null && participantObject[i][4] !== '' && participantObject[i][4] !== undefined) {
-                  createdElement.imgSeq.push({'img': participantImg, 'tags': participantTags});
-                }
-              } else {
-                //console.log(participantObject[i][8] + ' is not coming.');
+              //if (participantRole[createdElement.performanceId] === 'crew' || participantRole[createdElement.performanceId] === 'tourist') {
+              if (participantObject[i][4] !== null && participantObject[i][4] !== '' && participantObject[i][4] !== undefined) {
+                createdElement.imgSeq.push({'img': participantImg, 'tags': participantTags});
               }
+              //} else {
+                //console.log(participantObject[i][8] + ' is not coming.');
+              //}
             }
           } catch (e) {
             console.log(e);
