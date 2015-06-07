@@ -120,14 +120,6 @@
   (t       = Music: Love on Top. Faces of audience., 
    cid     = 310)>>
 
-<<@google-image-query-dynamic-cue-295
-  (t       = Music: 3rd stewart. Faces of all Los Angeles.,
-   cid     = 315)>>
-
-<<@dance-party-dynamic-cue-305
-  (t       = Music: Rod Stewart. All of Los Angeles Dancing., 
-   cid     = 320)>>
-
 <<@cue-publisher
   (t       = End of the Rod Stewart song, 
    cid     = 355)>>
